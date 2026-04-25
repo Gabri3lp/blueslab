@@ -4,6 +4,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'damage/calc.dart';
+
 void main() {
   runApp(const BlueLabApp());
 }
@@ -336,7 +338,7 @@ class RightPanel extends StatelessWidget {
           Expanded(
             child: selectedTab == 0
                 ? SyncPairOverview(pair: pair, moveLevel: moveLevel, activeCells: activeCells)
-                : DamageCalculatorPlaceholder(pair: pair, activeCells: activeCells),
+                : DamageCalculatorPanel(pair: pair, activeCells: activeCells, moveLevel: moveLevel),
           ),
         ],
       ),
@@ -681,30 +683,573 @@ class _PassiveCardState extends State<_PassiveCard> {
   }
 }
 
-class DamageCalculatorPlaceholder extends StatelessWidget {
-  const DamageCalculatorPlaceholder({
+class DamageCalculatorPanel extends StatefulWidget {
+  const DamageCalculatorPanel({
     super.key,
     required this.pair,
     required this.activeCells,
+    required this.moveLevel,
   });
 
   final SyncPairData pair;
   final Set<int> activeCells;
+  final int moveLevel;
+
+  @override
+  State<DamageCalculatorPanel> createState() => _DamageCalculatorPanelState();
+}
+
+class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
+  String _selectedLevel = '200';
+  bool _isEx = true;
+  bool _hasExRole = true;
+  bool _teraActive = true;
+
+  static const _statLabels = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
+  static const _statNames = {'hp': 'HP', 'atk': 'Atk', 'def': 'Def', 'spa': 'Sp.Atk', 'spd': 'Sp.Def', 'spe': 'Spe'};
+  final Map<String, int> _gear = {for (final s in _statLabels) s: 100};
+  final Map<String, TextEditingController> _gearControllers = {
+    for (final s in _statLabels) s: TextEditingController(text: '100'),
+  };
+
+  static const _enemyDefaults = {'hp': 549780, 'atk': 2304, 'def': 83, 'spa': 2496, 'spd': 83, 'spe': 67};
+  final Map<String, int> _enemy = {..._enemyDefaults};
+  final Map<String, TextEditingController> _enemyControllers = {
+    for (final e in _enemyDefaults.entries) e.key: TextEditingController(text: '${e.value}'),
+  };
+
+  String _enemyWeakness = '';
+  final Map<String, int> _enemyMitigations = {'atk': 0, 'def': 0, 'spa': 0, 'spd': 0, 'spe': 0};
+  final Map<String, int> _playerStages = {'hp': 0, 'atk': 6, 'def': 6, 'spa': 6, 'spd': 6, 'spe': 6};
+  final Map<String, int> _enemyStages = {'hp': 0, 'atk': -6, 'def': -6, 'spa': -6, 'spd': -6, 'spe': -6};
+
+  static const _allTypes = [
+    '', 'Fire', 'Water', 'Grass', 'Electric', 'Ice',
+    'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug',
+    'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy',
+  ];
+
+  @override
+  void dispose() {
+    for (final c in _gearControllers.values) c.dispose();
+    for (final c in _enemyControllers.values) c.dispose();
+    super.dispose();
+  }
+
+  static const _exBase = {'hp': 100, 'atk': 40, 'def': 40, 'spa': 40, 'spd': 40, 'spe': 40};
+  static const _exRoleBonus = <String, Map<String, int>>{
+    'Strike':  {'hp': 60, 'atk': 40, 'spa': 40},
+    'Tech':    {'hp': 60, 'def': 20, 'spa': 20, 'spd': 20},
+    'Support': {'hp': 60, 'def': 40, 'spd': 40},
+    'Sprint':  {'hp': 60, 'atk': 20, 'spa': 40, 'spe': 40},
+    'Field':   {'hp': 60, 'def': 20, 'spd': 20, 'spe': 40},
+  };
+
+  int _exBonus(String stat) {
+    int total = 0;
+    if (_isEx) total += _exBase[stat] ?? 0;
+    if (_hasExRole) {
+      final role = widget.pair.exRole;
+      total += _exRoleBonus[role]?[stat] ?? 0;
+    }
+    return total;
+  }
+
+  Widget _mitigationCell(int value, ValueChanged<int> onChanged) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        InkWell(
+          onTap: value > 0 ? () => onChanged(value - 1) : null,
+          child: const Padding(padding: EdgeInsets.all(2), child: Icon(Icons.remove, size: 12)),
+        ),
+        Text('$value', style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
+        InkWell(
+          onTap: value < 9 ? () => onChanged(value + 1) : null,
+          child: const Padding(padding: EdgeInsets.all(2), child: Icon(Icons.add, size: 12)),
+        ),
+      ],
+    );
+  }
+
+  Widget _stageCell(int value, ValueChanged<int> onChanged) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        InkWell(
+          onTap: value > -6 ? () => onChanged(value - 1) : null,
+          child: const Padding(padding: EdgeInsets.all(2), child: Icon(Icons.remove, size: 12)),
+        ),
+        Text('$value', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: value > 0 ? Colors.blue : value < 0 ? Colors.red : null)),
+        InkWell(
+          onTap: value < 6 ? () => onChanged(value + 1) : null,
+          child: const Padding(padding: EdgeInsets.all(2), child: Icon(Icons.add, size: 12)),
+        ),
+      ],
+    );
+  }
+
+  Widget _teraTabButton(String label, bool selected) {
+    final isTera = label == 'Tera';
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => setState(() => _teraActive = isTera),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: selected
+                ? (isTera ? const Color(0xFF6C5CE7) : Theme.of(context).colorScheme.primary)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isTera ? const Color(0xFF6C5CE7) : Theme.of(context).colorScheme.primary,
+              width: 1.5,
+            ),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: selected ? Colors.white : Theme.of(context).colorScheme.onSurface,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  int _gridStatBonus(String statName) {
+    final mapping = {'hp': 'HP', 'atk': 'Attack', 'def': 'Defense', 'spa': 'Sp. Atk', 'spd': 'Sp. Def', 'spe': 'Speed'};
+    final prefix = mapping[statName] ?? '';
+    if (prefix.isEmpty) return 0;
+    int total = 0;
+    for (final cell in widget.pair.cells) {
+      if (!widget.activeCells.contains(cell.cellNumber)) continue;
+      final t = cell.title.trim();
+      if (t.startsWith(prefix)) {
+        final numStr = t.substring(prefix.length).trim();
+        final val = int.tryParse(numStr);
+        if (val != null) total += val;
+      }
+    }
+    return total;
+  }
+
+  int _gridPowerBonus(String moveName) {
+    int total = 0;
+    final prefix = '$moveName: Power ';
+    for (final cell in widget.pair.cells) {
+      if (!widget.activeCells.contains(cell.cellNumber)) continue;
+      if (!cell.title.startsWith(prefix)) continue;
+      final val = int.tryParse(cell.title.substring(prefix.length).trim());
+      if (val != null) total += val;
+    }
+    return total;
+  }
+
+  String _scaledPower(String rawPower) {
+    final match = RegExp(r'^(\d+)').firstMatch(rawPower);
+    if (match == null) return rawPower;
+    final base = int.parse(match.group(1)!);
+    return '${(base * (1 + 0.05 * (widget.moveLevel - 1))).round()}';
+  }
+
+  int _totalBp(MoveData move) {
+    final base = int.tryParse(_scaledPower(move.power)) ?? 0;
+    final grid = _gridPowerBonus(move.name);
+    final isTeraMove = widget.pair.teraMove != null && move.name == widget.pair.teraMove!.name;
+    final tera = _teraActive && widget.pair.hasTera;
+    final teraBonus = tera && !move.isSync && !isTeraMove && move.type.toLowerCase() == widget.pair.type.toLowerCase();
+    final afterTera = teraBonus ? (base * 1.5).round() : base;
+    return afterTera + grid;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12),
+    final pair = widget.pair;
+    final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
+    if (levels.isNotEmpty && !levels.contains(_selectedLevel)) {
+      _selectedLevel = levels.last;
+    }
+    final currentStats = pair.stats[_selectedLevel] ?? {};
+    final activeRole = _hasExRole && pair.exRole.isNotEmpty ? pair.exRole : pair.role;
+
+    final isTeraActive = _teraActive && pair.hasTera;
+    final displayMoves = <MoveData>[
+      ...pair.moves,
+      if (isTeraActive && pair.teraMove != null) pair.teraMove!,
+    ];
+
+    final labelStyle = TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6));
+
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Calculadora de Daño',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          // --- Level selector ---
+          Row(
+            children: [
+              Text('Nivel: ', style: labelStyle),
+              if (levels.isNotEmpty)
+                DropdownButton<String>(
+                  value: _selectedLevel,
+                  isDense: true,
+                  items: [for (final lv in levels) DropdownMenuItem(value: lv, child: Text('Lv. $lv', style: const TextStyle(fontSize: 12)))],
+                  onChanged: (v) => setState(() => _selectedLevel = v!),
+                )
+              else
+                Text('Sin datos', style: labelStyle),
+            ],
+          ),
+          const SizedBox(height: 6),
+
+          // --- EX / EX Role toggles ---
+          Row(
+            children: [
+              FilterChip(
+                label: Text('EX (${pair.role})', style: TextStyle(fontSize: 11, color: _isEx ? Colors.white : null)),
+                selected: _isEx,
+                onSelected: (v) => setState(() => _isEx = v),
+                selectedColor: Colors.deepPurple,
+                visualDensity: VisualDensity.compact,
+              ),
+              if (pair.exRole.isNotEmpty) ...[
+                const SizedBox(width: 6),
+                FilterChip(
+                  label: Text('EX Role (${pair.exRole})', style: TextStyle(fontSize: 11, color: _hasExRole ? Colors.white : null)),
+                  selected: _hasExRole,
+                  onSelected: (v) => setState(() => _hasExRole = v),
+                  selectedColor: Colors.indigo,
+                  visualDensity: VisualDensity.compact,
+                ),
+              ],
+            ],
+          ),
           const SizedBox(height: 8),
-          const Text('Próximamente:'),
-          const Text('- Inputs de stats, buffs y objetivo'),
-          const Text('- Cálculo de daño base'),
-          const Text('- Impacto de celdas activadas'),
+
+          // --- Tera toggle (tab style) ---
+          if (pair.hasTera)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                children: [
+                  _teraTabButton('Base', !_teraActive),
+                  const SizedBox(width: 6),
+                  _teraTabButton('Tera', _teraActive),
+                ],
+              ),
+            ),
+
+          // --- Stats table (horizontal: header, base, grid, gear, stage, total) ---
+          if (currentStats.isNotEmpty)
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.06),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Table(
+                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                columnWidths: {
+                  0: const FixedColumnWidth(40),
+                  for (int i = 0; i < _statLabels.length; i++) i + 1: const FlexColumnWidth(),
+                },
+                children: [
+                  TableRow(children: [
+                    const SizedBox(),
+                    for (final s in _statLabels)
+                      Center(child: Text(_statNames[s]!, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700))),
+                  ]),
+                  TableRow(children: [
+                    Text('Base', style: labelStyle),
+                    for (final s in _statLabels)
+                      Center(child: Text('${currentStats[s] ?? 0}', style: const TextStyle(fontSize: 11))),
+                  ]),
+                  if (_isEx || _hasExRole)
+                    TableRow(children: [
+                      Text('EX', style: labelStyle),
+                      for (final s in _statLabels)
+                        Builder(builder: (_) {
+                          final b = _exBonus(s);
+                          return Center(child: Text(
+                            b > 0 ? '+$b' : '-',
+                            style: TextStyle(fontSize: 11, color: b > 0 ? Colors.deepPurple : null),
+                          ));
+                        }),
+                    ]),
+                  TableRow(children: [
+                    Text('Grid', style: labelStyle),
+                    for (final s in _statLabels)
+                      Builder(builder: (_) {
+                        final g = _gridStatBonus(s);
+                        return Center(child: Text(
+                          g > 0 ? '+$g' : '-',
+                          style: TextStyle(fontSize: 11, color: g > 0 ? Theme.of(context).colorScheme.primary : null),
+                        ));
+                      }),
+                  ]),
+                  TableRow(children: [
+                    Text('Gear', style: labelStyle),
+                    for (final s in _statLabels)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                        child: SizedBox(
+                          height: 24,
+                          child: TextField(
+                            controller: _gearControllers[s],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontSize: 11),
+                            decoration: const InputDecoration(
+                              isDense: true,
+                              contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                              border: OutlineInputBorder(),
+                            ),
+                            keyboardType: TextInputType.number,
+                            onChanged: (v) => setState(() => _gear[s] = int.tryParse(v) ?? 0),
+                          ),
+                        ),
+                      ),
+                  ]),
+                  // Player stage row
+                  TableRow(children: [
+                    Text('Stage', style: labelStyle),
+                    const Center(child: Text('-', style: TextStyle(fontSize: 10))),
+                    for (final s in _statLabels.skip(1))
+                      _stageCell(_playerStages[s] ?? 0, (v) => setState(() => _playerStages[s] = v)),
+                  ]),
+                  TableRow(children: [
+                    const Text('Total', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700)),
+                    Center(child: Builder(builder: (_) {
+                      final raw = (currentStats['hp'] ?? 0) + _exBonus('hp') + _gridStatBonus('hp') + (_gear['hp'] ?? 0);
+                      return Text('$raw', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700));
+                    })),
+                    for (final s in _statLabels.skip(1))
+                      Builder(builder: (_) {
+                        final raw = (currentStats[s] ?? 0) + _exBonus(s) + _gridStatBonus(s) + (_gear[s] ?? 0);
+                        final total = calcStat(StatInput(baseStat: raw, stage: _playerStages[s] ?? 0));
+                        return Center(child: Text('$total', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)));
+                      }),
+                  ]),
+                ],
+              ),
+            ),
+          const SizedBox(height: 10),
+
+          // --- Enemy stats ---
+          Text('Enemigo', style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Text('Debilidad: ', style: labelStyle),
+              DropdownButton<String>(
+                value: _enemyWeakness,
+                isDense: true,
+                items: [for (final t in _allTypes) DropdownMenuItem(value: t, child: Text(t.isEmpty ? 'Ninguna' : t, style: const TextStyle(fontSize: 12)))],
+                onChanged: (v) => setState(() => _enemyWeakness = v!),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.red.withValues(alpha: 0.06),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Table(
+              defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+              columnWidths: {
+                0: const FixedColumnWidth(40),
+                for (int i = 0; i < _statLabels.length; i++) i + 1: const FlexColumnWidth(),
+              },
+              children: [
+                TableRow(children: [
+                  const SizedBox(),
+                  for (final s in _statLabels)
+                    Center(child: Text(_statNames[s]!, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700))),
+                ]),
+                TableRow(children: [
+                  Text('Base', style: labelStyle),
+                  for (final s in _statLabels)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                      child: SizedBox(
+                        height: 24,
+                        child: TextField(
+                          controller: _enemyControllers[s],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 11),
+                          decoration: const InputDecoration(
+                            isDense: true,
+                            contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                            border: OutlineInputBorder(),
+                          ),
+                          keyboardType: TextInputType.number,
+                          onChanged: (v) => setState(() => _enemy[s] = int.tryParse(v) ?? 0),
+                        ),
+                      ),
+                    ),
+                ]),
+                TableRow(children: [
+                  Text('Stage', style: labelStyle),
+                  const Center(child: Text('-', style: TextStyle(fontSize: 10))),
+                  for (final s in _statLabels.skip(1))
+                    _stageCell(_enemyStages[s] ?? 0, (v) => setState(() => _enemyStages[s] = v)),
+                ]),
+                TableRow(children: [
+                  Text('Mitig.', style: labelStyle),
+                  const Center(child: Text('-', style: TextStyle(fontSize: 10))),
+                  for (final s in _statLabels.skip(1))
+                    _mitigationCell(_enemyMitigations[s] ?? 0, (v) => setState(() => _enemyMitigations[s] = v)),
+                ]),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+
+          // --- Moves list ---
+          Text('Movimientos', style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
+          const SizedBox(height: 6),
+          for (final move in displayMoves)
+            Builder(builder: (_) {
+              final hasPower = move.power.isNotEmpty && move.power != '--';
+              final bp = hasPower ? _totalBp(move) : null;
+              final isPhysical = move.category.toLowerCase() == 'physical';
+              final atkKey = isPhysical ? 'atk' : 'spa';
+              final defStat = _enemy[isPhysical ? 'def' : 'spd'] ?? 100;
+              List<int>? rolls;
+              if (bp != null && bp > 0) {
+                final rawAtk = (currentStats[atkKey] ?? 0) + _exBonus(atkKey) + _gridStatBonus(atkKey) + (_gear[atkKey] ?? 0);
+                final atkTotal = calcStat(StatInput(baseStat: rawAtk, stage: _playerStages[atkKey] ?? 0));
+                final defKey = isPhysical ? 'def' : 'spd';
+                final enemyDefTotal = calcStat(StatInput(baseStat: defStat, stage: _enemyStages[defKey] ?? 0, mitigation: _enemyMitigations[defKey] ?? 0));
+                final isSE = _enemyWeakness.isNotEmpty && move.type.toLowerCase() == _enemyWeakness.toLowerCase();
+                final result = calcDamage(
+                  moveInput: MovePowerInput(basePower: bp, moveLevel: 1, gridPower: 0),
+                  attackerInput: StatInput(baseStat: atkTotal),
+                  defenderStat: enemyDefTotal,
+                  conditions: BattleConditions(isSuperEffective: isSE),
+                );
+                rolls = result.rolls;
+              }
+              final isTeraMove = pair.teraMove != null && move.name == pair.teraMove!.name;
+              return _CalcMoveCard(
+                move: move,
+                totalBp: bp,
+                gridPower: _gridPowerBonus(move.name),
+                scaledPower: _scaledPower(move.power),
+                teraBoost: isTeraActive && !move.isSync && !isTeraMove && move.type.toLowerCase() == pair.type.toLowerCase(),
+                activeRole: activeRole,
+                rolls: rolls,
+                enemyHp: _enemy['hp'] ?? 1,
+              );
+            }),
+        ],
+      ),
+    );
+  }
+}
+
+class _CalcMoveCard extends StatelessWidget {
+  const _CalcMoveCard({
+    required this.move,
+    this.totalBp,
+    required this.gridPower,
+    required this.scaledPower,
+    this.teraBoost = false,
+    required this.activeRole,
+    this.rolls,
+    this.enemyHp = 1,
+  });
+  final MoveData move;
+  final int? totalBp;
+  final int gridPower;
+  final String scaledPower;
+  final bool teraBoost;
+  final String activeRole;
+  final List<int>? rolls;
+  final int enemyHp;
+
+  @override
+  Widget build(BuildContext context) {
+    final hasBp = totalBp != null;
+    String? pctLabel;
+    if (rolls != null && rolls!.isNotEmpty && enemyHp > 0) {
+      final minPct = (rolls!.first / enemyHp * 100).toStringAsFixed(1);
+      final maxPct = (rolls!.last / enemyHp * 100).toStringAsFixed(1);
+      pctLabel = '$minPct-$maxPct%';
+    }
+    return Container(
+      margin: const EdgeInsets.only(bottom: 6),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: Colors.grey.shade300),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              if (move.isSync) Padding(
+                padding: const EdgeInsets.only(right: 4),
+                child: Icon(Icons.star, size: 12, color: Colors.purple.shade300),
+              ),
+              Expanded(child: Text(move.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12))),
+              if (pctLabel != null)
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: Text(pctLabel, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.primary)),
+                ),
+              if (move.category.isNotEmpty)
+                Text(move.category, style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
+            ],
+          ),
+          if (hasBp)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Builder(builder: (_) {
+                final parts = <String>['BP: $scaledPower'];
+                if (teraBoost) parts.add('×1.5');
+                if (gridPower > 0) parts.add('+$gridPower');
+                parts.add('= $totalBp');
+                return Text(
+                  parts.join(' '),
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: (teraBoost || gridPower > 0) ? FontWeight.w700 : FontWeight.normal,
+                    color: teraBoost ? const Color(0xFF6C5CE7) : null,
+                  ),
+                );
+              }),
+            ),
+          if (rolls != null && rolls!.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Wrap(
+                spacing: 4,
+                children: [
+                  for (int i = 0; i < rolls!.length; i++)
+                    Text(
+                      '${rolls![i]}',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: i == rolls!.length - 1 ? FontWeight.w700 : FontWeight.normal,
+                        color: i == rolls!.length - 1 ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: Text('Role: $activeRole', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
+          ),
         ],
       ),
     );
@@ -886,6 +1431,7 @@ class HexGridView extends StatelessWidget {
     if (cell.description.isNotEmpty) {
       buffer.writeln(cell.description);
     }
+    buffer.writeln('⚡ ${cell.energyCost}  🔮 ${cell.orbCost}');
     return buffer.toString().trim();
   }
 
@@ -1179,6 +1725,7 @@ class SyncPairData {
     this.hasTera = false,
     this.teraMove,
     this.teraPassives = const [],
+    this.stats = const {},
   });
 
   final int number;
@@ -1197,6 +1744,7 @@ class SyncPairData {
   final bool hasTera;
   final MoveData? teraMove;
   final List<PassiveData> teraPassives;
+  final Map<String, Map<String, int>> stats; // level -> {hp, atk, def, spa, spd, spe}
 }
 
 class GridCellData {
@@ -1266,13 +1814,20 @@ Future<ParsedData> _loadData() async {
       releaseDate = DateTime.tryParse(j['releaseDate']);
     }
 
+    final statsRaw = j['stats'] as Map<String, dynamic>? ?? {};
+    final stats = <String, Map<String, int>>{};
+    for (final entry in statsRaw.entries) {
+      final m = entry.value as Map<String, dynamic>;
+      stats[entry.key] = m.map((k, v) => MapEntry(k, (v as num).toInt()));
+    }
+
     return SyncPairData(
       number: j['number'], displayName: j['displayName'] ?? '',
       role: j['role'] ?? '', exRole: j['exRole'] ?? '', type: j['type'] ?? '', weakness: j['weakness'] ?? '',
       rarity: '', cells: cells, releaseDate: releaseDate,
       syncMoveName: j['syncMoveName'] ?? '', moves: moves, passives: passives,
       description: '', hasTera: j['hasTera'] ?? false,
-      teraMove: teraMove, teraPassives: teraPassives,
+      teraMove: teraMove, teraPassives: teraPassives, stats: stats,
     );
   }).toList()
     ..sort((a, b) {

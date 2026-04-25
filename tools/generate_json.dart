@@ -2,11 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 
 void main() {
-  final kitsText = File('docs/kits.txt').readAsStringSync();
-  final gridsText = File('docs/grids.txt').readAsStringSync();
+  final docsDir = Directory('docs');
+  final kitFiles = <String>[];
+  final gridFiles = <String>[];
+  for (final f in docsDir.listSync().whereType<File>()) {
+    final name = f.path.split(RegExp(r'[\\/]')).last.toLowerCase();
+    if (name.contains('sync pair information') || name == 'kits.txt') {
+      kitFiles.add(f.readAsStringSync());
+    } else if (name.contains('sync grid') || name.contains('all new sync grid') || name == 'grids.txt') {
+      gridFiles.add(f.readAsStringSync());
+    }
+  }
 
-  final kitMap = parseKits(kitsText);
-  final gridMap = parseGrids(gridsText);
+  final kitMap = parseKits(kitFiles.join('\n'));
+  final gridMap = parseGrids(gridFiles.join('\n'));
 
   final allNumbers = <int>{...kitMap.keys, ...gridMap.keys}.toList()..sort();
   final pairs = <Map<String, dynamic>>[];
@@ -29,6 +38,7 @@ void main() {
       'hasTera': kit?['hasTera'] ?? false,
       'teraMove': kit?['teraMove'],
       'teraPassives': kit?['teraPassives'] ?? [],
+      'stats': kit?['stats'] ?? {},
       'cells': grid,
     });
   }
@@ -163,11 +173,34 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
       }
     }
 
+    // Parse base stats by level
+    final stats = <String, Map<String, int>>{};
+    final lvRegex = RegExp(r'^Lv\.\s*(\d+)');
+    final statLineRegex = RegExp(r'HP\s*:\s*(\d+)\s*\|\s*Attack\s*:\s*(\d+)\s*\|\s*Defense\s*:\s*(\d+)\s*\|\s*Sp\.\s*Atk\s*:\s*(\d+)\s*\|\s*Sp\.\s*Def\s*:\s*(\d+)\s*\|\s*Speed\s*:\s*(\d+)');
+    for (int i = 1; i < lines.length; i++) {
+      final lvMatch = lvRegex.firstMatch(lines[i]);
+      if (lvMatch != null) {
+        final level = lvMatch.group(1)!;
+        for (int j = i + 1; j < lines.length && j <= i + 3; j++) {
+          final sm = statLineRegex.firstMatch(lines[j]);
+          if (sm != null) {
+            stats[level] = {
+              'hp': int.parse(sm.group(1)!), 'atk': int.parse(sm.group(2)!),
+              'def': int.parse(sm.group(3)!), 'spa': int.parse(sm.group(4)!),
+              'spd': int.parse(sm.group(5)!), 'spe': int.parse(sm.group(6)!),
+            };
+            break;
+          }
+        }
+      }
+    }
+
     result[number] = {
       'displayName': displayName, 'role': role, 'exRole': exRole, 'type': type, 'weakness': weakness,
       'syncMoveName': syncMoveName, 'releaseDate': releaseDate,
       'moves': moves, 'passives': passives,
       'hasTera': teraMove != null, 'teraMove': teraMove, 'teraPassives': teraPassives,
+      'stats': stats,
     };
   }
   return result;
