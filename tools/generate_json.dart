@@ -1,0 +1,234 @@
+import 'dart:convert';
+import 'dart:io';
+
+void main() {
+  final kitsText = File('docs/kits.txt').readAsStringSync();
+  final gridsText = File('docs/grids.txt').readAsStringSync();
+
+  final kitMap = parseKits(kitsText);
+  final gridMap = parseGrids(gridsText);
+
+  final allNumbers = <int>{...kitMap.keys, ...gridMap.keys}.toList()..sort();
+  final pairs = <Map<String, dynamic>>[];
+
+  for (final number in allNumbers) {
+    final grid = gridMap[number];
+    if (grid == null || grid.isEmpty) continue;
+    final kit = kitMap[number];
+    pairs.add({
+      'number': number,
+      'displayName': kit?['displayName'] ?? 'No. $number',
+      'role': kit?['role'] ?? '',
+      'exRole': kit?['exRole'] ?? '',
+      'type': kit?['type'] ?? '',
+      'weakness': kit?['weakness'] ?? '',
+      'syncMoveName': kit?['syncMoveName'] ?? '',
+      'releaseDate': kit?['releaseDate'],
+      'moves': kit?['moves'] ?? [],
+      'passives': kit?['passives'] ?? [],
+      'hasTera': kit?['hasTera'] ?? false,
+      'teraMove': kit?['teraMove'],
+      'teraPassives': kit?['teraPassives'] ?? [],
+      'cells': grid,
+    });
+  }
+
+  final json = const JsonEncoder.withIndent('  ').convert(pairs);
+  File('assets/data/sync_pairs.json').writeAsStringSync(json);
+  print('Generated assets/data/sync_pairs.json with ${pairs.length} pairs');
+}
+
+Map<int, Map<String, dynamic>> parseKits(String input) {
+  final result = <int, Map<String, dynamic>>{};
+  final sections = splitByNoBlocks(input);
+  final numberRegex = RegExp(r'^No\. (\d+)\s+(.*)$');
+
+  for (final section in sections) {
+    final lines = section.split('\n').map((l) => l.trimRight()).where((l) => l.isNotEmpty).toList();
+    if (lines.isEmpty) continue;
+    final headerMatch = numberRegex.firstMatch(lines.first.trim());
+    if (headerMatch == null) continue;
+
+    final number = int.parse(headerMatch.group(1)!);
+    final displayName = headerMatch.group(2)!.trim();
+    String role = '', type = '', weakness = '', syncMoveName = '', exRole = '';
+    String? releaseDate;
+    final moves = <Map<String, dynamic>>[];
+    final passives = <Map<String, dynamic>>[];
+
+    for (int i = 1; i < lines.length; i++) {
+      final line = lines[i];
+      if (line.contains('Tera Details')) break;
+      if (line.startsWith('Role:')) {
+        role = line.replaceFirst('Role:', '').split('|').first.trim();
+        final exMatch = RegExp(r'EX Role[^:]*:\s*(\w+)').firstMatch(line);
+        if (exMatch != null) exRole = exMatch.group(1)!.trim();
+      } else if (line.startsWith('Type:')) {
+        final parts = line.replaceFirst('Type:', '').split('|');
+        type = parts.first.trim();
+        if (parts.length > 1) weakness = parts[1].replaceAll(RegExp(r'Weakness:\s*'), '').trim();
+      } else if (line.startsWith('Sync Move:')) {
+        syncMoveName = line.replaceFirst('Sync Move:', '').trim();
+      } else if (line.startsWith('Sync Pair Available:')) {
+        final m = RegExp(r'(\d+)/(\d+)/(\d+)').firstMatch(line);
+        if (m != null) releaseDate = '${m.group(3)}-${m.group(2)!.padLeft(2, '0')}-${m.group(1)!.padLeft(2, '0')}';
+      } else if (RegExp(r'^Move \d+:').hasMatch(line)) {
+        final moveName = line.replaceFirst(RegExp(r'^Move \d+:\s*'), '').trim();
+        String mType = '', mCat = '', mPower = '', mAcc = '', mGauge = '', mTarget = '', mDesc = '';
+        for (int j = i + 1; j < lines.length && !lines[j].startsWith('Move ') && !lines[j].startsWith('Sync Move:') && !lines[j].startsWith('Passive '); j++) {
+          final ml = lines[j];
+          if (ml.startsWith('Type:')) {
+            mType = ml.replaceFirst('Type:', '').trim();
+          } else if (ml.startsWith('Category:')) mCat = ml.replaceFirst('Category:', '').trim();
+          else if (ml.startsWith('Description:')) mDesc = ml.replaceFirst('Description:', '').trim();
+          else if (ml.startsWith('Power:')) {
+            for (final a in ml.split('|').map((e) => e.trim())) {
+              if (a.startsWith('Power:')) {
+                mPower = a.replaceFirst('Power:', '').trim();
+              } else if (a.startsWith('Accuracy:')) mAcc = a.replaceFirst('Accuracy:', '').trim();
+              else if (a.startsWith('Gauge:')) mGauge = a.replaceFirst('Gauge:', '').trim();
+              else if (a.startsWith('Target:')) mTarget = a.replaceFirst('Target:', '').trim();
+            }
+          }
+        }
+        moves.add({'name': moveName, 'type': mType, 'category': mCat, 'power': mPower, 'accuracy': mAcc, 'gauge': mGauge, 'target': mTarget, 'description': mDesc, 'isSync': false});
+      } else if (RegExp(r'^Passive \d+:').hasMatch(line)) {
+        final pName = line.replaceFirst(RegExp(r'^Passive \d+:\s*'), '').trim();
+        String pDesc = '';
+        if (i + 1 < lines.length) {
+          final pl = lines[i + 1].trim();
+          if (pl.isNotEmpty && !pl.startsWith('Passive ') && !RegExp(r'^[A-Z].*:').hasMatch(pl)) pDesc = pl;
+        }
+        passives.add({'name': pName, 'description': pDesc});
+      }
+    }
+
+    if (syncMoveName.isNotEmpty) {
+      String smType = '', smCat = '', smPower = '', smDesc = '';
+      bool inSync = false;
+      for (final line in lines) {
+        if (line.contains('Tera Details')) break;
+        if (line.startsWith('Sync Move:')) { inSync = true; continue; }
+        if (inSync) {
+          if (line.startsWith('Type:')) {
+            smType = line.replaceFirst('Type:', '').trim();
+          } else if (line.startsWith('Category:')) smCat = line.replaceFirst('Category:', '').trim();
+          else if (line.startsWith('Description:')) smDesc = line.replaceFirst('Description:', '').trim();
+          else if (line.startsWith('Power:')) {
+            smPower = line.split('|').first.replaceFirst('Power:', '').trim();
+            inSync = false;
+          }
+        }
+      }
+      moves.add({'name': syncMoveName, 'type': smType, 'category': smCat, 'power': smPower, 'description': smDesc, 'isSync': true});
+    }
+
+    Map<String, dynamic>? teraMove;
+    final teraPassives = <Map<String, dynamic>>[];
+    bool inTera = false;
+    for (int i = 1; i < lines.length; i++) {
+      final line = lines[i];
+      if (line.contains('Tera Details')) { inTera = true; continue; }
+      if (inTera && line.startsWith('----')) break;
+      if (inTera && line.contains('Tera Move:')) {
+        final tmName = line.replaceFirst(RegExp(r'.*Tera Move:\s*'), '').trim();
+        String tmType = '', tmCat = '', tmPower = '', tmAcc = '', tmGauge = '', tmTarget = '', tmDesc = '';
+        for (int j = i + 1; j < lines.length; j++) {
+          final ml = lines[j];
+          if (ml.contains('Passives Details') || ml.startsWith('----')) break;
+          if (ml.startsWith('Type:')) {
+            tmType = ml.replaceFirst('Type:', '').trim();
+          } else if (ml.startsWith('Category:')) tmCat = ml.replaceFirst('Category:', '').trim();
+          else if (ml.startsWith('Description:')) tmDesc = ml.replaceFirst('Description:', '').trim();
+          else if (ml.startsWith('Power:')) {
+            for (final a in ml.split('|').map((e) => e.trim())) {
+              if (a.startsWith('Power:')) {
+                tmPower = a.replaceFirst('Power:', '').trim();
+              } else if (a.startsWith('Accuracy:')) tmAcc = a.replaceFirst('Accuracy:', '').trim();
+              else if (a.startsWith('Gauge:')) tmGauge = a.replaceFirst('Gauge:', '').trim();
+              else if (a.startsWith('Target:')) tmTarget = a.replaceFirst('Target:', '').trim();
+            }
+          }
+        }
+        teraMove = {'name': tmName, 'type': tmType, 'category': tmCat, 'power': tmPower, 'accuracy': tmAcc, 'gauge': tmGauge, 'target': tmTarget, 'description': tmDesc};
+      }
+      if (inTera && RegExp(r'^Passive \d+:').hasMatch(line)) {
+        final pName = line.replaceFirst(RegExp(r'^Passive \d+:\s*'), '').trim();
+        String pDesc = '';
+        if (i + 1 < lines.length) {
+          final pl = lines[i + 1].trim();
+          if (pl.isNotEmpty && !pl.startsWith('Passive ') && !pl.startsWith('-')) pDesc = pl;
+        }
+        teraPassives.add({'name': pName, 'description': pDesc});
+      }
+    }
+
+    result[number] = {
+      'displayName': displayName, 'role': role, 'exRole': exRole, 'type': type, 'weakness': weakness,
+      'syncMoveName': syncMoveName, 'releaseDate': releaseDate,
+      'moves': moves, 'passives': passives,
+      'hasTera': teraMove != null, 'teraMove': teraMove, 'teraPassives': teraPassives,
+    };
+  }
+  return result;
+}
+
+Map<int, List<Map<String, dynamic>>> parseGrids(String input) {
+  final result = <int, List<Map<String, dynamic>>>{};
+  final sections = splitByNoBlocks(input);
+  final numberRegex = RegExp(r'^No\. (\d+)\s+(.*)$');
+  for (final section in sections) {
+    final lines = section.split('\n').map((l) => l.trimRight()).toList();
+    if (lines.isEmpty) continue;
+    final headerLine = lines.firstWhere((l) => l.trim().startsWith('No.'), orElse: () => '');
+    if (headerLine.isEmpty) continue;
+    final m = numberRegex.firstMatch(headerLine.trim());
+    if (m == null) continue;
+    result[int.parse(m.group(1)!)] = parseCells(lines);
+  }
+  return result;
+}
+
+List<Map<String, dynamic>> parseCells(List<String> lines) {
+  final cells = <Map<String, dynamic>>[];
+  final re = RegExp(r'^Cell\s+(\d+)\s+\|\s+🎯\s+Cord\s+\((-?\d+),(-?\d+),(-?\d+)\)\s+\|\s+Cost:\s+⚡\s+(\d+)\s+Energy\s+\|\s+🔮\s+(\d+)\s+Sync Orb\(s\)');
+  int index = 0;
+  while (index < lines.length) {
+    final m = re.firstMatch(lines[index].trim());
+    if (m == null) { index++; continue; }
+    final details = <String>[];
+    index++;
+    while (index < lines.length && !lines[index].trim().startsWith('Cell ')) {
+      final c = lines[index].trim();
+      if (c.isNotEmpty) details.add(c);
+      if (c.startsWith('================================END')) break;
+      index++;
+    }
+    if (details.any((l) => l.startsWith('Grid Expand Unlock:'))) { index++; continue; }
+    final filtered = details.where((l) => !l.startsWith('Requirements:') && !l.startsWith('Grid Expand Unlock:') && !l.startsWith('Color Grid:') && !l.startsWith('Move:')).toList();
+    final colorLine = details.firstWhere((l) => l.startsWith('Color Grid:'), orElse: () => '');
+    final reqLine = details.firstWhere((l) => l.contains('Move level must be'), orElse: () => '');
+    final mlMatch = RegExp(r'Move level must be (\d+)').firstMatch(reqLine);
+    cells.add({
+      'cellNumber': int.parse(m.group(1)!), 'q': int.parse(m.group(2)!), 'r': int.parse(m.group(3)!), 's': int.parse(m.group(4)!),
+      'energyCost': int.parse(m.group(5)!), 'orbCost': int.parse(m.group(6)!),
+      'title': filtered.isNotEmpty ? filtered.first : '', 'description': filtered.length > 1 ? filtered[1] : '',
+      'colorKind': colorLine.isNotEmpty ? colorLine.replaceFirst('Color Grid:', '').trim() : 'Unknown',
+      'moveLevel': mlMatch != null ? int.parse(mlMatch.group(1)!) : 1,
+    });
+  }
+  return cells;
+}
+
+List<String> splitByNoBlocks(String raw) {
+  final lines = raw.split('\n');
+  final sections = <String>[];
+  final current = <String>[];
+  for (final line in lines) {
+    final trimmed = line.trim();
+    if (trimmed.startsWith('No. ') && current.isNotEmpty) { sections.add(current.join('\n')); current.clear(); }
+    if (trimmed.startsWith('No. ') || current.isNotEmpty) current.add(line);
+  }
+  if (current.isNotEmpty) sections.add(current.join('\n'));
+  return sections;
+}

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -266,6 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   activeCells: _activeCells,
                   selectedTab: _rightTab,
                   onTabChanged: (tab) => setState(() => _rightTab = tab),
+                  moveLevel: _moveLevel,
                 ),
               ),
             ],
@@ -283,12 +285,14 @@ class RightPanel extends StatelessWidget {
     required this.activeCells,
     required this.selectedTab,
     required this.onTabChanged,
+    required this.moveLevel,
   });
 
   final SyncPairData pair;
   final Set<int> activeCells;
   final int selectedTab;
   final ValueChanged<int> onTabChanged;
+  final int moveLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -331,7 +335,7 @@ class RightPanel extends StatelessWidget {
           const SizedBox(height: 8),
           Expanded(
             child: selectedTab == 0
-                ? SyncPairOverview(pair: pair)
+                ? SyncPairOverview(pair: pair, moveLevel: moveLevel, activeCells: activeCells)
                 : DamageCalculatorPlaceholder(pair: pair, activeCells: activeCells),
           ),
         ],
@@ -341,9 +345,11 @@ class RightPanel extends StatelessWidget {
 }
 
 class SyncPairOverview extends StatefulWidget {
-  const SyncPairOverview({super.key, required this.pair});
+  const SyncPairOverview({super.key, required this.pair, required this.moveLevel, required this.activeCells});
 
   final SyncPairData pair;
+  final int moveLevel;
+  final Set<int> activeCells;
 
   @override
   State<SyncPairOverview> createState() => _SyncPairOverviewState();
@@ -397,6 +403,27 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     return _typeColors[type.toLowerCase()] ?? Colors.grey;
   }
 
+  String _scaledPower(String rawPower, int moveLevel) {
+    final match = RegExp(r'^(\d+)\s*\(1\)').firstMatch(rawPower);
+    if (match == null) return rawPower;
+    final base = int.parse(match.group(1)!);
+    final scaled = (base * (1 + 0.05 * (moveLevel - 1))).round();
+    return '$scaled';
+  }
+
+  int _gridBonus(String moveName, String stat) {
+    int total = 0;
+    final prefix = '$moveName: $stat ';
+    for (final cell in widget.pair.cells) {
+      if (!widget.activeCells.contains(cell.cellNumber)) continue;
+      if (!cell.title.startsWith(prefix)) continue;
+      final numStr = cell.title.substring(prefix.length).trim();
+      final val = int.tryParse(numStr);
+      if (val != null) total += val;
+    }
+    return total;
+  }
+
   Widget _typeChip(String type) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
@@ -409,74 +436,18 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
   }
 
   Widget _moveCard(BuildContext context, MoveData move) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: move.type.isNotEmpty ? _typeColor(move.type).withValues(alpha: 0.12) : Theme.of(context).colorScheme.surface,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: move.type.isNotEmpty ? _typeColor(move.type).withValues(alpha: 0.5) : Colors.grey.shade300),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                if (move.isSync) Padding(
-                  padding: const EdgeInsets.only(right: 6),
-                  child: Icon(Icons.star, size: 14, color: Colors.purple.shade300),
-                ),
-                Expanded(child: Text(move.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13))),
-                if (move.type.isNotEmpty) _typeChip(move.type),
-              ],
-            ),
-            if (move.description.isNotEmpty) Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(move.description, style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
-            ),
-            if (move.power.isNotEmpty || move.accuracy.isNotEmpty || move.gauge.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: Wrap(
-                  spacing: 12,
-                  children: [
-                    if (move.power.isNotEmpty && move.power != '--') Text('⚔ ${move.power}', style: const TextStyle(fontSize: 11)),
-                    if (move.accuracy.isNotEmpty && move.accuracy != '--') Text('🎯 ${move.accuracy}', style: const TextStyle(fontSize: 11)),
-                    if (move.gauge.isNotEmpty && move.gauge != '--') Text('⚡ ${move.gauge}', style: const TextStyle(fontSize: 11)),
-                    if (move.target.isNotEmpty && move.target != '--') Text('🎯 ${move.target}', style: const TextStyle(fontSize: 11)),
-                    if (move.category.isNotEmpty) Text(move.category, style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
-                  ],
-                ),
-              ),
-          ],
-        ),
-      ),
+    return _MoveCard(
+      move: move,
+      typeColor: _typeColor(move.type),
+      typeChip: move.type.isNotEmpty ? _typeChip(move.type) : null,
+      powerBonus: _gridBonus(move.name, 'Power'),
+      accBonus: _gridBonus(move.name, 'Accuracy'),
+      basePower: _scaledPower(move.power, widget.moveLevel),
     );
   }
 
   Widget _passiveCard(BuildContext context, PassiveData passive) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      decoration: BoxDecoration(
-        color: Colors.amber.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.amber.withValues(alpha: 0.3)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(passive.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13)),
-            if (passive.description.isNotEmpty) Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(passive.description, style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
-            ),
-          ],
-        ),
-      ),
-    );
+    return _PassiveCard(passive: passive);
   }
 
   @override
@@ -485,7 +456,10 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
         ? [...pair.moves, pair.teraMove!]
         : pair.moves;
     final displayPassives = _showTera
-        ? [...pair.passives, ...pair.teraPassives]
+        ? [
+            for (int i = 0; i < pair.passives.length; i++)
+              i < pair.teraPassives.length ? pair.teraPassives[i] : pair.passives[i],
+          ]
         : pair.passives;
 
     return SingleChildScrollView(
@@ -499,6 +473,14 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
                 decoration: BoxDecoration(color: Colors.blueGrey, borderRadius: BorderRadius.circular(4)),
                 child: Text(pair.role, style: const TextStyle(color: Colors.white, fontSize: 12)),
               ),
+              if (pair.exRole.isNotEmpty) ...[
+                const SizedBox(width: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  decoration: BoxDecoration(color: Colors.deepPurple, borderRadius: BorderRadius.circular(4)),
+                  child: Text('EX: ${pair.exRole}', style: const TextStyle(color: Colors.white, fontSize: 12)),
+                ),
+              ],
               const SizedBox(width: 6),
               if (pair.type.isNotEmpty) _typeChip(pair.type),
             ],
@@ -528,6 +510,155 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
             for (final move in displayMoves) _moveCard(context, move),
           ],
         ],
+      ),
+    );
+  }
+}
+
+class _MoveCard extends StatefulWidget {
+  const _MoveCard({
+    required this.move,
+    required this.typeColor,
+    this.typeChip,
+    required this.powerBonus,
+    required this.accBonus,
+    required this.basePower,
+  });
+  final MoveData move;
+  final Color typeColor;
+  final Widget? typeChip;
+  final int powerBonus;
+  final int accBonus;
+  final String basePower;
+  @override
+  State<_MoveCard> createState() => _MoveCardState();
+}
+
+class _MoveCardState extends State<_MoveCard> {
+  bool _expanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final move = widget.move;
+    final hasDesc = move.description.isNotEmpty;
+    final basePowerNum = int.tryParse(widget.basePower);
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: move.type.isNotEmpty ? widget.typeColor.withValues(alpha: 0.12) : Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: move.type.isNotEmpty ? widget.typeColor.withValues(alpha: 0.5) : Colors.grey.shade300),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: hasDesc ? () => setState(() => _expanded = !_expanded) : null,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  if (move.isSync) Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: Icon(Icons.star, size: 14, color: Colors.purple.shade300),
+                  ),
+                  Expanded(child: Text(move.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13))),
+                  if (hasDesc) Padding(
+                    padding: const EdgeInsets.only(right: 4),
+                    child: Icon(_expanded ? Icons.expand_less : Icons.expand_more, size: 18, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
+                  ),
+                  if (widget.typeChip != null) widget.typeChip!,
+                ],
+              ),
+              if (_expanded && hasDesc) Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(move.description, style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
+              ),
+              if (move.power.isNotEmpty || move.accuracy.isNotEmpty || move.gauge.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: Wrap(
+                    spacing: 12,
+                    children: [
+                      if (move.power.isNotEmpty && move.power != '--')
+                        Text(
+                          widget.powerBonus > 0 && basePowerNum != null
+                              ? '⚔ ${widget.basePower} + ${widget.powerBonus} = ${basePowerNum + widget.powerBonus}'
+                              : '⚔ ${widget.basePower}',
+                          style: TextStyle(fontSize: 11, fontWeight: widget.powerBonus > 0 ? FontWeight.w700 : FontWeight.normal),
+                        ),
+                      if (move.accuracy.isNotEmpty && move.accuracy != '--')
+                        Builder(builder: (_) {
+                          final baseAcc = int.tryParse(move.accuracy);
+                          return Text(
+                            widget.accBonus > 0 && baseAcc != null
+                                ? '🎯 ${move.accuracy} + ${widget.accBonus} = ${baseAcc + widget.accBonus}'
+                                : '🎯 ${move.accuracy}',
+                            style: TextStyle(fontSize: 11, fontWeight: widget.accBonus > 0 ? FontWeight.w700 : FontWeight.normal),
+                          );
+                        }),
+                      if (move.gauge.isNotEmpty && move.gauge != '--') Text('⚡ ${move.gauge}', style: const TextStyle(fontSize: 11)),
+                      if (move.target.isNotEmpty && move.target != '--') Text('🎯 ${move.target}', style: const TextStyle(fontSize: 11)),
+                      if (move.category.isNotEmpty) Text(move.category, style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PassiveCard extends StatefulWidget {
+  const _PassiveCard({required this.passive});
+  final PassiveData passive;
+  @override
+  State<_PassiveCard> createState() => _PassiveCardState();
+}
+
+class _PassiveCardState extends State<_PassiveCard> {
+  bool _expanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: Colors.amber.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.amber.withValues(alpha: 0.3)),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: widget.passive.description.isNotEmpty
+            ? () => setState(() => _expanded = !_expanded)
+            : null,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(child: Text(widget.passive.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13), textAlign: TextAlign.center)),
+                  if (widget.passive.description.isNotEmpty) Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Icon(_expanded ? Icons.expand_less : Icons.expand_more, size: 18, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
+                  ),
+                ],
+              ),
+              if (_expanded && widget.passive.description.isNotEmpty) Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(widget.passive.description, style: TextStyle(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)), textAlign: TextAlign.center),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -914,9 +1045,12 @@ class _HoverTooltipState extends State<HoverTooltip> {
           child: Material(
             elevation: 4,
             borderRadius: BorderRadius.circular(4),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Text(widget.message, style: const TextStyle(fontSize: 12)),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 300),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Text(widget.message, style: const TextStyle(fontSize: 12)),
+              ),
             ),
           ),
         ),
@@ -1001,6 +1135,7 @@ class SyncPairData {
     required this.number,
     required this.displayName,
     required this.role,
+    this.exRole = '',
     required this.type,
     required this.rarity,
     required this.cells,
@@ -1018,6 +1153,7 @@ class SyncPairData {
   final int number;
   final String displayName;
   final String role;
+  final String exRole;
   final String type;
   final String weakness;
   final String rarity;
@@ -1059,34 +1195,53 @@ class GridCellData {
 }
 
 Future<ParsedData> _loadData() async {
-  final kitsText = await rootBundle.loadString('docs/kits.txt');
-  final gridsText = await rootBundle.loadString('docs/grids.txt');
+  final jsonStr = await rootBundle.loadString('assets/data/sync_pairs.json');
+  final List<dynamic> jsonList = json.decode(jsonStr);
 
-  final kitMap = _parseKits(kitsText);
-  final gridMap = _parseGrids(gridsText);
+  final pairs = jsonList.map((j) {
+    final cells = (j['cells'] as List).map((c) => GridCellData(
+      cellNumber: c['cellNumber'], q: c['q'], r: c['r'], s: c['s'],
+      energyCost: c['energyCost'], orbCost: c['orbCost'],
+      title: c['title'] ?? '', description: c['description'] ?? '',
+      colorKind: c['colorKind'] ?? 'Unknown', moveLevel: c['moveLevel'] ?? 1,
+    )).toList();
 
-  final allNumbers = <int>{...kitMap.keys, ...gridMap.keys}.toList()..sort();
-  final pairs = allNumbers
-      .where((number) => (gridMap[number] ?? []).isNotEmpty)
-      .map((number) {
-    final kit = kitMap[number];
-    final cells = gridMap[number]!;
+    final moves = (j['moves'] as List?)?.map((m) => MoveData(
+      name: m['name'] ?? '', type: m['type'] ?? '', category: m['category'] ?? '',
+      power: m['power'] ?? '', accuracy: m['accuracy'] ?? '', gauge: m['gauge'] ?? '',
+      target: m['target'] ?? '', description: m['description'] ?? '', isSync: m['isSync'] ?? false,
+    )).toList() ?? [];
+
+    final passives = (j['passives'] as List?)?.map((p) => PassiveData(
+      name: p['name'] ?? '', description: p['description'] ?? '',
+    )).toList() ?? [];
+
+    final teraPassives = (j['teraPassives'] as List?)?.map((p) => PassiveData(
+      name: p['name'] ?? '', description: p['description'] ?? '',
+    )).toList() ?? [];
+
+    MoveData? teraMove;
+    if (j['teraMove'] != null) {
+      final tm = j['teraMove'];
+      teraMove = MoveData(
+        name: tm['name'] ?? '', type: tm['type'] ?? '', category: tm['category'] ?? '',
+        power: tm['power'] ?? '', accuracy: tm['accuracy'] ?? '', gauge: tm['gauge'] ?? '',
+        target: tm['target'] ?? '', description: tm['description'] ?? '',
+      );
+    }
+
+    DateTime? releaseDate;
+    if (j['releaseDate'] != null) {
+      releaseDate = DateTime.tryParse(j['releaseDate']);
+    }
+
     return SyncPairData(
-      number: number,
-      displayName: kit?.displayName ?? 'No. $number',
-      role: kit?.role ?? '',
-      type: kit?.type ?? '',
-      weakness: kit?.weakness ?? '',
-      rarity: kit?.rarity ?? '',
-      cells: cells,
-      releaseDate: kit?.releaseDate,
-      syncMoveName: kit?.syncMoveName ?? '',
-      moves: kit?.moves ?? [],
-      passives: kit?.passives ?? [],
-      description: kit?.description ?? '',
-      hasTera: kit?.hasTera ?? false,
-      teraMove: kit?.teraMove,
-      teraPassives: kit?.teraPassives ?? [],
+      number: j['number'], displayName: j['displayName'] ?? '',
+      role: j['role'] ?? '', exRole: j['exRole'] ?? '', type: j['type'] ?? '', weakness: j['weakness'] ?? '',
+      rarity: '', cells: cells, releaseDate: releaseDate,
+      syncMoveName: j['syncMoveName'] ?? '', moves: moves, passives: passives,
+      description: '', hasTera: j['hasTera'] ?? false,
+      teraMove: teraMove, teraPassives: teraPassives,
     );
   }).toList()
     ..sort((a, b) {
@@ -1098,336 +1253,7 @@ Future<ParsedData> _loadData() async {
   return ParsedData(pairs: pairs);
 }
 
-Map<int, _KitInfo> _parseKits(String input) {
-  final result = <int, _KitInfo>{};
-  final sections = _splitByNoBlocks(input);
-  final numberRegex = RegExp(r'^No\. (\d+)\s+(.*)$');
 
-  for (final section in sections) {
-    final lines = section
-        .split('\n')
-        .map((line) => line.trimRight())
-        .where((line) => line.isNotEmpty)
-        .toList();
-    if (lines.isEmpty) continue;
-
-    final headerMatch = numberRegex.firstMatch(lines.first.trim());
-    if (headerMatch == null) continue;
-
-    final number = int.parse(headerMatch.group(1)!);
-    final displayName = headerMatch.group(2)!.trim();
-    String role = '';
-    String type = '';
-    String weakness = '';
-    String rarity = '';
-    String syncMoveName = '';
-    String description = '';
-    DateTime? releaseDate;
-    final moves = <MoveData>[];
-    final passives = <PassiveData>[];
-
-    for (int i = 1; i < lines.length; i++) {
-      final line = lines[i];
-      if (line.contains('Tera Details')) break;
-      if (line.startsWith('Role:')) {
-        role = line.replaceFirst('Role:', '').split('|').first.trim();
-      } else if (line.startsWith('Type:')) {
-        final parts = line.replaceFirst('Type:', '').split('|');
-        type = parts.first.trim();
-        if (parts.length > 1) {
-          weakness = parts[1].replaceAll(RegExp(r'Weakness:\s*'), '').trim();
-        }
-      } else if (line.startsWith('Rarity:')) {
-        rarity = line.replaceFirst('Rarity:', '').trim();
-      } else if (line.startsWith('Descriptions:')) {
-        description = line.replaceFirst('Descriptions:', '').trim();
-      } else if (line.startsWith('Sync Move:')) {
-        syncMoveName = line.replaceFirst('Sync Move:', '').trim();
-      } else if (line.startsWith('Sync Pair Available:')) {
-        final dateStr = line.replaceFirst('Sync Pair Available:', '').trim();
-        final match = RegExp(r'(\d+)/(\d+)/(\d+)').firstMatch(dateStr);
-        if (match != null) {
-          releaseDate = DateTime(
-            int.parse(match.group(3)!),
-            int.parse(match.group(2)!),
-            int.parse(match.group(1)!),
-          );
-        }
-      } else if (RegExp(r'^Move \d+:').hasMatch(line)) {
-        final moveName = line.replaceFirst(RegExp(r'^Move \d+:\s*'), '').trim();
-        String mType = '', mCat = '', mPower = '', mAcc = '', mGauge = '', mTarget = '', mDesc = '';
-        for (int j = i + 1; j < lines.length && !lines[j].startsWith('Move ') && !lines[j].startsWith('Sync Move:') && !lines[j].startsWith('Passive '); j++) {
-          final ml = lines[j];
-          if (ml.startsWith('Type:')) mType = ml.replaceFirst('Type:', '').trim();
-          else if (ml.startsWith('Category:')) mCat = ml.replaceFirst('Category:', '').trim();
-          else if (ml.startsWith('Description:')) mDesc = ml.replaceFirst('Description:', '').trim();
-          else if (ml.startsWith('Power:')) {
-            final attrs = ml.split('|').map((e) => e.trim()).toList();
-            for (final a in attrs) {
-              if (a.startsWith('Power:')) mPower = a.replaceFirst('Power:', '').trim();
-              else if (a.startsWith('Accuracy:')) mAcc = a.replaceFirst('Accuracy:', '').trim();
-              else if (a.startsWith('Gauge:')) mGauge = a.replaceFirst('Gauge:', '').trim();
-              else if (a.startsWith('Target:')) mTarget = a.replaceFirst('Target:', '').trim();
-            }
-          }
-        }
-        moves.add(MoveData(name: moveName, type: mType, category: mCat, power: mPower, accuracy: mAcc, gauge: mGauge, target: mTarget, description: mDesc));
-      } else if (RegExp(r'^Passive \d+:').hasMatch(line)) {
-        final passiveName = line.replaceFirst(RegExp(r'^Passive \d+:\s*'), '').trim();
-        String pDesc = '';
-        if (i + 1 < lines.length) {
-          final pl = lines[i + 1].trim();
-          if (pl.isNotEmpty && !pl.startsWith('Passive ') && !RegExp(r'^[A-Z].*:').hasMatch(pl)) {
-            pDesc = pl;
-          }
-        }
-        passives.add(PassiveData(name: passiveName, description: pDesc));
-      }
-    }
-
-    if (syncMoveName.isNotEmpty) {
-      String smType = '', smCat = '', smPower = '', smDesc = '';
-      bool inSync = false;
-      for (final line in lines) {
-        if (line.startsWith('Sync Move:')) { inSync = true; continue; }
-        if (inSync) {
-          if (line.startsWith('Type:')) smType = line.replaceFirst('Type:', '').trim();
-          else if (line.startsWith('Category:')) smCat = line.replaceFirst('Category:', '').trim();
-          else if (line.startsWith('Description:')) smDesc = line.replaceFirst('Description:', '').trim();
-          else if (line.startsWith('Power:')) {
-            smPower = line.split('|').first.replaceFirst('Power:', '').trim();
-            inSync = false;
-          }
-        }
-      }
-      moves.add(MoveData(name: syncMoveName, type: smType, category: smCat, power: smPower, description: smDesc, isSync: true));
-    }
-
-    MoveData? teraMove;
-    final teraPassives = <PassiveData>[];
-    bool inTera = false;
-    for (int i = 1; i < lines.length; i++) {
-      final line = lines[i];
-      if (line.contains('Tera Details')) { inTera = true; continue; }
-      if (inTera && line.startsWith('----')) break;
-      if (inTera && line.contains('Tera Move:')) {
-        final tmName = line.replaceFirst(RegExp(r'.*Tera Move:\s*'), '').trim();
-        String tmType = '', tmCat = '', tmPower = '', tmAcc = '', tmGauge = '', tmTarget = '', tmDesc = '';
-        for (int j = i + 1; j < lines.length; j++) {
-          final ml = lines[j];
-          if (ml.contains('Passives Details') || ml.startsWith('----')) break;
-          if (ml.startsWith('Type:')) tmType = ml.replaceFirst('Type:', '').trim();
-          else if (ml.startsWith('Category:')) tmCat = ml.replaceFirst('Category:', '').trim();
-          else if (ml.startsWith('Description:')) tmDesc = ml.replaceFirst('Description:', '').trim();
-          else if (ml.startsWith('Power:')) {
-            final attrs = ml.split('|').map((e) => e.trim()).toList();
-            for (final a in attrs) {
-              if (a.startsWith('Power:')) tmPower = a.replaceFirst('Power:', '').trim();
-              else if (a.startsWith('Accuracy:')) tmAcc = a.replaceFirst('Accuracy:', '').trim();
-              else if (a.startsWith('Gauge:')) tmGauge = a.replaceFirst('Gauge:', '').trim();
-              else if (a.startsWith('Target:')) tmTarget = a.replaceFirst('Target:', '').trim();
-            }
-          }
-        }
-        teraMove = MoveData(name: tmName, type: tmType, category: tmCat, power: tmPower, accuracy: tmAcc, gauge: tmGauge, target: tmTarget, description: tmDesc);
-      }
-      if (inTera && RegExp(r'^Passive \d+:').hasMatch(line)) {
-        final pName = line.replaceFirst(RegExp(r'^Passive \d+:\s*'), '').trim();
-        String pDesc = '';
-        if (i + 1 < lines.length) {
-          final pl = lines[i + 1].trim();
-          if (pl.isNotEmpty && !pl.startsWith('Passive ') && !pl.startsWith('-') && !pl.startsWith('----')) {
-            pDesc = pl;
-          }
-        }
-        teraPassives.add(PassiveData(name: pName, description: pDesc));
-      }
-    }
-
-    result[number] = _KitInfo(
-      displayName: displayName,
-      role: role,
-      type: type,
-      weakness: weakness,
-      rarity: rarity,
-      releaseDate: releaseDate,
-      syncMoveName: syncMoveName,
-      moves: moves,
-      passives: passives,
-      description: description,
-      hasTera: teraMove != null,
-      teraMove: teraMove,
-      teraPassives: teraPassives,
-    );
-  }
-
-  return result;
-}
-
-Map<int, List<GridCellData>> _parseGrids(String input) {
-  final result = <int, List<GridCellData>>{};
-  final sections = _splitByNoBlocks(input);
-  final numberRegex = RegExp(r'^No\. (\d+)\s+(.*)$');
-
-  for (final section in sections) {
-    final lines = section.split('\n').map((line) => line.trimRight()).toList();
-    if (lines.isEmpty) continue;
-
-    final headerLine = lines.firstWhere(
-      (line) => line.trim().startsWith('No.'),
-      orElse: () => '',
-    );
-    if (headerLine.isEmpty) continue;
-
-    final headerMatch = numberRegex.firstMatch(headerLine.trim());
-    if (headerMatch == null) continue;
-    final number = int.parse(headerMatch.group(1)!);
-    result[number] = _parseCellsFromGridSection(lines);
-  }
-
-  return result;
-}
-
-List<GridCellData> _parseCellsFromGridSection(List<String> lines) {
-  final cells = <GridCellData>[];
-  final cellHeaderRegex = RegExp(
-    r'^Cell\s+(\d+)\s+\|\s+🎯\s+Cord\s+\((-?\d+),(-?\d+),(-?\d+)\)\s+\|\s+Cost:\s+⚡\s+(\d+)\s+Energy\s+\|\s+🔮\s+(\d+)\s+Sync Orb\(s\)',
-  );
-
-  int index = 0;
-  while (index < lines.length) {
-    final line = lines[index].trim();
-    final headerMatch = cellHeaderRegex.firstMatch(line);
-    if (headerMatch == null) {
-      index++;
-      continue;
-    }
-
-    final cellNumber = int.parse(headerMatch.group(1)!);
-    final q = int.parse(headerMatch.group(2)!);
-    final r = int.parse(headerMatch.group(3)!);
-    final s = int.parse(headerMatch.group(4)!);
-    final energy = int.parse(headerMatch.group(5)!);
-    final orbs = int.parse(headerMatch.group(6)!);
-
-    final details = <String>[];
-    index++;
-    while (index < lines.length && !lines[index].trim().startsWith('Cell ')) {
-      final current = lines[index].trim();
-      if (current.isNotEmpty) {
-        details.add(current);
-      }
-      if (current.startsWith('================================END')) {
-        break;
-      }
-      index++;
-    }
-
-    final isExpansion = details.any((line) => line.startsWith('Grid Expand Unlock:'));
-    if (isExpansion) {
-      index++;
-      continue;
-    }
-
-    final filtered = details
-        .where(
-          (line) =>
-              !line.startsWith('Requirements:') &&
-              !line.startsWith('Grid Expand Unlock:') &&
-              !line.startsWith('Color Grid:') &&
-              !line.startsWith('Move:'),
-        )
-        .toList();
-    final colorLine = details.firstWhere(
-      (line) => line.startsWith('Color Grid:'),
-      orElse: () => '',
-    );
-    final reqLine = details.firstWhere(
-      (line) => line.contains('Move level must be'),
-      orElse: () => '',
-    );
-    final moveLevelMatch = RegExp(r'Move level must be (\d+)').firstMatch(reqLine);
-    final moveLevel = moveLevelMatch != null ? int.parse(moveLevelMatch.group(1)!) : 1;
-
-    final title = filtered.isNotEmpty ? filtered.first : '';
-    final description = filtered.length > 1 ? filtered[1] : '';
-    final colorKind = colorLine.isNotEmpty
-        ? colorLine.replaceFirst('Color Grid:', '').trim()
-        : 'Unknown';
-
-    cells.add(
-      GridCellData(
-        cellNumber: cellNumber,
-        q: q,
-        r: r,
-        s: s,
-        energyCost: energy,
-        orbCost: orbs,
-        title: title,
-        description: description,
-        colorKind: colorKind,
-        moveLevel: moveLevel,
-      ),
-    );
-  }
-
-  return cells;
-}
-
-List<String> _splitByNoBlocks(String raw) {
-  final lines = raw.split('\n');
-  final sections = <String>[];
-  final current = <String>[];
-
-  for (final line in lines) {
-    final trimmed = line.trim();
-    if (trimmed.startsWith('No. ') && current.isNotEmpty) {
-      sections.add(current.join('\n'));
-      current.clear();
-    }
-    if (trimmed.startsWith('No. ') || current.isNotEmpty) {
-      current.add(line);
-    }
-  }
-
-  if (current.isNotEmpty) {
-    sections.add(current.join('\n'));
-  }
-
-  return sections;
-}
-
-class _KitInfo {
-  const _KitInfo({
-    required this.displayName,
-    required this.role,
-    required this.type,
-    this.weakness = '',
-    required this.rarity,
-    this.releaseDate,
-    this.syncMoveName = '',
-    this.moves = const [],
-    this.passives = const [],
-    this.description = '',
-    this.hasTera = false,
-    this.teraMove,
-    this.teraPassives = const [],
-  });
-
-  final String displayName;
-  final String role;
-  final String type;
-  final String weakness;
-  final String rarity;
-  final DateTime? releaseDate;
-  final String syncMoveName;
-  final List<MoveData> moves;
-  final List<PassiveData> passives;
-  final String description;
-  final bool hasTera;
-  final MoveData? teraMove;
-  final List<PassiveData> teraPassives;
-}
 
 class MoveData {
   const MoveData({
