@@ -223,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                       child: Card(
-                        margin: const EdgeInsets.all(8),
+                        margin: const EdgeInsets.fromLTRB(8, 8, 0, 8),
                         clipBehavior: Clip.antiAlias,
                         child: HexGridView(
                           cells: selectedPair.cells,
@@ -435,7 +435,7 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     );
   }
 
-  Widget _moveCard(BuildContext context, MoveData move) {
+  Widget _moveCard(BuildContext context, MoveData move, String teraMoveName) {
     return _MoveCard(
       move: move,
       typeColor: _typeColor(move.type),
@@ -443,6 +443,7 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
       powerBonus: _gridBonus(move.name, 'Power'),
       accBonus: _gridBonus(move.name, 'Accuracy'),
       basePower: _scaledPower(move.power, widget.moveLevel),
+      teraBoost: _showTera && move.type.toLowerCase() == pair.type.toLowerCase() && move.name != teraMoveName && !move.isSync,
     );
   }
 
@@ -455,6 +456,7 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     final displayMoves = _showTera && pair.teraMove != null
         ? [...pair.moves, pair.teraMove!]
         : pair.moves;
+    final teraMoveName = pair.teraMove?.name ?? '';
     final displayPassives = _showTera
         ? [
             for (int i = 0; i < pair.passives.length; i++)
@@ -507,7 +509,7 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
               padding: EdgeInsets.only(top: 8, bottom: 8),
               child: Text('Moves', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
             ),
-            for (final move in displayMoves) _moveCard(context, move),
+            for (final move in displayMoves) _moveCard(context, move, teraMoveName),
           ],
         ],
       ),
@@ -523,6 +525,7 @@ class _MoveCard extends StatefulWidget {
     required this.powerBonus,
     required this.accBonus,
     required this.basePower,
+    this.teraBoost = false,
   });
   final MoveData move;
   final Color typeColor;
@@ -530,6 +533,7 @@ class _MoveCard extends StatefulWidget {
   final int powerBonus;
   final int accBonus;
   final String basePower;
+  final bool teraBoost;
   @override
   State<_MoveCard> createState() => _MoveCardState();
 }
@@ -582,12 +586,25 @@ class _MoveCardState extends State<_MoveCard> {
                     spacing: 12,
                     children: [
                       if (move.power.isNotEmpty && move.power != '--')
-                        Text(
-                          widget.powerBonus > 0 && basePowerNum != null
-                              ? '⚔ ${widget.basePower} + ${widget.powerBonus} = ${basePowerNum + widget.powerBonus}'
-                              : '⚔ ${widget.basePower}',
-                          style: TextStyle(fontSize: 11, fontWeight: widget.powerBonus > 0 ? FontWeight.w700 : FontWeight.normal),
-                        ),
+                        Builder(builder: (_) {
+                          final base = basePowerNum ?? 0;
+                          final teraBase = widget.teraBoost ? (base * 1.5).round() : base;
+                          final finalPower = teraBase + widget.powerBonus;
+                          String label;
+                          if (widget.teraBoost && widget.powerBonus > 0 && basePowerNum != null) {
+                            label = '⚔ ${widget.basePower} × 1.5 = $teraBase + ${widget.powerBonus} = $finalPower';
+                          } else if (widget.teraBoost && basePowerNum != null) {
+                            label = '⚔ ${widget.basePower} × 1.5 = $teraBase';
+                          } else if (widget.powerBonus > 0 && basePowerNum != null) {
+                            label = '⚔ ${widget.basePower} + ${widget.powerBonus} = $finalPower';
+                          } else {
+                            label = '⚔ ${widget.basePower}';
+                          }
+                          return Text(
+                            label,
+                            style: TextStyle(fontSize: 11, fontWeight: (widget.powerBonus > 0 || widget.teraBoost) ? FontWeight.w700 : FontWeight.normal),
+                          );
+                        }),
                       if (move.accuracy.isNotEmpty && move.accuracy != '--')
                         Builder(builder: (_) {
                           final baseAcc = int.tryParse(move.accuracy);
@@ -756,29 +773,33 @@ class HexGridView extends StatelessWidget {
     final vController = ScrollController();
     final hController = ScrollController();
 
-    return Center(
-      child: Scrollbar(
+    return LayoutBuilder(
+      builder: (context, viewportConstraints) {
+    return Scrollbar(
+      controller: hController,
+      notificationPredicate: (n) => n.depth == 0,
+      thumbVisibility: true,
+      child: SingleChildScrollView(
         controller: hController,
-        notificationPredicate: (n) => n.depth == 0,
-        thumbVisibility: true,
-        child: SingleChildScrollView(
-          controller: hController,
-          scrollDirection: Axis.horizontal,
-          child: Scrollbar(
+        scrollDirection: Axis.horizontal,
+        child: Scrollbar(
+          controller: vController,
+          notificationPredicate: (n) => n.depth == 0,
+          thumbVisibility: true,
+          child: SingleChildScrollView(
             controller: vController,
-            notificationPredicate: (n) => n.depth == 0,
-            thumbVisibility: true,
-            child: SingleChildScrollView(
-              controller: vController,
-          child: SizedBox(
-            width: contentW,
-            height: contentH,
-            child: Stack(
+        child: SizedBox(
+          width: math.max(contentW, viewportConstraints.maxWidth),
+          height: math.max(contentH, viewportConstraints.maxHeight),
+            child: Builder(builder: (context) {
+              final offsetX = math.max(0.0, (viewportConstraints.maxWidth - contentW) / 2);
+              final offsetY = math.max(0.0, (viewportConstraints.maxHeight - contentH) / 2);
+              return Stack(
               children: [
                 for (final cell in allCells)
                   Positioned(
-                    left: coords[cell.cellNumber]!.dx - cMinX,
-                    top: coords[cell.cellNumber]!.dy - cMinY,
+                    left: coords[cell.cellNumber]!.dx - cMinX + offsetX,
+                    top: coords[cell.cellNumber]!.dy - cMinY + offsetY,
                     child: (cell.q == 0 && cell.r == 0 && cell.s == 0)
                         ? GestureDetector(
                             onTap: () => _showPairPicker(context),
@@ -812,12 +833,14 @@ class HexGridView extends StatelessWidget {
                           ),
                   ),
               ],
-            ),
-          ),
-        ),
+            );
+            }),
           ),
         ),
       ),
+    ),
+    );
+      },
     );
   }
 
@@ -1038,23 +1061,31 @@ class _HoverTooltipState extends State<HoverTooltip> {
     _hide();
     if (widget.message.isEmpty) return;
     _entry = OverlayEntry(
-      builder: (_) => Positioned(
-        left: globalPosition.dx + 12,
-        top: globalPosition.dy + 12,
-        child: IgnorePointer(
-          child: Material(
-            elevation: 4,
-            borderRadius: BorderRadius.circular(4),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: Text(widget.message, style: const TextStyle(fontSize: 12)),
+      builder: (_) {
+        final screen = MediaQuery.of(context).size;
+        const maxW = 300.0;
+        var left = globalPosition.dx + 12;
+        var top = globalPosition.dy + 12;
+        if (left + maxW > screen.width) left = globalPosition.dx - maxW - 12;
+        if (top + 80 > screen.height) top = globalPosition.dy - 80;
+        return Positioned(
+          left: left,
+          top: top,
+          child: IgnorePointer(
+            child: Material(
+              elevation: 4,
+              borderRadius: BorderRadius.circular(4),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 300),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  child: Text(widget.message, style: const TextStyle(fontSize: 12)),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
     Overlay.of(context).insert(_entry!);
   }
