@@ -32,6 +32,8 @@ void main() {
       'exRole': kit['exRole'] ?? '',
       'type': kit['type'] ?? '',
       'weakness': kit['weakness'] ?? '',
+      'rarity': kit['rarity'] ?? 5,
+      'hasEx': kit['hasEx'] ?? false,
       'syncMoveName': kit['syncMoveName'] ?? '',
       'releaseDate': kit['releaseDate'],
       'moves': kit['moves'] ?? [],
@@ -65,6 +67,8 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
     final number = int.parse(headerMatch.group(1)!);
     final displayName = headerMatch.group(2)!.trim();
     String role = '', type = '', weakness = '', syncMoveName = '', exRole = '';
+    int rarity = 5;
+    bool hasEx = false;
     String? releaseDate;
     final moves = <Map<String, dynamic>>[];
     final passives = <Map<String, dynamic>>[];
@@ -85,6 +89,12 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
       } else if (line.startsWith('Sync Pair Available:')) {
         final m = RegExp(r'(\d+)/(\d+)/(\d+)').firstMatch(line);
         if (m != null) releaseDate = '${m.group(3)}-${m.group(2)!.padLeft(2, '0')}-${m.group(1)!.padLeft(2, '0')}';
+      } else if (line.startsWith('Rarity:')) {
+        rarity = '⭐'.allMatches(line).length;
+        if (rarity == 0) rarity = RegExp(r'[★⭐]').allMatches(line).length;
+        if (rarity == 0) rarity = 5;
+      } else if (line.contains('EX Color')) {
+        hasEx = line.contains('Yes');
       } else if (RegExp(r'^Move \d+:').hasMatch(line)) {
         final moveName = line.replaceFirst(RegExp(r'^Move \d+:\s*'), '').trim();
         String mType = '', mCat = '', mPower = '', mAcc = '', mGauge = '', mTarget = '', mDesc = '';
@@ -200,6 +210,7 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
 
     result[number] = {
       'displayName': displayName, 'role': role, 'exRole': exRole, 'type': type, 'weakness': weakness,
+      'rarity': rarity, 'hasEx': hasEx,
       'syncMoveName': syncMoveName, 'releaseDate': releaseDate,
       'moves': moves, 'passives': passives,
       'hasTera': teraMove != null, 'teraMove': teraMove, 'teraPassives': teraPassives,

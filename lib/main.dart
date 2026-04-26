@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'damage/calc.dart';
+import 'star_level.dart';
 
 void main() {
   runApp(const BlueLabApp());
@@ -181,8 +182,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         horizontal: 12,
                         vertical: 6,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('⚡ $selectedEnergy'),
                           const SizedBox(width: 12),
@@ -250,6 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ],
                         ],
+                      ),
                       ),
                     ),
                     Expanded(
@@ -489,12 +493,48 @@ class SyncPairOverview extends StatefulWidget {
 }
 
 class _SyncPairOverviewState extends State<SyncPairOverview> {
-  int _formIndex = 0; // 0=Base, 1..N=variations, last=Tera
+  int _formIndex = 0;
+  String _level = '200';
+  String _starLevel = '5★ 20/20';
+  bool _exActive = true;
+  bool _exRoleActive = true; // 0=Base, 1..N=variations, last=Tera
 
   SyncPairData get pair => widget.pair;
   bool get _showTera => pair.hasTera && _formIndex == pair.variations.length + 1;
   bool get _isVariation => _formIndex > 0 && _formIndex <= pair.variations.length;
   VariationData? get _activeVariation => _isVariation ? pair.variations[_formIndex - 1] : null;
+
+  int _gridBonus2(String statKey) {
+    const mapping = {'hp': 'HP', 'atk': 'Attack', 'def': 'Defense', 'spa': 'Sp. Atk', 'spd': 'Sp. Def', 'spe': 'Speed'};
+    final prefix = mapping[statKey] ?? '';
+    if (prefix.isEmpty) return 0;
+    int total = 0;
+    for (final cell in pair.cells) {
+      if (!widget.activeCells.contains(cell.cellNumber)) continue;
+      final t = cell.title.trim();
+      if (t.startsWith(prefix)) {
+        final val = int.tryParse(t.substring(prefix.length).trim());
+        if (val != null) total += val;
+      }
+    }
+    return total;
+  }
+
+  Map<String, int> _potentialBonus() => calcPotentialBonus(baseRarity: pair.rarity, targetStars: _starLevel);
+
+  int _exBonusOverview(String stat) {
+    if (!_exActive || !pair.hasEx) return 0;
+    int total = exBaseBonus[stat] ?? 0;
+    if (_exRoleActive && pair.exRole.isNotEmpty) {
+      total += exRoleBonusMap[pair.exRole]?[stat] ?? 0;
+    }
+    return total;
+  }
+
+  Map<String, int> _interpolatedStats() {
+    if (pair.stats.isEmpty) return {};
+    return pair.stats[_level] ?? pair.stats.values.last;
+  }
 
   Widget _formTab(String label, int index, {Color? color}) {
     final selected = _formIndex == index;
@@ -680,11 +720,12 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
               padding: const EdgeInsets.only(top: 12, bottom: 4),
               child: Builder(
                 builder: (_) {
-                  final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
-                  final lv = levels.last;
-                  final s = pair.stats[lv]!;
+                  final s = _interpolatedStats();
                   const labels = ['HP', 'Atk', 'Def', 'Sp.Atk', 'Sp.Def', 'Spe'];
                   const keys = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
+                  final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
+                  if (!levels.contains(_level)) _level = levels.last;
+                  final lvIdx = levels.indexOf(_level);
                   return Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
@@ -694,22 +735,104 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Stats (Lv. $lv)', style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                        Row(
+                          children: [
+                            const Text('Stats', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                            const SizedBox(width: 8),
+                            DropdownButton<String>(
+                              value: _level,
+                              isDense: true,
+                              underline: const SizedBox(),
+                              style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Colors.black),
+                              items: [
+                                for (final lv in levels)
+                                  DropdownMenuItem(value: lv, child: Text('Lv. $lv')),
+                              ],
+                              onChanged: (v) => setState(() => _level = v!),
+                            ),
+                            const Spacer(),
+                            DropdownButton<String>(
+                              value: _starLevel,
+                              isDense: true,
+                              underline: const SizedBox(),
+                              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+                              items: [
+                                for (final sl in availableStarLevels(pair.rarity, pair.hasEx))
+                                  DropdownMenuItem(value: sl, child: Text(sl)),
+                              ],
+                              onChanged: _exActive ? null : (v) => setState(() => _starLevel = v!),
+                            ),
+                            if (pair.hasEx) ...[
+                              const SizedBox(width: 4),
+                              FilterChip(
+                                label: const Text('EX', style: TextStyle(fontSize: 10)),
+                                selected: _exActive,
+                                showCheckmark: false,
+                                onSelected: (v) => setState(() {
+                                  _exActive = v;
+                                  if (v) _starLevel = '5★ 20/20';
+                                  if (!v) _exRoleActive = false;
+                                }),
+                                selectedColor: Colors.deepPurple,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                            ],
+                            if (pair.hasEx && pair.exRole.isNotEmpty) ...[
+                              const SizedBox(width: 4),
+                              FilterChip(
+                                label: Text('EX ${pair.exRole}', style: const TextStyle(fontSize: 10)),
+                                selected: _exRoleActive,
+                                showCheckmark: false,
+                                onSelected: (v) => setState(() {
+                                  _exRoleActive = v;
+                                  if (v) { _exActive = true; _starLevel = '5★ 20/20'; }
+                                }),
+                                selectedColor: Colors.indigo,
+                                visualDensity: VisualDensity.compact,
+                              ),
+                            ],
+                          ],
+                        ),
                         const SizedBox(height: 6),
                         Row(
                           children: [
+                            const SizedBox(width: 30),
                             for (int i = 0; i < 6; i++)
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    Text(labels[i], style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700)),
-                                    const SizedBox(height: 2),
-                                    Text('${s[keys[i]] ?? 0}', style: const TextStyle(fontSize: 12)),
-                                  ],
-                                ),
-                              ),
+                              Expanded(child: Center(child: Text(labels[i], style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700)))),
                           ],
                         ),
+                        const SizedBox(height: 2),
+                        Row(
+                          children: [
+                            const SizedBox(width: 30, child: Text('Base', style: TextStyle(fontSize: 9, color: Colors.grey))),
+                            for (int i = 0; i < 6; i++)
+                              Expanded(child: Center(child: Text('${(s[keys[i]] ?? 0) + _potentialBonus()[keys[i]]! + _exBonusOverview(keys[i])}', style: const TextStyle(fontSize: 11)))),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const SizedBox(width: 30, child: Text('Grid', style: TextStyle(fontSize: 9, color: Colors.grey))),
+                            for (int i = 0; i < 6; i++)
+                              Expanded(child: Center(child: Builder(builder: (_) {
+                                final g = _gridBonus2(keys[i]);
+                                return Text(g > 0 ? '+$g' : '-', style: TextStyle(fontSize: 11, color: g > 0 ? Theme.of(context).colorScheme.primary : Colors.grey));
+                              }))),
+                          ],
+                        ),
+                        Builder(builder: (_) {
+                          final pot = _potentialBonus();
+                          return Row(
+                            children: [
+                              const SizedBox(width: 30, child: Text('Total', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700))),
+                              for (int i = 0; i < 6; i++)
+                                Expanded(child: Center(child: Builder(builder: (_) {
+                                  final base = (s[keys[i]] ?? 0) + pot[keys[i]]! + _exBonusOverview(keys[i]);
+                                  final grid = _gridBonus2(keys[i]);
+                                  return Text('${base + grid}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700));
+                                }))),
+                            ],
+                          );
+                        }),
                       ],
                     ),
                   );
@@ -1032,6 +1155,7 @@ class DamageCalculatorPanel extends StatefulWidget {
 
 class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   String _selectedLevel = '200';
+  String _starLevel = '5★ 20/20';
   bool _isEx = true;
   bool _hasExRole = true;
   int _calcFormIndex = 0; // 0=Base, 1..N=variations, last=Tera
@@ -1304,28 +1428,15 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     super.dispose();
   }
 
-  static const _exBase = {
-    'hp': 100,
-    'atk': 40,
-    'def': 40,
-    'spa': 40,
-    'spd': 40,
-    'spe': 40,
-  };
-  static const _exRoleBonus = <String, Map<String, int>>{
-    'Strike': {'hp': 60, 'atk': 40, 'spa': 40},
-    'Tech': {'hp': 60, 'def': 20, 'spa': 20, 'spd': 20},
-    'Support': {'hp': 60, 'def': 40, 'spd': 40},
-    'Sprint': {'hp': 60, 'atk': 20, 'spa': 40, 'spe': 40},
-    'Field': {'hp': 60, 'def': 20, 'spd': 20, 'spe': 40},
-  };
 
   int _exBonus(String stat) {
     int total = 0;
-    if (_isEx) total += _exBase[stat] ?? 0;
-    if (_hasExRole) {
-      final role = widget.pair.exRole;
-      total += _exRoleBonus[role]?[stat] ?? 0;
+    // Potential bonus from star level
+    total += calcPotentialBonus(baseRarity: widget.pair.rarity, targetStars: _starLevel)[stat] ?? 0;
+    // EX bonuses
+    if (widget.pair.hasEx && _isEx) total += exBaseBonus[stat] ?? 0;
+    if (widget.pair.hasEx && _hasExRole && widget.pair.exRole.isNotEmpty) {
+      total += exRoleBonusMap[widget.pair.exRole]?[stat] ?? 0;
     }
     return total;
   }
@@ -1505,11 +1616,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   @override
   Widget build(BuildContext context) {
     final pair = widget.pair;
-    final levels = pair.stats.keys.toList()
-      ..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
-    if (levels.isNotEmpty && !levels.contains(_selectedLevel)) {
-      _selectedLevel = levels.last;
-    }
+    final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
+    if (levels.isNotEmpty && !levels.contains(_selectedLevel)) _selectedLevel = levels.last;
     final currentStats = pair.stats[_selectedLevel] ?? {};
 
     final isTeraActive = _teraActive;
@@ -1544,13 +1652,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               isDense: true,
               items: [
                 for (final lv in levels)
-                  DropdownMenuItem(
-                    value: lv,
-                    child: Text(
-                      'Lv. $lv',
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ),
+                  DropdownMenuItem(value: lv, child: Text('Lv. $lv', style: const TextStyle(fontSize: 12))),
               ],
               onChanged: (v) => setState(() => _selectedLevel = v!),
             )
@@ -1560,36 +1662,45 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       ),
       const SizedBox(height: 6),
 
-      // --- EX / EX Role toggles ---
+      // --- Star Level / EX / EX Role ---
       Row(
         children: [
-          FilterChip(
-            label: Text(
-              'EX (${pair.role})',
-              style: TextStyle(
-                fontSize: 11,
-                color: _isEx ? Colors.white : null,
-              ),
-            ),
-            selected: _isEx,
-            showCheckmark: false,
-            onSelected: (v) => setState(() => _isEx = v),
-            selectedColor: Colors.deepPurple,
-            visualDensity: VisualDensity.compact,
+          DropdownButton<String>(
+            value: _starLevel,
+            isDense: true,
+            underline: const SizedBox(),
+            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+            items: [
+              for (final sl in availableStarLevels(pair.rarity, pair.hasEx))
+                DropdownMenuItem(value: sl, child: Text(sl)),
+            ],
+            onChanged: _isEx ? null : (v) => setState(() => _starLevel = v!),
           ),
-          if (pair.exRole.isNotEmpty) ...[
+          if (pair.hasEx) ...[
             const SizedBox(width: 6),
             FilterChip(
-              label: Text(
-                'EX Role (${pair.exRole})',
-                style: TextStyle(
-                  fontSize: 11,
-                  color: _hasExRole ? Colors.white : null,
-                ),
-              ),
+              label: Text('EX (${pair.role})', style: TextStyle(fontSize: 11, color: _isEx ? Colors.white : null)),
+              selected: _isEx,
+              showCheckmark: false,
+              onSelected: (v) => setState(() {
+                _isEx = v;
+                if (v) _starLevel = '5★ 20/20';
+                if (!v) _hasExRole = false;
+              }),
+              selectedColor: Colors.deepPurple,
+              visualDensity: VisualDensity.compact,
+            ),
+          ],
+          if (pair.hasEx && pair.exRole.isNotEmpty) ...[
+            const SizedBox(width: 6),
+            FilterChip(
+              label: Text('EX Role (${pair.exRole})', style: TextStyle(fontSize: 11, color: _hasExRole ? Colors.white : null)),
               selected: _hasExRole,
               showCheckmark: false,
-              onSelected: (v) => setState(() => _hasExRole = v),
+              onSelected: (v) => setState(() {
+                _hasExRole = v;
+                if (v) { _isEx = true; _starLevel = '5★ 20/20'; }
+              }),
               selectedColor: Colors.indigo,
               visualDensity: VisualDensity.compact,
             ),
@@ -1994,7 +2105,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           ),
         ),
       const SizedBox(height: 6),
-      Row(
+      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
         children: [
           Text('Acc: ', style: labelStyle),
           _stageCell(
@@ -2088,7 +2199,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
             onChanged: (v) => setState(() => _playerStatusCondition = v!),
           ),
         ],
-      ),
+      ),),
       
       Text(
         'Enemy',
@@ -2222,7 +2333,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
         ),
       ),
       const SizedBox(height: 6),
-      Row(
+      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
         children: [
           Text('Acc: ', style: labelStyle),
           _stageCell(
@@ -2297,9 +2408,9 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
             onChanged: (v) => setState(() => _enemyStatusCondition = v!),
           ),
         ],
-      ),
+      ),),
       const SizedBox(height: 4),
-      Row(
+      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
         children: [
           Text('Status Change: ', style: labelStyle),
           const SizedBox(width: 4),
@@ -2322,7 +2433,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
             const SizedBox(width: 4),
           ],
         ],
-      ),
+      ),),
       const SizedBox(height: 8),
 
       Row(
@@ -2389,7 +2500,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
         ),
         const SizedBox(height: 6),
-        Row(
+        SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
           children: [
             Text('Phys Up Next: ', style: labelStyle),
             DropdownButton<int>(
@@ -2448,7 +2559,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               visualDensity: VisualDensity.compact,
             ),
           ],
-        ),
+        ),),
         const SizedBox(height: 6),
         for (final move in displayMoves)
           Builder(
@@ -2944,33 +3055,12 @@ class HexGridView extends StatelessWidget {
   void _showPairPicker(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => SimpleDialog(
-        title: const Text('Select character'),
-        children: [
-          SizedBox(
-            width: 400,
-            height: 500,
-            child: ListView.builder(
-              itemCount: pairs.length,
-              itemBuilder: (context, index) {
-                final pair = pairs[index];
-                return ListTile(
-                  title: Text(pair.displayName),
-                  subtitle: Text(
-                    [
-                      if (pair.role.isNotEmpty) pair.role,
-                      if (pair.type.isNotEmpty) pair.type,
-                    ].join(' | '),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    onSelectPair(index);
-                  },
-                );
-              },
-            ),
-          ),
-        ],
+      builder: (_) => _PairPickerDialog(
+        pairs: pairs,
+        onSelect: (index) {
+          Navigator.of(context).pop();
+          onSelectPair(index);
+        },
       ),
     );
   }
@@ -3032,6 +3122,88 @@ class HexGridView extends StatelessWidget {
   bool _isSyncMoveTile(GridCellData cell) {
     if (syncMoveName.isEmpty) return false;
     return cell.title.startsWith(syncMoveName);
+  }
+}
+
+class _PairPickerDialog extends StatefulWidget {
+  const _PairPickerDialog({required this.pairs, required this.onSelect});
+  final List<SyncPairData> pairs;
+  final ValueChanged<int> onSelect;
+  @override
+  State<_PairPickerDialog> createState() => _PairPickerDialogState();
+}
+
+class _PairPickerDialogState extends State<_PairPickerDialog> {
+  String _query = '';
+  bool _ascending = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final filtered = <int>[];
+    for (int i = 0; i < widget.pairs.length; i++) {
+      final p = widget.pairs[i];
+      if (_query.isEmpty ||
+          p.displayName.toLowerCase().contains(_query.toLowerCase()) ||
+          p.type.toLowerCase().contains(_query.toLowerCase()) ||
+          p.role.toLowerCase().contains(_query.toLowerCase())) {
+        filtered.add(i);
+      }
+    }
+    filtered.sort((a, b) {
+      final cmp = widget.pairs[a].displayName.compareTo(widget.pairs[b].displayName);
+      return _ascending ? cmp : -cmp;
+    });
+
+    return SimpleDialog(
+      title: Row(
+        children: [
+          const Expanded(child: Text('Select character')),
+          IconButton(
+            icon: Icon(_ascending ? Icons.arrow_upward : Icons.arrow_downward, size: 18),
+            tooltip: _ascending ? 'A-Z' : 'Z-A',
+            onPressed: () => setState(() => _ascending = !_ascending),
+          ),
+        ],
+      ),
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: TextField(
+            autofocus: true,
+            decoration: const InputDecoration(
+              hintText: 'Search...',
+              prefixIcon: Icon(Icons.search, size: 18),
+              isDense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              border: OutlineInputBorder(),
+            ),
+            style: const TextStyle(fontSize: 13),
+            onChanged: (v) => setState(() => _query = v),
+          ),
+        ),
+        const SizedBox(height: 8),
+        SizedBox(
+          width: 400,
+          height: 450,
+          child: ListView.builder(
+            itemCount: filtered.length,
+            itemBuilder: (context, i) {
+              final index = filtered[i];
+              final pair = widget.pairs[index];
+              return ListTile(
+                dense: true,
+                title: Text(pair.displayName, style: const TextStyle(fontSize: 13)),
+                subtitle: Text(
+                  [if (pair.role.isNotEmpty) pair.role, if (pair.type.isNotEmpty) pair.type].join(' | '),
+                  style: const TextStyle(fontSize: 11),
+                ),
+                onTap: () => widget.onSelect(index),
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -3290,7 +3462,8 @@ class SyncPairData {
     required this.role,
     this.exRole = '',
     required this.type,
-    required this.rarity,
+    this.rarity = 5,
+    this.hasEx = false,
     required this.cells,
     this.releaseDate,
     this.syncMoveName = '',
@@ -3313,7 +3486,8 @@ class SyncPairData {
   final String exRole;
   final String type;
   final String weakness;
-  final String rarity;
+  final int rarity;
+  final bool hasEx;
   final List<GridCellData> cells;
   final DateTime? releaseDate;
   final String syncMoveName;
@@ -3455,7 +3629,8 @@ Future<ParsedData> _loadData() async {
           exRole: j['exRole'] ?? '',
           type: j['type'] ?? '',
           weakness: j['weakness'] ?? '',
-          rarity: '',
+          rarity: (j['rarity'] as num?)?.toInt() ?? 5,
+          hasEx: j['hasEx'] ?? false,
           cells: cells,
           releaseDate: releaseDate,
           syncMoveName: j['syncMoveName'] ?? '',
