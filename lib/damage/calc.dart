@@ -76,10 +76,17 @@ class BattleConditions {
   final bool isSuperEffective;
   final bool hasSENext;       // Super Effective ↑ Next (x3 instead of x2)
   final int targetCount;      // 1, 2, or 3
-  final bool weatherBoost;    // weather/terrain/zone matching
+  final bool zoneBoost;
+  final bool zoneEx;
+  final bool terrainBoost;
+  final bool terrainEx;
+  final bool weatherBoost;
+  final bool weatherEx;
   final bool hasScreen;       // physical/special reduction screen
   final bool isLegendaryArena; // affects screen multiplier
   final bool unityBonus;
+  final int typeRebuff;       // -3 to 0, per move type
+  final int stellarRebuff;    // -3 to 0, only for Stellar moves
 
   const BattleConditions({
     this.syncBoosts = 0,
@@ -87,10 +94,17 @@ class BattleConditions {
     this.isSuperEffective = false,
     this.hasSENext = false,
     this.targetCount = 1,
+    this.zoneBoost = false,
+    this.zoneEx = false,
+    this.terrainBoost = false,
+    this.terrainEx = false,
     this.weatherBoost = false,
+    this.weatherEx = false,
     this.hasScreen = false,
     this.isLegendaryArena = false,
     this.unityBonus = false,
+    this.typeRebuff = 0,
+    this.stellarRebuff = 0,
   });
 }
 
@@ -175,11 +189,24 @@ double calcBattleMultiplier(BattleConditions bc) {
     case 3: mult *= 0.5; break;
   }
 
-  if (bc.weatherBoost) mult *= 1.5;
+  if (bc.zoneBoost) mult *= bc.zoneEx ? 3.0 : 1.5;
+  if (bc.terrainBoost) mult *= bc.terrainEx ? 3.0 : 1.5;
+  if (bc.weatherBoost) mult *= bc.weatherEx ? 3.0 : 1.5;
   if (bc.unityBonus) mult *= 1.2;
 
   if (bc.hasScreen) {
     mult *= bc.isLegendaryArena ? 0.5 : 0.6666;
+  }
+
+  // Type Rebuff (Table 25)
+  const rebuffMultipliers = <int, double>{
+    -3: 1.6, -2: 1.5, -1: 1.3,
+  };
+  if (bc.typeRebuff != 0 && rebuffMultipliers.containsKey(bc.typeRebuff)) {
+    mult *= rebuffMultipliers[bc.typeRebuff]!;
+  }
+  if (bc.stellarRebuff != 0 && rebuffMultipliers.containsKey(bc.stellarRebuff)) {
+    mult *= rebuffMultipliers[bc.stellarRebuff]!;
   }
 
   return mult;
