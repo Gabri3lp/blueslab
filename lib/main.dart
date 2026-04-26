@@ -202,8 +202,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           );
                                       return cell.moveLevel > i;
                                     });
-                                    if (_hardCap)
+                                    if (_hardCap) {
                                       _pruneDisconnected(selectedPair.cells);
+                                    }
                                   });
                                 },
                                 child: Image.asset(
@@ -264,8 +265,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             setState(() {
                               if (_activeCells.contains(cellNumber)) {
                                 _activeCells.remove(cellNumber);
-                                if (_hardCap)
+                                if (_hardCap) {
                                   _pruneDisconnected(selectedPair.cells);
+                                }
                               } else {
                                 final cell = selectedPair.cells.firstWhere(
                                   (c) => c.cellNumber == cellNumber,
@@ -275,8 +277,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     !_isAdjacentToActiveOrCenter(
                                       cell,
                                       selectedPair.cells,
-                                    ))
+                                    )) {
                                   return;
+                                }
                                 _activeCells.add(cellNumber);
                               }
                             });
@@ -486,27 +489,28 @@ class SyncPairOverview extends StatefulWidget {
 }
 
 class _SyncPairOverviewState extends State<SyncPairOverview> {
-  bool _showTera = false;
+  int _formIndex = 0; // 0=Base, 1..N=variations, last=Tera
 
   SyncPairData get pair => widget.pair;
+  bool get _showTera => pair.hasTera && _formIndex == pair.variations.length + 1;
+  bool get _isVariation => _formIndex > 0 && _formIndex <= pair.variations.length;
+  VariationData? get _activeVariation => _isVariation ? pair.variations[_formIndex - 1] : null;
 
-  Widget _teraTab(String label, bool selected) {
+  Widget _formTab(String label, int index, {Color? color}) {
+    final selected = _formIndex == index;
+    final tabColor = color ?? Theme.of(context).colorScheme.primary;
     return Expanded(
       child: GestureDetector(
-        onTap: () => setState(() => _showTera = label == 'Tera'),
+        onTap: () => setState(() => _formIndex = index),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
             color: selected
-                ? (label == 'Tera'
-                      ? const Color(0xFF6C5CE7)
-                      : Theme.of(context).colorScheme.primary)
+                ? tabColor
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: label == 'Tera'
-                  ? const Color(0xFF6C5CE7)
-                  : Theme.of(context).colorScheme.primary,
+              color: tabColor,
               width: 1.5,
             ),
           ),
@@ -534,7 +538,7 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     final match = RegExp(r'^(\d+)\s*\(1\)').firstMatch(rawPower);
     if (match == null) return rawPower;
     final base = int.parse(match.group(1)!);
-    final scaled = (base * (1 + 0.05 * (moveLevel - 1))).round();
+    final scaled = (base * (1 + 0.05 * (moveLevel - 1))).floor();
     return '$scaled';
   }
 
@@ -591,18 +595,26 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
 
   @override
   Widget build(BuildContext context) {
-    final displayMoves = _showTera && pair.teraMove != null
-        ? [...pair.moves, pair.teraMove!]
-        : pair.moves;
+    // Build display moves based on active form
+    List<MoveData> displayMoves;
+    List<PassiveData> displayPassives;
+    if (_showTera) {
+      displayMoves = [...pair.moves, if (pair.teraMove != null) pair.teraMove!];
+      displayPassives = [
+        for (int i = 0; i < pair.passives.length; i++)
+          i < pair.teraPassives.length ? pair.teraPassives[i] : pair.passives[i],
+      ];
+    } else if (_isVariation && _activeVariation != null) {
+      displayMoves = _activeVariation!.applyTo(pair.moves);
+      displayPassives = [
+        for (int i = 0; i < pair.passives.length; i++)
+          i < _activeVariation!.passives.length ? _activeVariation!.passives[i] : pair.passives[i],
+      ];
+    } else {
+      displayMoves = pair.moves;
+      displayPassives = pair.passives;
+    }
     final teraMoveName = pair.teraMove?.name ?? '';
-    final displayPassives = _showTera
-        ? [
-            for (int i = 0; i < pair.passives.length; i++)
-              i < pair.teraPassives.length
-                  ? pair.teraPassives[i]
-                  : pair.passives[i],
-          ]
-        : pair.passives;
 
     return SingleChildScrollView(
       child: Column(
@@ -646,15 +658,62 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
               if (pair.type.isNotEmpty) _typeChip(pair.type),
             ],
           ),
-          if (pair.hasTera)
+          if (pair.hasTera || pair.variations.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Row(
                 children: [
-                  _teraTab('Base', !_showTera),
-                  const SizedBox(width: 6),
-                  _teraTab('Tera', _showTera),
+                  _formTab('Base', 0),
+                  for (int i = 0; i < pair.variations.length; i++) ...[
+                    const SizedBox(width: 6),
+                    _formTab(pair.variations[i].formName, i + 1, color: Colors.teal),
+                  ],
+                  if (pair.hasTera) ...[
+                    const SizedBox(width: 6),
+                    _formTab('Tera', pair.variations.length + 1, color: const Color(0xFF6C5CE7)),
+                  ],
                 ],
+              ),
+            ),
+          if (pair.stats.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 12, bottom: 4),
+              child: Builder(
+                builder: (_) {
+                  final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
+                  final lv = levels.last;
+                  final s = pair.stats[lv]!;
+                  const labels = ['HP', 'Atk', 'Def', 'Sp.Atk', 'Sp.Def', 'Spe'];
+                  const keys = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
+                  return Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.06),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Stats (Lv. $lv)', style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            for (int i = 0; i < 6; i++)
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Text(labels[i], style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700)),
+                                    const SizedBox(height: 2),
+                                    Text('${s[keys[i]] ?? 0}', style: const TextStyle(fontSize: 12)),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           if (pair.passives.isNotEmpty) ...[
@@ -795,7 +854,7 @@ class _MoveCardState extends State<_MoveCard> {
                           builder: (_) {
                             final base = basePowerNum ?? 0;
                             final teraBase = widget.teraBoost
-                                ? (base * 1.5).round()
+                                ? (base * 1.5).floor()
                                 : base;
                             final finalPower = teraBase + widget.powerBonus;
                             String label;
@@ -975,7 +1034,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   String _selectedLevel = '200';
   bool _isEx = true;
   bool _hasExRole = true;
-  bool _teraActive = true;
+  int _calcFormIndex = 0; // 0=Base, 1..N=variations, last=Tera
   String _selectedZone = '';
   String _selectedTerrain = '';
   String _selectedWeather = '';
@@ -983,6 +1042,12 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   bool _isTerrainEx = false;
   bool _isWeatherEx = false;
   bool _isCriticalMove = true;
+  int _physicalBoostNext = 0;
+  int _specialBoostNext = 0;
+  bool _superEffectiveNext = false;
+  bool _physicalBreak = false;
+  bool _specialBreak = false;
+  int _syncMoveBoostNext = 0;
   int _playerSyncBoosts = 0;
   int _enemySyncBoosts = 0;
   int _playerHpPercent = 100;
@@ -1265,6 +1330,13 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     return total;
   }
 
+  bool get _teraActive => widget.pair.hasTera && _calcFormIndex == widget.pair.variations.length + 1;
+
+  double _teraStatMult(String stat) {
+    if (!_teraActive) return 1.0;
+    return widget.pair.teraStatMultiplier[stat] ?? 1.0;
+  }
+
   Widget _mitigationCell(int value, ValueChanged<int> onChanged) {
     return Center(
       child: DropdownButton<int>(
@@ -1309,24 +1381,19 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     );
   }
 
-  Widget _teraTabButton(String label, bool selected) {
-    final isTera = label == 'Tera';
+  Widget _calcFormTab(String label, int index, {Color? color}) {
+    final selected = _calcFormIndex == index;
+    final tabColor = color ?? Theme.of(context).colorScheme.primary;
     return Expanded(
       child: GestureDetector(
-        onTap: () => setState(() => _teraActive = isTera),
+        onTap: () => setState(() => _calcFormIndex = index),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: selected
-                ? (isTera
-                      ? const Color(0xFF6C5CE7)
-                      : Theme.of(context).colorScheme.primary)
-                : Colors.transparent,
+            color: selected ? tabColor : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isTera
-                  ? const Color(0xFF6C5CE7)
-                  : Theme.of(context).colorScheme.primary,
+              color: tabColor,
               width: 1.5,
             ),
           ),
@@ -1386,7 +1453,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     final match = RegExp(r'^(\d+)').firstMatch(rawPower);
     if (match == null) return rawPower;
     final base = int.parse(match.group(1)!);
-    return '${(base * (1 + 0.05 * (widget.moveLevel - 1))).round()}';
+    return '${(base * (1 + 0.05 * (widget.moveLevel - 1))).floor()}';
   }
 
   int _totalBp(MoveData move) {
@@ -1400,8 +1467,12 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
         !move.isSync &&
         !isTeraMove &&
         move.type.toLowerCase() == widget.pair.type.toLowerCase();
-    final afterTera = teraBonus ? (base * 1.5).round() : base;
-    return afterTera + grid;
+    final afterTera = teraBonus ? (base * 1.5).floor() : base;
+    final isPhysical = move.category.toLowerCase() == 'physical';
+    final boostRank = move.isSync ? 0 : (isPhysical ? _physicalBoostNext : _specialBoostNext);
+    final syncSkill = move.isSync ? _syncMoveBoostNext * 0.1 : 0.0;
+    final inner = ((afterTera + grid) * (1 + syncSkill + boostRank * 0.4)).floor();
+    return inner;
   }
 
   static const _statusLabels = {
@@ -1440,13 +1511,20 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       _selectedLevel = levels.last;
     }
     final currentStats = pair.stats[_selectedLevel] ?? {};
-    final activeRole = _hasExRole && pair.exRole.isNotEmpty
-        ? pair.exRole
-        : pair.role;
 
-    final isTeraActive = _teraActive && pair.hasTera;
+    final isTeraActive = _teraActive;
+    final isVariation = _calcFormIndex > 0 && _calcFormIndex <= pair.variations.length;
+    final activeVariation = isVariation ? pair.variations[_calcFormIndex - 1] : null;
+
+    // Build display moves based on active form
+    List<MoveData> baseMoves;
+    if (isVariation && activeVariation != null) {
+      baseMoves = activeVariation.applyTo(pair.moves);
+    } else {
+      baseMoves = pair.moves;
+    }
     final displayMoves = <MoveData>[
-      ...pair.moves,
+      ...baseMoves,
       if (isTeraActive && pair.teraMove != null) pair.teraMove!,
     ].where((move) => move.power.isNotEmpty && move.power != '--').toList();
 
@@ -1521,14 +1599,20 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       const SizedBox(height: 8),
 
       // --- Tera toggle (tab style) ---
-      if (pair.hasTera)
+      if (pair.hasTera || pair.variations.isNotEmpty)
         Padding(
           padding: const EdgeInsets.only(bottom: 8),
           child: Row(
             children: [
-              _teraTabButton('Base', !_teraActive),
-              const SizedBox(width: 6),
-              _teraTabButton('Tera', _teraActive),
+              _calcFormTab('Base', 0),
+              for (int i = 0; i < pair.variations.length; i++) ...[
+                const SizedBox(width: 6),
+                _calcFormTab(pair.variations[i].formName, i + 1, color: Colors.teal),
+              ],
+              if (pair.hasTera) ...[
+                const SizedBox(width: 6),
+                _calcFormTab('Tera', pair.variations.length + 1, color: const Color(0xFF6C5CE7)),
+              ],
             ],
           ),
         ),
@@ -1882,12 +1966,15 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                         final raw =
                             (currentStats[s] ?? 0) +
                             _exBonus(s) +
-                            _gridStatBonus(s) +
                             (_gear[s] ?? 0);
+                        final grid = _gridStatBonus(s);
                         final total = calcStat(
                           StatInput(
                             baseStat: raw,
+                            gridStat: grid,
                             stage: _playerStages[s] ?? 0,
+                            skillIncrease: _teraStatMult(s),
+                            isSpeed: s == 'spe',
                           ),
                         );
                         return Center(
@@ -1938,14 +2025,6 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 DropdownMenuItem(value: i, child: Text('$i')),
             ],
             onChanged: (v) => setState(() => _playerStages['crit'] = v!),
-          ),
-          const SizedBox(width: 8),
-          const Text('Critical', style: TextStyle(fontSize: 12)),
-          const SizedBox(width: 4),
-          Switch(
-            value: _isCriticalMove,
-            activeThumbColor: Theme.of(context).colorScheme.primary,
-            onChanged: (v) => setState(() => _isCriticalMove = v),
           ),
           const SizedBox(width: 8),
           Text('Sync Buffs: ', style: labelStyle),
@@ -2010,9 +2089,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           ),
         ],
       ),
-      const SizedBox(height: 10),
-
-      // --- Enemy stats ---
+      
       Text(
         'Enemy',
         style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
@@ -2248,6 +2325,29 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       ),
       const SizedBox(height: 8),
 
+      Row(
+        children: [
+          FilterChip(
+            label: const Text('Phys Break', style: TextStyle(fontSize: 10)),
+            selected: _physicalBreak,
+            showCheckmark: false,
+            onSelected: (v) => setState(() => _physicalBreak = v),
+            selectedColor: Colors.red.shade700,
+            visualDensity: VisualDensity.compact,
+          ),
+          const SizedBox(width: 4),
+          FilterChip(
+            label: const Text('Spec Break', style: TextStyle(fontSize: 10)),
+            selected: _specialBreak,
+            showCheckmark: false,
+            onSelected: (v) => setState(() => _specialBreak = v),
+            selectedColor: Colors.blue.shade700,
+            visualDensity: VisualDensity.compact,
+          ),
+        ],
+      ),
+      const SizedBox(height: 8),
+
       // --- Type Rebuffs ---
       Text(
         'Type Rebuffs',
@@ -2289,6 +2389,67 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
         ),
         const SizedBox(height: 6),
+        Row(
+          children: [
+            Text('Phys Up Next: ', style: labelStyle),
+            DropdownButton<int>(
+              value: _physicalBoostNext,
+              isDense: true,
+              underline: const SizedBox(),
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+              items: [
+                for (int i = 0; i <= 10; i++)
+                  DropdownMenuItem(value: i, child: Text('$i')),
+              ],
+              onChanged: (v) => setState(() => _physicalBoostNext = v!),
+            ),
+            const SizedBox(width: 8),
+            Text('Spec Up Next: ', style: labelStyle),
+            DropdownButton<int>(
+              value: _specialBoostNext,
+              isDense: true,
+              underline: const SizedBox(),
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+              items: [
+                for (int i = 0; i <= 10; i++)
+                  DropdownMenuItem(value: i, child: Text('$i')),
+              ],
+              onChanged: (v) => setState(() => _specialBoostNext = v!),
+            ),
+            const SizedBox(width: 8),
+            Text('Sync Up Next: ', style: labelStyle),
+            DropdownButton<int>(
+              value: _syncMoveBoostNext,
+              isDense: true,
+              underline: const SizedBox(),
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+              items: [
+                for (int i = 0; i <= 10; i++)
+                  DropdownMenuItem(value: i, child: Text('$i')),
+              ],
+              onChanged: (v) => setState(() => _syncMoveBoostNext = v!),
+            ),
+            const SizedBox(width: 8),
+            FilterChip(
+              label: const Text('SE Up Next', style: TextStyle(fontSize: 10)),
+              selected: _superEffectiveNext,
+              showCheckmark: false,
+              onSelected: (v) => setState(() => _superEffectiveNext = v),
+              selectedColor: Colors.orange,
+              visualDensity: VisualDensity.compact,
+            ),
+            const SizedBox(width: 8),
+            FilterChip(
+              label: const Text('Critical', style: TextStyle(fontSize: 10)),
+              selected: _isCriticalMove,
+              showCheckmark: false,
+              onSelected: (v) => setState(() => _isCriticalMove = v),
+              selectedColor: Colors.red,
+              visualDensity: VisualDensity.compact,
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
         for (final move in displayMoves)
           Builder(
             builder: (_) {
@@ -2302,12 +2463,14 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 final rawAtk =
                     (currentStats[atkKey] ?? 0) +
                     _exBonus(atkKey) +
-                    _gridStatBonus(atkKey) +
                     (_gear[atkKey] ?? 0);
+                final gridAtk = _gridStatBonus(atkKey);
                 final atkTotal = calcStat(
                   StatInput(
                     baseStat: rawAtk,
+                    gridStat: gridAtk,
                     stage: _playerStages[atkKey] ?? 0,
+                    skillIncrease: _teraStatMult(atkKey),
                   ),
                 );
                 final defKey = isPhysical ? 'def' : 'spd';
@@ -2343,6 +2506,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     basePower: bp,
                     moveLevel: 1,
                     gridPower: 0,
+                    boostRank: 0,
+                    skillPowerUps: 0,
                   ),
                   attackerInput: StatInput(baseStat: atkTotal),
                   defenderStat: enemyDefTotal,
@@ -2350,6 +2515,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     syncBoosts: _playerSyncBoosts,
                     isCritical: _isCriticalMove,
                     isSuperEffective: isSE,
+                    hasSENext: _superEffectiveNext,
                     typeRebuff: rebuff,
                     stellarRebuff: stellarRebuff,
                     zoneBoost: zoneBoost,
@@ -2358,6 +2524,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     terrainEx: _isTerrainEx,
                     weatherBoost: weatherBoost,
                     weatherEx: _isWeatherEx,
+                    physicalBreak: isPhysical && _physicalBreak,
+                    specialBreak: !isPhysical && _specialBreak,
                   ),
                 );
                 rolls = result.rolls;
@@ -2372,17 +2540,24 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               final tooltipLines = <String>[];
               if (bp != null) {
                 tooltipLines.add('Base Power: ${_scaledPower(move.power)}');
-                if (moveTeraBoost) tooltipLines.add('Tera Boost: ×1.5');
+                if (moveTeraBoost) tooltipLines.add('Tera Boost ×1.5');
                 final gp = _gridPowerBonus(move.name);
-                if (gp > 0) tooltipLines.add('Grid Power: +$gp');
+                if (gp > 0) tooltipLines.add('Grid Power: +$gp (additive)');
+                final boostRank = move.isSync ? 0 : (isPhysical ? _physicalBoostNext : _specialBoostNext);
+                if (boostRank > 0) tooltipLines.add('${isPhysical ? 'Phys' : 'Spec'} Up Next +${(boostRank * 40).toStringAsFixed(0)}%');
+                if (move.isSync && _syncMoveBoostNext > 0) tooltipLines.add('Sync Up Next +${(_syncMoveBoostNext * 10).toStringAsFixed(0)}%');
+                
               }
+              final hasBpMod = moveTeraBoost || _gridPowerBonus(move.name) > 0 ||
+                  (move.isSync ? _syncMoveBoostNext > 0 : (isPhysical ? _physicalBoostNext > 0 : _specialBoostNext > 0));
+              final baseBpVal = int.tryParse(_scaledPower(move.power));
               return _CalcMoveCard(
                 move: move,
                 totalBp: bp,
-                gridPower: _gridPowerBonus(move.name),
-                scaledPower: _scaledPower(move.power),
+                baseBp: baseBpVal,
+                hasBpMod: hasBpMod,
                 teraBoost: moveTeraBoost,
-                activeRole: activeRole,
+                atkStat: rolls != null ? calcStat(StatInput(baseStat: (currentStats[atkKey] ?? 0) + _exBonus(atkKey) + (_gear[atkKey] ?? 0), gridStat: _gridStatBonus(atkKey), stage: _playerStages[atkKey] ?? 0, skillIncrease: _teraStatMult(atkKey))) : null,
                 rolls: rolls,
                 enemyHp: ((_enemy['hp'] ?? 1) * _enemyHpPercent / 100).round(),
                 tooltipText: tooltipLines.join('\n'),
@@ -2492,27 +2667,26 @@ class _CalcMoveCard extends StatelessWidget {
   const _CalcMoveCard({
     required this.move,
     this.totalBp,
-    required this.gridPower,
-    required this.scaledPower,
+    this.baseBp,
+    this.hasBpMod = false,
     this.teraBoost = false,
-    required this.activeRole,
+    this.atkStat,
     this.rolls,
     this.enemyHp = 1,
     this.tooltipText = '',
   });
   final MoveData move;
   final int? totalBp;
-  final int gridPower;
-  final String scaledPower;
+  final int? baseBp;
+  final bool hasBpMod;
   final bool teraBoost;
-  final String activeRole;
+  final int? atkStat;
   final List<int>? rolls;
   final int enemyHp;
   final String tooltipText;
 
   @override
   Widget build(BuildContext context) {
-    final hasBp = totalBp != null;
     String? pctLabel;
     if (rolls != null && rolls!.isNotEmpty && enemyHp > 0) {
       final minPct = (rolls!.first / enemyHp * 100).toStringAsFixed(1);
@@ -2520,6 +2694,7 @@ class _CalcMoveCard extends StatelessWidget {
       pctLabel = '$minPct-$maxPct%';
     }
     final typeColor = _typeColors[move.type.toLowerCase()];
+    final hasBp = totalBp != null;
     return Tooltip(
       message: tooltipText,
       waitDuration: const Duration(milliseconds: 300),
@@ -2527,78 +2702,56 @@ class _CalcMoveCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 6),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color:
-              typeColor?.withValues(alpha: 0.12) ??
-              Theme.of(context).colorScheme.surface,
+          color: typeColor?.withValues(alpha: 0.12) ?? Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(
-            color: typeColor?.withValues(alpha: 0.5) ?? Colors.grey.shade300,
-          ),
+          border: Border.all(color: typeColor?.withValues(alpha: 0.5) ?? Colors.grey.shade300),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Row 1: Base: [name] [category] [%hp]
             Row(
               children: [
+                Text('', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3))),
                 if (move.isSync)
                   Padding(
                     padding: const EdgeInsets.only(right: 4),
-                    child: Icon(
-                      Icons.star,
-                      size: 12,
-                      color: Colors.purple.shade300,
-                    ),
+                    child: Icon(Icons.star, size: 12, color: Colors.purple.shade300),
                   ),
                 Expanded(
-                  child: Text(
-                    move.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 12,
-                    ),
-                  ),
+                  child: Text(move.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
                 ),
-                if (hasBp)
-                  Padding(
-                    padding: const EdgeInsets.only(right: 6),
-                    child: Text(
-                      'BP $totalBp',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        color: (teraBoost || gridPower > 0)
-                            ? (teraBoost ? const Color(0xFF6C5CE7) : Theme.of(context).colorScheme.primary)
-                            : null,
-                      ),
-                    ),
-                  ),
+                if (move.category.isNotEmpty)
+                  Text(move.category, style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
                 if (pctLabel != null)
                   Padding(
-                    padding: const EdgeInsets.only(right: 6),
-                    child: Text(
-                      pctLabel,
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                  ),
-                if (move.category.isNotEmpty)
-                  Text(
-                    move.category,
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.onSurface.withValues(alpha: 0.5),
-                    ),
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(pctLabel, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.primary)),
                   ),
               ],
             ),
+            // Row 2: Stat: X - Power: Y → Z
+            if (hasBp)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Row(
+                  children: [
+                    if (atkStat != null)
+                      Text('Stat: $atkStat - ', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
+                    Text('Power: ', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
+                    if (hasBpMod && baseBp != null) ...[
+                      Text('$baseBp', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface)),
+                      Text(' \u2192 ', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
+                      Text('$totalBp', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: teraBoost ? const Color(0xFF6C5CE7) : Theme.of(context).colorScheme.primary)),
+                    ] else
+                      Text('$totalBp', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface)),
+                  ],
+                ),
+              ),
+            // Row 3: rolls
             if (rolls != null && rolls!.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.only(top: 4),
+                padding: const EdgeInsets.only(top: 2),
                 child: Wrap(
                   spacing: 4,
                   children: [
@@ -2612,9 +2765,7 @@ class _CalcMoveCard extends StatelessWidget {
                               : FontWeight.normal,
                           color: i == rolls!.length - 1
                               ? Theme.of(context).colorScheme.primary
-                              : Theme.of(
-                                  context,
-                                ).colorScheme.onSurface.withValues(alpha: 0.6),
+                              : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
                   ],
@@ -3151,6 +3302,9 @@ class SyncPairData {
     this.teraMove,
     this.teraPassives = const [],
     this.stats = const {},
+    this.teraStatMultiplier = const {},
+    this.formStats = const {},
+    this.variations = const [],
   });
 
   final int number;
@@ -3171,6 +3325,11 @@ class SyncPairData {
   final List<PassiveData> teraPassives;
   final Map<String, Map<String, int>>
   stats; // level -> {hp, atk, def, spa, spd, spe}
+  final Map<String, double>
+  teraStatMultiplier; // stat -> multiplier (e.g. 1.1 for 10% boost)
+  final Map<String, Map<String, Map<String, int>>>
+  formStats; // formName -> level -> {hp, atk, def, spa, spd, spe}
+  final List<VariationData> variations;
 }
 
 class GridCellData {
@@ -3307,6 +3466,9 @@ Future<ParsedData> _loadData() async {
           teraMove: teraMove,
           teraPassives: teraPassives,
           stats: stats,
+          teraStatMultiplier: _parseTeraStatMultiplier(j),
+          formStats: _parseFormStats(j),
+          variations: _parseVariationData(j),
         );
       }).toList()..sort((a, b) {
         final da = a.releaseDate ?? DateTime(2000);
@@ -3315,6 +3477,62 @@ Future<ParsedData> _loadData() async {
       });
 
   return ParsedData(pairs: pairs);
+}
+
+Map<String, double> _parseTeraStatMultiplier(Map<String, dynamic> j) {
+  final result = <String, double>{};
+  final teraPassives = j['teraPassives'] as List? ?? [];
+  for (final p in teraPassives) {
+    final name = (p['name'] ?? '') as String;
+    final match = RegExp(r'While S-Tera:\s*(\d)\s*Stats.*?(\d+)$').firstMatch(name);
+    if (match != null) {
+      final count = int.parse(match.group(1)!);
+      final value = int.parse(match.group(2)!);
+      final mult = 1.0 + value * 0.1;
+      if (count == 5) {
+        for (final s in ['atk', 'def', 'spa', 'spd', 'spe']) {
+          result[s] = mult;
+        }
+      }
+    }
+  }
+  // Also check JSON field directly
+  final raw = j['teraStatMultiplier'] as Map<String, dynamic>? ?? {};
+  for (final e in raw.entries) {
+    result[e.key] = (e.value as num).toDouble();
+  }
+  return result;
+}
+
+Map<String, Map<String, Map<String, int>>> _parseFormStats(Map<String, dynamic> j) {
+  final result = <String, Map<String, Map<String, int>>>{};
+  final formStatsRaw = j['formStats'] as Map<String, dynamic>? ?? {};
+  for (final formEntry in formStatsRaw.entries) {
+    final levels = <String, Map<String, int>>{};
+    final levelsRaw = formEntry.value as Map<String, dynamic>;
+    for (final lvEntry in levelsRaw.entries) {
+      final m = lvEntry.value as Map<String, dynamic>;
+      levels[lvEntry.key] = m.map((k, v) => MapEntry(k, (v as num).toInt()));
+    }
+    result[formEntry.key] = levels;
+  }
+  return result;
+}
+
+List<VariationData> _parseVariationData(Map<String, dynamic> j) {
+  final raw = j['variations'] as List? ?? [];
+  return raw.map((v) {
+    final moves = (v['moves'] as List? ?? []).map((m) => MoveData(
+      name: m['name'] ?? '', type: m['type'] ?? '', category: m['category'] ?? '',
+      power: m['power'] ?? '', accuracy: m['accuracy'] ?? '', gauge: m['gauge'] ?? '',
+      target: m['target'] ?? '', description: m['description'] ?? '', isSync: m['isSync'] ?? false,
+      slot: m['slot'] as int?,
+    )).toList();
+    final passives = (v['passives'] as List? ?? []).map((p) => PassiveData(
+      name: p['name'] ?? '', description: p['description'] ?? '',
+    )).toList();
+    return VariationData(formName: v['formName'] ?? 'Variation', moves: moves, passives: passives);
+  }).toList();
 }
 
 class MoveData {
@@ -3328,6 +3546,7 @@ class MoveData {
     this.target = '',
     this.description = '',
     this.isSync = false,
+    this.slot,
   });
 
   final String name;
@@ -3339,6 +3558,7 @@ class MoveData {
   final String target;
   final String description;
   final bool isSync;
+  final int? slot;
 }
 
 class PassiveData {
@@ -3346,4 +3566,42 @@ class PassiveData {
 
   final String name;
   final String description;
+}
+
+class VariationData {
+  const VariationData({
+    required this.formName,
+    this.moves = const [],
+    this.passives = const [],
+  });
+
+  final String formName;
+  final List<MoveData> moves;
+  final List<PassiveData> passives;
+
+  List<MoveData> applyTo(List<MoveData> baseMoves) {
+    final result = List<MoveData>.from(baseMoves);
+    for (final vm in moves) {
+      if (vm.isSync) {
+        final idx = result.indexWhere((m) => m.isSync);
+        if (idx >= 0) result[idx] = vm; else result.add(vm);
+      } else if (vm.slot != null) {
+        final slotIdx = vm.slot! - 1;
+        if (slotIdx >= 0 && slotIdx < result.where((m) => !m.isSync).length) {
+          int count = 0;
+          for (int i = 0; i < result.length; i++) {
+            if (!result[i].isSync) {
+              if (count == slotIdx) { result[i] = vm; break; }
+              count++;
+            }
+          }
+        } else {
+          result.add(vm);
+        }
+      } else {
+        result.add(vm);
+      }
+    }
+    return result;
+  }
 }

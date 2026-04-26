@@ -23,8 +23,14 @@ const _atkDefVariation = <int, double>{
   1: 1.25, 2: 1.40, 3: 1.50, 4: 1.60, 5: 1.70, 6: 1.80,
 };
 
-double statVariation(int stage) =>
-    _atkDefVariation[stage.clamp(-6, 6)] ?? 1.0;
+const _speedVariation = <int, double>{
+  -6: 0.38, -5: 0.41, -4: 0.45, -3: 0.50, -2: 0.55, -1: 0.66,
+  0: 1.00,
+  1: 1.50, 2: 1.80, 3: 2.00, 4: 2.20, 5: 2.40, 6: 2.60,
+};
+
+double statVariation(int stage, {bool isSpeed = false}) =>
+    (isSpeed ? _speedVariation : _atkDefVariation)[stage.clamp(-6, 6)] ?? 1.0;
 
 // --- Data classes ---
 
@@ -57,6 +63,8 @@ class StatInput {
   final bool isBurned;
   final int lessenBurn; // 0-9
   final int mitigation; // 0-9 (Stout Heart, Trained Body, etc.)
+  final double skillIncrease; // Skill stat multiplier (e.g. 1.1 for 10%)
+  final bool isSpeed;
 
   const StatInput({
     required this.baseStat,
@@ -67,6 +75,8 @@ class StatInput {
     this.isBurned = false,
     this.lessenBurn = 0,
     this.mitigation = 0,
+    this.skillIncrease = 1.0,
+    this.isSpeed = false,
   });
 }
 
@@ -82,11 +92,11 @@ class BattleConditions {
   final bool terrainEx;
   final bool weatherBoost;
   final bool weatherEx;
-  final bool hasScreen;       // physical/special reduction screen
-  final bool isLegendaryArena; // affects screen multiplier
   final bool unityBonus;
   final int typeRebuff;       // -3 to 0, per move type
   final int stellarRebuff;    // -3 to 0, only for Stellar moves
+  final bool physicalBreak;   // ×1.5 for physical moves
+  final bool specialBreak;    // ×1.5 for special moves
 
   const BattleConditions({
     this.syncBoosts = 0,
@@ -100,11 +110,11 @@ class BattleConditions {
     this.terrainEx = false,
     this.weatherBoost = false,
     this.weatherEx = false,
-    this.hasScreen = false,
-    this.isLegendaryArena = false,
     this.unityBonus = false,
     this.typeRebuff = 0,
     this.stellarRebuff = 0,
+    this.physicalBreak = false,
+    this.specialBreak = false,
   });
 }
 
@@ -144,14 +154,20 @@ int calcMovePower(MovePowerInput input) {
 
 /// Stat = 0<(FormStat + Grid + Gear + Theme) × Variation>
 int calcStat(StatInput input, {bool critOffense = false, bool critDefense = false}) {
-  final base = input.baseStat + input.gridStat + input.gear + input.themeStat;
+  var formStat = input.baseStat + input.gear + input.themeStat;
+
+  // Skill Increase applies to form stat before grid
+  if (input.skillIncrease != 1.0) {
+    formStat = floorToInt(formStat * input.skillIncrease);
+  }
+
+  final base = formStat + input.gridStat;
 
   if (critDefense && input.stage > 0) {
-    // Crit ignores raised defense
     return floorToInt(base * 1.0);
   }
 
-  var variation = statVariation(input.stage);
+  var variation = statVariation(input.stage, isSpeed: input.isSpeed);
 
   // Apply mitigation for negative stages
   if (input.stage < 0 && input.mitigation > 0) {
@@ -193,10 +209,8 @@ double calcBattleMultiplier(BattleConditions bc) {
   if (bc.terrainBoost) mult *= bc.terrainEx ? 3.0 : 1.5;
   if (bc.weatherBoost) mult *= bc.weatherEx ? 3.0 : 1.5;
   if (bc.unityBonus) mult *= 1.2;
-
-  if (bc.hasScreen) {
-    mult *= bc.isLegendaryArena ? 0.5 : 0.6666;
-  }
+  if (bc.physicalBreak) mult *= 1.5;
+  if (bc.specialBreak) mult *= 1.5;
 
   // Type Rebuff (Table 25)
   const rebuffMultipliers = <int, double>{
