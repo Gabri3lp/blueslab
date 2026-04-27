@@ -80,6 +80,41 @@ class StatInput {
   });
 }
 
+enum CircleType { physical, special, defensive }
+
+/// A single Circle field effect active on the allied field.
+/// [allyCount] = extra allies with the matching region theme (0-3).
+///
+/// Physical/Special circles:
+///   Power-up: 10% base + 10% per extra ally (max 40%).
+///   DR: 5% base + 3% per extra ally (max 14%).
+///
+/// Defensive circles:
+///   Power-up: 5% base + 5% per extra ally (max 20%).
+///   DR: 10% base + 5% per extra ally (max 25%).
+class CircleEffect {
+  final CircleType type;
+  final int allyCount;
+
+  const CircleEffect({required this.type, this.allyCount = 0});
+
+  double get powerUp {
+    final n = allyCount.clamp(0, 3);
+    if (type == CircleType.defensive) {
+      return 1 + (5 + n * 5) / 100;
+    }
+    return 1 + (10 + n * 10) / 100;
+  }
+
+  double get damageReduction {
+    final n = allyCount.clamp(0, 3);
+    if (type == CircleType.defensive) {
+      return 1 - (10 + n * 5) / 100;
+    }
+    return 1 - (5 + n * 3) / 100;
+  }
+}
+
 class BattleConditions {
   final int syncBoosts;       // 0+
   final bool isCritical;
@@ -97,6 +132,8 @@ class BattleConditions {
   final int stellarRebuff;    // -3 to 0, only for Stellar moves
   final bool physicalBreak;   // ×1.5 for physical moves
   final bool specialBreak;    // ×1.5 for special moves
+  final bool isPhysicalMove;  // true = physical, false = special
+  final List<CircleEffect> circles; // active circles on allied field
 
   const BattleConditions({
     this.syncBoosts = 0,
@@ -115,6 +152,8 @@ class BattleConditions {
     this.stellarRebuff = 0,
     this.physicalBreak = false,
     this.specialBreak = false,
+    this.isPhysicalMove = true,
+    this.circles = const [],
   });
 }
 
@@ -158,7 +197,7 @@ int calcStat(StatInput input, {bool critOffense = false, bool critDefense = fals
 
   // Skill Increase applies to form stat before grid
   if (input.skillIncrease != 1.0) {
-    formStat = floorToInt(formStat * input.skillIncrease);
+    formStat = (formStat * input.skillIncrease).ceil() - 1;
   }
 
   final base = formStat + input.gridStat;
@@ -192,6 +231,36 @@ int calcStat(StatInput input, {bool critOffense = false, bool critDefense = fals
   return calculated;
 }
 
+/// Offensive circle multiplier. Physical circles boost physical moves,
+/// Special circles boost special moves, Defensive circles boost all moves.
+/// Multiple circles multiply together.
+double calcCircleOffenseMult(List<CircleEffect> circles, bool isPhysical) {
+  var product = 1.0;
+  for (final c in circles) {
+    if (c.type == CircleType.defensive ||
+        (isPhysical && c.type == CircleType.physical) ||
+        (!isPhysical && c.type == CircleType.special)) {
+      product *= c.powerUp;
+    }
+  }
+  return product;
+}
+
+/// Defensive circle multiplier: Physical circles reduce physical damage,
+/// Special circles reduce special damage, Defensive circles reduce all damage.
+/// Multiple circles multiply together.
+double calcCircleDefenseMult(List<CircleEffect> circles, bool isPhysical) {
+  var product = 1.0;
+  for (final c in circles) {
+    if (c.type == CircleType.defensive ||
+        (isPhysical && c.type == CircleType.physical) ||
+        (!isPhysical && c.type == CircleType.special)) {
+      product *= c.damageReduction;
+    }
+  }
+  return product;
+}
+
 /// Battle Conditions multiplier
 double calcBattleMultiplier(BattleConditions bc) {
   var mult = 1.0;
@@ -211,6 +280,11 @@ double calcBattleMultiplier(BattleConditions bc) {
   if (bc.unityBonus) mult *= 1.2;
   if (bc.physicalBreak) mult *= 1.5;
   if (bc.specialBreak) mult *= 1.5;
+
+  // Circles: multiply between each other, then applied as field boost
+  if (bc.circles.isNotEmpty) {
+    mult *= calcCircleOffenseMult(bc.circles, bc.isPhysicalMove);
+  }
 
   // Type Rebuff (Table 25)
   const rebuffMultipliers = <int, double>{

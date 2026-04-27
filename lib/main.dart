@@ -186,74 +186,74 @@ class _HomeScreenState extends State<HomeScreen> {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('⚡ $selectedEnergy'),
-                          const SizedBox(width: 12),
-                          Text('🔮 $selectedOrbs'),
-                          const SizedBox(width: 16),
-                          for (int i = 1; i <= 5; i++)
-                            Padding(
-                              padding: const EdgeInsets.only(right: 2),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _moveLevel = i;
-                                    _activeCells.removeWhere((cn) {
-                                      final cell = selectedPair.cells
-                                          .firstWhere(
-                                            (c) => c.cellNumber == cn,
-                                          );
-                                      return cell.moveLevel > i;
+                          children: [
+                            Text('⚡ $selectedEnergy'),
+                            const SizedBox(width: 12),
+                            Text('🔮 $selectedOrbs'),
+                            const SizedBox(width: 16),
+                            for (int i = 1; i <= 5; i++)
+                              Padding(
+                                padding: const EdgeInsets.only(right: 2),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _moveLevel = i;
+                                      _activeCells.removeWhere((cn) {
+                                        final cell = selectedPair.cells
+                                            .firstWhere(
+                                              (c) => c.cellNumber == cn,
+                                            );
+                                        return cell.moveLevel > i;
+                                      });
+                                      if (_hardCap) {
+                                        _pruneDisconnected(selectedPair.cells);
+                                      }
                                     });
-                                    if (_hardCap) {
+                                  },
+                                  child: Image.asset(
+                                    _moveLevel >= i
+                                        ? 'assets/img/sync_level_on.png'
+                                        : 'assets/img/sync_level_off.png',
+                                    width: 32,
+                                    height: 32,
+                                  ),
+                                ),
+                              ),
+                            const SizedBox(width: 8),
+                            IconButton(
+                              onPressed: _activeCells.isNotEmpty
+                                  ? () => setState(() {
+                                      _activeCells.clear();
+                                      if (_hardCap) {
+                                        _activateFreeCenterCells(
+                                          selectedPair.cells,
+                                        );
+                                      }
+                                    })
+                                  : null,
+                              icon: const Icon(Icons.restart_alt),
+                              tooltip: 'Reset Grid',
+                            ),
+                            if (!_expandedRight) ...[
+                              const SizedBox(width: 8),
+                              const Text('Hard Cap'),
+                              Switch(
+                                value: _hardCap,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _hardCap = value;
+                                    if (value) {
+                                      _activateFreeCenterCells(
+                                        selectedPair.cells,
+                                      );
                                       _pruneDisconnected(selectedPair.cells);
                                     }
                                   });
                                 },
-                                child: Image.asset(
-                                  _moveLevel >= i
-                                      ? 'assets/img/sync_level_on.png'
-                                      : 'assets/img/sync_level_off.png',
-                                  width: 32,
-                                  height: 32,
-                                ),
                               ),
-                            ),
-                          const SizedBox(width: 8),
-                          IconButton(
-                            onPressed: _activeCells.isNotEmpty
-                                ? () => setState(() {
-                                    _activeCells.clear();
-                                    if (_hardCap) {
-                                      _activateFreeCenterCells(
-                                        selectedPair.cells,
-                                      );
-                                    }
-                                  })
-                                : null,
-                            icon: const Icon(Icons.restart_alt),
-                            tooltip: 'Reset Grid',
-                          ),
-                          if (!_expandedRight) ...[
-                            const SizedBox(width: 8),
-                            const Text('Hard Cap'),
-                            Switch(
-                              value: _hardCap,
-                              onChanged: (value) {
-                                setState(() {
-                                  _hardCap = value;
-                                  if (value) {
-                                    _activateFreeCenterCells(
-                                      selectedPair.cells,
-                                    );
-                                    _pruneDisconnected(selectedPair.cells);
-                                  }
-                                });
-                              },
-                            ),
+                            ],
                           ],
-                        ],
-                      ),
+                        ),
                       ),
                     ),
                     Expanded(
@@ -495,17 +495,40 @@ class SyncPairOverview extends StatefulWidget {
 class _SyncPairOverviewState extends State<SyncPairOverview> {
   int _formIndex = 0;
   String _level = '200';
-  String _starLevel = '5★ 20/20';
-  bool _exActive = true;
-  bool _exRoleActive = true; // 0=Base, 1..N=variations, last=Tera
+  String? _starLevel;
+  bool _exRoleActive = true;
+
+  @override
+  void didUpdateWidget(covariant SyncPairOverview oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.pair.number != oldWidget.pair.number) {
+      _starLevel = null;
+    }
+  }
+
+  String get _effectiveStarLevel {
+    final valid = availableStarLevels(pair.rarity, pair.hasEx);
+    if (_starLevel != null && valid.contains(_starLevel)) return _starLevel!;
+    return valid.last;
+  } // 0=Base, 1..N=variations, last=Tera
 
   SyncPairData get pair => widget.pair;
-  bool get _showTera => pair.hasTera && _formIndex == pair.variations.length + 1;
-  bool get _isVariation => _formIndex > 0 && _formIndex <= pair.variations.length;
-  VariationData? get _activeVariation => _isVariation ? pair.variations[_formIndex - 1] : null;
+  bool get _showTera =>
+      pair.hasTera && _formIndex == pair.variations.length + 1;
+  bool get _isVariation =>
+      _formIndex > 0 && _formIndex <= pair.variations.length;
+  VariationData? get _activeVariation =>
+      _isVariation ? pair.variations[_formIndex - 1] : null;
 
   int _gridBonus2(String statKey) {
-    const mapping = {'hp': 'HP', 'atk': 'Attack', 'def': 'Defense', 'spa': 'Sp. Atk', 'spd': 'Sp. Def', 'spe': 'Speed'};
+    const mapping = {
+      'hp': 'HP',
+      'atk': 'Attack',
+      'def': 'Defense',
+      'spa': 'Sp. Atk',
+      'spd': 'Sp. Def',
+      'spe': 'Speed',
+    };
     final prefix = mapping[statKey] ?? '';
     if (prefix.isEmpty) return 0;
     int total = 0;
@@ -520,7 +543,19 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     return total;
   }
 
-  Map<String, int> _potentialBonus() => calcPotentialBonus(baseRarity: pair.rarity, targetStars: _starLevel);
+  Map<String, int> _potentialBonus() => calcPotentialBonus(
+    baseRarity: pair.rarity,
+    targetStars: _effectiveStarLevel,
+  );
+
+  bool get _exActive => _effectiveStarLevel == '5★ EX';
+
+  bool get _megaActiveOverview {
+    if (pair.megaStatMultiplier.isEmpty) return false;
+    int megaIdx = pair.variations.length + 1;
+    if (pair.hasTera) megaIdx++;
+    return _formIndex == megaIdx;
+  }
 
   int _exBonusOverview(String stat) {
     if (!_exActive || !pair.hasEx) return 0;
@@ -529,6 +564,18 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
       total += exRoleBonusMap[pair.exRole]?[stat] ?? 0;
     }
     return total;
+  }
+
+  double _megaMultOverview(String stat) {
+    if (!_megaActiveOverview) return 1.0;
+    return pair.megaStatMultiplier[stat] ?? 1.0;
+  }
+
+  int _overviewTotal(String stat, int baseStat) {
+    final pot = _potentialBonus()[stat] ?? 0;
+    final beforeMega = baseStat + pot + _exBonusOverview(stat);
+    final mult = _megaMultOverview(stat);
+    return mult != 1.0 ? (beforeMega * mult).ceil() - 1 : beforeMega;
   }
 
   Map<String, int> _interpolatedStats() {
@@ -545,14 +592,9 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: selected
-                ? tabColor
-                : Colors.transparent,
+            color: selected ? tabColor : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: tabColor,
-              width: 1.5,
-            ),
+            border: Border.all(color: tabColor, width: 1.5),
           ),
           alignment: Alignment.center,
           child: Text(
@@ -574,12 +616,21 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     return _typeColors[type.toLowerCase()] ?? Colors.grey;
   }
 
-  String _scaledPower(String rawPower, int moveLevel) {
-    final match = RegExp(r'^(\d+)\s*\(1\)').firstMatch(rawPower);
+  bool get _isEx => _effectiveStarLevel == '5★ EX';
+
+  bool get _syncTechExBoost {
+    if (!_isEx || !pair.hasEx) return false;
+    final role = pair.role.toLowerCase().trim();
+    final exRole = pair.exRole.toLowerCase().trim();
+    return role == 'tech' || (_exRoleActive && exRole == 'tech');
+  }
+
+  String _scaledPower(String rawPower, [int? moveLevel]) {
+    final match = RegExp(r'^(\d+)').firstMatch(rawPower);
     if (match == null) return rawPower;
     final base = int.parse(match.group(1)!);
-    final scaled = (base * (1 + 0.05 * (moveLevel - 1))).floor();
-    return '$scaled';
+    final level = moveLevel ?? widget.moveLevel;
+    return '${(base * (1 + 0.05 * (level - 1))).floor()}';
   }
 
   int _gridBonus(String moveName, String stat) {
@@ -626,6 +677,7 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
           move.type.toLowerCase() == pair.type.toLowerCase() &&
           move.name != teraMoveName &&
           !move.isSync,
+      syncTechBoost: move.isSync && _syncTechExBoost,
     );
   }
 
@@ -642,13 +694,17 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
       displayMoves = [...pair.moves, if (pair.teraMove != null) pair.teraMove!];
       displayPassives = [
         for (int i = 0; i < pair.passives.length; i++)
-          i < pair.teraPassives.length ? pair.teraPassives[i] : pair.passives[i],
+          i < pair.teraPassives.length
+              ? pair.teraPassives[i]
+              : pair.passives[i],
       ];
     } else if (_isVariation && _activeVariation != null) {
       displayMoves = _activeVariation!.applyTo(pair.moves);
       displayPassives = [
         for (int i = 0; i < pair.passives.length; i++)
-          i < _activeVariation!.passives.length ? _activeVariation!.passives[i] : pair.passives[i],
+          i < _activeVariation!.passives.length
+              ? _activeVariation!.passives[i]
+              : pair.passives[i],
       ];
     } else {
       displayMoves = pair.moves;
@@ -698,7 +754,9 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
               if (pair.type.isNotEmpty) _typeChip(pair.type),
             ],
           ),
-          if (pair.hasTera || pair.variations.isNotEmpty)
+          if (pair.hasTera ||
+              pair.variations.isNotEmpty ||
+              pair.megaStatMultiplier.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Row(
@@ -706,11 +764,33 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
                   _formTab('Base', 0),
                   for (int i = 0; i < pair.variations.length; i++) ...[
                     const SizedBox(width: 6),
-                    _formTab(pair.variations[i].formName, i + 1, color: Colors.teal),
+                    _formTab(
+                      pair.variations[i].formName,
+                      i + 1,
+                      color: Colors.teal,
+                    ),
                   ],
                   if (pair.hasTera) ...[
                     const SizedBox(width: 6),
-                    _formTab('Tera', pair.variations.length + 1, color: const Color(0xFF6C5CE7)),
+                    _formTab(
+                      'Tera',
+                      pair.variations.length + 1,
+                      color: const Color(0xFF6C5CE7),
+                    ),
+                  ],
+                  if (pair.megaStatMultiplier.isNotEmpty) ...[
+                    const SizedBox(width: 6),
+                    Builder(
+                      builder: (_) {
+                        int megaIdx = pair.variations.length + 1;
+                        if (pair.hasTera) megaIdx++;
+                        return _formTab(
+                          'Mega',
+                          megaIdx,
+                          color: Colors.deepOrange,
+                        );
+                      },
+                    ),
                   ],
                 ],
               ),
@@ -721,15 +801,25 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
               child: Builder(
                 builder: (_) {
                   final s = _interpolatedStats();
-                  const labels = ['HP', 'Atk', 'Def', 'Sp.Atk', 'Sp.Def', 'Spe'];
+                  const labels = [
+                    'HP',
+                    'Atk',
+                    'Def',
+                    'Sp.Atk',
+                    'Sp.Def',
+                    'Spe',
+                  ];
                   const keys = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
-                  final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
+                  final levels = pair.stats.keys.toList()
+                    ..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
                   if (!levels.contains(_level)) _level = levels.last;
                   final lvIdx = levels.indexOf(_level);
                   return Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.06),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.06),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Column(
@@ -737,55 +827,62 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
                       children: [
                         Row(
                           children: [
-                            const Text('Stats', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                            const Text(
+                              'Stats',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 12,
+                              ),
+                            ),
                             const SizedBox(width: 8),
                             DropdownButton<String>(
                               value: _level,
                               isDense: true,
                               underline: const SizedBox(),
-                              style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Colors.black),
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                              ),
                               items: [
                                 for (final lv in levels)
-                                  DropdownMenuItem(value: lv, child: Text('Lv. $lv')),
+                                  DropdownMenuItem(
+                                    value: lv,
+                                    child: Text('Lv. $lv'),
+                                  ),
                               ],
                               onChanged: (v) => setState(() => _level = v!),
                             ),
                             const Spacer(),
                             DropdownButton<String>(
-                              value: _starLevel,
+                              value: _effectiveStarLevel,
                               isDense: true,
                               underline: const SizedBox(),
-                              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+                              style: const TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                              ),
                               items: [
-                                for (final sl in availableStarLevels(pair.rarity, pair.hasEx))
+                                for (final sl in availableStarLevels(
+                                  pair.rarity,
+                                  pair.hasEx,
+                                ))
                                   DropdownMenuItem(value: sl, child: Text(sl)),
                               ],
-                              onChanged: _exActive ? null : (v) => setState(() => _starLevel = v!),
+                              onChanged: (v) => setState(() => _starLevel = v!),
                             ),
-                            if (pair.hasEx) ...[
-                              const SizedBox(width: 4),
-                              FilterChip(
-                                label: const Text('EX', style: TextStyle(fontSize: 10)),
-                                selected: _exActive,
-                                showCheckmark: false,
-                                onSelected: (v) => setState(() {
-                                  _exActive = v;
-                                  if (v) _starLevel = '5★ 20/20';
-                                  if (!v) _exRoleActive = false;
-                                }),
-                                selectedColor: Colors.deepPurple,
-                                visualDensity: VisualDensity.compact,
-                              ),
-                            ],
                             if (pair.hasEx && pair.exRole.isNotEmpty) ...[
                               const SizedBox(width: 4),
                               FilterChip(
-                                label: Text('EX ${pair.exRole}', style: const TextStyle(fontSize: 10)),
+                                label: Text(
+                                  'EX ${pair.exRole}',
+                                  style: const TextStyle(fontSize: 10),
+                                ),
                                 selected: _exRoleActive,
                                 showCheckmark: false,
                                 onSelected: (v) => setState(() {
                                   _exRoleActive = v;
-                                  if (v) { _exActive = true; _starLevel = '5★ 20/20'; }
                                 }),
                                 selectedColor: Colors.indigo,
                                 visualDensity: VisualDensity.compact,
@@ -798,41 +895,114 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
                           children: [
                             const SizedBox(width: 30),
                             for (int i = 0; i < 6; i++)
-                              Expanded(child: Center(child: Text(labels[i], style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700)))),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    labels[i],
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                         const SizedBox(height: 2),
                         Row(
                           children: [
-                            const SizedBox(width: 30, child: Text('Base', style: TextStyle(fontSize: 9, color: Colors.grey))),
+                            const SizedBox(
+                              width: 30,
+                              child: Text(
+                                'Base',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
                             for (int i = 0; i < 6; i++)
-                              Expanded(child: Center(child: Text('${(s[keys[i]] ?? 0) + _potentialBonus()[keys[i]]! + _exBonusOverview(keys[i])}', style: const TextStyle(fontSize: 11)))),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    '${_overviewTotal(keys[i], s[keys[i]] ?? 0)}',
+                                    style: const TextStyle(fontSize: 11),
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                         Row(
                           children: [
-                            const SizedBox(width: 30, child: Text('Grid', style: TextStyle(fontSize: 9, color: Colors.grey))),
+                            const SizedBox(
+                              width: 30,
+                              child: Text(
+                                'Grid',
+                                style: TextStyle(
+                                  fontSize: 9,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
                             for (int i = 0; i < 6; i++)
-                              Expanded(child: Center(child: Builder(builder: (_) {
-                                final g = _gridBonus2(keys[i]);
-                                return Text(g > 0 ? '+$g' : '-', style: TextStyle(fontSize: 11, color: g > 0 ? Theme.of(context).colorScheme.primary : Colors.grey));
-                              }))),
+                              Expanded(
+                                child: Center(
+                                  child: Builder(
+                                    builder: (_) {
+                                      final g = _gridBonus2(keys[i]);
+                                      return Text(
+                                        g > 0 ? '+$g' : '-',
+                                        style: TextStyle(
+                                          fontSize: 11,
+                                          color: g > 0
+                                              ? Theme.of(
+                                                  context,
+                                                ).colorScheme.primary
+                                              : Colors.grey,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
-                        Builder(builder: (_) {
-                          final pot = _potentialBonus();
-                          return Row(
-                            children: [
-                              const SizedBox(width: 30, child: Text('Total', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w700))),
-                              for (int i = 0; i < 6; i++)
-                                Expanded(child: Center(child: Builder(builder: (_) {
-                                  final base = (s[keys[i]] ?? 0) + pot[keys[i]]! + _exBonusOverview(keys[i]);
-                                  final grid = _gridBonus2(keys[i]);
-                                  return Text('${base + grid}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700));
-                                }))),
-                            ],
-                          );
-                        }),
+                        Builder(
+                          builder: (_) {
+                            return Row(
+                              children: [
+                                const SizedBox(
+                                  width: 30,
+                                  child: Text(
+                                    'Total',
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                                for (int i = 0; i < 6; i++)
+                                  Expanded(
+                                    child: Center(
+                                      child: Builder(
+                                        builder: (_) {
+                                          final base = s[keys[i]] ?? 0;
+                                          final grid = _gridBonus2(keys[i]);
+                                          return Text(
+                                            '${_overviewTotal(keys[i], base) + grid}',
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            );
+                          },
+                        ),
                       ],
                     ),
                   );
@@ -876,6 +1046,7 @@ class _MoveCard extends StatefulWidget {
     required this.accBonus,
     required this.basePower,
     this.teraBoost = false,
+    this.syncTechBoost = false,
   });
   final MoveData move;
   final Color typeColor;
@@ -884,6 +1055,7 @@ class _MoveCard extends StatefulWidget {
   final int accBonus;
   final String basePower;
   final bool teraBoost;
+  final bool syncTechBoost;
   @override
   State<_MoveCard> createState() => _MoveCardState();
 }
@@ -976,9 +1148,12 @@ class _MoveCardState extends State<_MoveCard> {
                         Builder(
                           builder: (_) {
                             final base = basePowerNum ?? 0;
-                            final teraBase = widget.teraBoost
+                            final syncTechBase = widget.syncTechBoost
                                 ? (base * 1.5).floor()
                                 : base;
+                            final teraBase = widget.teraBoost
+                                ? (syncTechBase * 1.5).floor()
+                                : syncTechBase;
                             final finalPower = teraBase + widget.powerBonus;
                             String label;
                             if (widget.teraBoost &&
@@ -988,8 +1163,16 @@ class _MoveCardState extends State<_MoveCard> {
                                   '⚔ ${widget.basePower} × 1.5 = $teraBase + ${widget.powerBonus} = $finalPower';
                             } else if (widget.teraBoost &&
                                 basePowerNum != null) {
+                              label = '⚔ ${widget.basePower} × 1.5 = $teraBase';
+                            } else if (widget.syncTechBoost &&
+                                widget.powerBonus > 0 &&
+                                basePowerNum != null) {
                               label =
-                                  '⚔ ${widget.basePower} × 1.5 = $teraBase';
+                                  '⚔ ${widget.basePower} × 1.5 = $syncTechBase + ${widget.powerBonus} = $finalPower';
+                            } else if (widget.syncTechBoost &&
+                                basePowerNum != null) {
+                              label =
+                                  '⚔ ${widget.basePower} × 1.5 = $syncTechBase';
                             } else if (widget.powerBonus > 0 &&
                                 basePowerNum != null) {
                               label =
@@ -1155,10 +1338,20 @@ class DamageCalculatorPanel extends StatefulWidget {
 
 class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   String _selectedLevel = '200';
-  String _starLevel = '5★ 20/20';
-  bool _isEx = true;
+  String _starLevel = '5★ EX';
   bool _hasExRole = true;
-  int _calcFormIndex = 0; // 0=Base, 1..N=variations, last=Tera
+
+  bool get _isEx => _starLevel == '5★ EX';
+
+  String _scaledPower(String rawPower, [int? moveLevel]) {
+    final match = RegExp(r'^(\d+)').firstMatch(rawPower);
+    if (match == null) return rawPower;
+    final base = int.parse(match.group(1)!);
+    final level = moveLevel ?? widget.moveLevel;
+    return '${(base * (1 + 0.05 * (level - 1))).floor()}';
+  }
+
+  int _calcFormIndex = 0; // 0=Base, 1..N=variations, then Tera, then Mega
   String _selectedZone = '';
   String _selectedTerrain = '';
   String _selectedWeather = '';
@@ -1176,6 +1369,46 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   int _enemySyncBoosts = 0;
   int _playerHpPercent = 100;
   int _enemyHpPercent = 100;
+
+  // Circles state: region -> {physical, special, defensive} -> {active, allyCount}
+  static const _circleRegions = [
+    'Kanto',
+    'Johto',
+    'Hoenn',
+    'Sinnoh',
+    'Unova',
+    'Kalos',
+    'Alola',
+    'Galar',
+    'Paldea',
+    'Pasio',
+  ];
+  final Map<String, Map<String, bool>> _circleActive = {
+    for (final r in _circleRegions)
+      r: {'physical': false, 'special': false, 'defensive': false},
+  };
+  final Map<String, int> _circleAllyCount = {
+    for (final r in _circleRegions) r: 0,
+  };
+
+  List<CircleEffect> _activeCircles() {
+    final list = <CircleEffect>[];
+    for (final region in _circleRegions) {
+      final allies = _circleAllyCount[region]!;
+      for (final entry in _circleActive[region]!.entries) {
+        if (entry.value) {
+          final type = switch (entry.key) {
+            'physical' => CircleType.physical,
+            'special' => CircleType.special,
+            _ => CircleType.defensive,
+          };
+          list.add(CircleEffect(type: type, allyCount: allies));
+        }
+      }
+    }
+    return list;
+  }
+
   final _playerSyncBoostsController = TextEditingController(text: '0');
   final _enemySyncBoostsController = TextEditingController(text: '0');
   final _playerHpPercentController = TextEditingController(text: '100');
@@ -1366,10 +1599,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     'Psychic Terrain': 'Psychic',
     'Grassy Terrain': 'Grass',
   };
-  static const _weatherBoostType = {
-    'Sunny': 'Fire',
-    'Rainy': 'Water',
-  };
+  static const _weatherBoostType = {'Sunny': 'Fire', 'Rainy': 'Water'};
 
   static const Map<String, IconData> _fieldEffectIcons = {
     '': Icons.block,
@@ -1394,7 +1624,6 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     'Hail': Icons.ac_unit,
     'Sandstorm': Icons.filter_drama,
   };
-
 
   bool _isFieldBoosted(String moveType) {
     final moveTypeKey = moveType.toLowerCase();
@@ -1428,24 +1657,74 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     super.dispose();
   }
 
-
-  int _exBonus(String stat) {
-    int total = 0;
-    // Potential bonus from star level
-    total += calcPotentialBonus(baseRarity: widget.pair.rarity, targetStars: _starLevel)[stat] ?? 0;
-    // EX bonuses
-    if (widget.pair.hasEx && _isEx) total += exBaseBonus[stat] ?? 0;
-    if (widget.pair.hasEx && _hasExRole && widget.pair.exRole.isNotEmpty) {
-      total += exRoleBonusMap[widget.pair.exRole]?[stat] ?? 0;
-    }
-    return total;
+  bool get _syncTechExBoost {
+    if (!_isEx || !widget.pair.hasEx) return false;
+    final role = widget.pair.role.toLowerCase().trim();
+    final exRole = widget.pair.exRole.toLowerCase().trim();
+    return role == 'tech' || (_hasExRole && exRole == 'tech');
   }
 
-  bool get _teraActive => widget.pair.hasTera && _calcFormIndex == widget.pair.variations.length + 1;
+  int _potentialBonus(String stat) {
+    return calcPotentialBonus(
+          baseRarity: widget.pair.rarity,
+          targetStars: _starLevel,
+        )[stat] ??
+        0;
+  }
+
+  int _exRoleBonus(String stat) {
+    if (!_isEx ||
+        !widget.pair.hasEx ||
+        !_hasExRole ||
+        widget.pair.exRole.isEmpty)
+      return 0;
+    return exRoleBonusMap[widget.pair.exRole]?[stat] ?? 0;
+  }
+
+  bool get _megaActive {
+    final pair = widget.pair;
+    if (pair.megaStatMultiplier.isEmpty && pair.megaStats.isEmpty) return false;
+    int megaIdx = pair.variations.length + 1;
+    if (pair.hasTera) megaIdx++;
+    return _calcFormIndex == megaIdx;
+  }
+
+  bool get _teraActive =>
+      widget.pair.hasTera &&
+      _calcFormIndex == widget.pair.variations.length + 1;
 
   double _teraStatMult(String stat) {
     if (!_teraActive) return 1.0;
     return widget.pair.teraStatMultiplier[stat] ?? 1.0;
+  }
+
+  double _megaStatMult(String stat) {
+    if (!_megaActive) return 1.0;
+    return widget.pair.megaStatMultiplier[stat] ?? 1.0;
+  }
+
+  double _formStatMult(String stat) {
+    return _teraStatMult(stat) * _megaStatMult(stat);
+  }
+
+  int _calcBaseStat(String stat, int jsonStat) {
+    final beforeMega = jsonStat + _potentialBonus(stat) + _exRoleBonus(stat);
+    final mult = _formStatMult(stat);
+    return mult != 1.0 ? (beforeMega * mult).ceil() - 1 : beforeMega;
+  }
+
+  int _calcBeforeStageStat(String stat, int jsonStat) {
+    final rawBase = jsonStat + _potentialBonus(stat) + _exRoleBonus(stat);
+    final baseWithGear = rawBase + _gridStatBonus(stat) + (_gear[stat] ?? 0);
+    final mult = _formStatMult(stat);
+    return mult != 1.0 ? (baseWithGear * mult).ceil() - 1 : baseWithGear;
+  }
+
+  int _calcTotalStat(String stat, int jsonStat, int stage) {
+    final beforeStage = _calcBeforeStageStat(stat, jsonStat);
+    return floorToInt(
+      beforeStage * statVariation(stage, isSpeed: stat == 'spe'),
+    );
   }
 
   Widget _mitigationCell(int value, ValueChanged<int> onChanged) {
@@ -1503,10 +1782,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           decoration: BoxDecoration(
             color: selected ? tabColor : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: tabColor,
-              width: 1.5,
-            ),
+            border: Border.all(color: tabColor, width: 1.5),
           ),
           alignment: Alignment.center,
           child: Text(
@@ -1560,13 +1836,6 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     return total;
   }
 
-  String _scaledPower(String rawPower) {
-    final match = RegExp(r'^(\d+)').firstMatch(rawPower);
-    if (match == null) return rawPower;
-    final base = int.parse(match.group(1)!);
-    return '${(base * (1 + 0.05 * (widget.moveLevel - 1))).floor()}';
-  }
-
   int _totalBp(MoveData move) {
     final base = int.tryParse(_scaledPower(move.power)) ?? 0;
     final grid = _gridPowerBonus(move.name);
@@ -1579,10 +1848,16 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
         !isTeraMove &&
         move.type.toLowerCase() == widget.pair.type.toLowerCase();
     final afterTera = teraBonus ? (base * 1.5).floor() : base;
+    final afterSyncTech = move.isSync && _syncTechExBoost
+        ? (base * 1.5).floor()
+        : afterTera;
     final isPhysical = move.category.toLowerCase() == 'physical';
-    final boostRank = move.isSync ? 0 : (isPhysical ? _physicalBoostNext : _specialBoostNext);
+    final boostRank = move.isSync
+        ? 0
+        : (isPhysical ? _physicalBoostNext : _specialBoostNext);
     final syncSkill = move.isSync ? _syncMoveBoostNext * 0.1 : 0.0;
-    final inner = ((afterTera + grid) * (1 + syncSkill + boostRank * 0.4)).floor();
+    final inner = ((afterSyncTech + grid) * (1 + syncSkill + boostRank * 0.4))
+        .floor();
     return inner;
   }
 
@@ -1616,13 +1891,21 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   @override
   Widget build(BuildContext context) {
     final pair = widget.pair;
-    final levels = pair.stats.keys.toList()..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
-    if (levels.isNotEmpty && !levels.contains(_selectedLevel)) _selectedLevel = levels.last;
-    final currentStats = pair.stats[_selectedLevel] ?? {};
+    final validStars = availableStarLevels(pair.rarity, pair.hasEx);
+    if (!validStars.contains(_starLevel)) _starLevel = validStars.last;
+    final levels = pair.stats.keys.toList()
+      ..sort((a, b) => int.parse(a).compareTo(int.parse(b)));
+    if (levels.isNotEmpty && !levels.contains(_selectedLevel))
+      _selectedLevel = levels.last;
+    final baseStats = pair.stats[_selectedLevel] ?? {};
+    final currentStats = baseStats;
 
     final isTeraActive = _teraActive;
-    final isVariation = _calcFormIndex > 0 && _calcFormIndex <= pair.variations.length;
-    final activeVariation = isVariation ? pair.variations[_calcFormIndex - 1] : null;
+    final isVariation =
+        _calcFormIndex > 0 && _calcFormIndex <= pair.variations.length;
+    final activeVariation = isVariation
+        ? pair.variations[_calcFormIndex - 1]
+        : null;
 
     // Build display moves based on active form
     List<MoveData> baseMoves;
@@ -1652,7 +1935,13 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               isDense: true,
               items: [
                 for (final lv in levels)
-                  DropdownMenuItem(value: lv, child: Text('Lv. $lv', style: const TextStyle(fontSize: 12))),
+                  DropdownMenuItem(
+                    value: lv,
+                    child: Text(
+                      'Lv. $lv',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
               ],
               onChanged: (v) => setState(() => _selectedLevel = v!),
             )
@@ -1669,37 +1958,31 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
             value: _starLevel,
             isDense: true,
             underline: const SizedBox(),
-            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
             items: [
               for (final sl in availableStarLevels(pair.rarity, pair.hasEx))
                 DropdownMenuItem(value: sl, child: Text(sl)),
             ],
-            onChanged: _isEx ? null : (v) => setState(() => _starLevel = v!),
+            onChanged: (v) => setState(() => _starLevel = v!),
           ),
-          if (pair.hasEx) ...[
-            const SizedBox(width: 6),
-            FilterChip(
-              label: Text('EX (${pair.role})', style: TextStyle(fontSize: 11, color: _isEx ? Colors.white : null)),
-              selected: _isEx,
-              showCheckmark: false,
-              onSelected: (v) => setState(() {
-                _isEx = v;
-                if (v) _starLevel = '5★ 20/20';
-                if (!v) _hasExRole = false;
-              }),
-              selectedColor: Colors.deepPurple,
-              visualDensity: VisualDensity.compact,
-            ),
-          ],
           if (pair.hasEx && pair.exRole.isNotEmpty) ...[
             const SizedBox(width: 6),
             FilterChip(
-              label: Text('EX Role (${pair.exRole})', style: TextStyle(fontSize: 11, color: _hasExRole ? Colors.white : null)),
+              label: Text(
+                'EX Role (${pair.exRole})',
+                style: TextStyle(
+                  fontSize: 11,
+                  color: _hasExRole ? Colors.white : null,
+                ),
+              ),
               selected: _hasExRole,
               showCheckmark: false,
               onSelected: (v) => setState(() {
                 _hasExRole = v;
-                if (v) { _isEx = true; _starLevel = '5★ 20/20'; }
               }),
               selectedColor: Colors.indigo,
               visualDensity: VisualDensity.compact,
@@ -1710,7 +1993,10 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       const SizedBox(height: 8),
 
       // --- Tera toggle (tab style) ---
-      if (pair.hasTera || pair.variations.isNotEmpty)
+      if (pair.hasTera ||
+          pair.variations.isNotEmpty ||
+          pair.megaStatMultiplier.isNotEmpty ||
+          pair.megaStats.isNotEmpty)
         Padding(
           padding: const EdgeInsets.only(bottom: 8),
           child: Row(
@@ -1718,11 +2004,34 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               _calcFormTab('Base', 0),
               for (int i = 0; i < pair.variations.length; i++) ...[
                 const SizedBox(width: 6),
-                _calcFormTab(pair.variations[i].formName, i + 1, color: Colors.teal),
+                _calcFormTab(
+                  pair.variations[i].formName,
+                  i + 1,
+                  color: Colors.teal,
+                ),
               ],
               if (pair.hasTera) ...[
                 const SizedBox(width: 6),
-                _calcFormTab('Tera', pair.variations.length + 1, color: const Color(0xFF6C5CE7)),
+                _calcFormTab(
+                  'Tera',
+                  pair.variations.length + 1,
+                  color: const Color(0xFF6C5CE7),
+                ),
+              ],
+              if (pair.megaStatMultiplier.isNotEmpty ||
+                  pair.megaStats.isNotEmpty) ...[
+                const SizedBox(width: 6),
+                Builder(
+                  builder: (_) {
+                    int megaIdx = pair.variations.length + 1;
+                    if (pair.hasTera) megaIdx++;
+                    return _calcFormTab(
+                      'Mega',
+                      megaIdx,
+                      color: Colors.deepOrange,
+                    );
+                  },
+                ),
               ],
             ],
           ),
@@ -1773,11 +2082,18 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                 child: Row(
                                   children: [
                                     Icon(
-                                      _fieldEffectIcons[zone] ?? Icons.help_outline,
+                                      _fieldEffectIcons[zone] ??
+                                          Icons.help_outline,
                                       size: 16,
                                       color: zone.isNotEmpty
-                                          ? _typeColors[_zoneBoostType[zone]?.toLowerCase()] ?? Theme.of(context).colorScheme.onSurface
-                                          : Theme.of(context).colorScheme.onSurface,
+                                          ? _typeColors[_zoneBoostType[zone]
+                                                    ?.toLowerCase()] ??
+                                                Theme.of(
+                                                  context,
+                                                ).colorScheme.onSurface
+                                          : Theme.of(
+                                              context,
+                                            ).colorScheme.onSurface,
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
@@ -1785,7 +2101,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: zone.isNotEmpty
-                                            ? _typeColors[_zoneBoostType[zone]?.toLowerCase()]
+                                            ? _typeColors[_zoneBoostType[zone]
+                                                  ?.toLowerCase()]
                                             : null,
                                       ),
                                     ),
@@ -1793,7 +2110,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                 ),
                               ),
                           ],
-                          onChanged: (v) => setState(() => _selectedZone = v ?? ''),
+                          onChanged: (v) =>
+                              setState(() => _selectedZone = v ?? ''),
                         ),
                       ),
                     ],
@@ -1825,11 +2143,18 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                 child: Row(
                                   children: [
                                     Icon(
-                                      _fieldEffectIcons[terrain] ?? Icons.help_outline,
+                                      _fieldEffectIcons[terrain] ??
+                                          Icons.help_outline,
                                       size: 16,
                                       color: terrain.isNotEmpty
-                                          ? _typeColors[_terrainBoostType[terrain]?.toLowerCase()] ?? Theme.of(context).colorScheme.onSurface
-                                          : Theme.of(context).colorScheme.onSurface,
+                                          ? _typeColors[_terrainBoostType[terrain]
+                                                    ?.toLowerCase()] ??
+                                                Theme.of(
+                                                  context,
+                                                ).colorScheme.onSurface
+                                          : Theme.of(
+                                              context,
+                                            ).colorScheme.onSurface,
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
@@ -1837,7 +2162,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: terrain.isNotEmpty
-                                            ? _typeColors[_terrainBoostType[terrain]?.toLowerCase()]
+                                            ? _typeColors[_terrainBoostType[terrain]
+                                                  ?.toLowerCase()]
                                             : null,
                                       ),
                                     ),
@@ -1845,7 +2171,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                 ),
                               ),
                           ],
-                          onChanged: (v) => setState(() => _selectedTerrain = v ?? ''),
+                          onChanged: (v) =>
+                              setState(() => _selectedTerrain = v ?? ''),
                         ),
                       ),
                     ],
@@ -1877,11 +2204,18 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                 child: Row(
                                   children: [
                                     Icon(
-                                      _fieldEffectIcons[weather] ?? Icons.help_outline,
+                                      _fieldEffectIcons[weather] ??
+                                          Icons.help_outline,
                                       size: 16,
                                       color: weather.isNotEmpty
-                                          ? _typeColors[_weatherBoostType[weather]?.toLowerCase()] ?? Theme.of(context).colorScheme.onSurface
-                                          : Theme.of(context).colorScheme.onSurface,
+                                          ? _typeColors[_weatherBoostType[weather]
+                                                    ?.toLowerCase()] ??
+                                                Theme.of(
+                                                  context,
+                                                ).colorScheme.onSurface
+                                          : Theme.of(
+                                              context,
+                                            ).colorScheme.onSurface,
                                     ),
                                     const SizedBox(width: 6),
                                     Text(
@@ -1889,7 +2223,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: weather.isNotEmpty
-                                            ? _typeColors[_weatherBoostType[weather]?.toLowerCase()]
+                                            ? _typeColors[_weatherBoostType[weather]
+                                                  ?.toLowerCase()]
                                             : null,
                                       ),
                                     ),
@@ -1897,7 +2232,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                                 ),
                               ),
                           ],
-                          onChanged: (v) => setState(() => _selectedWeather = v ?? ''),
+                          onChanged: (v) =>
+                              setState(() => _selectedWeather = v ?? ''),
                         ),
                       ),
                     ],
@@ -1917,7 +2253,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       ),
       const SizedBox(height: 4),
 
-      // --- Stats table (horizontal: header, base, grid, gear, stage, total) ---
+      // --- Stats table (horizontal: header, base, grid, gear, before stage, stage, total) ---
       if (currentStats.isNotEmpty)
         Container(
           padding: const EdgeInsets.all(8),
@@ -1956,7 +2292,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                   for (final s in _statLabels)
                     Center(
                       child: Text(
-                        '${(currentStats[s] ?? 0) + _exBonus(s)}',
+                        '${_calcBaseStat(s, currentStats[s] ?? 0)}',
                         style: const TextStyle(fontSize: 11),
                       ),
                     ),
@@ -2015,12 +2351,27 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     ),
                 ],
               ),
+              TableRow(
+                children: [
+                  Text('Before Stage', style: labelStyle),
+                  for (final s in _statLabels)
+                    Center(
+                      child: Text(
+                        '${_calcBeforeStageStat(s, currentStats[s] ?? 0)}',
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                    ),
+                ],
+              ),
               // Player stage row
               TableRow(
                 children: [
                   Text('Stage', style: labelStyle),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 2,
+                      vertical: 2,
+                    ),
                     child: SizedBox(
                       height: 24,
                       child: TextField(
@@ -2029,13 +2380,19 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                         style: const TextStyle(fontSize: 11),
                         decoration: const InputDecoration(
                           isDense: true,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 2,
+                            vertical: 4,
+                          ),
                           border: OutlineInputBorder(),
                           suffixText: '%',
                           suffixStyle: TextStyle(fontSize: 9),
                         ),
                         keyboardType: TextInputType.number,
-                        onChanged: (v) => setState(() => _playerHpPercent = (int.tryParse(v) ?? 100).clamp(0, 100)),
+                        onChanged: (v) => setState(
+                          () => _playerHpPercent = (int.tryParse(v) ?? 100)
+                              .clamp(0, 100),
+                        ),
                       ),
                     ),
                   ),
@@ -2055,12 +2412,14 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                   Center(
                     child: Builder(
                       builder: (_) {
-                        final raw =
-                            (currentStats['hp'] ?? 0) +
-                            _exBonus('hp') +
-                            _gridStatBonus('hp') +
-                            (_gear['hp'] ?? 0);
-                        final total = (raw * _playerHpPercent / 100).round();
+                        final total =
+                            (_calcBeforeStageStat(
+                                      'hp',
+                                      currentStats['hp'] ?? 0,
+                                    ) *
+                                    _playerHpPercent /
+                                    100)
+                                .round();
                         return Text(
                           '$total',
                           style: const TextStyle(
@@ -2074,19 +2433,10 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                   for (final s in _statLabels.skip(1))
                     Builder(
                       builder: (_) {
-                        final raw =
-                            (currentStats[s] ?? 0) +
-                            _exBonus(s) +
-                            (_gear[s] ?? 0);
-                        final grid = _gridStatBonus(s);
-                        final total = calcStat(
-                          StatInput(
-                            baseStat: raw,
-                            gridStat: grid,
-                            stage: _playerStages[s] ?? 0,
-                            skillIncrease: _teraStatMult(s),
-                            isSpeed: s == 'spe',
-                          ),
+                        final total = _calcTotalStat(
+                          s,
+                          currentStats[s] ?? 0,
+                          _playerStages[s] ?? 0,
                         );
                         return Center(
                           child: Text(
@@ -2105,102 +2455,242 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           ),
         ),
       const SizedBox(height: 6),
-      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Text('Acc: ', style: labelStyle),
+            _stageCell(
+              _playerStages['acc'] ?? 0,
+              (v) => setState(() => _playerStages['acc'] = v),
+            ),
+            const SizedBox(width: 8),
+            Text('Eva: ', style: labelStyle),
+            _stageCell(
+              _playerStages['eva'] ?? 0,
+              (v) => setState(() => _playerStages['eva'] = v),
+            ),
+            const SizedBox(width: 8),
+            Text('Crit: ', style: labelStyle),
+            DropdownButton<int>(
+              value: _playerStages['crit'] ?? 0,
+              isDense: true,
+              underline: const SizedBox(),
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                color: (_playerStages['crit'] ?? 0) > 0
+                    ? Colors.blue
+                    : Colors.black,
+              ),
+              items: [
+                for (int i = 0; i <= 3; i++)
+                  DropdownMenuItem(value: i, child: Text('$i')),
+              ],
+              onChanged: (v) => setState(() => _playerStages['crit'] = v!),
+            ),
+            const SizedBox(width: 8),
+            Text('Sync Buffs: ', style: labelStyle),
+            SizedBox(
+              width: 40,
+              height: 24,
+              child: TextField(
+                controller: _playerSyncBoostsController,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 11),
+                decoration: const InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 2,
+                    vertical: 4,
+                  ),
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+                onChanged: (v) =>
+                    setState(() => _playerSyncBoosts = int.tryParse(v) ?? 0),
+              ),
+            ),
+            const SizedBox(width: 4),
+            Text(
+              '×${(1 + _playerSyncBoosts * 0.5).toStringAsFixed(1)}',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: _playerSyncBoosts > 0 ? Colors.blue : null,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text('Status Cond: ', style: labelStyle),
+            DropdownButton<String>(
+              value: _playerStatusCondition,
+              isDense: true,
+              style: TextStyle(
+                fontSize: 12,
+                color: _playerStatusCondition.isNotEmpty
+                    ? _statusColor(_playerStatusCondition)
+                    : Colors.black,
+              ),
+              items: [
+                const DropdownMenuItem(
+                  value: '',
+                  child: Text('None', style: TextStyle(fontSize: 12)),
+                ),
+                for (final s in [
+                  'burned',
+                  'paralyzed',
+                  'frozen',
+                  'asleep',
+                  'poisoned',
+                  'badly poisoned',
+                ])
+                  DropdownMenuItem(
+                    value: s,
+                    child: Text(
+                      _statusLabel(s),
+                      style: TextStyle(fontSize: 12, color: _statusColor(s)),
+                    ),
+                  ),
+              ],
+              onChanged: (v) => setState(() => _playerStatusCondition = v!),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(height: 6),
+
+      // --- Circles ---
+      Text(
+        'Circles',
+        style: TextStyle(
+          fontWeight: FontWeight.w700,
+          fontSize: 12,
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
+      ),
+      const SizedBox(height: 4),
+      Wrap(
+        spacing: 6,
+        runSpacing: 4,
         children: [
-          Text('Acc: ', style: labelStyle),
-          _stageCell(
-            _playerStages['acc'] ?? 0,
-            (v) => setState(() => _playerStages['acc'] = v),
-          ),
-          const SizedBox(width: 8),
-          Text('Eva: ', style: labelStyle),
-          _stageCell(
-            _playerStages['eva'] ?? 0,
-            (v) => setState(() => _playerStages['eva'] = v),
-          ),
-          const SizedBox(width: 8),
-          Text('Crit: ', style: labelStyle),
-          DropdownButton<int>(
-            value: _playerStages['crit'] ?? 0,
-            isDense: true,
-            underline: const SizedBox(),
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.w600,
-              color: (_playerStages['crit'] ?? 0) > 0
-                  ? Colors.blue
-                  : Colors.black,
-            ),
-            items: [
-              for (int i = 0; i <= 3; i++)
-                DropdownMenuItem(value: i, child: Text('$i')),
-            ],
-            onChanged: (v) => setState(() => _playerStages['crit'] = v!),
-          ),
-          const SizedBox(width: 8),
-          Text('Sync Buffs: ', style: labelStyle),
-          SizedBox(
-            width: 40,
-            height: 24,
-            child: TextField(
-              controller: _playerSyncBoostsController,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 11),
-              decoration: const InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.number,
-              onChanged: (v) => setState(() => _playerSyncBoosts = int.tryParse(v) ?? 0),
-            ),
-          ),
-          const SizedBox(width: 4),
-          Text(
-            '×${(1 + _playerSyncBoosts * 0.5).toStringAsFixed(1)}',
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: _playerSyncBoosts > 0 ? Colors.blue : null,
-            ),
-          ),
-          const SizedBox(width: 8),
-          Text('Status Cond: ', style: labelStyle),
-          DropdownButton<String>(
-            value: _playerStatusCondition,
-            isDense: true,
-            style: TextStyle(
-              fontSize: 12,
-              color: _playerStatusCondition.isNotEmpty
-                  ? _statusColor(_playerStatusCondition)
-                  : Colors.black,
-            ),
-            items: [
-              const DropdownMenuItem(
-                value: '',
-                child: Text('None', style: TextStyle(fontSize: 12)),
-              ),
-              for (final s in [
-                'burned',
-                'paralyzed',
-                'frozen',
-                'asleep',
-                'poisoned',
-                'badly poisoned',
-              ])
-                DropdownMenuItem(
-                  value: s,
-                  child: Text(
-                    _statusLabel(s),
-                    style: TextStyle(fontSize: 12, color: _statusColor(s)),
+          for (final region in _circleRegions)
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  region,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-            ],
-            onChanged: (v) => setState(() => _playerStatusCondition = v!),
-          ),
+                const SizedBox(height: 2),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    for (final kind in ['physical', 'special', 'defensive'])
+                      GestureDetector(
+                        onTap: () => setState(
+                          () => _circleActive[region]![kind] =
+                              !_circleActive[region]![kind]!,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 1),
+                          child: Opacity(
+                            opacity: _circleActive[region]![kind]! ? 1.0 : 0.3,
+                            child: Image.asset(
+                              kind == 'physical'
+                                  ? 'assets/pomatools.github.io-master/assets/img/battle/CATE_001.png'
+                                  : kind == 'special'
+                                  ? 'assets/pomatools.github.io-master/assets/img/battle/CATE_002.png'
+                                  : 'assets/pomatools.github.io-master/assets/img/battle/CATE_004.png',
+                              width: 16,
+                              height: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+                SizedBox(
+                  height: 24,
+                  child: DropdownButton<int>(
+                    value: _circleAllyCount[region]!,
+                    isDense: true,
+                    underline: const SizedBox(),
+                    style: const TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                    items: [
+                      for (int j = 0; j <= 3; j++)
+                        DropdownMenuItem(value: j, child: Text('$j')),
+                    ],
+                    onChanged: (v) =>
+                        setState(() => _circleAllyCount[region] = v!),
+                  ),
+                ),
+              ],
+            ),
         ],
-      ),),
-      
+      ),
+      Builder(
+        builder: (_) {
+          final active = _activeCircles();
+          if (active.isEmpty) return const SizedBox();
+          final offPhys = calcCircleOffenseMult(active, true);
+          final offSpec = calcCircleOffenseMult(active, false);
+          final defPhys = calcCircleDefenseMult(active, true);
+          final defSpec = calcCircleDefenseMult(active, false);
+          return Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: Wrap(
+              spacing: 12,
+              children: [
+                if (offPhys != 1.0)
+                  Text(
+                    'Phys \u00d7${offPhys.toStringAsFixed(3)}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.red.shade700,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                if (offSpec != 1.0)
+                  Text(
+                    'Spec \u00d7${offSpec.toStringAsFixed(3)}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.blue.shade700,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                if (defPhys != 1.0)
+                  Text(
+                    'Phys DR \u00d7${defPhys.toStringAsFixed(3)}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.green.shade700,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                if (defSpec != 1.0)
+                  Text(
+                    'Spec DR \u00d7${defSpec.toStringAsFixed(3)}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.green.shade700,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+      ),
+      const SizedBox(height: 6),
+
       Text(
         'Enemy',
         style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
@@ -2292,30 +2782,41 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               children: [
                 Text('Stage', style: labelStyle),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-                    child: SizedBox(
-                      height: 24,
-                      child: TextField(
-                        controller: _enemyHpPercentController,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 11),
-                        decoration: const InputDecoration(
-                          isDense: true,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
-                          border: OutlineInputBorder(),
-                          suffixText: '%',
-                          suffixStyle: TextStyle(fontSize: 9),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 2,
+                    vertical: 2,
+                  ),
+                  child: SizedBox(
+                    height: 24,
+                    child: TextField(
+                      controller: _enemyHpPercentController,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 11),
+                      decoration: const InputDecoration(
+                        isDense: true,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 2,
+                          vertical: 4,
                         ),
-                        keyboardType: TextInputType.number,
-                        onChanged: (v) => setState(() => _enemyHpPercent = (int.tryParse(v) ?? 100).clamp(0, 100)),
+                        border: OutlineInputBorder(),
+                        suffixText: '%',
+                        suffixStyle: TextStyle(fontSize: 9),
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (v) => setState(
+                        () => _enemyHpPercent = (int.tryParse(v) ?? 100).clamp(
+                          0,
+                          100,
+                        ),
                       ),
                     ),
                   ),
-                  for (final s in _statLabels.skip(1))
-                    _stageCell(
-                      _enemyStages[s] ?? 0,
-                      (v) => setState(() => _enemyStages[s] = v),
-                    ),
+                ),
+                for (final s in _statLabels.skip(1))
+                  _stageCell(
+                    _enemyStages[s] ?? 0,
+                    (v) => setState(() => _enemyStages[s] = v),
+                  ),
               ],
             ),
             TableRow(
@@ -2333,107 +2834,118 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
         ),
       ),
       const SizedBox(height: 6),
-      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
-        children: [
-          Text('Acc: ', style: labelStyle),
-          _stageCell(
-            _enemyStages['acc'] ?? 0,
-            (v) => setState(() => _enemyStages['acc'] = v),
-          ),
-          const SizedBox(width: 8),
-          Text('Eva: ', style: labelStyle),
-          _stageCell(
-            _enemyStages['eva'] ?? 0,
-            (v) => setState(() => _enemyStages['eva'] = v),
-          ),
-          const SizedBox(width: 8),
-          Text('Sync Buffs: ', style: labelStyle),
-          SizedBox(
-            width: 40,
-            height: 24,
-            child: TextField(
-              controller: _enemySyncBoostsController,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 11),
-              decoration: const InputDecoration(
-                isDense: true,
-                contentPadding: EdgeInsets.symmetric(horizontal: 2, vertical: 4),
-                border: OutlineInputBorder(),
-              ),
-              keyboardType: TextInputType.number,
-              onChanged: (v) => setState(() => _enemySyncBoosts = int.tryParse(v) ?? 0),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Text('Acc: ', style: labelStyle),
+            _stageCell(
+              _enemyStages['acc'] ?? 0,
+              (v) => setState(() => _enemyStages['acc'] = v),
             ),
-          ),
-          const SizedBox(width: 4),
-          Text(
-            '×${(1 + _enemySyncBoosts * 0.5).toStringAsFixed(1)}',
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: _enemySyncBoosts > 0 ? Colors.red : null,
+            const SizedBox(width: 8),
+            Text('Eva: ', style: labelStyle),
+            _stageCell(
+              _enemyStages['eva'] ?? 0,
+              (v) => setState(() => _enemyStages['eva'] = v),
             ),
-          ),
-          const SizedBox(width: 8),
-          Text('Status Cond: ', style: labelStyle),
-          DropdownButton<String>(
-            value: _enemyStatusCondition,
-            isDense: true,
-            style: TextStyle(
-              fontSize: 12,
-              color: _enemyStatusCondition.isNotEmpty
-                  ? _statusColor(_enemyStatusCondition)
-                  : Colors.black,
-            ),
-            items: [
-              const DropdownMenuItem(
-                value: '',
-                child: Text('None', style: TextStyle(fontSize: 12)),
-              ),
-              for (final s in [
-                'burned',
-                'paralyzed',
-                'frozen',
-                'asleep',
-                'poisoned',
-                'badly poisoned',
-              ])
-                DropdownMenuItem(
-                  value: s,
-                  child: Text(
-                    _statusLabel(s),
-                    style: TextStyle(fontSize: 12, color: _statusColor(s)),
+            const SizedBox(width: 8),
+            Text('Sync Buffs: ', style: labelStyle),
+            SizedBox(
+              width: 40,
+              height: 24,
+              child: TextField(
+                controller: _enemySyncBoostsController,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 11),
+                decoration: const InputDecoration(
+                  isDense: true,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 2,
+                    vertical: 4,
                   ),
+                  border: OutlineInputBorder(),
                 ),
-            ],
-            onChanged: (v) => setState(() => _enemyStatusCondition = v!),
-          ),
-        ],
-      ),),
-      const SizedBox(height: 4),
-      SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
-        children: [
-          Text('Status Change: ', style: labelStyle),
-          const SizedBox(width: 4),
-          for (final entry in _enemyVolatile.entries) ...[
-            FilterChip(
-              label: Text(
-                _statusLabel(entry.key),
-                style: TextStyle(
-                  fontSize: 10,
-                  color: entry.value ? Colors.white : null,
-                ),
+                keyboardType: TextInputType.number,
+                onChanged: (v) =>
+                    setState(() => _enemySyncBoosts = int.tryParse(v) ?? 0),
               ),
-              selected: entry.value,
-              showCheckmark: false,
-              onSelected: (v) => setState(() => _enemyVolatile[entry.key] = v),
-              selectedColor: _statusColor(entry.key),
-              visualDensity: VisualDensity.compact,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             const SizedBox(width: 4),
+            Text(
+              '×${(1 + _enemySyncBoosts * 0.5).toStringAsFixed(1)}',
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+                color: _enemySyncBoosts > 0 ? Colors.red : null,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Text('Status Cond: ', style: labelStyle),
+            DropdownButton<String>(
+              value: _enemyStatusCondition,
+              isDense: true,
+              style: TextStyle(
+                fontSize: 12,
+                color: _enemyStatusCondition.isNotEmpty
+                    ? _statusColor(_enemyStatusCondition)
+                    : Colors.black,
+              ),
+              items: [
+                const DropdownMenuItem(
+                  value: '',
+                  child: Text('None', style: TextStyle(fontSize: 12)),
+                ),
+                for (final s in [
+                  'burned',
+                  'paralyzed',
+                  'frozen',
+                  'asleep',
+                  'poisoned',
+                  'badly poisoned',
+                ])
+                  DropdownMenuItem(
+                    value: s,
+                    child: Text(
+                      _statusLabel(s),
+                      style: TextStyle(fontSize: 12, color: _statusColor(s)),
+                    ),
+                  ),
+              ],
+              onChanged: (v) => setState(() => _enemyStatusCondition = v!),
+            ),
           ],
-        ],
-      ),),
+        ),
+      ),
+      const SizedBox(height: 4),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Text('Status Change: ', style: labelStyle),
+            const SizedBox(width: 4),
+            for (final entry in _enemyVolatile.entries) ...[
+              FilterChip(
+                label: Text(
+                  _statusLabel(entry.key),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: entry.value ? Colors.white : null,
+                  ),
+                ),
+                selected: entry.value,
+                showCheckmark: false,
+                onSelected: (v) =>
+                    setState(() => _enemyVolatile[entry.key] = v),
+                selectedColor: _statusColor(entry.key),
+                visualDensity: VisualDensity.compact,
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              const SizedBox(width: 4),
+            ],
+          ],
+        ),
+      ),
       const SizedBox(height: 8),
 
       Row(
@@ -2500,66 +3012,81 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
           style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
         ),
         const SizedBox(height: 6),
-        SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(
-          children: [
-            Text('Phys Up Next: ', style: labelStyle),
-            DropdownButton<int>(
-              value: _physicalBoostNext,
-              isDense: true,
-              underline: const SizedBox(),
-              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
-              items: [
-                for (int i = 0; i <= 10; i++)
-                  DropdownMenuItem(value: i, child: Text('$i')),
-              ],
-              onChanged: (v) => setState(() => _physicalBoostNext = v!),
-            ),
-            const SizedBox(width: 8),
-            Text('Spec Up Next: ', style: labelStyle),
-            DropdownButton<int>(
-              value: _specialBoostNext,
-              isDense: true,
-              underline: const SizedBox(),
-              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
-              items: [
-                for (int i = 0; i <= 10; i++)
-                  DropdownMenuItem(value: i, child: Text('$i')),
-              ],
-              onChanged: (v) => setState(() => _specialBoostNext = v!),
-            ),
-            const SizedBox(width: 8),
-            Text('Sync Up Next: ', style: labelStyle),
-            DropdownButton<int>(
-              value: _syncMoveBoostNext,
-              isDense: true,
-              underline: const SizedBox(),
-              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.black),
-              items: [
-                for (int i = 0; i <= 10; i++)
-                  DropdownMenuItem(value: i, child: Text('$i')),
-              ],
-              onChanged: (v) => setState(() => _syncMoveBoostNext = v!),
-            ),
-            const SizedBox(width: 8),
-            FilterChip(
-              label: const Text('SE Up Next', style: TextStyle(fontSize: 10)),
-              selected: _superEffectiveNext,
-              showCheckmark: false,
-              onSelected: (v) => setState(() => _superEffectiveNext = v),
-              selectedColor: Colors.orange,
-              visualDensity: VisualDensity.compact,
-            ),
-            const SizedBox(width: 8),
-            FilterChip(
-              label: const Text('Critical', style: TextStyle(fontSize: 10)),
-              selected: _isCriticalMove,
-              showCheckmark: false,
-              onSelected: (v) => setState(() => _isCriticalMove = v),
-              selectedColor: Colors.red,
-              visualDensity: VisualDensity.compact,
-            ),
-          ],
-        ),),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Text('Phys Up Next: ', style: labelStyle),
+              DropdownButton<int>(
+                value: _physicalBoostNext,
+                isDense: true,
+                underline: const SizedBox(),
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+                items: [
+                  for (int i = 0; i <= 10; i++)
+                    DropdownMenuItem(value: i, child: Text('$i')),
+                ],
+                onChanged: (v) => setState(() => _physicalBoostNext = v!),
+              ),
+              const SizedBox(width: 8),
+              Text('Spec Up Next: ', style: labelStyle),
+              DropdownButton<int>(
+                value: _specialBoostNext,
+                isDense: true,
+                underline: const SizedBox(),
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+                items: [
+                  for (int i = 0; i <= 10; i++)
+                    DropdownMenuItem(value: i, child: Text('$i')),
+                ],
+                onChanged: (v) => setState(() => _specialBoostNext = v!),
+              ),
+              const SizedBox(width: 8),
+              Text('Sync Up Next: ', style: labelStyle),
+              DropdownButton<int>(
+                value: _syncMoveBoostNext,
+                isDense: true,
+                underline: const SizedBox(),
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+                items: [
+                  for (int i = 0; i <= 10; i++)
+                    DropdownMenuItem(value: i, child: Text('$i')),
+                ],
+                onChanged: (v) => setState(() => _syncMoveBoostNext = v!),
+              ),
+              const SizedBox(width: 8),
+              FilterChip(
+                label: const Text('SE Up Next', style: TextStyle(fontSize: 10)),
+                selected: _superEffectiveNext,
+                showCheckmark: false,
+                onSelected: (v) => setState(() => _superEffectiveNext = v),
+                selectedColor: Colors.orange,
+                visualDensity: VisualDensity.compact,
+              ),
+              const SizedBox(width: 8),
+              FilterChip(
+                label: const Text('Critical', style: TextStyle(fontSize: 10)),
+                selected: _isCriticalMove,
+                showCheckmark: false,
+                onSelected: (v) => setState(() => _isCriticalMove = v),
+                selectedColor: Colors.red,
+                visualDensity: VisualDensity.compact,
+              ),
+            ],
+          ),
+        ),
         const SizedBox(height: 6),
         for (final move in displayMoves)
           Builder(
@@ -2571,17 +3098,13 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               final defStat = _enemy[isPhysical ? 'def' : 'spd'] ?? 100;
               List<int>? rolls;
               if (bp != null && bp > 0) {
-                final rawAtk =
-                    (currentStats[atkKey] ?? 0) +
-                    _exBonus(atkKey) +
-                    (_gear[atkKey] ?? 0);
-                final gridAtk = _gridStatBonus(atkKey);
                 final atkTotal = calcStat(
                   StatInput(
-                    baseStat: rawAtk,
-                    gridStat: gridAtk,
+                    baseStat: _calcBeforeStageStat(
+                      atkKey,
+                      currentStats[atkKey] ?? 0,
+                    ),
                     stage: _playerStages[atkKey] ?? 0,
-                    skillIncrease: _teraStatMult(atkKey),
                   ),
                 );
                 final defKey = isPhysical ? 'def' : 'spd';
@@ -2603,13 +3126,16 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 final stellarRebuff = moveType == 'Stellar'
                     ? _stellarRebuff
                     : 0;
-                final zoneBoost = _selectedZone.isNotEmpty &&
+                final zoneBoost =
+                    _selectedZone.isNotEmpty &&
                     _zoneBoostType[_selectedZone]?.toLowerCase() ==
                         moveType.toLowerCase();
-                final terrainBoost = _selectedTerrain.isNotEmpty &&
+                final terrainBoost =
+                    _selectedTerrain.isNotEmpty &&
                     _terrainBoostType[_selectedTerrain]?.toLowerCase() ==
                         moveType.toLowerCase();
-                final weatherBoost = _selectedWeather.isNotEmpty &&
+                final weatherBoost =
+                    _selectedWeather.isNotEmpty &&
                     _weatherBoostType[_selectedWeather]?.toLowerCase() ==
                         moveType.toLowerCase();
                 final result = calcDamage(
@@ -2637,6 +3163,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     weatherEx: _isWeatherEx,
                     physicalBreak: isPhysical && _physicalBreak,
                     specialBreak: !isPhysical && _specialBreak,
+                    isPhysicalMove: isPhysical,
+                    circles: _activeCircles(),
                   ),
                 );
                 rolls = result.rolls;
@@ -2651,16 +3179,32 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               final tooltipLines = <String>[];
               if (bp != null) {
                 tooltipLines.add('Base Power: ${_scaledPower(move.power)}');
+                if (move.isSync && _syncTechExBoost) {
+                  tooltipLines.add('6EX Tech Sync Move ×1.5');
+                }
                 if (moveTeraBoost) tooltipLines.add('Tera Boost ×1.5');
                 final gp = _gridPowerBonus(move.name);
                 if (gp > 0) tooltipLines.add('Grid Power: +$gp (additive)');
-                final boostRank = move.isSync ? 0 : (isPhysical ? _physicalBoostNext : _specialBoostNext);
-                if (boostRank > 0) tooltipLines.add('${isPhysical ? 'Phys' : 'Spec'} Up Next +${(boostRank * 40).toStringAsFixed(0)}%');
-                if (move.isSync && _syncMoveBoostNext > 0) tooltipLines.add('Sync Up Next +${(_syncMoveBoostNext * 10).toStringAsFixed(0)}%');
-                
+                final boostRank = move.isSync
+                    ? 0
+                    : (isPhysical ? _physicalBoostNext : _specialBoostNext);
+                if (boostRank > 0)
+                  tooltipLines.add(
+                    '${isPhysical ? 'Phys' : 'Spec'} Up Next +${(boostRank * 40).toStringAsFixed(0)}%',
+                  );
+                if (move.isSync && _syncMoveBoostNext > 0)
+                  tooltipLines.add(
+                    'Sync Up Next +${(_syncMoveBoostNext * 10).toStringAsFixed(0)}%',
+                  );
               }
-              final hasBpMod = moveTeraBoost || _gridPowerBonus(move.name) > 0 ||
-                  (move.isSync ? _syncMoveBoostNext > 0 : (isPhysical ? _physicalBoostNext > 0 : _specialBoostNext > 0));
+              final hasBpMod =
+                  moveTeraBoost ||
+                  _gridPowerBonus(move.name) > 0 ||
+                  (move.isSync
+                      ? _syncMoveBoostNext > 0
+                      : (isPhysical
+                            ? _physicalBoostNext > 0
+                            : _specialBoostNext > 0));
               final baseBpVal = int.tryParse(_scaledPower(move.power));
               return _CalcMoveCard(
                 move: move,
@@ -2668,7 +3212,17 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 baseBp: baseBpVal,
                 hasBpMod: hasBpMod,
                 teraBoost: moveTeraBoost,
-                atkStat: rolls != null ? calcStat(StatInput(baseStat: (currentStats[atkKey] ?? 0) + _exBonus(atkKey) + (_gear[atkKey] ?? 0), gridStat: _gridStatBonus(atkKey), stage: _playerStages[atkKey] ?? 0, skillIncrease: _teraStatMult(atkKey))) : null,
+                atkStat: rolls != null
+                    ? calcStat(
+                        StatInput(
+                          baseStat: _calcBeforeStageStat(
+                            atkKey,
+                            currentStats[atkKey] ?? 0,
+                          ),
+                          stage: _playerStages[atkKey] ?? 0,
+                        ),
+                      )
+                    : null,
                 rolls: rolls,
                 enemyHp: ((_enemy['hp'] ?? 1) * _enemyHpPercent / 100).round(),
                 tooltipText: tooltipLines.join('\n'),
@@ -2813,9 +3367,13 @@ class _CalcMoveCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 6),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: typeColor?.withValues(alpha: 0.12) ?? Theme.of(context).colorScheme.surface,
+          color:
+              typeColor?.withValues(alpha: 0.12) ??
+              Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(6),
-          border: Border.all(color: typeColor?.withValues(alpha: 0.5) ?? Colors.grey.shade300),
+          border: Border.all(
+            color: typeColor?.withValues(alpha: 0.5) ?? Colors.grey.shade300,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2823,21 +3381,54 @@ class _CalcMoveCard extends StatelessWidget {
             // Row 1: Base: [name] [category] [%hp]
             Row(
               children: [
-                Text('', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3))),
+                Text(
+                  '',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.3),
+                  ),
+                ),
                 if (move.isSync)
                   Padding(
                     padding: const EdgeInsets.only(right: 4),
-                    child: Icon(Icons.star, size: 12, color: Colors.purple.shade300),
+                    child: Icon(
+                      Icons.star,
+                      size: 12,
+                      color: Colors.purple.shade300,
+                    ),
                   ),
                 Expanded(
-                  child: Text(move.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12)),
+                  child: Text(
+                    move.name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 12,
+                    ),
+                  ),
                 ),
                 if (move.category.isNotEmpty)
-                  Text(move.category, style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
+                  Text(
+                    move.category,
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.5),
+                    ),
+                  ),
                 if (pctLabel != null)
                   Padding(
                     padding: const EdgeInsets.only(left: 6),
-                    child: Text(pctLabel, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.primary)),
+                    child: Text(
+                      pctLabel,
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   ),
               ],
             ),
@@ -2848,14 +3439,61 @@ class _CalcMoveCard extends StatelessWidget {
                 child: Row(
                   children: [
                     if (atkStat != null)
-                      Text('Stat: $atkStat - ', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
-                    Text('Power: ', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
+                      Text(
+                        'Stat: $atkStat - ',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.6),
+                        ),
+                      ),
+                    Text(
+                      'Power: ',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                    ),
                     if (hasBpMod && baseBp != null) ...[
-                      Text('$baseBp', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface)),
-                      Text(' \u2192 ', style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
-                      Text('$totalBp', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: teraBoost ? const Color(0xFF6C5CE7) : Theme.of(context).colorScheme.primary)),
+                      Text(
+                        '$baseBp',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                      Text(
+                        ' \u2192 ',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withValues(alpha: 0.5),
+                        ),
+                      ),
+                      Text(
+                        '$totalBp',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: teraBoost
+                              ? const Color(0xFF6C5CE7)
+                              : Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
                     ] else
-                      Text('$totalBp', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface)),
+                      Text(
+                        '$totalBp',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -2876,7 +3514,9 @@ class _CalcMoveCard extends StatelessWidget {
                               : FontWeight.normal,
                           color: i == rolls!.length - 1
                               ? Theme.of(context).colorScheme.primary
-                              : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                              : Theme.of(
+                                  context,
+                                ).colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
                       ),
                   ],
@@ -3150,7 +3790,9 @@ class _PairPickerDialogState extends State<_PairPickerDialog> {
       }
     }
     filtered.sort((a, b) {
-      final cmp = widget.pairs[a].displayName.compareTo(widget.pairs[b].displayName);
+      final cmp = widget.pairs[a].displayName.compareTo(
+        widget.pairs[b].displayName,
+      );
       return _ascending ? cmp : -cmp;
     });
 
@@ -3159,7 +3801,10 @@ class _PairPickerDialogState extends State<_PairPickerDialog> {
         children: [
           const Expanded(child: Text('Select character')),
           IconButton(
-            icon: Icon(_ascending ? Icons.arrow_upward : Icons.arrow_downward, size: 18),
+            icon: Icon(
+              _ascending ? Icons.arrow_upward : Icons.arrow_downward,
+              size: 18,
+            ),
             tooltip: _ascending ? 'A-Z' : 'Z-A',
             onPressed: () => setState(() => _ascending = !_ascending),
           ),
@@ -3192,9 +3837,15 @@ class _PairPickerDialogState extends State<_PairPickerDialog> {
               final pair = widget.pairs[index];
               return ListTile(
                 dense: true,
-                title: Text(pair.displayName, style: const TextStyle(fontSize: 13)),
+                title: Text(
+                  pair.displayName,
+                  style: const TextStyle(fontSize: 13),
+                ),
                 subtitle: Text(
-                  [if (pair.role.isNotEmpty) pair.role, if (pair.type.isNotEmpty) pair.type].join(' | '),
+                  [
+                    if (pair.role.isNotEmpty) pair.role,
+                    if (pair.type.isNotEmpty) pair.type,
+                  ].join(' | '),
                   style: const TextStyle(fontSize: 11),
                 ),
                 onTap: () => widget.onSelect(index),
@@ -3476,6 +4127,8 @@ class SyncPairData {
     this.teraPassives = const [],
     this.stats = const {},
     this.teraStatMultiplier = const {},
+    this.megaStatMultiplier = const {},
+    this.megaStats = const {},
     this.formStats = const {},
     this.variations = const [],
   });
@@ -3499,8 +4152,10 @@ class SyncPairData {
   final List<PassiveData> teraPassives;
   final Map<String, Map<String, int>>
   stats; // level -> {hp, atk, def, spa, spd, spe}
-  final Map<String, double>
-  teraStatMultiplier; // stat -> multiplier (e.g. 1.1 for 10% boost)
+  final Map<String, double> teraStatMultiplier;
+  final Map<String, double> megaStatMultiplier;
+  final Map<String, Map<String, int>>
+  megaStats; // level -> {hp, atk, def, spa, spd, spe} // stat -> multiplier (e.g. 1.1 for 10% boost)
   final Map<String, Map<String, Map<String, int>>>
   formStats; // formName -> level -> {hp, atk, def, spa, spd, spe}
   final List<VariationData> variations;
@@ -3642,6 +4297,8 @@ Future<ParsedData> _loadData() async {
           teraPassives: teraPassives,
           stats: stats,
           teraStatMultiplier: _parseTeraStatMultiplier(j),
+          megaStatMultiplier: _parseMegaStatMultiplier(j),
+          megaStats: _parseMegaStats(j),
           formStats: _parseFormStats(j),
           variations: _parseVariationData(j),
         );
@@ -3659,7 +4316,9 @@ Map<String, double> _parseTeraStatMultiplier(Map<String, dynamic> j) {
   final teraPassives = j['teraPassives'] as List? ?? [];
   for (final p in teraPassives) {
     final name = (p['name'] ?? '') as String;
-    final match = RegExp(r'While S-Tera:\s*(\d)\s*Stats.*?(\d+)$').firstMatch(name);
+    final match = RegExp(
+      r'While S-Tera:\s*(\d)\s*Stats.*?(\d+)$',
+    ).firstMatch(name);
     if (match != null) {
       final count = int.parse(match.group(1)!);
       final value = int.parse(match.group(2)!);
@@ -3679,7 +4338,24 @@ Map<String, double> _parseTeraStatMultiplier(Map<String, dynamic> j) {
   return result;
 }
 
-Map<String, Map<String, Map<String, int>>> _parseFormStats(Map<String, dynamic> j) {
+Map<String, double> _parseMegaStatMultiplier(Map<String, dynamic> j) {
+  final raw = j['megaStatMultiplier'] as Map<String, dynamic>? ?? {};
+  return raw.map((k, v) => MapEntry(k, (v as num).toDouble()));
+}
+
+Map<String, Map<String, int>> _parseMegaStats(Map<String, dynamic> j) {
+  final raw = j['megaStats'] as Map<String, dynamic>? ?? {};
+  final result = <String, Map<String, int>>{};
+  for (final entry in raw.entries) {
+    final m = entry.value as Map<String, dynamic>;
+    result[entry.key] = m.map((k, v) => MapEntry(k, (v as num).toInt()));
+  }
+  return result;
+}
+
+Map<String, Map<String, Map<String, int>>> _parseFormStats(
+  Map<String, dynamic> j,
+) {
   final result = <String, Map<String, Map<String, int>>>{};
   final formStatsRaw = j['formStats'] as Map<String, dynamic>? ?? {};
   for (final formEntry in formStatsRaw.entries) {
@@ -3697,16 +4373,35 @@ Map<String, Map<String, Map<String, int>>> _parseFormStats(Map<String, dynamic> 
 List<VariationData> _parseVariationData(Map<String, dynamic> j) {
   final raw = j['variations'] as List? ?? [];
   return raw.map((v) {
-    final moves = (v['moves'] as List? ?? []).map((m) => MoveData(
-      name: m['name'] ?? '', type: m['type'] ?? '', category: m['category'] ?? '',
-      power: m['power'] ?? '', accuracy: m['accuracy'] ?? '', gauge: m['gauge'] ?? '',
-      target: m['target'] ?? '', description: m['description'] ?? '', isSync: m['isSync'] ?? false,
-      slot: m['slot'] as int?,
-    )).toList();
-    final passives = (v['passives'] as List? ?? []).map((p) => PassiveData(
-      name: p['name'] ?? '', description: p['description'] ?? '',
-    )).toList();
-    return VariationData(formName: v['formName'] ?? 'Variation', moves: moves, passives: passives);
+    final moves = (v['moves'] as List? ?? [])
+        .map(
+          (m) => MoveData(
+            name: m['name'] ?? '',
+            type: m['type'] ?? '',
+            category: m['category'] ?? '',
+            power: m['power'] ?? '',
+            accuracy: m['accuracy'] ?? '',
+            gauge: m['gauge'] ?? '',
+            target: m['target'] ?? '',
+            description: m['description'] ?? '',
+            isSync: m['isSync'] ?? false,
+            slot: m['slot'] as int?,
+          ),
+        )
+        .toList();
+    final passives = (v['passives'] as List? ?? [])
+        .map(
+          (p) => PassiveData(
+            name: p['name'] ?? '',
+            description: p['description'] ?? '',
+          ),
+        )
+        .toList();
+    return VariationData(
+      formName: v['formName'] ?? 'Variation',
+      moves: moves,
+      passives: passives,
+    );
   }).toList();
 }
 
@@ -3759,14 +4454,20 @@ class VariationData {
     for (final vm in moves) {
       if (vm.isSync) {
         final idx = result.indexWhere((m) => m.isSync);
-        if (idx >= 0) result[idx] = vm; else result.add(vm);
+        if (idx >= 0)
+          result[idx] = vm;
+        else
+          result.add(vm);
       } else if (vm.slot != null) {
         final slotIdx = vm.slot! - 1;
         if (slotIdx >= 0 && slotIdx < result.where((m) => !m.isSync).length) {
           int count = 0;
           for (int i = 0; i < result.length; i++) {
             if (!result[i].isSync) {
-              if (count == slotIdx) { result[i] = vm; break; }
+              if (count == slotIdx) {
+                result[i] = vm;
+                break;
+              }
               count++;
             }
           }
