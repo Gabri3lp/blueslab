@@ -19,9 +19,7 @@ Map<String, int> calcPotentialBonus({
       return {'hp': 0, 'atk': 0, 'def': 0, 'spa': 0, 'spd': 0, 'spe': 0};
     }
     // 5★ 20/20 or EX: 20 potentials at 5★ rate (HP+5, rest+2)
-    return {
-      'hp': 100, 'atk': 40, 'def': 40, 'spa': 40, 'spd': 40, 'spe': 40,
-    };
+    return {'hp': 100, 'atk': 40, 'def': 40, 'spa': 40, 'spd': 40, 'spe': 40};
   }
 
   int starsGained = 0;
@@ -42,8 +40,12 @@ Map<String, int> calcPotentialBonus({
   final restBonus = potentials * 1;
 
   return {
-    'hp': hpBonus, 'atk': restBonus, 'def': restBonus,
-    'spa': restBonus, 'spd': restBonus, 'spe': restBonus,
+    'hp': hpBonus,
+    'atk': restBonus,
+    'def': restBonus,
+    'spa': restBonus,
+    'spd': restBonus,
+    'spe': restBonus,
   };
 }
 

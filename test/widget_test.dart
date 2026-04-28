@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:blues_lab_calculator/main.dart';
+import 'package:blues_lab_calculator/app/blue_lab_app.dart';
 
 void main() {
   testWidgets('Loads main layout', (WidgetTester tester) async {
