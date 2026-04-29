@@ -73,7 +73,43 @@ const exRoleBonusMap = <String, Map<String, int>>{
   'Strike': {'hp': 60, 'atk': 40, 'spa': 40},
   'Tech': {'hp': 60, 'def': 20, 'spa': 20, 'spd': 20},
   'Support': {'hp': 60, 'def': 40, 'spd': 40},
-  'Sprint': {'hp': 60, 'atk': 20, 'spa': 40, 'spe': 40},
+  'Sprint': {'hp': 60, 'atk': 20, 'spa': 20, 'spe': 40},
   'Field': {'hp': 60, 'def': 20, 'spd': 20, 'spe': 40},
   'Multi': {'hp': 60, 'atk': 20, 'def': 20, 'spa': 20, 'spd': 20, 'spe': 20},
 };
+
+/// Super Awakening stat multiplier at SA level 1+ (×1.1 for all stats, all roles).
+double saStatMultiplier(int saLevel) => saLevel >= 1 ? 1.1 : 1.0;
+
+/// Super Awakening flat stat bonuses for Support at SA levels 2-4.
+Map<String, int> saSupportFlatBonus(int saLevel) {
+  int hp = 0, def = 0, spd = 0;
+  if (saLevel >= 2) hp += 50;
+  if (saLevel >= 3) { def += 20; spd += 20; }
+  if (saLevel >= 4) hp += 100;
+  return {'hp': hp, 'def': def, 'spd': spd};
+}
+
+/// Super Awakening extra percentage added to the Move Level multiplier.
+/// Returns the extra percentage points (e.g. 10 for +10%, 20 for +20%).
+int saMovePowerBonus(int saLevel, String role, {required bool isSync}) {
+  final r = role.toLowerCase().trim();
+  final isStrikeSprint = r.startsWith('strike') || r.startsWith('sprint');
+  final isTechField = r.startsWith('tech') || r.startsWith('field');
+  if (isStrikeSprint) {
+    if (!isSync) {
+      if (saLevel >= 4) return 30;
+      if (saLevel >= 2) return 10;
+    } else {
+      if (saLevel >= 3) return 20;
+    }
+  } else if (isTechField) {
+    if (isSync) {
+      if (saLevel >= 4) return 40;
+      if (saLevel >= 2) return 10;
+    } else {
+      if (saLevel >= 3) return 20;
+    }
+  }
+  return 0;
+}

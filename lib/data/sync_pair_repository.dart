@@ -74,6 +74,7 @@ class SyncPairRepository {
       weakness: weakness,
       rarity: (jsonMap['rarity'] as num?)?.toInt() ?? 5,
       hasEx: jsonMap['hasEx'] == true,
+      hasSuperAwakening: jsonMap['hasSuperAwakening'] == true,
       cells: cells,
       releaseDate: DateTime.tryParse((jsonMap['releaseDate'] ?? '') as String),
       syncMoveName: (jsonMap['syncMoveName'] ?? '') as String,
@@ -177,6 +178,7 @@ class SyncPairRepository {
         ..._effectTagsFromText(description),
       ]),
       rule: _ruleFromPassiveText(name, description),
+      locked: jsonMap['locked'] == true,
     );
   }
 

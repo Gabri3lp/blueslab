@@ -15,6 +15,7 @@ class SyncPairData {
     required this.type,
     this.rarity = 5,
     this.hasEx = false,
+    this.hasSuperAwakening = false,
     required this.cells,
     this.releaseDate,
     this.syncMoveName = '',
@@ -43,6 +44,7 @@ class SyncPairData {
   final String weakness;
   final int rarity;
   final bool hasEx;
+  final bool hasSuperAwakening;
   final List<GridCellData> cells;
   final DateTime? releaseDate;
   final String syncMoveName;
@@ -159,12 +161,14 @@ class PassiveData {
     required this.description,
     this.tags = const [],
     this.rule = const PassiveRule(),
+    this.locked = false,
   });
 
   final String name;
   final String description;
   final List<PairTag> tags;
   final PassiveRule rule;
+  final bool locked;
 }
 
 class VariationData {

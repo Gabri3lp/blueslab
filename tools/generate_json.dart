@@ -36,6 +36,7 @@ void main() {
       'weakness': kit['weakness'] ?? '',
       'rarity': kit['rarity'] ?? 5,
       'hasEx': kit['hasEx'] ?? false,
+      'hasSuperAwakening': kit['hasSuperAwakening'] ?? false,
       'syncMoveName': kit['syncMoveName'] ?? '',
       'releaseDate': kit['releaseDate'],
       'moves': kit['moves'] ?? [],
@@ -83,10 +84,25 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
     final moves = <Map<String, dynamic>>[];
     final passives = <Map<String, dynamic>>[];
 
+    Map<String, dynamic>? superAwakenedPassive;
+
     for (int i = 1; i < lines.length; i++) {
       final line = lines[i];
       if (line.contains('Tera Details') || line.contains('Variation Details'))
         break;
+      if (line.contains('Superawakened Passive:')) {
+        final saName = line.replaceFirst(RegExp(r'.*Superawakened Passive:\s*'), '').trim();
+        String saDesc = '';
+        if (i + 1 < lines.length) {
+          final pl = lines[i + 1].trim();
+          if (pl.isNotEmpty &&
+              !pl.startsWith('Passive ') &&
+              !RegExp(r'^(Role|Type|Category|Power|Accuracy|Gauge|Target|Rarity|Method|Sync Pair|EX |Lv\.|HP ):').hasMatch(pl))
+            saDesc = pl;
+        }
+        superAwakenedPassive = {'name': saName, 'description': saDesc, 'locked': true};
+        continue;
+      }
       if (line.startsWith('Role:')) {
         role = line.replaceFirst('Role:', '').split('|').first.trim();
         final exMatch = RegExp(r'EX Role[^:]*:\s*(\w+)').firstMatch(line);
@@ -109,7 +125,7 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
         if (rarity == 0) rarity = 5;
       } else if (line.contains('EX Color')) {
         hasEx = line.contains('Yes');
-      } else if (line.toLowerCase().contains('ex available')) {
+      } else if (line.contains('EX Effect Available') || line.contains('EX Role Available') || line.toLowerCase().contains('ex available')) {
         hasEx = true;
       } else if (RegExp(r'^Move \d+:').hasMatch(line)) {
         final moveName = line.replaceFirst(RegExp(r'^Move \d+:\s*'), '').trim();
@@ -173,7 +189,8 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
               ).hasMatch(pl))
             pDesc = pl;
         }
-        passives.add({'name': pName, 'description': pDesc});
+        final hasMarker = RegExp(r'Passive \d+\([^)]+\):').hasMatch(line);
+        passives.add({'name': pName, 'description': pDesc, 'locked': hasMarker});
       }
     }
 
@@ -331,6 +348,14 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
       }
     }
 
+    // If exRole was found, the pair always has EX
+    if (exRole.isNotEmpty) hasEx = true;
+
+    // Insert superawakened passive at index 0 if present
+    if (superAwakenedPassive != null) {
+      passives.insert(0, superAwakenedPassive);
+    }
+
     result[number] = {
       'displayName': displayName,
       'role': role,
@@ -339,6 +364,7 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
       'weakness': weakness,
       'rarity': rarity,
       'hasEx': hasEx,
+      'hasSuperAwakening': superAwakenedPassive != null,
       'syncMoveName': syncMoveName,
       'releaseDate': releaseDate,
       'moves': moves,

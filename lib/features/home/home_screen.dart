@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void _activateFreeCenterCells(List<GridCellData> cells) {
     for (final cell in cells) {
       if (cell.energyCost == 0 &&
-          cell.moveLevel <= _moveLevel &&
+          cell.moveLevel <= _moveLevel.clamp(1, 5) &&
           _isAdjacentToCenter(cell)) {
         _activeCells.add(cell.cellNumber);
       }
@@ -175,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             .firstWhere(
                                               (c) => c.cellNumber == cn,
                                             );
-                                        return cell.moveLevel > i;
+                                        return cell.moveLevel > i.clamp(1, 5);
                                       });
                                       if (_hardCap) {
                                         _pruneDisconnected(selectedPair.cells);
@@ -191,6 +191,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
+                            if (selectedPair.hasSuperAwakening) ...[
+                              for (int i = 6; i <= 10; i++)
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 2),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (_moveLevel == i) {
+                                          _moveLevel = i - 1;
+                                        } else {
+                                          _moveLevel = i;
+                                        }
+                                      });
+                                    },
+                                    child: Opacity(
+                                      opacity: _moveLevel >= i ? 1.0 : 0.3,
+                                      child: Image.asset(
+                                        'assets/img/transcendance.png',
+                                        width: 32,
+                                        height: 32,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                            ],
                             const SizedBox(width: 8),
                             IconButton(
                               onPressed: _activeCells.isNotEmpty
@@ -248,7 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 final cell = selectedPair.cells.firstWhere(
                                   (c) => c.cellNumber == cellNumber,
                                 );
-                                if (cell.moveLevel > _moveLevel) return;
+                                if (cell.moveLevel > _moveLevel.clamp(1, 5)) return;
                                 if (_hardCap &&
                                     !_isAdjacentToActiveOrCenter(
                                       cell,
@@ -271,7 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               }
                             });
                           },
-                          moveLevel: _moveLevel,
+                          moveLevel: _moveLevel.clamp(1, 5),
                         ),
                       ),
                     ),
@@ -286,10 +311,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   activeCells: _activeCells,
                   selectedTab: _rightTab,
                   onTabChanged: (tab) => setState(() => _rightTab = tab),
-                  moveLevel: _moveLevel,
+                  moveLevel: _moveLevel.clamp(1, 5),
                   expanded: _expandedRight,
                   onToggleExpand: () =>
                       setState(() => _expandedRight = !_expandedRight),
+                  superAwakeningLevel: selectedPair.hasSuperAwakening ? (_moveLevel - 5).clamp(0, 5) : 0,
                 ),
               ),
             ],
@@ -310,6 +336,7 @@ class RightPanel extends StatelessWidget {
     required this.moveLevel,
     required this.expanded,
     required this.onToggleExpand,
+    required this.superAwakeningLevel,
   });
 
   final SyncPairData pair;
@@ -319,6 +346,7 @@ class RightPanel extends StatelessWidget {
   final int moveLevel;
   final bool expanded;
   final VoidCallback onToggleExpand;
+  final int superAwakeningLevel;
 
   @override
   Widget build(BuildContext context) {
@@ -387,6 +415,7 @@ class RightPanel extends StatelessWidget {
                     pair: pair,
                     moveLevel: moveLevel,
                     activeCells: activeCells,
+                    superAwakeningLevel: superAwakeningLevel,
                   )
                 : DamageCalculatorPanel(
                     key: ValueKey(pair.number),
@@ -394,6 +423,7 @@ class RightPanel extends StatelessWidget {
                     activeCells: activeCells,
                     moveLevel: moveLevel,
                     expanded: expanded,
+                    superAwakeningLevel: superAwakeningLevel,
                   ),
           ),
         ],
@@ -448,6 +478,41 @@ const _typeIcons = <String, String>{
   'stellar': 'assets/pomatools.github.io-master/assets/img/battle/TYPE_099.png',
 };
 
+String _calcScaledPower(String rawPower, int moveLevel, [int saBonus = 0]) {
+  final match = RegExp(r'^(\d+)').firstMatch(rawPower);
+  if (match == null) return rawPower;
+  final base = int.parse(match.group(1)!);
+  return '${(base * (100 + (moveLevel - 1) * 5 + saBonus) / 100).floor()}';
+}
+
+int _calcSaBonus(SyncPairData pair, int saLevel, MoveData move) {
+  return pair.hasSuperAwakening
+      ? saMovePowerBonus(saLevel, pair.role, isSync: move.isSync)
+      : 0;
+}
+
+int _calcOverviewStat({
+  required int baseStat,
+  required Map<String, int> potentialBonus,
+  required int exBonus,
+  required double formMult,
+  required String stat,
+  required bool hasSA,
+  required int saLevel,
+  required String role,
+}) {
+  var base = baseStat;
+  if (hasSA && saLevel >= 1) {
+    base = (base * 1.1).floor();
+  }
+  if (hasSA && role.toLowerCase().trim() == 'support') {
+    base += saSupportFlatBonus(saLevel)[stat] ?? 0;
+  }
+  final beforeForm = base + (potentialBonus[stat] ?? 0) + exBonus;
+  if (formMult == 1.0) return beforeForm;
+  return (beforeForm * formMult).ceil() - 1;
+}
+
 enum _MasterPassiveCategory { any, physical, special }
 
 class _MasterPassiveEffect {
@@ -495,11 +560,13 @@ class SyncPairOverview extends StatefulWidget {
     required this.pair,
     required this.moveLevel,
     required this.activeCells,
+    required this.superAwakeningLevel,
   });
 
   final SyncPairData pair;
   final int moveLevel;
   final Set<int> activeCells;
+  final int superAwakeningLevel;
 
   @override
   State<SyncPairOverview> createState() => _SyncPairOverviewState();
@@ -510,6 +577,8 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
   String _level = '200';
   String? _starLevel;
   bool _exRoleActive = true;
+
+  int get _superAwakeningLevel => widget.superAwakeningLevel;
 
   @override
   void didUpdateWidget(covariant SyncPairOverview oldWidget) {
@@ -600,14 +669,15 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
   }
 
   int _overviewTotal(String stat, int baseStat) {
-    final pot = _potentialBonus()[stat] ?? 0;
-    final beforeMega = baseStat + pot + _exBonusOverview(stat);
-    final mult = _megaMultOverview(stat);
-    return _applyFormMultiplier(
-      beforeMega,
-      mult,
-      stat,
-      useExactMegaRatio: _megaActiveOverview,
+    return _calcOverviewStat(
+      baseStat: baseStat,
+      potentialBonus: _potentialBonus(),
+      exBonus: _exBonusOverview(stat),
+      formMult: _megaMultOverview(stat),
+      stat: stat,
+      hasSA: pair.hasSuperAwakening,
+      saLevel: _superAwakeningLevel,
+      role: pair.role,
     );
   }
 
@@ -654,11 +724,8 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
   }
 
   String _scaledPower(String rawPower, [int? moveLevel]) {
-    final match = RegExp(r'^(\d+)').firstMatch(rawPower);
-    if (match == null) return rawPower;
-    final base = int.parse(match.group(1)!);
-    final level = moveLevel ?? widget.moveLevel;
-    return '${(base * (1 + 0.05 * (level - 1))).floor()}';
+    final saBonus = _calcSaBonus(pair, _superAwakeningLevel, MoveData(name: ''));
+    return _calcScaledPower(rawPower, moveLevel ?? widget.moveLevel, saBonus);
   }
 
   int _gridBonus(String moveName, String stat) {
@@ -693,13 +760,14 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
   }
 
   Widget _moveCard(BuildContext context, MoveData move, String teraMoveName) {
+    final saBonus = _calcSaBonus(pair, _superAwakeningLevel, move);
     return _MoveCard(
       move: move,
       typeColor: _typeColor(move.type),
       typeChip: move.type.isNotEmpty ? _typeChip(move.type) : null,
       powerBonus: _gridBonus(move.name, 'Power'),
       accBonus: _gridBonus(move.name, 'Accuracy'),
-      basePower: _scaledPower(move.power, widget.moveLevel),
+      basePower: _calcScaledPower(move.power, widget.moveLevel, saBonus),
       teraBoost:
           _showTera &&
           move.type.toLowerCase() == pair.type.toLowerCase() &&
@@ -718,25 +786,35 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     // Build display moves based on active form
     List<MoveData> displayMoves;
     List<PassiveData> displayPassives;
+    final lockedCount = pair.passives.where((p) => p.locked).length;
     if (_showTera) {
       displayMoves = [...pair.moves, if (pair.teraMove != null) pair.teraMove!];
       displayPassives = [
         for (int i = 0; i < pair.passives.length; i++)
-          i < pair.teraPassives.length
-              ? pair.teraPassives[i]
-              : pair.passives[i],
+          if (pair.passives[i].locked)
+            pair.passives[i]
+          else if ((i - lockedCount) < pair.teraPassives.length)
+            pair.teraPassives[i - lockedCount]
+          else
+            pair.passives[i],
       ];
     } else if (_isVariation && _activeVariation != null) {
       displayMoves = _activeVariation!.applyTo(pair.moves);
       displayPassives = [
         for (int i = 0; i < pair.passives.length; i++)
-          i < _activeVariation!.passives.length
-              ? _activeVariation!.passives[i]
-              : pair.passives[i],
+          if (pair.passives[i].locked)
+            pair.passives[i]
+          else if ((i - lockedCount) < _activeVariation!.passives.length)
+            _activeVariation!.passives[i - lockedCount]
+          else
+            pair.passives[i],
       ];
     } else {
       displayMoves = pair.moves;
       displayPassives = pair.passives;
+    }
+    if (pair.hasSuperAwakening && _superAwakeningLevel < 5 && displayPassives.isNotEmpty) {
+      displayPassives = displayPassives.where((p) => p != pair.passives.first).toList();
     }
     final teraMoveName = pair.teraMove?.name ?? '';
 
@@ -1352,12 +1430,14 @@ class DamageCalculatorPanel extends StatefulWidget {
     required this.activeCells,
     required this.moveLevel,
     this.expanded = false,
+    required this.superAwakeningLevel,
   });
 
   final SyncPairData pair;
   final Set<int> activeCells;
   final int moveLevel;
   final bool expanded;
+  final int superAwakeningLevel;
 
   @override
   State<DamageCalculatorPanel> createState() => _DamageCalculatorPanelState();
@@ -1368,14 +1448,12 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   String _starLevel = '5★ EX';
   bool _hasExRole = true;
 
+  int get _superAwakeningLevel => widget.superAwakeningLevel;
+
   bool get _isEx => _starLevel == '5★ EX';
 
-  String _scaledPower(String rawPower, [int? moveLevel]) {
-    final match = RegExp(r'^(\d+)').firstMatch(rawPower);
-    if (match == null) return rawPower;
-    final base = int.parse(match.group(1)!);
-    final level = moveLevel ?? widget.moveLevel;
-    return '${(base * (1 + 0.05 * (level - 1))).floor()}';
+  String _scaledPower(String rawPower, [int? moveLevel, int saBonus = 0]) {
+    return _calcScaledPower(rawPower, moveLevel ?? widget.moveLevel, saBonus);
   }
 
   int _calcFormIndex = 0; // 0=Base, 1..N=variations, then Tera, then Mega
@@ -1826,13 +1904,15 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   }
 
   int _calcBaseStat(String stat, int jsonStat, {bool forceMega = false}) {
-    final beforeMega = jsonStat + _potentialBonus(stat) + _exRoleBonus(stat);
-    final mult = _formStatMult(stat, forceMega: forceMega);
-    return _applyFormMultiplier(
-      beforeMega,
-      mult,
-      stat,
-      useExactMegaRatio: _megaActive || forceMega,
+    return _calcOverviewStat(
+      baseStat: jsonStat,
+      potentialBonus: {'hp': _potentialBonus('hp'), 'atk': _potentialBonus('atk'), 'def': _potentialBonus('def'), 'spa': _potentialBonus('spa'), 'spd': _potentialBonus('spd'), 'spe': _potentialBonus('spe')},
+      exBonus: _exRoleBonus(stat),
+      formMult: _formStatMult(stat, forceMega: forceMega),
+      stat: stat,
+      hasSA: widget.pair.hasSuperAwakening,
+      saLevel: _superAwakeningLevel,
+      role: widget.pair.role,
     );
   }
 
@@ -1841,7 +1921,15 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     int jsonStat, {
     bool forceMega = false,
   }) {
-    final rawBase = jsonStat + _potentialBonus(stat) + _exRoleBonus(stat);
+    final pair = widget.pair;
+    var base = jsonStat;
+    if (pair.hasSuperAwakening && _superAwakeningLevel >= 1) {
+      base = (base * 1.1).floor();
+    }
+    if (pair.hasSuperAwakening && pair.role.toLowerCase().trim() == 'support') {
+      base += saSupportFlatBonus(_superAwakeningLevel)[stat] ?? 0;
+    }
+    final rawBase = base + _potentialBonus(stat) + _exRoleBonus(stat);
     final mult = _formStatMult(stat, forceMega: forceMega);
     final modifiedBase = _applyFormMultiplier(
       rawBase + (_gear[stat] ?? 0),
@@ -1985,8 +2073,258 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     return _targetCount;
   }
 
+  double _movePowerModifier(MoveData move) {
+    final desc = move.description.toLowerCase();
+    double modifier = 1.0;
+
+    // Percentage increase: "power increases X% when"
+    final pctM = RegExp(r"power increases (\d+)% when", caseSensitive: false).firstMatch(desc);
+    if (pctM != null) {
+      final pct = int.parse(pctM.group(1)!);
+      final afterWhen = desc.substring(pctM.end);
+      if (_isConditionMetInText(afterWhen)) modifier *= 1 + pct / 100;
+    }
+    // Times modifier: "power increases when" (no percentage = x2)
+    else if (desc.contains('power increases when')) {
+      final afterWhen = desc.substring(desc.indexOf('power increases when') + 20);
+      if (_isConditionMetInText(afterWhen)) modifier *= 2.0;
+    }
+
+    // Single stat modifier: "the more the [user/target]'s [stat] is [raised/lowered], the greater the power"
+    final singleM = RegExp(r'the more the (user|target).+?(atk|attack|def(?:ense)?|sp\.?\s*atk|sp\.?\s*def|speed|accuracy|evasion|evasiveness).+?is (raised|lowered).+?greater the power', caseSensitive: false).firstMatch(desc);
+    if (singleM != null) {
+      final isUser = singleM.group(1)!.toLowerCase() == 'user';
+      final statKey = _parseSyncStatKey(singleM.group(2)!);
+      final isRaised = singleM.group(3)!.toLowerCase() == 'raised';
+      final stages = isUser ? _playerStages : _enemyStages;
+      final stage = stages[statKey] ?? 0;
+      final count = isRaised ? stage.clamp(0, 6) : (-stage).clamp(0, 6);
+      if (move.isSync) {
+        modifier *= 1 + (count * 0.167).clamp(0.0, 1.0);
+      } else {
+        modifier *= 1 + count.clamp(0, 11);
+      }
+    }
+
+    // Multiple stats modifier: "the more the [user/target]'s stats are [raised/lowered], the greater the power"
+    final multiM = RegExp(r'the more the (user|target).+?stats.+?(raised|lowered).+?greater the power', caseSensitive: false).firstMatch(desc);
+    if (multiM != null) {
+      final isUser = multiM.group(1)!.toLowerCase() == 'user';
+      final isRaised = multiM.group(2)!.toLowerCase() == 'raised';
+      final stages = isUser ? _playerStages : _enemyStages;
+      int count = 0;
+      for (final key in ['atk', 'def', 'spa', 'spd', 'spe', 'acc', 'eva']) {
+        final s = stages[key] ?? 0;
+        count += isRaised ? s.clamp(0, 6) : (-s).clamp(0, 6);
+      }
+      if (move.isSync) {
+        modifier *= 1 + (count * 0.067).clamp(0.0, 1.2);
+      } else {
+        // Special case: Almighty Psychic style (cap 30, /10 = max x4)
+        modifier *= 1 + count.clamp(0, 30) / 10;
+      }
+    }
+
+    return modifier;
+  }
+
+  bool _isConditionMetInText(String text) {
+    if (text.contains('paralyzed')) return _enemyStatusCondition == 'paralyzed';
+    if (text.contains('burned')) return _enemyStatusCondition == 'burned';
+    if (text.contains('frozen')) return _enemyStatusCondition == 'frozen';
+    if (text.contains('asleep')) return _enemyStatusCondition == 'asleep';
+    if (text.contains('poisoned')) return _enemyStatusCondition == 'poisoned' || _enemyStatusCondition == 'badly poisoned';
+    if (text.contains('flinching')) return _enemyVolatile['flinching'] ?? false;
+    if (text.contains('confused')) return _enemyVolatile['confused'] ?? false;
+    if (text.contains('trapped')) return _enemyVolatile['trapped'] ?? false;
+    if (text.contains('restrained')) return _enemyVolatile['restrained'] ?? false;
+    if (text.contains('sync buff')) return _enemySyncBoosts > 0;
+    if (text.contains('status condition')) return _enemyStatusCondition.isNotEmpty;
+    if (text.contains('type rebuff')) return _typeRebuffs.values.any((v) => v < 0) || _stellarRebuff < 0;
+    return false;
+  }
+
+  String _parseSyncStatKey(String raw) {
+    final s = raw.toLowerCase().replaceAll(' ', '');
+    if (s.contains('sp') && s.contains('atk')) return 'spa';
+    if (s.contains('sp') && s.contains('def')) return 'spd';
+    if (s == 'attack' || s == 'atk') return 'atk';
+    if (s == 'defense' || s == 'def') return 'def';
+    if (s == 'speed') return 'spe';
+    if (s == 'accuracy') return 'acc';
+    if (s == 'evasion' || s == 'evasiveness') return 'eva';
+    return 'atk';
+  }
+
+  List<({String name, double value})> _gridSkillPowerUpDetails(MoveData move) {
+    final results = <({String name, double value})>[];
+    final pair = widget.pair;
+    for (int i = 0; i < pair.passives.length; i++) {
+      if (i == 0 && pair.hasSuperAwakening && _superAwakeningLevel < 5) continue;
+      final p = pair.passives[i];
+      final v = _evalSkillPowerUp(p.description, p.name, move);
+      if (v > 0) results.add((name: p.name, value: v));
+    }
+    for (final cell in pair.cells) {
+      if (!widget.activeCells.contains(cell.cellNumber)) continue;
+      if (!cell.colorKind.toLowerCase().contains('passive')) continue;
+      final v = _evalSkillPowerUp(cell.description, cell.title, move);
+      if (v > 0) results.add((name: cell.title, value: v));
+    }
+    return results;
+  }
+
+  double _gridSkillPowerUp(MoveData move) =>
+      _gridSkillPowerUpDetails(move).fold(0.0, (sum, e) => sum + e.value);
+
+  double _evalSkillPowerUp(String description, String title, MoveData move) {
+    final desc = description.toLowerCase();
+    if (!desc.contains('powers up')) return 0;
+    // Skip master passives (handled separately)
+    if (desc.contains('allied sync pairs') && desc.contains('theme')) return 0;
+    // Skip zone creation descriptions
+    if (desc.contains('zone powers up') || desc.contains('zone that powers up')) return 0;
+
+    // Determine if this skill applies to the current move
+    final isSync = move.isSync;
+    // Find the first sentence with "powers up" to determine scope
+    final puIdx = desc.indexOf('powers up');
+    final puSentenceEnd = desc.indexOf('.', puIdx);
+    final puSentence = puSentenceEnd >= 0 ? desc.substring(puIdx, puSentenceEnd) : desc.substring(puIdx);
+    final appliesToSync = puSentence.contains('sync move');
+    final appliesToMoves = puSentence.contains(RegExp(r'(?<!sync )moves')) || puSentence.contains('attacks');
+    if (isSync && !appliesToSync) return 0;
+    if (!isSync && !appliesToMoves) return 0;
+
+    // Single stat unvalued: "the more the [user/target]'s [stat] is [raised/lowered]"
+    final singleM = RegExp(r'the more the (user|target).+?(?:atk|attack|def(?:ense)?|sp\.?\s*atk|sp\.?\s*def|speed|accuracy|evasiveness?).+?is (raised|lowered)', caseSensitive: false).firstMatch(desc);
+    if (singleM != null) {
+      // Check the sentence containing "powers up" to determine move type
+      final powersUpIdx = desc.indexOf('powers up', singleM.start);
+      if (powersUpIdx >= 0) {
+        final sentenceEnd = desc.indexOf('.', powersUpIdx);
+        final sentence = sentenceEnd >= 0 ? desc.substring(powersUpIdx, sentenceEnd) : desc.substring(powersUpIdx);
+        final skillForSync = sentence.contains('sync move');
+        final skillForMoves = sentence.contains(RegExp(r'(?<!sync )moves')) || sentence.contains('attacks');
+        if (isSync && !skillForSync) return 0;
+        if (!isSync && !skillForMoves && skillForSync) return 0;
+      }
+      final isUser = singleM.group(1)!.toLowerCase() == 'user';
+      final statRaw = RegExp(r'(atk|attack|def(?:ense)?|sp\.?\s*atk|sp\.?\s*def|speed|accuracy|evasiveness?)', caseSensitive: false).firstMatch(desc.substring(singleM.start));
+      if (statRaw != null) {
+        final statKey = _parseSyncStatKey(statRaw.group(1)!);
+        final isRaised = singleM.group(2)!.toLowerCase() == 'raised';
+        final stages = isUser ? _playerStages : _enemyStages;
+        final stage = stages[statKey] ?? 0;
+        final count = isRaised ? stage.clamp(0, 6) : (-stage).clamp(0, 6);
+        final step = isSync ? 0.167 : 0.05;
+        final max = isSync ? 1.0 : 0.3;
+        return ((count * step * 100).round() / 100).clamp(0.0, max);
+      }
+    }
+
+    // Multiple stats unvalued: "the more the [user/target]'s stats are [raised/lowered]"
+    final multiM = RegExp(r'the more the (user|target).+?stats.+?(raised|lowered)', caseSensitive: false).firstMatch(desc);
+    if (multiM != null) {
+      final multiPowersUpIdx = desc.indexOf('powers up', multiM.start);
+      if (multiPowersUpIdx >= 0) {
+        final multiSentenceEnd = desc.indexOf('.', multiPowersUpIdx);
+        final multiSentence = multiSentenceEnd >= 0 ? desc.substring(multiPowersUpIdx, multiSentenceEnd) : desc.substring(multiPowersUpIdx);
+        final multiForSync = multiSentence.contains('sync move');
+        final multiForMoves = multiSentence.contains(RegExp(r'(?<!sync )moves')) || multiSentence.contains('attacks');
+        if (isSync && !multiForSync) return 0;
+        if (!isSync && !multiForMoves && multiForSync) return 0;
+      }
+      final isUser = multiM.group(1)!.toLowerCase() == 'user';
+      final isRaised = multiM.group(2)!.toLowerCase() == 'raised';
+      final stages = isUser ? _playerStages : _enemyStages;
+      int count = 0;
+      for (final key in ['atk', 'def', 'spa', 'spd', 'spe', 'acc', 'eva']) {
+        final s = stages[key] ?? 0;
+        count += isRaised ? s.clamp(0, 6) : (-s).clamp(0, 6);
+      }
+      final step = isSync ? 0.0667 : 0.026;
+      final max = isSync ? 1.2 : 1.1;
+      return ((count * step * 100).round() / 100).clamp(0.0, max);
+    }
+
+    // Valued skills: extract number from title
+    final titleValM = RegExp(r'(\d+)\s*$').firstMatch(title.trim());
+    int? skillValue;
+    if (titleValM != null) skillValue = int.tryParse(titleValM.group(1)!);
+    if (skillValue == null) skillValue = 3; // default 30% for unvalued skills
+
+    if (!_isSkillConditionMet(desc, move)) return 0;
+    return skillValue * 0.1;
+  }
+
+  bool _isSkillConditionMet(String desc, MoveData move) {
+    // Circle conditions
+    if (desc.contains('circle')) return _activeCircles().isNotEmpty;
+    // Zone conditions
+    if (desc.contains('dragon zone')) return _selectedZone == 'Dragon Zone';
+    if (desc.contains('dark zone')) return _selectedZone == 'Dark Zone';
+    if (desc.contains('normal zone')) return _selectedZone == 'Normal Zone';
+    if (desc.contains('fairy zone')) return _selectedZone == 'Fairy Zone';
+    if (desc.contains('fighting zone')) return _selectedZone == 'Fighting Zone';
+    if (desc.contains('ice zone')) return _selectedZone == 'Ice Zone';
+    if (desc.contains('steel zone')) return _selectedZone == 'Steel Zone';
+    if (desc.contains('ghost zone')) return _selectedZone == 'Ghost Zone';
+    if (desc.contains('bug zone')) return _selectedZone == 'Bug Zone';
+    if (desc.contains('rock zone')) return _selectedZone == 'Rock Zone';
+    if (desc.contains('ground zone')) return _selectedZone == 'Ground Zone';
+    if (desc.contains('flying zone')) return _selectedZone == 'Flying Zone';
+    if (desc.contains('poison zone')) return _selectedZone == 'Poison Zone';
+    // Terrain conditions
+    if (desc.contains('electric terrain')) return _selectedTerrain == 'Electric Terrain';
+    if (desc.contains('psychic terrain')) return _selectedTerrain == 'Psychic Terrain';
+    if (desc.contains('grassy terrain')) return _selectedTerrain == 'Grassy Terrain';
+    // Weather conditions
+    if (desc.contains('sunny') || desc.contains('sun')) return _selectedWeather == 'Sunny';
+    if (desc.contains('rainy') || desc.contains('rain')) return _selectedWeather == 'Rainy';
+    if (desc.contains('hail')) return _selectedWeather == 'Hail';
+    if (desc.contains('sandstorm')) return _selectedWeather == 'Sandstorm';
+    // Status conditions on target
+    if (desc.contains('target is trapped') || (desc.contains('trapped') && !desc.contains('flinching'))) return _enemyVolatile['trapped'] ?? false;
+    if (desc.contains('flinching, confused, or trapped') || desc.contains('flinching') && desc.contains('confused') && desc.contains('trapped')) {
+      return (_enemyVolatile['flinching'] ?? false) || (_enemyVolatile['confused'] ?? false) || (_enemyVolatile['trapped'] ?? false);
+    }
+    if (desc.contains('target is confused') || desc.contains('confused')) return _enemyVolatile['confused'] ?? false;
+    if (desc.contains('target is flinching') || desc.contains('flinching')) return _enemyVolatile['flinching'] ?? false;
+    if (desc.contains('target is restrained') || desc.contains('restrained')) return _enemyVolatile['restrained'] ?? false;
+    if (desc.contains('target is paralyzed') || desc.contains('paralyzed')) return _enemyStatusCondition == 'paralyzed';
+    if (desc.contains('target is burned') || desc.contains('burned')) return _enemyStatusCondition == 'burned';
+    if (desc.contains('target is frozen') || desc.contains('frozen')) return _enemyStatusCondition == 'frozen';
+    if (desc.contains('target is asleep') || desc.contains('asleep')) return _enemyStatusCondition == 'asleep';
+    if (desc.contains('poisoned') || desc.contains('badly poisoned')) return _enemyStatusCondition == 'poisoned' || _enemyStatusCondition == 'badly poisoned';
+    if (desc.contains('status condition')) return _enemyStatusCondition.isNotEmpty;
+    // Super effective
+    if (desc.contains('super effective')) {
+      return _enemyWeakness.isNotEmpty && move.type.toLowerCase() == _enemyWeakness.toLowerCase();
+    }
+    // Critical hit
+    if (desc.contains('critical hit')) return _isCriticalMove;
+    // Stat lowered on target
+    final statLowM = RegExp(r"target's (defense|sp\.?\s*def|attack|sp\.?\s*atk|speed|accuracy) is lowered", caseSensitive: false).firstMatch(desc);
+    if (statLowM != null) {
+      final key = _parseSyncStatKey(statLowM.group(1)!);
+      return (_enemyStages[key] ?? 0) < 0;
+    }
+    // Type Rebuff lowered on target
+    if (desc.contains('type rebuff') && desc.contains('lowered')) return _typeRebuffs.values.any((v) => v < 0) || _stellarRebuff < 0;
+    if (desc.contains('rebuff')) return _typeRebuffs.values.any((v) => v < 0) || _stellarRebuff < 0;
+    // Pinch (user HP < 25%)
+    if (desc.contains('pinch')) return _playerHpPercent <= 25;
+    // HP full
+    if (desc.contains('hp is full')) return _playerHpPercent == 100;
+    // Weather in effect
+    if (desc.contains('weather conditions are') && desc.contains('in effect')) return _selectedWeather.isNotEmpty;
+    return true; // default: condition met
+  }
+
   int _totalBp(MoveData move) {
-    final base = int.tryParse(_scaledPower(move.power)) ?? 0;
+    final saBonus = _calcSaBonus(widget.pair, _superAwakeningLevel, move);
+    final base = int.tryParse(_scaledPower(move.power, null, saBonus)) ?? 0;
     final grid = _gridPowerBonus(move.name);
     final isTeraMove =
         widget.pair.teraMove != null && move.name == widget.pair.teraMove!.name;
@@ -2006,11 +2344,13 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
         : (isPhysical ? _physicalBoostNext : _specialBoostNext);
     final syncSkill = move.isSync ? _syncMoveBoostNext * 0.1 : 0.0;
     final masterPassiveSkill = _masterPassivePowerUp(move);
+    final passiveSkill = _gridSkillPowerUp(move);
     final inner =
         ((afterSyncTech + grid) *
-                (1 + syncSkill + masterPassiveSkill + boostRank * 0.4))
+                (1 + syncSkill + masterPassiveSkill + passiveSkill + boostRank * 0.4))
             .floor();
-    return inner;
+    final modifier = _movePowerModifier(move);
+    return (inner * modifier).floor();
   }
 
   static const _statusLabels = {
@@ -3438,7 +3778,8 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                   move.type.toLowerCase() == pair.type.toLowerCase();
               final tooltipLines = <String>[];
               if (bp != null) {
-                tooltipLines.add('Base Power: ${_scaledPower(move.power)}');
+                final saBonus = _calcSaBonus(widget.pair, _superAwakeningLevel, move);
+                tooltipLines.add('Base Power: ${_scaledPower(move.power, null, saBonus)}');
                 if (move.isSync && _syncTechExBoost) {
                   tooltipLines.add('6EX Tech Sync Move ×1.5');
                 }
@@ -3462,17 +3803,30 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                   tooltipLines.add(
                     'Sync Up Next +${(_syncMoveBoostNext * 10).toStringAsFixed(0)}%',
                   );
+                for (final skill in _gridSkillPowerUpDetails(move)) {
+                  tooltipLines.add(
+                    '${skill.name} +${(skill.value * 100).toStringAsFixed(0)}%',
+                  );
+                }
+                final moveMod = _movePowerModifier(move);
+                if (moveMod != 1.0)
+                  tooltipLines.add(
+                    'Move Modifier ×${moveMod.toStringAsFixed(3)}',
+                  );
               }
               final hasBpMod =
                   moveTeraBoost ||
                   _gridPowerBonus(move.name) > 0 ||
                   _masterPassivePowerUp(move) > 0 ||
+                  _gridSkillPowerUp(move) > 0 ||
+                  _movePowerModifier(move) != 1.0 ||
                   (move.isSync
                       ? _syncMoveBoostNext > 0
                       : (isPhysical
                             ? _physicalBoostNext > 0
                             : _specialBoostNext > 0));
-              final baseBpVal = int.tryParse(_scaledPower(move.power));
+              final saBonusForMove = _calcSaBonus(widget.pair, _superAwakeningLevel, move);
+              final baseBpVal = int.tryParse(_scaledPower(move.power, null, saBonusForMove));
               final isExtendedRange = move.target.toLowerCase() == 'all opponents' &&
                   move.description.contains('not lowered even if there are multiple targets');
               return _CalcMoveCard(
