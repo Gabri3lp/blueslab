@@ -1392,7 +1392,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   bool _physicalBreak = false;
   bool _specialBreak = false;
   int _syncMoveBoostNext = 0;
-  int _targetCount = 1;
+  int _targetCount = 3;
   int _playerSyncBoosts = 0;
   int _enemySyncBoosts = 0;
   int _playerHpPercent = 100;
@@ -1975,6 +1975,14 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
       if (val != null) total += val;
     }
     return total;
+  }
+
+  int _effectiveTargetCount(MoveData move) {
+    if (_targetCount <= 1) return 1;
+    final isMultiTarget = move.target.toLowerCase() == 'all opponents';
+    if (!isMultiTarget) return 1;
+    if (move.description.contains('not lowered even if there are multiple targets')) return 1;
+    return _targetCount;
   }
 
   int _totalBp(MoveData move) {
@@ -3299,7 +3307,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               ),
               const SizedBox(width: 8),
               FilterChip(
-                label: const Text('SE Up Next', style: TextStyle(fontSize: 10)),
+                label: const Text('SEUN', style: TextStyle(fontSize: 10)),
                 selected: _superEffectiveNext,
                 showCheckmark: false,
                 onSelected: (v) => setState(() => _superEffectiveNext = v),
@@ -3308,7 +3316,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               ),
               const SizedBox(width: 8),
               FilterChip(
-                label: const Text('Critical', style: TextStyle(fontSize: 10)),
+                label: const Text('Crit', style: TextStyle(fontSize: 10)),
                 selected: _isCriticalMove,
                 showCheckmark: false,
                 onSelected: (v) => setState(() => _isCriticalMove = v),
@@ -3316,7 +3324,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 visualDensity: VisualDensity.compact,
               ),
               const SizedBox(width: 8),
-              Text('Targets: ', style: labelStyle),
+              Text('Enemies: ', style: labelStyle),
               DropdownButton<int>(
                 value: _targetCount,
                 isDense: true,
@@ -3415,7 +3423,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     physicalBreak: isPhysical && _physicalBreak && !move.isSync,
                     specialBreak: !isPhysical && _specialBreak && !move.isSync,
                     isPhysicalMove: isPhysical,
-                    targetCount: _targetCount,
+                    targetCount: _effectiveTargetCount(move),
                     circles: _activeCircles(),
                   ),
                 );
@@ -3465,12 +3473,15 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                             ? _physicalBoostNext > 0
                             : _specialBoostNext > 0));
               final baseBpVal = int.tryParse(_scaledPower(move.power));
+              final isExtendedRange = move.target.toLowerCase() == 'all opponents' &&
+                  move.description.contains('not lowered even if there are multiple targets');
               return _CalcMoveCard(
                 move: move,
                 totalBp: bp,
                 baseBp: baseBpVal,
                 hasBpMod: hasBpMod,
                 teraBoost: moveTeraBoost,
+                isExtendedRange: isExtendedRange,
                 atkStat: rolls != null
                     ? calcStat(
                         StatInput(
@@ -3595,6 +3606,7 @@ class _CalcMoveCard extends StatelessWidget {
     this.baseBp,
     this.hasBpMod = false,
     this.teraBoost = false,
+    this.isExtendedRange = false,
     this.atkStat,
     this.rolls,
     this.enemyHp = 1,
@@ -3605,6 +3617,7 @@ class _CalcMoveCard extends StatelessWidget {
   final int? baseBp;
   final bool hasBpMod;
   final bool teraBoost;
+  final bool isExtendedRange;
   final int? atkStat;
   final List<int>? rolls;
   final int enemyHp;
@@ -3668,6 +3681,24 @@ class _CalcMoveCard extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (isExtendedRange)
+                  Container(
+                    margin: const EdgeInsets.only(right: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+                    decoration: BoxDecoration(
+                      color: Colors.teal.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(3),
+                      border: Border.all(color: Colors.teal, width: 0.5),
+                    ),
+                    child: const Text(
+                      'Extended Range',
+                      style: TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.teal,
+                      ),
+                    ),
+                  ),
                 if (move.category.isNotEmpty)
                   Text(
                     move.category,
