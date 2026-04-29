@@ -1392,6 +1392,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   bool _physicalBreak = false;
   bool _specialBreak = false;
   int _syncMoveBoostNext = 0;
+  int _targetCount = 1;
   int _playerSyncBoosts = 0;
   int _enemySyncBoosts = 0;
   int _playerHpPercent = 100;
@@ -3314,6 +3315,24 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 selectedColor: Colors.red,
                 visualDensity: VisualDensity.compact,
               ),
+              const SizedBox(width: 8),
+              Text('Targets: ', style: labelStyle),
+              DropdownButton<int>(
+                value: _targetCount,
+                isDense: true,
+                underline: const SizedBox(),
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
+                ),
+                items: const [
+                  DropdownMenuItem(value: 1, child: Text('1')),
+                  DropdownMenuItem(value: 2, child: Text('2')),
+                  DropdownMenuItem(value: 3, child: Text('3')),
+                ],
+                onChanged: (v) => setState(() => _targetCount = v!),
+              ),
             ],
           ),
         ),
@@ -3396,6 +3415,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                     physicalBreak: isPhysical && _physicalBreak && !move.isSync,
                     specialBreak: !isPhysical && _specialBreak && !move.isSync,
                     isPhysicalMove: isPhysical,
+                    targetCount: _targetCount,
                     circles: _activeCircles(),
                   ),
                 );
