@@ -12,14 +12,15 @@ class SyncPairRepository {
     final jsonStr = await rootBundle.loadString('assets/data/sync_pairs.json');
     final jsonList = json.decode(jsonStr) as List<dynamic>;
 
-    final pairs = jsonList
-        .map((entry) => _parsePair(entry as Map<String, dynamic>))
-        .toList()
-      ..sort((left, right) {
-        final leftDate = left.releaseDate ?? DateTime(2000);
-        final rightDate = right.releaseDate ?? DateTime(2000);
-        return rightDate.compareTo(leftDate);
-      });
+    final pairs =
+        jsonList
+            .map((entry) => _parsePair(entry as Map<String, dynamic>))
+            .toList()
+          ..sort((left, right) {
+            final leftDate = left.releaseDate ?? DateTime(2000);
+            final rightDate = right.releaseDate ?? DateTime(2000);
+            return rightDate.compareTo(leftDate);
+          });
 
     return ParsedData(pairs: pairs);
   }
@@ -36,10 +37,8 @@ class SyncPairRepository {
 
     final moves = (jsonMap['moves'] as List? ?? const [])
         .map(
-          (entry) => _parseMove(
-            entry as Map<String, dynamic>,
-            pairType: pairType,
-          ),
+          (entry) =>
+              _parseMove(entry as Map<String, dynamic>, pairType: pairType),
         )
         .toList();
 
@@ -86,14 +85,20 @@ class SyncPairRepository {
       teraPassives: teraPassives,
       stats: _parseNestedStats(jsonMap['stats'] as Map<String, dynamic>?),
       teraStatMultiplier: _parseTeraStatMultiplier(jsonMap),
-      megaStatMultiplier: _parseDoubleMap(
+      megaStatMultiplier: _parseMegaStatMultiplier(
         jsonMap['megaStatMultiplier'] as Map<String, dynamic>?,
       ),
-      megaStats: _parseNestedStats(jsonMap['megaStats'] as Map<String, dynamic>?),
+      megaStats: _parseNestedStats(
+        jsonMap['megaStats'] as Map<String, dynamic>?,
+      ),
       formStats: _parseFormStats(jsonMap['formStats'] as Map<String, dynamic>?),
       variations: _parseVariations(jsonMap['variations'] as List?),
       tags: _dedupeTags(pairTags),
-      rules: rules.where((rule) => rule.conditions.isNotEmpty || rule.effects.isNotEmpty).toList(),
+      rules: rules
+          .where(
+            (rule) => rule.conditions.isNotEmpty || rule.effects.isNotEmpty,
+          )
+          .toList(),
     );
   }
 
@@ -176,32 +181,28 @@ class SyncPairRepository {
   }
 
   List<VariationData> _parseVariations(List? rawList) {
-    return (rawList ?? const [])
-        .map((entry) {
-          final variation = entry as Map<String, dynamic>;
-          final moves = (variation['moves'] as List? ?? const [])
-              .map(
-                (move) => _parseMove(
-                  move as Map<String, dynamic>,
-                  pairType: (move['type'] ?? '') as String,
-                ),
-              )
-              .toList();
-          final passives = (variation['passives'] as List? ?? const [])
-              .map((passive) => _parsePassive(passive as Map<String, dynamic>))
-              .toList();
-          return VariationData(
-            formName: (variation['formName'] ?? 'Variation') as String,
-            moves: moves,
-            passives: passives,
-          );
-        })
-        .toList();
+    return (rawList ?? const []).map((entry) {
+      final variation = entry as Map<String, dynamic>;
+      final moves = (variation['moves'] as List? ?? const [])
+          .map(
+            (move) => _parseMove(
+              move as Map<String, dynamic>,
+              pairType: (move['type'] ?? '') as String,
+            ),
+          )
+          .toList();
+      final passives = (variation['passives'] as List? ?? const [])
+          .map((passive) => _parsePassive(passive as Map<String, dynamic>))
+          .toList();
+      return VariationData(
+        formName: (variation['formName'] ?? 'Variation') as String,
+        moves: moves,
+        passives: passives,
+      );
+    }).toList();
   }
 
-  Map<String, Map<String, int>> _parseNestedStats(
-    Map<String, dynamic>? raw,
-  ) {
+  Map<String, Map<String, int>> _parseNestedStats(Map<String, dynamic>? raw) {
     final result = <String, Map<String, int>>{};
     for (final entry in (raw ?? const <String, dynamic>{}).entries) {
       final valueMap = entry.value as Map<String, dynamic>;
@@ -230,6 +231,13 @@ class SyncPairRepository {
     );
   }
 
+  Map<String, double> _parseMegaStatMultiplier(Map<String, dynamic>? raw) {
+    return (raw ?? const <String, dynamic>{}).map((key, value) {
+      final parsed = (value as num).toDouble();
+      return MapEntry(key, double.parse(parsed.toStringAsFixed(2)));
+    });
+  }
+
   Map<String, double> _parseTeraStatMultiplier(Map<String, dynamic> jsonMap) {
     final result = <String, double>{};
 
@@ -237,8 +245,9 @@ class SyncPairRepository {
     for (final entry in teraPassives) {
       final passive = entry as Map<String, dynamic>;
       final name = (passive['name'] ?? '') as String;
-      final match = RegExp(r'While S-Tera:\s*(\d)\s*Stats.*?(\d+)$')
-          .firstMatch(name);
+      final match = RegExp(
+        r'While S-Tera:\s*(\d)\s*Stats.*?(\d+)$',
+      ).firstMatch(name);
       if (match == null) {
         continue;
       }
@@ -288,15 +297,11 @@ class SyncPairRepository {
   }
 
   List<PairTag> _extractMoveEffectTags(List<MoveData> moves) {
-    return [
-      for (final move in moves) ...move.tags,
-    ];
+    return [for (final move in moves) ...move.tags];
   }
 
   List<PairTag> _extractPassiveTags(List<PassiveData> passives) {
-    return [
-      for (final passive in passives) ...passive.tags,
-    ];
+    return [for (final passive in passives) ...passive.tags];
   }
 
   List<PairTag> _effectTagsFromText(String text) {
@@ -330,9 +335,7 @@ class SyncPairRepository {
   }
 
   List<PairTag> _tileTags(String title, String colorKind) {
-    final tags = <PairTag>[
-      PairTag(category: 'grid_kind', value: colorKind),
-    ];
+    final tags = <PairTag>[PairTag(category: 'grid_kind', value: colorKind)];
     final lower = title.toLowerCase();
     if (lower.contains('power')) {
       tags.add(const PairTag(category: 'tile_effect', value: 'power'));
@@ -387,7 +390,9 @@ class SyncPairRepository {
         ),
       );
     }
-    if (lower.contains('weather') || lower.contains('terrain') || lower.contains('zone')) {
+    if (lower.contains('weather') ||
+        lower.contains('terrain') ||
+        lower.contains('zone')) {
       effects.add(
         const PassiveEffect(
           kind: EffectKind.fieldEffect,
@@ -405,17 +410,26 @@ class SyncPairRepository {
 
     if (text.contains('when it enters a battle')) {
       conditions.add(
-        const PassiveCondition(kind: ConditionKind.always, subject: 'battle_entry'),
+        const PassiveCondition(
+          kind: ConditionKind.always,
+          subject: 'battle_entry',
+        ),
       );
     }
     if (text.contains('while') && text.contains('weather')) {
       conditions.add(
-        const PassiveCondition(kind: ConditionKind.fieldActive, value: 'weather'),
+        const PassiveCondition(
+          kind: ConditionKind.fieldActive,
+          value: 'weather',
+        ),
       );
     }
     if (text.contains('while') && text.contains('terrain')) {
       conditions.add(
-        const PassiveCondition(kind: ConditionKind.fieldActive, value: 'terrain'),
+        const PassiveCondition(
+          kind: ConditionKind.fieldActive,
+          value: 'terrain',
+        ),
       );
     }
     if (text.contains('while') && text.contains('zone')) {
@@ -425,7 +439,10 @@ class SyncPairRepository {
     }
     if (text.contains('burned')) {
       conditions.add(
-        const PassiveCondition(kind: ConditionKind.userHasStatus, value: 'burned'),
+        const PassiveCondition(
+          kind: ConditionKind.userHasStatus,
+          value: 'burned',
+        ),
       );
     }
 

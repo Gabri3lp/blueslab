@@ -321,7 +321,10 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
         final baseValue = base200[stat] ?? 0;
         final megaValue = mega200[stat] ?? 0;
         if (baseValue > 0 && megaValue > 0 && megaValue != baseValue) {
-          megaStatMultiplier[stat] = megaValue / baseValue;
+          final roundedValue = double.parse(
+            (megaValue / baseValue).toStringAsFixed(2),
+          );
+          megaStatMultiplier[stat] = roundedValue;
         }
       }
     }

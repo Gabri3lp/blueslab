@@ -591,15 +591,6 @@ class _SyncPairOverviewState extends State<SyncPairOverview> {
     bool useExactMegaRatio = false,
   }) {
     if (mult == 1.0) return value;
-
-    if (useExactMegaRatio) {
-      final base200 = pair.stats['200']?[stat];
-      final mega200 = pair.megaStats['200']?[stat];
-      if (base200 != null && mega200 != null && base200 > 0) {
-        return (value * mega200 * 2 + base200) ~/ (base200 * 2);
-      }
-    }
-
     return (value * mult).ceil() - 1;
   }
 
@@ -1406,6 +1397,22 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
   int _playerHpPercent = 100;
   int _enemyHpPercent = 100;
 
+  bool get _isMegaSupport {
+    final role = widget.pair.role.toLowerCase().trim();
+    final exRole = widget.pair.exRole.toLowerCase().trim();
+    return role == 'support' || exRole == 'support';
+  }
+
+  int get _megaSyncBaseBoosts {
+    if (!_megaActive) return 0;
+    return _isMegaSupport ? 2 : 1;
+  }
+
+  int get _effectivePlayerSyncBoosts {
+    if (!_megaActive) return _playerSyncBoosts;
+    return math.max(_playerSyncBoosts, _megaSyncBaseBoosts);
+  }
+
   // Circles state: region -> {physical, special, defensive} -> {active, allyCount}
   static const _circleRegions = [
     'Kanto',
@@ -1814,15 +1821,6 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
     bool useExactMegaRatio = false,
   }) {
     if (mult == 1.0) return value;
-
-    if (useExactMegaRatio) {
-      final base200 = widget.pair.stats['200']?[stat];
-      final mega200 = widget.pair.megaStats['200']?[stat];
-      if (base200 != null && mega200 != null && base200 > 0) {
-        return (value * mega200 * 2 + base200) ~/ (base200 * 2);
-      }
-    }
-
     return (value * mult).ceil() - 1;
   }
 
@@ -2659,13 +2657,20 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
             ),
             const SizedBox(width: 4),
             Text(
-              '×${(1 + _playerSyncBoosts * 0.5).toStringAsFixed(1)}',
+              '×${(1 + _effectivePlayerSyncBoosts * 0.5).toStringAsFixed(1)}',
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w600,
-                color: _playerSyncBoosts > 0 ? Colors.blue : null,
+                color: _effectivePlayerSyncBoosts > 0 ? Colors.blue : null,
               ),
             ),
+            if (_megaActive) ...[
+              const SizedBox(width: 8),
+              Text(
+                'Mega Sync: ${_effectivePlayerSyncBoosts}',
+                style: TextStyle(fontSize: 11, color: Colors.blueGrey),
+              ),
+            ],
             const SizedBox(width: 8),
             Text('Status Cond: ', style: labelStyle),
             DropdownButton<String>(
@@ -3376,7 +3381,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                   attackerInput: StatInput(baseStat: atkTotal),
                   defenderStat: enemyDefTotal,
                   conditions: BattleConditions(
-                    syncBoosts: _playerSyncBoosts,
+                    syncBoosts: _effectivePlayerSyncBoosts,
                     isCritical: _isCriticalMove,
                     isSuperEffective: isSE,
                     hasSENext: _superEffectiveNext,
