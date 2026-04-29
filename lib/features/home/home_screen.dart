@@ -1410,7 +1410,7 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
 
   int get _effectivePlayerSyncBoosts {
     if (!_megaActive) return _playerSyncBoosts;
-    return math.max(_playerSyncBoosts, _megaSyncBaseBoosts);
+    return _playerSyncBoosts + _megaSyncBaseBoosts;
   }
 
   // Circles state: region -> {physical, special, defensive} -> {active, allyCount}
@@ -2656,6 +2656,13 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
               ),
             ),
             const SizedBox(width: 4),
+            if (_megaActive) ...[
+              const SizedBox(width: 8),
+              Text(
+                'Mega: +${_megaSyncBaseBoosts} ',
+                style: TextStyle(fontSize: 11, color: Colors.blueGrey),
+              ),
+            ],
             Text(
               '×${(1 + _effectivePlayerSyncBoosts * 0.5).toStringAsFixed(1)}',
               style: TextStyle(
@@ -2664,13 +2671,6 @@ class _DamageCalculatorPanelState extends State<DamageCalculatorPanel> {
                 color: _effectivePlayerSyncBoosts > 0 ? Colors.blue : null,
               ),
             ),
-            if (_megaActive) ...[
-              const SizedBox(width: 8),
-              Text(
-                'Mega Sync: ${_effectivePlayerSyncBoosts}',
-                style: TextStyle(fontSize: 11, color: Colors.blueGrey),
-              ),
-            ],
             const SizedBox(width: 8),
             Text('Status Cond: ', style: labelStyle),
             DropdownButton<String>(
