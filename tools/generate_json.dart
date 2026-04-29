@@ -109,6 +109,8 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
         if (rarity == 0) rarity = 5;
       } else if (line.contains('EX Color')) {
         hasEx = line.contains('Yes');
+      } else if (line.toLowerCase().contains('ex available')) {
+        hasEx = true;
       } else if (RegExp(r'^Move \d+:').hasMatch(line)) {
         final moveName = line.replaceFirst(RegExp(r'^Move \d+:\s*'), '').trim();
         String mType = '',
