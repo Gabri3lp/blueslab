@@ -4420,7 +4420,12 @@ class _PairPickerDialog extends StatefulWidget {
 
 class _PairPickerDialogState extends State<_PairPickerDialog> {
   String _query = '';
+  String _sortMode = 'Name';
   bool _ascending = true;
+
+  static String _cleanName(String name) {
+    return name.replaceAll(RegExp(r'\s*\((Male|Female)[^)]*\)'), '').replaceAll(RegExp(r'\s*\(Genderless\)'), '').trim();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -4428,32 +4433,55 @@ class _PairPickerDialogState extends State<_PairPickerDialog> {
     final filtered = <int>[];
     for (int i = 0; i < widget.pairs.length; i++) {
       final p = widget.pairs[i];
-      final matchesQuery =
-          normalizedQuery.isEmpty ||
-          p.searchTerms.any(
-            (term) => term.toLowerCase().contains(normalizedQuery),
-          );
-      if (matchesQuery) {
+      if (normalizedQuery.isEmpty || p.searchTerms.any((t) => t.toLowerCase().contains(normalizedQuery))) {
         filtered.add(i);
       }
     }
-    filtered.sort((a, b) {
-      final cmp = widget.pairs[a].displayName.compareTo(
-        widget.pairs[b].displayName,
-      );
-      return _ascending ? cmp : -cmp;
-    });
-
+    if (_sortMode == 'Name') {
+      filtered.sort((a, b) {
+        final cmp = widget.pairs[a].displayName.compareTo(widget.pairs[b].displayName);
+        return _ascending ? cmp : -cmp;
+      });
+    } else if (_sortMode == 'Release') {
+      filtered.sort((a, b) {
+        final da = widget.pairs[a].releaseDate;
+        final db = widget.pairs[b].releaseDate;
+        if (da == null && db == null) return 0;
+        if (da == null) return 1;
+        if (db == null) return -1;
+        return _ascending ? da.compareTo(db) : db.compareTo(da);
+      });
+    } else if (_sortMode == 'Type') {
+      filtered.sort((a, b) {
+        final cmp = widget.pairs[a].type.compareTo(widget.pairs[b].type);
+        return _ascending ? cmp : -cmp;
+      });
+    } else if (_sortMode == 'Role') {
+      filtered.sort((a, b) {
+        final cmp = widget.pairs[a].role.compareTo(widget.pairs[b].role);
+        return _ascending ? cmp : -cmp;
+      });
+    }
     return SimpleDialog(
       title: Row(
         children: [
           const Expanded(child: Text('Select character')),
+          DropdownButton<String>(
+            value: _sortMode,
+            isDense: true,
+            underline: const SizedBox(),
+            style: const TextStyle(fontSize: 12, color: Colors.black),
+            items: const [
+              DropdownMenuItem(value: 'Name', child: Text('Name')),
+              DropdownMenuItem(value: 'Release', child: Text('Release')),
+              DropdownMenuItem(value: 'Type', child: Text('Type')),
+              DropdownMenuItem(value: 'Role', child: Text('Role')),
+            ],
+            onChanged: (v) => setState(() => _sortMode = v!),
+          ),
           IconButton(
-            icon: Icon(
-              _ascending ? Icons.arrow_upward : Icons.arrow_downward,
-              size: 18,
-            ),
-            tooltip: _ascending ? 'A-Z' : 'Z-A',
+            icon: Icon(_ascending ? Icons.arrow_upward : Icons.arrow_downward, size: 18),
+            tooltip: _ascending ? 'Ascending' : 'Descending',
             onPressed: () => setState(() => _ascending = !_ascending),
           ),
         ],
@@ -4483,20 +4511,21 @@ class _PairPickerDialogState extends State<_PairPickerDialog> {
             itemBuilder: (context, i) {
               final index = filtered[i];
               final pair = widget.pairs[index];
-              return ListTile(
-                dense: true,
-                title: Text(
-                  pair.displayName,
-                  style: const TextStyle(fontSize: 13),
+              final typeColor = _typeColors[pair.type.toLowerCase()];
+              return Container(
+                decoration: BoxDecoration(
+                  color: typeColor?.withValues(alpha: 0.08),
+                  border: Border(bottom: BorderSide(color: typeColor?.withValues(alpha: 0.2) ?? Colors.grey.shade200)),
                 ),
-                subtitle: Text(
-                  [
-                    if (pair.role.isNotEmpty) pair.role,
-                    if (pair.type.isNotEmpty) pair.type,
-                  ].join(' | '),
-                  style: const TextStyle(fontSize: 11),
+                child: ListTile(
+                  dense: true,
+                  title: Text(_cleanName(pair.displayName), style: const TextStyle(fontSize: 13)),
+                  subtitle: Text(
+                    [if (pair.role.isNotEmpty) pair.role, if (pair.type.isNotEmpty) pair.type].join(' | '),
+                    style: TextStyle(fontSize: 11, color: typeColor ?? Colors.grey),
+                  ),
+                  onTap: () => widget.onSelect(index),
                 ),
-                onTap: () => widget.onSelect(index),
               );
             },
           ),
@@ -4505,6 +4534,7 @@ class _PairPickerDialogState extends State<_PairPickerDialog> {
     );
   }
 }
+
 
 class HexTile extends StatelessWidget {
   const HexTile({

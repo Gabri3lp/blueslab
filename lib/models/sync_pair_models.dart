@@ -65,21 +65,6 @@ class SyncPairData {
 
   Iterable<String> get searchTerms sync* {
     yield displayName;
-    yield role;
-    yield exRole;
-    yield type;
-    yield weakness;
-    for (final move in moves) {
-      yield* move.searchTerms;
-    }
-    for (final passive in passives) {
-      yield passive.name;
-      yield passive.description;
-    }
-    for (final tag in tags) {
-      yield tag.category;
-      yield tag.value;
-    }
   }
 }
 

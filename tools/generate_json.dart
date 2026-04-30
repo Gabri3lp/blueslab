@@ -19,14 +19,32 @@ void main() {
   final kitMap = parseKits(kitFiles.join('\n'));
   final gridMap = parseGrids(gridFiles.join('\n'));
 
-  final allNumbers = <int>{...kitMap.keys, ...gridMap.keys}.toList()..sort();
   final pairs = <Map<String, dynamic>>[];
 
-  for (final number in allNumbers) {
-    final grid = gridMap[number];
-    if (grid == null || grid.isEmpty) continue;
-    final kit = kitMap[number];
-    if (kit == null) continue;
+  for (final entry in kitMap.entries) {
+    final number = entry.key;
+    final kit = entry.value;
+    final kitName = (kit['displayName'] as String).toLowerCase();
+    // Find best matching grid by number and name similarity
+    List<Map<String, dynamic>>? bestGrid;
+    int bestScore = -1;
+    for (final gEntry in gridMap.entries) {
+      final parts = gEntry.key.split('|');
+      final gNumber = int.parse(parts[0]);
+      final gName = parts.length > 1 ? parts[1].toLowerCase() : '';
+      if (gNumber != number) continue;
+      // Score: how many words from kit name appear in grid name
+      final kitWords = kitName.split(RegExp(r'[\s&()]+'));
+      int score = 0;
+      for (final w in kitWords) {
+        if (w.length > 1 && gName.contains(w)) score++;
+      }
+      if (score > bestScore) {
+        bestScore = score;
+        bestGrid = gEntry.value;
+      }
+    }
+    if (bestGrid == null || bestGrid.isEmpty) continue;
     pairs.add({
       'number': number,
       'displayName': kit['displayName'] ?? 'No. $number',
@@ -49,7 +67,7 @@ void main() {
       'megaStatMultiplier': kit['megaStatMultiplier'] ?? {},
       'megaStats': kit['megaStats'] ?? {},
       'variations': kit['variations'] ?? [],
-      'cells': grid,
+      'cells': bestGrid,
     });
   }
 
@@ -381,8 +399,8 @@ Map<int, Map<String, dynamic>> parseKits(String input) {
   return result;
 }
 
-Map<int, List<Map<String, dynamic>>> parseGrids(String input) {
-  final result = <int, List<Map<String, dynamic>>>{};
+Map<String, List<Map<String, dynamic>>> parseGrids(String input) {
+  final result = <String, List<Map<String, dynamic>>>{};
   final sections = splitByNoBlocks(input);
   final numberRegex = RegExp(r'^No\. (\d+)\s+(.*)$');
   for (final section in sections) {
@@ -396,19 +414,28 @@ Map<int, List<Map<String, dynamic>>> parseGrids(String input) {
     final m = numberRegex.firstMatch(headerLine.trim());
     if (m == null) continue;
     final number = int.parse(m.group(1)!);
+    final gridName = m.group(2)!.trim();
     final cells = parseCells(lines);
-    if (result.containsKey(number)) {
-      final existing = result[number]!;
-      final existingNumbers = existing
-          .map((c) => c['cellNumber'] as int)
-          .toSet();
+    final key = '$number|$gridName';
+    if (result.containsKey(key)) {
+      final existing = result[key]!;
+      final existingCoords = <String, int>{};
+      for (int i = 0; i < existing.length; i++) {
+        final c = existing[i];
+        existingCoords['${c['q']},${c['r']},${c['s']}'] = i;
+      }
       for (final cell in cells) {
-        if (!existingNumbers.contains(cell['cellNumber'])) {
+        final coordKey = '${cell['q']},${cell['r']},${cell['s']}';
+        final existingIdx = existingCoords[coordKey];
+        if (existingIdx != null) {
+          existing[existingIdx] = cell;
+        } else {
           existing.add(cell);
+          existingCoords[coordKey] = existing.length - 1;
         }
       }
     } else {
-      result[number] = cells;
+      result[key] = cells;
     }
   }
   return result;
