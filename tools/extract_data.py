@@ -235,8 +235,12 @@ def main():
         role_name = ROLE_MAP.get(role_id, "Strike (Physical)")
         rarity = t.get("rarity", 5)
         has_ex = t.get("exScheduleId") != "" and t.get("exScheduleId") != "NEVER"
-        ex_role_raw = t.get("u32", 0)
-        ex_role = EX_ROLE_MAP.get(ex_role_raw, "") if ex_role_raw in EX_ROLE_MAP else ""
+        ex_role = ""
+        for er in protos.get("TrainerExRole", []):
+            if str(er.get("trainerId")) == trainer_id:
+                er_id = er.get("role", -1)
+                ex_role = EX_ROLE_MAP.get(er_id, "")
+                break""
 
         has_sa = any(str(sa.get("trainerId")) == trainer_id for sa in protos["TrainerSpecialAwaking"])
         vars_list = vars_by_monster.get(monster_id, [])
