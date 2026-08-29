@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BluesLab")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+381fecca2c7e874d7a4fc1e674635ec3bccbbbb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("BluesLab")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BluesLab")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

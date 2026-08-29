@@ -59,14 +59,19 @@ else
                 <div class="flex-grow-1 overflow-auto p-2">
                     @if (ActiveTab == 0)
                     {
-                        <SyncPairOverview Pair="ActivePair" MoveLevel="MoveLevel" />
+                        <SyncPairOverview Pair="ActivePair"
+                                          MoveLevel="MoveLevel"
+                                          FormIndex="AllyState.FormIndex"
+                                          FormIndexChanged="(f) => { AllyState.FormIndex = f; StateHasChanged(); }" />
                     }
                     else
                     {
                         <DamageCalculatorPanel Ally="AllyState"
                                                Enemy="EnemyState"
                                                Field="BattleField"
-                                               Rules="RulesDoc" />
+                                               Rules="RulesDoc"
+                                               MoveLevel="MoveLevel"
+                                               MoveLevelChanged="OnMoveLevelChanged" />
                     }
                 </div>
             </div>
@@ -97,7 +102,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        GridState.OnGridChanged += StateHasChanged;
+        GridState.OnGridChanged += OnGridChangedHandler;
 
         RulesDoc = await DataService.GetDamageRulesAsync();
         var manifest = await DataService.GetManifestAsync();
@@ -126,6 +131,11 @@ else
         IsLoading = false;
     }
 
+    private void OnGridChangedHandler()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
     private async Task LoadPairAsync(string trainerId)
     {
         var pair = await DataService.GetPairDetailAsync(trainerId);
@@ -133,21 +143,37 @@ else
         {
             ActivePair = pair;
             AllyState = CombatantState.CreateAlly(pair);
+            AllyState.MoveLevel = Math.Min(MoveLevel, 5);
+            AllyState.SuperAwakeningLevel = MoveLevel > 5 ? (MoveLevel - 5) : 0;
             GridState.ResetGrid(pair, MoveLevel);
+            StateHasChanged();
         }
     }
 
     private void OnMoveLevelChanged(int newLevel)
     {
         MoveLevel = newLevel;
+        if (newLevel <= 5)
+        {
+            AllyState.MoveLevel = newLevel;
+            AllyState.SuperAwakeningLevel = 0;
+        }
+        else
+        {
+            AllyState.MoveLevel = 5;
+            AllyState.SuperAwakeningLevel = newLevel - 5;
+        }
+
         if (ActivePair != null && GridState.HardCap)
         {
             GridState.PruneDisconnected(ActivePair.Grid);
         }
+        GridState.NotifyChanged();
+        StateHasChanged();
     }
 
     public void Dispose()
     {
-        GridState.OnGridChanged -= StateHasChanged;
+        GridState.OnGridChanged -= OnGridChangedHandler;
     }
 }

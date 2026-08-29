@@ -266,9 +266,15 @@ public class DamageCalculatorService
         int gridPower = 0;
         foreach (var cell in pair.Grid)
         {
-            if (activeGridCells.Contains(cell.CellId) && cell.PowerBonus.TryGetValue(move.Name, out int pb))
+            if (activeGridCells.Contains(cell.CellId))
             {
-                gridPower += pb;
+                foreach (var (pbMove, pbVal) in cell.PowerBonus)
+                {
+                    if (MatchesMoveName(move.Name, pbMove, move.IsSync))
+                    {
+                        gridPower += pbVal;
+                    }
+                }
             }
         }
 
@@ -567,7 +573,10 @@ public class DamageCalculatorService
             foreach (var cell in ally.Pair.Grid)
             {
                 if (!activeGridCells.Contains(cell.CellId) || string.IsNullOrEmpty(cell.Title)) continue;
-                var rule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cell.Title, StringComparison.OrdinalIgnoreCase));
+                string cleanTitle = cell.Title.Contains(":") ? cell.Title.Substring(cell.Title.IndexOf(":") + 1).Trim() : cell.Title.Trim();
+                var rule = rules.DamagePassives.FirstOrDefault(dp =>
+                    string.Equals(dp.Name, cell.Title.Trim(), StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(dp.Name, cleanTitle, StringComparison.OrdinalIgnoreCase));
                 if (rule != null)
                 {
                     double v = EvalSingleDamagePassive(rule, move, ally, enemy, field);
@@ -730,4 +739,22 @@ public class DamageCalculatorService
 
         return mult;
     }
+
+    private static bool MatchesMoveName(string moveName, string targetName, bool isSync)
+    {
+        if (string.Equals(moveName, targetName, StringComparison.OrdinalIgnoreCase)) return true;
+        string normMove = moveName.Replace("\r", "").Replace("\n", " ").Trim();
+        string normTarget = targetName.Replace("\r", "").Replace("\n", " ").Trim();
+        if (string.Equals(normMove, normTarget, StringComparison.OrdinalIgnoreCase)) return true;
+        if (isSync && (normTarget.EndsWith("Sync Beam", StringComparison.OrdinalIgnoreCase) ||
+                       normTarget.EndsWith("Sync Impact", StringComparison.OrdinalIgnoreCase) ||
+                       normTarget.EndsWith("Tera Blast", StringComparison.OrdinalIgnoreCase) ||
+                       normMove.Contains(normTarget, StringComparison.OrdinalIgnoreCase) ||
+                       normTarget.Contains(normMove, StringComparison.OrdinalIgnoreCase)))
+        {
+            return true;
+        }
+        return false;
+    }
+
 }

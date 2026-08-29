@@ -1,5 +1,6 @@
 @inject DamageCalculatorService CalcService
 @inject GridStateService GridState
+@implements IDisposable
 
 <div class="damage-calculator-panel p-2">
     @if (Ally.Pair == null)
@@ -12,7 +13,7 @@
         <div class="card bg-dark border-secondary p-3 mb-3">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-2">
-                    <img src="@Ally.Pair.IconUrl" alt="@Ally.Pair.DisplayName" width="40" height="40" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
+                    <img src="@Ally.Pair.IconUrl" alt="@Ally.Pair.DisplayName" width="40" height="40" class="rounded-circle border border-warning" onerror="this.src=''img/trainers/unknown.png'';" />
                     <div>
                         <div class="fw-bold text-light">@Ally.Pair.DisplayName</div>
                         <div class="d-flex gap-1 align-items-center">
@@ -40,9 +41,21 @@
                     </div>
                 }
 
-                <!-- Star Level and Level -->
-                <div class="d-flex align-items-center gap-2">
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 100px;" @bind="Ally.StarLevel">
+                <!-- Star Level, Level, Move Level & SA Controls -->
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <!-- Move Level Selector (1-5) -->
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary">
+                        <span class="small text-muted fw-bold">Move Lv:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 50px;" value="@Ally.MoveLevel" @onchange="OnMoveLevelSelect">
+                            <option value="1">1/5</option>
+                            <option value="2">2/5</option>
+                            <option value="3">3/5</option>
+                            <option value="4">4/5</option>
+                            <option value="5">5/5</option>
+                        </select>
+                    </div>
+
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 100px;" @bind="Ally.StarLevel" @bind:after="StateHasChanged">
                         <option value="3★">3★</option>
                         <option value="4★">4★</option>
                         <option value="5★">5★</option>
@@ -53,7 +66,7 @@
                         }
                     </select>
 
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 90px;" @bind="Ally.CharLevel">
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 90px;" @bind="Ally.CharLevel" @bind:after="StateHasChanged">
                         <option value="120">Lv. 120</option>
                         <option value="130">Lv. 130</option>
                         <option value="140">Lv. 140</option>
@@ -65,7 +78,7 @@
                     {
                         <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-danger">
                             <span class="text-danger small fw-bold">SA:</span>
-                            <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 45px;" @bind="Ally.SuperAwakeningLevel">
+                            <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 45px;" value="@Ally.SuperAwakeningLevel" @onchange="OnSaLevelSelect">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -83,6 +96,12 @@
         <div class="mb-4">
             <h6 class="text-warning fw-bold text-uppercase mb-2 d-flex align-items-center gap-2">
                 <i class="bi bi-lightning-charge-fill"></i> Live Damage Results
+                @if (GridState.ActiveCells.Count > 0)
+                {
+                    <span class="badge bg-secondary text-info fs-7 ms-2">
+                        @GridState.ActiveCells.Count Grid Tiles Active
+                    </span>
+                }
             </h6>
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
                 @foreach (var move in ActiveMoves)
@@ -166,25 +185,42 @@
                         <div class="row g-2">
                             <div class="col-6">
                                 <label class="small text-muted">Phys Boost (PMUN): <b>@Ally.PhysicalBoostNext</b></label>
-                                <input type="range" class="form-range" min="0" max="10" @bind="Ally.PhysicalBoostNext" />
+                                <input type="range" class="form-range" min="0" max="10" @bind="Ally.PhysicalBoostNext" @bind:after="StateHasChanged" />
                             </div>
                             <div class="col-6">
                                 <label class="small text-muted">Spec Boost (SMUN): <b>@Ally.SpecialBoostNext</b></label>
-                                <input type="range" class="form-range" min="0" max="10" @bind="Ally.SpecialBoostNext" />
+                                <input type="range" class="form-range" min="0" max="10" @bind="Ally.SpecialBoostNext" @bind:after="StateHasChanged" />
                             </div>
                         </div>
                         <div class="d-flex flex-wrap gap-2 mt-2">
-                            <button class="btn btn-sm @(Ally.IsCriticalMove ? "btn-warning" : "btn-outline-secondary")" @onclick="() => Ally.IsCriticalMove = !Ally.IsCriticalMove">Crit Hit</button>
-                            <button class="btn btn-sm @(Ally.SuperEffectiveNext ? "btn-danger" : "btn-outline-secondary")" @onclick="() => Ally.SuperEffectiveNext = !Ally.SuperEffectiveNext">SE Next (×3)</button>
-                            <button class="btn btn-sm @(Ally.PhysicalBreak ? "btn-pink" : "btn-outline-secondary")" @onclick="() => Ally.PhysicalBreak = !Ally.PhysicalBreak">Phys Break</button>
-                            <button class="btn btn-sm @(Ally.SpecialBreak ? "btn-pink" : "btn-outline-secondary")" @onclick="() => Ally.SpecialBreak = !Ally.SpecialBreak">Spec Break</button>
+                            <button class="btn btn-sm @(Ally.IsCriticalMove ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Ally.IsCriticalMove = !Ally.IsCriticalMove; StateHasChanged(); }">Crit Hit</button>
+                            <button class="btn btn-sm @(Ally.SuperEffectiveNext ? "btn-danger" : "btn-outline-secondary")" @onclick="() => { Ally.SuperEffectiveNext = !Ally.SuperEffectiveNext; StateHasChanged(); }">SE Next (×3)</button>
+                            <button class="btn btn-sm @(Ally.PhysicalBreak ? "btn-pink" : "btn-outline-secondary")" @onclick="() => { Ally.PhysicalBreak = !Ally.PhysicalBreak; StateHasChanged(); }">Phys Break</button>
+                            <button class="btn btn-sm @(Ally.SpecialBreak ? "btn-pink" : "btn-outline-secondary")" @onclick="() => { Ally.SpecialBreak = !Ally.SpecialBreak; StateHasChanged(); }">Spec Break</button>
+                        </div>
+                    </div>
+
+                    <!-- Sync Boosts -->
+                    <div class="mb-3">
+                        <label class="small text-secondary fw-bold text-uppercase d-flex justify-content-between">
+                            <span>Sync Buffs (Determinación)</span>
+                            <span class="fw-bold text-warning">×@(1.0 + Ally.SyncBoosts * 0.5)</span>
+                        </label>
+                        <div class="btn-group btn-group-sm w-100">
+                            @for (int sb = 0; sb <= 9; sb++)
+                            {
+                                int s = sb;
+                                <button class="btn @(Ally.SyncBoosts == s ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Ally.SyncBoosts = s; StateHasChanged(); }">
+                                    @s
+                                </button>
+                            }
                         </div>
                     </div>
 
                     <!-- Lucky Skill Picker -->
                     <div class="mb-2">
                         <label class="small text-secondary fw-bold text-uppercase">Lucky Skill</label>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Ally.LuckySkillName">
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
                             <option value="">(None)</option>
                             @foreach (var ls in Rules.LuckySkills.Where(s => s.IsAvailableFor(Ally.Pair.Role, Ally.Pair.DisplayName)))
                             {
@@ -223,7 +259,7 @@
                     <div class="row g-2 mb-3">
                         <div class="col-6">
                             <label class="small text-secondary">Weakness Type</label>
-                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Enemy.Weakness">
+                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Enemy.Weakness" @bind:after="StateHasChanged">
                                 <option value="">None (Neutral)</option>
                                 @foreach (var t in CombatantState.AllTypes)
                                 {
@@ -233,7 +269,7 @@
                         </div>
                         <div class="col-6">
                             <label class="small text-secondary">Status Condition</label>
-                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Enemy.StatusCondition">
+                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Enemy.StatusCondition" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 <option value="burned">Burned</option>
                                 <option value="paralyzed">Paralyzed</option>
@@ -256,7 +292,7 @@
                             {
                                 int rb = r;
                                 <button class="btn @(Enemy.EnemyTypeRebuffs.GetValueOrDefault(Ally.Pair.Type, 0) == rb ? "btn-primary" : "btn-outline-secondary")"
-                                        @onclick="() => Enemy.EnemyTypeRebuffs[Ally.Pair.Type] = rb">
+                                        @onclick="() => { Enemy.EnemyTypeRebuffs[Ally.Pair.Type] = rb; StateHasChanged(); }">
                                     @rb
                                 </button>
                             }
@@ -274,50 +310,50 @@
                     <div class="mb-3">
                         <label class="small text-secondary">Zone</label>
                         <div class="input-group input-group-sm">
-                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Zone">
+                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Zone" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 @foreach (var t in CombatantState.AllTypes)
                                 {
                                     <option value="@t Zone">@t Zone</option>
                                 }
                             </select>
-                            <button class="btn @(Field.ZoneEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => Field.ZoneEx = !Field.ZoneEx">EX (×3)</button>
+                            <button class="btn @(Field.ZoneEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Field.ZoneEx = !Field.ZoneEx; StateHasChanged(); }">EX (×3)</button>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="small text-secondary">Terrain</label>
                         <div class="input-group input-group-sm">
-                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Terrain">
+                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Terrain" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 <option value="Electric Terrain">Electric Terrain</option>
                                 <option value="Grassy Terrain">Grassy Terrain</option>
                                 <option value="Psychic Terrain">Psychic Terrain</option>
                             </select>
-                            <button class="btn @(Field.TerrainEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => Field.TerrainEx = !Field.TerrainEx">EX (×3)</button>
+                            <button class="btn @(Field.TerrainEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Field.TerrainEx = !Field.TerrainEx; StateHasChanged(); }">EX (×3)</button>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="small text-secondary">Weather</label>
                         <div class="input-group input-group-sm">
-                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Weather">
+                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Weather" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 <option value="Sunny">Sunny</option>
                                 <option value="Rainy">Rainy</option>
                                 <option value="Sandstorm">Sandstorm</option>
                                 <option value="Hail">Hail</option>
                             </select>
-                            <button class="btn @(Field.WeatherEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => Field.WeatherEx = !Field.WeatherEx">EX (×3)</button>
+                            <button class="btn @(Field.WeatherEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Field.WeatherEx = !Field.WeatherEx; StateHasChanged(); }">EX (×3)</button>
                         </div>
                     </div>
 
                     <div class="mb-2">
                         <label class="small text-secondary">Target Count</label>
                         <div class="btn-group btn-group-sm w-100">
-                            <button class="btn @(Field.TargetCount == 1 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => Field.TargetCount = 1">1 (Single)</button>
-                            <button class="btn @(Field.TargetCount == 2 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => Field.TargetCount = 2">2 Targets</button>
-                            <button class="btn @(Field.TargetCount == 3 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => Field.TargetCount = 3">3 Targets</button>
+                            <button class="btn @(Field.TargetCount == 1 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => { Field.TargetCount = 1; StateHasChanged(); }">1 (Single)</button>
+                            <button class="btn @(Field.TargetCount == 2 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => { Field.TargetCount = 2; StateHasChanged(); }">2 Targets</button>
+                            <button class="btn @(Field.TargetCount == 3 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => { Field.TargetCount = 3; StateHasChanged(); }">3 Targets</button>
                         </div>
                     </div>
                 </div>
@@ -331,15 +367,24 @@
     [Parameter] public CombatantState Enemy { get; set; } = new();
     [Parameter] public FieldState Field { get; set; } = new();
     [Parameter] public DamageRulesDocument Rules { get; set; } = new();
+    [Parameter] public int MoveLevel { get; set; } = 5;
+    [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
+
+    protected override void OnInitialized()
+    {
+        GridState.OnGridChanged += OnGridStateUpdated;
+    }
+
+    private void OnGridStateUpdated()
+    {
+        InvokeAsync(StateHasChanged);
+    }
 
     private IEnumerable<MoveItem> ActiveMoves
     {
         get
         {
             if (Ally.Pair == null) return Enumerable.Empty<MoveItem>();
-            // If a variation form is selected, use its moves (Mega / Tera Sync Move)
-            // Variations may add or replace the sync move. For now return all pair moves
-            // (variation-specific move changes come from grid power / form stat multiplier).
             return Ally.Pair.Moves;
         }
     }
@@ -350,14 +395,38 @@
         StateHasChanged();
     }
 
+    private async Task OnMoveLevelSelect(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            Ally.MoveLevel = val;
+            int fullLvl = Ally.SuperAwakeningLevel > 0 ? (val + Ally.SuperAwakeningLevel) : val;
+            await MoveLevelChanged.InvokeAsync(fullLvl);
+            StateHasChanged();
+        }
+    }
+
+    private async Task OnSaLevelSelect(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            Ally.SuperAwakeningLevel = val;
+            int fullLvl = val > 0 ? (5 + val) : Ally.MoveLevel;
+            await MoveLevelChanged.InvokeAsync(fullLvl);
+            StateHasChanged();
+        }
+    }
+
     private void SetAllyStage(string stat, int val)
     {
         Ally.Stages[stat] = val;
+        StateHasChanged();
     }
 
     private void SetEnemyStage(string stat, int val)
     {
         Enemy.Stages[stat] = val;
+        StateHasChanged();
     }
 
     private void OnAllySliderInput(string stat, ChangeEventArgs e)
@@ -374,5 +443,10 @@
         {
             SetEnemyStage(stat, val);
         }
+    }
+
+    public void Dispose()
+    {
+        GridState.OnGridChanged -= OnGridStateUpdated;
     }
 }
