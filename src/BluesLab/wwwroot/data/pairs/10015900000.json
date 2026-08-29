@@ -1,0 +1,984 @@
+{
+  "trainerId": "10015900000",
+  "trainerBaseId": "10001590",
+  "monsterId": "20015900000",
+  "monsterBaseId": "20009500",
+  "displayName": "Arc Suit Brock & Onix",
+  "trainerName": "Arc Suit Brock",
+  "monsterName": "Onix",
+  "type": "Rock",
+  "weakness": "Grass",
+  "role": "Multi",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Unbreakable Loyalty\nDivine Rock Slide",
+  "iconUrl": "img/trainers/0015_90-0095_00.png",
+  "stats": {
+    "hp": [
+      108,
+      187,
+      262,
+      559,
+      623,
+      687,
+      879
+    ],
+    "atk": [
+      21,
+      69,
+      114,
+      290,
+      330,
+      370,
+      490
+    ],
+    "def": [
+      19,
+      46,
+      70,
+      169,
+      189,
+      209,
+      269
+    ],
+    "spa": [
+      11,
+      47,
+      80,
+      212,
+      240,
+      268,
+      352
+    ],
+    "spd": [
+      17,
+      41,
+      62,
+      150,
+      170,
+      190,
+      250
+    ],
+    "spe": [
+      8,
+      48,
+      87,
+      241,
+      273,
+      305,
+      401
+    ]
+  },
+  "moves": [
+    {
+      "id": 6172,
+      "slot": 1,
+      "name": "Almighty\nRock Slide",
+      "type": "Rock",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Has a chance ([Digit:2digits ]%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19000,
+      "slot": 2,
+      "name": "Potion",
+      "type": "Rock",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6173,
+      "slot": 3,
+      "name": "Almighty\nStone Edge",
+      "type": "Rock",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Defense is raised.\nDeactivation Condition:\nWhen the user’s Defense is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The more the user’s Defense is raised, the greater the power of this attack. The more the user’s [Name:ReferencedMessageTag ] is raised, the more it reduces its sync move countdown (can be reduced by up to [Digit:1digit Idx=\"2\" ] maximum). The more the user’s [Name:ReferencedMessageTag ] is raised, the more it increases its [Name:ReferencedMessageTag Idx=\"1\" ] (can be increased by up to [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] maximum). Removes all of the user’s Defense increases.",
+      "isSync": false
+    },
+    {
+      "id": 10159,
+      "slot": 4,
+      "name": "Rock-Hard\nBond!",
+      "type": "Rock",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by one. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 120100,
+      "slot": 5,
+      "name": "Unbreakable Loyalty\nDivine Rock Slide",
+      "type": "Rock",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 29010901,
+      "name": "Stone Myth",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 29020901,
+      "name": "Stone Judgment",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 99037901,
+      "name": "10,000 Light-Years Too Early",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle. Applies the Enduring effect to the user if its HP is full when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "childPassives": [
+        {
+          "id": 18120406,
+          "name": "Debut: Attack ↑ 6",
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
+        },
+        {
+          "id": 17040201,
+          "name": "Endurance",
+          "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle."
+        },
+        {
+          "id": 18051501,
+          "name": "P-Moves & S-Moves Crit",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+        }
+      ]
+    },
+    {
+      "id": 99038001,
+      "name": "Rock-Solid Will and Bonds",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "childPassives": []
+    },
+    {
+      "id": 19051901,
+      "name": "1st S-Move: Rock Zone",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s sync move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1001590000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590007,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Unbreakable Loyalty\nDivine Rock Slide: Power +50",
+      "description": "Raises the power of Unbreakable Loyalty\nDivine Rock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Unbreakable Loyalty\nDivine Rock Slide": 50
+      }
+    },
+    {
+      "cellId": 1001590008,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "1st S-Move: Restore B-Move MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590009,
+      "q": 0,
+      "r": 5,
+      "s": -5,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "1st Hit: Rock Zone & Extension 3",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s attack move is successful each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590010,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590011,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590012,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590013,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nRock Slide: Power +2",
+      "description": "Raises the power of Almighty\nRock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nRock Slide": 2
+      }
+    },
+    {
+      "cellId": 1001590014,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nRock Slide: Power +2",
+      "description": "Raises the power of Almighty\nRock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nRock Slide": 2
+      }
+    },
+    {
+      "cellId": 1001590015,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Almighty\nRock Slide: Power +2",
+      "description": "Raises the power of Almighty\nRock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nRock Slide": 2
+      }
+    },
+    {
+      "cellId": 1001590016,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Almighty\nRock Slide: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590017,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Overwhelm 9",
+      "description": "Lowers the target’s Attack by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590018,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590019,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sharpened Body 3",
+      "description": "Powers up the user’s moves when its Attack is raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590020,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590023,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nStone Edge: Power +2",
+      "description": "Raises the power of Almighty\nStone Edge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nStone Edge": 2
+      }
+    },
+    {
+      "cellId": 1001590024,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nStone Edge: Power +2",
+      "description": "Raises the power of Almighty\nStone Edge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nStone Edge": 2
+      }
+    },
+    {
+      "cellId": 1001590025,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Almighty\nStone Edge: Power +2",
+      "description": "Raises the power of Almighty\nStone Edge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nStone Edge": 2
+      }
+    },
+    {
+      "cellId": 1001590026,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Lithic Acceleration 2",
+      "description": "Quickly charges the move gauge when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590027,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sync Regen",
+      "description": "Applies the Gradual Healing effect to the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590028,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team S-Move: Physical Boost ↑2 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590029,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haymaker",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Sand Shelter",
+      "description": "Protects the user from damage from a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590032,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590033,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nStone Edge: Power +2",
+      "description": "Raises the power of Almighty\nStone Edge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nStone Edge": 2
+      }
+    },
+    {
+      "cellId": 1001590034,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nStone Edge: Power +2",
+      "description": "Raises the power of Almighty\nStone Edge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nStone Edge": 2
+      }
+    },
+    {
+      "cellId": 1001590035,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590036,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590037,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Almighty\nStone Edge: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590038,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sentry Entry 6",
+      "description": "Raises the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590039,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Rock-Hard\nBond!: Move: Physical Boost ↑2 & Sync Move Boost ↑4",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its move is successful. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590040,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590041,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590042,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590043,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nRock Slide: Power +2",
+      "description": "Raises the power of Almighty\nRock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nRock Slide": 2
+      }
+    },
+    {
+      "cellId": 1001590044,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty\nRock Slide: Power +2",
+      "description": "Raises the power of Almighty\nRock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty\nRock Slide": 2
+      }
+    },
+    {
+      "cellId": 1001590045,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590046,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Rock-Hard\nBond!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590047,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rejuvenate 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590048,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Towering Force",
+      "description": "The more the user’s Defense is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590049,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001590050,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Unbreakable Loyalty\nDivine Rock Slide: Power +25",
+      "description": "Raises the power of Unbreakable Loyalty\nDivine Rock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Unbreakable Loyalty\nDivine Rock Slide": 25
+      }
+    },
+    {
+      "cellId": 1001590051,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Unbreakable Loyalty\nDivine Rock Slide: Power +25",
+      "description": "Raises the power of Unbreakable Loyalty\nDivine Rock Slide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Unbreakable Loyalty\nDivine Rock Slide": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,986 @@
+{
+  "trainerId": "10317000000",
+  "trainerBaseId": "10031700",
+  "monsterId": "20317000000",
+  "monsterBaseId": "2009430000",
+  "displayName": "Trainer #10031700 & Mabosstiff",
+  "trainerName": "Trainer #10031700",
+  "monsterName": "Mabosstiff",
+  "type": "Dark",
+  "weakness": "Bug",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Chef’s Spicy\nComeuppance",
+  "iconUrl": "img/trainers/0317_00-0943_00.png",
+  "stats": {
+    "hp": [
+      108,
+      186,
+      261,
+      558,
+      622,
+      686,
+      878
+    ],
+    "atk": [
+      18,
+      39,
+      57,
+      134,
+      150,
+      166,
+      214
+    ],
+    "def": [
+      19,
+      59,
+      95,
+      238,
+      270,
+      302,
+      398
+    ],
+    "spa": [
+      12,
+      33,
+      51,
+      128,
+      144,
+      160,
+      208
+    ],
+    "spd": [
+      16,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ],
+    "spe": [
+      15,
+      54,
+      90,
+      233,
+      265,
+      297,
+      393
+    ]
+  },
+  "moves": [
+    {
+      "id": 44,
+      "slot": 1,
+      "name": "Bite",
+      "type": "Dark",
+      "category": "Status",
+      "power": "42",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "isSync": false
+    },
+    {
+      "id": 18500,
+      "slot": 2,
+      "name": "Sitrus Berry",
+      "type": "Dark",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6072,
+      "slot": 3,
+      "name": "Bounce Back\nJaw Lock",
+      "type": "Dark",
+      "category": "Status",
+      "power": "150",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any moves [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the target and the user. If the remaining MP for the user’s [Name:MoveId Idx=\"18500\" ] is [Digit:1digit ] or more when attacking with this move, reduces those MP by [Digit:1digit ] and increases the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. If the remaining MP for the user’s [Name:MoveId Idx=\"18500\" ] is zero when attacking with this move, restores its HP by approximately [Digit:2digits Idx=\"4\" ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 13170,
+      "slot": 4,
+      "name": "Here You\nGo!",
+      "type": "Dark",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack and critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. In addition, raises the Attack and Defense of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is restrained.",
+      "isSync": false
+    },
+    {
+      "id": 105700,
+      "slot": 5,
+      "name": "Chef’s Spicy\nComeuppance",
+      "type": "Dark",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99017701,
+      "name": "Trusty Arven’s Chockablock Cheer",
+      "description": "Reduces MP by [Digit:1digit ] for the user’s moves that have the Berry effect tag and grants all of the following effects when the user’s HP is left at half or below after it is hit by an attack move or sync move: Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP. In addition, restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP.",
+      "childPassives": []
+    },
+    {
+      "id": 99017801,
+      "name": "Herba Mystica Effects",
+      "description": "Except in certain circumstances, reduces damage when the user is hit by an attack move while the remaining MP for its moves that have the Berry effect tag is zero.",
+      "childPassives": []
+    },
+    {
+      "id": 18115809,
+      "name": "Hit Restrained Opp: Team 1 of 5 Stats ↑ 9",
+      "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against a restrained opponent: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1031700000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700007,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Team Sentry Entry 2",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700008,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Healthy Buffer 5",
+      "description": "Reduces damage when the user is hit by an attack move when its HP is full.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700009,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Lithe",
+      "description": "Prevents the user from getting paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700010,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Restrained Scope 5",
+      "description": "Has a chance ([Digit:2digits Idx=\"2\" ]%) of lowering the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a restrained opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700011,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Hit Restrained Opp: Attack ↓ & Sp. Atk ↓ 9",
+      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a restrained opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700012,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700013,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700014,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700015,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unbending",
+      "description": "Defense cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700016,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bite: Power +4",
+      "description": "Raises the power of Bite.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bite": 4
+      }
+    },
+    {
+      "cellId": 1031700017,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bite: Power +4",
+      "description": "Raises the power of Bite.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bite": 4
+      }
+    },
+    {
+      "cellId": 1031700018,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bite: Power +4",
+      "description": "Raises the power of Bite.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bite": 4
+      }
+    },
+    {
+      "cellId": 1031700019,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Here You\nGo!: Team Hit and Heal",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700020,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st S-Move: Team Physical Boost 2",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700021,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700022,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Bite: Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700023,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700024,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700025,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700026,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bite: Power +4",
+      "description": "Raises the power of Bite.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bite": 4
+      }
+    },
+    {
+      "cellId": 1031700027,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bite: Power +4",
+      "description": "Raises the power of Bite.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bite": 4
+      }
+    },
+    {
+      "cellId": 1031700028,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Bite: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700029,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Here You\nGo!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700030,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700031,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Sync Cure 9",
+      "description": "Removes all status conditions from all allied sync pairs after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700032,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bounce Back\nJaw Lock: Power +4",
+      "description": "Raises the power of Bounce Back\nJaw Lock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce Back\nJaw Lock": 4
+      }
+    },
+    {
+      "cellId": 1031700037,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bounce Back\nJaw Lock: Power +4",
+      "description": "Raises the power of Bounce Back\nJaw Lock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce Back\nJaw Lock": 4
+      }
+    },
+    {
+      "cellId": 1031700038,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bounce Back\nJaw Lock: Power +4",
+      "description": "Raises the power of Bounce Back\nJaw Lock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce Back\nJaw Lock": 4
+      }
+    },
+    {
+      "cellId": 1031700039,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Bite: Fast-Track 9",
+      "description": "Raises the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700040,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hit Restrained Opp: Team 1 of 5 Stats ↑ 9",
+      "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against a restrained opponent: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700041,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Bounce Back\nJaw Lock: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700042,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Impervious",
+      "description": "The user’s stats cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700043,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700044,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700045,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700046,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700047,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bounce Back\nJaw Lock: Power +4",
+      "description": "Raises the power of Bounce Back\nJaw Lock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce Back\nJaw Lock": 4
+      }
+    },
+    {
+      "cellId": 1031700048,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bounce Back\nJaw Lock: Power +4",
+      "description": "Raises the power of Bounce Back\nJaw Lock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce Back\nJaw Lock": 4
+      }
+    },
+    {
+      "cellId": 1031700049,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sitrus Berry: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700050,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Safety Net",
+      "description": "Applies the Enduring effect to all allied sync pairs the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700051,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1031700052,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Chef’s Spicy\nComeuppance: Power +25",
+      "description": "Raises the power of Chef’s Spicy\nComeuppance.",
+      "statBonus": {},
+      "powerBonus": {
+        "Chef’s Spicy\nComeuppance": 25
+      }
+    },
+    {
+      "cellId": 1031700053,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Chef’s Spicy\nComeuppance: Power +25",
+      "description": "Raises the power of Chef’s Spicy\nComeuppance.",
+      "statBonus": {},
+      "powerBonus": {
+        "Chef’s Spicy\nComeuppance": 25
+      }
+    }
+  ]
+}

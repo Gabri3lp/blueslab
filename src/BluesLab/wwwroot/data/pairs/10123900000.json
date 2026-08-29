@@ -1,0 +1,955 @@
+{
+  "trainerId": "10123900000",
+  "trainerBaseId": "10012390",
+  "monsterId": "20123900000",
+  "monsterBaseId": "21086513",
+  "displayName": "Selene  (Champion) & Monster #21086513",
+  "trainerName": "Selene  (Champion)",
+  "monsterName": "Monster #21086513",
+  "type": "Ghost",
+  "weakness": "Dark",
+  "role": "Sprint",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Dawn Lunar Eclipse\nMoongeist Beam",
+  "iconUrl": "img/trainers/0123_90-0800_13s.png",
+  "stats": {
+    "hp": [
+      100,
+      179,
+      254,
+      551,
+      615,
+      679,
+      871
+    ],
+    "atk": [
+      11,
+      66,
+      117,
+      326,
+      370,
+      414,
+      546
+    ],
+    "def": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spa": [
+      16,
+      75,
+      132,
+      352,
+      400,
+      448,
+      592
+    ],
+    "spd": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spe": [
+      15,
+      61,
+      103,
+      279,
+      315,
+      351,
+      459
+    ]
+  },
+  "moves": [
+    {
+      "id": 666,
+      "slot": 1,
+      "name": "Moongeist Beam",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
+      "isSync": false
+    },
+    {
+      "id": 236,
+      "slot": 2,
+      "name": "Moonlight",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "isSync": false
+    },
+    {
+      "id": 6127,
+      "slot": 3,
+      "name": "Lunar\nMoongeist Beam",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "430",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nIgnores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. The more MP remaining for the user’s [Name:MoveId Idx=\"236\" ] when attacking with this move, the more it reduces its sync move countdown (can be reduced by up to [Digit:1digit Idx=\"1\" ] maximum).",
+      "isSync": false
+    },
+    {
+      "id": 11237,
+      "slot": 4,
+      "name": "Moonlit\nGlory!",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move and special sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "isSync": false
+    },
+    {
+      "id": 113900,
+      "slot": 5,
+      "name": "Dawn Lunar Eclipse\nMoongeist Beam",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28010701,
+      "name": "Alola Spirit",
+      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Alola theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 99026801,
+      "name": "The Beast That Calls the Moon",
+      "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play. When an attack move used by the user’s Pokémon that targets itself or an ally is successful, that attack’s target becomes all allied sync pairs. When an attack move used by the user’s Pokémon that targets an opponent is successful, that attack’s target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "childPassives": [
+        {
+          "id": 18045106,
+          "name": "Grand Entry 6",
+          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+        },
+        {
+          "id": 18051501,
+          "name": "P-Moves & S-Moves Crit",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+        },
+        {
+          "id": 23012201,
+          "name": "Attack P-Moves & Sync Moves Expansion",
+          "description": "When an attack move used by the user’s Pokémon that targets itself or an ally is successful, that attack’s target becomes all allied sync pairs. When an attack move used by the user’s Pokémon that targets an opponent is successful, that attack’s target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets."
+        },
+        {
+          "id": 19029305,
+          "name": "Alola C (Spec) Extension 5",
+          "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play."
+        }
+      ]
+    },
+    {
+      "id": 99026901,
+      "name": "Continuously Expel Energy",
+      "description": "Grants one of the following effects depending on how many opponents were hit after using the user’s sync move:\nApplies the [Name:ReferencedMessageTag ] to the user when exactly three opponents were hit.\nCharges the user’s move gauge by [Digit:1digit Idx=\"1\" ] and increases its [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when exactly two opponents were hit.\nIncreases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] when exactly one opponent was hit.",
+      "childPassives": []
+    },
+    {
+      "id": 99027001,
+      "name": "Warm Moonlight",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"236\" ] by [Digit:1digit ] and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1800102158,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102159,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102160,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102161,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102162,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102163,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102164,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "1st Hit: Ghost Zone & Extension 3",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s attack move is successful each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102165,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Trainer Sync Redemption 1",
+      "description": "Restores [Digit:1digit ] MP for the user’s Trainer the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102166,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102167,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102168,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moongeist Beam: Power +2",
+      "description": "Raises the power of Moongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102169,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102170,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Moonlight: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102171,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Moonlight: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102172,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moongeist Beam: Power +2",
+      "description": "Raises the power of Moongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102173,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1 on Opp Field & Hit: Free Move Next 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while there is only one Pokémon on the opponent’s field of play.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102174,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1 on Opp Field & Hit: Special Boost ↑1 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while there is only one Pokémon on the opponent’s field of play.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102175,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102176,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102177,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunar\nMoongeist Beam: Power +2",
+      "description": "Raises the power of Lunar\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunar\nMoongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102178,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunar\nMoongeist Beam: Power +2",
+      "description": "Raises the power of Lunar\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunar\nMoongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102179,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lunar\nMoongeist Beam: Power +2",
+      "description": "Raises the power of Lunar\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunar\nMoongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102180,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Circle: HP Recovery 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when a circle applies to the allied field of play.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102181,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Circle: MG → 2",
+      "description": "Quickly charges the move gauge when a circle applies to the allied field of play.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102182,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Circle: S-Moves ↑ 9",
+      "description": "Powers up the user’s sync move when a circle applies to the allied field of play.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102183,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "S-Move: Special Boost ↑2 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102184,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102185,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102186,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Dauntless",
+      "description": "Sp. Atk cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102187,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102188,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunar\nMoongeist Beam: Power +2",
+      "description": "Raises the power of Lunar\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunar\nMoongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102189,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunar\nMoongeist Beam: Power +2",
+      "description": "Raises the power of Lunar\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunar\nMoongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102190,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Take SE Hit: P-Move DR & S-Move DR 3",
+      "description": "Reduces damage taken by the user from super effective moves and super effective sync moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102191,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102192,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Moonlit\nGlory!: T-Move: Special Boost ↑1 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Trainer uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102193,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102194,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Unfortuitous 9",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102195,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102196,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102197,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102198,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102199,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moongeist Beam: Power +2",
+      "description": "Raises the power of Moongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102200,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moongeist Beam: Power +2",
+      "description": "Raises the power of Moongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102201,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moongeist Beam: Power +2",
+      "description": "Raises the power of Moongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moongeist Beam": 2
+      }
+    },
+    {
+      "cellId": 1800102202,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Moongeist Beam: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102203,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Moongeist Beam: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102204,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Furious Brain",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102205,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Status Immunity",
+      "description": "Status conditions cannot be inflicted on the user.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102206,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Dawn Lunar Eclipse\nMoongeist Beam: Power +25",
+      "description": "Raises the power of Dawn Lunar Eclipse\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dawn Lunar Eclipse\nMoongeist Beam": 25
+      }
+    },
+    {
+      "cellId": 1800102207,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Dawn Lunar Eclipse\nMoongeist Beam: Power +25",
+      "description": "Raises the power of Dawn Lunar Eclipse\nMoongeist Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dawn Lunar Eclipse\nMoongeist Beam": 25
+      }
+    }
+  ]
+}

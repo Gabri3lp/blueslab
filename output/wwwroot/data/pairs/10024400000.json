@@ -1,0 +1,900 @@
+{
+  "trainerId": "10024400000",
+  "trainerBaseId": "10002440",
+  "monsterId": "20024400000",
+  "monsterBaseId": "20047800",
+  "displayName": "Shauntal  (Fall 2024) & Froslass",
+  "trainerName": "Shauntal  (Fall 2024)",
+  "monsterName": "Froslass",
+  "type": "Ice",
+  "weakness": "Rock",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Lost Soul on a Snowy Mountain\nFrost Beam",
+  "iconUrl": "img/trainers/0024_40-0478_00.png",
+  "stats": {
+    "hp": [
+      108,
+      184,
+      256,
+      542,
+      602,
+      662,
+      842
+    ],
+    "atk": [
+      14,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "def": [
+      14,
+      37,
+      58,
+      146,
+      162,
+      178,
+      226
+    ],
+    "spa": [
+      16,
+      75,
+      132,
+      352,
+      400,
+      448,
+      592
+    ],
+    "spd": [
+      14,
+      37,
+      58,
+      146,
+      162,
+      178,
+      226
+    ],
+    "spe": [
+      14,
+      50,
+      83,
+      215,
+      243,
+      271,
+      355
+    ]
+  },
+  "moves": [
+    {
+      "id": 181,
+      "slot": 1,
+      "name": "Powder Snow",
+      "type": "Ice",
+      "category": "Status",
+      "power": "16",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "isSync": false
+    },
+    {
+      "id": 258,
+      "slot": 2,
+      "name": "Hail",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Causes a hailstorm.",
+      "isSync": false
+    },
+    {
+      "id": 6085,
+      "slot": 3,
+      "name": "Blizzard of\nCursed Ice",
+      "type": "Ice",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen a hailstorm is caused.\nDeactivation Condition:\nWhen the weather condition is no longer a hailstorm.\n\nIf the target's stats are lowered, the amount of decrease is doubled. Leaves the target frozen. The power of this move is not lowered even if there are multiple targets.",
+      "isSync": false
+    },
+    {
+      "id": 10249,
+      "slot": 4,
+      "name": "Interview\nTime!",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "isSync": false
+    },
+    {
+      "id": 111200,
+      "slot": 5,
+      "name": "Lost Soul on a Snowy Mountain\nFrost Beam",
+      "type": "Ice",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the target’s stats are lowered, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99019201,
+      "name": "Writer’s Ghost Story",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move each battle. Lowers the [Name:ReferencedMessageTag Idx=\"2\" ] of all opposing sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 18117309,
+      "name": "Hit: 3× Stat ↓ 9",
+      "description": "Grants the following effect three times when the user’s attack move is successful:\nLowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "childPassives": []
+    },
+    {
+      "id": 17013901,
+      "name": "Team Hail Immunity",
+      "description": "Protects all allied sync pairs from damage from a hailstorm.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1002440000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +2",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 2
+      }
+    },
+    {
+      "cellId": 1002440010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +2",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 2
+      }
+    },
+    {
+      "cellId": 1002440011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +2",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 2
+      }
+    },
+    {
+      "cellId": 1002440012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Powder Snow: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st S-Move: Team Accuracy ↓ & Evasiveness ↓ 2",
+      "description": "Lowers the accuracy and evasiveness of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "First Aid 2",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Debut: Team 7 Stats ↓ 1",
+      "description": "Lowers the Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard of\nCursed Ice: Power +2",
+      "description": "Raises the power of Blizzard of\nCursed Ice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard of\nCursed Ice": 2
+      }
+    },
+    {
+      "cellId": 1002440020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Blizzard of\nCursed Ice: Power +2",
+      "description": "Raises the power of Blizzard of\nCursed Ice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard of\nCursed Ice": 2
+      }
+    },
+    {
+      "cellId": 1002440021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard of\nCursed Ice: Power +2",
+      "description": "Raises the power of Blizzard of\nCursed Ice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard of\nCursed Ice": 2
+      }
+    },
+    {
+      "cellId": 1002440022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Interview\nTime!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Interview\nTime!: Critical Eye 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainpower",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st S-Move: Restore B-Move MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard of\nCursed Ice: Power +2",
+      "description": "Raises the power of Blizzard of\nCursed Ice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard of\nCursed Ice": 2
+      }
+    },
+    {
+      "cellId": 1002440028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard of\nCursed Ice: Power +2",
+      "description": "Raises the power of Blizzard of\nCursed Ice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard of\nCursed Ice": 2
+      }
+    },
+    {
+      "cellId": 1002440029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Hail: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Hail: Interference Immunity",
+      "description": "Prevents the user from flinching, becoming confused, or becoming trapped during a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hail Hit: Sp. Def ↓ 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful during a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Hail Immunity",
+      "description": "Status conditions cannot be inflicted on the user during a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Hail: Move: Sync Move Boost ↑4 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +2",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 2
+      }
+    },
+    {
+      "cellId": 1002440039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +2",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 2
+      }
+    },
+    {
+      "cellId": 1002440040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healing Hail 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action during a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Hasty Hail 2",
+      "description": "Quickly charges the move gauge during a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hail Alert 5",
+      "description": "Extends the duration of a hailstorm when a hailstorm is caused while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hail: Team Moves ↑ 2",
+      "description": "Powers up the moves of all allied sync pairs during a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002440046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Lost Soul on a Snowy Mountain\nFrost Beam: Power +25",
+      "description": "Raises the power of Lost Soul on a Snowy Mountain\nFrost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lost Soul on a Snowy Mountain\nFrost Beam": 25
+      }
+    },
+    {
+      "cellId": 1002440047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Lost Soul on a Snowy Mountain\nFrost Beam: Power +25",
+      "description": "Raises the power of Lost Soul on a Snowy Mountain\nFrost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lost Soul on a Snowy Mountain\nFrost Beam": 25
+      }
+    }
+  ]
+}

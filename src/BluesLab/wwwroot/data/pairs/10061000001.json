@@ -1,0 +1,894 @@
+{
+  "trainerId": "10061000001",
+  "trainerBaseId": "10006100",
+  "monsterId": "20061000001",
+  "monsterBaseId": "20002401",
+  "displayName": "Trainer #10006100 & Monster #20002401",
+  "trainerName": "Trainer #10006100",
+  "monsterName": "Monster #20002401",
+  "type": "Poison",
+  "weakness": "Psychic",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Elder’s Experience\nPoison Impact",
+  "iconUrl": "img/trainers/0061_00-0024_00.png",
+  "stats": {
+    "hp": [
+      95,
+      164,
+      230,
+      494,
+      550,
+      606,
+      774
+    ],
+    "atk": [
+      10,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "def": [
+      13,
+      50,
+      86,
+      229,
+      257,
+      285,
+      369
+    ],
+    "spa": [
+      9,
+      29,
+      47,
+      124,
+      140,
+      156,
+      204
+    ],
+    "spd": [
+      15,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ],
+    "spe": [
+      15,
+      54,
+      90,
+      233,
+      265,
+      297,
+      393
+    ]
+  },
+  "moves": [
+    {
+      "id": 40,
+      "slot": 1,
+      "name": "Poison Sting",
+      "type": "Poison",
+      "category": "Status",
+      "power": "12",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "isSync": false
+    },
+    {
+      "id": 35,
+      "slot": 2,
+      "name": "Wrap",
+      "type": "Normal",
+      "category": "Status",
+      "power": "39",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Leaves the target trapped.",
+      "isSync": false
+    },
+    {
+      "id": 43,
+      "slot": 3,
+      "name": "Leer",
+      "type": "Normal",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 10619,
+      "slot": 4,
+      "name": "Don’t Hold Back!",
+      "type": "Poison",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack, Sp. Atk, and critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 97700,
+      "slot": 5,
+      "name": "Elder’s Experience\nPoison Impact",
+      "type": "Poison",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 11013204,
+      "name": "Team Underhanded Heal 4",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when the user’s attack move is successful against targets that are affected by a status condition.",
+      "childPassives": []
+    },
+    {
+      "id": 18107509,
+      "name": "Full-Bracing P-Move 9",
+      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its Pokémon uses a move.",
+      "childPassives": []
+    },
+    {
+      "id": 22010101,
+      "name": "Hostile Environment 1",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1006100100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100106,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100107,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100108,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100109,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Antitoxin",
+      "description": "Prevents the user from getting poisoned or badly poisoned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100110,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Poison Sting: Power +4",
+      "description": "Raises the power of Poison Sting.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Sting": 4
+      }
+    },
+    {
+      "cellId": 1006100111,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Poison Sting: Power +4",
+      "description": "Raises the power of Poison Sting.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Sting": 4
+      }
+    },
+    {
+      "cellId": 1006100112,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Poison Sting: Power +4",
+      "description": "Raises the power of Poison Sting.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Sting": 4
+      }
+    },
+    {
+      "cellId": 1006100113,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Poison Sting: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100114,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Poison Sting: Hostile Environment 2",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100115,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Potent Toxin 2",
+      "description": "Increases the amount of damage an opponent takes from being poisoned or badly poisoned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100116,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Sharp Entry 1",
+      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100117,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100118,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wrap: Power +4",
+      "description": "Raises the power of Wrap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wrap": 4
+      }
+    },
+    {
+      "cellId": 1006100119,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100120,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wrap: Power +4",
+      "description": "Raises the power of Wrap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wrap": 4
+      }
+    },
+    {
+      "cellId": 1006100121,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100122,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Don’t Hold Back!: Hit and Heal 9",
+      "description": "Applies the Gradual Healing effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100123,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Don’t Hold Back!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100124,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Don’t Hold Back!: All Ramped Up 1",
+      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100125,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Don’t Hold Back!: Berserk Bunch 1",
+      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Escape Artist",
+      "description": "Prevents the user from becoming trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wrap: Power +4",
+      "description": "Raises the power of Wrap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wrap": 4
+      }
+    },
+    {
+      "cellId": 1006100131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Wrap: Power +4",
+      "description": "Raises the power of Wrap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wrap": 4
+      }
+    },
+    {
+      "cellId": 1006100132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wrap: Accuracy +10",
+      "description": "Raises the accuracy of Wrap.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Wrap: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Pokey Trap 2",
+      "description": "Increases the amount of damage an opponent takes from being trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Status Immunity",
+      "description": "Status conditions cannot be inflicted on the user.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100137,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Poison Sting: Power +4",
+      "description": "Raises the power of Poison Sting.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Sting": 4
+      }
+    },
+    {
+      "cellId": 1006100138,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100139,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Poison Sting: Power +4",
+      "description": "Raises the power of Poison Sting.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Sting": 4
+      }
+    },
+    {
+      "cellId": 1006100140,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Leer: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100141,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Terrify 1",
+      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100142,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100143,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100144,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Leer: Catalytic Infliction",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s Pokémon uses a status move each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100145,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Leer: Team Inflict and Heal 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when a status move used by the user’s Pokémon is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100146,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Elder’s Experience\nPoison Impact: Power +25",
+      "description": "Raises the power of Elder’s Experience\nPoison Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Elder’s Experience\nPoison Impact": 25
+      }
+    },
+    {
+      "cellId": 1006100147,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Elder’s Experience\nPoison Impact: Power +25",
+      "description": "Raises the power of Elder’s Experience\nPoison Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Elder’s Experience\nPoison Impact": 25
+      }
+    }
+  ]
+}

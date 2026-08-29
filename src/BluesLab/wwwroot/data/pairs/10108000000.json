@@ -1,0 +1,982 @@
+{
+  "trainerId": "10108000000",
+  "trainerBaseId": "10010800",
+  "monsterId": "20108000000",
+  "monsterBaseId": "20053000",
+  "displayName": "Trainer #10010800 & Excadrill",
+  "trainerName": "Trainer #10010800",
+  "monsterName": "Excadrill",
+  "type": "Ground",
+  "weakness": "Water",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "No Brakes\nDrill Run",
+  "iconUrl": "img/trainers/0108_00-0530_00.png",
+  "stats": {
+    "hp": [
+      89,
+      170,
+      248,
+      556,
+      620,
+      684,
+      876
+    ],
+    "atk": [
+      9,
+      35,
+      59,
+      158,
+      178,
+      198,
+      258
+    ],
+    "def": [
+      18,
+      48,
+      75,
+      185,
+      209,
+      233,
+      305
+    ],
+    "spa": [
+      12,
+      46,
+      79,
+      211,
+      239,
+      267,
+      351
+    ],
+    "spd": [
+      20,
+      51,
+      81,
+      202,
+      226,
+      250,
+      322
+    ],
+    "spe": [
+      13,
+      53,
+      92,
+      246,
+      278,
+      310,
+      406
+    ]
+  },
+  "moves": [
+    {
+      "id": 189,
+      "slot": 1,
+      "name": "Mud-Slap",
+      "type": "Ground",
+      "category": "Status",
+      "power": "13",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19000,
+      "slot": 2,
+      "name": "Potion",
+      "type": "Ground",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 201,
+      "slot": 3,
+      "name": "Sandstorm",
+      "type": "Rock",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Causes a sandstorm.",
+      "isSync": false
+    },
+    {
+      "id": 11080,
+      "slot": 4,
+      "name": "All Aboard!",
+      "type": "Ground",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to all allied sync pairs during a sandstorm.",
+      "isSync": false
+    },
+    {
+      "id": 81500,
+      "slot": 5,
+      "name": "No Brakes\nDrill Run",
+      "type": "Ground",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 18093909,
+      "name": "Sandy Pep Rally 9",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move during a sandstorm.",
+      "childPassives": []
+    },
+    {
+      "id": 18094102,
+      "name": "Ferocious Affliction 2",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time a status move used by the user’s Pokémon is successful each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 23010401,
+      "name": "Sedimentary",
+      "description": "Protects the user from damage from a sandstorm. The user’s Defense and Sp. Def increase 30% during a sandstorm.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1010800000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Mud-Slap: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1010800012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1010800013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Accuracy +5",
+      "description": "Raises the accuracy of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Fail Forward 1",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] when an opponent’s attack move targeting the user misses.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Mud-Slap: Ripple Effect 2",
+      "description": "When a move used by the user’s Pokémon lowers an opponent’s stat, has a chance ([Digit:2digits ]%) of lowering the same stat for all opposing sync pairs instead.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800017,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800018,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Guarded Entry 1",
+      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Potion: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800026,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800027,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1010800028,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800029,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1010800030,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800031,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800032,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800033,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Gritty Guardian 1",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Defense and Sp. Def by one stat rank when its Pokémon uses a move during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800034,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sandstorm: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800035,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Soothing Sand 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800036,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Pocket Sand 4",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by one stat rank when the user’s attack move against it is successful during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800037,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Accuracy +5",
+      "description": "Raises the accuracy of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800038,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800039,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800040,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "All Aboard!: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800041,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800042,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +20",
+      "description": "Raises Speed by 20.",
+      "statBonus": {
+        "spe": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800043,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Adrenaline 1",
+      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800044,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Cure",
+      "description": "Removes all status conditions from the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800045,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "No Brakes\nDrill Run: Power +25",
+      "description": "Raises the power of No Brakes\nDrill Run.",
+      "statBonus": {},
+      "powerBonus": {
+        "No Brakes\nDrill Run": 25
+      }
+    },
+    {
+      "cellId": 1010800047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "No Brakes\nDrill Run: Power +25",
+      "description": "Raises the power of No Brakes\nDrill Run.",
+      "statBonus": {},
+      "powerBonus": {
+        "No Brakes\nDrill Run": 25
+      }
+    },
+    {
+      "cellId": 1010800048,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unbending",
+      "description": "Defense cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800049,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Sand Slinger 9",
+      "description": "Lowers the target’s Attack by one stat rank when the user’s attack move against it is successful during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800050,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800051,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800052,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Sandstorm: Team Hit and Heal",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010800053,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Revenge Boost 9",
+      "description": "Charges the user’s move gauge by one when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

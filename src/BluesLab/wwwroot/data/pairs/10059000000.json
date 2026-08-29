@@ -1,0 +1,882 @@
+{
+  "trainerId": "10059000000",
+  "trainerBaseId": "10005900",
+  "monsterId": "20059000000",
+  "monsterBaseId": "20007700",
+  "displayName": "Trainer #10005900 & Ponyta",
+  "trainerName": "Trainer #10005900",
+  "monsterName": "Ponyta",
+  "type": "Fire",
+  "weakness": "Rock",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 4,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Fire\nSync Impact",
+  "iconUrl": "img/trainers/0059_00-0077_00.png",
+  "stats": {
+    "hp": [
+      100,
+      175,
+      242,
+      517,
+      577,
+      637,
+      817
+    ],
+    "atk": [
+      11,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "def": [
+      10,
+      31,
+      49,
+      126,
+      142,
+      158,
+      206
+    ],
+    "spa": [
+      10,
+      31,
+      49,
+      126,
+      142,
+      158,
+      206
+    ],
+    "spd": [
+      13,
+      34,
+      52,
+      129,
+      145,
+      161,
+      209
+    ],
+    "spe": [
+      25,
+      88,
+      148,
+      379,
+      431,
+      483,
+      639
+    ]
+  },
+  "moves": [
+    {
+      "id": 172,
+      "slot": 1,
+      "name": "Flame Wheel",
+      "type": "Fire",
+      "category": "Status",
+      "power": "42",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Removes the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "isSync": false
+    },
+    {
+      "id": 83,
+      "slot": 2,
+      "name": "Fire Spin",
+      "type": "Fire",
+      "category": "Status",
+      "power": "38",
+      "accuracy": "85",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Leaves the target trapped.",
+      "isSync": false
+    },
+    {
+      "id": 10590,
+      "slot": 3,
+      "name": "Raging Inferno!",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises one of the user’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random: Defense, Sp. Atk, Sp. Def, or Speed.",
+      "isSync": false
+    },
+    {
+      "id": 241,
+      "slot": 4,
+      "name": "Sunny Day",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Makes the weather sunny.",
+      "isSync": false
+    },
+    {
+      "id": 30200,
+      "slot": 5,
+      "name": "Fire\nSync Impact",
+      "type": "Fire",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 22010101,
+      "name": "Hostile Environment 1",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1005900000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Wheel: Power +4",
+      "description": "Raises the power of Flame Wheel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Wheel": 4
+      }
+    },
+    {
+      "cellId": 1005900008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Flameproof",
+      "description": "Prevents the user from getting burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Wheel: Power +4",
+      "description": "Raises the power of Flame Wheel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Wheel": 4
+      }
+    },
+    {
+      "cellId": 1005900011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Flame Wheel: Hostile Environment 2",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Wheel: Power +4",
+      "description": "Raises the power of Flame Wheel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Wheel": 4
+      }
+    },
+    {
+      "cellId": 1005900013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Flame Wheel: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Quick Tempo",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Burn Synergy 3",
+      "description": "Powers up the user’s moves when the target is burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 12,
+      "orbCost": 144,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Sync",
+      "description": "Makes the weather sunny the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Haste",
+      "description": "Speed cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Power +4",
+      "description": "Raises the power of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fire Spin": 4
+      }
+    },
+    {
+      "cellId": 1005900019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Accuracy +5",
+      "description": "Raises the accuracy of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Power +4",
+      "description": "Raises the power of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fire Spin": 4
+      }
+    },
+    {
+      "cellId": 1005900022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Fire Spin: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Pokey Trap 2",
+      "description": "Increases the amount of damage an opponent takes from being trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Accuracy +10",
+      "description": "Raises the accuracy of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Fire Spin: Flabbergast 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused when a move targeting that opponent is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Wheel: Power +4",
+      "description": "Raises the power of Flame Wheel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Wheel": 4
+      }
+    },
+    {
+      "cellId": 1005900029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Wheel: Power +4",
+      "description": "Raises the power of Flame Wheel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Wheel": 4
+      }
+    },
+    {
+      "cellId": 1005900030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healing Sun 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Speed +20",
+      "description": "Raises Speed by 20.",
+      "statBonus": {
+        "spe": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sunny Disposition",
+      "description": "The user’s stats cannot be lowered when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 5",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Power +4",
+      "description": "Raises the power of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fire Spin": 4
+      }
+    },
+    {
+      "cellId": 1005900040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Power +4",
+      "description": "Raises the power of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fire Spin": 4
+      }
+    },
+    {
+      "cellId": 1005900041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Fire Spin: Power +4",
+      "description": "Raises the power of Fire Spin.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fire Spin": 4
+      }
+    },
+    {
+      "cellId": 1005900042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Raging Inferno!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Pinpoint Entry 1",
+      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Interference Sync 5",
+      "description": "Powers up the user’s sync move against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Raging Inferno!: Follow-Through 9",
+      "description": "Applies the Critical Hit Next effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1005900046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Quizmaster\nFlame Charge: Power +25",
+      "description": "Raises the power of Quizmaster\nFlame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Quizmaster\nFlame Charge": 25
+      }
+    },
+    {
+      "cellId": 1005900047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Quizmaster\nFlame Charge: Power +25",
+      "description": "Raises the power of Quizmaster\nFlame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Quizmaster\nFlame Charge": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,966 @@
+{
+  "trainerId": "10045000000",
+  "trainerBaseId": "10004500",
+  "monsterId": "20045000000",
+  "monsterBaseId": "20001500",
+  "displayName": "Trainer #10004500 & Beedrill",
+  "trainerName": "Trainer #10004500",
+  "monsterName": "Beedrill",
+  "type": "Bug",
+  "weakness": "Rock",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 3,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Bug Expert\nTwineedle",
+  "iconUrl": "img/trainers/0045_00-0015_00.png",
+  "stats": {
+    "hp": [
+      67,
+      130,
+      190,
+      410,
+      458,
+      506,
+      650
+    ],
+    "atk": [
+      19,
+      69,
+      117,
+      304,
+      344,
+      384,
+      504
+    ],
+    "def": [
+      8,
+      22,
+      34,
+      78,
+      86,
+      94,
+      118
+    ],
+    "spa": [
+      8,
+      27,
+      45,
+      111,
+      123,
+      135,
+      171
+    ],
+    "spd": [
+      8,
+      25,
+      40,
+      95,
+      107,
+      119,
+      155
+    ],
+    "spe": [
+      19,
+      66,
+      111,
+      287,
+      323,
+      359,
+      467
+    ]
+  },
+  "moves": [
+    {
+      "id": 565,
+      "slot": 1,
+      "name": "Fell Stinger",
+      "type": "Bug",
+      "category": "Status",
+      "power": "44",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it knocks out a target with this move.",
+      "isSync": false
+    },
+    {
+      "id": 19120,
+      "slot": 2,
+      "name": "Sure Crit",
+      "type": "Bug",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Applies the Critical Hit Next effect to the user.",
+      "isSync": false
+    },
+    {
+      "id": 41,
+      "slot": 3,
+      "name": "Twineedle",
+      "type": "Bug",
+      "category": "Status",
+      "power": "20",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Attacks twice in a row. Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "isSync": false
+    },
+    {
+      "id": 10450,
+      "slot": 4,
+      "name": "Beehold\nMy Research!",
+      "type": "Bug",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s evasiveness by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 60400,
+      "slot": 5,
+      "name": "Bug Expert\nTwineedle",
+      "type": "Bug",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Beedrill until the end of battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 13010602,
+      "name": "Critical Strike 2",
+      "description": "Powers up the user’s attacks when they become critical hits.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0015_51_megaspear",
+      "statMultiplier": {
+        "atk": 1.2,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.2
+      },
+      "passives": [
+        {
+          "id": 13010602,
+          "name": "Critical Strike 2",
+          "description": "Powers up the user’s attacks when they become critical hits."
+        },
+        {
+          "id": 18040301,
+          "name": "Amped Up 1",
+          "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it lands a critical hit."
+        }
+      ],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1004500000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Twineedle: Power +2",
+      "description": "Raises the power of Twineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Twineedle": 2
+      }
+    },
+    {
+      "cellId": 1004500011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Twineedle: Power +2",
+      "description": "Raises the power of Twineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Twineedle": 2
+      }
+    },
+    {
+      "cellId": 1004500012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Twineedle: Power +2",
+      "description": "Raises the power of Twineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Twineedle": 2
+      }
+    },
+    {
+      "cellId": 1004500013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Twineedle: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Twineedle: Ramming Speed",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Twineedle: Hostile Environment 1",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fell Stinger: Power +4",
+      "description": "Raises the power of Fell Stinger.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fell Stinger": 4
+      }
+    },
+    {
+      "cellId": 1004500020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fell Stinger: Power +4",
+      "description": "Raises the power of Fell Stinger.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fell Stinger": 4
+      }
+    },
+    {
+      "cellId": 1004500022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Fell Stinger: Power +4",
+      "description": "Raises the power of Fell Stinger.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fell Stinger": 4
+      }
+    },
+    {
+      "cellId": 1004500024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Fell Stinger: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Victory Lap",
+      "description": "Applies the Critical Hit Next effect to the user when it knocks out an opponent with a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Blind Spot",
+      "description": "The more the user’s evasiveness is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Super Victory",
+      "description": "Applies the Supereffective ↑ Next effect to the user when it knocks out an opponent with a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Twineedle: Power +2",
+      "description": "Raises the power of Twineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Twineedle": 2
+      }
+    },
+    {
+      "cellId": 1004500031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Twineedle: Power +2",
+      "description": "Raises the power of Twineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Twineedle": 2
+      }
+    },
+    {
+      "cellId": 1004500033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Beehold\nMy Research!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Beehold\nMy Research!: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Bob and Weave",
+      "description": "The more the user’s evasiveness is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Fast Runner",
+      "description": "Evasiveness cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fell Stinger: Power +4",
+      "description": "Raises the power of Fell Stinger.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fell Stinger": 4
+      }
+    },
+    {
+      "cellId": 1004500040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Fell Stinger: Power +4",
+      "description": "Raises the power of Fell Stinger.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fell Stinger": 4
+      }
+    },
+    {
+      "cellId": 1004500041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sure Crit: MP Refresh 4",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Critical Might 1",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it lands a critical hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Fierce Entry 1",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Toxic Power 3",
+      "description": "Powers up the user’s moves when the target is poisoned or badly poisoned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1004500046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Bug Expert\nTwineedle: Power +25",
+      "description": "Raises the power of Bug Expert\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Expert\nTwineedle": 25
+      }
+    },
+    {
+      "cellId": 1004500047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Bug Expert\nTwineedle: Power +25",
+      "description": "Raises the power of Bug Expert\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Expert\nTwineedle": 25
+      }
+    },
+    {
+      "cellId": 1800102693,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Bug Expert\nTwineedle: Power +30",
+      "description": "Raises the power of Bug Expert\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Expert\nTwineedle": 30
+      }
+    },
+    {
+      "cellId": 1800102694,
+      "q": -4,
+      "r": 1,
+      "s": 3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Bug Expert\nTwineedle: Power +30",
+      "description": "Raises the power of Bug Expert\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Expert\nTwineedle": 30
+      }
+    },
+    {
+      "cellId": 1800102695,
+      "q": -4,
+      "r": 0,
+      "s": 4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Bug Expert\nTwineedle: Power +30",
+      "description": "Raises the power of Bug Expert\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Expert\nTwineedle": 30
+      }
+    }
+  ]
+}

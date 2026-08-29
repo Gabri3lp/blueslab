@@ -1,0 +1,992 @@
+{
+  "trainerId": "10133910000",
+  "trainerBaseId": "10013391",
+  "monsterId": "20133910000",
+  "monsterBaseId": "20025000",
+  "displayName": "Arc Suit Silver & Ho-Oh",
+  "trainerName": "Arc Suit Silver",
+  "monsterName": "Ho-Oh",
+  "type": "Fire",
+  "weakness": "Water",
+  "role": "Multi",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Golden Rule\nDivine Sacred Fire",
+  "iconUrl": "img/trainers/0133_91-0250_00.png",
+  "stats": {
+    "hp": [
+      108,
+      187,
+      262,
+      559,
+      623,
+      687,
+      879
+    ],
+    "atk": [
+      17,
+      60,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "def": [
+      14,
+      56,
+      95,
+      249,
+      281,
+      313,
+      409
+    ],
+    "spa": [
+      15,
+      55,
+      94,
+      248,
+      280,
+      312,
+      408
+    ],
+    "spd": [
+      14,
+      56,
+      95,
+      249,
+      281,
+      313,
+      409
+    ],
+    "spe": [
+      12,
+      55,
+      94,
+      259,
+      295,
+      331,
+      439
+    ]
+  },
+  "moves": [
+    {
+      "id": 221,
+      "slot": 1,
+      "name": "Sacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "87",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Removes the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "isSync": false
+    },
+    {
+      "id": 105,
+      "slot": 2,
+      "name": "Recover",
+      "type": "Normal",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6134,
+      "slot": 3,
+      "name": "Almighty Skies\nSacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "150",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s HP is at [Digit:2digits ]% or more.\nDeactivation Condition:\nWhen the user’s HP is less than [Digit:2digits ]%.\n\nNever misses. Removes the frozen condition from the user. Leaves the target burned. The power of this move is not lowered even if there are multiple targets. Makes the weather EX sunny if the remaining MP is [Digit:1digit Idx=\"1\" ] when this move is selected. Lowers the target’s Defense and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] if the remaining MP is [Digit:1digit Idx=\"2\" ] when this move is selected. Applies the [Name:ReferencedMessageTag Idx=\"4\" ] to all allied sync pairs if the remaining MP is [Digit:1digit Idx=\"3\" ] when this move is selected.",
+      "isSync": false
+    },
+    {
+      "id": 11332,
+      "slot": 4,
+      "name": "Pure and\nStrong!",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by two. Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 115000,
+      "slot": 5,
+      "name": "Golden Rule\nDivine Sacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time its sync move is used each battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 29010401,
+      "name": "Flame Myth",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 29020401,
+      "name": "Flame Judgment",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 99028001,
+      "name": "Righteous Heart of Gold",
+      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move. Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "childPassives": [
+        {
+          "id": 99017401,
+          "name": "Touch at Your Own Peril",
+          "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
+        },
+        {
+          "id": 18122409,
+          "name": "Take Hit: Team Same Stat ↑2 9",
+          "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)"
+        }
+      ]
+    },
+    {
+      "id": 99028101,
+      "name": "Everlasting Rainbow",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"105\" ] by one and fully restores its HP when its HP drops to half or below.",
+      "childPassives": []
+    },
+    {
+      "id": 99028201,
+      "name": "Seven-Colored Wings of Happiness",
+      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "childPassives": [
+        {
+          "id": 17044809,
+          "name": "Combo Freebie 9",
+          "description": "Applies the Free Move Next effect to the user when its attack move is successful."
+        },
+        {
+          "id": 17041304,
+          "name": "Staggering 4",
+          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
+        }
+      ]
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1800102850,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102851,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102852,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102853,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102854,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102855,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102856,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +40",
+      "description": "Raises HP by 40.",
+      "statBonus": {
+        "hp": 40
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102857,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Golden Rule\nDivine Sacred Fire: Power +50",
+      "description": "Raises the power of Golden Rule\nDivine Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Golden Rule\nDivine Sacred Fire": 50
+      }
+    },
+    {
+      "cellId": 1800102858,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Team Sharp Entry 3",
+      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102859,
+      "q": 0,
+      "r": 5,
+      "s": -5,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Drought Alert 3",
+      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102860,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102861,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102862,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102863,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102864,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102865,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Accuracy +5",
+      "description": "Raises the accuracy of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102866,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102867,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Furious Brawn",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102868,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 9",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102869,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hit Burned Opp: Stat ↓ 9",
+      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102870,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102871,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102872,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102873,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty Skies\nSacred Fire: Power +3",
+      "description": "Raises the power of Almighty Skies\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty Skies\nSacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102874,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty Skies\nSacred Fire: Power +3",
+      "description": "Raises the power of Almighty Skies\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty Skies\nSacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102875,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Almighty Skies\nSacred Fire: Power +3",
+      "description": "Raises the power of Almighty Skies\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty Skies\nSacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102876,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Pure and\nStrong!: Team Hit and Heal",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102877,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Tempo",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102878,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Pure and\nStrong!: Move: Take Next “All” Move 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102879,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Pure and\nStrong!: Berserk Bunch 4",
+      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102880,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102881,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102882,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102883,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty Skies\nSacred Fire: Power +3",
+      "description": "Raises the power of Almighty Skies\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty Skies\nSacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102884,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Almighty Skies\nSacred Fire: Power +3",
+      "description": "Raises the power of Almighty Skies\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Almighty Skies\nSacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102885,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Almighty Skies\nSacred Fire: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102886,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102887,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healing Sun 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102888,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Solar Immunity",
+      "description": "When the weather is sunny, status conditions cannot be inflicted on any allied sync pairs and prevents all allies from flinching, becoming confused, or becoming trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102889,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sunny: Team Attack Move DR 2",
+      "description": "Reduces attack move damage taken by allies when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102890,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102891,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102892,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102893,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102894,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1800102895,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sacred Fire: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102896,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "1st S-Move: Team Physical & Special Boost 1",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102897,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102898,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Adrenaline 1",
+      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102899,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Endure Again",
+      "description": "Except in certain circumstances, when the user’s Enduring effect activates for the first time and the user has 1 HP remaining, applies the Enduring effect to the user again each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102900,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Golden Rule\nDivine Sacred Fire: Power +25",
+      "description": "Raises the power of Golden Rule\nDivine Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Golden Rule\nDivine Sacred Fire": 25
+      }
+    },
+    {
+      "cellId": 1800102901,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Golden Rule\nDivine Sacred Fire: Power +25",
+      "description": "Raises the power of Golden Rule\nDivine Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Golden Rule\nDivine Sacred Fire": 25
+      }
+    }
+  ]
+}

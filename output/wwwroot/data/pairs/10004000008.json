@@ -1,0 +1,900 @@
+{
+  "trainerId": "10004000008",
+  "trainerBaseId": "10000400",
+  "monsterId": "20004000008",
+  "monsterBaseId": "20047001",
+  "displayName": "Trainer #10000400 & Monster #20047001",
+  "trainerName": "Trainer #10000400",
+  "monsterName": "Monster #20047001",
+  "type": "Grass",
+  "weakness": "Fire",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Sun-Grown Fighting Spirit\nGrass Impact",
+  "iconUrl": "img/trainers/0004_00-0470_00.png",
+  "stats": {
+    "hp": [
+      94,
+      168,
+      240,
+      515,
+      575,
+      635,
+      815
+    ],
+    "atk": [
+      23,
+      75,
+      123,
+      310,
+      350,
+      390,
+      510
+    ],
+    "def": [
+      14,
+      36,
+      57,
+      134,
+      150,
+      166,
+      214
+    ],
+    "spa": [
+      13,
+      57,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "spd": [
+      12,
+      32,
+      50,
+      127,
+      143,
+      159,
+      207
+    ],
+    "spe": [
+      14,
+      58,
+      100,
+      265,
+      301,
+      337,
+      445
+    ]
+  },
+  "moves": [
+    {
+      "id": 75,
+      "slot": 1,
+      "name": "Razor Leaf",
+      "type": "Grass",
+      "category": "Status",
+      "power": "43",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Critical hits land more easily.",
+      "isSync": false
+    },
+    {
+      "id": 235,
+      "slot": 2,
+      "name": "Synthesis",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "isSync": false
+    },
+    {
+      "id": 803,
+      "slot": 3,
+      "name": "Grassy Glide",
+      "type": "Grass",
+      "category": "Status",
+      "power": "100",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Will not consume the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "isSync": false
+    },
+    {
+      "id": 10047,
+      "slot": 4,
+      "name": "I Got\nOverheated!",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"5\" ] of all allied sync pairs by [Digit:1digit Idx=\"6\" ] [EN:Qty Ref=\"6\" S=\"rank\" P=\"ranks\" ]. Lowers the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] stat [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 112600,
+      "slot": 5,
+      "name": "Sun-Grown Fighting Spirit\nGrass Impact",
+      "type": "Grass",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the target’s Defense is lowered, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 19020201,
+      "name": "Green Thumb",
+      "description": "Turns the field of play’s terrain into Grassy Terrain after using the user’s sync move.",
+      "childPassives": []
+    },
+    {
+      "id": 17014201,
+      "name": "Grassy Terrain: Team Condition Nullification",
+      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is [Name:ReferencedMessageTag ].",
+      "childPassives": []
+    },
+    {
+      "id": 18117909,
+      "name": "P-Move/S-Move on Opp: Defense ↓ 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1000400800,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400801,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400802,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400803,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400804,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400805,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400806,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400807,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400808,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400809,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Escape Artist",
+      "description": "Prevents the user from becoming trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400810,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1000400811,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Accuracy +5",
+      "description": "Raises the accuracy of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400812,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1000400813,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Synthesis: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400814,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Use Status P-Move: Physical Boost ↑2 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400815,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Synthesis: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400816,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Synthesis: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400817,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400818,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400819,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400820,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1000400821,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1000400822,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1000400823,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Razor Leaf: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400824,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "P-Move/S-Move on Opp: Defense ↓ 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400825,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Fierce Entry 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400826,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400827,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400828,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400829,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Grassy Glide: Power +3",
+      "description": "Raises the power of Grassy Glide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Grassy Glide": 3
+      }
+    },
+    {
+      "cellId": 1000400830,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Grassy Glide: Power +3",
+      "description": "Raises the power of Grassy Glide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Grassy Glide": 3
+      }
+    },
+    {
+      "cellId": 1000400831,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Verdant Recovery 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400832,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Empowering Overgrowth 5",
+      "description": "Powers up the user’s moves when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400833,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Turbo Turf 2",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400834,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Blunting Strike 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400835,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400836,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400837,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400838,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400839,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Grassy Glide: Power +3",
+      "description": "Raises the power of Grassy Glide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Grassy Glide": 3
+      }
+    },
+    {
+      "cellId": 1000400840,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Grassy Glide: Power +3",
+      "description": "Raises the power of Grassy Glide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Grassy Glide": 3
+      }
+    },
+    {
+      "cellId": 1000400841,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Grassy Glide: Power +3",
+      "description": "Raises the power of Grassy Glide.",
+      "statBonus": {},
+      "powerBonus": {
+        "Grassy Glide": 3
+      }
+    },
+    {
+      "cellId": 1000400842,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Grassy Glide: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400843,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "I Got\nOverheated!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400844,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Adrenaline 1",
+      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400845,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Relentless",
+      "description": "The more the target’s Defense is lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000400846,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Sun-Grown Fighting Spirit\nGrass Impact: Power +25",
+      "description": "Raises the power of Sun-Grown Fighting Spirit\nGrass Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sun-Grown Fighting Spirit\nGrass Impact": 25
+      }
+    },
+    {
+      "cellId": 1000400847,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Sun-Grown Fighting Spirit\nGrass Impact: Power +25",
+      "description": "Raises the power of Sun-Grown Fighting Spirit\nGrass Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sun-Grown Fighting Spirit\nGrass Impact": 25
+      }
+    }
+  ]
+}

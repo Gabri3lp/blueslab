@@ -1,0 +1,205 @@
+@inject GridStateService GridState
+
+<div class="hex-grid-container position-relative w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+    @if (Pair == null || Pair.Grid.Count == 0)
+    {
+        <div class="text-center py-5 text-muted">
+            <i class="bi bi-grid-3x3-gap fs-1 d-block mb-2"></i>
+            No sync grid available for this character.
+        </div>
+    }
+    else
+    {
+        <div class="grid-viewport w-100 h-100 position-relative overflow-hidden">
+            <svg class="hex-svg w-100 h-100" viewBox="@ViewBoxString" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <!-- Center tile (Sync icon) -->
+                <g class="center-tile cursor-pointer" @onclick="OnCenterClicked">
+                    <polygon points="@GetHexPoints(0, 0)" fill="#2c3e50" stroke="#f1c40f" stroke-width="2.5" />
+                    <image href="img/sync_icon.png" x="@(-TileRadius * 0.75)" y="@(-TileRadius * 0.75)" width="@(TileRadius * 1.5)" height="@(TileRadius * 1.5)" />
+                </g>
+
+                <!-- Grid Cells -->
+                @foreach (var cell in Pair.Grid)
+                {
+                    bool isActive = GridState.ActiveCells.Contains(cell.CellId);
+                    bool isLocked = cell.MoveLevel > Math.Clamp(MoveLevel, 1, 5);
+                    var (fillColor, strokeColor) = GetTileColors(cell.ColorKind, isActive, isLocked);
+                    var (cx, cy) = GetHexCenter(cell.Q, cell.R);
+
+                    <g class="hex-tile @(isActive ? "active" : "") @(isLocked ? "locked" : "") cursor-pointer"
+                       @onclick="() => OnTileClicked(cell)"
+                       @onmouseover="() => HoveredCell = cell"
+                       @onmouseout="() => { if (HoveredCell == cell) HoveredCell = null; }">
+                        <polygon points="@GetHexPoints(cell.Q, cell.R)"
+                                 fill="@fillColor"
+                                 stroke="@strokeColor"
+                                 stroke-width="@(isActive ? 3.0 : 1.5)"
+                                 filter="@(isActive ? "url(#glow)" : "none")" />
+                        
+                        <!-- Text label inside hexagon -->
+                        <text x="@cx" y="@cy"
+                              text-anchor="middle"
+                              dominant-baseline="central"
+                              fill="#ffffff"
+                              font-size="@(TileRadius * 0.26)"
+                              font-weight="bold"
+                              class="hex-label select-none pointer-events-none">
+                            @FormatCellLabel(cell)
+                        </text>
+                    </g>
+                }
+            </svg>
+
+            <!-- Floating Hover Tooltip -->
+            @if (HoveredCell != null)
+            {
+                <div class="hover-tooltip shadow-lg bg-dark border border-secondary text-light p-2 rounded position-absolute">
+                    <div class="fw-bold text-warning small">@HoveredCell.Title</div>
+                    @if (!string.IsNullOrEmpty(HoveredCell.Description))
+                    {
+                        <div class="text-secondary small mt-1">@HoveredCell.Description</div>
+                    }
+                    <div class="d-flex align-items-center gap-3 mt-2 small">
+                        <span>⚡ Energy: <b>@HoveredCell.EnergyCost</b></span>
+                        <span>🔮 Orbs: <b>@HoveredCell.OrbCost</b></span>
+                        <span>Level: <b>@HoveredCell.MoveLevel/5</b></span>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public SyncPairDetail? Pair { get; set; }
+    [Parameter] public int MoveLevel { get; set; } = 5;
+    [Parameter] public EventCallback OnCenterClick { get; set; }
+
+    private GridCellItem? HoveredCell;
+    private const double TileRadius = 42.0;
+    private double NormHexW = 1.5;
+    private double NormHexH = Math.Sqrt(3);
+
+    private (double X, double Y) GetHexCenter(int q, int r)
+    {
+        double x = TileRadius * NormHexW * q;
+        double y = TileRadius * NormHexH * (r + q / 2.0);
+        return (x, y);
+    }
+
+    private string GetHexPoints(int q, int r)
+    {
+        var (cx, cy) = GetHexCenter(q, r);
+        var points = new List<string>();
+        for (int i = 0; i < 6; i++)
+        {
+            double angle = Math.PI / 180 * (60 * i);
+            double px = cx + TileRadius * Math.Cos(angle);
+            double py = cy + TileRadius * Math.Sin(angle);
+            points.Add($"{px:0.#},{py:0.#}");
+        }
+        return string.Join(" ", points);
+    }
+
+    private string ViewBoxString
+    {
+        get
+        {
+            if (Pair == null || Pair.Grid.Count == 0) return "-300 -300 600 600";
+            double minX = 0, maxX = 0, minY = 0, maxY = 0;
+            foreach (var cell in Pair.Grid)
+            {
+                var (cx, cy) = GetHexCenter(cell.Q, cell.R);
+                minX = Math.Min(minX, cx - TileRadius);
+                maxX = Math.Max(maxX, cx + TileRadius);
+                minY = Math.Min(minY, cy - TileRadius);
+                maxY = Math.Max(maxY, cy + TileRadius);
+            }
+            double pad = TileRadius * 1.2;
+            double w = (maxX - minX) + pad * 2;
+            double h = (maxY - minY) + pad * 2;
+            double x = minX - pad;
+            double y = minY - pad;
+            return $"{x:0.#} {y:0.#} {w:0.#} {h:0.#}";
+        }
+    }
+
+    private (string fill, string stroke) GetTileColors(string kind, bool active, bool locked)
+    {
+        if (locked)
+            return ("#2d3436", "#636e72");
+
+        string k = kind.ToLowerInvariant();
+        return k switch
+        {
+            "stat" => active ? ("#3498db", "#ffffff") : ("#1a365d", "#2980b9"),
+            "move boost" => active ? ("#2ecc71", "#ffffff") : ("#1b4332", "#27ae60"),
+            "move effect" => active ? ("#e74c3c", "#ffffff") : ("#4a1c1d", "#c0392b"),
+            "sync" => active ? ("#9b59b6", "#ffffff") : ("#3c1b4a", "#8e44ad"),
+            "passive" => active ? ("#f1c40f", "#ffffff") : ("#4a3c1b", "#d35400"),
+            _ => active ? ("#f39c12", "#ffffff") : ("#4a3c1b", "#d35400")
+        };
+    }
+
+    private string FormatCellLabel(GridCellItem cell)
+    {
+        string t = cell.Title.Trim();
+        if (string.IsNullOrEmpty(t)) return "";
+        if (t.StartsWith("HP +")) return $"HP+{t[4..]}";
+        if (t.StartsWith("Attack +")) return $"Atk+{t[8..]}";
+        if (t.StartsWith("Defense +")) return $"Def+{t[9..]}";
+        if (t.StartsWith("Sp. Atk +")) return $"SpA+{t[9..]}";
+        if (t.StartsWith("Sp. Def +")) return $"SpD+{t[9..]}";
+        if (t.StartsWith("Speed +")) return $"Spe+{t[7..]}";
+
+        if (t.Contains(": Move Gauge Refresh "))
+        {
+            var idx = t.IndexOf(": Move Gauge Refresh ");
+            var num = t[(idx + 21)..];
+            return $"MGR{num}";
+        }
+        if (t.Contains(": MP Refresh "))
+        {
+            var idx = t.IndexOf(": MP Refresh ");
+            var num = t[(idx + 13)..];
+            return $"MPR{num}";
+        }
+        if (t.Contains(": Power +"))
+        {
+            var idx = t.IndexOf(": Power +");
+            var num = t[(idx + 9)..];
+            return $"Pwr+{num}";
+        }
+        if (t.Contains(": Accuracy +"))
+        {
+            var idx = t.IndexOf(": Accuracy +");
+            var num = t[(idx + 12)..];
+            return $"Acc+{num}";
+        }
+
+        // Truncate long words
+        if (t.Length > 12)
+            return t[..10] + "..";
+        return t;
+    }
+
+    private void OnTileClicked(GridCellItem cell)
+    {
+        if (Pair != null)
+        {
+            GridState.ToggleCell(Pair, cell, MoveLevel);
+        }
+    }
+
+    private async Task OnCenterClicked()
+    {
+        await OnCenterClick.InvokeAsync();
+    }
+}

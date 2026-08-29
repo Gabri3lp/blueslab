@@ -1,0 +1,896 @@
+{
+  "trainerId": "10010000000",
+  "trainerBaseId": "10001000",
+  "monsterId": "20010000000",
+  "monsterBaseId": "20041900",
+  "displayName": "Trainer #10001000 & Floatzel",
+  "trainerName": "Trainer #10001000",
+  "monsterName": "Floatzel",
+  "type": "Water",
+  "weakness": "Grass",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 3,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Crashdown\nAqua Jet",
+  "iconUrl": "img/trainers/0010_00-0419_00.png",
+  "stats": {
+    "hp": [
+      72,
+      135,
+      195,
+      415,
+      467,
+      519,
+      675
+    ],
+    "atk": [
+      21,
+      53,
+      83,
+      204,
+      228,
+      252,
+      324
+    ],
+    "def": [
+      10,
+      32,
+      53,
+      130,
+      146,
+      162,
+      210
+    ],
+    "spa": [
+      21,
+      53,
+      83,
+      204,
+      228,
+      252,
+      324
+    ],
+    "spd": [
+      10,
+      33,
+      54,
+      142,
+      158,
+      174,
+      222
+    ],
+    "spe": [
+      20,
+      79,
+      136,
+      356,
+      404,
+      452,
+      596
+    ]
+  },
+  "moves": [
+    {
+      "id": 127,
+      "slot": 1,
+      "name": "Waterfall",
+      "type": "Water",
+      "category": "Status",
+      "power": "45",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "isSync": false
+    },
+    {
+      "id": 19082,
+      "slot": 2,
+      "name": "Dire Hit +",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 352,
+      "slot": 3,
+      "name": "Water Pulse",
+      "type": "Water",
+      "category": "Status",
+      "power": "47",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "isSync": false
+    },
+    {
+      "id": 10100,
+      "slot": 4,
+      "name": "CRASH!",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 71900,
+      "slot": 5,
+      "name": "Crashdown\nAqua Jet",
+      "type": "Water",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "This attack’s power increases when the target is flinching.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 12010102,
+      "name": "Racing Rain 2",
+      "description": "Quickly charges the move gauge when the weather is rainy.",
+      "childPassives": []
+    },
+    {
+      "id": 22010201,
+      "name": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1001000000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1001000010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1001000011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1001000012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Waterfall: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Foul Fighting 3",
+      "description": "Powers up the user’s moves against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Shower Power 5",
+      "description": "Powers up the user’s sync move when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Haste",
+      "description": "Speed cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Pulse: Power +4",
+      "description": "Raises the power of Water Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Pulse": 4
+      }
+    },
+    {
+      "cellId": 1001000022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Water Pulse: Power +4",
+      "description": "Raises the power of Water Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Pulse": 4
+      }
+    },
+    {
+      "cellId": 1001000023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "CRASH!: Ramp Up 1",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "CRASH!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sharp Entry 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Flameproof",
+      "description": "Prevents the user from getting burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1001000030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1001000032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Racing Rain 1",
+      "description": "Quickly charges the move gauge when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Dire Hit +: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Pulse: Power +4",
+      "description": "Raises the power of Water Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Pulse": 4
+      }
+    },
+    {
+      "cellId": 1001000039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Pulse: Power +4",
+      "description": "Raises the power of Water Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Pulse": 4
+      }
+    },
+    {
+      "cellId": 1001000040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Clearheaded",
+      "description": "Prevents the user from becoming confused.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Water Pulse: Power +4",
+      "description": "Raises the power of Water Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Pulse": 4
+      }
+    },
+    {
+      "cellId": 1001000042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Water Pulse: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +20",
+      "description": "Raises Sp. Atk by 20.",
+      "statBonus": {
+        "spa": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Raging Rain 3",
+      "description": "Powers up the user’s moves when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Interference Sync 5",
+      "description": "Powers up the user’s sync move against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001000046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Crashdown\nAqua Jet: Power +25",
+      "description": "Raises the power of Crashdown\nAqua Jet.",
+      "statBonus": {},
+      "powerBonus": {
+        "Crashdown\nAqua Jet": 25
+      }
+    },
+    {
+      "cellId": 1001000047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Crashdown\nAqua Jet: Power +25",
+      "description": "Raises the power of Crashdown\nAqua Jet.",
+      "statBonus": {},
+      "powerBonus": {
+        "Crashdown\nAqua Jet": 25
+      }
+    }
+  ]
+}

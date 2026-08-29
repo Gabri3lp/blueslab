@@ -1,0 +1,900 @@
+{
+  "trainerId": "10021000002",
+  "trainerBaseId": "10002100",
+  "monsterId": "20021000002",
+  "monsterBaseId": "20006500",
+  "displayName": "Trainer #10002100 & Alakazam",
+  "trainerName": "Trainer #10002100",
+  "monsterName": "Alakazam",
+  "type": "Psychic",
+  "weakness": "Bug",
+  "role": "Sprint",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Beat Them All\nPsychic Beam",
+  "iconUrl": "img/trainers/0021_00-0065_00.png",
+  "stats": {
+    "hp": [
+      92,
+      168,
+      240,
+      526,
+      586,
+      646,
+      826
+    ],
+    "atk": [
+      10,
+      60,
+      108,
+      295,
+      335,
+      375,
+      495
+    ],
+    "def": [
+      9,
+      29,
+      47,
+      124,
+      140,
+      156,
+      204
+    ],
+    "spa": [
+      27,
+      83,
+      137,
+      346,
+      390,
+      434,
+      566
+    ],
+    "spd": [
+      17,
+      41,
+      62,
+      150,
+      170,
+      190,
+      250
+    ],
+    "spe": [
+      15,
+      61,
+      103,
+      279,
+      315,
+      351,
+      459
+    ]
+  },
+  "moves": [
+    {
+      "id": 86,
+      "slot": 1,
+      "name": "Thunder Wave",
+      "type": "Electric",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Leaves the target paralyzed.",
+      "isSync": false
+    },
+    {
+      "id": 19082,
+      "slot": 2,
+      "name": "Dire Hit +",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 94,
+      "slot": 3,
+      "name": "Psychic",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "99",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 10214,
+      "slot": 4,
+      "name": "That All\nYou Got?",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 110200,
+      "slot": 5,
+      "name": "Beat Them All\nPsychic Beam",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "This attack’s power increases when the target is paralyzed.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 15010101,
+      "name": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 22010309,
+      "name": "On a Roll 9",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "childPassives": []
+    },
+    {
+      "id": 18116709,
+      "name": "Hit Paralyzed Opp: Sp. Def ↓ 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a paralyzed opponent.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1002100200,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100201,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100202,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100203,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100204,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100205,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100206,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100207,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100208,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100209,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100210,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Thunder Wave: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100211,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100212,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Thunder Wave: Accuracy +10",
+      "description": "Raises the accuracy of Thunder Wave.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100213,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Shocked Hit Freebie 4",
+      "description": "Has a chance ([Digit:2digits Idx=\"1\" ]%) of applying the [Name:ReferencedMessageTag ] to the user when its attack move is successful against a paralyzed opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100214,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Paralysis Synergy 3",
+      "description": "Powers up the user’s moves when the target is paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100215,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100216,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100217,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100218,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100219,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Antitoxin",
+      "description": "Prevents the user from getting poisoned or badly poisoned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100220,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Dire Hit +: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100221,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Dire Hit +: Barricade 1",
+      "description": "Raises the user’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100222,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100223,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Satisfied Snicker 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100224,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100225,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100226,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100227,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100228,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100229,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1002100230,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1002100231,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Escape Artist",
+      "description": "Prevents the user from becoming trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100232,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "That All\nYou Got?: Hit and Heal 9",
+      "description": "Applies the Gradual Healing effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100233,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Befuddle 1",
+      "description": "Lowers the Sp. Def of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100234,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainteaser",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100235,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100236,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100237,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100238,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100239,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1002100240,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1002100241,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1002100242,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100243,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Psychic: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100244,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "That All\nYou Got?: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100245,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Smarty-Pants",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1002100246,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Beat Them All\nPsychic Beam: Power +25",
+      "description": "Raises the power of Beat Them All\nPsychic Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Beat Them All\nPsychic Beam": 25
+      }
+    },
+    {
+      "cellId": 1002100247,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Beat Them All\nPsychic Beam: Power +25",
+      "description": "Raises the power of Beat Them All\nPsychic Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Beat Them All\nPsychic Beam": 25
+      }
+    }
+  ]
+}

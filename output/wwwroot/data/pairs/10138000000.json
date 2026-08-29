@@ -1,0 +1,917 @@
+{
+  "trainerId": "10138000000",
+  "trainerBaseId": "10013800",
+  "monsterId": "20138000000",
+  "monsterBaseId": "20010361",
+  "displayName": "Trainer #10013800 & Exeggutor",
+  "trainerName": "Trainer #10013800",
+  "monsterName": "Exeggutor",
+  "type": "Dragon",
+  "weakness": "Poison",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Big Wave–Riding Researcher\nDragon Impact",
+  "iconUrl": "img/trainers/0138_00-0103_61.png",
+  "stats": {
+    "hp": [
+      97,
+      172,
+      244,
+      530,
+      590,
+      650,
+      830
+    ],
+    "atk": [
+      17,
+      60,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "def": [
+      15,
+      54,
+      90,
+      233,
+      265,
+      297,
+      393
+    ],
+    "spa": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "spd": [
+      15,
+      54,
+      90,
+      233,
+      265,
+      297,
+      393
+    ],
+    "spe": [
+      11,
+      47,
+      80,
+      212,
+      240,
+      268,
+      352
+    ]
+  },
+  "moves": [
+    {
+      "id": 331,
+      "slot": 1,
+      "name": "Bullet Seed",
+      "type": "Grass",
+      "category": "Status",
+      "power": "15",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Attacks the target two to five times in a row.",
+      "isSync": false
+    },
+    {
+      "id": 18500,
+      "slot": 2,
+      "name": "Sitrus Berry",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6130,
+      "slot": 3,
+      "name": "Taaaaaall\nDragon Hammer",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is rank [Digit:1digit Idx=\"1\" ] or higher.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is rank [Digit:1digit Idx=\"2\" ] or lower.\n\nLeaves the target confused. Leaves the target paralyzed.",
+      "isSync": false
+    },
+    {
+      "id": 11380,
+      "slot": 4,
+      "name": "How\nInteresting!",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 119600,
+      "slot": 5,
+      "name": "Big Wave–Riding Researcher\nDragon Impact",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99027101,
+      "name": "Blazing Sunlight Transformation",
+      "description": "Restores [Digit:1digit ] MP of the user’s moves that have the Berry effect tag when it uses [Name:MoveId Idx=\"18500\" ] while the weather is sunny. Has a chance ([Digit:2digits Idx=\"1\" ]%) of restoring [Digit:1digit ] MP of the user’s moves that have the Berry effect tag when it uses [Name:MoveId Idx=\"18500\" ] while the weather is not sunny.",
+      "childPassives": []
+    },
+    {
+      "id": 99027201,
+      "name": "Advantageous Abundance",
+      "description": "Grants all of the following effects when the user uses [Name:MoveId Idx=\"18500\" ]: Makes opponents target the user for a short time. Applies the [Name:ReferencedMessageTag ] to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "childPassives": []
+    },
+    {
+      "id": 19056401,
+      "name": "Max Move: Dragon Zone",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s max move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0103_84_00_anassy",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1800102304,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102305,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102306,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102307,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102308,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102309,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102310,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102311,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102312,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102313,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bullet Seed: Power +1",
+      "description": "Raises the power of Bullet Seed.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bullet Seed": 1
+      }
+    },
+    {
+      "cellId": 1800102314,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bullet Seed: Power +1",
+      "description": "Raises the power of Bullet Seed.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bullet Seed": 1
+      }
+    },
+    {
+      "cellId": 1800102315,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Verdant Immunity",
+      "description": "Status conditions cannot be inflicted on the user when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102316,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bullet Seed: Power +1",
+      "description": "Raises the power of Bullet Seed.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bullet Seed": 1
+      }
+    },
+    {
+      "cellId": 1800102317,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Bullet Seed: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102318,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Bullet Seed: Flag Bearer 9",
+      "description": "Raises the Attack of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102319,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Max\nOvergrowth: Power +100",
+      "description": "Raises the power of Max\nOvergrowth.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max\nOvergrowth": 100
+      }
+    },
+    {
+      "cellId": 1800102320,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Punishing Strike 2",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it hits. If the move has the multistrike effect tag, has a chance ([Digit:2digits ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] for each hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102321,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102322,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Taaaaaall\nDragon Hammer: Power +2",
+      "description": "Raises the power of Taaaaaall\nDragon Hammer.",
+      "statBonus": {},
+      "powerBonus": {
+        "Taaaaaall\nDragon Hammer": 2
+      }
+    },
+    {
+      "cellId": 1800102323,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102324,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Taaaaaall\nDragon Hammer: Power +2",
+      "description": "Raises the power of Taaaaaall\nDragon Hammer.",
+      "statBonus": {},
+      "powerBonus": {
+        "Taaaaaall\nDragon Hammer": 2
+      }
+    },
+    {
+      "cellId": 1800102325,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102326,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Taaaaaall\nDragon Hammer: Power +2",
+      "description": "Raises the power of Taaaaaall\nDragon Hammer.",
+      "statBonus": {},
+      "powerBonus": {
+        "Taaaaaall\nDragon Hammer": 2
+      }
+    },
+    {
+      "cellId": 1800102327,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sitrus Berry: Pep Rally 1",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102328,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Sync",
+      "description": "Makes the weather sunny the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102329,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Take Hit: Restore “Berry” MP 2",
+      "description": "Has a chance ([Digit:2digits Idx=\"1\" ]%) of restoring [Digit:1digit ] MP of the user’s moves that have the Berry effect tag when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102330,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102331,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Lithe",
+      "description": "Prevents the user from getting paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102332,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102333,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102334,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Taaaaaall\nDragon Hammer: Power +2",
+      "description": "Raises the power of Taaaaaall\nDragon Hammer.",
+      "statBonus": {},
+      "powerBonus": {
+        "Taaaaaall\nDragon Hammer": 2
+      }
+    },
+    {
+      "cellId": 1800102335,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Draconic Acceleration 2",
+      "description": "Quickly charges the move gauge when the zone is a Dragon Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102336,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Taaaaaall\nDragon Hammer: Power +2",
+      "description": "Raises the power of Taaaaaall\nDragon Hammer.",
+      "statBonus": {},
+      "powerBonus": {
+        "Taaaaaall\nDragon Hammer": 2
+      }
+    },
+    {
+      "cellId": 1800102337,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Draconic Sync 5",
+      "description": "Powers up the user’s sync move when the zone is a Dragon Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102338,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Dragon Zone: Team Moves ↑ 2",
+      "description": "Powers up the moves of all allied sync pairs when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102339,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Max Wyrmwind: Power +100",
+      "description": "Raises the power of Max Wyrmwind.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Wyrmwind": 100
+      }
+    },
+    {
+      "cellId": 1800102340,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Dragon Zone Extension 3",
+      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102341,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102342,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102343,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bullet Seed: Power +1",
+      "description": "Raises the power of Bullet Seed.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bullet Seed": 1
+      }
+    },
+    {
+      "cellId": 1800102344,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bullet Seed: Power +1",
+      "description": "Raises the power of Bullet Seed.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bullet Seed": 1
+      }
+    },
+    {
+      "cellId": 1800102345,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102346,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102347,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "How\nInteresting!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102348,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Max Move: Defense ↑ & Sp. Def ↑ 3",
+      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] after using its max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102349,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "MAX Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user after using its max move. (If hit by an attack while this effect is applied, the attack will inflict no damage on the user, while the damage of some attacks such as sync moves will be halved. The effect is removed after it is activated.)",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102350,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Big Wave–Riding Researcher\nDragon Impact: Power +25",
+      "description": "Raises the power of Big Wave–Riding Researcher\nDragon Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Big Wave–Riding Researcher\nDragon Impact": 25
+      }
+    },
+    {
+      "cellId": 1800102351,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Big Wave–Riding Researcher\nDragon Impact: Power +25",
+      "description": "Raises the power of Big Wave–Riding Researcher\nDragon Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Big Wave–Riding Researcher\nDragon Impact": 25
+      }
+    }
+  ]
+}

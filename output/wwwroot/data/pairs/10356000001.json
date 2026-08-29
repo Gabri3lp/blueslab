@@ -1,0 +1,902 @@
+{
+  "trainerId": "10356000001",
+  "trainerBaseId": "10035600",
+  "monsterId": "20356000001",
+  "monsterBaseId": "20054101",
+  "displayName": "Trainer #10035600 & Monster #20054101",
+  "trainerName": "Trainer #10035600",
+  "monsterName": "Monster #20054101",
+  "type": "Bug",
+  "weakness": "Fire",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 4,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Get Ready to Eat Dirt\nBug Beam",
+  "iconUrl": "img/trainers/0356_00-0541_00.png",
+  "stats": {
+    "hp": [
+      90,
+      156,
+      219,
+      472,
+      524,
+      576,
+      732
+    ],
+    "atk": [
+      8,
+      29,
+      47,
+      124,
+      140,
+      156,
+      204
+    ],
+    "def": [
+      16,
+      45,
+      72,
+      182,
+      206,
+      230,
+      302
+    ],
+    "spa": [
+      11,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "spd": [
+      14,
+      42,
+      69,
+      168,
+      188,
+      208,
+      268
+    ],
+    "spe": [
+      10,
+      41,
+      71,
+      192,
+      216,
+      240,
+      312
+    ]
+  },
+  "moves": [
+    {
+      "id": 522,
+      "slot": 1,
+      "name": "Struggle Bug",
+      "type": "Bug",
+      "category": "Status",
+      "power": "30",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 235,
+      "slot": 2,
+      "name": "Synthesis",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "isSync": false
+    },
+    {
+      "id": 202,
+      "slot": 3,
+      "name": "Giga Drain",
+      "type": "Grass",
+      "category": "Status",
+      "power": "91",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The more damage dealt to the target, the more it restores the user’s HP.",
+      "isSync": false
+    },
+    {
+      "id": 13561,
+      "slot": 4,
+      "name": "Go On,\nThen!",
+      "type": "Bug",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 121200,
+      "slot": 5,
+      "name": "Get Ready to Eat Dirt\nBug Beam",
+      "type": "Bug",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 18049709,
+      "name": "Trip Up 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 12020104,
+      "name": "Move Gauge Refresh 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 17030501,
+      "name": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1035600100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600106,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600107,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600108,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600109,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600110,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Struggle Bug: Power +4",
+      "description": "Raises the power of Struggle Bug.",
+      "statBonus": {},
+      "powerBonus": {
+        "Struggle Bug": 4
+      }
+    },
+    {
+      "cellId": 1035600111,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Struggle Bug: Power +4",
+      "description": "Raises the power of Struggle Bug.",
+      "statBonus": {},
+      "powerBonus": {
+        "Struggle Bug": 4
+      }
+    },
+    {
+      "cellId": 1035600112,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Struggle Bug: Power +4",
+      "description": "Raises the power of Struggle Bug.",
+      "statBonus": {},
+      "powerBonus": {
+        "Struggle Bug": 4
+      }
+    },
+    {
+      "cellId": 1035600113,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Struggle Bug: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600114,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Trip Up 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600115,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Triage Tank 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600116,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "HP +40",
+      "description": "Raises HP by 40.",
+      "statBonus": {
+        "hp": 40
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600117,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600118,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1035600119,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600120,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1035600121,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600122,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600123,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600124,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Sync Regen",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs after the user uses a sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600125,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Revenge Boost 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1035600131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1035600132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1035600133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Giga Drain: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Synthesis: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Synthesis: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Synthesis: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600137,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600138,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600139,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Struggle Bug: Power +4",
+      "description": "Raises the power of Struggle Bug.",
+      "statBonus": {},
+      "powerBonus": {
+        "Struggle Bug": 4
+      }
+    },
+    {
+      "cellId": 1035600140,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Struggle Bug: Power +4",
+      "description": "Raises the power of Struggle Bug.",
+      "statBonus": {},
+      "powerBonus": {
+        "Struggle Bug": 4
+      }
+    },
+    {
+      "cellId": 1035600141,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unbending",
+      "description": "Defense cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600142,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600143,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Go On,\nThen!: Pep Rally 1",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600144,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Go On,\nThen!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600145,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Go On,\nThen!: Team Critical Command 9",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Trainer uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1035600146,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Get Ready to Eat Dirt\nBug Beam: Power +25",
+      "description": "Raises the power of Get Ready to Eat Dirt\nBug Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Get Ready to Eat Dirt\nBug Beam": 25
+      }
+    },
+    {
+      "cellId": 1035600147,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Get Ready to Eat Dirt\nBug Beam: Power +25",
+      "description": "Raises the power of Get Ready to Eat Dirt\nBug Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Get Ready to Eat Dirt\nBug Beam": 25
+      }
+    }
+  ]
+}

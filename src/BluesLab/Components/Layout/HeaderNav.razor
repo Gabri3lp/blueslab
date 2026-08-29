@@ -1,0 +1,127 @@
+@inject GridStateService GridState
+
+<header class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary px-3 py-2 sticky-top shadow-sm">
+    <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
+        
+        <!-- Brand & Pair Selector Button -->
+        <div class="d-flex align-items-center gap-3">
+            <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-5">
+                <i class="bi bi-cpu-fill"></i> BLUES LAB
+            </span>
+
+            @if (CurrentPair != null)
+            {
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-2 text-light py-1 px-2 border-secondary" @onclick="OnOpenPairPicker">
+                    <img src="@CurrentPair.IconUrl" alt="@CurrentPair.DisplayName" width="28" height="28" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
+                    <span class="fw-bold small d-none d-sm-inline">@CurrentPair.DisplayName</span>
+                    <span class="badge type-badge type-@CurrentPair.Type.ToLowerInvariant()">@CurrentPair.Type</span>
+                    <i class="bi bi-chevron-down small text-muted"></i>
+                </button>
+            }
+            else
+            {
+                <button class="btn btn-warning btn-sm fw-bold" @onclick="OnOpenPairPicker">
+                    <i class="bi bi-person-plus"></i> Select Character
+                </button>
+            }
+        </div>
+
+        <!-- Grid Resources & Level Controls -->
+        <div class="d-flex flex-wrap align-items-center gap-3">
+            @if (CurrentPair != null)
+            {
+                <!-- Energy & Orbs -->
+                <div class="d-flex align-items-center gap-2 bg-black bg-opacity-40 px-2 py-1 rounded border border-secondary">
+                    <span class="small fw-bold text-warning d-flex align-items-center gap-1">
+                        ⚡ <b>@GridState.GetRemainingEnergy(CurrentPair)</b>/60
+                    </span>
+                    <span class="text-secondary">|</span>
+                    <span class="small fw-bold text-info d-flex align-items-center gap-1">
+                        🔮 <b>@GridState.GetTotalOrbs(CurrentPair)</b>
+                    </span>
+                </div>
+
+                <!-- Move Level (1-5) -->
+                <div class="d-flex align-items-center gap-1">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        int lvl = i;
+                        <img src="@(MoveLevel >= lvl ? "img/sync_level_on.png" : "img/sync_level_off.png")"
+                             alt="Lv.@lvl"
+                             width="26"
+                             height="26"
+                             class="cursor-pointer @(MoveLevel >= lvl ? "" : "opacity-50")"
+                             title="Move Level @lvl/5"
+                             @onclick="() => OnMoveLevelChanged(lvl)" />
+                    }
+
+                    <!-- Super Awakening (6-10) -->
+                    @if (CurrentPair.HasSuperAwakening)
+                    {
+                        <span class="text-secondary mx-1">|</span>
+                        @for (int i = 6; i <= 10; i++)
+                        {
+                            int lvl = i;
+                            <img src="img/transcendance.png"
+                                 alt="SA.@(lvl-5)"
+                                 width="26"
+                                 height="26"
+                                 class="cursor-pointer @(MoveLevel >= lvl ? "" : "opacity-25")"
+                                 title="Super Awakening @(lvl-5)/5"
+                                 @onclick="() => OnMoveLevelChanged(MoveLevel == lvl ? lvl - 1 : lvl)" />
+                        }
+                    }
+                </div>
+
+                <!-- Hard Cap Toggle -->
+                <div class="form-check form-switch d-flex align-items-center gap-2 mb-0">
+                    <input class="form-check-input cursor-pointer" type="checkbox" id="hardCapSwitch" checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
+                    <label class="form-check-label text-secondary small select-none" for="hardCapSwitch">Hard Cap</label>
+                </div>
+
+                <!-- Reset Grid -->
+                <button class="btn btn-outline-danger btn-sm" title="Reset Grid" @onclick="OnResetGrid">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+
+                <!-- Share Build -->
+                <button class="btn btn-outline-warning btn-sm" title="Share Build" @onclick="OnOpenShareModal">
+                    <i class="bi bi-share"></i>
+                </button>
+            }
+        </div>
+    </div>
+</header>
+
+@code {
+    [Parameter] public SyncPairDetail? CurrentPair { get; set; }
+    [Parameter] public int MoveLevel { get; set; } = 5;
+    [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
+    [Parameter] public EventCallback OnOpenPairPicker { get; set; }
+    [Parameter] public EventCallback OnOpenShareModal { get; set; }
+
+    private async Task OnMoveLevelChanged(int newLevel)
+    {
+        MoveLevel = newLevel;
+        await MoveLevelChanged.InvokeAsync(newLevel);
+    }
+
+    private void OnHardCapToggle(ChangeEventArgs e)
+    {
+        GridState.HardCap = (bool)(e.Value ?? true);
+        if (CurrentPair != null && GridState.HardCap)
+        {
+            GridState.ActivateFreeCenterCells(CurrentPair, MoveLevel);
+            GridState.PruneDisconnected(CurrentPair.Grid);
+            GridState.NotifyChanged();
+        }
+    }
+
+    private void OnResetGrid()
+    {
+        if (CurrentPair != null)
+        {
+            GridState.ResetGrid(CurrentPair, MoveLevel);
+        }
+    }
+}

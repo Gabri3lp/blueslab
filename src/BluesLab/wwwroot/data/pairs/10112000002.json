@@ -1,0 +1,975 @@
+{
+  "trainerId": "10112000002",
+  "trainerBaseId": "10011200",
+  "monsterId": "20112000004",
+  "monsterBaseId": "21013000",
+  "displayName": "Trainer #10011200 & Monster #21013000",
+  "trainerName": "Trainer #10011200",
+  "monsterName": "Monster #21013000",
+  "type": "Water",
+  "weakness": "Electric",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Red Rage\nWater Impact",
+  "iconUrl": "img/trainers/0112_00-0130_00s.png",
+  "stats": {
+    "hp": [
+      98,
+      175,
+      247,
+      533,
+      597,
+      661,
+      853
+    ],
+    "atk": [
+      27,
+      83,
+      137,
+      346,
+      390,
+      434,
+      566
+    ],
+    "def": [
+      11,
+      33,
+      54,
+      131,
+      147,
+      163,
+      211
+    ],
+    "spa": [
+      10,
+      56,
+      98,
+      274,
+      310,
+      346,
+      454
+    ],
+    "spd": [
+      12,
+      36,
+      57,
+      145,
+      165,
+      185,
+      245
+    ],
+    "spe": [
+      14,
+      57,
+      96,
+      250,
+      282,
+      314,
+      410
+    ]
+  },
+  "moves": [
+    {
+      "id": 127,
+      "slot": 1,
+      "name": "Waterfall",
+      "type": "Water",
+      "category": "Status",
+      "power": "45",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "isSync": false
+    },
+    {
+      "id": 43,
+      "slot": 2,
+      "name": "Leer",
+      "type": "Normal",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 6238,
+      "slot": 3,
+      "name": "Weeping Dragon\nRain Dance",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nMakes the weather EX rainy. Reduces the user’s sync move countdown by two. Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 11127,
+      "slot": 4,
+      "name": "True Trust!",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 66500,
+      "slot": 5,
+      "name": "Red Rage\nWater Impact",
+      "type": "Water",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Gyarados until the end of battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99050301,
+      "name": "Rampaging Storm",
+      "description": "Powers up the sync moves of all allied sync pairs when the weather is rainy. Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Quickly charges the move gauge when the weather is rainy.",
+      "childPassives": [
+        {
+          "id": 19020903,
+          "name": "Flood Alert 3",
+          "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field."
+        },
+        {
+          "id": 12010103,
+          "name": "Racing Rain 3",
+          "description": "Quickly charges the move gauge when the weather is rainy."
+        },
+        {
+          "id": 16019902,
+          "name": "Rainy: Team S-Moves ↑ 2",
+          "description": "Powers up the sync moves of all allied sync pairs when the weather is rainy."
+        }
+      ]
+    },
+    {
+      "id": 18130709,
+      "name": "P-Move on Opp: Attack & Sp. Atk ↓ 9",
+      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent.",
+      "childPassives": []
+    },
+    {
+      "id": 22010201,
+      "name": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0130_51_megagyarados_rare",
+      "statMultiplier": {
+        "atk": 1.2,
+        "def": 1.2,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1011200200,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200201,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200202,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200203,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200204,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200205,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200206,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Red Rage\nWater Impact: Power +30",
+      "description": "Raises the power of Red Rage\nWater Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Red Rage\nWater Impact": 30
+      }
+    },
+    {
+      "cellId": 1011200207,
+      "q": -4,
+      "r": 1,
+      "s": 3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Red Rage\nWater Impact: Power +30",
+      "description": "Raises the power of Red Rage\nWater Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Red Rage\nWater Impact": 30
+      }
+    },
+    {
+      "cellId": 1011200208,
+      "q": -4,
+      "r": 0,
+      "s": 4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Red Rage\nWater Impact: Power +30",
+      "description": "Raises the power of Red Rage\nWater Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Red Rage\nWater Impact": 30
+      }
+    },
+    {
+      "cellId": 1011200209,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200210,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200211,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1011200212,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1011200213,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Waterfall: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200214,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1011200215,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200216,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200217,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Defense Crush 9",
+      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200218,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200219,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200220,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200221,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200222,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200223,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200224,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200225,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Weeping Dragon\nRain Dance: Move Gauge Refresh 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200226,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rain Gear 2",
+      "description": "Reduces damage when the user is hit by an attack move while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200227,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st Hit: Rainy",
+      "description": "Makes the weather rainy the first time the user’s attack move is successful each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200228,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Relentless",
+      "description": "The more the target’s Defense is lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200229,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200230,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200231,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200232,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200233,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200234,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200235,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200236,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sharpened Body 3",
+      "description": "Powers up the user’s moves when its Attack is raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200237,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "True Trust!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200238,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Shower Power 9",
+      "description": "Powers up the user’s sync move when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200239,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ally Sets WTZ: Team Physical Boost ↑1 9",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200240,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200241,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200242,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1011200243,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Waterfall: Power +4",
+      "description": "Raises the power of Waterfall.",
+      "statBonus": {},
+      "powerBonus": {
+        "Waterfall": 4
+      }
+    },
+    {
+      "cellId": 1011200244,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Eagle Eye 9",
+      "description": "Raises the user’s critical-hit rate by one stat rank when its Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200245,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Leer: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200246,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Refreshing Rain 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200247,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200248,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Use Status P-Move on Opp: Defense ↓ 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move targeting that opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011200249,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Red Rage\nWater Impact: Power +25",
+      "description": "Raises the power of Red Rage\nWater Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Red Rage\nWater Impact": 25
+      }
+    },
+    {
+      "cellId": 1011200250,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Red Rage\nWater Impact: Power +25",
+      "description": "Raises the power of Red Rage\nWater Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Red Rage\nWater Impact": 25
+      }
+    }
+  ]
+}

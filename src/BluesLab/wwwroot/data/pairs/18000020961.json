@@ -1,0 +1,904 @@
+{
+  "trainerId": "18000020961",
+  "trainerBaseId": "10700000",
+  "monsterId": "28000020961",
+  "monsterBaseId": "20024300",
+  "displayName": "Trainer #10700000 & Raikou",
+  "trainerName": "Trainer #10700000",
+  "monsterName": "Raikou",
+  "type": "Electric",
+  "weakness": "Ground",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": false,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Rumbling Thunder\nElectric Impact",
+  "iconUrl": "img/trainers/8000_00-0243_00.png",
+  "stats": {
+    "hp": [
+      101,
+      179,
+      254,
+      551,
+      615,
+      679,
+      871
+    ],
+    "atk": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "def": [
+      17,
+      50,
+      80,
+      201,
+      225,
+      249,
+      321
+    ],
+    "spa": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spd": [
+      17,
+      51,
+      81,
+      202,
+      230,
+      258,
+      342
+    ],
+    "spe": [
+      15,
+      54,
+      90,
+      233,
+      265,
+      297,
+      393
+    ]
+  },
+  "moves": [
+    {
+      "id": 84,
+      "slot": 1,
+      "name": "Thunder Shock",
+      "type": "Electric",
+      "category": "Status",
+      "power": "17",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "isSync": false
+    },
+    {
+      "id": 19001,
+      "slot": 2,
+      "name": "Mini Potion All",
+      "type": "Electric",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 422,
+      "slot": 3,
+      "name": "Thunder Fang",
+      "type": "Electric",
+      "category": "Status",
+      "power": "47",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "isSync": false
+    },
+    {
+      "id": 17017,
+      "slot": 4,
+      "name": "Lightning\nSpeed!",
+      "type": "Electric",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 110300,
+      "slot": 5,
+      "name": "Rumbling Thunder\nElectric Impact",
+      "type": "Electric",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28021001,
+      "name": "Electric Teamwork",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 18116809,
+      "name": "Take Hit: Opp Attack ↓ & Sp. Atk ↓ 9",
+      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "childPassives": []
+    },
+    {
+      "id": 22010602,
+      "name": "Super Interference 2",
+      "description": "Raises the chance of inflicting status conditions—as well as inflicting the flinching, confused, or trapped condition—with the additional effects of the user’s moves.",
+      "childPassives": []
+    },
+    {
+      "id": 21010101,
+      "name": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1800099001,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099002,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099003,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099004,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099005,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099006,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099007,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099008,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Shock: Power +4",
+      "description": "Raises the power of Thunder Shock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Shock": 4
+      }
+    },
+    {
+      "cellId": 1800099010,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099011,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Shock: Power +4",
+      "description": "Raises the power of Thunder Shock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Shock": 4
+      }
+    },
+    {
+      "cellId": 1800099012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Thunder Shock: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099013,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Shock: Power +4",
+      "description": "Raises the power of Thunder Shock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Shock": 4
+      }
+    },
+    {
+      "cellId": 1800099014,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hostile Environment 3",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099016,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099017,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hit: Team Attack ↑ 9",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099018,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099019,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Lithe",
+      "description": "Prevents the user from getting paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099020,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099021,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1800099022,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Accuracy +5",
+      "description": "Raises the accuracy of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099023,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1800099024,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Tighten Up 3",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Sp. Def by one stat rank when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099025,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Burst 1",
+      "description": "Restores [Digit:1digit ] MP for the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099026,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Mini Potion All: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099027,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099028,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099029,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1800099030,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099031,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1800099032,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Thunder Fang: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099033,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1800099034,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lightning\nSpeed!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099035,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099036,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Tempo",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099037,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Lightning\nSpeed!: Slippery Sidekicks 1",
+      "description": "Raises the evasiveness of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099038,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099039,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099040,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099041,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Shock: Power +4",
+      "description": "Raises the power of Thunder Shock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Shock": 4
+      }
+    },
+    {
+      "cellId": 1800099042,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Thunder Shock: Power +4",
+      "description": "Raises the power of Thunder Shock.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Shock": 4
+      }
+    },
+    {
+      "cellId": 1800099043,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099044,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Toughen Up 3",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Defense by one stat rank when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099045,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Safety Tether",
+      "description": "Applies the Enduring effect to the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099046,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Triage Tank 4",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800099047,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Rumbling Thunder\nElectric Impact: Power +25",
+      "description": "Raises the power of Rumbling Thunder\nElectric Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Rumbling Thunder\nElectric Impact": 25
+      }
+    },
+    {
+      "cellId": 1800099048,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Rumbling Thunder\nElectric Impact: Power +25",
+      "description": "Raises the power of Rumbling Thunder\nElectric Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Rumbling Thunder\nElectric Impact": 25
+      }
+    }
+  ]
+}

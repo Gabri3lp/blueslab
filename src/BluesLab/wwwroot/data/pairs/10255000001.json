@@ -1,0 +1,896 @@
+{
+  "trainerId": "10255000001",
+  "trainerBaseId": "10025500",
+  "monsterId": "20255000001",
+  "monsterBaseId": "2008730001",
+  "displayName": "Trainer #10025500 & Monster #2008730001",
+  "trainerName": "Trainer #10025500",
+  "monsterName": "Monster #2008730001",
+  "type": "Ice",
+  "weakness": "Flying",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Severe Battle Style\nFrost Beam",
+  "iconUrl": "img/trainers/0255_00-0873_00.png",
+  "stats": {
+    "hp": [
+      95,
+      171,
+      243,
+      529,
+      589,
+      649,
+      829
+    ],
+    "atk": [
+      6,
+      24,
+      42,
+      108,
+      120,
+      132,
+      168
+    ],
+    "def": [
+      10,
+      49,
+      85,
+      228,
+      260,
+      292,
+      388
+    ],
+    "spa": [
+      10,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "spd": [
+      15,
+      55,
+      94,
+      248,
+      280,
+      312,
+      408
+    ],
+    "spe": [
+      11,
+      51,
+      90,
+      244,
+      276,
+      308,
+      404
+    ]
+  },
+  "moves": [
+    {
+      "id": 181,
+      "slot": 1,
+      "name": "Powder Snow",
+      "type": "Ice",
+      "category": "Status",
+      "power": "16",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "isSync": false
+    },
+    {
+      "id": 19000,
+      "slot": 2,
+      "name": "Potion",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6137,
+      "slot": 3,
+      "name": "Silver Snow\nMist",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the [Name:ReferencedMessageTag ] is applied to the allied field of play.\nDeactivation Condition:\nWhen the [Name:ReferencedMessageTag ] is no longer applied to the allied field of play.\n\nNever misses. Returns the raised stats of all opposing sync pairs to normal. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the opponent’s field of play. Applies the Stat Reduction Defense effect to the allied field of play. Returns lowered stats of all allied sync pairs to normal. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to all allied sync pairs. Applies the Free Move Next effect to all allied sync pairs.",
+      "isSync": false
+    },
+    {
+      "id": 12559,
+      "slot": 4,
+      "name": "Lower the\nTemperature!",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by one. Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 120500,
+      "slot": 5,
+      "name": "Severe Battle Style\nFrost Beam",
+      "type": "Ice",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 18116209,
+      "name": "Hit: Attack ↓ & Sp. Atk ↓ 9",
+      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 19057305,
+      "name": "Debut: Field Special DR & Extension 5",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle. Extends the duration of the [Name:ReferencedMessageTag ] when the [Name:ReferencedMessageTag ] is applied to the allied field of play.",
+      "childPassives": []
+    },
+    {
+      "id": 17013501,
+      "name": "Condition Nullification",
+      "description": "Prevents the user from being inflicted with status conditions, flinching, becoming confused, or becoming trapped.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1800102352,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102353,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102354,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102355,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102356,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102357,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102358,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102359,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102360,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102361,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +4",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 4
+      }
+    },
+    {
+      "cellId": 1800102362,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +4",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 4
+      }
+    },
+    {
+      "cellId": 1800102363,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +4",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 4
+      }
+    },
+    {
+      "cellId": 1800102364,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Powder Snow: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102365,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Powder Snow: Trip Up 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102366,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Powder Snow: Hit: Team Attack ↑ & Sp. Atk ↑ 9",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102367,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Powder Snow: Hostile Environment 2",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102368,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Powder Snow: Mind Games 9",
+      "description": "Lowers the target’s Sp. Def by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102369,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102370,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +4",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 4
+      }
+    },
+    {
+      "cellId": 1800102371,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102372,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Powder Snow: Power +4",
+      "description": "Raises the power of Powder Snow.",
+      "statBonus": {},
+      "powerBonus": {
+        "Powder Snow": 4
+      }
+    },
+    {
+      "cellId": 1800102373,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lower the\nTemperature!: Barricade 2",
+      "description": "Raises the user’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102374,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102375,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lower the\nTemperature!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102376,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Allied Field Effect: Team Attack Move DR 2",
+      "description": "Reduces attack move damage taken by allies when effects that apply only to the allied field of play are in effect.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102377,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Free-for-All",
+      "description": "Applies the Free Move Next effect to all allied sync pairs the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102378,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102379,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102380,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102381,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102382,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102383,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102384,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102385,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102386,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102387,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102388,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Potion: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102389,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102390,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102391,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Snow Shelter",
+      "description": "Protects the user from damage from a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102392,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102393,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Revenge Boost 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102394,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102395,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Silver Snow\nMist: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102396,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102397,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "S-Move: Field Special DR",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102398,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Severe Battle Style\nFrost Beam: Power +25",
+      "description": "Raises the power of Severe Battle Style\nFrost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Severe Battle Style\nFrost Beam": 25
+      }
+    },
+    {
+      "cellId": 1800102399,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Severe Battle Style\nFrost Beam: Power +25",
+      "description": "Raises the power of Severe Battle Style\nFrost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Severe Battle Style\nFrost Beam": 25
+      }
+    }
+  ]
+}

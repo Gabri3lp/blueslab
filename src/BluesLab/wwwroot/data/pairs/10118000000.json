@@ -1,0 +1,990 @@
+{
+  "trainerId": "10118000000",
+  "trainerBaseId": "10011800",
+  "monsterId": "20118000000",
+  "monsterBaseId": "20003501",
+  "displayName": "Trainer #10011800 & Monster #20003501",
+  "trainerName": "Trainer #10011800",
+  "monsterName": "Monster #20003501",
+  "type": "Fairy",
+  "weakness": "Poison",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Full-Force Challenger\nMoonblast",
+  "iconUrl": "img/trainers/0118_00-0035_00.png",
+  "stats": {
+    "hp": [
+      111,
+      176,
+      236,
+      478,
+      530,
+      582,
+      738
+    ],
+    "atk": [
+      9,
+      29,
+      47,
+      124,
+      140,
+      156,
+      204
+    ],
+    "def": [
+      14,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "spa": [
+      14,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "spd": [
+      16,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ],
+    "spe": [
+      8,
+      33,
+      57,
+      145,
+      165,
+      185,
+      245
+    ]
+  },
+  "moves": [
+    {
+      "id": 574,
+      "slot": 1,
+      "name": "Disarming Voice",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "45",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Never misses.",
+      "isSync": false
+    },
+    {
+      "id": 19061,
+      "slot": 2,
+      "name": "X Accuracy All",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 11180,
+      "slot": 3,
+      "name": "Full Power!",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises an ally’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Critical Hit Next effect to an ally.",
+      "isSync": false
+    },
+    {
+      "id": 585,
+      "slot": 4,
+      "name": "Moonblast",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "98",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 78400,
+      "slot": 5,
+      "name": "Full-Force Challenger\nMoonblast",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 24012001,
+      "name": "Group Dragon Guard",
+      "description": "Reduces the damage all allied sync pairs take when attacked by Dragon-type moves.",
+      "childPassives": []
+    },
+    {
+      "id": 11010701,
+      "name": "S-Move: Team HP Recovery (M) 1",
+      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after using the user’s sync move.",
+      "childPassives": []
+    },
+    {
+      "id": 17030401,
+      "name": "Fainting Cleanse",
+      "description": "Removes all status conditions from all allied sync pairs other than the user just before the user faints.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1011800000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Antitoxin",
+      "description": "Prevents the user from getting poisoned or badly poisoned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1011800010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Moonblast: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1011800012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1011800013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1011800014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1011800016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Adrenaline 1",
+      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800017,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Snow Shelter",
+      "description": "Protects the user from damage from a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800018,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "X Accuracy All: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +20",
+      "description": "Raises Sp. Atk by 20.",
+      "statBonus": {
+        "spa": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Disarming Voice: Unfortuitous 9",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brutal Clarity",
+      "description": "The more the user’s accuracy is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800026,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800027,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Sand Shelter",
+      "description": "Protects the user from damage from a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800028,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800029,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Disarming Voice: Power +4",
+      "description": "Raises the power of Disarming Voice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Disarming Voice": 4
+      }
+    },
+    {
+      "cellId": 1011800030,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Disarming Voice: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800031,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Disarming Voice: Power +4",
+      "description": "Raises the power of Disarming Voice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Disarming Voice": 4
+      }
+    },
+    {
+      "cellId": 1011800032,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Disarming Voice: Power +4",
+      "description": "Raises the power of Disarming Voice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Disarming Voice": 4
+      }
+    },
+    {
+      "cellId": 1011800033,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Disarming Voice: Power +4",
+      "description": "Raises the power of Disarming Voice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Disarming Voice": 4
+      }
+    },
+    {
+      "cellId": 1011800034,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "X Accuracy All: Catalytic Cure 9",
+      "description": "Restores the user’s HP by approximately 20% of its maximum HP when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800035,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Disarming Voice: Power +4",
+      "description": "Raises the power of Disarming Voice.",
+      "statBonus": {},
+      "powerBonus": {
+        "Disarming Voice": 4
+      }
+    },
+    {
+      "cellId": 1011800036,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Faint: Ally HP Recovery (M) 1",
+      "description": "Restores the HP of all allied sync pairs other than the user by approximately [Digit:2digits ]% of their maximum HP just before the user faints.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800037,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Escape Artist",
+      "description": "Prevents the user from becoming trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800038,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800039,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800040,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Full Power!: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800041,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800042,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Toughen Up 2",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Defense by one stat rank when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800043,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Tighten Up 2",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Sp. Def by one stat rank when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800044,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Superduper Effective 2",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800045,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "HP +50",
+      "description": "Raises HP by 50.",
+      "statBonus": {
+        "hp": 50
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Full-Force Challenger\nMoonblast: Power +25",
+      "description": "Raises the power of Full-Force Challenger\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Full-Force Challenger\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1011800047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Full-Force Challenger\nMoonblast: Power +25",
+      "description": "Raises the power of Full-Force Challenger\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Full-Force Challenger\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1011800048,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +40",
+      "description": "Raises HP by 40.",
+      "statBonus": {
+        "hp": 40
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800049,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sentry Entry 2",
+      "description": "Raises the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800050,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Wise Entry 2",
+      "description": "Raises the user’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800051,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +20",
+      "description": "Raises Defense by 20.",
+      "statBonus": {
+        "def": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800052,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Tempo",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011800053,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

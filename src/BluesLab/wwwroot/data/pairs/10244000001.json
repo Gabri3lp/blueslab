@@ -1,0 +1,928 @@
+{
+  "trainerId": "10244000001",
+  "trainerBaseId": "10024400",
+  "monsterId": "20244000002",
+  "monsterBaseId": "2008120000",
+  "displayName": "Trainer #10024400 & Rillaboom",
+  "trainerName": "Trainer #10024400",
+  "monsterName": "Rillaboom",
+  "type": "Grass",
+  "weakness": "Fire",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Valuing Team Harmony\nGrass Impact",
+  "iconUrl": "img/trainers/0244_00-0812_00.png",
+  "stats": {
+    "hp": [
+      108,
+      181,
+      250,
+      525,
+      585,
+      645,
+      825
+    ],
+    "atk": [
+      13,
+      57,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "def": [
+      12,
+      36,
+      57,
+      145,
+      165,
+      185,
+      245
+    ],
+    "spa": [
+      11,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "spd": [
+      10,
+      33,
+      54,
+      142,
+      158,
+      174,
+      222
+    ],
+    "spe": [
+      12,
+      51,
+      87,
+      230,
+      262,
+      294,
+      390
+    ]
+  },
+  "moves": [
+    {
+      "id": 778,
+      "slot": 1,
+      "name": "Drum Beating",
+      "type": "Grass",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 580,
+      "slot": 2,
+      "name": "Grassy Terrain",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Turns the field of play’s terrain into Grassy Terrain.",
+      "isSync": false
+    },
+    {
+      "id": 6102,
+      "slot": 3,
+      "name": "Scattershot\nDrum Beating",
+      "type": "Grass",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen your team’s sync pair uses a max move [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nThe power of this move is not lowered even if there are multiple targets. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 12447,
+      "slot": 4,
+      "name": "Show What\nWe Know!",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to an ally. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 114700,
+      "slot": 5,
+      "name": "Valuing Team Harmony\nGrass Impact",
+      "type": "Grass",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99021101,
+      "name": "Gentle Combo",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "childPassives": [
+        {
+          "id": 18045906,
+          "name": "Fierce Entry 6",
+          "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+        },
+        {
+          "id": 18041903,
+          "name": "Sharp Entry 3",
+          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+        }
+      ]
+    },
+    {
+      "id": 19053701,
+      "name": "User Sets Grassy Terrain: Galar C (Phys) on Field",
+      "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s terrain into [Name:ReferencedMessageTag ].",
+      "childPassives": []
+    },
+    {
+      "id": 17078109,
+      "name": "Grassy Terrain Hit: Free Move Next 9",
+      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the terrain is [Name:ReferencedMessageTag ].",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0812_83_00_gorirander",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1024400100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400106,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400107,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400108,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Drum Beating: Power +3",
+      "description": "Raises the power of Drum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Drum Beating": 3
+      }
+    },
+    {
+      "cellId": 1024400109,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Drum Beating: Power +3",
+      "description": "Raises the power of Drum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Drum Beating": 3
+      }
+    },
+    {
+      "cellId": 1024400110,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Trip Wire 1",
+      "description": "Lowers the Speed of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400111,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Drum Beating: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400112,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Drum Beating: Power +3",
+      "description": "Raises the power of Drum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Drum Beating": 3
+      }
+    },
+    {
+      "cellId": 1024400113,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Chase Down 3",
+      "description": "Powers up the user’s moves when the target’s Speed is lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400114,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400115,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400116,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400117,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400118,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400119,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Scattershot\nDrum Beating: Power +2",
+      "description": "Raises the power of Scattershot\nDrum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Scattershot\nDrum Beating": 2
+      }
+    },
+    {
+      "cellId": 1024400120,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Scattershot\nDrum Beating: Power +2",
+      "description": "Raises the power of Scattershot\nDrum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Scattershot\nDrum Beating": 2
+      }
+    },
+    {
+      "cellId": 1024400121,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Scattershot\nDrum Beating: Power +2",
+      "description": "Raises the power of Scattershot\nDrum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Scattershot\nDrum Beating": 2
+      }
+    },
+    {
+      "cellId": 1024400122,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400123,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Max Move: Allied Field MG →",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play after using the user’s max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400124,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "MAX Countdown 2",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400125,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max\nOvergrowth: Power +100",
+      "description": "Raises the power of Max\nOvergrowth.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max\nOvergrowth": 100
+      }
+    },
+    {
+      "cellId": 1024400126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Scattershot\nDrum Beating: Power +2",
+      "description": "Raises the power of Scattershot\nDrum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Scattershot\nDrum Beating": 2
+      }
+    },
+    {
+      "cellId": 1024400131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Scattershot\nDrum Beating: Power +2",
+      "description": "Raises the power of Scattershot\nDrum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Scattershot\nDrum Beating": 2
+      }
+    },
+    {
+      "cellId": 1024400132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Turbo Turf 2",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Grassy Terrain: Move Gauge Refresh 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Grassy Cushion 2",
+      "description": "Reduces damage when the user is hit by an attack move while the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Verdant Immunity",
+      "description": "Status conditions cannot be inflicted on the user when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Grassy Terrain: S-Moves ↑ 9",
+      "description": "Powers up the user’s sync move when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400137,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400138,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400139,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Drum Beating: Power +3",
+      "description": "Raises the power of Drum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Drum Beating": 3
+      }
+    },
+    {
+      "cellId": 1024400140,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Drum Beating: Power +3",
+      "description": "Raises the power of Drum Beating.",
+      "statBonus": {},
+      "powerBonus": {
+        "Drum Beating": 3
+      }
+    },
+    {
+      "cellId": 1024400141,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Trip Up 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400142,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400143,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Show What\nWe Know!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400144,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Show What\nWe Know!: Move on Ally: Sync Move Boost ↑4 9",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, increases the [Name:ReferencedMessageTag ] of the allied sync pair affected by the move by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400145,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Super Sync 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024400146,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Valuing Team Harmony\nGrass Impact: Power +25",
+      "description": "Raises the power of Valuing Team Harmony\nGrass Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Valuing Team Harmony\nGrass Impact": 25
+      }
+    },
+    {
+      "cellId": 1024400147,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Valuing Team Harmony\nGrass Impact: Power +25",
+      "description": "Raises the power of Valuing Team Harmony\nGrass Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Valuing Team Harmony\nGrass Impact": 25
+      }
+    }
+  ]
+}

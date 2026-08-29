@@ -1,0 +1,915 @@
+{
+  "trainerId": "10242000001",
+  "trainerBaseId": "10024200",
+  "monsterId": "20242000001",
+  "monsterBaseId": "2008970000",
+  "displayName": "Trainer #10024200 & Spectrier",
+  "trainerName": "Trainer #10024200",
+  "monsterName": "Spectrier",
+  "type": "Ghost",
+  "weakness": "Dark",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Night Dash\nGhost Beam",
+  "iconUrl": "img/trainers/0242_00-0897_00.png",
+  "stats": {
+    "hp": [
+      97,
+      173,
+      245,
+      531,
+      591,
+      651,
+      831
+    ],
+    "atk": [
+      11,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "def": [
+      6,
+      29,
+      50,
+      138,
+      154,
+      170,
+      218
+    ],
+    "spa": [
+      12,
+      64,
+      112,
+      310,
+      350,
+      390,
+      510
+    ],
+    "spd": [
+      8,
+      32,
+      53,
+      141,
+      161,
+      181,
+      241
+    ],
+    "spe": [
+      15,
+      71,
+      125,
+      334,
+      378,
+      422,
+      554
+    ]
+  },
+  "moves": [
+    {
+      "id": 247,
+      "slot": 1,
+      "name": "Shadow Ball",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "99",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 341,
+      "slot": 2,
+      "name": "Mud Shot",
+      "type": "Ground",
+      "category": "Status",
+      "power": "39",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 114,
+      "slot": 3,
+      "name": "Haze",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Returns the target’s raised stats to normal.",
+      "isSync": false
+    },
+    {
+      "id": 12429,
+      "slot": 4,
+      "name": "Taking the\nLead!",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 99400,
+      "slot": 5,
+      "name": "Night Dash\nGhost Beam",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 19025501,
+      "name": "Debut: Ghost Zone",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "childPassives": []
+    },
+    {
+      "id": 12011403,
+      "name": "Haunted Acceleration 3",
+      "description": "Quickly charges the move gauge when the zone is a Ghost Zone.",
+      "childPassives": []
+    },
+    {
+      "id": 17044701,
+      "name": "MAX Regen",
+      "description": "Applies the Gradual Healing effect to the user after using its max move.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0897_81_00_wraithpos",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1024200100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200106,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200107,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200108,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200109,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200110,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1024200111,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1024200112,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1024200113,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Shadow Ball: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200114,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Gobsmack 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200115,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max Phantasm: Power +100",
+      "description": "Raises the power of Max Phantasm.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Phantasm": 100
+      }
+    },
+    {
+      "cellId": 1024200116,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "MAX Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user after using its max move. (If hit by an attack while this effect is applied, the attack will inflict no damage on the user, while the damage of some attacks such as sync moves will be halved. The effect is removed after it is activated.)",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200117,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200118,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200119,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud Shot: Power +3",
+      "description": "Raises the power of Mud Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud Shot": 3
+      }
+    },
+    {
+      "cellId": 1024200120,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Mud Shot: Power +3",
+      "description": "Raises the power of Mud Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud Shot": 3
+      }
+    },
+    {
+      "cellId": 1024200121,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud Shot: Power +3",
+      "description": "Raises the power of Mud Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud Shot": 3
+      }
+    },
+    {
+      "cellId": 1024200122,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Mud Shot: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200123,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max Quake: Power +100",
+      "description": "Raises the power of Max Quake.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Quake": 100
+      }
+    },
+    {
+      "cellId": 1024200124,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Mud Shot: Accuracy +5",
+      "description": "Raises the accuracy of Mud Shot.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200125,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sharp Entry 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200126,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200127,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200128,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1024200129,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1024200130,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Shadow Ball: On a Roll 1",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200131,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Haze: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200132,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Haunted Healing 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is a Ghost Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200133,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haunted Power 2",
+      "description": "Powers up the user’s moves when the zone is a Ghost Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200134,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Unbuffed Foe Sync-Up 5",
+      "description": "Powers up the user’s sync move when none of the target’s stats are raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200135,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200136,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200137,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200138,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200139,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud Shot: Power +3",
+      "description": "Raises the power of Mud Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud Shot": 3
+      }
+    },
+    {
+      "cellId": 1024200140,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Flameproof",
+      "description": "Prevents the user from getting burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200141,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud Shot: Power +3",
+      "description": "Raises the power of Mud Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud Shot": 3
+      }
+    },
+    {
+      "cellId": 1024200142,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Taking the\nLead!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200143,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Taking the\nLead!: Friendly Shield 1",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, raises the Defense of the allied sync pair affected by the move by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200144,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200145,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Debut Damage Reduction (Physical)",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1024200146,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Night Dash\nGhost Beam: Power +25",
+      "description": "Raises the power of Night Dash\nGhost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Night Dash\nGhost Beam": 25
+      }
+    },
+    {
+      "cellId": 1024200147,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Night Dash\nGhost Beam: Power +25",
+      "description": "Raises the power of Night Dash\nGhost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Night Dash\nGhost Beam": 25
+      }
+    }
+  ]
+}

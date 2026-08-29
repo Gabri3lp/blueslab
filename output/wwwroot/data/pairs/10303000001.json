@@ -1,0 +1,907 @@
+{
+  "trainerId": "10303000001",
+  "trainerBaseId": "10030300",
+  "monsterId": "20303000001",
+  "monsterBaseId": "2009900000",
+  "displayName": "Trainer #10030300 & Iron Treads",
+  "trainerName": "Trainer #10030300",
+  "monsterName": "Iron Treads",
+  "type": "Steel",
+  "weakness": "Fire",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Super Tough Steel Beam\nfrom the Future",
+  "iconUrl": "img/trainers/0303_00-0990_00.png",
+  "stats": {
+    "hp": [
+      100,
+      175,
+      247,
+      522,
+      582,
+      642,
+      822
+    ],
+    "atk": [
+      19,
+      68,
+      113,
+      300,
+      340,
+      380,
+      500
+    ],
+    "def": [
+      20,
+      44,
+      65,
+      153,
+      173,
+      193,
+      253
+    ],
+    "spa": [
+      15,
+      65,
+      113,
+      300,
+      340,
+      380,
+      500
+    ],
+    "spd": [
+      12,
+      36,
+      57,
+      145,
+      165,
+      185,
+      245
+    ],
+    "spe": [
+      14,
+      58,
+      100,
+      265,
+      301,
+      337,
+      445
+    ]
+  },
+  "moves": [
+    {
+      "id": 796,
+      "slot": 1,
+      "name": "Steel Beam",
+      "type": "Steel",
+      "category": "Status",
+      "power": "199",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The user takes damage equal to [Digit:2digits ]% of its maximum HP. The damage is taken even when the attack fails.",
+      "isSync": false
+    },
+    {
+      "id": 19170,
+      "slot": 2,
+      "name": "Booster\nEnergy",
+      "type": "Steel",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 6212,
+      "slot": 3,
+      "name": "Whirly Twirly\nIron Head",
+      "type": "Steel",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nLowers the target’s Defense and Sp. Def by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Has a chance ([Digit:2digits Idx=\"2\" ]%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 13038,
+      "slot": 4,
+      "name": "Oh Wow!",
+      "type": "Steel",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 127200,
+      "slot": 5,
+      "name": "Super Tough Steel Beam\nfrom the Future",
+      "type": "Steel",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 25010601,
+      "name": "Treads of the Future",
+      "description": "Grants all of the following effects when the user uses [Name:MoveId Idx=\"19170\" ] or an ally turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ]: Reduces the user’s sync move countdown by [Digit:1digit ]. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "childPassives": []
+    },
+    {
+      "id": 99044801,
+      "name": "Solid Victory!",
+      "description": "Grants all of the following effects the first time the user’s Trainer uses a move each battle: Turns the field of play’s zone into an [Name:ReferencedMessageTag ]. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Raises the user’s Attack and Sp. Atk by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "childPassives": [
+        {
+          "id": 19069201,
+          "name": "1st T-Move: EX Steel Zone",
+          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Trainer uses a move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+        },
+        {
+          "id": 18128903,
+          "name": "1st T-Move: Attack ↑4 & Sp. Atk ↑4 & Crit Rate ↑3",
+          "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its Trainer uses a move each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time its Trainer uses a move each battle."
+        }
+      ]
+    },
+    {
+      "id": 13070101,
+      "name": "Recoil Removal 9",
+      "description": "Negates recoil damage when using moves that have the recoil effect tag.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1030300100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300106,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300107,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300108,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300109,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Whirly Twirly\nIron Head: Power +3",
+      "description": "Raises the power of Whirly Twirly\nIron Head.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirly Twirly\nIron Head": 3
+      }
+    },
+    {
+      "cellId": 1030300110,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300111,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Whirly Twirly\nIron Head: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300112,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Whirly Twirly\nIron Head: Power +3",
+      "description": "Raises the power of Whirly Twirly\nIron Head.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirly Twirly\nIron Head": 3
+      }
+    },
+    {
+      "cellId": 1030300113,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Opp Sp. Def ↓: S-Moves ↑ 9",
+      "description": "Powers up the user’s sync move when the target’s [Name:ReferencedMessageTag ] is lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300114,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ferocious Entry 2",
+      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300115,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300116,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300117,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300118,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Steel Beam: Accuracy +5",
+      "description": "Raises the accuracy of Steel Beam.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300119,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Steel Beam: Power +2",
+      "description": "Raises the power of Steel Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Steel Beam": 2
+      }
+    },
+    {
+      "cellId": 1030300120,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Steel Beam: Power +2",
+      "description": "Raises the power of Steel Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Steel Beam": 2
+      }
+    },
+    {
+      "cellId": 1030300121,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Steel Beam: Power +2",
+      "description": "Raises the power of Steel Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Steel Beam": 2
+      }
+    },
+    {
+      "cellId": 1030300122,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Steel Beam: Gobsmack 9",
+      "description": "Leaves the target confused when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300123,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Metallic Healing 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300124,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Steel Beam: Hit: Attack ↓ & Sp. Atk ↓ 9",
+      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300125,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Steel Zone Hit: Free Move Next 9",
+      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Sand Shelter",
+      "description": "Protects the user from damage from a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Whirly Twirly\nIron Head: Power +3",
+      "description": "Raises the power of Whirly Twirly\nIron Head.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirly Twirly\nIron Head": 3
+      }
+    },
+    {
+      "cellId": 1030300131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Whirly Twirly\nIron Head: Power +3",
+      "description": "Raises the power of Whirly Twirly\nIron Head.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirly Twirly\nIron Head": 3
+      }
+    },
+    {
+      "cellId": 1030300132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Whirly Twirly\nIron Head: Power +3",
+      "description": "Raises the power of Whirly Twirly\nIron Head.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirly Twirly\nIron Head": 3
+      }
+    },
+    {
+      "cellId": 1030300133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Booster\nEnergy: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Metallic Acceleration 2",
+      "description": "Quickly charges the move gauge when the zone is a Steel Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Steel Zone Extension 3",
+      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300137,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300138,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Dauntless",
+      "description": "Sp. Atk cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300139,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300140,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Steel Beam: Power +2",
+      "description": "Raises the power of Steel Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Steel Beam": 2
+      }
+    },
+    {
+      "cellId": 1030300141,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Steel Beam: Power +2",
+      "description": "Raises the power of Steel Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Steel Beam": 2
+      }
+    },
+    {
+      "cellId": 1030300142,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Steel Beam: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300143,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Oh Wow!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300144,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Furious Brain",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300145,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Oh Wow!: Move on Ally: Special Boost ↑2 9",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, increases the [Name:ReferencedMessageTag ] of the allied sync pair affected by the move by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030300146,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Super Tough Steel Beam\nfrom the Future: Power +25",
+      "description": "Raises the power of Super Tough Steel Beam\nfrom the Future.",
+      "statBonus": {},
+      "powerBonus": {
+        "Super Tough Steel Beam\nfrom the Future": 25
+      }
+    },
+    {
+      "cellId": 1030300147,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Super Tough Steel Beam\nfrom the Future: Power +25",
+      "description": "Raises the power of Super Tough Steel Beam\nfrom the Future.",
+      "statBonus": {},
+      "powerBonus": {
+        "Super Tough Steel Beam\nfrom the Future": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,896 @@
+{
+  "trainerId": "10160000000",
+  "trainerBaseId": "10016000",
+  "monsterId": "20160000000",
+  "monsterBaseId": "20085100",
+  "displayName": "Trainer #10016000 & Araquanid",
+  "trainerName": "Trainer #10016000",
+  "monsterName": "Araquanid",
+  "type": "Water",
+  "weakness": "Rock",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Seaside Sister\nHydro Vortex",
+  "iconUrl": "img/trainers/0160_00-0752_00.png",
+  "stats": {
+    "hp": [
+      90,
+      158,
+      221,
+      474,
+      530,
+      586,
+      754
+    ],
+    "atk": [
+      14,
+      47,
+      77,
+      198,
+      222,
+      246,
+      318
+    ],
+    "def": [
+      16,
+      50,
+      83,
+      215,
+      243,
+      271,
+      355
+    ],
+    "spa": [
+      11,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "spd": [
+      16,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ],
+    "spe": [
+      8,
+      25,
+      40,
+      106,
+      118,
+      130,
+      166
+    ]
+  },
+  "moves": [
+    {
+      "id": 55,
+      "slot": 1,
+      "name": "Water Gun",
+      "type": "Water",
+      "category": "Status",
+      "power": "20",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 469,
+      "slot": 2,
+      "name": "Wide Guard",
+      "type": "Rock",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The user takes up a defensive posture. Using this move again will make the user leave this defensive posture. No other actions can be taken when in this defensive posture. Nullifies moves that target all allies when hit by such a move while in this defensive posture, then the user leaves the defensive posture.",
+      "isSync": false
+    },
+    {
+      "id": 141,
+      "slot": 3,
+      "name": "Leech Life",
+      "type": "Bug",
+      "category": "Status",
+      "power": "91",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The more damage dealt to the target, the more it restores the user’s HP.",
+      "isSync": false
+    },
+    {
+      "id": 11600,
+      "slot": 4,
+      "name": "Karpe Diem!",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Uses a maximum of [Digit:1digit ] [EN:Qty S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the more it raises the Attack and Defense of all allied sync pairs (can be raised by up to [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] maximum). Applies the Gradual Healing effect to all allied sync pairs.",
+      "isSync": false
+    },
+    {
+      "id": 50301,
+      "slot": 5,
+      "name": "Seaside Sister\nHydro Vortex",
+      "type": "Water",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 24012101,
+      "name": "Group Fire Guard",
+      "description": "Reduces the damage all allied sync pairs take when attacked by Fire-type moves.",
+      "childPassives": []
+    },
+    {
+      "id": 24012201,
+      "name": "Group Water Guard",
+      "description": "Reduces the damage all allied sync pairs take when attacked by Water-type moves.",
+      "childPassives": []
+    },
+    {
+      "id": 12021009,
+      "name": "Propelling Strike 9",
+      "description": "Charges the user’s move gauge by one when its attack move is successful.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1016000000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Leech Life: Power +4",
+      "description": "Raises the power of Leech Life.",
+      "statBonus": {},
+      "powerBonus": {
+        "Leech Life": 4
+      }
+    },
+    {
+      "cellId": 1016000009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Leech Life: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Leech Life: Power +4",
+      "description": "Raises the power of Leech Life.",
+      "statBonus": {},
+      "powerBonus": {
+        "Leech Life": 4
+      }
+    },
+    {
+      "cellId": 1016000013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Leech Life: Power +4",
+      "description": "Raises the power of Leech Life.",
+      "statBonus": {},
+      "powerBonus": {
+        "Leech Life": 4
+      }
+    },
+    {
+      "cellId": 1016000014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "HP Trade-Off 4",
+      "description": "The smaller the user’s percentage of remaining HP, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Catalytic Cure 1",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP by approximately 20% of its maximum HP when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Tough Cookie",
+      "description": "The more the user’s Defense is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000017,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000018,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Karpe Diem!: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Critical Strike 1",
+      "description": "Powers up the user’s attacks when they become critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Karpe Diem!: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Stamina Reserves 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000026,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000027,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000028,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000029,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000030,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unbending",
+      "description": "Defense cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000031,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000032,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000033,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Block and Charge 1",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] when it nullifies an opponent’s move while in a defensive posture.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000034,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Wide Guard: MP Refresh 5",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000035,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000036,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Block and Heal 9",
+      "description": "Restores the user’s HP by approximately 20% of its maximum HP when the user nullifies an opponent’s move while in a defensive posture.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000037,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000038,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000039,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Refreshing Rain 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000040,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000041,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000042,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rain Gear 1",
+      "description": "Reduces damage when the user is hit by an attack move while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000043,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Water Gun: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000044,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Racing Rain 2",
+      "description": "Quickly charges the move gauge when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000045,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1016000046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Seaside Sister\nHydro Vortex: Power +25",
+      "description": "Raises the power of Seaside Sister\nHydro Vortex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Seaside Sister\nHydro Vortex": 25
+      }
+    },
+    {
+      "cellId": 1016000047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Seaside Sister\nHydro Vortex: Power +25",
+      "description": "Raises the power of Seaside Sister\nHydro Vortex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Seaside Sister\nHydro Vortex": 25
+      }
+    }
+  ]
+}

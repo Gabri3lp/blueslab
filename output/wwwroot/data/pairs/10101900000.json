@@ -1,0 +1,943 @@
+{
+  "trainerId": "10101900000",
+  "trainerBaseId": "10010190",
+  "monsterId": "20101900000",
+  "monsterBaseId": "20064811",
+  "displayName": "Rosa  (Champion) & Meloetta",
+  "trainerName": "Rosa  (Champion)",
+  "monsterName": "Meloetta",
+  "type": "Psychic",
+  "weakness": "Bug",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Sepia Memories\nRelic Song",
+  "iconUrl": "img/trainers/0101_90-0648_11.png",
+  "stats": {
+    "hp": [
+      100,
+      179,
+      254,
+      551,
+      615,
+      679,
+      871
+    ],
+    "atk": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "def": [
+      14,
+      54,
+      93,
+      247,
+      279,
+      311,
+      407
+    ],
+    "spa": [
+      22,
+      55,
+      85,
+      206,
+      230,
+      254,
+      326
+    ],
+    "spd": [
+      17,
+      57,
+      96,
+      250,
+      282,
+      314,
+      410
+    ],
+    "spe": [
+      19,
+      66,
+      111,
+      287,
+      323,
+      359,
+      467
+    ]
+  },
+  "moves": [
+    {
+      "id": 6039,
+      "slot": 1,
+      "name": "Relic Song of Wonder",
+      "type": "Normal",
+      "category": "Status",
+      "power": "100",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch.\n\nNever misses. Has a chance ([Digit:2digits ]%) of putting the target to sleep. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises one of the following stats of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "isSync": false
+    },
+    {
+      "id": 19000,
+      "slot": 2,
+      "name": "Potion",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 47,
+      "slot": 3,
+      "name": "Sing",
+      "type": "Normal",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "45",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Puts the target to sleep.",
+      "isSync": false
+    },
+    {
+      "id": 11018,
+      "slot": 4,
+      "name": "Ode to\nGlory!",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is in Aria Forme. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is in Pirouette Forme.",
+      "isSync": false
+    },
+    {
+      "id": 100400,
+      "slot": 5,
+      "name": "Sepia Memories\nRelic Song",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28010401,
+      "name": "Unova Flag Bearer",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 99014401,
+      "name": "Relic Nostalgia",
+      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes [Name:MoveId Idx=\"547\" ] in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user changes forms while it is on the field of play.",
+      "childPassives": []
+    },
+    {
+      "id": 99014501,
+      "name": "Psychic Performance",
+      "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 99014601,
+      "name": "Entrancing Melody",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 2,
+      "formName": "Form 2",
+      "actorId": "pm0648_12_meloetta",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [
+        {
+          "id": 99014502,
+          "name": "Fighting Performance",
+          "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful."
+        }
+      ],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1010100100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100106,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100107,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100108,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100109,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100110,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Relic Song of Wonder: Power +3",
+      "description": "Raises the power of Relic Song of Wonder.",
+      "statBonus": {},
+      "powerBonus": {
+        "Relic Song of Wonder": 3
+      }
+    },
+    {
+      "cellId": 1010100111,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Relic Song of Wonder: Power +3",
+      "description": "Raises the power of Relic Song of Wonder.",
+      "statBonus": {},
+      "powerBonus": {
+        "Relic Song of Wonder": 3
+      }
+    },
+    {
+      "cellId": 1010100112,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Relic Song of Wonder: Power +3",
+      "description": "Raises the power of Relic Song of Wonder.",
+      "statBonus": {},
+      "powerBonus": {
+        "Relic Song of Wonder": 3
+      }
+    },
+    {
+      "cellId": 1010100113,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Relic Song of Wonder: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100114,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Sharp Entry 1",
+      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100115,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100116,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Stoic 9",
+      "description": "Raises the Defense of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100117,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100118,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100119,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Relic Song of Wonder: Power +3",
+      "description": "Raises the power of Relic Song of Wonder.",
+      "statBonus": {},
+      "powerBonus": {
+        "Relic Song of Wonder": 3
+      }
+    },
+    {
+      "cellId": 1010100120,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Relic Song of Wonder: Power +3",
+      "description": "Raises the power of Relic Song of Wonder.",
+      "statBonus": {},
+      "powerBonus": {
+        "Relic Song of Wonder": 3
+      }
+    },
+    {
+      "cellId": 1010100121,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Teeter Dance: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100122,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100123,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Curative Confusion 1",
+      "description": "Restores the user’s HP when its attack move is successful against a confused opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100124,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Force Field 9",
+      "description": "Raises the Sp. Def of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100125,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Easy Pickings 9",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move is successful against a confused opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: Friend Mend 9",
+      "description": "When a move targeting an allied sync pair (excluding field effects) is successful, removes all status conditions from the allied sync pair affected by the move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Potion: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Potion: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Potion: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100137,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sing: Accuracy +10",
+      "description": "Raises the accuracy of Sing.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100138,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100139,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sing: Accuracy +10",
+      "description": "Raises the accuracy of Sing.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100140,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Sing: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100141,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Ode to\nGlory!: Precision Pals 1",
+      "description": "Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100142,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Charging Infliction 2",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] when its Pokémon uses a status move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100143,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Ode to\nGlory!: MP Refresh 1",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100144,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "T-Move: Team Phys & Spec Boost ↑1 Once 9",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Trainer uses a move. This effect can activate only once per battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100145,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Go Viral 9",
+      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100146,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Sepia Memories\nRelic Song: Power +25",
+      "description": "Raises the power of Sepia Memories\nRelic Song.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sepia Memories\nRelic Song": 25
+      }
+    },
+    {
+      "cellId": 1010100147,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Sepia Memories\nRelic Song: Power +25",
+      "description": "Raises the power of Sepia Memories\nRelic Song.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sepia Memories\nRelic Song": 25
+      }
+    },
+    {
+      "cellId": 1800101162,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 0,
+      "moveLevel": 5,
+      "colorKind": "move effect",
+      "title": "Ode to\nGlory!: Song and Dance Performance",
+      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"2\" ] the first time the user’s Trainer uses a move each battle when the user is in Aria Forme. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s Trainer uses a move each battle when the user is in Pirouette Forme. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101163,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 0,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Ode to\nGlory!: Propulsion 9",
+      "description": "Reduces the user’s sync move countdown by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

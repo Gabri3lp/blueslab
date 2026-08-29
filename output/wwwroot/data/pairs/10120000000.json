@@ -1,0 +1,990 @@
+{
+  "trainerId": "10120000000",
+  "trainerBaseId": "10012000",
+  "monsterId": "20120000000",
+  "monsterBaseId": "20087900",
+  "displayName": "Trainer #10012000 & Pheromosa",
+  "trainerName": "Trainer #10012000",
+  "monsterName": "Pheromosa",
+  "type": "Bug",
+  "weakness": "Fire",
+  "role": "Strike (Special)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Motherly Love\nSavage Spin-Out",
+  "iconUrl": "img/trainers/0120_00-0795_00.png",
+  "stats": {
+    "hp": [
+      83,
+      146,
+      206,
+      448,
+      500,
+      552,
+      708
+    ],
+    "atk": [
+      20,
+      88,
+      151,
+      404,
+      460,
+      516,
+      684
+    ],
+    "def": [
+      14,
+      22,
+      28,
+      61,
+      65,
+      69,
+      81
+    ],
+    "spa": [
+      20,
+      88,
+      151,
+      404,
+      460,
+      516,
+      684
+    ],
+    "spd": [
+      14,
+      22,
+      28,
+      61,
+      65,
+      69,
+      81
+    ],
+    "spe": [
+      23,
+      88,
+      151,
+      393,
+      445,
+      497,
+      653
+    ]
+  },
+  "moves": [
+    {
+      "id": 405,
+      "slot": 1,
+      "name": "Bug Buzz",
+      "type": "Bug",
+      "category": "Status",
+      "power": "99",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 641,
+      "slot": 2,
+      "name": "Lunge",
+      "type": "Bug",
+      "category": "Status",
+      "power": "80",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 59,
+      "slot": 3,
+      "name": "Blizzard",
+      "type": "Ice",
+      "category": "Status",
+      "power": "126",
+      "accuracy": "70",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Never misses during a hailstorm. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "isSync": false
+    },
+    {
+      "id": 11200,
+      "slot": 4,
+      "name": "There,\nThere...",
+      "type": "Bug",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s evasiveness and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP when it is in a pinch. Charges the user’s move gauge by [Digit:1digit Idx=\"2\" ] when it is in a pinch.",
+      "isSync": false
+    },
+    {
+      "id": 51201,
+      "slot": 5,
+      "name": "Motherly Love\nSavage Spin-Out",
+      "type": "Bug",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 17040201,
+      "name": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "childPassives": []
+    },
+    {
+      "id": 12020104,
+      "name": "Move Gauge Refresh 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 18048003,
+      "name": "Positive Reinforcement 3",
+      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it knocks out an opponent with a move.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1012000000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bug Buzz: Power +3",
+      "description": "Raises the power of Bug Buzz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Buzz": 3
+      }
+    },
+    {
+      "cellId": 1012000009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Bug Buzz: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bug Buzz: Power +3",
+      "description": "Raises the power of Bug Buzz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Buzz": 3
+      }
+    },
+    {
+      "cellId": 1012000012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bug Buzz: Power +3",
+      "description": "Raises the power of Bug Buzz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Buzz": 3
+      }
+    },
+    {
+      "cellId": 1012000013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bug Buzz: Power +3",
+      "description": "Raises the power of Bug Buzz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bug Buzz": 3
+      }
+    },
+    {
+      "cellId": 1012000014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Build Up",
+      "description": "Applies the Critical Hit Next effect to the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Power Reserves 5",
+      "description": "Powers up the user’s moves when it is in a pinch.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Motherly Love\nSavage Spin-Out: Power +25",
+      "description": "Raises the power of Motherly Love\nSavage Spin-Out.",
+      "statBonus": {},
+      "powerBonus": {
+        "Motherly Love\nSavage Spin-Out": 25
+      }
+    },
+    {
+      "cellId": 1012000017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1012000020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Blizzard: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1012000023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Blizzard: Hostile Environment 1",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1012000025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Blizzard: Accuracy +10",
+      "description": "Raises the accuracy of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Power Flux 3",
+      "description": "The fuller the move gauge when moves are selected, the more this powers up moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Motherly Love\nSavage Spin-Out: Power +25",
+      "description": "Raises the power of Motherly Love\nSavage Spin-Out.",
+      "statBonus": {},
+      "powerBonus": {
+        "Motherly Love\nSavage Spin-Out": 25
+      }
+    },
+    {
+      "cellId": 1012000028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Speedy Entry 1",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Lunge: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1012000032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Bug Buzz: On a Roll 2",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1012000034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "On the Run 3",
+      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Blizzard: Superduper Effective 1",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "There,\nThere...: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1012000041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rejuvenate 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1012000043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +20",
+      "description": "Raises Defense by 20.",
+      "statBonus": {
+        "def": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Unyielding 2",
+      "description": "Except in certain circumstances, when the user’s Enduring effect activates and the user has 1 HP remaining, has a chance ([Digit:2digits ]%) of applying the Enduring effect to the user again.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Motherly Love\nSavage Spin-Out: Power +25",
+      "description": "Raises the power of Motherly Love\nSavage Spin-Out.",
+      "statBonus": {},
+      "powerBonus": {
+        "Motherly Love\nSavage Spin-Out": 25
+      }
+    },
+    {
+      "cellId": 1012000047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Motherly Love\nSavage Spin-Out: Power +25",
+      "description": "Raises the power of Motherly Love\nSavage Spin-Out.",
+      "statBonus": {},
+      "powerBonus": {
+        "Motherly Love\nSavage Spin-Out": 25
+      }
+    },
+    {
+      "cellId": 1012000048,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000049,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Ferocious Entry 4",
+      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000050,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000051,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +20",
+      "description": "Raises Sp. Atk by 20.",
+      "statBonus": {
+        "spa": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000052,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "There,\nThere...: Critical Eye 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1012000053,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "There,\nThere...: Move: Damage Guard Next 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

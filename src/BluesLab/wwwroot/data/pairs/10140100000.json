@@ -1,0 +1,995 @@
+{
+  "trainerId": "10140100000",
+  "trainerBaseId": "10014010",
+  "monsterId": "20140100000",
+  "monsterBaseId": "20003400",
+  "displayName": "Sygna Suit  Giovanni & Nidoking",
+  "trainerName": "Sygna Suit  Giovanni",
+  "monsterName": "Nidoking",
+  "type": "Ground",
+  "weakness": "Psychic",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Unstoppable Ambition\nGround Impact",
+  "iconUrl": "img/trainers/0140_10-0034_00.png",
+  "stats": {
+    "hp": [
+      97,
+      169,
+      238,
+      513,
+      573,
+      633,
+      813
+    ],
+    "atk": [
+      14,
+      63,
+      108,
+      295,
+      335,
+      375,
+      495
+    ],
+    "def": [
+      11,
+      28,
+      43,
+      109,
+      121,
+      133,
+      169
+    ],
+    "spa": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "spd": [
+      11,
+      28,
+      43,
+      109,
+      121,
+      133,
+      169
+    ],
+    "spe": [
+      13,
+      52,
+      88,
+      231,
+      263,
+      295,
+      391
+    ]
+  },
+  "moves": [
+    {
+      "id": 25,
+      "slot": 1,
+      "name": "Mega Kick",
+      "type": "Normal",
+      "category": "Status",
+      "power": "167",
+      "accuracy": "75",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 231,
+      "slot": 2,
+      "name": "Iron Tail",
+      "type": "Steel",
+      "category": "Status",
+      "power": "132",
+      "accuracy": "75",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 398,
+      "slot": 3,
+      "name": "Poison Jab",
+      "type": "Poison",
+      "category": "Status",
+      "power": "92",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "isSync": false
+    },
+    {
+      "id": 11401,
+      "slot": 4,
+      "name": "World of Pain!",
+      "type": "Ground",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Critical Hit Next effect to the user. Applies the Supereffective ↑ Next effect to the user.",
+      "isSync": false
+    },
+    {
+      "id": 90000,
+      "slot": 5,
+      "name": "Unstoppable Ambition\nGround Impact",
+      "type": "Ground",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99011001,
+      "name": "Giovanni’s Cunning",
+      "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss.",
+      "childPassives": []
+    },
+    {
+      "id": 16014605,
+      "name": "MAX Double Down 5",
+      "description": "Powers up the user’s max moves that are super effective.",
+      "childPassives": []
+    },
+    {
+      "id": 13014505,
+      "name": "Hit the Gas 5",
+      "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0034_81_00_nidoking",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1014010000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Antitoxin",
+      "description": "Prevents the user from getting poisoned or badly poisoned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mega Kick: Power +3",
+      "description": "Raises the power of Mega Kick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mega Kick": 3
+      }
+    },
+    {
+      "cellId": 1014010010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mega Kick: Power +3",
+      "description": "Raises the power of Mega Kick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mega Kick": 3
+      }
+    },
+    {
+      "cellId": 1014010011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mega Kick: Power +3",
+      "description": "Raises the power of Mega Kick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mega Kick": 3
+      }
+    },
+    {
+      "cellId": 1014010012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Superduper Effective 2",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Mega Kick: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Critical Crit 9",
+      "description": "Applies the Critical Hit Next effect to the user when it lands a critical hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max Quake: Power +100",
+      "description": "Raises the power of Max Quake.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Quake": 100
+      }
+    },
+    {
+      "cellId": 1014010017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Poison Jab: Power +3",
+      "description": "Raises the power of Poison Jab.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Jab": 3
+      }
+    },
+    {
+      "cellId": 1014010021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Poison Jab: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Poison Jab: Power +3",
+      "description": "Raises the power of Poison Jab.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Jab": 3
+      }
+    },
+    {
+      "cellId": 1014010023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Poison Jab: Superduper Effective 3",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Poison Jab: Power +3",
+      "description": "Raises the power of Poison Jab.",
+      "statBonus": {},
+      "powerBonus": {
+        "Poison Jab": 3
+      }
+    },
+    {
+      "cellId": 1014010025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Poison Jab: Furious Brawn",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max Ooze: Power +100",
+      "description": "Raises the power of Max Ooze.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Ooze": 100
+      }
+    },
+    {
+      "cellId": 1014010028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Iron Tail: Power +3",
+      "description": "Raises the power of Iron Tail.",
+      "statBonus": {},
+      "powerBonus": {
+        "Iron Tail": 3
+      }
+    },
+    {
+      "cellId": 1014010030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Iron Tail: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Iron Tail: Power +3",
+      "description": "Raises the power of Iron Tail.",
+      "statBonus": {},
+      "powerBonus": {
+        "Iron Tail": 3
+      }
+    },
+    {
+      "cellId": 1014010032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Iron Tail: Power +3",
+      "description": "Raises the power of Iron Tail.",
+      "statBonus": {},
+      "powerBonus": {
+        "Iron Tail": 3
+      }
+    },
+    {
+      "cellId": 1014010033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Iron Tail: On a Roll 1",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Double Down 3",
+      "description": "Powers up the user’s sync moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max Steelspike: Power +100",
+      "description": "Raises the power of Max Steelspike.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Steelspike": 100
+      }
+    },
+    {
+      "cellId": 1014010036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Super Syncer",
+      "description": "Applies the Supereffective ↑ Next effect to the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Sand Shelter",
+      "description": "Protects the user from damage from a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "World of Pain!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sands of Time 2",
+      "description": "Quickly charges the move gauge during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Surging Sand 2",
+      "description": "Powers up the user’s moves during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "MAX Super Preparation",
+      "description": "Applies the Supereffective ↑ Next effect to the user after using its max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haymaker",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Rejuvenate 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Unstoppable Ambition\nGround Impact: Power +25",
+      "description": "Raises the power of Unstoppable Ambition\nGround Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Unstoppable Ambition\nGround Impact": 25
+      }
+    },
+    {
+      "cellId": 1014010047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Unstoppable Ambition\nGround Impact: Power +25",
+      "description": "Raises the power of Unstoppable Ambition\nGround Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Unstoppable Ambition\nGround Impact": 25
+      }
+    },
+    {
+      "cellId": 1014010048,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010049,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Max Move: Team Defense ↓ 2",
+      "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010050,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "MAX Countdown 3",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010051,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010052,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1014010053,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "First Aid 6",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

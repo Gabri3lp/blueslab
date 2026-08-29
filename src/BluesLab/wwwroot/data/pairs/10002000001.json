@@ -1,0 +1,892 @@
+{
+  "trainerId": "10002000001",
+  "trainerBaseId": "10000200",
+  "monsterId": "20002000003",
+  "monsterBaseId": "20013401",
+  "displayName": "Trainer #10000200 & Monster #20013401",
+  "trainerName": "Trainer #10000200",
+  "monsterName": "Monster #20013401",
+  "type": "Water",
+  "weakness": "Grass",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Overflowing Curiosity\nWater Beam",
+  "iconUrl": "img/trainers/0002_00-0134_00.png",
+  "stats": {
+    "hp": [
+      112,
+      190,
+      265,
+      562,
+      626,
+      690,
+      882
+    ],
+    "atk": [
+      16,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ],
+    "def": [
+      13,
+      34,
+      52,
+      129,
+      145,
+      161,
+      209
+    ],
+    "spa": [
+      20,
+      66,
+      108,
+      284,
+      320,
+      356,
+      464
+    ],
+    "spd": [
+      14,
+      35,
+      53,
+      130,
+      146,
+      162,
+      210
+    ],
+    "spe": [
+      12,
+      48,
+      81,
+      213,
+      241,
+      269,
+      353
+    ]
+  },
+  "moves": [
+    {
+      "id": 55,
+      "slot": 1,
+      "name": "Water Gun",
+      "type": "Water",
+      "category": "Status",
+      "power": "20",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 313,
+      "slot": 2,
+      "name": "Fake Tears",
+      "type": "Dark",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 330,
+      "slot": 3,
+      "name": "Muddy Water",
+      "type": "Water",
+      "category": "Status",
+      "power": "116",
+      "accuracy": "85",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 10029,
+      "slot": 4,
+      "name": "Come Along!",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 94600,
+      "slot": 5,
+      "name": "Overflowing Curiosity\nWater Beam",
+      "type": "Water",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 19023401,
+      "name": "Rain Caller",
+      "description": "Makes the weather rainy after using the user’s sync move.",
+      "childPassives": []
+    },
+    {
+      "id": 21010201,
+      "name": "Team Rain Coat",
+      "description": "Protects all allied sync pairs against critical hits when the weather is rainy.",
+      "childPassives": []
+    },
+    {
+      "id": 18104509,
+      "name": "Impeding Strike 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1000290000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1000290011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Muddy Water: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1000290013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1000290014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Blunting Strike 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Accuracy +10",
+      "description": "Raises the accuracy of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Rejuvenate 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Gun: Power +4",
+      "description": "Raises the power of Water Gun.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Gun": 4
+      }
+    },
+    {
+      "cellId": 1000290019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Water Gun: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Water Gun: Power +4",
+      "description": "Raises the power of Water Gun.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Gun": 4
+      }
+    },
+    {
+      "cellId": 1000290021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Gun: Power +4",
+      "description": "Raises the power of Water Gun.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Gun": 4
+      }
+    },
+    {
+      "cellId": 1000290022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sync Cure",
+      "description": "Removes all status conditions from the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Team Focus Rush 1",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "S-Move: Team HP Recovery (M) 1",
+      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Adrenaline 1",
+      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Gun: Power +4",
+      "description": "Raises the power of Water Gun.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Gun": 4
+      }
+    },
+    {
+      "cellId": 1000290028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Fake Tears: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Torrential Tenacity",
+      "description": "Prevents the user from flinching, becoming confused, or becoming trapped when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Brainteaser",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Smarty-Pants",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainpower",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Accuracy +5",
+      "description": "Raises the accuracy of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1000290040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1000290041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Come Along!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Raging Rain 5",
+      "description": "Powers up the user’s moves when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Refreshing Rain 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Racing Rain 3",
+      "description": "Quickly charges the move gauge when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Rain Gear 3",
+      "description": "Reduces damage when the user is hit by an attack move while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Overflowing Curiosity\nWater Beam: Power +25",
+      "description": "Raises the power of Overflowing Curiosity\nWater Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overflowing Curiosity\nWater Beam": 25
+      }
+    },
+    {
+      "cellId": 1000290047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Overflowing Curiosity\nWater Beam: Power +25",
+      "description": "Raises the power of Overflowing Curiosity\nWater Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overflowing Curiosity\nWater Beam": 25
+      }
+    }
+  ]
+}

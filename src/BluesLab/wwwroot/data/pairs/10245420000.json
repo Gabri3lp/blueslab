@@ -1,0 +1,922 @@
+{
+  "trainerId": "10245420000",
+  "trainerBaseId": "10024542",
+  "monsterId": "20245420000",
+  "monsterBaseId": "2009670001",
+  "displayName": "Marnie  (Academy) & Monster #2009670001",
+  "trainerName": "Marnie  (Academy)",
+  "monsterName": "Monster #2009670001",
+  "type": "Dragon",
+  "weakness": "Fighting",
+  "role": "Sprint",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Zoom Around School\nDragon Impact",
+  "iconUrl": "img/trainers/0245_42-0967_00.png",
+  "stats": {
+    "hp": [
+      100,
+      176,
+      248,
+      534,
+      594,
+      654,
+      834
+    ],
+    "atk": [
+      22,
+      74,
+      122,
+      320,
+      360,
+      400,
+      520
+    ],
+    "def": [
+      16,
+      39,
+      60,
+      137,
+      153,
+      169,
+      217
+    ],
+    "spa": [
+      12,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "spd": [
+      16,
+      39,
+      60,
+      137,
+      153,
+      169,
+      217
+    ],
+    "spe": [
+      17,
+      69,
+      117,
+      315,
+      355,
+      395,
+      515
+    ]
+  },
+  "moves": [
+    {
+      "id": 784,
+      "slot": 1,
+      "name": "Breaking Swipe",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "30",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 18500,
+      "slot": 2,
+      "name": "Sitrus Berry",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6117,
+      "slot": 3,
+      "name": "Spring Breeze\nScale Shot",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "50",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Attacks the target two to five times in a row. Raises one of the user’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random when attacking at least three times in a row: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user when attacking at least four times in a row. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] when attacking five times in a row. If the remaining MP for the user’s [Name:MoveId Idx=\"18500\" ] is [Digit:1digit Idx=\"1\" ] or more when attacking with this move, reduces those MP by [Digit:1digit Idx=\"1\" ] and grants all of the following effects: Maximizes the number of attacks. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ].",
+      "isSync": false
+    },
+    {
+      "id": 12452,
+      "slot": 4,
+      "name": "Full Throttle!",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 117400,
+      "slot": 5,
+      "name": "Zoom Around School\nDragon Impact",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the user’s Attack is raised, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99024101,
+      "name": "Hungry Buddy",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
+      "childPassives": [
+        {
+          "id": 15013301,
+          "name": "1st “Berry” MP 0: Sync CD ↓ 1",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
+        },
+        {
+          "id": 17080801,
+          "name": "1st “Berry” MP 0: Team Physical Boost 1",
+          "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
+        }
+      ]
+    },
+    {
+      "id": 99024201,
+      "name": "Ms. Marnie’s Motorcycling Skills",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit. Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "childPassives": [
+        {
+          "id": 11012202,
+          "name": "Restoring Strike 2",
+          "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit."
+        },
+        {
+          "id": 12021902,
+          "name": "Recharging Strike 2",
+          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit."
+        }
+      ]
+    },
+    {
+      "id": 18050901,
+      "name": "Soften Up 1",
+      "description": "Critical hits land more easily when the user attacks with a sync move.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1800100868,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100869,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100870,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100871,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100872,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100873,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100874,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100875,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100876,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Spring Breeze\nScale Shot: Power +1",
+      "description": "Raises the power of Spring Breeze\nScale Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Spring Breeze\nScale Shot": 1
+      }
+    },
+    {
+      "cellId": 1800100877,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Spring Breeze\nScale Shot: Power +1",
+      "description": "Raises the power of Spring Breeze\nScale Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Spring Breeze\nScale Shot": 1
+      }
+    },
+    {
+      "cellId": 1800100878,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Spring Breeze\nScale Shot: Power +1",
+      "description": "Raises the power of Spring Breeze\nScale Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Spring Breeze\nScale Shot": 1
+      }
+    },
+    {
+      "cellId": 1800100879,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "First Aid 2",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100880,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Spring Breeze\nScale Shot: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100881,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Guaranteed Triple",
+      "description": "Increases the number of times the user hits with a move that has the multistrike effect tag to three or more when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100882,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Recharging Strike 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100883,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100884,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100885,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +3",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 3
+      }
+    },
+    {
+      "cellId": 1800100886,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +3",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 3
+      }
+    },
+    {
+      "cellId": 1800100887,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +3",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 3
+      }
+    },
+    {
+      "cellId": 1800100888,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Breaking Swipe: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100889,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100890,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 12,
+      "orbCost": 144,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "S-Move: Restore “Berry” MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s moves that have the Berry effect tag after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100891,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Breaking Swipe: Hit: Stat ↓2 9",
+      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100892,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100893,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100894,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100895,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100896,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +3",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 3
+      }
+    },
+    {
+      "cellId": 1800100897,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +3",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 3
+      }
+    },
+    {
+      "cellId": 1800100898,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100899,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100900,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100901,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Speedster’s Sync 9",
+      "description": "Powers up the user’s sync move when [Name:ReferencedMessageTag ] is raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100902,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Unfortunate Strike 3",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, has a chance ([Digit:2digits ]%) of lowering one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100903,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100904,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100905,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100906,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Spring Breeze\nScale Shot: Power +1",
+      "description": "Raises the power of Spring Breeze\nScale Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Spring Breeze\nScale Shot": 1
+      }
+    },
+    {
+      "cellId": 1800100907,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Spring Breeze\nScale Shot: Power +1",
+      "description": "Raises the power of Spring Breeze\nScale Shot.",
+      "statBonus": {},
+      "powerBonus": {
+        "Spring Breeze\nScale Shot": 1
+      }
+    },
+    {
+      "cellId": 1800100908,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100909,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Full Throttle!: Super Preparation 9",
+      "description": "Applies the Supereffective ↑ Next effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100910,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Full Throttle!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100911,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Fierce Entry 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100912,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st “Berry” MP 0: Team Physical Boost 1",
+      "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100913,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Furious Brawn",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100914,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Zoom Around School\nDragon Impact: Power +25",
+      "description": "Raises the power of Zoom Around School\nDragon Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Zoom Around School\nDragon Impact": 25
+      }
+    },
+    {
+      "cellId": 1800100915,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Zoom Around School\nDragon Impact: Power +25",
+      "description": "Raises the power of Zoom Around School\nDragon Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Zoom Around School\nDragon Impact": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,896 @@
+{
+  "trainerId": "10302000001",
+  "trainerBaseId": "10030200",
+  "monsterId": "20302000001",
+  "monsterBaseId": "20034000",
+  "displayName": "Trainer #10030200 & Whiscash",
+  "trainerName": "Trainer #10030200",
+  "monsterName": "Whiscash",
+  "type": "Ground",
+  "weakness": "Grass",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 4,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Testing Mind and Aptitude\nGround Beam",
+  "iconUrl": "img/trainers/0302_00-0340_00.png",
+  "stats": {
+    "hp": [
+      108,
+      169,
+      226,
+      457,
+      505,
+      553,
+      697
+    ],
+    "atk": [
+      13,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "def": [
+      14,
+      34,
+      52,
+      129,
+      145,
+      161,
+      209
+    ],
+    "spa": [
+      20,
+      68,
+      113,
+      289,
+      325,
+      361,
+      469
+    ],
+    "spd": [
+      14,
+      34,
+      52,
+      129,
+      145,
+      161,
+      209
+    ],
+    "spe": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ]
+  },
+  "moves": [
+    {
+      "id": 189,
+      "slot": 1,
+      "name": "Mud-Slap",
+      "type": "Ground",
+      "category": "Status",
+      "power": "13",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19030,
+      "slot": 2,
+      "name": "X Sp. Atk",
+      "type": "Ground",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 414,
+      "slot": 3,
+      "name": "Earth Power",
+      "type": "Ground",
+      "category": "Status",
+      "power": "99",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 13029,
+      "slot": 4,
+      "name": "Watch Your\nStep!",
+      "type": "Ground",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 107400,
+      "slot": 5,
+      "name": "Testing Mind and Aptitude\nGround Beam",
+      "type": "Ground",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the target’s accuracy is lowered, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 13013001,
+      "name": "Dizzying Power",
+      "description": "The more the target’s accuracy is lowered, the more it powers up the user’s moves.",
+      "childPassives": []
+    },
+    {
+      "id": 22010304,
+      "name": "On a Roll 4",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "childPassives": []
+    },
+    {
+      "id": 18020301,
+      "name": "Dauntless",
+      "description": "Sp. Atk cannot be lowered.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1030200100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200106,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200107,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200108,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1030200109,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200110,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1030200111,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200112,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1030200113,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Watch Your\nStep!: Slippery Sidekicks 1",
+      "description": "Raises the evasiveness of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200114,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Mud-Slap: Discombobulate 2",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200115,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Mud-Slap: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200116,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Obscuring Sync 5",
+      "description": "Powers up the user’s sync move when the target’s accuracy is lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200117,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200118,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200119,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1030200120,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Accuracy +10",
+      "description": "Raises the accuracy of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200121,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Mud-Slap: Power +4",
+      "description": "Raises the power of Mud-Slap.",
+      "statBonus": {},
+      "powerBonus": {
+        "Mud-Slap": 4
+      }
+    },
+    {
+      "cellId": 1030200122,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Sp. Atk: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200123,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Sp. Atk: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200124,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Mud-Slap: Fast-Track 9",
+      "description": "Raises the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200125,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Speedster’s Sync 3",
+      "description": "Powers up the user’s sync move when [Name:ReferencedMessageTag ] is raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200126,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200127,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Sand Shelter",
+      "description": "Protects the user from damage from a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200128,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Earth Power: Power +3",
+      "description": "Raises the power of Earth Power.",
+      "statBonus": {},
+      "powerBonus": {
+        "Earth Power": 3
+      }
+    },
+    {
+      "cellId": 1030200129,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Earth Power: Power +3",
+      "description": "Raises the power of Earth Power.",
+      "statBonus": {},
+      "powerBonus": {
+        "Earth Power": 3
+      }
+    },
+    {
+      "cellId": 1030200130,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Watch Your\nStep!: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200131,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Shifting Sand",
+      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] during a sandstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200132,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Critical Strike 2",
+      "description": "Powers up the user’s attacks when they become critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200133,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rainy Immunity",
+      "description": "Status conditions cannot be inflicted on the user when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200134,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200135,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200136,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200137,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200138,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200139,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Earth Power: Power +3",
+      "description": "Raises the power of Earth Power.",
+      "statBonus": {},
+      "powerBonus": {
+        "Earth Power": 3
+      }
+    },
+    {
+      "cellId": 1030200140,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Earth Power: Power +3",
+      "description": "Raises the power of Earth Power.",
+      "statBonus": {},
+      "powerBonus": {
+        "Earth Power": 3
+      }
+    },
+    {
+      "cellId": 1030200141,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Earth Power: Power +3",
+      "description": "Raises the power of Earth Power.",
+      "statBonus": {},
+      "powerBonus": {
+        "Earth Power": 3
+      }
+    },
+    {
+      "cellId": 1030200142,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Watch Your\nStep!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200143,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Earth Power: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200144,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "On a Roll 4",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200145,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainteaser",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1030200146,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Testing Mind and Aptitude\nGround Beam: Power +25",
+      "description": "Raises the power of Testing Mind and Aptitude\nGround Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Testing Mind and Aptitude\nGround Beam": 25
+      }
+    },
+    {
+      "cellId": 1030200147,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Testing Mind and Aptitude\nGround Beam: Power +25",
+      "description": "Raises the power of Testing Mind and Aptitude\nGround Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Testing Mind and Aptitude\nGround Beam": 25
+      }
+    }
+  ]
+}

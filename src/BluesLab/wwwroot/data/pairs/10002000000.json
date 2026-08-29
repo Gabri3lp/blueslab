@@ -1,0 +1,976 @@
+{
+  "trainerId": "10002000000",
+  "trainerBaseId": "10000200",
+  "monsterId": "20002000000",
+  "monsterBaseId": "20015201",
+  "displayName": "Trainer #10000200 & Chikorita",
+  "trainerName": "Trainer #10000200",
+  "monsterName": "Chikorita",
+  "type": "Grass",
+  "weakness": "Fire",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Grass\nSync Beam",
+  "iconUrl": "img/trainers/0002_00-0152_00.png",
+  "stats": {
+    "hp": [
+      132,
+      222,
+      305,
+      635,
+      707,
+      779,
+      995
+    ],
+    "atk": [
+      11,
+      29,
+      47,
+      113,
+      125,
+      137,
+      173
+    ],
+    "def": [
+      18,
+      34,
+      49,
+      104,
+      116,
+      128,
+      164
+    ],
+    "spa": [
+      12,
+      43,
+      73,
+      183,
+      207,
+      231,
+      303
+    ],
+    "spd": [
+      17,
+      38,
+      56,
+      133,
+      149,
+      165,
+      213
+    ],
+    "spe": [
+      11,
+      36,
+      60,
+      148,
+      168,
+      188,
+      248
+    ]
+  },
+  "moves": [
+    {
+      "id": 412,
+      "slot": 1,
+      "name": "Energy Ball",
+      "type": "Grass",
+      "category": "Status",
+      "power": "49",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19081,
+      "slot": 2,
+      "name": "Dire Hit All",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 10020,
+      "slot": 3,
+      "name": "Sunny Side Up!",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack, Sp. Atk, and Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. These stats are raised by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] instead when the weather is sunny.",
+      "isSync": false
+    },
+    {
+      "id": 113,
+      "slot": 4,
+      "name": "Light Screen",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Applies the Special Damage Reduction effect to the allied field of play.",
+      "isSync": false
+    },
+    {
+      "id": 40500,
+      "slot": 5,
+      "name": "Grass\nSync Beam",
+      "type": "Grass",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 17011001,
+      "name": "Solar Shield",
+      "description": "Status conditions cannot be inflicted on the user when the weather is sunny.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1000200000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Energy Ball: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +5",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 5
+      }
+    },
+    {
+      "cellId": 1000200012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +5",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 5
+      }
+    },
+    {
+      "cellId": 1000200013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +5",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 5
+      }
+    },
+    {
+      "cellId": 1000200014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Healing Sun 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solarize",
+      "description": "Makes the weather sunny after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200017,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200018,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Dire Hit All: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Charging Sun 5",
+      "description": "Powers up the user’s moves when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Dire Hit All: Critical Squad 1",
+      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Soup Up 2",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Sp. Atk by one stat rank when it is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200026,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200027,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Sunny Side Up!: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200028,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200029,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +5",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 5
+      }
+    },
+    {
+      "cellId": 1000200030,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +5",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 5
+      }
+    },
+    {
+      "cellId": 1000200031,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +5",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 5
+      }
+    },
+    {
+      "cellId": 1000200032,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Team Toughen Up 4",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the Defense of all allied sync pairs by one stat rank when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200033,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200034,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sunny Side Up!: Hit and Heal 9",
+      "description": "Applies the Gradual Healing effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200035,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +50",
+      "description": "Raises HP by 50.",
+      "statBonus": {
+        "hp": 50
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200036,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Revenge Boost 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200037,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200038,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200039,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200040,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Light Screen: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200041,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200042,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Light Screen: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200043,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Light Screen: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200044,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 5",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200045,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Light Screen: Force Field 4",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the Sp. Def of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Heart of Gold\nLeaf Storm: Power +25",
+      "description": "Raises the power of Heart of Gold\nLeaf Storm.",
+      "statBonus": {},
+      "powerBonus": {
+        "Heart of Gold\nLeaf Storm": 25
+      }
+    },
+    {
+      "cellId": 1000200047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Heart of Gold\nLeaf Storm: Power +25",
+      "description": "Raises the power of Heart of Gold\nLeaf Storm.",
+      "statBonus": {},
+      "powerBonus": {
+        "Heart of Gold\nLeaf Storm": 25
+      }
+    },
+    {
+      "cellId": 1000200048,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +20",
+      "description": "Raises Defense by 20.",
+      "statBonus": {
+        "def": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200049,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200050,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sunny Side Up!: Team Brain Gain 9",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200051,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +20",
+      "description": "Raises Sp. Def by 20.",
+      "statBonus": {
+        "spd": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200052,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Team Swift Reaction 9",
+      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000200053,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sunny Side Up!: BOGO 9",
+      "description": "Applies the Free Move Next effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

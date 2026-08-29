@@ -1,0 +1,310 @@
+@inject DamageCalculatorService CalcService
+@inject GridStateService GridState
+
+<div class="sync-pair-overview p-2">
+    @if (Pair == null)
+    {
+        <div class="text-center py-5 text-muted">Please select a Sync Pair to view overview.</div>
+    }
+    else
+    {
+        <!-- Header Info & Controls -->
+        <div class="card bg-dark border-secondary p-3 mb-3">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="56" height="56" class="rounded-circle border border-warning shadow" onerror="this.src='img/trainers/unknown.png';" />
+                    <div>
+                        <h5 class="fw-bold text-light mb-1">
+                            @Pair.DisplayName
+                            @if (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                            {
+                                <span class="badge bg-warning text-dark fs-6 ms-2">(@Pair.Variations[SelectedFormIndex - 1].FormName)</span>
+                            }
+                        </h5>
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="badge type-badge type-@Pair.Type.ToLowerInvariant()">@Pair.Type</span>
+                            <span class="badge bg-secondary">@Pair.Role</span>
+                            @if (!string.IsNullOrEmpty(Pair.ExRole))
+                            {
+                                <span class="badge bg-indigo">EX: @Pair.ExRole</span>
+                            }
+                            @if (!string.IsNullOrEmpty(Pair.Weakness))
+                            {
+                                <span class="badge bg-dark border border-danger text-danger">Weakness: @Pair.Weakness</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Switcher Buttons (Base, Mega, Tera) -->
+                @if (Pair.Variations.Count > 0 || Pair.HasMega || Pair.HasTera)
+                {
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn @(SelectedFormIndex == 0 ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(0)">
+                            Base Form
+                        </button>
+                        @for (int i = 0; i < Pair.Variations.Count; i++)
+                        {
+                            int idx = i + 1;
+                            var v = Pair.Variations[i];
+                            <button class="btn @(SelectedFormIndex == idx ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(idx)">
+                                @v.FormName
+                            </button>
+                        }
+                    </div>
+                }
+
+                <!-- Star Level, Level and EX Role Controls -->
+                <div class="d-flex align-items-center gap-2">
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 100px;" @bind="SelectedStarLevel">
+                        <option value="3★">3★</option>
+                        <option value="4★">4★</option>
+                        <option value="5★">5★</option>
+                        <option value="5★ 20/20">5★ 20/20</option>
+                        @if (Pair.HasEx)
+                        {
+                            <option value="5★ EX">5★ EX</option>
+                        }
+                    </select>
+
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 90px;" @bind="SelectedLevel">
+                        <option value="120">Lv. 120</option>
+                        <option value="130">Lv. 130</option>
+                        <option value="140">Lv. 140</option>
+                        <option value="150">Lv. 150</option>
+                        <option value="200">Lv. 200</option>
+                    </select>
+
+                    @if (Pair.HasEx && !string.IsNullOrEmpty(Pair.ExRole))
+                    {
+                        <button class="btn btn-sm @(ExRoleActive ? "btn-indigo" : "btn-outline-secondary")" @onclick="() => ExRoleActive = !ExRoleActive">
+                            EX Role
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Comprehensive Stats Table -->
+        <div class="card bg-dark border-secondary p-3 mb-3">
+            <h6 class="text-info fw-bold mb-3 d-flex align-items-center justify-content-between">
+                <span class="d-flex align-items-center gap-2">
+                    <i class="bi bi-bar-chart-fill"></i> Stats Breakdown
+                </span>
+                @if (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                {
+                    <span class="badge bg-secondary text-warning small">
+                        Form Scaling Active: @Pair.Variations[SelectedFormIndex - 1].FormName
+                    </span>
+                }
+            </h6>
+            <div class="table-responsive">
+                <table class="table table-dark table-sm table-bordered text-center align-middle mb-0">
+                    <thead>
+                        <tr class="text-secondary small">
+                            <th class="text-start">Category</th>
+                            <th style="width: 15%;">HP</th>
+                            <th style="width: 15%;">Attack</th>
+                            <th style="width: 15%;">Defense</th>
+                            <th style="width: 15%;">Sp. Atk</th>
+                            <th style="width: 15%;">Sp. Def</th>
+                            <th style="width: 15%;">Speed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int lvl = int.TryParse(SelectedLevel, out int l) ? l : 140;
+                            var pot = CalcService.CalcPotentialBonus(Pair.Rarity, SelectedStarLevel);
+                            var ex = ExRoleActive ? CalcService.GetExRoleBonus(Pair.ExRole) : new();
+                            string[] statsKeys = ["hp", "atk", "def", "spa", "spd", "spe"];
+                            var currentVariation = (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                                ? Pair.Variations[SelectedFormIndex - 1]
+                                : null;
+                        }
+                        <tr>
+                            <td class="text-start text-muted small">Base Stat (Lv. @SelectedLevel)</td>
+                            @foreach (var s in statsKeys)
+                            {
+                                int baseStat = Pair.Stats.GetStatAtLevel(s, lvl);
+                                <td>@baseStat</td>
+                            }
+                        </tr>
+                        <tr>
+                            <td class="text-start text-muted small">Potential + EX Role</td>
+                            @foreach (var s in statsKeys)
+                            {
+                                int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
+                                <td class="@(bonus > 0 ? "text-success" : "text-muted")">@(bonus > 0 ? $"+{bonus}" : "-")</td>
+                            }
+                        </tr>
+                        @if (currentVariation != null)
+                        {
+                            <tr>
+                                <td class="text-start text-muted small">Form Multiplier (@currentVariation.FormName)</td>
+                                @foreach (var s in statsKeys)
+                                {
+                                    double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
+                                    <td class="@(mult > 1.0 ? "text-warning" : "text-muted")">@(mult > 1.0 ? $"×{mult:0.#}" : "×1.0")</td>
+                                }
+                            </tr>
+                        }
+                        <tr>
+                            <td class="text-start text-muted small">Sync Grid Bonus</td>
+                            @foreach (var s in statsKeys)
+                            {
+                                int gBonus = 0;
+                                foreach (var cell in Pair.Grid)
+                                {
+                                    if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                        gBonus += sb;
+                                }
+                                <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
+                            }
+                        </tr>
+                        <tr class="table-active fw-bold fs-6">
+                            <td class="text-start text-warning">Total Stat</td>
+                            @foreach (var s in statsKeys)
+                            {
+                                int baseStat = Pair.Stats.GetStatAtLevel(s, lvl);
+                                int potVal = pot.GetValueOrDefault(s, 0);
+                                int exVal = ex.GetValueOrDefault(s, 0);
+                                double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
+
+                                int gBonus = 0;
+                                foreach (var cell in Pair.Grid)
+                                {
+                                    if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                        gBonus += sb;
+                                }
+
+                                int total = CalcService.CalcTotalStat(
+                                    s,
+                                    baseStat,
+                                    0,
+                                    potential: potVal,
+                                    exBonus: exVal,
+                                    formMult: formMult,
+                                    hasSa: Pair.HasSuperAwakening,
+                                    saLevel: Pair.HasSuperAwakening ? 5 : 0,
+                                    role: Pair.Role,
+                                    gridStat: gBonus
+                                );
+
+                                <td class="text-warning">@total</td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Moves and Passives -->
+        <div class="row g-3">
+            <!-- Moves Section -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-3">
+                    <h6 class="text-warning fw-bold mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-lightning-fill"></i> Moves
+                    </h6>
+                    <div class="d-flex flex-column gap-2">
+                        @foreach (var move in Pair.Moves)
+                        {
+                            <div class="card bg-secondary bg-opacity-25 border-secondary p-2">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <div class="fw-bold text-light">@move.Name</div>
+                                        <div class="d-flex gap-1 align-items-center mt-1">
+                                            <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                            <span class="badge bg-secondary">@move.Category</span>
+                                            @if (move.IsSync)
+                                            {
+                                                <span class="badge bg-purple">Sync Move</span>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="text-end small">
+                                        <div>Power: <b class="text-warning">@move.Power</b></div>
+                                        <div>Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
+                                    </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(move.Description))
+                                {
+                                    <div class="text-secondary small mt-2">@move.Description</div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passives Section -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-3">
+                    <h6 class="text-success fw-bold mb-3 d-flex align-items-center justify-content-between">
+                        <span class="d-flex align-items-center gap-2">
+                            <i class="bi bi-shield-check"></i> Passive Skills
+                        </span>
+                        @if (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                        {
+                            <span class="badge bg-warning text-dark small">@Pair.Variations[SelectedFormIndex - 1].FormName Passives</span>
+                        }
+                    </h6>
+                    <div class="d-flex flex-column gap-2">
+                        @{
+                            var activePassives = (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count && Pair.Variations[SelectedFormIndex - 1].Passives.Count > 0)
+                                ? Pair.Variations[SelectedFormIndex - 1].Passives
+                                : Pair.Passives;
+                        }
+                        @foreach (var passive in activePassives)
+                        {
+                            <div class="card bg-secondary bg-opacity-25 border-secondary p-2">
+                                <div class="fw-bold text-light">@passive.Name</div>
+                                <div class="text-secondary small mt-1">@passive.Description</div>
+                                @if (passive.ChildPassives.Count > 0)
+                                {
+                                    <div class="mt-2 pt-2 border-top border-secondary">
+                                        <span class="text-muted small fw-bold">Combined Skills:</span>
+                                        @foreach (var child in passive.ChildPassives)
+                                        {
+                                            <div class="small ms-2 mt-1">
+                                                <span class="text-info">• @child.Name:</span> <span class="text-muted">@child.Description</span>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public SyncPairDetail? Pair { get; set; }
+    [Parameter] public int MoveLevel { get; set; } = 5;
+    [Parameter] public int FormIndex { get; set; } = 0;
+    [Parameter] public EventCallback<int> FormIndexChanged { get; set; }
+
+    private int SelectedFormIndex = 0;
+    private string SelectedStarLevel = "5★ EX";
+    private string SelectedLevel = "140";
+    private bool ExRoleActive = true;
+
+    protected override void OnParametersSet()
+    {
+        SelectedFormIndex = FormIndex;
+        if (Pair != null)
+        {
+            SelectedStarLevel = Pair.HasEx ? "5★ EX" : (Pair.Rarity == 5 ? "5★ 20/20" : $"{Pair.Rarity}★");
+        }
+    }
+
+    private async Task SetForm(int idx)
+    {
+        SelectedFormIndex = idx;
+        FormIndex = idx;
+        await FormIndexChanged.InvokeAsync(idx);
+    }
+}

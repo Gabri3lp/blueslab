@@ -1,0 +1,961 @@
+{
+  "trainerId": "10012000000",
+  "trainerBaseId": "10001200",
+  "monsterId": "20012000000",
+  "monsterBaseId": "20044800",
+  "displayName": "Trainer #10001200 & Lucario",
+  "trainerName": "Trainer #10001200",
+  "monsterName": "Lucario",
+  "type": "Fighting",
+  "weakness": "Fire",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 3,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Give-It-All-Ya-Got\nPower-Up Punch",
+  "iconUrl": "img/trainers/0012_00-0448_00.png",
+  "stats": {
+    "hp": [
+      62,
+      137,
+      182,
+      402,
+      450,
+      498,
+      630
+    ],
+    "atk": [
+      11,
+      76,
+      118,
+      305,
+      345,
+      385,
+      493
+    ],
+    "def": [
+      5,
+      30,
+      45,
+      111,
+      127,
+      143,
+      179
+    ],
+    "spa": [
+      11,
+      72,
+      111,
+      287,
+      323,
+      359,
+      467
+    ],
+    "spd": [
+      5,
+      26,
+      38,
+      93,
+      105,
+      117,
+      153
+    ],
+    "spe": [
+      13,
+      45,
+      66,
+      154,
+      174,
+      194,
+      242
+    ]
+  },
+  "moves": [
+    {
+      "id": 410,
+      "slot": 1,
+      "name": "Vacuum Wave",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "20",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 19080,
+      "slot": 2,
+      "name": "Dire Hit",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 370,
+      "slot": 3,
+      "name": "Close Combat",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "124",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 10120,
+      "slot": 4,
+      "name": "Skate On Through!",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Speed by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 60000,
+      "slot": 5,
+      "name": "Give-It-All-Ya-Got\nPower-Up Punch",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Lucario until the end of battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 17010801,
+      "name": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0448_51_megalucario",
+      "statMultiplier": {
+        "atk": 1.2,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.2
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1001200000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vacuum Wave: Power +5",
+      "description": "Raises the power of Vacuum Wave.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vacuum Wave": 5
+      }
+    },
+    {
+      "cellId": 1001200008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vacuum Wave: Power +5",
+      "description": "Raises the power of Vacuum Wave.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vacuum Wave": 5
+      }
+    },
+    {
+      "cellId": 1001200009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Power-Up Punch: Power +6",
+      "description": "Raises the power of Power-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Power-Up Punch": 6
+      }
+    },
+    {
+      "cellId": 1001200010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vacuum Wave: Power +5",
+      "description": "Raises the power of Vacuum Wave.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vacuum Wave": 5
+      }
+    },
+    {
+      "cellId": 1001200012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Power-Up Punch: Power +6",
+      "description": "Raises the power of Power-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Power-Up Punch": 6
+      }
+    },
+    {
+      "cellId": 1001200013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Vacuum Wave: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Power-Up Punch: Power +6",
+      "description": "Raises the power of Power-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Power-Up Punch": 6
+      }
+    },
+    {
+      "cellId": 1001200016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Power-Up Punch: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Close Combat: Power +4",
+      "description": "Raises the power of Close Combat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Close Combat": 4
+      }
+    },
+    {
+      "cellId": 1001200020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Close Combat: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Close Combat: Power +4",
+      "description": "Raises the power of Close Combat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Close Combat": 4
+      }
+    },
+    {
+      "cellId": 1001200023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Close Combat: Power +4",
+      "description": "Raises the power of Close Combat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Close Combat": 4
+      }
+    },
+    {
+      "cellId": 1001200024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Stamina Reserves 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Close Combat: Power +4",
+      "description": "Raises the power of Close Combat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Close Combat": 4
+      }
+    },
+    {
+      "cellId": 1001200027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Skate On Through!: Berserker 1",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Dire Hit: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Power-Up Punch: Mad Strength 4",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Attack by one stat rank when its attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Fierce Entry 1",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Power Reserves 5",
+      "description": "Powers up the user’s moves when it is in a pinch.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Skate On Through!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +30",
+      "description": "Raises HP by 30.",
+      "statBonus": {
+        "hp": 30
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Boiling Point 6",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Close Combat: Stat’s Quo 3",
+      "description": "Has a chance ([Digit:2digits ]%) of returning the user’s lowered stats to normal when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001200046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Give-It-All-Ya-Got\nPower-Up Punch: Power +25",
+      "description": "Raises the power of Give-It-All-Ya-Got\nPower-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Give-It-All-Ya-Got\nPower-Up Punch": 25
+      }
+    },
+    {
+      "cellId": 1001200047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Give-It-All-Ya-Got\nPower-Up Punch: Power +25",
+      "description": "Raises the power of Give-It-All-Ya-Got\nPower-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Give-It-All-Ya-Got\nPower-Up Punch": 25
+      }
+    },
+    {
+      "cellId": 1800102678,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Give-It-All-Ya-Got\nPower-Up Punch: Power +30",
+      "description": "Raises the power of Give-It-All-Ya-Got\nPower-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Give-It-All-Ya-Got\nPower-Up Punch": 30
+      }
+    },
+    {
+      "cellId": 1800102679,
+      "q": -4,
+      "r": 1,
+      "s": 3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Give-It-All-Ya-Got\nPower-Up Punch: Power +30",
+      "description": "Raises the power of Give-It-All-Ya-Got\nPower-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Give-It-All-Ya-Got\nPower-Up Punch": 30
+      }
+    },
+    {
+      "cellId": 1800102680,
+      "q": -4,
+      "r": 0,
+      "s": 4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Give-It-All-Ya-Got\nPower-Up Punch: Power +30",
+      "description": "Raises the power of Give-It-All-Ya-Got\nPower-Up Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Give-It-All-Ya-Got\nPower-Up Punch": 30
+      }
+    }
+  ]
+}

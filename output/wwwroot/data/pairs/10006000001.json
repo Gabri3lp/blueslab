@@ -1,0 +1,902 @@
+{
+  "trainerId": "10006000001",
+  "trainerBaseId": "10000600",
+  "monsterId": "20006000001",
+  "monsterBaseId": "20007800",
+  "displayName": "Trainer #10000600 & Rapidash",
+  "trainerName": "Trainer #10000600",
+  "monsterName": "Rapidash",
+  "type": "Fire",
+  "weakness": "Rock",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 4,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Overpowering Determination\nFire Impact",
+  "iconUrl": "img/trainers/0006_00-0078_00.png",
+  "stats": {
+    "hp": [
+      100,
+      169,
+      235,
+      499,
+      555,
+      611,
+      779
+    ],
+    "atk": [
+      7,
+      31,
+      52,
+      140,
+      160,
+      180,
+      240
+    ],
+    "def": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "spa": [
+      7,
+      21,
+      33,
+      88,
+      100,
+      112,
+      148
+    ],
+    "spd": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "spe": [
+      16,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ]
+  },
+  "moves": [
+    {
+      "id": 488,
+      "slot": 1,
+      "name": "Flame Charge",
+      "type": "Fire",
+      "category": "Status",
+      "power": "30",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19071,
+      "slot": 2,
+      "name": "X Evasion All",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the evasiveness of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 340,
+      "slot": 3,
+      "name": "Bounce",
+      "type": "Flying",
+      "category": "Status",
+      "power": "182",
+      "accuracy": "85",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The user begins bouncing. After a set time, the user stops bouncing and attacks. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed. No other actions can be taken while bouncing. Most moves used by opponents will not hit the user while it is bouncing. If the user is attacked by a sync move or max move while bouncing, it will stop bouncing.",
+      "isSync": false
+    },
+    {
+      "id": 10069,
+      "slot": 4,
+      "name": "Go Full\nThrottle!",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 123100,
+      "slot": 5,
+      "name": "Overpowering Determination\nFire Impact",
+      "type": "Fire",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 18095109,
+      "name": "Group Slapdash 9",
+      "description": "Raises the Speed of all allied sync pairs by one stat rank when an opponent’s attack move targeting the user misses.",
+      "childPassives": []
+    },
+    {
+      "id": 18105509,
+      "name": "Group Fortification 9",
+      "description": "Raises the Defense, Sp. Def—or both—of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when an opponent’s attack move targeting the user misses.",
+      "childPassives": []
+    },
+    {
+      "id": 17040201,
+      "name": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1000600100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600106,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600107,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600108,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600109,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600110,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Charge: Power +4",
+      "description": "Raises the power of Flame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Charge": 4
+      }
+    },
+    {
+      "cellId": 1000600111,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Flame Charge: Power +4",
+      "description": "Raises the power of Flame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Charge": 4
+      }
+    },
+    {
+      "cellId": 1000600112,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Charge: Power +4",
+      "description": "Raises the power of Flame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Charge": 4
+      }
+    },
+    {
+      "cellId": 1000600113,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Flame Charge: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600114,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Flame Charge: Satisfied Snicker 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600115,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Revenge Boost 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600116,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "HP +40",
+      "description": "Raises HP by 40.",
+      "statBonus": {
+        "hp": 40
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600117,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600118,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bounce: Accuracy +5",
+      "description": "Raises the accuracy of Bounce.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600119,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600120,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bounce: Power +3",
+      "description": "Raises the power of Bounce.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce": 3
+      }
+    },
+    {
+      "cellId": 1000600121,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bounce: Accuracy +10",
+      "description": "Raises the accuracy of Bounce.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600122,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bounce: Power +3",
+      "description": "Raises the power of Bounce.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce": 3
+      }
+    },
+    {
+      "cellId": 1000600123,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Evasion All: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600124,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hot to the Touch 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving an opponent that attacked the user burned when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600125,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "X Evasion All: Catalytic Kick 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bounce: Power +3",
+      "description": "Raises the power of Bounce.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce": 3
+      }
+    },
+    {
+      "cellId": 1000600131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Bounce: Power +3",
+      "description": "Raises the power of Bounce.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce": 3
+      }
+    },
+    {
+      "cellId": 1000600132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Bounce: Power +3",
+      "description": "Raises the power of Bounce.",
+      "statBonus": {},
+      "powerBonus": {
+        "Bounce": 3
+      }
+    },
+    {
+      "cellId": 1000600133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Bounce: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Bounce: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Fail Forward 1",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] when an opponent’s attack move targeting the user misses.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Bounce: Hostile Environment 2",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600137,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600138,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600139,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Flameproof",
+      "description": "Prevents the user from getting burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600140,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Flame Charge: Power +4",
+      "description": "Raises the power of Flame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Charge": 4
+      }
+    },
+    {
+      "cellId": 1000600141,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Flame Charge: Power +4",
+      "description": "Raises the power of Flame Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Flame Charge": 4
+      }
+    },
+    {
+      "cellId": 1000600142,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600143,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600144,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Go Full\nThrottle!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600145,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000600146,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Overpowering Determination\nFire Impact: Power +25",
+      "description": "Raises the power of Overpowering Determination\nFire Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overpowering Determination\nFire Impact": 25
+      }
+    },
+    {
+      "cellId": 1000600147,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Overpowering Determination\nFire Impact: Power +25",
+      "description": "Raises the power of Overpowering Determination\nFire Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overpowering Determination\nFire Impact": 25
+      }
+    }
+  ]
+}

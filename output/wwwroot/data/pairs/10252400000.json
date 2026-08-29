@@ -1,0 +1,953 @@
+{
+  "trainerId": "10252400000",
+  "trainerBaseId": "10025240",
+  "monsterId": "20252400000",
+  "monsterBaseId": "20032300",
+  "displayName": "Kabu  (Academy) & Camerupt",
+  "trainerName": "Kabu  (Academy)",
+  "monsterName": "Camerupt",
+  "type": "Ground",
+  "weakness": "Water",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Teaching Tenacity\nGround Impact",
+  "iconUrl": "img/trainers/0252_40-0323_00.png",
+  "stats": {
+    "hp": [
+      92,
+      167,
+      239,
+      525,
+      585,
+      645,
+      825
+    ],
+    "atk": [
+      20,
+      78,
+      132,
+      352,
+      400,
+      448,
+      592
+    ],
+    "def": [
+      11,
+      28,
+      43,
+      109,
+      121,
+      133,
+      169
+    ],
+    "spa": [
+      16,
+      49,
+      79,
+      200,
+      224,
+      248,
+      320
+    ],
+    "spd": [
+      12,
+      31,
+      49,
+      115,
+      131,
+      147,
+      195
+    ],
+    "spe": [
+      10,
+      47,
+      83,
+      226,
+      254,
+      282,
+      366
+    ]
+  },
+  "moves": [
+    {
+      "id": 629,
+      "slot": 1,
+      "name": "High Horsepower",
+      "type": "Ground",
+      "category": "Status",
+      "power": "106",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 241,
+      "slot": 2,
+      "name": "Sunny Day",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Makes the weather sunny.",
+      "isSync": false
+    },
+    {
+      "id": 6161,
+      "slot": 3,
+      "name": "Driven\nHigh Horsepower",
+      "type": "Ground",
+      "category": "Status",
+      "power": "400",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. If the remaining MP for the user’s [Name:MoveId Idx=\"241\" ] is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 12524,
+      "slot": 4,
+      "name": "This Match\nIs Decided!",
+      "type": "Ground",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 123500,
+      "slot": 5,
+      "name": "Teaching Tenacity\nGround Impact",
+      "type": "Ground",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99035401,
+      "name": "Ideal Weather for Training",
+      "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "childPassives": [
+        {
+          "id": 13084401,
+          "name": "Sunny: High Horsepower Power ×2",
+          "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny."
+        },
+        {
+          "id": 19060601,
+          "name": "Ally Sets Sunny W: Ground Zone",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+        }
+      ]
+    },
+    {
+      "id": 99035501,
+      "name": "Veteran Trainer’s Ingenuity",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle. Restores [Digit:1digit ] MP of the user’s buddy move after using its max move.",
+      "childPassives": [
+        {
+          "id": 13061101,
+          "name": "1st S-Move: Restore B-Move MP 1",
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle."
+        },
+        {
+          "id": 16021001,
+          "name": "Max Move: Restore B-Move MP 1",
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after using its max move."
+        }
+      ]
+    },
+    {
+      "id": 99035601,
+      "name": "Hot Hoenn Sun",
+      "description": "Powers up the user’s sync move and max move when the weather is sunny. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move.",
+      "childPassives": [
+        {
+          "id": 16030909,
+          "name": "Sunny: S-Moves & Max Moves ↑ 9",
+          "description": "Powers up the user’s sync move and max move when the weather is sunny."
+        },
+        {
+          "id": 23011401,
+          "name": "Targets Maxed",
+          "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets."
+        },
+        {
+          "id": 16021102,
+          "name": "Max Move: Restore Status P-Move MP 2",
+          "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move."
+        }
+      ]
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0323_83_00_bakuuda",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1025240000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Antifreeze",
+      "description": "Prevents the user from becoming frozen.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "High Horsepower: Power +3",
+      "description": "Raises the power of High Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "High Horsepower": 3
+      }
+    },
+    {
+      "cellId": 1025240011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "High Horsepower: Power +3",
+      "description": "Raises the power of High Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "High Horsepower": 3
+      }
+    },
+    {
+      "cellId": 1025240012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "High Horsepower: Power +3",
+      "description": "Raises the power of High Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "High Horsepower": 3
+      }
+    },
+    {
+      "cellId": 1025240013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "High Horsepower: Accuracy +5",
+      "description": "Raises the accuracy of High Horsepower.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Ground Zone: HP Recovery 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ally Sets WTZ: Physical Boost ↑1 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ground Zone Extension 3",
+      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "High Horsepower: Power +3",
+      "description": "Raises the power of High Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "High Horsepower": 3
+      }
+    },
+    {
+      "cellId": 1025240022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "High Horsepower: Power +3",
+      "description": "Raises the power of High Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "High Horsepower": 3
+      }
+    },
+    {
+      "cellId": 1025240023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "High Horsepower: Attack Trap 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target trapped when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "High Horsepower: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "This Match\nIs Decided!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "This Match\nIs Decided!: Berserker 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haymaker",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Driven\nHigh Horsepower: Power +4",
+      "description": "Raises the power of Driven\nHigh Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "Driven\nHigh Horsepower": 4
+      }
+    },
+    {
+      "cellId": 1025240032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sunny Day: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Driven\nHigh Horsepower: Power +4",
+      "description": "Raises the power of Driven\nHigh Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "Driven\nHigh Horsepower": 4
+      }
+    },
+    {
+      "cellId": 1025240034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max Quake: Power +100",
+      "description": "Raises the power of Max Quake.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Quake": 100
+      }
+    },
+    {
+      "cellId": 1025240036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Drought Alert 3",
+      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Driven\nHigh Horsepower: Power +4",
+      "description": "Raises the power of Driven\nHigh Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "Driven\nHigh Horsepower": 4
+      }
+    },
+    {
+      "cellId": 1025240040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Driven\nHigh Horsepower: Power +4",
+      "description": "Raises the power of Driven\nHigh Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "Driven\nHigh Horsepower": 4
+      }
+    },
+    {
+      "cellId": 1025240041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Driven\nHigh Horsepower: Power +4",
+      "description": "Raises the power of Driven\nHigh Horsepower.",
+      "statBonus": {},
+      "powerBonus": {
+        "Driven\nHigh Horsepower": 4
+      }
+    },
+    {
+      "cellId": 1025240042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Driven\nHigh Horsepower: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Defense Crush 9",
+      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Charging Sun 3",
+      "description": "Powers up the user’s moves when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1025240046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Teaching Tenacity\nGround Impact: Power +25",
+      "description": "Raises the power of Teaching Tenacity\nGround Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Teaching Tenacity\nGround Impact": 25
+      }
+    },
+    {
+      "cellId": 1025240047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Teaching Tenacity\nGround Impact: Power +25",
+      "description": "Raises the power of Teaching Tenacity\nGround Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Teaching Tenacity\nGround Impact": 25
+      }
+    }
+  ]
+}

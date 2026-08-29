@@ -1,0 +1,1008 @@
+{
+  "trainerId": "10335000000",
+  "trainerBaseId": "10033500",
+  "monsterId": "20335000000",
+  "monsterBaseId": "2009980000",
+  "displayName": "Trainer #10033500 & Baxcalibur",
+  "trainerName": "Trainer #10033500",
+  "monsterName": "Baxcalibur",
+  "type": "Dragon",
+  "weakness": "Fighting",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "The Roaring Dragon’s\nGlaive Rush",
+  "iconUrl": "img/trainers/0335_00-0998_00.png",
+  "stats": {
+    "hp": [
+      110,
+      188,
+      263,
+      560,
+      624,
+      688,
+      880
+    ],
+    "atk": [
+      21,
+      69,
+      114,
+      290,
+      330,
+      370,
+      490
+    ],
+    "def": [
+      16,
+      41,
+      65,
+      153,
+      173,
+      193,
+      253
+    ],
+    "spa": [
+      14,
+      48,
+      81,
+      213,
+      241,
+      269,
+      353
+    ],
+    "spd": [
+      15,
+      40,
+      64,
+      152,
+      172,
+      192,
+      252
+    ],
+    "spe": [
+      15,
+      55,
+      94,
+      248,
+      280,
+      312,
+      408
+    ]
+  },
+  "moves": [
+    {
+      "id": 784,
+      "slot": 1,
+      "name": "Breaking Swipe",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "30",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 43,
+      "slot": 2,
+      "name": "Leer",
+      "type": "Normal",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 6167,
+      "slot": 3,
+      "name": "Top\nGlaive Rush",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "350",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. The power of this move is not lowered even if there are multiple targets. Applies the Enduring effect to the user. Applies the Physical Move Break effect and Special Move Break effect to the user. The more the currently targeted opponent’s stats are lowered, the more the user’s sync move countdown will be reduced (by zero to four) the first time this attack move is successful each battle.",
+      "isSync": false
+    },
+    {
+      "id": 13350,
+      "slot": 4,
+      "name": "Don’t Let It\nDrag On!",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"2\" ]. (An [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.) Applies the [Name:ReferencedMessageTag Idx=\"4\" ] to an ally. Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 119900,
+      "slot": 5,
+      "name": "The Roaring Dragon’s\nGlaive Rush",
+      "type": "Dragon",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 29030901,
+      "name": "Paldea Rush",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "childPassives": []
+    },
+    {
+      "id": 99037201,
+      "name": "Dragon of the Final Fortress",
+      "description": "Prevents all allied sync pairs from getting burned. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "childPassives": [
+        {
+          "id": 17015001,
+          "name": "Team Burn Immunity",
+          "description": "Prevents all allied sync pairs from getting burned."
+        },
+        {
+          "id": 18045904,
+          "name": "Fierce Entry 4",
+          "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+        },
+        {
+          "id": 18041903,
+          "name": "Sharp Entry 3",
+          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+        }
+      ]
+    },
+    {
+      "id": 18126509,
+      "name": "Move on Opp: Team-Synced Stat ↓2 9",
+      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s move targeting that opponent is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is lowered for all opponents when the move is successful against multiple targets.)",
+      "childPassives": []
+    },
+    {
+      "id": 18114601,
+      "name": "1st S-Move on Opp: Stat Ranks ↓ ×2",
+      "description": "If the target’s stats are lowered, the amount of decrease is doubled the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1033500000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500006,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Dragon Zone: HP Recovery 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500007,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Breaking Swipe: Hit: Interference (1 Kind) 9",
+      "description": "Leaves the target either flinching, confused, or trapped when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500008,
+      "q": 0,
+      "r": -5,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Dragon Zone Extension 3",
+      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500009,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Dragon Zone: Interference Immunity",
+      "description": "Prevents the user from flinching, becoming confused, or becoming trapped when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500010,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Leer: P-Move: Team Sync Move Boost ↑1 9",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "move effect",
+      "title": "Top\nGlaive Rush: 1st Move: Restore MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s move the first time that move is successful each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500012,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500013,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +4",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 4
+      }
+    },
+    {
+      "cellId": 1033500014,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500015,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +4",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 4
+      }
+    },
+    {
+      "cellId": 1033500016,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Breaking Swipe: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500017,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Leer: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500018,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Catalytic Infliction",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s Pokémon uses a status move each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500019,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Terrify 3",
+      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500020,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500023,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500024,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +4",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 4
+      }
+    },
+    {
+      "cellId": 1033500026,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +4",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 4
+      }
+    },
+    {
+      "cellId": 1033500027,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Breaking Swipe: Power +4",
+      "description": "Raises the power of Breaking Swipe.",
+      "statBonus": {},
+      "powerBonus": {
+        "Breaking Swipe": 4
+      }
+    },
+    {
+      "cellId": 1033500028,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Don’t Let It\nDrag On!: Move on Ally: Supereffective ↑ Next 9",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, applies the [Name:ReferencedMessageTag ] to the allied sync pair affected by the move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500029,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500030,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Don’t Let It\nDrag On!: Move on Ally: Damage Guard Next 9",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, applies the [Name:ReferencedMessageTag ] to the allied sync pair affected by the move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500031,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Power Play",
+      "description": "The more the target’s stats are lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500032,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Top\nGlaive Rush: Power +3",
+      "description": "Raises the power of Top\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "Top\nGlaive Rush": 3
+      }
+    },
+    {
+      "cellId": 1033500037,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Top\nGlaive Rush: Power +3",
+      "description": "Raises the power of Top\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "Top\nGlaive Rush": 3
+      }
+    },
+    {
+      "cellId": 1033500038,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Top\nGlaive Rush: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500039,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500040,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500041,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haymaker",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500042,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Fierce Entry 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500043,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500044,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500045,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Top\nGlaive Rush: Power +3",
+      "description": "Raises the power of Top\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "Top\nGlaive Rush": 3
+      }
+    },
+    {
+      "cellId": 1033500046,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Top\nGlaive Rush: Power +3",
+      "description": "Raises the power of Top\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "Top\nGlaive Rush": 3
+      }
+    },
+    {
+      "cellId": 1033500047,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Top\nGlaive Rush: Power +3",
+      "description": "Raises the power of Top\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "Top\nGlaive Rush": 3
+      }
+    },
+    {
+      "cellId": 1033500048,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Draconic Acceleration 2",
+      "description": "Quickly charges the move gauge when the zone is a Dragon Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500049,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Dragon Zone: Attack Move DR 2",
+      "description": "Reduces damage when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500050,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "S-Move: Team Physical Boost ↑2 9",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500051,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1033500052,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "The Roaring Dragon’s\nGlaive Rush: Power +25",
+      "description": "Raises the power of The Roaring Dragon’s\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "The Roaring Dragon’s\nGlaive Rush": 25
+      }
+    },
+    {
+      "cellId": 1033500053,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "The Roaring Dragon’s\nGlaive Rush: Power +25",
+      "description": "Raises the power of The Roaring Dragon’s\nGlaive Rush.",
+      "statBonus": {},
+      "powerBonus": {
+        "The Roaring Dragon’s\nGlaive Rush": 25
+      }
+    }
+  ]
+}

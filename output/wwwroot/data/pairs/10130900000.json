@@ -1,0 +1,965 @@
+{
+  "trainerId": "10130900000",
+  "trainerBaseId": "10013090",
+  "monsterId": "20130900000",
+  "monsterBaseId": "20072501",
+  "displayName": "Serena  (Champion) & Monster #20072501",
+  "trainerName": "Serena  (Champion)",
+  "monsterName": "Monster #20072501",
+  "type": "Water",
+  "weakness": "Electric",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Vivid Water\nShuriken",
+  "iconUrl": "img/trainers/0130_90-0658_11.png",
+  "stats": {
+    "hp": [
+      95,
+      170,
+      242,
+      528,
+      588,
+      648,
+      828
+    ],
+    "atk": [
+      24,
+      84,
+      141,
+      372,
+      420,
+      468,
+      612
+    ],
+    "def": [
+      12,
+      36,
+      57,
+      145,
+      165,
+      185,
+      245
+    ],
+    "spa": [
+      24,
+      84,
+      141,
+      372,
+      420,
+      468,
+      612
+    ],
+    "spd": [
+      12,
+      36,
+      57,
+      145,
+      165,
+      185,
+      245
+    ],
+    "spe": [
+      19,
+      72,
+      123,
+      321,
+      365,
+      409,
+      541
+    ]
+  },
+  "moves": [
+    {
+      "id": 594,
+      "slot": 1,
+      "name": "Water Shuriken",
+      "type": "Water",
+      "category": "Status",
+      "power": "25",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Attacks the target two to five times in a row.",
+      "isSync": false
+    },
+    {
+      "id": 655,
+      "slot": 2,
+      "name": "Brutal Swing",
+      "type": "Dark",
+      "category": "Status",
+      "power": "50",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 6005,
+      "slot": 3,
+      "name": "Boundless\nQuick Attack",
+      "type": "Normal",
+      "category": "Status",
+      "power": "150",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen any allies’ attack moves hit a total of 10 times while this move is deactivated.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the target’s Defense and Sp. Def by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"5\" ] by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"4\" ] type. Lowers the target’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"6\" ] type. Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 11309,
+      "slot": 4,
+      "name": "Glory of\nTomorrow!",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 91300,
+      "slot": 5,
+      "name": "Vivid Water\nShuriken",
+      "type": "Water",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the target’s stats are lowered, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28011501,
+      "name": "Kalos Spirit",
+      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 99011901,
+      "name": "Dashing Dark Transformation",
+      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+      "childPassives": []
+    },
+    {
+      "id": 13030201,
+      "name": "No Quarter",
+      "description": "Maximizes the number of times the user hits with a move that has the multistrike effect tag when that move is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 18102209,
+      "name": "Unfortunate Strike 9",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, lowers one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 2,
+      "formName": "Form 2",
+      "actorId": "pm0725_00_frog3",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [
+        {
+          "id": 99012001,
+          "name": "Wondrous Water Transformation",
+          "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves."
+        },
+        {
+          "id": 17041302,
+          "name": "Staggering 2",
+          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
+        },
+        {
+          "id": 18049109,
+          "name": "Discombobulate 9",
+          "description": "Lowers the target’s accuracy by one stat rank when the user’s attack move against it is successful."
+        }
+      ],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1013090000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Shuriken: Power +1",
+      "description": "Raises the power of Water Shuriken.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Shuriken": 1
+      }
+    },
+    {
+      "cellId": 1013090011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Water Shuriken: Power +1",
+      "description": "Raises the power of Water Shuriken.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Shuriken": 1
+      }
+    },
+    {
+      "cellId": 1013090012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Water Shuriken: Power +1",
+      "description": "Raises the power of Water Shuriken.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Shuriken": 1
+      }
+    },
+    {
+      "cellId": 1013090013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Water Shuriken: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Soften Up 1",
+      "description": "Critical hits land more easily when the user attacks with a sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "sync",
+      "title": "Vivid Water\nShuriken: Power +25",
+      "description": "Raises the power of Vivid Water\nShuriken.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vivid Water\nShuriken": 25
+      }
+    },
+    {
+      "cellId": 1013090016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Furious Brain",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Brutal Swing: Power +4",
+      "description": "Raises the power of Brutal Swing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Brutal Swing": 4
+      }
+    },
+    {
+      "cellId": 1013090019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Brutal Swing: Power +4",
+      "description": "Raises the power of Brutal Swing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Brutal Swing": 4
+      }
+    },
+    {
+      "cellId": 1013090020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Brutal Swing: Foul Fighting 5",
+      "description": "Powers up the user’s moves against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Brutal Swing: Power +4",
+      "description": "Raises the power of Brutal Swing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Brutal Swing": 4
+      }
+    },
+    {
+      "cellId": 1013090022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Brutal Swing: Flabbergast 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused when a move targeting that opponent is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "sync",
+      "title": "Serious\nNight Slash: Power +25",
+      "description": "Raises the power of Serious\nNight Slash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Serious\nNight Slash": 25
+      }
+    },
+    {
+      "cellId": 1013090024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Brutal Swing: Superduper Effective 9",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Brutal Swing: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Boundless\nQuick Attack: Power +3",
+      "description": "Raises the power of Boundless\nQuick Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Boundless\nQuick Attack": 3
+      }
+    },
+    {
+      "cellId": 1013090028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Boundless\nQuick Attack: Power +3",
+      "description": "Raises the power of Boundless\nQuick Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Boundless\nQuick Attack": 3
+      }
+    },
+    {
+      "cellId": 1013090029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Brutal Swing: Power +4",
+      "description": "Raises the power of Brutal Swing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Brutal Swing": 4
+      }
+    },
+    {
+      "cellId": 1013090030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Umbral Acceleration 2",
+      "description": "Quickly charges the move gauge when the zone is a Dark Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Umbral Healing 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Brutal Swing: Defense Crush 9",
+      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Glory of\nTomorrow!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Glory of\nTomorrow!: Power Combo 9",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Boundless\nQuick Attack: Power +3",
+      "description": "Raises the power of Boundless\nQuick Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Boundless\nQuick Attack": 3
+      }
+    },
+    {
+      "cellId": 1013090040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Boundless\nQuick Attack: Power +3",
+      "description": "Raises the power of Boundless\nQuick Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Boundless\nQuick Attack": 3
+      }
+    },
+    {
+      "cellId": 1013090041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Water Shuriken: Power +1",
+      "description": "Raises the power of Water Shuriken.",
+      "statBonus": {},
+      "powerBonus": {
+        "Water Shuriken": 1
+      }
+    },
+    {
+      "cellId": 1013090042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Refreshing Rain 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rainy Immunity",
+      "description": "Status conditions cannot be inflicted on the user when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Power Play",
+      "description": "The more the target’s stats are lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Water Shuriken: Rainy Mind-Blowing Strike 2",
+      "description": "Has a chance ([Digit:2digits Idx=\"2\" ]%) of lowering the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it hits while the weather is rainy. If the move has the multistrike effect tag and the weather is rainy, has a chance ([Digit:2digits Idx=\"2\" ]%) of lowering the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Vivid Water\nShuriken: Power +50",
+      "description": "Raises the power of Vivid Water\nShuriken.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vivid Water\nShuriken": 50
+      }
+    },
+    {
+      "cellId": 1013090047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Serious\nNight Slash: Power +50",
+      "description": "Raises the power of Serious\nNight Slash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Serious\nNight Slash": 50
+      }
+    },
+    {
+      "cellId": 1013090048,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Rain & Dark Zone Extension 5",
+      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013090049,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Boundless\nQuick Attack: Move: Rainy & Dark Zone",
+      "description": "Makes the weather rainy when the user’s move is successful. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user’s move is successful. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

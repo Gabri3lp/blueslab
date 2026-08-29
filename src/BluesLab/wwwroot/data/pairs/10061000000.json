@@ -1,0 +1,949 @@
+{
+  "trainerId": "10061000000",
+  "trainerBaseId": "10006100",
+  "monsterId": "20061000000",
+  "monsterBaseId": "20009401",
+  "displayName": "Trainer #10006100 & Gengar",
+  "trainerName": "Trainer #10006100",
+  "monsterName": "Gengar",
+  "type": "Ghost",
+  "weakness": "Dark",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 4,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Tried-and-True\nHex",
+  "iconUrl": "img/trainers/0061_00-0094_00.png",
+  "stats": {
+    "hp": [
+      107,
+      165,
+      217,
+      437,
+      485,
+      533,
+      677
+    ],
+    "atk": [
+      10,
+      31,
+      49,
+      126,
+      142,
+      158,
+      206
+    ],
+    "def": [
+      10,
+      27,
+      42,
+      108,
+      120,
+      132,
+      168
+    ],
+    "spa": [
+      15,
+      65,
+      113,
+      300,
+      340,
+      380,
+      500
+    ],
+    "spd": [
+      12,
+      36,
+      57,
+      145,
+      161,
+      177,
+      225
+    ],
+    "spe": [
+      23,
+      76,
+      127,
+      325,
+      369,
+      413,
+      545
+    ]
+  },
+  "moves": [
+    {
+      "id": 122,
+      "slot": 1,
+      "name": "Lick",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "12",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "isSync": false
+    },
+    {
+      "id": 95,
+      "slot": 2,
+      "name": "Hypnosis",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "75",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Puts the target to sleep.",
+      "isSync": false
+    },
+    {
+      "id": 10610,
+      "slot": 3,
+      "name": "Run Along Now!",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"1\" ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 247,
+      "slot": 4,
+      "name": "Shadow Ball",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "99",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 60500,
+      "slot": 5,
+      "name": "Tried-and-True\nHex",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Gengar until the end of battle. This attack’s power increases when the target is asleep.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 17010601,
+      "name": "Wide Awake",
+      "description": "Prevents the user from falling asleep.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0094_51_megagangar",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.2,
+        "spd": 1.1,
+        "spe": 1.1
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1006100000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1006100009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1006100011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1006100013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Shadow Ball: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainteaser",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "On a Roll 1",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "On a Roll 2",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lick: Power +4",
+      "description": "Raises the power of Lick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lick": 4
+      }
+    },
+    {
+      "cellId": 1006100019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lick: Power +4",
+      "description": "Raises the power of Lick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lick": 4
+      }
+    },
+    {
+      "cellId": 1006100020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lick: Power +4",
+      "description": "Raises the power of Lick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lick": 4
+      }
+    },
+    {
+      "cellId": 1006100022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lick: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lick: Hostile Environment 1",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ramming Speed",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lick: Power +4",
+      "description": "Raises the power of Lick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lick": 4
+      }
+    },
+    {
+      "cellId": 1006100029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lick: Power +4",
+      "description": "Raises the power of Lick.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lick": 4
+      }
+    },
+    {
+      "cellId": 1006100031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Grand Entry 1",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "HP Trade-Off 5",
+      "description": "The smaller the user’s percentage of remaining HP, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Run Along Now!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Run Along Now!: Ramp Up 2",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1006100039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Hypnosis: Accuracy +5",
+      "description": "Raises the accuracy of Hypnosis.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Shadow Ball: Power +3",
+      "description": "Raises the power of Shadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shadow Ball": 3
+      }
+    },
+    {
+      "cellId": 1006100042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Pinpoint Entry 1",
+      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rude Awakening 5",
+      "description": "Powers up the user’s sync move when the target is asleep.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Hypnosis: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Hypnosis: Accuracy +10",
+      "description": "Raises the accuracy of Hypnosis.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1006100046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Tried-and-True\nHex: Power +25",
+      "description": "Raises the power of Tried-and-True\nHex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Tried-and-True\nHex": 25
+      }
+    },
+    {
+      "cellId": 1006100047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Tried-and-True\nHex: Power +25",
+      "description": "Raises the power of Tried-and-True\nHex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Tried-and-True\nHex": 25
+      }
+    },
+    {
+      "cellId": 1800102681,
+      "q": -4,
+      "r": 4,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Tried-and-True\nHex: Power +30",
+      "description": "Raises the power of Tried-and-True\nHex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Tried-and-True\nHex": 30
+      }
+    },
+    {
+      "cellId": 1800102682,
+      "q": -4,
+      "r": 3,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Tried-and-True\nHex: Power +30",
+      "description": "Raises the power of Tried-and-True\nHex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Tried-and-True\nHex": 30
+      }
+    },
+    {
+      "cellId": 1800102683,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Tried-and-True\nHex: Power +30",
+      "description": "Raises the power of Tried-and-True\nHex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Tried-and-True\nHex": 30
+      }
+    }
+  ]
+}

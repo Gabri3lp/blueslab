@@ -1,0 +1,992 @@
+{
+  "trainerId": "10188000000",
+  "trainerBaseId": "10018800",
+  "monsterId": "20188000000",
+  "monsterBaseId": "20019600",
+  "displayName": "Trainer #10018800 & Espeon",
+  "trainerName": "Trainer #10018800",
+  "monsterName": "Espeon",
+  "type": "Psychic",
+  "weakness": "Dark",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Pokémon-Voyage Veteran\nShattered Psyche",
+  "iconUrl": "img/trainers/0188_00-0196_00.png",
+  "stats": {
+    "hp": [
+      92,
+      167,
+      239,
+      525,
+      585,
+      645,
+      825
+    ],
+    "atk": [
+      11,
+      57,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "def": [
+      12,
+      33,
+      51,
+      128,
+      144,
+      160,
+      208
+    ],
+    "spa": [
+      21,
+      76,
+      127,
+      336,
+      380,
+      424,
+      556
+    ],
+    "spd": [
+      14,
+      37,
+      58,
+      146,
+      162,
+      178,
+      226
+    ],
+    "spe": [
+      17,
+      62,
+      104,
+      269,
+      305,
+      341,
+      449
+    ]
+  },
+  "moves": [
+    {
+      "id": 94,
+      "slot": 1,
+      "name": "Psychic",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "99",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 18501,
+      "slot": 2,
+      "name": "Lum Berry",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Removes all status conditions from an ally.",
+      "isSync": false
+    },
+    {
+      "id": 6089,
+      "slot": 3,
+      "name": "Psychic\nLight of Dawn",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag Idx=\"4\" ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag Idx=\"4\" ] is not raised.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. If the remaining MP for the user’s [Name:MoveId Idx=\"18501\" ] is one or more when attacking with this move, reduces those MP by one and restores one MP of its buddy move.",
+      "isSync": false
+    },
+    {
+      "id": 11880,
+      "slot": 4,
+      "name": "Let Me\nShow You!",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Removes all status conditions from the user. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user.",
+      "isSync": false
+    },
+    {
+      "id": 51103,
+      "slot": 5,
+      "name": "Pokémon-Voyage Veteran\nShattered Psyche",
+      "type": "Psychic",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99020301,
+      "name": "Seeing Is Believing",
+      "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "childPassives": []
+    },
+    {
+      "id": 13061509,
+      "name": "Team S-Move: Restore B-Move MP 9",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move.",
+      "childPassives": []
+    },
+    {
+      "id": 17074503,
+      "name": "1st “Berry” MP 0: Special Boost 3",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1018800000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800007,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Psychic: Hit: Special Boost ↑1 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800008,
+      "q": 0,
+      "r": 5,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "P-Moves & S-Moves Crit",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800009,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800010,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Super Sync 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800011,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "S-Move: Special Boost ↑2 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800012,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800013,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800014,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800015,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800016,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800017,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1018800018,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1018800019,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Psychic: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800020,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Mind Games 9",
+      "description": "Lowers the target’s Sp. Def by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800021,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Psychic: On a Roll 9",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800022,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainteaser",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800023,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800024,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800025,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800026,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1018800027,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1018800028,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic: Power +3",
+      "description": "Raises the power of Psychic.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic": 3
+      }
+    },
+    {
+      "cellId": 1018800029,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Fast-Track 9",
+      "description": "Raises the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800030,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "“Berry” MP 0: S-Moves ↑ 9",
+      "description": "Powers up the user’s sync move when the remaining MP for its moves that have the Berry effect tag is zero.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800031,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ramming Speed",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800032,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800033,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800034,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800035,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic\nLight of Dawn: Power +3",
+      "description": "Raises the power of Psychic\nLight of Dawn.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic\nLight of Dawn": 3
+      }
+    },
+    {
+      "cellId": 1018800036,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic\nLight of Dawn: Power +3",
+      "description": "Raises the power of Psychic\nLight of Dawn.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic\nLight of Dawn": 3
+      }
+    },
+    {
+      "cellId": 1018800037,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic\nLight of Dawn: Power +3",
+      "description": "Raises the power of Psychic\nLight of Dawn.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic\nLight of Dawn": 3
+      }
+    },
+    {
+      "cellId": 1018800038,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "HP +40",
+      "description": "Raises HP by 40.",
+      "statBonus": {
+        "hp": 40
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800039,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Catalyst",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800040,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800041,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Dauntless",
+      "description": "Sp. Atk cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic\nLight of Dawn: Power +3",
+      "description": "Raises the power of Psychic\nLight of Dawn.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic\nLight of Dawn": 3
+      }
+    },
+    {
+      "cellId": 1018800046,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Psychic\nLight of Dawn: Power +3",
+      "description": "Raises the power of Psychic\nLight of Dawn.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic\nLight of Dawn": 3
+      }
+    },
+    {
+      "cellId": 1018800047,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Psychic\nLight of Dawn: Power +3",
+      "description": "Raises the power of Psychic\nLight of Dawn.",
+      "statBonus": {},
+      "powerBonus": {
+        "Psychic\nLight of Dawn": 3
+      }
+    },
+    {
+      "cellId": 1018800048,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Let Me\nShow You!: Master Healer 1",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800049,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800050,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Smarty-Pants",
+      "description": "The more the target’s Sp. Def is lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800051,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Grand Entry 2",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1018800052,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Pokémon-Voyage Veteran\nShattered Psyche: Power +25",
+      "description": "Raises the power of Pokémon-Voyage Veteran\nShattered Psyche.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pokémon-Voyage Veteran\nShattered Psyche": 25
+      }
+    },
+    {
+      "cellId": 1018800053,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Pokémon-Voyage Veteran\nShattered Psyche: Power +25",
+      "description": "Raises the power of Pokémon-Voyage Veteran\nShattered Psyche.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pokémon-Voyage Veteran\nShattered Psyche": 25
+      }
+    }
+  ]
+}

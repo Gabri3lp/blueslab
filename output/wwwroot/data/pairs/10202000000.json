@@ -1,0 +1,993 @@
+{
+  "trainerId": "10202000000",
+  "trainerBaseId": "10020200",
+  "monsterId": "20202000000",
+  "monsterBaseId": "20027201",
+  "displayName": "Trainer #10020200 & Ludicolo",
+  "trainerName": "Trainer #10020200",
+  "monsterName": "Ludicolo",
+  "type": "Water",
+  "weakness": "Bug",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Smiling Arcade Star\nWater Beam",
+  "iconUrl": "img/trainers/0202_00-0272_01.png",
+  "stats": {
+    "hp": [
+      101,
+      179,
+      254,
+      551,
+      615,
+      679,
+      871
+    ],
+    "atk": [
+      17,
+      73,
+      127,
+      336,
+      380,
+      424,
+      556
+    ],
+    "def": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spa": [
+      17,
+      73,
+      127,
+      336,
+      380,
+      424,
+      556
+    ],
+    "spd": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spe": [
+      11,
+      48,
+      84,
+      227,
+      255,
+      283,
+      367
+    ]
+  },
+  "moves": [
+    {
+      "id": 330,
+      "slot": 1,
+      "name": "Muddy Water",
+      "type": "Water",
+      "category": "Status",
+      "power": "116",
+      "accuracy": "85",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 298,
+      "slot": 2,
+      "name": "Teeter Dance",
+      "type": "Normal",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Leaves the target confused.",
+      "isSync": false
+    },
+    {
+      "id": 75,
+      "slot": 3,
+      "name": "Razor Leaf",
+      "type": "Grass",
+      "category": "Status",
+      "power": "43",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Critical hits land more easily.",
+      "isSync": false
+    },
+    {
+      "id": 12020,
+      "slot": 4,
+      "name": "No Need\nto Worry ♪",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy and critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 106700,
+      "slot": 5,
+      "name": "Smiling Arcade Star\nWater Beam",
+      "type": "Water",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "This attack’s power increases when weather conditions, a terrain, or a zone are in effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 17068901,
+      "name": "Max Move Hit: Team Same-Type Rebuff ↓ 1",
+      "description": "Lowers the Type Rebuff of all opposing sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful. The Type Rebuff lowered is the same type as the max move used.",
+      "childPassives": []
+    },
+    {
+      "id": 18113209,
+      "name": "Phys Hit: Defense ↓2 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s physical attack move against it is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 18113309,
+      "name": "Spec Hit: Sp. Def ↓2 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s special attack move against it is successful.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0272_82_00_runpappa",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1020200000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Racing Rain 2",
+      "description": "Quickly charges the move gauge when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200007,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "MAX Countdown 2",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200008,
+      "q": 0,
+      "r": 5,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Discombobulate 9",
+      "description": "Lowers the target’s accuracy by one stat rank when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200009,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Turbo Turf 2",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200010,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Easy Pickings 9",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move is successful against a confused opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200011,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Piercing Gaze",
+      "description": "Moves never miss.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200012,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200013,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200014,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200015,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1020200016,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1020200017,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1020200018,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Accuracy +10",
+      "description": "Raises the accuracy of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200019,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Muddy Water: On a Roll 1",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200020,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Max Move: Team Physical & Special Boost 1",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] after using the user’s max move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200021,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "No Need\nto Worry ♪: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200022,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sharp Entry 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200023,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200024,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Clearheaded",
+      "description": "Prevents the user from becoming confused.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200025,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1020200026,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1020200027,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1020200028,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Accuracy +5",
+      "description": "Raises the accuracy of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200029,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Teeter Dance: Move Gauge Refresh 9",
+      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200030,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Interference Sync 9",
+      "description": "Powers up the user’s sync move against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200031,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Razor Leaf: Confusion Synergy 9",
+      "description": "Powers up the user’s moves when the target is confused.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200032,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200033,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1020200034,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Razor Leaf: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200035,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Razor Leaf: Power +4",
+      "description": "Raises the power of Razor Leaf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Razor Leaf": 4
+      }
+    },
+    {
+      "cellId": 1020200036,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Empowering Overgrowth 5",
+      "description": "Powers up the user’s moves when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200037,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Grassy Cushion 2",
+      "description": "Reduces damage when the user is hit by an attack move while the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200038,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Superduper 4",
+      "description": "Has a chance ([Digit:2digits ]%) of applying the Supereffective ↑ Next effect to the user when its move is super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200039,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Max\nOvergrowth: Power +100",
+      "description": "Raises the power of Max\nOvergrowth.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max\nOvergrowth": 100
+      }
+    },
+    {
+      "cellId": 1020200040,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Grassy Terrain Extension 5",
+      "description": "Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200041,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1020200044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Muddy Water: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200046,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Muddy Water: Power +3",
+      "description": "Raises the power of Muddy Water.",
+      "statBonus": {},
+      "powerBonus": {
+        "Muddy Water": 3
+      }
+    },
+    {
+      "cellId": 1020200047,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Rainy Immunity",
+      "description": "Status conditions cannot be inflicted on the user when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200048,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Refreshing Rain 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200049,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Max Geyser: Power +100",
+      "description": "Raises the power of Max Geyser.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max Geyser": 100
+      }
+    },
+    {
+      "cellId": 1020200050,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Raging Rain 5",
+      "description": "Powers up the user’s moves when the weather is rainy.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200051,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Flood Alert 5",
+      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1020200052,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Smiling Arcade Star\nWater Beam: Power +25",
+      "description": "Raises the power of Smiling Arcade Star\nWater Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Smiling Arcade Star\nWater Beam": 25
+      }
+    },
+    {
+      "cellId": 1020200053,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Smiling Arcade Star\nWater Beam: Power +25",
+      "description": "Raises the power of Smiling Arcade Star\nWater Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Smiling Arcade Star\nWater Beam": 25
+      }
+    }
+  ]
+}

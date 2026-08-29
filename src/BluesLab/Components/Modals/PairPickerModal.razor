@@ -1,0 +1,170 @@
+@inject SyncPairDataService DataService
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document" @onclick:stopPropagation>
+            <div class="modal-content bg-dark text-light border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title d-flex align-items-center gap-2">
+                        <i class="bi bi-people-fill text-warning"></i> Select Sync Pair
+                        <span class="badge bg-secondary">@FilteredPairs.Count pairs</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="Close"></button>
+                </div>
+                <div class="modal-body p-3">
+                    <!-- Search and filters -->
+                    <div class="row g-2 mb-3">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-search"></i></span>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search trainer or Pokémon..." @bind="SearchQuery" @bind:event="oninput" autofocus />
+                                @if (!string.IsNullOrEmpty(SearchQuery))
+                                {
+                                    <button class="btn btn-outline-secondary" type="button" @onclick="() => SearchQuery = string.Empty">✕</button>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <select class="form-select bg-dark text-light border-secondary" @bind="SelectedType">
+                                <option value="">All Types</option>
+                                @foreach (var t in CombatantState.AllTypes)
+                                {
+                                    <option value="@t">@t</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <select class="form-select bg-dark text-light border-secondary" @bind="SelectedRole">
+                                <option value="">All Roles</option>
+                                <option value="Strike">Strike</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Support">Support</option>
+                                <option value="Sprint">Sprint</option>
+                                <option value="Field">Field</option>
+                                <option value="Multi">Multi</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+                        <span class="text-muted small">Special:</span>
+                        <button class="btn btn-sm @(FilterMega ? "btn-warning" : "btn-outline-secondary")" @onclick="() => FilterMega = !FilterMega">Mega</button>
+                        <button class="btn btn-sm @(FilterTera ? "btn-info" : "btn-outline-secondary")" @onclick="() => FilterTera = !FilterTera">Tera</button>
+                        <button class="btn btn-sm @(FilterSA ? "btn-danger" : "btn-outline-secondary")" @onclick="() => FilterSA = !FilterSA">Super Awakening</button>
+                        <button class="btn btn-sm @(FilterEx ? "btn-primary" : "btn-outline-secondary")" @onclick="() => FilterEx = !FilterEx">6★ EX</button>
+                        @if (HasActiveFilters)
+                        {
+                            <button class="btn btn-sm btn-outline-danger ms-auto" @onclick="ResetFilters">Reset Filters</button>
+                        }
+                    </div>
+
+                    <!-- Pairs Grid -->
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
+                        @foreach (var pair in FilteredPairs)
+                        {
+                            <div class="col">
+                                <div class="card h-100 bg-secondary bg-opacity-25 border-secondary pair-card p-2" @onclick="() => OnSelectPair(pair.TrainerId)">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="@pair.IconUrl" alt="@pair.DisplayName" class="rounded-circle border border-warning" width="48" height="48" onerror="this.src='img/trainers/unknown.png';" />
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <div class="fw-bold text-truncate text-light small" title="@pair.DisplayName">@pair.DisplayName</div>
+                                            <div class="d-flex align-items-center gap-1 mt-1">
+                                                <span class="badge type-badge type-@pair.Type.ToLowerInvariant()">@pair.Type</span>
+                                                <span class="badge bg-dark border border-secondary text-secondary small">@pair.Role</span>
+                                                @if (pair.HasSuperAwakening)
+                                                {
+                                                    <span class="badge bg-danger" title="Super Awakening">SA</span>
+                                                }
+                                                @if (pair.HasMega)
+                                                {
+                                                    <span class="badge bg-warning text-dark" title="Mega Evolution">M</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    @if (FilteredPairs.Count == 0)
+                    {
+                        <div class="text-center py-5 text-muted">
+                            <i class="bi bi-search fs-1 d-block mb-2"></i>
+                            No sync pairs match the current search or filters.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public EventCallback<string> OnPairSelected { get; set; }
+
+    private List<PairManifestItem> AllPairs = new();
+    private string SearchQuery = "";
+    private string SelectedType = "";
+    private string SelectedRole = "";
+    private bool FilterMega;
+    private bool FilterTera;
+    private bool FilterSA;
+    private bool FilterEx;
+
+    private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterSA || FilterEx;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AllPairs = await DataService.GetManifestAsync();
+    }
+
+    private List<PairManifestItem> FilteredPairs
+    {
+        get
+        {
+            var query = SearchQuery.Trim().ToLowerInvariant();
+            return AllPairs.Where(p =>
+            {
+                if (!string.IsNullOrEmpty(query) && !p.DisplayName.ToLowerInvariant().Contains(query))
+                    return false;
+                if (!string.IsNullOrEmpty(SelectedType) && !string.Equals(p.Type, SelectedType, StringComparison.OrdinalIgnoreCase))
+                    return false;
+                if (!string.IsNullOrEmpty(SelectedRole) && !p.Role.StartsWith(SelectedRole, StringComparison.OrdinalIgnoreCase))
+                    return false;
+                if (FilterMega && !p.HasMega) return false;
+                if (FilterTera && !p.HasTera) return false;
+                if (FilterSA && !p.HasSuperAwakening) return false;
+                if (FilterEx && !p.HasEx) return false;
+                return true;
+            }).ToList();
+        }
+    }
+
+    private void ResetFilters()
+    {
+        SearchQuery = "";
+        SelectedType = "";
+        SelectedRole = "";
+        FilterMega = false;
+        FilterTera = false;
+        FilterSA = false;
+        FilterEx = false;
+    }
+
+    private async Task OnSelectPair(string trainerId)
+    {
+        await OnPairSelected.InvokeAsync(trainerId);
+        await Close();
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

@@ -1,0 +1,1016 @@
+{
+  "trainerId": "10282100000",
+  "trainerBaseId": "10028210",
+  "monsterId": "20282100000",
+  "monsterBaseId": "2001010041",
+  "displayName": "Sygna Suit  Ball Guy & Electrode",
+  "trainerName": "Sygna Suit  Ball Guy",
+  "monsterName": "Electrode",
+  "type": "Grass",
+  "weakness": "Ice",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Fireworks Celebration\nGrass Beam",
+  "iconUrl": "img/trainers/0282_10-0101_00.png",
+  "stats": {
+    "hp": [
+      101,
+      178,
+      250,
+      536,
+      600,
+      664,
+      856
+    ],
+    "atk": [
+      10,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "def": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spa": [
+      14,
+      77,
+      137,
+      368,
+      420,
+      472,
+      628
+    ],
+    "spd": [
+      14,
+      37,
+      58,
+      146,
+      162,
+      178,
+      226
+    ],
+    "spe": [
+      23,
+      89,
+      152,
+      394,
+      446,
+      498,
+      654
+    ]
+  },
+  "moves": [
+    {
+      "id": 412,
+      "slot": 1,
+      "name": "Energy Ball",
+      "type": "Grass",
+      "category": "Status",
+      "power": "49",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 835,
+      "slot": 2,
+      "name": "Chloroblast",
+      "type": "Grass",
+      "category": "Status",
+      "power": "199",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The user takes damage equal to [Digit:2digits ]% of its maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 6168,
+      "slot": 3,
+      "name": "Buddy\nChloroblast",
+      "type": "Grass",
+      "category": "Status",
+      "power": "600",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Speed is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Turns the field of play’s terrain into [Name:ReferencedMessageTag ] the first time this attack move is successful each battle.",
+      "isSync": false
+    },
+    {
+      "id": 12821,
+      "slot": 4,
+      "name": "Remarka-ball\nFireworks!",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 124300,
+      "slot": 5,
+      "name": "Fireworks Celebration\nGrass Beam",
+      "type": "Grass",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 29030801,
+      "name": "Galar Rush",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "childPassives": []
+    },
+    {
+      "id": 15011703,
+      "name": "MAX Countdown 3",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "childPassives": []
+    },
+    {
+      "id": 18044102,
+      "name": "Pep Rally 2",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 99037301,
+      "name": "INCREDIBALL!!!",
+      "description": "The user uses Explosion immediately before fainting. Reduces the user’s sync move countdown by [Digit:1digit ] just before it faints. When used in a co-op battle, reduces the sync move countdown of a player other than the user by [Digit:1digit ] instead.",
+      "childPassives": [
+        {
+          "id": 15015009,
+          "name": "Faint: Sync CD ↓ 9",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] just before it faints. When used in a co-op battle, reduces the sync move countdown of a player other than the user by [Digit:1digit ] instead."
+        },
+        {
+          "id": 14010101,
+          "name": "Last Word",
+          "description": "The user uses Explosion immediately before fainting."
+        }
+      ]
+    }
+  ],
+  "variations": [
+    {
+      "formId": 4,
+      "formName": "Form 4",
+      "actorId": "pm0101_83_41_marumine",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [],
+      "terastalMoveId": -1
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1028210000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210006,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210007,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "move effect",
+      "title": "Energy Ball: BOGO 9",
+      "description": "Applies the Free Move Next effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210008,
+      "q": 0,
+      "r": -5,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Grassy Terrain: Max Moves ↑ 5",
+      "description": "Powers up the user’s max move when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210009,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Lithe",
+      "description": "Prevents the user from getting paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210010,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Zero HP Recovery",
+      "description": "The amount of HP restored becomes zero.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "move effect",
+      "title": "Chloroblast: Recoil Removal 9",
+      "description": "Negates recoil damage when using moves that have the recoil effect tag.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210012,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210013,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Chloroblast: Power +2",
+      "description": "Raises the power of Chloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Chloroblast": 2
+      }
+    },
+    {
+      "cellId": 1028210014,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Chloroblast: Power +2",
+      "description": "Raises the power of Chloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Chloroblast": 2
+      }
+    },
+    {
+      "cellId": 1028210015,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Chloroblast: Accuracy +5",
+      "description": "Raises the accuracy of Chloroblast.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210016,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Chloroblast: Inspire Ire",
+      "description": "Makes opponents target the user for a short time when a move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210017,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Remarka-ball\nFireworks!: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210018,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Chloroblast: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210019,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Max Move Hit: Team Sp. Def ↓ 2",
+      "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210020,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Faint: Team Sync Move Boost 10",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by 10 ranks just before the user faints.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210023,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210024,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1028210026,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1028210027,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1028210028,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Energy Ball: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210029,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Energy Ball: On a Roll 9",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210030,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Energy Ball: Hit: Sp. Atk ↓ & Sp. Def ↓ 9",
+      "description": "Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210031,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Energy Ball: Staggering 3",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210032,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Buddy\nChloroblast: Power +3",
+      "description": "Raises the power of Buddy\nChloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Buddy\nChloroblast": 3
+      }
+    },
+    {
+      "cellId": 1028210037,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Buddy\nChloroblast: Power +3",
+      "description": "Raises the power of Buddy\nChloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Buddy\nChloroblast": 3
+      }
+    },
+    {
+      "cellId": 1028210038,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Buddy\nChloroblast: Power +3",
+      "description": "Raises the power of Buddy\nChloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Buddy\nChloroblast": 3
+      }
+    },
+    {
+      "cellId": 1028210039,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Buddy\nChloroblast: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210040,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Team Speedy Entry 2",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210041,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Remarka-ball\nFireworks!: Move on Ally: Sp. Atk ↑ 2",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, raises the [Name:ReferencedMessageTag ] of the allied sync pair affected by the move by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210042,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Inertia",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210043,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210044,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Chloroblast: Power +2",
+      "description": "Raises the power of Chloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Chloroblast": 2
+      }
+    },
+    {
+      "cellId": 1028210045,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Chloroblast: Power +2",
+      "description": "Raises the power of Chloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Chloroblast": 2
+      }
+    },
+    {
+      "cellId": 1028210046,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1028210047,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Buddy\nChloroblast: Power +3",
+      "description": "Raises the power of Buddy\nChloroblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Buddy\nChloroblast": 3
+      }
+    },
+    {
+      "cellId": 1028210048,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Turbo Turf 2",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210049,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Energy Ball: Wounded Power 9",
+      "description": "Powers up the user’s moves when its HP is reduced.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210050,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Max\nOvergrowth: Power +100",
+      "description": "Raises the power of Max\nOvergrowth.",
+      "statBonus": {},
+      "powerBonus": {
+        "Max\nOvergrowth": 100
+      }
+    },
+    {
+      "cellId": 1028210051,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Empowering Overgrowth 5",
+      "description": "Powers up the user’s moves when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028210052,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Fireworks Celebration\nGrass Beam: Power +25",
+      "description": "Raises the power of Fireworks Celebration\nGrass Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fireworks Celebration\nGrass Beam": 25
+      }
+    },
+    {
+      "cellId": 1028210053,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Fireworks Celebration\nGrass Beam: Power +25",
+      "description": "Raises the power of Fireworks Celebration\nGrass Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Fireworks Celebration\nGrass Beam": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "trainerId": "10196000000",
+  "trainerBaseId": "10019600",
+  "monsterId": "20196000000",
+  "monsterBaseId": "20076900",
+  "displayName": "Trainer #10019600 & Yveltal",
+  "trainerName": "Trainer #10019600",
+  "monsterName": "Yveltal",
+  "type": "Flying",
+  "weakness": "Fairy",
+  "role": "Strike (Special)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Cleansing\nOblivion Wing",
+  "iconUrl": "img/trainers/0196_00-0717_00.png",
+  "stats": {
+    "hp": [
+      130,
+      221,
+      308,
+      649,
+      721,
+      793,
+      1009
+    ],
+    "atk": [
+      18,
+      58,
+      97,
+      251,
+      283,
+      315,
+      411
+    ],
+    "def": [
+      13,
+      28,
+      43,
+      98,
+      110,
+      122,
+      158
+    ],
+    "spa": [
+      24,
+      75,
+      123,
+      310,
+      350,
+      390,
+      510
+    ],
+    "spd": [
+      13,
+      28,
+      43,
+      98,
+      110,
+      122,
+      158
+    ],
+    "spe": [
+      20,
+      59,
+      95,
+      238,
+      270,
+      302,
+      398
+    ]
+  },
+  "moves": [
+    {
+      "id": 613,
+      "slot": 1,
+      "name": "Oblivion Wing",
+      "type": "Flying",
+      "category": "Status",
+      "power": "146",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The more damage dealt to the target, the more it restores the user’s HP. Each use restores up to approximately [Digit:2digits ]% of the user’s maximum HP.",
+      "isSync": false
+    },
+    {
+      "id": 19030,
+      "slot": 2,
+      "name": "X Sp. Atk",
+      "type": "Flying",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 399,
+      "slot": 3,
+      "name": "Dark Pulse",
+      "type": "Dark",
+      "category": "Status",
+      "power": "95",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "isSync": false
+    },
+    {
+      "id": 11960,
+      "slot": 4,
+      "name": "End the World!",
+      "type": "Flying",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Charges the user’s move gauge by [Digit:1digit ]. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 79500,
+      "slot": 5,
+      "name": "Cleansing\nOblivion Wing",
+      "type": "Flying",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 11010601,
+      "name": "S-Move: HP Recovery (M) 1",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its sync move.",
+      "childPassives": []
+    },
+    {
+      "id": 17041601,
+      "name": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "childPassives": []
+    },
+    {
+      "id": 13014305,
+      "name": "Dark Power 5",
+      "description": "Powers up the user’s Dark-type moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1019600000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Oblivion Wing: Power +2",
+      "description": "Raises the power of Oblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Oblivion Wing": 2
+      }
+    },
+    {
+      "cellId": 1019600011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Oblivion Wing: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Oblivion Wing: Power +3",
+      "description": "Raises the power of Oblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Oblivion Wing": 3
+      }
+    },
+    {
+      "cellId": 1019600013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Oblivion Wing: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Oblivion Wing: Power +3",
+      "description": "Raises the power of Oblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Oblivion Wing": 3
+      }
+    },
+    {
+      "cellId": 1019600015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "HP Advantage 2",
+      "description": "The larger the user’s percentage of remaining HP, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sharp Entry 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Dark Pulse: Power +3",
+      "description": "Raises the power of Dark Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dark Pulse": 3
+      }
+    },
+    {
+      "cellId": 1019600022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Dark Pulse: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Dark Pulse: Power +3",
+      "description": "Raises the power of Dark Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dark Pulse": 3
+      }
+    },
+    {
+      "cellId": 1019600024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Dark Pulse: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Dark Pulse: Power +3",
+      "description": "Raises the power of Dark Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dark Pulse": 3
+      }
+    },
+    {
+      "cellId": 1019600026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Dark Pulse: Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Harry 2",
+      "description": "Powers up the user’s moves against targets that are flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Dark Pulse: Power +3",
+      "description": "Raises the power of Dark Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dark Pulse": 3
+      }
+    },
+    {
+      "cellId": 1019600030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "End the World!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Dark Pulse: Power +3",
+      "description": "Raises the power of Dark Pulse.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dark Pulse": 3
+      }
+    },
+    {
+      "cellId": 1019600034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Dark Pulse: Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Stat Reboot 4",
+      "description": "Has a chance ([Digit:2digits ]%) of returning the user’s lowered stats to normal when it is in a pinch. This effect can activate only once per battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Oblivion Wing: Power +2",
+      "description": "Raises the power of Oblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Oblivion Wing": 2
+      }
+    },
+    {
+      "cellId": 1019600039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "X Sp. Atk: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Oblivion Wing: Power +3",
+      "description": "Raises the power of Oblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Oblivion Wing": 3
+      }
+    },
+    {
+      "cellId": 1019600043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Healthy Buffer 5",
+      "description": "Reduces damage when the user is hit by an attack move when its HP is full.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Rejuvenate 6",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Cleansing\nOblivion Wing: Power +25",
+      "description": "Raises the power of Cleansing\nOblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Cleansing\nOblivion Wing": 25
+      }
+    },
+    {
+      "cellId": 1019600047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Cleansing\nOblivion Wing: Power +25",
+      "description": "Raises the power of Cleansing\nOblivion Wing.",
+      "statBonus": {},
+      "powerBonus": {
+        "Cleansing\nOblivion Wing": 25
+      }
+    },
+    {
+      "cellId": 1019600048,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Grand Entry 2",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600049,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Sync Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600050,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Downside Up",
+      "description": "When the user’s stats would be lowered, raises the user’s stats by the same amount instead.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600051,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600052,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Critical Strike 3",
+      "description": "Powers up the user’s attacks when they become critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019600053,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Brainpower",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

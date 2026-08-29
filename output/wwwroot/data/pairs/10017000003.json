@@ -1,0 +1,977 @@
+{
+  "trainerId": "10017000003",
+  "trainerBaseId": "10001700",
+  "monsterId": "20017000003",
+  "monsterBaseId": "20001501",
+  "displayName": "Trainer #10001700 & Monster #20001501",
+  "trainerName": "Trainer #10001700",
+  "monsterName": "Monster #20001501",
+  "type": "Bug",
+  "weakness": "Fire",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Pals from Viridian Forest\nBug Impact",
+  "iconUrl": "img/trainers/0017_00-0015_00.png",
+  "stats": {
+    "hp": [
+      96,
+      172,
+      244,
+      530,
+      590,
+      650,
+      830
+    ],
+    "atk": [
+      12,
+      74,
+      131,
+      362,
+      410,
+      458,
+      602
+    ],
+    "def": [
+      10,
+      31,
+      49,
+      126,
+      142,
+      158,
+      206
+    ],
+    "spa": [
+      13,
+      57,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "spd": [
+      12,
+      36,
+      57,
+      145,
+      165,
+      185,
+      245
+    ],
+    "spe": [
+      15,
+      61,
+      103,
+      268,
+      304,
+      340,
+      448
+    ]
+  },
+  "moves": [
+    {
+      "id": 641,
+      "slot": 1,
+      "name": "Lunge",
+      "type": "Bug",
+      "category": "Status",
+      "power": "80",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19021,
+      "slot": 2,
+      "name": "X Defense All",
+      "type": "Bug",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 6237,
+      "slot": 3,
+      "name": "Vicious Poison\nTwineedle",
+      "type": "Bug",
+      "category": "Status",
+      "power": "310",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nAttacks twice in a row. Never misses. Leaves the target badly poisoned. Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target confused. Has a chance ([Digit:2digits ]%) of leaving the target trapped. Turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"2\" ] the first time this attack move is successful each battle. (An [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.)",
+      "isSync": false
+    },
+    {
+      "id": 10176,
+      "slot": 4,
+      "name": "Different Ways\nto Love!",
+      "type": "Bug",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces an ally’s sync move countdown by [Digit:1digit Idx=\"4\" ]. Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 66400,
+      "slot": 5,
+      "name": "Pals from Viridian Forest\nBug Impact",
+      "type": "Bug",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Beedrill until the end of battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99050201,
+      "name": "Megapowerful Poison Stingers",
+      "description": "The power of the user’s [Name:MoveId Idx=\"641\" ] is tripled. When an opponent’s stat is lowered by the additional effects of the user’s [Name:MoveId Idx=\"641\" ], it is lowered by three times the stat ranks. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets.",
+      "childPassives": [
+        {
+          "id": 13086601,
+          "name": "“Lunge” Power ×3",
+          "description": "The power of the user’s [Name:MoveId Idx=\"641\" ] is tripled."
+        },
+        {
+          "id": 18130501,
+          "name": "“Lunge” Stat ↓×3",
+          "description": "When an opponent’s stat is lowered by the additional effects of the user’s [Name:MoveId Idx=\"641\" ], it is lowered by three times the stat ranks."
+        },
+        {
+          "id": 23011301,
+          "name": "Expanded Sync",
+          "description": "When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets."
+        }
+      ]
+    },
+    {
+      "id": 18130606,
+      "name": "1st S-Move: Team Speed ↑ 6",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 13086701,
+      "name": "Ally Moves ↑ as Ally Speed ↑",
+      "description": "The more an ally’s [Name:ReferencedMessageTag ] is raised, the more it powers up its moves.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0015_51_megaspear",
+      "statMultiplier": {
+        "atk": 1.2,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.2
+      },
+      "passives": [],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1001700300,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700301,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700302,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700303,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700304,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700305,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700306,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Pals from Viridian Forest\nBug Impact: Power +30",
+      "description": "Raises the power of Pals from Viridian Forest\nBug Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pals from Viridian Forest\nBug Impact": 30
+      }
+    },
+    {
+      "cellId": 1001700307,
+      "q": -4,
+      "r": 1,
+      "s": 3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Pals from Viridian Forest\nBug Impact: Power +30",
+      "description": "Raises the power of Pals from Viridian Forest\nBug Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pals from Viridian Forest\nBug Impact": 30
+      }
+    },
+    {
+      "cellId": 1001700308,
+      "q": -4,
+      "r": 0,
+      "s": 4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Pals from Viridian Forest\nBug Impact: Power +30",
+      "description": "Raises the power of Pals from Viridian Forest\nBug Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pals from Viridian Forest\nBug Impact": 30
+      }
+    },
+    {
+      "cellId": 1001700309,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700310,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700311,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1001700312,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1001700313,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lunge: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700314,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Insect Healing 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700315,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1001700316,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Punishing Strike 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it hits. If the move has the Multistrike effect tag, lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700317,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Insect Power 3",
+      "description": "Powers up the user’s moves when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700318,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700319,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700320,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700321,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700322,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vicious Poison\nTwineedle: Power +2",
+      "description": "Raises the power of Vicious Poison\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vicious Poison\nTwineedle": 2
+      }
+    },
+    {
+      "cellId": 1001700323,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vicious Poison\nTwineedle: Power +2",
+      "description": "Raises the power of Vicious Poison\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vicious Poison\nTwineedle": 2
+      }
+    },
+    {
+      "cellId": 1001700324,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Vicious Poison\nTwineedle: Power +2",
+      "description": "Raises the power of Vicious Poison\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vicious Poison\nTwineedle": 2
+      }
+    },
+    {
+      "cellId": 1001700325,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Insect Acceleration 2",
+      "description": "Quickly charges the move gauge when the zone is a [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700326,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700327,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Bug Zone Extension 3",
+      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700328,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brawn Sync 5",
+      "description": "Powers up the user’s sync move when [Name:ReferencedMessageTag ] is raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700329,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700330,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700331,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700332,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700333,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vicious Poison\nTwineedle: Power +2",
+      "description": "Raises the power of Vicious Poison\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vicious Poison\nTwineedle": 2
+      }
+    },
+    {
+      "cellId": 1001700334,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Vicious Poison\nTwineedle: Power +2",
+      "description": "Raises the power of Vicious Poison\nTwineedle.",
+      "statBonus": {},
+      "powerBonus": {
+        "Vicious Poison\nTwineedle": 2
+      }
+    },
+    {
+      "cellId": 1001700335,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700336,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Vicious Poison\nTwineedle: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700337,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Different Ways\nto Love!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700338,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Dashing Team 9",
+      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700339,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Interference Sync 9",
+      "description": "Powers up the user’s sync move against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700340,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700341,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700342,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1001700343,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lunge: Power +3",
+      "description": "Raises the power of Lunge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lunge": 3
+      }
+    },
+    {
+      "cellId": 1001700344,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700345,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Defense All: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700346,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Defense All: Shielded 1",
+      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700347,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700348,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Fierce Entry 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1001700349,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Pals from Viridian Forest\nBug Impact: Power +25",
+      "description": "Raises the power of Pals from Viridian Forest\nBug Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pals from Viridian Forest\nBug Impact": 25
+      }
+    },
+    {
+      "cellId": 1001700350,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Pals from Viridian Forest\nBug Impact: Power +25",
+      "description": "Raises the power of Pals from Viridian Forest\nBug Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Pals from Viridian Forest\nBug Impact": 25
+      }
+    }
+  ]
+}

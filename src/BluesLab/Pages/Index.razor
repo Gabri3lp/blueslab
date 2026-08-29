@@ -1,0 +1,153 @@
+@page "/"
+@inject SyncPairDataService DataService
+@inject GridStateService GridState
+@inject NavigationManager Navigation
+@implements IDisposable
+
+<PageTitle>Blues Lab - Sync Grid & Damage Calculator</PageTitle>
+
+@if (IsLoading)
+{
+    <div class="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark text-light">
+        <div class="spinner-border text-warning mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
+        <div class="fs-5 fw-bold">Loading Blues Lab...</div>
+        <div class="text-secondary small mt-1">Initializing PMEX Database</div>
+    </div>
+}
+else
+{
+    <div class="d-flex flex-column vh-100 overflow-hidden bg-dark text-light">
+        <HeaderNav CurrentPair="ActivePair"
+                   MoveLevel="MoveLevel"
+                   MoveLevelChanged="OnMoveLevelChanged"
+                   OnOpenPairPicker="() => ShowPairPicker = true"
+                   OnOpenShareModal="() => ShowShareModal = true" />
+
+        <!-- Main Content Area -->
+        <div class="flex-grow-1 d-flex flex-column flex-lg-row overflow-hidden">
+            
+            <!-- Left Side: Hex Grid View -->
+            <div class="hex-grid-pane @(ExpandedRight ? "col-lg-5" : "col-lg-6") d-flex flex-column border-end border-secondary p-2 bg-black bg-opacity-25 overflow-hidden">
+                <HexGridView Pair="ActivePair"
+                             MoveLevel="MoveLevel"
+                             OnCenterClick="() => ShowPairPicker = true" />
+            </div>
+
+            <!-- Right Side: Overview & Calculator Tabs -->
+            <div class="right-panel-pane @(ExpandedRight ? "col-lg-7" : "col-lg-6") d-flex flex-column overflow-hidden">
+                <!-- Tab Switcher & Collapse Toggle -->
+                <div class="d-flex align-items-center justify-content-between px-3 pt-2 pb-1 border-bottom border-secondary bg-dark">
+                    <div class="nav nav-pills gap-2" role="tablist">
+                        <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                                @onclick="() => ActiveTab = 0">
+                            <i class="bi bi-info-circle"></i> Overview
+                        </button>
+                        <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                                @onclick="() => ActiveTab = 1">
+                            <i class="bi bi-calculator"></i> Damage Calculator
+                        </button>
+                    </div>
+
+                    <button class="btn btn-outline-secondary btn-sm"
+                            title="@(ExpandedRight ? "Shrink Panel" : "Expand Panel")"
+                            @onclick="() => ExpandedRight = !ExpandedRight">
+                        <i class="bi @(ExpandedRight ? "bi-chevron-right" : "bi-arrows-angle-expand")"></i>
+                    </button>
+                </div>
+
+                <!-- Tab Body Content -->
+                <div class="flex-grow-1 overflow-auto p-2">
+                    @if (ActiveTab == 0)
+                    {
+                        <SyncPairOverview Pair="ActivePair" MoveLevel="MoveLevel" />
+                    }
+                    else
+                    {
+                        <DamageCalculatorPanel Ally="AllyState"
+                                               Enemy="EnemyState"
+                                               Field="BattleField"
+                                               Rules="RulesDoc" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <PairPickerModal @bind-IsOpen="ShowPairPicker"
+                     OnPairSelected="LoadPairAsync" />
+
+    <ShareBuildModal @bind-IsOpen="ShowShareModal"
+                     Pair="ActivePair" />
+}
+
+@code {
+    private bool IsLoading = true;
+    private SyncPairDetail? ActivePair;
+    private CombatantState AllyState = new();
+    private CombatantState EnemyState = CombatantState.CreateEnemy();
+    private FieldState BattleField = new();
+    private DamageRulesDocument RulesDoc = new();
+
+    private int MoveLevel = 5;
+    private int ActiveTab = 1; // Default to Calculator
+    private bool ExpandedRight = false;
+    private bool ShowPairPicker = false;
+    private bool ShowShareModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        GridState.OnGridChanged += StateHasChanged;
+
+        RulesDoc = await DataService.GetDamageRulesAsync();
+        var manifest = await DataService.GetManifestAsync();
+
+        // Parse query params (e.g. ?pair=10126100000&monsterId=20126100000&baseId=20025751&formId=0&build=...)
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+
+        string targetPairId = "10126100000"; // default May & Blaziken
+        if (query.TryGetValue("pair", out var qPair) && !string.IsNullOrEmpty(qPair))
+        {
+            targetPairId = qPair.ToString();
+        }
+        else if (manifest.Count > 0)
+        {
+            targetPairId = manifest[0].TrainerId;
+        }
+
+        await LoadPairAsync(targetPairId);
+
+        if (query.TryGetValue("build", out var qBuild) && !string.IsNullOrEmpty(qBuild) && ActivePair != null)
+        {
+            GridState.ImportBuildToken(ActivePair.Grid, qBuild.ToString());
+        }
+
+        IsLoading = false;
+    }
+
+    private async Task LoadPairAsync(string trainerId)
+    {
+        var pair = await DataService.GetPairDetailAsync(trainerId);
+        if (pair != null)
+        {
+            ActivePair = pair;
+            AllyState = CombatantState.CreateAlly(pair);
+            GridState.ResetGrid(pair, MoveLevel);
+        }
+    }
+
+    private void OnMoveLevelChanged(int newLevel)
+    {
+        MoveLevel = newLevel;
+        if (ActivePair != null && GridState.HardCap)
+        {
+            GridState.PruneDisconnected(ActivePair.Grid);
+        }
+    }
+
+    public void Dispose()
+    {
+        GridState.OnGridChanged -= StateHasChanged;
+    }
+}

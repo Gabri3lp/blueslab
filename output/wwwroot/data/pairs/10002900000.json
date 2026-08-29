@@ -1,0 +1,977 @@
+{
+  "trainerId": "10002900000",
+  "trainerBaseId": "10000290",
+  "monsterId": "20002900000",
+  "monsterBaseId": "20024400",
+  "displayName": "Lyra  (Champion) & Entei",
+  "trainerName": "Lyra  (Champion)",
+  "monsterName": "Entei",
+  "type": "Fire",
+  "weakness": "Rock",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Youthful Eruption\nSacred Fire",
+  "iconUrl": "img/trainers/0002_90-0244_00.png",
+  "stats": {
+    "hp": [
+      95,
+      174,
+      249,
+      546,
+      610,
+      674,
+      866
+    ],
+    "atk": [
+      24,
+      84,
+      141,
+      372,
+      420,
+      468,
+      612
+    ],
+    "def": [
+      4,
+      24,
+      42,
+      119,
+      135,
+      151,
+      199
+    ],
+    "spa": [
+      17,
+      60,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "spd": [
+      9,
+      29,
+      47,
+      124,
+      140,
+      156,
+      204
+    ],
+    "spe": [
+      10,
+      49,
+      85,
+      228,
+      260,
+      292,
+      388
+    ]
+  },
+  "moves": [
+    {
+      "id": 6201,
+      "slot": 1,
+      "name": "Reigning\nSacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "220",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nRemoves the frozen condition from the user. Never misses. The more the user’s sync buff is raised, the greater the power of this attack. (The maximum increase is 10 ranks.) Lowers the target’s Attack and Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Leaves the target burned.",
+      "isSync": false
+    },
+    {
+      "id": 19160,
+      "slot": 2,
+      "name": "Super\nEffective ↑",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Applies the Supereffective ↑ Next effect to an ally.",
+      "isSync": false
+    },
+    {
+      "id": 6202,
+      "slot": 3,
+      "name": "Entrapping Blaze\nFlare Blitz",
+      "type": "Fire",
+      "category": "Status",
+      "power": "300",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nRemoves the frozen condition from the user. Never misses. The more the user’s sync buff is raised, the greater the power of this attack. (The maximum increase is 10 ranks.) Leaves the target burned. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s [Name:MoveId Idx=\"19160\" ] is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Applies the Supereffective ↑ Next effect to the user.",
+      "isSync": false
+    },
+    {
+      "id": 10027,
+      "slot": 4,
+      "name": "Erupting\nGlory!",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by two. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 121600,
+      "slot": 5,
+      "name": "Youthful Eruption\nSacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28041201,
+      "name": "Johto’s Flaming Legend",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Raises the sync buff of the user’s team by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+      "childPassives": [
+        {
+          "id": 28030201,
+          "name": "Passive #28030201",
+          "description": ""
+        },
+        {
+          "id": 17083101,
+          "name": "1st S-Move: Sync Buff ↑ 1",
+          "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+        }
+      ]
+    },
+    {
+      "id": 99042801,
+      "name": "Land of Bursting Fire",
+      "description": "Grants all of the following effects the first time the user enters a battle each battle: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"4\" ]. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "childPassives": [
+        {
+          "id": 18120406,
+          "name": "Debut: Attack ↑ 6",
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
+        },
+        {
+          "id": 15010103,
+          "name": "Head Start 3",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle."
+        },
+        {
+          "id": 17071802,
+          "name": "Debut: Physical Boost 2",
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
+        }
+      ]
+    },
+    {
+      "id": 99042901,
+      "name": "Uncontainable Volcanic Power",
+      "description": "Grants all of the following effects after your team’s sync pair uses their sync move: Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Restores [Digit:1digit Idx=\"2\" ] MP of the user’s buddy move.",
+      "childPassives": [
+        {
+          "id": 13061509,
+          "name": "Team S-Move: Restore B-Move MP 9",
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move."
+        },
+        {
+          "id": 17092209,
+          "name": "Team S-Move: Physical Boost ↑2 9",
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move."
+        },
+        {
+          "id": 11016002,
+          "name": "Team S-Move: HP Recovery 2",
+          "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after your team’s sync pair uses their sync move."
+        }
+      ]
+    },
+    {
+      "id": 18051501,
+      "name": "P-Moves & S-Moves Crit",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1000290100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290106,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "sync",
+      "title": "Youthful Eruption\nSacred Fire: Power +150",
+      "description": "Raises the power of Youthful Eruption\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Youthful Eruption\nSacred Fire": 150
+      }
+    },
+    {
+      "cellId": 1000290107,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Trainer Sync Redemption 1",
+      "description": "Restores [Digit:1digit ] MP for the user’s Trainer the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290108,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290109,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290110,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290111,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290112,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Reigning\nSacred Fire: Power +2",
+      "description": "Raises the power of Reigning\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Reigning\nSacred Fire": 2
+      }
+    },
+    {
+      "cellId": 1000290113,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Reigning\nSacred Fire: Power +2",
+      "description": "Raises the power of Reigning\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Reigning\nSacred Fire": 2
+      }
+    },
+    {
+      "cellId": 1000290114,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Reigning\nSacred Fire: Power +2",
+      "description": "Raises the power of Reigning\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Reigning\nSacred Fire": 2
+      }
+    },
+    {
+      "cellId": 1000290115,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290116,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Superduper Effective 1",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290117,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hit Burned Opp: Team-Synced Stat ↓2 9",
+      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is lowered for all opponents.)",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290118,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Burn Synergy 3",
+      "description": "Powers up the user’s moves when the target is burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290119,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290120,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290121,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290122,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290123,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Entrapping Blaze\nFlare Blitz: Power +2",
+      "description": "Raises the power of Entrapping Blaze\nFlare Blitz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Entrapping Blaze\nFlare Blitz": 2
+      }
+    },
+    {
+      "cellId": 1000290124,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Entrapping Blaze\nFlare Blitz: Power +2",
+      "description": "Raises the power of Entrapping Blaze\nFlare Blitz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Entrapping Blaze\nFlare Blitz": 2
+      }
+    },
+    {
+      "cellId": 1000290125,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Entrapping Blaze\nFlare Blitz: Power +2",
+      "description": "Raises the power of Entrapping Blaze\nFlare Blitz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Entrapping Blaze\nFlare Blitz": 2
+      }
+    },
+    {
+      "cellId": 1000290126,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290127,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Super\nEffective ↑: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290128,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haymaker",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290129,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hit Burned Opp: Sync Move Boost ↑3 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against a burned opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290130,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290131,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290132,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Entrapping Blaze\nFlare Blitz: Power +2",
+      "description": "Raises the power of Entrapping Blaze\nFlare Blitz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Entrapping Blaze\nFlare Blitz": 2
+      }
+    },
+    {
+      "cellId": 1000290133,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Entrapping Blaze\nFlare Blitz: Power +2",
+      "description": "Raises the power of Entrapping Blaze\nFlare Blitz.",
+      "statBonus": {},
+      "powerBonus": {
+        "Entrapping Blaze\nFlare Blitz": 2
+      }
+    },
+    {
+      "cellId": 1000290134,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Entrapping Blaze\nFlare Blitz: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290135,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healing Sun 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290136,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290137,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290138,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Entrapping Blaze\nFlare Blitz: Staggering 9",
+      "description": "Makes the target flinch when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290139,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290140,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290141,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Reigning\nSacred Fire: Power +2",
+      "description": "Raises the power of Reigning\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Reigning\nSacred Fire": 2
+      }
+    },
+    {
+      "cellId": 1000290142,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Reigning\nSacred Fire: Power +2",
+      "description": "Raises the power of Reigning\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Reigning\nSacred Fire": 2
+      }
+    },
+    {
+      "cellId": 1000290143,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Reigning\nSacred Fire: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290144,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Erupting\nGlory!: Hit and Heal 9",
+      "description": "Applies the Gradual Healing effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290145,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Erupting\nGlory!: Catalytic Kick 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290146,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Drought Alert 3",
+      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290147,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team S-Move: Physical Boost ↑1 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1000290148,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Youthful Eruption\nSacred Fire: Power +25",
+      "description": "Raises the power of Youthful Eruption\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Youthful Eruption\nSacred Fire": 25
+      }
+    },
+    {
+      "cellId": 1000290149,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Youthful Eruption\nSacred Fire: Power +25",
+      "description": "Raises the power of Youthful Eruption\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Youthful Eruption\nSacred Fire": 25
+      }
+    }
+  ]
+}

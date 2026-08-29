@@ -1,0 +1,892 @@
+{
+  "trainerId": "10101000000",
+  "trainerBaseId": "10010100",
+  "monsterId": "20101000000",
+  "monsterBaseId": "20049501",
+  "displayName": "Trainer #10010100 & Snivy",
+  "trainerName": "Trainer #10010100",
+  "monsterName": "Snivy",
+  "type": "Grass",
+  "weakness": "Flying",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Grass\nSync Beam",
+  "iconUrl": "img/trainers/0101_00-0495_00.png",
+  "stats": {
+    "hp": [
+      82,
+      177,
+      237,
+      512,
+      572,
+      632,
+      800
+    ],
+    "atk": [
+      5,
+      21,
+      30,
+      74,
+      82,
+      90,
+      114
+    ],
+    "def": [
+      9,
+      42,
+      63,
+      162,
+      182,
+      202,
+      250
+    ],
+    "spa": [
+      6,
+      34,
+      52,
+      96,
+      104,
+      112,
+      136
+    ],
+    "spd": [
+      9,
+      49,
+      73,
+      183,
+      207,
+      231,
+      291
+    ],
+    "spe": [
+      7,
+      39,
+      60,
+      148,
+      168,
+      188,
+      236
+    ]
+  },
+  "moves": [
+    {
+      "id": 412,
+      "slot": 1,
+      "name": "Energy Ball",
+      "type": "Grass",
+      "category": "Status",
+      "power": "49",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19031,
+      "slot": 2,
+      "name": "X Sp. Atk All",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 11010,
+      "slot": 3,
+      "name": "Time to\nEnergize!",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by [Digit:1digit ] instead.",
+      "isSync": false
+    },
+    {
+      "id": 202,
+      "slot": 4,
+      "name": "Giga Drain",
+      "type": "Grass",
+      "category": "Status",
+      "power": "91",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The more damage dealt to the target, the more it restores the user’s HP.",
+      "isSync": false
+    },
+    {
+      "id": 40500,
+      "slot": 5,
+      "name": "Grass\nSync Beam",
+      "type": "Grass",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 18020401,
+      "name": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1010100000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1010100008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1010100009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1010100010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +10",
+      "description": "Raises Sp. Atk by 10.",
+      "statBonus": {
+        "spa": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1010100012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1010100013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 3,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1010100015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Giga Drain: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Energy Ball: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100017,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100018,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1010100019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Power Flux 5",
+      "description": "The fuller the move gauge when moves are selected, the more this powers up moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Sp. Atk +20",
+      "description": "Raises Sp. Atk by 20.",
+      "statBonus": {
+        "spa": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Giga Drain: Master Healer 2",
+      "description": "Increases the amount of HP restored by the user’s healing moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 5",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100026,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100027,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Energy Ball: Power +4",
+      "description": "Raises the power of Energy Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Energy Ball": 4
+      }
+    },
+    {
+      "cellId": 1010100028,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1010100029,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Time to\nEnergize!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100030,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100031,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Sp. Atk All: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100032,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Time to\nEnergize!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100033,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100034,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "X Sp. Atk All: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100035,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Time to\nEnergize!: Selfless",
+      "description": "Makes opponents target the user for a short time when the user’s move is successful while it is in a pinch.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100036,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "On the Ropes 3",
+      "description": "Reduces damage when the user is hit by a physical attack move while it is in a pinch.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100037,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Energy Ball: On a Roll 1",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100038,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100039,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Giga Drain: Power +3",
+      "description": "Raises the power of Giga Drain.",
+      "statBonus": {},
+      "powerBonus": {
+        "Giga Drain": 3
+      }
+    },
+    {
+      "cellId": 1010100040,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Solar Flare 5",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100041,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100042,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100043,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100044,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100045,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Shield",
+      "description": "Status conditions cannot be inflicted on the user when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1010100046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Shoot for the\nStars Leaf Storm: Power +25",
+      "description": "Raises the power of Shoot for the\nStars Leaf Storm.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shoot for the\nStars Leaf Storm": 25
+      }
+    },
+    {
+      "cellId": 1010100047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Shoot for the\nStars Leaf Storm: Power +25",
+      "description": "Raises the power of Shoot for the\nStars Leaf Storm.",
+      "statBonus": {},
+      "powerBonus": {
+        "Shoot for the\nStars Leaf Storm": 25
+      }
+    }
+  ]
+}

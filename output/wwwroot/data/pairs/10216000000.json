@@ -1,0 +1,982 @@
+{
+  "trainerId": "10216000000",
+  "trainerBaseId": "10021600",
+  "monsterId": "20216000000",
+  "monsterBaseId": "21024500",
+  "displayName": "Trainer #10021600 & Monster #21024500",
+  "trainerName": "Trainer #10021600",
+  "monsterName": "Monster #21024500",
+  "type": "Water",
+  "weakness": "Electric",
+  "role": "Strike (Special)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Dignified Dash\nHydro Pump",
+  "iconUrl": "img/trainers/0216_00-0245_00s.png",
+  "stats": {
+    "hp": [
+      108,
+      187,
+      262,
+      559,
+      623,
+      687,
+      879
+    ],
+    "atk": [
+      13,
+      47,
+      80,
+      212,
+      240,
+      268,
+      352
+    ],
+    "def": [
+      16,
+      35,
+      53,
+      119,
+      135,
+      151,
+      199
+    ],
+    "spa": [
+      16,
+      53,
+      89,
+      232,
+      260,
+      288,
+      372
+    ],
+    "spd": [
+      16,
+      35,
+      53,
+      119,
+      135,
+      151,
+      199
+    ],
+    "spe": [
+      14,
+      58,
+      100,
+      265,
+      301,
+      337,
+      445
+    ]
+  },
+  "moves": [
+    {
+      "id": 250,
+      "slot": 1,
+      "name": "Whirlpool",
+      "type": "Water",
+      "category": "Status",
+      "power": "38",
+      "accuracy": "85",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Leaves the target trapped.",
+      "isSync": false
+    },
+    {
+      "id": 59,
+      "slot": 2,
+      "name": "Blizzard",
+      "type": "Ice",
+      "category": "Status",
+      "power": "126",
+      "accuracy": "70",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Never misses during a hailstorm. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "isSync": false
+    },
+    {
+      "id": 6021,
+      "slot": 3,
+      "name": "Purifying\nSurf",
+      "type": "Water",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any moves twice.\nDeactivation Condition:\nCannot be deactivated.\n\nHas a chance ([Digit:2digits ]%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
+      "isSync": false
+    },
+    {
+      "id": 12160,
+      "slot": 4,
+      "name": "The Chase\nContinues!",
+      "type": "Water",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Condition Nullification effect to all allied sync pairs.",
+      "isSync": false
+    },
+    {
+      "id": 95400,
+      "slot": 5,
+      "name": "Dignified Dash\nHydro Pump",
+      "type": "Water",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 12021909,
+      "name": "Recharging Strike 9",
+      "description": "Charges the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, charges the user’s move gauge by one for each hit.",
+      "childPassives": []
+    },
+    {
+      "id": 13030101,
+      "name": "Piercing Gaze",
+      "description": "Moves never miss.",
+      "childPassives": []
+    },
+    {
+      "id": 13019105,
+      "name": "Trap and Buff 5",
+      "description": "Powers up the user’s moves and sync move when the target is trapped.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1021600000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600007,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Danger Damage Guard",
+      "description": "Applies the Damage Guard Next effect to the user the first time its HP drops to half or below each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600008,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Super Freebie 4",
+      "description": "Has a chance ([Digit:2digits ]%) of applying the Free Move Next effect to the user when its move is super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600009,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Double Down 2",
+      "description": "Powers up the user’s sync moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600010,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Attack Trap 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target trapped when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600011,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "Disarm 9",
+      "description": "Lowers the target’s Attack and Sp. Atk by one stat rank when the user’s attack move is successful against a flinching, confused, or trapped opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600012,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600013,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600014,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600015,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600016,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Whirlpool: Power +4",
+      "description": "Raises the power of Whirlpool.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirlpool": 4
+      }
+    },
+    {
+      "cellId": 1021600017,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Whirlpool: Power +4",
+      "description": "Raises the power of Whirlpool.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirlpool": 4
+      }
+    },
+    {
+      "cellId": 1021600018,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Whirlpool: Power +4",
+      "description": "Raises the power of Whirlpool.",
+      "statBonus": {},
+      "powerBonus": {
+        "Whirlpool": 4
+      }
+    },
+    {
+      "cellId": 1021600019,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Whirlpool: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600020,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Entry Freebie",
+      "description": "Applies the Free Move Next effect to the user when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600021,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Weathered Warrior 3",
+      "description": "Powers up the user’s moves and sync move when weather conditions are in effect.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600022,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "The Chase\nContinues!: Propulsion 9",
+      "description": "Reduces the user’s sync move countdown by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600023,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600024,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600025,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600026,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600027,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600028,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Purifying\nSurf: Power +3",
+      "description": "Raises the power of Purifying\nSurf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Purifying\nSurf": 3
+      }
+    },
+    {
+      "cellId": 1021600029,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Purifying\nSurf: Power +3",
+      "description": "Raises the power of Purifying\nSurf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Purifying\nSurf": 3
+      }
+    },
+    {
+      "cellId": 1021600030,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Purifying\nSurf: Power +3",
+      "description": "Raises the power of Purifying\nSurf.",
+      "statBonus": {},
+      "powerBonus": {
+        "Purifying\nSurf": 3
+      }
+    },
+    {
+      "cellId": 1021600031,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Super Victory",
+      "description": "Applies the Supereffective ↑ Next effect to the user when it knocks out an opponent with a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600032,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Trap and Sync 5",
+      "description": "Powers up the user’s sync move against targets that are trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600033,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sync Thinker 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600034,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600035,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600036,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1021600037,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1021600038,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "KO Opp: Allied Field MG → 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play when the user knocks out an opponent with a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600039,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Blizzard: Superduper Effective 5",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600040,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Blizzard: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600041,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Soften Up 1",
+      "description": "Critical hits land more easily when the user attacks with a sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600042,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Stationary Target 3",
+      "description": "Powers up the user’s moves when the target is trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600043,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600044,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600045,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1021600046,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Blizzard: Power +3",
+      "description": "Raises the power of Blizzard.",
+      "statBonus": {},
+      "powerBonus": {
+        "Blizzard": 3
+      }
+    },
+    {
+      "cellId": 1021600047,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Atmospheric Acceleration 2",
+      "description": "Quickly charges the move gauge when weather conditions are in effect.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600048,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Blizzard: Hostile Environment 2",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600049,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "The Chase\nContinues!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600050,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Super Sync 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user after using its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600051,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Brainpower",
+      "description": "The more the user’s Sp. Atk is raised, the more it powers up its sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1021600052,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Dignified Dash\nHydro Pump: Power +25",
+      "description": "Raises the power of Dignified Dash\nHydro Pump.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dignified Dash\nHydro Pump": 25
+      }
+    },
+    {
+      "cellId": 1021600053,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Dignified Dash\nHydro Pump: Power +25",
+      "description": "Raises the power of Dignified Dash\nHydro Pump.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dignified Dash\nHydro Pump": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+/* Blues Lab: Modern PMEX Dark Theme */
+:root {
+    --bg-main: #121820;
+    --bg-card: #1e2632;
+    --bg-darker: #0d1117;
+    --accent-yellow: #f1c40f;
+    --accent-blue: #3498db;
+    --accent-red: #e74c3c;
+    --border-color: #2d3748;
+}
+
+body {
+    background-color: var(--bg-main) !important;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    user-select: none;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Type Badges */
+.type-badge {
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+.type-normal { background-color: #a8a878; }
+.type-fire { background-color: #f08030; }
+.type-water { background-color: #6890f0; }
+.type-electric { background-color: #f8d030; color: #000; text-shadow: none; }
+.type-grass { background-color: #78c850; }
+.type-ice { background-color: #98d8d8; color: #000; text-shadow: none; }
+.type-fighting { background-color: #c03028; }
+.type-poison { background-color: #a040a0; }
+.type-ground { background-color: #e0c068; }
+.type-flying { background-color: #a890f0; }
+.type-psychic { background-color: #f85888; }
+.type-bug { background-color: #a8b820; }
+.type-rock { background-color: #b8a038; }
+.type-ghost { background-color: #705898; }
+.type-dragon { background-color: #7038f8; }
+.type-dark { background-color: #705848; }
+.type-steel { background-color: #b8b8d0; color: #000; text-shadow: none; }
+.type-fairy { background-color: #ee99ac; }
+.type-stellar { background-color: #40b5a5; }
+
+.bg-purple { background-color: #9b59b6 !important; }
+.bg-indigo { background-color: #6c5ce7 !important; }
+.btn-indigo { background-color: #6c5ce7; color: white; border-color: #6c5ce7; }
+.btn-indigo:hover { background-color: #5849d4; color: white; }
+.btn-pink { background-color: #e84393; color: white; border-color: #e84393; }
+.btn-pink:hover { background-color: #d63031; color: white; }
+
+.cursor-pointer { cursor: pointer; }
+.select-none { user-select: none; }
+
+/* Pair Picker Cards */
+.pair-card {
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+.pair-card:hover {
+    transform: translateY(-2px);
+    border-color: #f1c40f !important;
+    background-color: rgba(241, 196, 15, 0.1) !important;
+}
+
+/* Hex Grid Styles */
+.hex-svg {
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+.hex-tile {
+    transition: transform 0.1s ease, filter 0.15s ease;
+}
+.hex-tile:hover polygon {
+    stroke: #f1c40f !important;
+    stroke-width: 2.5px;
+    cursor: pointer;
+}
+.hex-tile.active polygon {
+    stroke: #ffffff !important;
+}
+.hex-label {
+    text-shadow: 0 1px 2px #000, 0 -1px 2px #000, 1px 0 2px #000, -1px 0 2px #000;
+}
+
+.hover-tooltip {
+    bottom: 20px;
+    left: 20px;
+    max-width: 320px;
+    z-index: 1000;
+    pointer-events: none;
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Damage Result Card */
+.damage-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.damage-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+.damage-hero {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+}
