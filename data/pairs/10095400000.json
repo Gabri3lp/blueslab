@@ -1,0 +1,967 @@
+{
+  "trainerId": "10095400000",
+  "trainerBaseId": "10009540",
+  "monsterId": "20095400000",
+  "monsterBaseId": "20030201",
+  "displayName": "Caitlin  (Fall 2021) & Monster #20030201",
+  "trainerName": "Caitlin  (Fall 2021)",
+  "monsterName": "Monster #20030201",
+  "type": "Dark",
+  "weakness": "Fairy",
+  "role": "Support",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Eerie Eyes\nDark Impact",
+  "iconUrl": "img/trainers/0095_40-0302_00.png",
+  "stats": {
+    "hp": [
+      82,
+      151,
+      217,
+      481,
+      537,
+      593,
+      761
+    ],
+    "atk": [
+      11,
+      37,
+      61,
+      160,
+      180,
+      200,
+      260
+    ],
+    "def": [
+      14,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "spa": [
+      12,
+      35,
+      56,
+      144,
+      160,
+      176,
+      224
+    ],
+    "spd": [
+      14,
+      45,
+      75,
+      196,
+      220,
+      244,
+      316
+    ],
+    "spe": [
+      17,
+      53,
+      86,
+      218,
+      246,
+      274,
+      358
+    ]
+  },
+  "moves": [
+    {
+      "id": 185,
+      "slot": 1,
+      "name": "Feint Attack",
+      "type": "Dark",
+      "category": "Status",
+      "power": "45",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Never misses.",
+      "isSync": false
+    },
+    {
+      "id": 19021,
+      "slot": 2,
+      "name": "X Defense All",
+      "type": "Dark",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 19041,
+      "slot": 3,
+      "name": "X Sp. Def All",
+      "type": "Dark",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 10954,
+      "slot": 4,
+      "name": "Tricksy!",
+      "type": "Dark",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed and accuracy of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. If the user’s Sableye has Mega Evolved, also applies the Condition Nullification effect to all allied sync pairs.",
+      "isSync": false
+    },
+    {
+      "id": 62500,
+      "slot": 5,
+      "name": "Eerie Eyes\nDark Impact",
+      "type": "Dark",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Sableye until the end of battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 12010801,
+      "name": "Quick Tempo",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user enters a battle each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 11010701,
+      "name": "S-Move: Team HP Recovery (M) 1",
+      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after using the user’s sync move.",
+      "childPassives": []
+    },
+    {
+      "id": 21010101,
+      "name": "Vigilance",
+      "description": "Protects the user against critical hits.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0302_51_megayamirami",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.2,
+        "spa": 1.0,
+        "spd": 1.2,
+        "spe": 1.0
+      },
+      "passives": [
+        {
+          "id": 19021401,
+          "name": "Opening Blockade",
+          "description": "Applies the Physical Damage Reduction effect and the Special Damage Reduction effect to the allied field of play the first time the user enters a battle each battle."
+        }
+      ],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1009540000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +10",
+      "description": "Raises Sp. Def by 10.",
+      "statBonus": {
+        "spd": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Feint Attack: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Healthy Healing",
+      "description": "Applies the Gradual Healing effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Revenge Boost 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 12,
+      "orbCost": 144,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Feint Attack: Flabbergast 4",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused when a move targeting that opponent is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540017,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540018,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "X Sp. Def All: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +25",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 25
+      }
+    },
+    {
+      "cellId": 1009540022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Sp. Def All: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team Sync Cure 9",
+      "description": "Removes all status conditions from all allied sync pairs after using the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540026,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540027,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540028,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540029,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540030,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540031,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540032,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Feint Attack: Power +3",
+      "description": "Raises the power of Feint Attack.",
+      "statBonus": {},
+      "powerBonus": {
+        "Feint Attack": 3
+      }
+    },
+    {
+      "cellId": 1009540033,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Tricksy!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540034,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Stalwart",
+      "description": "Sp. Def cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540035,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Tricksy!: Pep Rally 1",
+      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540036,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Faint: Ally HP Recovery (M) 1",
+      "description": "Restores the HP of all allied sync pairs other than the user by approximately [Digit:2digits ]% of their maximum HP just before the user faints.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540037,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540038,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540039,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540040,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "X Defense All: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540041,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sync Wall",
+      "description": "Applies the Critical-Hit Defense effect to the allied field of play the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540042,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Unbending",
+      "description": "Defense cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540043,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "X Defense All: MP Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540044,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1009540045,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +25",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 25
+      }
+    },
+    {
+      "cellId": 1009540046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +25",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 25
+      }
+    },
+    {
+      "cellId": 1009540047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +25",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 25
+      }
+    },
+    {
+      "cellId": 1800102750,
+      "q": -4,
+      "r": 3,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +30",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 30
+      }
+    },
+    {
+      "cellId": 1800102751,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +30",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 30
+      }
+    },
+    {
+      "cellId": 1800102752,
+      "q": -4,
+      "r": 1,
+      "s": 3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Eerie Eyes\nDark Impact: Power +30",
+      "description": "Raises the power of Eerie Eyes\nDark Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Eerie Eyes\nDark Impact": 30
+      }
+    }
+  ]
+}

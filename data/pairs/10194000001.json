@@ -1,0 +1,912 @@
+{
+  "trainerId": "10194000001",
+  "trainerBaseId": "10019400",
+  "monsterId": "20194000002",
+  "monsterBaseId": "20046100",
+  "displayName": "Trainer #10019400 & Weavile",
+  "trainerName": "Trainer #10019400",
+  "monsterName": "Weavile",
+  "type": "Ice",
+  "weakness": "Fighting",
+  "role": "Field",
+  "exRole": "",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Rid of Incomplete Spirit\nIce Impact",
+  "iconUrl": "img/trainers/0194_00-0461_00.png",
+  "stats": {
+    "hp": [
+      98,
+      174,
+      246,
+      532,
+      592,
+      652,
+      832
+    ],
+    "atk": [
+      20,
+      78,
+      132,
+      352,
+      400,
+      448,
+      592
+    ],
+    "def": [
+      16,
+      41,
+      65,
+      153,
+      173,
+      193,
+      253
+    ],
+    "spa": [
+      15,
+      65,
+      113,
+      300,
+      340,
+      380,
+      500
+    ],
+    "spd": [
+      14,
+      39,
+      63,
+      151,
+      171,
+      191,
+      251
+    ],
+    "spe": [
+      17,
+      63,
+      105,
+      281,
+      317,
+      353,
+      461
+    ]
+  },
+  "moves": [
+    {
+      "id": 556,
+      "slot": 1,
+      "name": "Icicle Crash",
+      "type": "Ice",
+      "category": "Status",
+      "power": "105",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "isSync": false
+    },
+    {
+      "id": 19560,
+      "slot": 2,
+      "name": "Ice Wish",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Turns the field of play’s zone into an Ice Zone. (An Ice Zone powers up Ice-type attacks.)",
+      "isSync": false
+    },
+    {
+      "id": 6232,
+      "slot": 3,
+      "name": "Frigid Storm\nIce Punch",
+      "type": "Ice",
+      "category": "Status",
+      "power": "400",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nLeaves the target frozen. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time this attack move is successful each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "isSync": false
+    },
+    {
+      "id": 11949,
+      "slot": 4,
+      "name": "We’re All\nIncomplete",
+      "type": "Ice",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces an ally’s sync move countdown by [Digit:1digit Idx=\"4\" ]. Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 129400,
+      "slot": 5,
+      "name": "Rid of Incomplete Spirit\nIce Impact",
+      "type": "Ice",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99049801,
+      "name": "Cool and Clever Judgment",
+      "description": "The user’s moves never miss. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is an [Name:ReferencedMessageTag ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the zone is an [Name:ReferencedMessageTag Idx=\"2\" ].",
+      "childPassives": [
+        {
+          "id": 17098109,
+          "name": "Ice Zone Hit: Free Move Next 9",
+          "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is an [Name:ReferencedMessageTag ]."
+        },
+        {
+          "id": 17098209,
+          "name": "Ice Zone Hit: Physical Boost ↑2 9",
+          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the zone is an [Name:ReferencedMessageTag ]."
+        },
+        {
+          "id": 13030101,
+          "name": "Piercing Gaze",
+          "description": "Moves never miss."
+        }
+      ]
+    },
+    {
+      "id": 17092509,
+      "name": "Ally Sets WTZ: Team Physical Boost ↑1 9",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "childPassives": []
+    },
+    {
+      "id": 19070801,
+      "name": "User Sets Ice Zone: Sinnoh C (Phys) on Field",
+      "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s zone into an [Name:ReferencedMessageTag ].",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1019400100,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400101,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400102,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400103,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400104,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400105,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400106,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400107,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400108,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Icicle Crash: Power +3",
+      "description": "Raises the power of Icicle Crash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Icicle Crash": 3
+      }
+    },
+    {
+      "cellId": 1019400109,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Icicle Crash: Power +3",
+      "description": "Raises the power of Icicle Crash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Icicle Crash": 3
+      }
+    },
+    {
+      "cellId": 1019400110,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400111,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Icicle Crash: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400112,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Icicle Crash: Power +3",
+      "description": "Raises the power of Icicle Crash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Icicle Crash": 3
+      }
+    },
+    {
+      "cellId": 1019400113,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400114,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Aggravation 1",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400115,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400116,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400117,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400118,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400119,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Frigid Storm\nIce Punch: Power +2",
+      "description": "Raises the power of Frigid Storm\nIce Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Frigid Storm\nIce Punch": 2
+      }
+    },
+    {
+      "cellId": 1019400120,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Frigid Storm\nIce Punch: Power +2",
+      "description": "Raises the power of Frigid Storm\nIce Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Frigid Storm\nIce Punch": 2
+      }
+    },
+    {
+      "cellId": 1019400121,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Ice Zone: MG → 2",
+      "description": "Quickly charges the move gauge when the zone is an Ice Zone.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400122,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Ice Zone: Attack Move DR 2",
+      "description": "Reduces damage when the user is hit by an attack move while the zone is an [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400123,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "We’re All\nIncomplete: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400124,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ice Zone: Moves ↑ 3",
+      "description": "Powers up the user’s moves when the zone is an [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400125,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "We’re All\nIncomplete: Move on Ally: Physical Boost ↑2 9",
+      "description": "When the user’s move targeting an allied sync pair (excluding field effects) is successful, increases the [Name:ReferencedMessageTag ] of the allied sync pair affected by the move by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400126,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400127,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400128,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400129,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Snow Shelter",
+      "description": "Protects the user from damage from a hailstorm.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400130,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Frigid Storm\nIce Punch: Power +2",
+      "description": "Raises the power of Frigid Storm\nIce Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Frigid Storm\nIce Punch": 2
+      }
+    },
+    {
+      "cellId": 1019400131,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Frigid Storm\nIce Punch: Power +2",
+      "description": "Raises the power of Frigid Storm\nIce Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Frigid Storm\nIce Punch": 2
+      }
+    },
+    {
+      "cellId": 1019400132,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Frigid Storm\nIce Punch: Power +2",
+      "description": "Raises the power of Frigid Storm\nIce Punch.",
+      "statBonus": {},
+      "powerBonus": {
+        "Frigid Storm\nIce Punch": 2
+      }
+    },
+    {
+      "cellId": 1019400133,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Frigid Storm\nIce Punch: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400134,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400135,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ice Zone Extension 3",
+      "description": "Extends the duration of the Ice Zone when the zone turns into an Ice Zone while the user is on the field.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400136,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sinnoh C (Phys) Extension 3",
+      "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400137,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400138,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400139,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Icicle Crash: Power +3",
+      "description": "Raises the power of Icicle Crash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Icicle Crash": 3
+      }
+    },
+    {
+      "cellId": 1019400140,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Icicle Crash: Power +3",
+      "description": "Raises the power of Icicle Crash.",
+      "statBonus": {},
+      "powerBonus": {
+        "Icicle Crash": 3
+      }
+    },
+    {
+      "cellId": 1019400141,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400142,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Ice Wish: Move Gauge Refresh 4",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400143,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Ice Zone: HP Recovery 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the zone is an [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400144,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st S-Move: Restore B-Move MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400145,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Ice Zone: S-Moves ↑ 9",
+      "description": "Powers up the user’s sync move when the zone is an [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1019400146,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Rid of Incomplete Spirit\nIce Impact: Power +25",
+      "description": "Raises the power of Rid of Incomplete Spirit\nIce Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Rid of Incomplete Spirit\nIce Impact": 25
+      }
+    },
+    {
+      "cellId": 1019400147,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Rid of Incomplete Spirit\nIce Impact: Power +25",
+      "description": "Raises the power of Rid of Incomplete Spirit\nIce Impact.",
+      "statBonus": {},
+      "powerBonus": {
+        "Rid of Incomplete Spirit\nIce Impact": 25
+      }
+    }
+  ]
+}

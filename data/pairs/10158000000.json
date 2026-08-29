@@ -1,0 +1,1063 @@
+{
+  "trainerId": "10158000000",
+  "trainerBaseId": "10015800",
+  "monsterId": "20158000000",
+  "monsterBaseId": "20028201",
+  "displayName": "Trainer #10015800 & Monster #20028201",
+  "trainerName": "Trainer #10015800",
+  "monsterName": "Monster #20028201",
+  "type": "Fairy",
+  "weakness": "Ghost",
+  "role": "Strike (Special)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": true,
+  "hasTera": false,
+  "hasSuperAwakening": true,
+  "syncMoveName": "Master Thespian\nMoonblast",
+  "iconUrl": "img/trainers/0158_00-0282_00.png",
+  "stats": {
+    "hp": [
+      99,
+      180,
+      258,
+      566,
+      630,
+      694,
+      886
+    ],
+    "atk": [
+      9,
+      39,
+      66,
+      176,
+      200,
+      224,
+      296
+    ],
+    "def": [
+      10,
+      35,
+      59,
+      147,
+      167,
+      187,
+      247
+    ],
+    "spa": [
+      12,
+      64,
+      112,
+      310,
+      350,
+      390,
+      510
+    ],
+    "spd": [
+      11,
+      29,
+      47,
+      113,
+      125,
+      137,
+      173
+    ],
+    "spe": [
+      11,
+      47,
+      80,
+      212,
+      240,
+      268,
+      352
+    ]
+  },
+  "moves": [
+    {
+      "id": 605,
+      "slot": 1,
+      "name": "Dazzling Gleam",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "50",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "No additional effect.",
+      "isSync": false
+    },
+    {
+      "id": 19082,
+      "slot": 2,
+      "name": "Dire Hit +",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 585,
+      "slot": 3,
+      "name": "Moonblast",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "98",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 11580,
+      "slot": 4,
+      "name": "Time to Shine!",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Sp. Atk and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. If the user’s Gardevoir has Mega Evolved, also charges the user’s move gauge by [Digit:1digit Idx=\"1\" ].",
+      "isSync": false
+    },
+    {
+      "id": 61500,
+      "slot": 5,
+      "name": "Master Thespian\nMoonblast",
+      "type": "Fairy",
+      "category": "Status",
+      "power": "160",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "Become Mega Gardevoir until the end of battle.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 13014505,
+      "name": "Hit the Gas 5",
+      "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves.",
+      "childPassives": []
+    },
+    {
+      "id": 15010601,
+      "name": "Propulsion 1",
+      "description": "Has a chance ([Digit:2digits ]%) of reducing the user’s sync move countdown by one when the user’s move is successful.",
+      "childPassives": []
+    },
+    {
+      "id": 17044001,
+      "name": "Mutually Assured",
+      "description": "Whenever an opponent leaves the user poisoned, badly poisoned, paralyzed, or burned, the same status condition is also applied to that opponent.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 1,
+      "formName": "Mega",
+      "actorId": "pm0282_51_megasrnight",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.2,
+        "spd": 1.2,
+        "spe": 1.0
+      },
+      "passives": [
+        {
+          "id": 13014405,
+          "name": "Fairy Power 5",
+          "description": "Powers up the user’s Fairy-type moves."
+        }
+      ],
+      "terastalMoveId": 0
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1015800000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1015800011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1015800012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1015800013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Moonblast: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +25",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1015800015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Devastation",
+      "description": "The more the target’s Sp. Atk is lowered, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Moonblast: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Dire Hit +: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Dazzling Gleam: Power +3",
+      "description": "Raises the power of Dazzling Gleam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dazzling Gleam": 3
+      }
+    },
+    {
+      "cellId": 1015800023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Dazzling Gleam: Power +3",
+      "description": "Raises the power of Dazzling Gleam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dazzling Gleam": 3
+      }
+    },
+    {
+      "cellId": 1015800024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +25",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1015800026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Double Down 2",
+      "description": "Powers up the user’s sync moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Dazzling Gleam: Power +3",
+      "description": "Raises the power of Dazzling Gleam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dazzling Gleam": 3
+      }
+    },
+    {
+      "cellId": 1015800031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Dazzling Gleam: Power +3",
+      "description": "Raises the power of Dazzling Gleam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dazzling Gleam": 3
+      }
+    },
+    {
+      "cellId": 1015800033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Dazzling Gleam: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Dazzling Gleam: Power +3",
+      "description": "Raises the power of Dazzling Gleam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Dazzling Gleam": 3
+      }
+    },
+    {
+      "cellId": 1015800035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Dazzling Gleam: Superduper Effective 1",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +25",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1015800037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Dauntless",
+      "description": "Sp. Atk cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Time to Shine!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Moonblast: Power +3",
+      "description": "Raises the power of Moonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Moonblast": 3
+      }
+    },
+    {
+      "cellId": 1015800044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Time to Shine!: Fleet Feet 1",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +25",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1015800046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +25",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1015800047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +25",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 25
+      }
+    },
+    {
+      "cellId": 1015800048,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "On a Roll 1",
+      "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800049,
+      "q": 0,
+      "r": 4,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Satisfied Snicker 9",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800050,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "move effect",
+      "title": "Time to Shine!: Propulsion 9",
+      "description": "Reduces the user’s sync move countdown by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800051,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speedy Entry 1",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800052,
+      "q": 0,
+      "r": -4,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Recharging Strike 9",
+      "description": "Charges the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, charges the user’s move gauge by one for each hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1015800053,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 5,
+      "colorKind": "passive",
+      "title": "1st S-Move: Team HP Recovery (M) 1",
+      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800102732,
+      "q": -4,
+      "r": 2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +30",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 30
+      }
+    },
+    {
+      "cellId": 1800102733,
+      "q": -4,
+      "r": 1,
+      "s": 3,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +30",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 30
+      }
+    },
+    {
+      "cellId": 1800102734,
+      "q": -4,
+      "r": 0,
+      "s": 4,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "sync",
+      "title": "Master Thespian\nMoonblast: Power +30",
+      "description": "Raises the power of Master Thespian\nMoonblast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Master Thespian\nMoonblast": 30
+      }
+    }
+  ]
+}

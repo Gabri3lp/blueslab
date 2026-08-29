@@ -1,0 +1,936 @@
+{
+  "trainerId": "10091000002",
+  "trainerBaseId": "10009100",
+  "monsterId": "20091000002",
+  "monsterBaseId": "20044201",
+  "displayName": "Trainer #10009100 & Monster #20044201",
+  "trainerName": "Trainer #10009100",
+  "monsterName": "Monster #20044201",
+  "type": "Ghost",
+  "weakness": "Fairy",
+  "role": "Sprint",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Five Score and Eight Spirits\nGhost Beam",
+  "iconUrl": "img/trainers/0091_00-0442_00.png",
+  "stats": {
+    "hp": [
+      96,
+      171,
+      243,
+      529,
+      589,
+      649,
+      829
+    ],
+    "atk": [
+      19,
+      49,
+      76,
+      186,
+      210,
+      234,
+      306
+    ],
+    "def": [
+      18,
+      42,
+      63,
+      151,
+      171,
+      191,
+      251
+    ],
+    "spa": [
+      17,
+      60,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "spd": [
+      14,
+      36,
+      57,
+      134,
+      150,
+      166,
+      214
+    ],
+    "spe": [
+      14,
+      59,
+      101,
+      266,
+      302,
+      338,
+      446
+    ]
+  },
+  "moves": [
+    {
+      "id": 506,
+      "slot": 1,
+      "name": "Hex",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "38",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "This attack’s power is doubled when the target is affected by a status condition.",
+      "isSync": false
+    },
+    {
+      "id": 261,
+      "slot": 2,
+      "name": "Will-O-Wisp",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Leaves the target burned.",
+      "isSync": false
+    },
+    {
+      "id": 6120,
+      "slot": 3,
+      "name": "Evil Spirit\nShadow Ball",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "90",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Reduces all of the MP for this move. The more MP reduced, the greater the power of this attack. Has a chance ([Digit:2digits ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Leaves the target flinching, confused, and trapped when the remaining MP are reduced by 108 from a single attack.",
+      "isSync": false
+    },
+    {
+      "id": 10916,
+      "slot": 4,
+      "name": "Too Fun\nto End!",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag ] to all allied sync pairs.",
+      "isSync": false
+    },
+    {
+      "id": 117700,
+      "slot": 5,
+      "name": "Five Score and Eight Spirits\nGhost Beam",
+      "type": "Ghost",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "This attack’s power increases when the target is affected by a status condition.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 99024701,
+      "name": "Sealed Wicked Thoughts",
+      "description": "Reduces damage taken by the user from super effective moves and super effective sync moves. When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "childPassives": [
+        {
+          "id": 13024105,
+          "name": "Take SE Hit: P-Move DR & S-Move DR 5",
+          "description": "Reduces damage taken by the user from super effective moves and super effective sync moves."
+        },
+        {
+          "id": 23012101,
+          "name": "P-Moves & Sync Moves Expansion",
+          "description": "When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets."
+        },
+        {
+          "id": 18051501,
+          "name": "P-Moves & S-Moves Crit",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+        }
+      ]
+    },
+    {
+      "id": 99024801,
+      "name": "Bad-to-Worse Hex",
+      "description": "The power of the user’s [Name:MoveId Idx=\"506\" ] is doubled when the target is affected by a status condition. Restores 32 MP of the user’s buddy move when its [Name:MoveId Idx=\"506\" ] is successful.",
+      "childPassives": [
+        {
+          "id": 13083301,
+          "name": "Opp Status Cond: Hex Power ×2",
+          "description": "The power of the user’s [Name:MoveId Idx=\"506\" ] is doubled when the target is affected by a status condition."
+        },
+        {
+          "id": 13062401,
+          "name": "Hex: B-Move MP Recovery (32)",
+          "description": "Restores 32 MP of the user’s buddy move when its [Name:MoveId Idx=\"506\" ] is successful."
+        }
+      ]
+    },
+    {
+      "id": 99024901,
+      "name": "Gathered Souls",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move. Restores 50 MP of the user’s buddy move after using its sync move.",
+      "childPassives": [
+        {
+          "id": 12020206,
+          "name": "Rejuvenate 6",
+          "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move."
+        },
+        {
+          "id": 13062509,
+          "name": "S-Move: B-Move MP Recovery (50) 9",
+          "description": "Restores 50 MP of the user’s buddy move after using its sync move."
+        }
+      ]
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1800100964,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100965,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100966,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100967,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100968,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100969,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100970,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100971,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100972,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Evil Spirit\nShadow Ball: Power +2",
+      "description": "Raises the power of Evil Spirit\nShadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Evil Spirit\nShadow Ball": 2
+      }
+    },
+    {
+      "cellId": 1800100973,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Evil Spirit\nShadow Ball: Power +2",
+      "description": "Raises the power of Evil Spirit\nShadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Evil Spirit\nShadow Ball": 2
+      }
+    },
+    {
+      "cellId": 1800100974,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Evil Spirit\nShadow Ball: Power +2",
+      "description": "Raises the power of Evil Spirit\nShadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Evil Spirit\nShadow Ball": 2
+      }
+    },
+    {
+      "cellId": 1800100975,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Evil Spirit\nShadow Ball: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100976,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Hit Inter Opp: HP Recovery 9",
+      "description": "Restores the user’s HP when its attack move is successful against a flinching, confused, or trapped opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100977,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Interference Sync 9",
+      "description": "Powers up the user’s sync move against targets that are flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100978,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Opp Interference: Team Moves ↑ 2",
+      "description": "Powers up the moves of all allied sync pairs when attacking a target that is flinching, confused, or trapped.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100979,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100980,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100981,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Hex: Power +2",
+      "description": "Raises the power of Hex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Hex": 2
+      }
+    },
+    {
+      "cellId": 1800100982,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Hex: Power +2",
+      "description": "Raises the power of Hex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Hex": 2
+      }
+    },
+    {
+      "cellId": 1800100983,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Hex: Power +2",
+      "description": "Raises the power of Hex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Hex": 2
+      }
+    },
+    {
+      "cellId": 1800100984,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Hex: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100985,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Natural Remedy",
+      "description": "Removes all status conditions from the user the first time it is inflicted by any status condition each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100986,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 12,
+      "orbCost": 144,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Hex: Hit: B-Move MP Recovery (32) 5",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring 32 MP of the user’s buddy move when its attack move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100987,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Grand Entry 2",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100988,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100989,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100990,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100991,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100992,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Hex: Power +2",
+      "description": "Raises the power of Hex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Hex": 2
+      }
+    },
+    {
+      "cellId": 1800100993,
+      "q": 3,
+      "r": -5,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Hex: Power +2",
+      "description": "Raises the power of Hex.",
+      "statBonus": {},
+      "powerBonus": {
+        "Hex": 2
+      }
+    },
+    {
+      "cellId": 1800100994,
+      "q": 1,
+      "r": -4,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Will-O-Wisp: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100995,
+      "q": 2,
+      "r": -5,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Will-O-Wisp: Accuracy +10",
+      "description": "Raises the accuracy of Will-O-Wisp.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100996,
+      "q": 3,
+      "r": -6,
+      "s": 3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Team Viral Hustle 9",
+      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user’s Pokémon uses a status move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100997,
+      "q": 1,
+      "r": -5,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Will-O-Wisp: 1st Move Use: Team Special Boost 1",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100998,
+      "q": 2,
+      "r": -6,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Hit Burned Opp: Sp. Atk ↓ & Sp. Def ↓ 9",
+      "description": "Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a burned opponent.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800100999,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101000,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Unflappable",
+      "description": "Prevents the user from flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101001,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101002,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101003,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Evil Spirit\nShadow Ball: Power +2",
+      "description": "Raises the power of Evil Spirit\nShadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Evil Spirit\nShadow Ball": 2
+      }
+    },
+    {
+      "cellId": 1800101004,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Evil Spirit\nShadow Ball: Power +2",
+      "description": "Raises the power of Evil Spirit\nShadow Ball.",
+      "statBonus": {},
+      "powerBonus": {
+        "Evil Spirit\nShadow Ball": 2
+      }
+    },
+    {
+      "cellId": 1800101005,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Quick Cure",
+      "description": "Removes the confused, flinching, and trapped conditions from the user the first time they are inflicted each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101006,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +20",
+      "description": "Raises HP by 20.",
+      "statBonus": {
+        "hp": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101007,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Too Fun\nto End!: Hit and Heal 9",
+      "description": "Applies the Gradual Healing effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101008,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Sharpened Mind 3",
+      "description": "Powers up the user’s moves when its Sp. Atk is raised.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101009,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Head Start 1",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1800101010,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Five Score and Eight Spirits\nGhost Beam: Power +25",
+      "description": "Raises the power of Five Score and Eight Spirits\nGhost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Five Score and Eight Spirits\nGhost Beam": 25
+      }
+    },
+    {
+      "cellId": 1800101011,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Five Score and Eight Spirits\nGhost Beam: Power +25",
+      "description": "Raises the power of Five Score and Eight Spirits\nGhost Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Five Score and Eight Spirits\nGhost Beam": 25
+      }
+    }
+  ]
+}

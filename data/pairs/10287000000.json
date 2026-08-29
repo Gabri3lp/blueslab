@@ -1,0 +1,965 @@
+{
+  "trainerId": "10287000000",
+  "trainerBaseId": "10028700",
+  "monsterId": "20287000000",
+  "monsterBaseId": "2010071100",
+  "displayName": "Trainer #10028700 & Koraidon",
+  "trainerName": "Trainer #10028700",
+  "monsterName": "Koraidon",
+  "type": "Fighting",
+  "weakness": "Fairy",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Ripening Oranges\nAncient Collision Course",
+  "iconUrl": "img/trainers/0287_00-1007_11.png",
+  "stats": {
+    "hp": [
+      110,
+      187,
+      259,
+      545,
+      605,
+      665,
+      845
+    ],
+    "atk": [
+      23,
+      75,
+      123,
+      310,
+      350,
+      390,
+      510
+    ],
+    "def": [
+      13,
+      33,
+      51,
+      128,
+      144,
+      160,
+      208
+    ],
+    "spa": [
+      10,
+      49,
+      85,
+      228,
+      260,
+      292,
+      388
+    ],
+    "spd": [
+      11,
+      29,
+      44,
+      110,
+      122,
+      134,
+      170
+    ],
+    "spe": [
+      16,
+      62,
+      104,
+      280,
+      316,
+      352,
+      460
+    ]
+  },
+  "moves": [
+    {
+      "id": 878,
+      "slot": 1,
+      "name": "Collision Course",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "152",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "This attack’s power increases 30% when it is super effective.",
+      "isSync": false
+    },
+    {
+      "id": 241,
+      "slot": 2,
+      "name": "Sunny Day",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Makes the weather sunny.",
+      "isSync": false
+    },
+    {
+      "id": 6104,
+      "slot": 3,
+      "name": "S Collision\nCourse",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the weather turns sunny.\nDeactivation Condition:\nWhen the weather condition is no longer sunny.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. This attack’s power increases 30% when it is super effective. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. If the remaining MP for the user’s [Name:MoveId Idx=\"241\" ] is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 12870,
+      "slot": 4,
+      "name": "Sparkling\nMemories!",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when the weather is sunny.",
+      "isSync": false
+    },
+    {
+      "id": 111300,
+      "slot": 5,
+      "name": "Ripening Oranges\nAncient Collision Course",
+      "type": "Fighting",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28012401,
+      "name": "Paldea Pride",
+      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "childPassives": []
+    },
+    {
+      "id": 99021401,
+      "name": "Hungry Pulse",
+      "description": "The user’s [Name:ReferencedMessageTag ] increases 30% when the weather is sunny. Makes the weather sunny the first time the user enters a battle each battle. Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "childPassives": [
+        {
+          "id": 23011903,
+          "name": "Sunny: Attack ↑ 3",
+          "description": "The user’s [Name:ReferencedMessageTag ] increases 30% when the weather is sunny."
+        },
+        {
+          "id": 19020601,
+          "name": "Sunburst",
+          "description": "Makes the weather sunny the first time the user enters a battle each battle."
+        },
+        {
+          "id": 19020805,
+          "name": "Drought Alert 5",
+          "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field."
+        }
+      ]
+    },
+    {
+      "id": 99021501,
+      "name": "My Very Own Treasure",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle. Restores [Digit:1digit Idx=\"2\" ] MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle.",
+      "childPassives": [
+        {
+          "id": 17074302,
+          "name": "1st S-Move: Physical Boost 2",
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+        },
+        {
+          "id": 13061801,
+          "name": "1st S-Move: Restore Status P-Move MP 1",
+          "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle."
+        }
+      ]
+    },
+    {
+      "id": 13082802,
+      "name": "Sunny: Team P-Moves ↑ & S-Moves ↑ 2",
+      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1028700000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "move effect",
+      "title": "Collision Course: Hit: Restore Status P-Move MP Once 9",
+      "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon when the user’s attack move is successful. This effect can activate only once per battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700007,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "Solar Sync",
+      "description": "Makes the weather sunny the first time the user’s sync move is used each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700008,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700009,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700010,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700011,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700012,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Collision Course: Power +2",
+      "description": "Raises the power of Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Collision Course": 2
+      }
+    },
+    {
+      "cellId": 1028700013,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Collision Course: Power +2",
+      "description": "Raises the power of Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Collision Course": 2
+      }
+    },
+    {
+      "cellId": 1028700014,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Collision Course: Power +2",
+      "description": "Raises the power of Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Collision Course": 2
+      }
+    },
+    {
+      "cellId": 1028700015,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Sunscreen 2",
+      "description": "Reduces damage when the user is hit by an attack move while the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700016,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700017,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "1st Status P-Move MP 0: Physical Boost 2",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the status moves of its Pokémon is zero each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700018,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Charging Sun 5",
+      "description": "Powers up the user’s moves when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Collision Course: Power +2",
+      "description": "Raises the power of Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Collision Course": 2
+      }
+    },
+    {
+      "cellId": 1028700025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Collision Course: Power +2",
+      "description": "Raises the power of Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Collision Course": 2
+      }
+    },
+    {
+      "cellId": 1028700026,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Collision Course: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700027,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700028,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 5",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700029,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Soften Up 1",
+      "description": "Critical hits land more easily when the user attacks with a sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700030,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700031,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Haste",
+      "description": "Speed cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700032,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700033,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "S Collision\nCourse: Power +2",
+      "description": "Raises the power of S Collision\nCourse.",
+      "statBonus": {},
+      "powerBonus": {
+        "S Collision\nCourse": 2
+      }
+    },
+    {
+      "cellId": 1028700034,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "S Collision\nCourse: Power +2",
+      "description": "Raises the power of S Collision\nCourse.",
+      "statBonus": {},
+      "powerBonus": {
+        "S Collision\nCourse": 2
+      }
+    },
+    {
+      "cellId": 1028700035,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "S Collision\nCourse: Power +2",
+      "description": "Raises the power of S Collision\nCourse.",
+      "statBonus": {},
+      "powerBonus": {
+        "S Collision\nCourse": 2
+      }
+    },
+    {
+      "cellId": 1028700036,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Healing Sun 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action while the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700037,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Inertia",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700038,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Endurance",
+      "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700039,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700040,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700041,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700042,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "S Collision\nCourse: Power +2",
+      "description": "Raises the power of S Collision\nCourse.",
+      "statBonus": {},
+      "powerBonus": {
+        "S Collision\nCourse": 2
+      }
+    },
+    {
+      "cellId": 1028700043,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "S Collision\nCourse: Power +2",
+      "description": "Raises the power of S Collision\nCourse.",
+      "statBonus": {},
+      "powerBonus": {
+        "S Collision\nCourse": 2
+      }
+    },
+    {
+      "cellId": 1028700044,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sparkling\nMemories!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700045,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700046,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "User Sets Sunny W: Free Move Next 9",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it turns the weather sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700047,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sparkling\nMemories!: Mighty Physical Boost 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028700048,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Ripening Oranges\nAncient Collision Course: Power +25",
+      "description": "Raises the power of Ripening Oranges\nAncient Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Ripening Oranges\nAncient Collision Course": 25
+      }
+    },
+    {
+      "cellId": 1028700049,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Ripening Oranges\nAncient Collision Course: Power +25",
+      "description": "Raises the power of Ripening Oranges\nAncient Collision Course.",
+      "statBonus": {},
+      "powerBonus": {
+        "Ripening Oranges\nAncient Collision Course": 25
+      }
+    }
+  ]
+}

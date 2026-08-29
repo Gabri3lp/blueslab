@@ -1,0 +1,988 @@
+{
+  "trainerId": "10133000000",
+  "trainerBaseId": "10013300",
+  "monsterId": "20133000000",
+  "monsterBaseId": "20025000",
+  "displayName": "Trainer #10013300 & Ho-Oh",
+  "trainerName": "Trainer #10013300",
+  "monsterName": "Ho-Oh",
+  "type": "Fire",
+  "weakness": "Water",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Power-Hungry\nSacred Fire",
+  "iconUrl": "img/trainers/0133_00-0250_00.png",
+  "stats": {
+    "hp": [
+      84,
+      193,
+      256,
+      509,
+      553,
+      597,
+      729
+    ],
+    "atk": [
+      20,
+      67,
+      94,
+      204,
+      224,
+      244,
+      304
+    ],
+    "def": [
+      7,
+      37,
+      52,
+      118,
+      130,
+      142,
+      178
+    ],
+    "spa": [
+      20,
+      65,
+      89,
+      188,
+      204,
+      220,
+      268
+    ],
+    "spd": [
+      8,
+      38,
+      53,
+      119,
+      131,
+      143,
+      179
+    ],
+    "spe": [
+      12,
+      63,
+      90,
+      211,
+      231,
+      251,
+      311
+    ]
+  },
+  "moves": [
+    {
+      "id": 315,
+      "slot": 1,
+      "name": "Overheat",
+      "type": "Fire",
+      "category": "Status",
+      "power": "136",
+      "accuracy": "90",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 76,
+      "slot": 2,
+      "name": "Solar Beam",
+      "type": "Grass",
+      "category": "Status",
+      "power": "125",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. The preparation period is skipped when the weather is sunny, and the user will attack right away.",
+      "isSync": false
+    },
+    {
+      "id": 11330,
+      "slot": 3,
+      "name": "I’ll Show\nYou!",
+      "type": "Fire",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s evasiveness and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. These stats are raised by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] instead when the weather is sunny.",
+      "isSync": false
+    },
+    {
+      "id": 221,
+      "slot": 4,
+      "name": "Sacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "87",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Removes the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "isSync": false
+    },
+    {
+      "id": 78800,
+      "slot": 5,
+      "name": "Power-Hungry\nSacred Fire",
+      "type": "Fire",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 13011106,
+      "name": "Charging Sun 6",
+      "description": "Powers up the user’s moves when the weather is sunny.",
+      "childPassives": []
+    },
+    {
+      "id": 12010202,
+      "name": "Speeding Sun 2",
+      "description": "Quickly charges the move gauge when the weather is sunny.",
+      "childPassives": []
+    },
+    {
+      "id": 16010201,
+      "name": "Solarize",
+      "description": "Makes the weather sunny after using the user’s sync move.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1013300000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Solar Beam: Power +3",
+      "description": "Raises the power of Solar Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Solar Beam": 3
+      }
+    },
+    {
+      "cellId": 1013300008,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Solar Beam: Power +3",
+      "description": "Raises the power of Solar Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Solar Beam": 3
+      }
+    },
+    {
+      "cellId": 1013300009,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300011,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Solar Beam: Power +3",
+      "description": "Raises the power of Solar Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Solar Beam": 3
+      }
+    },
+    {
+      "cellId": 1013300012,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Speed +10",
+      "description": "Raises Speed by 10.",
+      "statBonus": {
+        "spe": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Solar Beam: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300014,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Solar Beam: Power +5",
+      "description": "Raises the power of Solar Beam.",
+      "statBonus": {},
+      "powerBonus": {
+        "Solar Beam": 5
+      }
+    },
+    {
+      "cellId": 1013300015,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Solar Beam: Charging Sun 3",
+      "description": "Powers up the user’s moves when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Power Reserves 4",
+      "description": "Powers up the user’s moves when it is in a pinch.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300017,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300018,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300019,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300020,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1013300021,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Accuracy +5",
+      "description": "Raises the accuracy of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300022,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +3",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 3
+      }
+    },
+    {
+      "cellId": 1013300023,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Sacred Fire: Move Gauge Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300024,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +5",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 5
+      }
+    },
+    {
+      "cellId": 1013300025,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Sacred Fire: Power +5",
+      "description": "Raises the power of Sacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Sacred Fire": 5
+      }
+    },
+    {
+      "cellId": 1013300026,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sacred Fire: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300027,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sacred Fire: Hostile Environment 1",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300028,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Overheat: Power +3",
+      "description": "Raises the power of Overheat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overheat": 3
+      }
+    },
+    {
+      "cellId": 1013300029,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300030,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "I’ll Show\nYou!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300031,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300032,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Ramming Speed",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s moves.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300033,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Fast-Track 3",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300034,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Overheat: Accuracy +5",
+      "description": "Raises the accuracy of Overheat.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300035,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Inertia",
+      "description": "The more the user’s Speed is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300036,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 5",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300037,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Overheat: Accuracy +5",
+      "description": "Raises the accuracy of Overheat.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300038,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +5",
+      "description": "Raises Sp. Atk by 5.",
+      "statBonus": {
+        "spa": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300039,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Overheat: Power +3",
+      "description": "Raises the power of Overheat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overheat": 3
+      }
+    },
+    {
+      "cellId": 1013300040,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300041,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Overheat: Power +5",
+      "description": "Raises the power of Overheat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overheat": 5
+      }
+    },
+    {
+      "cellId": 1013300042,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Overheat: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300043,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Overheat: Power +5",
+      "description": "Raises the power of Overheat.",
+      "statBonus": {},
+      "powerBonus": {
+        "Overheat": 5
+      }
+    },
+    {
+      "cellId": 1013300044,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Overheat: Mind Swell 2",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Sp. Atk by one stat rank when its Pokémon uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300045,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Sacred Fire: Burn Synergy 3",
+      "description": "Powers up the user’s moves when the target is burned.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Power-Hungry\nSacred Fire: Power +25",
+      "description": "Raises the power of Power-Hungry\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Power-Hungry\nSacred Fire": 25
+      }
+    },
+    {
+      "cellId": 1013300047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Power-Hungry\nSacred Fire: Power +25",
+      "description": "Raises the power of Power-Hungry\nSacred Fire.",
+      "statBonus": {},
+      "powerBonus": {
+        "Power-Hungry\nSacred Fire": 25
+      }
+    },
+    {
+      "cellId": 1013300048,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300049,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "I’ll Show\nYou!: Berserker 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300050,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Solar Flare 9",
+      "description": "Powers up the user’s sync move when the weather is sunny.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300051,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Atk +20",
+      "description": "Raises Sp. Atk by 20.",
+      "statBonus": {
+        "spa": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300052,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "I’ll Show\nYou!: Ramp Up 2",
+      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1013300053,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "I’ll Show\nYou!: Super Command 9",
+      "description": "Applies the Supereffective ↑ Next effect to the user when its Trainer uses a move.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

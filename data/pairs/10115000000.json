@@ -1,0 +1,990 @@
+{
+  "trainerId": "10115000000",
+  "trainerBaseId": "10011500",
+  "monsterId": "20115000000",
+  "monsterBaseId": "20040500",
+  "displayName": "Trainer #10011500 & Luxray",
+  "trainerName": "Trainer #10011500",
+  "monsterName": "Luxray",
+  "type": "Electric",
+  "weakness": "Ground",
+  "role": "Tech",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": false,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Star Shock\nThunder Fang",
+  "iconUrl": "img/trainers/0115_00-0405_00.png",
+  "stats": {
+    "hp": [
+      118,
+      207,
+      291,
+      632,
+      704,
+      776,
+      992
+    ],
+    "atk": [
+      12,
+      55,
+      94,
+      259,
+      295,
+      331,
+      439
+    ],
+    "def": [
+      14,
+      40,
+      64,
+      163,
+      183,
+      203,
+      263
+    ],
+    "spa": [
+      12,
+      49,
+      85,
+      228,
+      256,
+      284,
+      368
+    ],
+    "spd": [
+      14,
+      40,
+      64,
+      163,
+      183,
+      203,
+      263
+    ],
+    "spe": [
+      18,
+      54,
+      87,
+      219,
+      247,
+      275,
+      359
+    ]
+  },
+  "moves": [
+    {
+      "id": 422,
+      "slot": 1,
+      "name": "Thunder Fang",
+      "type": "Electric",
+      "category": "Status",
+      "power": "47",
+      "accuracy": "95",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "isSync": false
+    },
+    {
+      "id": 604,
+      "slot": 2,
+      "name": "Electric Terrain",
+      "type": "Electric",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Turns the field of play’s terrain into Electric Terrain.",
+      "isSync": false
+    },
+    {
+      "id": 11150,
+      "slot": 3,
+      "name": "Make Some\nSparks!",
+      "type": "Electric",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Critical Hit Next effect to the user. Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the terrain is Electric Terrain.",
+      "isSync": false
+    },
+    {
+      "id": 528,
+      "slot": 4,
+      "name": "Wild Charge",
+      "type": "Electric",
+      "category": "Status",
+      "power": "125",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "The user also takes 20% of the damage it dealt to the target.",
+      "isSync": false
+    },
+    {
+      "id": 80300,
+      "slot": 5,
+      "name": "Star Shock\nThunder Fang",
+      "type": "Electric",
+      "category": "Status",
+      "power": "200",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "This attack’s power increases when the target is paralyzed.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 22010104,
+      "name": "Hostile Environment 4",
+      "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "childPassives": []
+    },
+    {
+      "id": 22010204,
+      "name": "Aggravation 4",
+      "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "childPassives": []
+    },
+    {
+      "id": 18040101,
+      "name": "Terrify 1",
+      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "childPassives": []
+    }
+  ],
+  "variations": [],
+  "grid": [
+    {
+      "cellId": 1011500000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500006,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500007,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wild Charge: Power +3",
+      "description": "Raises the power of Wild Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wild Charge": 3
+      }
+    },
+    {
+      "cellId": 1011500008,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500009,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wild Charge: Power +3",
+      "description": "Raises the power of Wild Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wild Charge": 3
+      }
+    },
+    {
+      "cellId": 1011500010,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Wild Charge: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500011,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Standfast 5",
+      "description": "Reduces recoil damage received from using moves that have the recoil effect tag.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500012,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wild Charge: Power +3",
+      "description": "Raises the power of Wild Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wild Charge": 3
+      }
+    },
+    {
+      "cellId": 1011500013,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Wild Charge: Power +3",
+      "description": "Raises the power of Wild Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wild Charge": 3
+      }
+    },
+    {
+      "cellId": 1011500014,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Wild Charge: Catalytic Cure 1",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP by approximately 20% of its maximum HP when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500015,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Power Induction 3",
+      "description": "Powers up the user’s moves when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500016,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Speed +20",
+      "description": "Raises Speed by 20.",
+      "statBonus": {
+        "spe": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500017,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1011500018,
+      "q": -3,
+      "r": 1,
+      "s": 2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1011500019,
+      "q": -2,
+      "r": 0,
+      "s": 2,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Thunder Fang: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500020,
+      "q": -3,
+      "r": 0,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1011500021,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500022,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1011500023,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Critical Focus 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it lands a critical hit.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500024,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Sp. Def +20",
+      "description": "Raises Sp. Def by 20.",
+      "statBonus": {
+        "spd": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500025,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Paralysis Synergy 2",
+      "description": "Powers up the user’s moves when the target is paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500026,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500027,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1011500028,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Make Some\nSparks!: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500029,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Thunder Fang: Power +4",
+      "description": "Raises the power of Thunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Thunder Fang": 4
+      }
+    },
+    {
+      "cellId": 1011500030,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Shock Recovery 1",
+      "description": "Restores the user’s HP whenever its Pokémon takes an action when the terrain is Electric Terrain.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500031,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500032,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Harry 3",
+      "description": "Powers up the user’s moves against targets that are flinching.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500033,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "HP +30",
+      "description": "Raises HP by 30.",
+      "statBonus": {
+        "hp": 30
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500034,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "First Aid 4",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500035,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500036,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Lithe",
+      "description": "Prevents the user from getting paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500037,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500038,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Wild Charge: Power +3",
+      "description": "Raises the power of Wild Charge.",
+      "statBonus": {},
+      "powerBonus": {
+        "Wild Charge": 3
+      }
+    },
+    {
+      "cellId": 1011500039,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 1,
+      "colorKind": "move effect",
+      "title": "Electric Terrain: MP Refresh 2",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP of the user’s move when that move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500040,
+      "q": -3,
+      "r": 5,
+      "s": -2,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +10",
+      "description": "Raises Attack by 10.",
+      "statBonus": {
+        "atk": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500041,
+      "q": -1,
+      "r": 4,
+      "s": -3,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Turbo Charge 2",
+      "description": "Quickly charges the move gauge when the terrain is Electric Terrain.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500042,
+      "q": -2,
+      "r": 5,
+      "s": -3,
+      "energyCost": 4,
+      "orbCost": 48,
+      "moveLevel": 2,
+      "colorKind": "stat",
+      "title": "Defense +10",
+      "description": "Raises Defense by 10.",
+      "statBonus": {
+        "def": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500043,
+      "q": -3,
+      "r": 6,
+      "s": -3,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Superduper Effective 1",
+      "description": "Powers up moves that are super effective.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500044,
+      "q": -1,
+      "r": 5,
+      "s": -4,
+      "energyCost": 6,
+      "orbCost": 72,
+      "moveLevel": 3,
+      "colorKind": "stat",
+      "title": "Speed +20",
+      "description": "Raises Speed by 20.",
+      "statBonus": {
+        "spe": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500045,
+      "q": -2,
+      "r": 6,
+      "s": -4,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Electrorepulsion 3",
+      "description": "Reduces damage when the user is hit by an attack move while the terrain is Electric Terrain.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500046,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Star Shock\nThunder Fang: Power +25",
+      "description": "Raises the power of Star Shock\nThunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Star Shock\nThunder Fang": 25
+      }
+    },
+    {
+      "cellId": 1011500047,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Star Shock\nThunder Fang: Power +25",
+      "description": "Raises the power of Star Shock\nThunder Fang.",
+      "statBonus": {},
+      "powerBonus": {
+        "Star Shock\nThunder Fang": 25
+      }
+    },
+    {
+      "cellId": 1011500048,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +20",
+      "description": "Raises Attack by 20.",
+      "statBonus": {
+        "atk": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500049,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Make Some\nSparks!: Berserker 2",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500050,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Standfast 9",
+      "description": "Reduces recoil damage received from using moves that have the recoil effect tag.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500051,
+      "q": 2,
+      "r": 0,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +20",
+      "description": "Raises Speed by 20.",
+      "statBonus": {
+        "spe": 20
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500052,
+      "q": 3,
+      "r": 0,
+      "s": -3,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Make Some\nSparks!: Critical Eye 1",
+      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1011500053,
+      "q": 3,
+      "r": -1,
+      "s": -2,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Static Shock 9",
+      "description": "Powers up the user’s sync move when the target is paralyzed.",
+      "statBonus": {},
+      "powerBonus": {}
+    }
+  ]
+}

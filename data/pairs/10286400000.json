@@ -1,0 +1,977 @@
+{
+  "trainerId": "10286400000",
+  "trainerBaseId": "10028640",
+  "monsterId": "20286400000",
+  "monsterBaseId": "2010171100",
+  "displayName": "Florian  (Anniversary 2026) & Ogerpon",
+  "trainerName": "Florian  (Anniversary 2026)",
+  "monsterName": "Ogerpon",
+  "type": "Grass",
+  "weakness": "Fire",
+  "role": "Strike (Physical)",
+  "exRole": "Strike (Physical)",
+  "rarity": 5,
+  "hasEx": true,
+  "hasMega": false,
+  "hasTera": true,
+  "hasSuperAwakening": false,
+  "syncMoveName": "Village Teal Mask\nTera Blast",
+  "iconUrl": "img/trainers/0286_40-1017_11.png",
+  "stats": {
+    "hp": [
+      105,
+      183,
+      258,
+      555,
+      619,
+      683,
+      875
+    ],
+    "atk": [
+      17,
+      60,
+      99,
+      264,
+      300,
+      336,
+      444
+    ],
+    "def": [
+      13,
+      31,
+      49,
+      115,
+      127,
+      139,
+      175
+    ],
+    "spa": [
+      11,
+      48,
+      84,
+      227,
+      255,
+      283,
+      367
+    ],
+    "spd": [
+      14,
+      34,
+      52,
+      129,
+      145,
+      161,
+      209
+    ],
+    "spe": [
+      15,
+      55,
+      94,
+      248,
+      280,
+      312,
+      408
+    ]
+  },
+  "moves": [
+    {
+      "id": 904,
+      "slot": 1,
+      "name": "Ivy Cudgel",
+      "type": "Grass",
+      "category": "Status",
+      "power": "128",
+      "accuracy": "100",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Critical hits land more easily.",
+      "isSync": false
+    },
+    {
+      "id": 580,
+      "slot": 2,
+      "name": "Grassy Terrain",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Turns the field of play’s terrain into Grassy Terrain.",
+      "isSync": false
+    },
+    {
+      "id": 6183,
+      "slot": 3,
+      "name": "Lush\nIvy Cudgel",
+      "type": "Grass",
+      "category": "Status",
+      "power": "100",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The power of this move is not lowered even if there are multiple targets. The more the user’s [Name:ReferencedMessageTag ] is increased, the greater the power of this attack. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"3\" ] the first time this attack move is successful each battle. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 12864,
+      "slot": 4,
+      "name": "Shine,\nTeal Mask!",
+      "type": "Grass",
+      "category": "Status",
+      "power": "0",
+      "accuracy": "0",
+      "gauge": "0",
+      "target": "Self",
+      "description": "Turns the field of play’s terrain into Grassy Terrain. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "isSync": false
+    },
+    {
+      "id": 200503,
+      "slot": 5,
+      "name": "Village Teal Mask\nTera Blast",
+      "type": "Grass",
+      "category": "Status",
+      "power": "250",
+      "accuracy": "-",
+      "gauge": "-",
+      "target": "An opponent",
+      "description": "No additional effect.",
+      "isSync": true
+    }
+  ],
+  "passives": [
+    {
+      "id": 28040901,
+      "name": "Paldea’s Bold Curiosity",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "childPassives": [
+        {
+          "id": 28030901,
+          "name": "Passive #28030901",
+          "description": ""
+        },
+        {
+          "id": 18051501,
+          "name": "P-Moves & S-Moves Crit",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+        }
+      ]
+    },
+    {
+      "id": 33011901,
+      "name": "1st S-Move: Grass S-Tera",
+      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time its sync move is used each battle.",
+      "childPassives": []
+    },
+    {
+      "id": 99039301,
+      "name": "Festival Time!",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move. Reduces the MP for the user’s [Name:MoveId Idx=\"580\" ] by [Digit:1digit ] and grants all of the following effects after your team’s sync pair uses their sync move: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ].",
+      "childPassives": [
+        {
+          "id": 13061509,
+          "name": "Team S-Move: Restore B-Move MP 9",
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move."
+        },
+        {
+          "id": 19063503,
+          "name": "Passive #19063503",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "id": 17092101,
+      "name": "Ally Hits: User Phys Boost ↑1 & S-Move Boost ↑2",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful.",
+      "childPassives": []
+    }
+  ],
+  "variations": [
+    {
+      "formId": 7,
+      "formName": "Tera",
+      "actorId": "pm1017_71_05_ogerpon",
+      "statMultiplier": {
+        "atk": 1.0,
+        "def": 1.0,
+        "spa": 1.0,
+        "spd": 1.0,
+        "spe": 1.0
+      },
+      "passives": [
+        {
+          "id": 23012301,
+          "name": "While S-Tera: 5 Stats ↑ 1",
+          "description": "The user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed increase 10% while it is Sync Terastallized."
+        }
+      ],
+      "terastalMoveId": 4051
+    }
+  ],
+  "grid": [
+    {
+      "cellId": 1028640000,
+      "q": 1,
+      "r": 0,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640001,
+      "q": 1,
+      "r": -1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640002,
+      "q": 0,
+      "r": -1,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640003,
+      "q": -1,
+      "r": 0,
+      "s": 1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640004,
+      "q": -1,
+      "r": 1,
+      "s": 0,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640005,
+      "q": 0,
+      "r": 1,
+      "s": -1,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640006,
+      "q": 0,
+      "r": 2,
+      "s": -2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 5,
+      "colorKind": "move effect",
+      "title": "Green Jasper\nTera Blast: 1st Move: Restore MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s move the first time that move is successful each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640007,
+      "q": 0,
+      "r": -2,
+      "s": 2,
+      "energyCost": 0,
+      "orbCost": 5,
+      "moveLevel": 4,
+      "colorKind": "passive",
+      "title": "The Teal Mask’s Hidden Power",
+      "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640008,
+      "q": 1,
+      "r": 1,
+      "s": -2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640009,
+      "q": 2,
+      "r": 1,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640010,
+      "q": 3,
+      "r": 1,
+      "s": -4,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 1,
+      "colorKind": "passive",
+      "title": "Headstrong",
+      "description": "Attack cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640011,
+      "q": 1,
+      "r": 2,
+      "s": -3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640012,
+      "q": 2,
+      "r": 2,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Ivy Cudgel: Power +2",
+      "description": "Raises the power of Ivy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Ivy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640013,
+      "q": 3,
+      "r": 2,
+      "s": -5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Ivy Cudgel: Power +2",
+      "description": "Raises the power of Ivy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Ivy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640014,
+      "q": 1,
+      "r": 3,
+      "s": -4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Ivy Cudgel: Power +2",
+      "description": "Raises the power of Ivy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Ivy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640015,
+      "q": 2,
+      "r": 3,
+      "s": -5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Ivy Cudgel: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640016,
+      "q": 3,
+      "r": 3,
+      "s": -6,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Ivy Cudgel: Gobsmack 9",
+      "description": "Leaves the target confused when the user’s attack move against it is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640017,
+      "q": 1,
+      "r": 4,
+      "s": -5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Ivy Cudgel: Hit: Stat ↓2 9",
+      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640018,
+      "q": 2,
+      "r": 4,
+      "s": -6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Haymaker",
+      "description": "The more the user’s Attack is raised, the more it powers up the user’s sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640019,
+      "q": -1,
+      "r": -1,
+      "s": 2,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640020,
+      "q": -2,
+      "r": -1,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640021,
+      "q": -3,
+      "r": -1,
+      "s": 4,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "HP +10",
+      "description": "Raises HP by 10.",
+      "statBonus": {
+        "hp": 10
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640022,
+      "q": -1,
+      "r": -2,
+      "s": 3,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Attack +5",
+      "description": "Raises Attack by 5.",
+      "statBonus": {
+        "atk": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640023,
+      "q": -2,
+      "r": -2,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lush\nIvy Cudgel: Power +2",
+      "description": "Raises the power of Lush\nIvy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lush\nIvy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640024,
+      "q": -3,
+      "r": -2,
+      "s": 5,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Lush\nIvy Cudgel: Power +2",
+      "description": "Raises the power of Lush\nIvy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lush\nIvy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640025,
+      "q": -1,
+      "r": -3,
+      "s": 4,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lush\nIvy Cudgel: Power +2",
+      "description": "Raises the power of Lush\nIvy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lush\nIvy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640026,
+      "q": -2,
+      "r": -3,
+      "s": 5,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Lush\nIvy Cudgel: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640027,
+      "q": -3,
+      "r": -3,
+      "s": 6,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Grassy Terrain Hit: Free Move Next 4",
+      "description": "Has a chance ([Digit:2digits Idx=\"2\" ]%) of applying the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640028,
+      "q": -1,
+      "r": -4,
+      "s": 5,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Empowering Overgrowth 5",
+      "description": "Powers up the user’s moves when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640029,
+      "q": -2,
+      "r": -4,
+      "s": 6,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "User Sets Grassy Terrain: Supereffective ↑ Next",
+      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when it turns the field of play’s terrain into [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640030,
+      "q": 2,
+      "r": -1,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640031,
+      "q": 3,
+      "r": -2,
+      "s": -1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Sp. Def +5",
+      "description": "Raises Sp. Def by 5.",
+      "statBonus": {
+        "spd": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640032,
+      "q": 2,
+      "r": -2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Green Jasper\nTera Blast: Power +2",
+      "description": "Raises the power of Green Jasper\nTera Blast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Green Jasper\nTera Blast": 2
+      }
+    },
+    {
+      "cellId": 1028640033,
+      "q": 1,
+      "r": -2,
+      "s": 1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Green Jasper\nTera Blast: Power +2",
+      "description": "Raises the power of Green Jasper\nTera Blast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Green Jasper\nTera Blast": 2
+      }
+    },
+    {
+      "cellId": 1028640034,
+      "q": 3,
+      "r": -3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Green Jasper\nTera Blast: Power +2",
+      "description": "Raises the power of Green Jasper\nTera Blast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Green Jasper\nTera Blast": 2
+      }
+    },
+    {
+      "cellId": 1028640035,
+      "q": 2,
+      "r": -3,
+      "s": 1,
+      "energyCost": 7,
+      "orbCost": 84,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Green Jasper\nTera Blast: Move Gauge Refresh 3",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640036,
+      "q": 1,
+      "r": -3,
+      "s": 2,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Turbo Turf 2",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640037,
+      "q": 3,
+      "r": -4,
+      "s": 1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Impervious",
+      "description": "The user’s stats cannot be lowered.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640038,
+      "q": 2,
+      "r": -4,
+      "s": 2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Shine,\nTeal Mask!: 1st Move: Restore MP 1",
+      "description": "Restores [Digit:1digit ] MP of the user’s move the first time that move is successful each battle.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640039,
+      "q": -2,
+      "r": 1,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Defense +5",
+      "description": "Raises Defense by 5.",
+      "statBonus": {
+        "def": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640040,
+      "q": -3,
+      "r": 2,
+      "s": 1,
+      "energyCost": 2,
+      "orbCost": 24,
+      "moveLevel": 1,
+      "colorKind": "stat",
+      "title": "Speed +5",
+      "description": "Raises Speed by 5.",
+      "statBonus": {
+        "spe": 5
+      },
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640041,
+      "q": -2,
+      "r": 2,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Ivy Cudgel: Power +2",
+      "description": "Raises the power of Ivy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Ivy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640042,
+      "q": -1,
+      "r": 2,
+      "s": -1,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 1,
+      "colorKind": "move boost",
+      "title": "Green Jasper\nTera Blast: Power +2",
+      "description": "Raises the power of Green Jasper\nTera Blast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Green Jasper\nTera Blast": 2
+      }
+    },
+    {
+      "cellId": 1028640043,
+      "q": -3,
+      "r": 3,
+      "s": 0,
+      "energyCost": 3,
+      "orbCost": 36,
+      "moveLevel": 2,
+      "colorKind": "move boost",
+      "title": "Lush\nIvy Cudgel: Power +2",
+      "description": "Raises the power of Lush\nIvy Cudgel.",
+      "statBonus": {},
+      "powerBonus": {
+        "Lush\nIvy Cudgel": 2
+      }
+    },
+    {
+      "cellId": 1028640044,
+      "q": -2,
+      "r": 3,
+      "s": -1,
+      "energyCost": 9,
+      "orbCost": 108,
+      "moveLevel": 2,
+      "colorKind": "move effect",
+      "title": "Shine,\nTeal Mask!: Brawn Gain 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640045,
+      "q": -1,
+      "r": 3,
+      "s": -2,
+      "energyCost": 8,
+      "orbCost": 96,
+      "moveLevel": 2,
+      "colorKind": "passive",
+      "title": "Grassy Cushion 2",
+      "description": "Reduces damage when the user is hit by an attack move while the terrain is [Name:ReferencedMessageTag ].",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640046,
+      "q": -3,
+      "r": 4,
+      "s": -1,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "passive",
+      "title": "Team S-Move: Physical Boost ↑1 9",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640047,
+      "q": -2,
+      "r": 4,
+      "s": -2,
+      "energyCost": 10,
+      "orbCost": 120,
+      "moveLevel": 3,
+      "colorKind": "move effect",
+      "title": "Shine,\nTeal Mask!: Durable 9",
+      "description": "Applies the Enduring effect to the user when its move is successful.",
+      "statBonus": {},
+      "powerBonus": {}
+    },
+    {
+      "cellId": 1028640048,
+      "q": 0,
+      "r": 3,
+      "s": -3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Village Teal Mask\nTera Blast: Power +25",
+      "description": "Raises the power of Village Teal Mask\nTera Blast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Village Teal Mask\nTera Blast": 25
+      }
+    },
+    {
+      "cellId": 1028640049,
+      "q": 0,
+      "r": -3,
+      "s": 3,
+      "energyCost": 5,
+      "orbCost": 60,
+      "moveLevel": 3,
+      "colorKind": "sync",
+      "title": "Village Teal Mask\nTera Blast: Power +25",
+      "description": "Raises the power of Village Teal Mask\nTera Blast.",
+      "statBonus": {},
+      "powerBonus": {
+        "Village Teal Mask\nTera Blast": 25
+      }
+    }
+  ]
+}
