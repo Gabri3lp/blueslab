@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -40,7 +40,6 @@ jobs:
 
           trainers_dir = "src/BluesLab/wwwroot/img/trainers"
           pairs_dir = "src/BluesLab/wwwroot/data/pairs"
-
           CDN_BASE = "https://pokemon.brybry.ch"
           headers = {"User-Agent": "Mozilla/5.0"}
 
@@ -62,8 +61,6 @@ jobs:
                   if os.path.exists(dest):
                       ok += 1
                       continue
-                  # Build CDN URL from filename pattern e.g. 0126_00-0006_00.png
-                  # -> https://pokemon.brybry.ch/masters/img/trainers/0126_00-0006_00.png
                   url = f"{CDN_BASE}/masters/img/trainers/{filename}"
                   try:
                       req = urllib.request.Request(url, headers=headers)
@@ -72,28 +69,21 @@ jobs:
                       ok += 1
                   except Exception as e:
                       fail += 1
-                      if fail <= 5:
-                          print(f"  FAIL: {filename} -> {e}")
-                  time.sleep(0.05)
+                  time.sleep(0.02)
               except Exception as e:
-                  print(f"Error processing {f}: {e}")
+                  pass
 
           print(f"Done: {ok} downloaded, {fail} failed")
           EOF
 
-          # Ensure fallback unknown.png exists
+          # Fallback unknown.png
           if [ ! -f "$TRAINERS_DIR/unknown.png" ]; then
-            # Create minimal 1x1 gray PNG as fallback
             python3 -c "
-          import base64, os
-          # Minimal 1x1 gray PNG
+          import base64
           data = base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==')
           open('$TRAINERS_DIR/unknown.png','wb').write(data)
-          print('Created fallback unknown.png')
           "
           fi
-
-          echo "Avatar images ready: $(ls $TRAINERS_DIR | wc -l) files"
 
       - name: Publish Blazor WASM
         run: |
@@ -115,7 +105,13 @@ jobs:
       - name: Add .nojekyll
         run: touch publish/wwwroot/.nojekyll
 
-      - name: Upload Pages artifact
+      - name: Deploy to gh-pages branch (Fallback)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: publish/wwwroot
+          branch: gh-pages
+
+      - name: Upload Pages artifact (Native GitHub Actions Pages)
         uses: actions/upload-pages-artifact@v3
         with:
           path: publish/wwwroot
