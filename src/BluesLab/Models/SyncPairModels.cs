@@ -145,7 +145,7 @@ public class PairStats
     [JsonPropertyName("spe")]
     public List<int> Spe { get; set; } = new();
 
-    private static readonly int[] BreakpointLevels = [1, 30, 45, 120, 140, 150, 200];
+    private static readonly int[] BreakpointLevels = [1, 30, 45, 100, 120, 140, 200];
 
     public int GetStatAtLevel(string statName, int level)
     {

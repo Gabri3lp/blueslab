@@ -136,7 +136,7 @@ public class DamageCalculatorService
         {
             if (!isSync)
             {
-                if (saLevel >= 4) return 30;
+                if (saLevel >= 4) return 40;
                 if (saLevel >= 2) return 10;
             }
             else
