@@ -1,5 +1,6 @@
 @inject DamageCalculatorService CalcService
 @inject GridStateService GridState
+@implements IDisposable
 
 <div class="sync-pair-overview p-2">
     @if (Pair == null)
@@ -16,9 +17,9 @@
                     <div>
                         <h5 class="fw-bold text-light mb-1">
                             @Pair.DisplayName
-                            @if (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                            @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
                             {
-                                <span class="badge bg-warning text-dark fs-6 ms-2">(@Pair.Variations[SelectedFormIndex - 1].FormName)</span>
+                                <span class="badge bg-warning text-dark fs-6 ms-2">(@Pair.Variations[Ally.FormIndex - 1].FormName)</span>
                             }
                         </h5>
                         <div class="d-flex flex-wrap align-items-center gap-2">
@@ -40,23 +41,35 @@
                 @if (Pair.Variations.Count > 0 || Pair.HasMega || Pair.HasTera)
                 {
                     <div class="btn-group btn-group-sm">
-                        <button class="btn @(SelectedFormIndex == 0 ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(0)">
+                        <button class="btn @(Ally.FormIndex == 0 ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(0)">
                             Base Form
                         </button>
                         @for (int i = 0; i < Pair.Variations.Count; i++)
                         {
                             int idx = i + 1;
                             var v = Pair.Variations[i];
-                            <button class="btn @(SelectedFormIndex == idx ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(idx)">
+                            <button class="btn @(Ally.FormIndex == idx ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(idx)">
                                 @v.FormName
                             </button>
                         }
                     </div>
                 }
 
-                <!-- Star Level, Level and EX Role Controls -->
-                <div class="d-flex align-items-center gap-2">
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 100px;" @bind="SelectedStarLevel">
+                <!-- Star Level, Level, Move Level & EX Role Controls -->
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <!-- Move Level Selector (1-5) -->
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary">
+                        <span class="small text-muted fw-bold">Move Lv:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 50px;" value="@Ally.MoveLevel" @onchange="OnMoveLevelSelect">
+                            <option value="1">1/5</option>
+                            <option value="2">2/5</option>
+                            <option value="3">3/5</option>
+                            <option value="4">4/5</option>
+                            <option value="5">5/5</option>
+                        </select>
+                    </div>
+
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 100px;" @bind="Ally.StarLevel" @bind:after="StateHasChanged">
                         <option value="3★">3★</option>
                         <option value="4★">4★</option>
                         <option value="5★">5★</option>
@@ -67,7 +80,12 @@
                         }
                     </select>
 
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 90px;" @bind="SelectedLevel">
+                    <!-- Level Selector -->
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 95px;" @bind="Ally.CharLevel" @bind:after="StateHasChanged">
+                        <option value="1">Lv. 1</option>
+                        <option value="30">Lv. 30</option>
+                        <option value="45">Lv. 45</option>
+                        <option value="100">Lv. 100</option>
                         <option value="120">Lv. 120</option>
                         <option value="130">Lv. 130</option>
                         <option value="140">Lv. 140</option>
@@ -75,9 +93,24 @@
                         <option value="200">Lv. 200</option>
                     </select>
 
+                    @if (Pair.HasSuperAwakening)
+                    {
+                        <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-danger">
+                            <span class="text-danger small fw-bold">SA:</span>
+                            <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 45px;" value="@Ally.SuperAwakeningLevel" @onchange="OnSaLevelSelect">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    }
+
                     @if (Pair.HasEx && !string.IsNullOrEmpty(Pair.ExRole))
                     {
-                        <button class="btn btn-sm @(ExRoleActive ? "btn-indigo" : "btn-outline-secondary")" @onclick="() => ExRoleActive = !ExRoleActive">
+                        <button class="btn btn-sm @(Ally.HasExRole ? "btn-indigo" : "btn-outline-secondary")" @onclick="() => { Ally.HasExRole = !Ally.HasExRole; StateHasChanged(); }">
                             EX Role
                         </button>
                     }
@@ -89,12 +122,12 @@
         <div class="card bg-dark border-secondary p-3 mb-3">
             <h6 class="text-info fw-bold mb-3 d-flex align-items-center justify-content-between">
                 <span class="d-flex align-items-center gap-2">
-                    <i class="bi bi-bar-chart-fill"></i> Stats Breakdown
+                    <i class="bi bi-bar-chart-fill"></i> Stats Breakdown (Lv. @Ally.CharLevel)
                 </span>
-                @if (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
                 {
                     <span class="badge bg-secondary text-warning small">
-                        Form Scaling Active: @Pair.Variations[SelectedFormIndex - 1].FormName
+                        Form Scaling Active: @Pair.Variations[Ally.FormIndex - 1].FormName
                     </span>
                 }
             </h6>
@@ -113,18 +146,19 @@
                     </thead>
                     <tbody>
                         @{
-                            int lvl = int.TryParse(SelectedLevel, out int l) ? l : 140;
-                            var pot = CalcService.CalcPotentialBonus(Pair.Rarity, SelectedStarLevel);
-                            var ex = ExRoleActive ? CalcService.GetExRoleBonus(Pair.ExRole) : new();
+                            int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 140;
+                            var pot = CalcService.CalcPotentialBonus(Pair.Rarity, Ally.StarLevel);
+                            var ex = Ally.HasExRole ? CalcService.GetExRoleBonus(Pair.ExRole) : new();
                             string[] statsKeys = ["hp", "atk", "def", "spa", "spd", "spe"];
-                            var currentVariation = (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
-                                ? Pair.Variations[SelectedFormIndex - 1]
+                            var currentVariation = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
+                                ? Pair.Variations[Ally.FormIndex - 1]
                                 : null;
+                            bool isSaActive = Pair.HasSuperAwakening && Ally.SuperAwakeningLevel >= 1;
                         }
                         <tr>
                             <td class="text-start text-muted small">
-                                Base Stat (Lv. @SelectedLevel)
-                                @if (Pair.HasSuperAwakening)
+                                Base Stat (Lv. @Ally.CharLevel)
+                                @if (isSaActive)
                                 {
                                     <span class="badge bg-danger text-light ms-1" style="font-size: 0.65rem;">+10% SA</span>
                                 }
@@ -133,7 +167,7 @@
                             {
                                 int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
                                 int saBase = rawBase;
-                                if (Pair.HasSuperAwakening)
+                                if (isSaActive)
                                 {
                                     saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
                                 }
@@ -196,7 +230,7 @@
                                     exBonus: exVal,
                                     formMult: formMult,
                                     hasSa: Pair.HasSuperAwakening,
-                                    saLevel: Pair.HasSuperAwakening ? 5 : 0,
+                                    saLevel: Ally.SuperAwakeningLevel,
                                     role: Pair.Role,
                                     gridStat: gBonus
                                 );
@@ -255,15 +289,15 @@
                         <span class="d-flex align-items-center gap-2">
                             <i class="bi bi-shield-check"></i> Passive Skills
                         </span>
-                        @if (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count)
+                        @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
                         {
-                            <span class="badge bg-warning text-dark small">@Pair.Variations[SelectedFormIndex - 1].FormName Passives</span>
+                            <span class="badge bg-warning text-dark small">@Pair.Variations[Ally.FormIndex - 1].FormName Passives</span>
                         }
                     </h6>
                     <div class="d-flex flex-column gap-2">
                         @{
-                            var activePassives = (SelectedFormIndex > 0 && SelectedFormIndex <= Pair.Variations.Count && Pair.Variations[SelectedFormIndex - 1].Passives.Count > 0)
-                                ? Pair.Variations[SelectedFormIndex - 1].Passives
+                            var activePassives = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count && Pair.Variations[Ally.FormIndex - 1].Passives.Count > 0)
+                                ? Pair.Variations[Ally.FormIndex - 1].Passives
                                 : Pair.Passives;
                         }
                         @foreach (var passive in activePassives)
@@ -294,28 +328,50 @@
 
 @code {
     [Parameter] public SyncPairDetail? Pair { get; set; }
+    [Parameter] public CombatantState Ally { get; set; } = new();
     [Parameter] public int MoveLevel { get; set; } = 5;
-    [Parameter] public int FormIndex { get; set; } = 0;
-    [Parameter] public EventCallback<int> FormIndexChanged { get; set; }
+    [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
 
-    private int SelectedFormIndex = 0;
-    private string SelectedStarLevel = "5★ EX";
-    private string SelectedLevel = "140";
-    private bool ExRoleActive = true;
-
-    protected override void OnParametersSet()
+    protected override void OnInitialized()
     {
-        SelectedFormIndex = FormIndex;
-        if (Pair != null)
+        GridState.OnGridChanged += OnGridUpdated;
+    }
+
+    private void OnGridUpdated()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void SetForm(int idx)
+    {
+        Ally.FormIndex = idx;
+        StateHasChanged();
+    }
+
+    private async Task OnMoveLevelSelect(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
         {
-            SelectedStarLevel = Pair.HasEx ? "5★ EX" : (Pair.Rarity == 5 ? "5★ 20/20" : $"{Pair.Rarity}★");
+            Ally.MoveLevel = val;
+            int fullLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : val;
+            await MoveLevelChanged.InvokeAsync(fullLvl);
+            StateHasChanged();
         }
     }
 
-    private async Task SetForm(int idx)
+    private async Task OnSaLevelSelect(ChangeEventArgs e)
     {
-        SelectedFormIndex = idx;
-        FormIndex = idx;
-        await FormIndexChanged.InvokeAsync(idx);
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            Ally.SuperAwakeningLevel = val;
+            int fullLvl = val > 0 ? (5 + val) : Ally.MoveLevel;
+            await MoveLevelChanged.InvokeAsync(fullLvl);
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        GridState.OnGridChanged -= OnGridUpdated;
     }
 }

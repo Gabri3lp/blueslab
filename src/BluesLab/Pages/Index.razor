@@ -60,9 +60,9 @@ else
                     @if (ActiveTab == 0)
                     {
                         <SyncPairOverview Pair="ActivePair"
+                                          Ally="AllyState"
                                           MoveLevel="MoveLevel"
-                                          FormIndex="AllyState.FormIndex"
-                                          FormIndexChanged="(f) => { AllyState.FormIndex = f; StateHasChanged(); }" />
+                                          MoveLevelChanged="OnMoveLevelChanged" />
                     }
                     else
                     {
