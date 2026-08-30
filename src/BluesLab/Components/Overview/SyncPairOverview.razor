@@ -12,7 +12,7 @@
         <div class="card bg-dark border-secondary p-3 mb-3">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-3">
-                    <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="56" height="56" class="rounded-circle border border-warning shadow" onerror="this.src='img/trainers/unknown.png';" />
+                    <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="56" height="56" class="rounded-circle border border-warning shadow" onerror="this.src=''img/trainers/unknown.png'';" />
                     <div>
                         <h5 class="fw-bold text-light mb-1">
                             @Pair.DisplayName
@@ -122,11 +122,22 @@
                                 : null;
                         }
                         <tr>
-                            <td class="text-start text-muted small">Base Stat (Lv. @SelectedLevel)</td>
+                            <td class="text-start text-muted small">
+                                Base Stat (Lv. @SelectedLevel)
+                                @if (Pair.HasSuperAwakening)
+                                {
+                                    <span class="badge bg-danger text-light ms-1" style="font-size: 0.65rem;">+10% SA</span>
+                                }
+                            </td>
                             @foreach (var s in statsKeys)
                             {
-                                int baseStat = Pair.Stats.GetStatAtLevel(s, lvl);
-                                <td>@baseStat</td>
+                                int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                                int saBase = rawBase;
+                                if (Pair.HasSuperAwakening)
+                                {
+                                    saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                                }
+                                <td>@saBase</td>
                             }
                         </tr>
                         <tr>
@@ -165,7 +176,7 @@
                             <td class="text-start text-warning">Total Stat</td>
                             @foreach (var s in statsKeys)
                             {
-                                int baseStat = Pair.Stats.GetStatAtLevel(s, lvl);
+                                int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
                                 int potVal = pot.GetValueOrDefault(s, 0);
                                 int exVal = ex.GetValueOrDefault(s, 0);
                                 double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
@@ -179,7 +190,7 @@
 
                                 int total = CalcService.CalcTotalStat(
                                     s,
-                                    baseStat,
+                                    rawBase,
                                     0,
                                     potential: potVal,
                                     exBonus: exVal,

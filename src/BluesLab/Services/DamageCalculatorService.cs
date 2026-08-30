@@ -185,7 +185,7 @@ public class DamageCalculatorService
         int baseVal = jsonStat;
         if (hasSa && saLevel >= 1)
         {
-            baseVal = (int)Math.Ceiling(baseVal * 1.1);
+            baseVal = (int)Math.Ceiling(baseVal * 1.1) + (baseVal % 10 != 0 ? -1 : 0);
         }
         if (hasSa && role.Trim().Equals("Support", StringComparison.OrdinalIgnoreCase))
         {
