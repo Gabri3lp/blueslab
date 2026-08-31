@@ -469,11 +469,19 @@ public class DamageCalculatorService
         }
 
         // Sync Buffs: (2 + syncBoosts) / 2
-        if (ally.SyncBoosts > 0)
+        int effectiveSyncBoosts = ally.SyncBoosts;
+        // In PMEX / PoMaTools: To be in Mega or Tera form (FormIndex > 0), the pair already synced once to transform.
+        // Therefore, all moves in that form automatically gain the Sync Buff(s) granted by that sync (+2 if Support EX, +1 otherwise)!
+        if (ally.FormIndex > 0 && (pair.HasMega || pair.HasTera || pair.Variations.Count > 0))
         {
-            ne *= (2 + ally.SyncBoosts);
+            effectiveSyncBoosts += GetSyncBuffsGrantedBySync(ally);
+        }
+
+        if (effectiveSyncBoosts > 0)
+        {
+            ne *= (2 + effectiveSyncBoosts);
             he *= 2.0;
-            pills.Add(new MultiplierPill { Label = "Sync Buffs", Value = $"×{1.0 + ally.SyncBoosts * 0.5:0.#}", Color = "#e67e22" });
+            pills.Add(new MultiplierPill { Label = "Sync Buffs", Value = $"×{1.0 + effectiveSyncBoosts * 0.5:0.#}", Color = "#e67e22" });
         }
 
         // Target count (AoE scaling)
