@@ -369,10 +369,18 @@ public class DamageCalculatorService
         var potBonus = CalcPotentialBonus(pair.Rarity, ally.StarLevel);
         int exAtkBonus = ally.HasExRole ? GetExRoleBonus(pair.ExRole).GetValueOrDefault(atkStatKey, 0) : 0;
         
-        double formStatMult = 1.0;
-        if (ally.FormIndex > 0 && ally.FormIndex <= pair.Variations.Count)
+        int effectiveFormIdx = ally.FormIndex;
+        // In PMEX & PoMaTools: The Sync Move triggers Mega Evolution first, so the Sync Move damage
+        // is always computed using the Mega Form stats and multiplier!
+        if (move.IsSync && effectiveFormIdx == 0 && pair.HasMega && pair.Variations.Count > 0)
         {
-            var variation = pair.Variations[ally.FormIndex - 1];
+            effectiveFormIdx = 1;
+        }
+
+        double formStatMult = 1.0;
+        if (effectiveFormIdx > 0 && effectiveFormIdx <= pair.Variations.Count)
+        {
+            var variation = pair.Variations[effectiveFormIdx - 1];
             formStatMult = variation.StatMultiplier.GetValueOrDefault(atkStatKey, 1.0);
             if (formStatMult > 1.0)
             {
@@ -629,8 +637,14 @@ public class DamageCalculatorService
                     }
                 }
             }
-            var passivesList = (ally.FormIndex > 0 && ally.FormIndex <= ally.Pair.Variations.Count && ally.Pair.Variations[ally.FormIndex - 1].Passives.Count > 0)
-                ? ally.Pair.Variations[ally.FormIndex - 1].Passives
+            int effectiveFormForPassives = ally.FormIndex;
+            if (move.IsSync && effectiveFormForPassives == 0 && ally.Pair.HasMega && ally.Pair.Variations.Count > 0)
+            {
+                effectiveFormForPassives = 1;
+            }
+
+            var passivesList = (effectiveFormForPassives > 0 && effectiveFormForPassives <= ally.Pair.Variations.Count && ally.Pair.Variations[effectiveFormForPassives - 1].Passives.Count > 0)
+                ? ally.Pair.Variations[effectiveFormForPassives - 1].Passives
                 : ally.Pair.Passives;
 
             foreach (var p in passivesList)
@@ -1039,6 +1053,15 @@ public class DamageCalculatorService
             return true;
         }
         return false;
+    }
+
+    public static int GetSyncBuffsGrantedBySync(CombatantState ally)
+    {
+        if (ally.Pair == null) return 1;
+        bool isEx = ally.StarLevel.Contains("EX", StringComparison.OrdinalIgnoreCase) || ally.StarLevel.Contains("6★");
+        bool isSupportBase = ally.Pair.Role.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
+        bool isSupportExRole = ally.HasExRole && !string.IsNullOrEmpty(ally.Pair.ExRole) && ally.Pair.ExRole.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
+        return (isEx && (isSupportBase || isSupportExRole)) ? 2 : 1;
     }
 
 }
