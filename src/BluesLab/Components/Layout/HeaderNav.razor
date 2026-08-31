@@ -1,10 +1,10 @@
 @inject GridStateService GridState
 
 <header class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary px-3 py-2 sticky-top shadow-sm">
-    <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
+    <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-start gap-2 gap-md-3">
         
         <!-- Brand & Pair Selector Button -->
-        <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-2 gap-md-3">
             <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-5">
                 <i class="bi bi-cpu-fill"></i> BLUES LAB
             </span>
@@ -26,8 +26,8 @@
             }
         </div>
 
-        <!-- Grid Resources & Level Controls -->
-        <div class="d-flex flex-wrap align-items-center gap-3">
+        <!-- Grid Resources & Level Controls (All Left-Aligned) -->
+        <div class="d-flex flex-wrap align-items-center gap-2 gap-md-3">
             @if (CurrentPair != null)
             {
                 <!-- Energy & Orbs -->
