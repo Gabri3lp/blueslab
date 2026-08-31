@@ -92,135 +92,139 @@
             </div>
         </div>
 
-        <!-- Live Damage Output Hero Cards -->
-        <div class="mb-4">
-            <h6 class="text-warning fw-bold text-uppercase mb-2 d-flex align-items-center gap-2">
-                <i class="bi bi-lightning-charge-fill"></i> Live Damage Results
+        <!-- Live Damage Output Vertical List -->
+        <div class="mb-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <h6 class="text-warning fw-bold text-uppercase mb-0 d-flex align-items-center gap-2">
+                    <i class="bi bi-lightning-charge-fill"></i> Live Damage Results
+                </h6>
                 @if (GridState.ActiveCells.Count > 0)
                 {
-                    <span class="badge bg-secondary text-info fs-7 ms-2">
+                    <span class="badge bg-secondary text-info" style="font-size: 0.75rem;">
                         @GridState.ActiveCells.Count Grid Tiles Active
                     </span>
                 }
-            </h6>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
+            </div>
+
+            <div class="d-flex flex-column gap-2">
                 @foreach (var move in ActiveMoves)
                 {
                     var result = CalcService.CalculateDamage(move, Ally, Enemy, Field, Rules, GridState.ActiveCells);
-                    <div class="col">
-                        <div class="card h-100 bg-dark border-secondary damage-card p-3 shadow">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <div>
-                                    <div class="fw-bold text-light fs-6">@move.Name</div>
-                                    <div class="d-flex gap-1 mt-1">
-                                        <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
-                                        <span class="badge bg-secondary">@move.Category</span>
-                                        @if (move.IsSync)
-                                        {
-                                            <span class="badge bg-purple">Sync Move</span>
-                                        }
-                                    </div>
+                    <div class="card bg-dark border-secondary p-2 px-3 shadow-sm">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                            <div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="fw-bold text-light fs-6">@move.Name</span>
+                                    @if (move.IsSync)
+                                    {
+                                        <span class="badge bg-purple" style="font-size: 0.7rem;">Sync Move</span>
+                                    }
                                 </div>
-                                <div class="text-end">
-                                    <div class="badge bg-secondary text-light">Power: @result.ScaledMovePower</div>
+                                <div class="d-flex gap-1 align-items-center mt-1">
+                                    <span class="badge type-badge type-@move.Type.ToLowerInvariant()" style="font-size: 0.7rem;">@move.Type</span>
+                                    <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
+                                    <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">Power: <b class="text-warning">@result.ScaledMovePower</b></span>
                                 </div>
                             </div>
 
-                            <!-- Big Damage Numbers -->
-                            <div class="damage-hero text-center my-3 p-2 rounded bg-black bg-opacity-40 border border-secondary border-opacity-50">
-                                <div class="text-muted small">Average Damage</div>
-                                <div class="fs-2 fw-bolder text-warning">@result.AvgDamage.ToString("N0")</div>
-                                <div class="small text-secondary d-flex justify-content-center gap-3 mt-1">
-                                    <span>Min: <b class="text-light">@result.MinDamage.ToString("N0")</b></span>
-                                    <span>Max: <b class="text-light">@result.MaxDamage.ToString("N0")</b></span>
+                            <div class="text-end">
+                                <div class="fs-4 fw-bolder text-warning lh-1">@result.AvgDamage.ToString("N0")</div>
+                                <div class="text-secondary small" style="font-size: 0.75rem;">
+                                    Min: <b class="text-light">@result.MinDamage.ToString("N0")</b> &bull; Max: <b class="text-light">@result.MaxDamage.ToString("N0")</b>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Multipliers Breakdown Pills -->
-                            <div class="d-flex flex-wrap gap-1 mt-auto">
+                        @if (result.Breakdown.Count > 0)
+                        {
+                            <div class="d-flex flex-wrap gap-1 mt-2 pt-1 border-top border-secondary border-opacity-50">
                                 @foreach (var pill in result.Breakdown)
                                 {
-                                    <span class="badge" style="background-color: @pill.Color; font-size: 0.75rem;">
+                                    <span class="badge" style="background-color: @pill.Color; font-size: 0.7rem;">
                                         @pill.Label: @pill.Value
                                     </span>
                                 }
                             </div>
-                        </div>
+                        }
                     </div>
                 }
             </div>
         </div>
 
-        <!-- Controls Accordion (Attacker, Defender, Field) -->
-        <div class="row g-3">
-            <!-- Attacker Settings -->
-            <div class="col-lg-4">
-                <div class="card bg-dark border-secondary h-100 p-3">
-                    <h6 class="text-info fw-bold mb-3"><i class="bi bi-shield-shaded"></i> Attacker Buffs</h6>
-                    
-                    <!-- Stat Stages -->
-                    <div class="row g-2 mb-3">
-                        @foreach (var stat in new[] { "atk", "def", "spa", "spd", "spe", "crit" })
-                        {
-                            int val = Ally.Stages.GetValueOrDefault(stat, 0);
-                            int maxStage = stat == "crit" ? 3 : 6;
-                            int minStage = stat == "crit" ? 0 : -6;
-                            <div class="col-6">
-                                <label class="small text-secondary text-uppercase d-flex justify-content-between">
-                                    <span>@stat</span>
-                                    <span class="fw-bold @(val > 0 ? "text-success" : (val < 0 ? "text-danger" : "text-light"))">@(val > 0 ? $"+{val}" : val.ToString())</span>
-                                </label>
-                                <div class="input-group input-group-sm">
-                                    <button class="btn btn-outline-secondary" type="button" @onclick="() => SetAllyStage(stat, Math.Max(minStage, val - 1))">-</button>
-                                    <input type="range" class="form-range mx-2" min="@minStage" max="@maxStage" value="@val" @oninput="(e) => OnAllySliderInput(stat, e)" />
-                                    <button class="btn btn-outline-secondary" type="button" @onclick="() => SetAllyStage(stat, Math.Min(maxStage, val + 1))">+</button>
+        <!-- Vertical Compact Buffs, Debuffs & Field Section -->
+        <div class="d-flex flex-column gap-2">
+            <!-- 1. Attacker Buffs Card -->
+            <div class="card bg-dark border-secondary p-3 shadow-sm">
+                <h6 class="text-info fw-bold mb-2 d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-shaded"></i> Attacker Buffs
+                </h6>
+
+                <!-- Stat Stages Steppers -->
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2">
+                    @foreach (var stat in new[] { "atk", "def", "spa", "spd", "spe", "crit" })
+                    {
+                        int val = Ally.Stages.GetValueOrDefault(stat, 0);
+                        int maxStage = stat == "crit" ? 3 : 6;
+                        int minStage = stat == "crit" ? 0 : -6;
+                        <div class="col">
+                            <div class="p-1 px-2 rounded bg-black bg-opacity-40 border border-secondary border-opacity-75 d-flex align-items-center justify-content-between">
+                                <span class="small fw-bold text-secondary text-uppercase" style="font-size: 0.75rem;">@stat</span>
+                                <span class="small fw-bold @(val > 0 ? "text-success" : (val < 0 ? "text-danger" : "text-light"))">
+                                    @(val > 0 ? $"+{val}" : val.ToString())
+                                </span>
+                                <div class="btn-group btn-group-sm" style="height: 22px;">
+                                    <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => SetAllyStage(stat, Math.Max(minStage, val - 1))">-</button>
+                                    <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => SetAllyStage(stat, Math.Min(maxStage, val + 1))">+</button>
                                 </div>
                             </div>
-                        }
-                    </div>
-
-                    <!-- Next Boosts (PMUN, SMUN, SE Next, Crit) -->
-                    <div class="mb-3">
-                        <label class="small text-secondary fw-bold text-uppercase d-block mb-1">Boosts Next</label>
-                        <div class="row g-2">
-                            <div class="col-6">
-                                <label class="small text-muted">Phys Boost (PMUN): <b>@Ally.PhysicalBoostNext</b></label>
-                                <input type="range" class="form-range" min="0" max="10" @bind="Ally.PhysicalBoostNext" @bind:after="StateHasChanged" />
-                            </div>
-                            <div class="col-6">
-                                <label class="small text-muted">Spec Boost (SMUN): <b>@Ally.SpecialBoostNext</b></label>
-                                <input type="range" class="form-range" min="0" max="10" @bind="Ally.SpecialBoostNext" @bind:after="StateHasChanged" />
-                            </div>
                         </div>
-                        <div class="d-flex flex-wrap gap-2 mt-2">
-                            <button class="btn btn-sm @(Ally.IsCriticalMove ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Ally.IsCriticalMove = !Ally.IsCriticalMove; StateHasChanged(); }">Crit Hit</button>
-                            <button class="btn btn-sm @(Ally.SuperEffectiveNext ? "btn-danger" : "btn-outline-secondary")" @onclick="() => { Ally.SuperEffectiveNext = !Ally.SuperEffectiveNext; StateHasChanged(); }">SE Next (×3)</button>
-                            <button class="btn btn-sm @(Ally.PhysicalBreak ? "btn-pink" : "btn-outline-secondary")" @onclick="() => { Ally.PhysicalBreak = !Ally.PhysicalBreak; StateHasChanged(); }">Phys Break</button>
-                            <button class="btn btn-sm @(Ally.SpecialBreak ? "btn-pink" : "btn-outline-secondary")" @onclick="() => { Ally.SpecialBreak = !Ally.SpecialBreak; StateHasChanged(); }">Spec Break</button>
+                    }
+                </div>
+
+                <!-- Next Boosts (PMUN, SMUN, Toggles) -->
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
+                        <span class="text-light">PMUN:</span>
+                        <b class="text-warning">@Ally.PhysicalBoostNext</b>
+                        <div class="btn-group btn-group-sm ms-1" style="height: 20px;">
+                            <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => { Ally.PhysicalBoostNext = Math.Max(0, Ally.PhysicalBoostNext - 1); StateHasChanged(); }">-</button>
+                            <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => { Ally.PhysicalBoostNext = Math.Min(10, Ally.PhysicalBoostNext + 1); StateHasChanged(); }">+</button>
                         </div>
                     </div>
 
-                    <!-- Sync Boosts -->
-                    <div class="mb-3">
-                        <label class="small text-secondary fw-bold text-uppercase d-flex justify-content-between">
-                            <span>Sync Buffs (Determinación)</span>
-                            <span class="fw-bold text-warning">×@(1.0 + Ally.SyncBoosts * 0.5)</span>
-                        </label>
-                        <div class="btn-group btn-group-sm w-100">
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
+                        <span class="text-light">SMUN:</span>
+                        <b class="text-warning">@Ally.SpecialBoostNext</b>
+                        <div class="btn-group btn-group-sm ms-1" style="height: 20px;">
+                            <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => { Ally.SpecialBoostNext = Math.Max(0, Ally.SpecialBoostNext - 1); StateHasChanged(); }">-</button>
+                            <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => { Ally.SpecialBoostNext = Math.Min(10, Ally.SpecialBoostNext + 1); StateHasChanged(); }">+</button>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-sm py-1 px-2 @(Ally.IsCriticalMove ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.IsCriticalMove = !Ally.IsCriticalMove; StateHasChanged(); }">Crit Hit</button>
+                    <button class="btn btn-sm py-1 px-2 @(Ally.SuperEffectiveNext ? "btn-danger" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SuperEffectiveNext = !Ally.SuperEffectiveNext; StateHasChanged(); }">SE Next (×3)</button>
+                    <button class="btn btn-sm py-1 px-2 @(Ally.PhysicalBreak ? "btn-pink" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.PhysicalBreak = !Ally.PhysicalBreak; StateHasChanged(); }">Phys Break</button>
+                    <button class="btn btn-sm py-1 px-2 @(Ally.SpecialBreak ? "btn-pink" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SpecialBreak = !Ally.SpecialBreak; StateHasChanged(); }">Spec Break</button>
+                </div>
+
+                <!-- Sync Buffs & Lucky Skill -->
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Sync Buff: <b class="text-warning">×@(1.0 + Ally.SyncBoosts * 0.5)</b></span>
+                        <div class="btn-group btn-group-sm">
                             @for (int sb = 0; sb <= 9; sb++)
                             {
                                 int s = sb;
-                                <button class="btn @(Ally.SyncBoosts == s ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Ally.SyncBoosts = s; StateHasChanged(); }">
+                                <button class="btn btn-sm py-0 px-2 @(Ally.SyncBoosts == s ? "btn-warning fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SyncBoosts = s; StateHasChanged(); }">
                                     @s
                                 </button>
                             }
                         </div>
                     </div>
 
-                    <!-- Lucky Skill Picker -->
-                    <div class="mb-2">
-                        <label class="small text-secondary fw-bold text-uppercase">Lucky Skill</label>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Lucky Skill:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 180px; font-size: 0.75rem;" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
                             <option value="">(None)</option>
                             @foreach (var ls in Rules.LuckySkills.Where(s => s.IsAvailableFor(Ally.Pair.Role, Ally.Pair.DisplayName)))
                             {
@@ -231,67 +235,65 @@
                 </div>
             </div>
 
-            <!-- Defender Settings -->
-            <div class="col-lg-4">
-                <div class="card bg-dark border-secondary h-100 p-3">
-                    <h6 class="text-danger fw-bold mb-3"><i class="bi bi-shield-x"></i> Defender (Enemy)</h6>
+            <!-- 2. Defender (Enemy) Card -->
+            <div class="card bg-dark border-secondary p-3 shadow-sm">
+                <h6 class="text-danger fw-bold mb-2 d-flex align-items-center gap-2">
+                    <i class="bi bi-shield-x"></i> Defender (Enemy)
+                </h6>
 
-                    <!-- Stat Stages -->
-                    <div class="row g-2 mb-3">
-                        @foreach (var stat in new[] { "def", "spd", "atk", "spa", "spe" })
-                        {
-                            int val = Enemy.Stages.GetValueOrDefault(stat, 0);
-                            <div class="col-6">
-                                <label class="small text-secondary text-uppercase d-flex justify-content-between">
-                                    <span>@stat</span>
-                                    <span class="fw-bold @(val > 0 ? "text-success" : (val < 0 ? "text-danger" : "text-light"))">@(val > 0 ? $"+{val}" : val.ToString())</span>
-                                </label>
-                                <div class="input-group input-group-sm">
-                                    <button class="btn btn-outline-secondary" type="button" @onclick="() => SetEnemyStage(stat, Math.Max(-6, val - 1))">-</button>
-                                    <input type="range" class="form-range mx-2" min="-6" max="6" value="@val" @oninput="(e) => OnEnemySliderInput(stat, e)" />
-                                    <button class="btn btn-outline-secondary" type="button" @onclick="() => SetEnemyStage(stat, Math.Min(6, val + 1))">+</button>
+                <!-- Enemy Stat Stages Steppers -->
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-2">
+                    @foreach (var stat in new[] { "def", "spd", "atk", "spa", "spe" })
+                    {
+                        int val = Enemy.Stages.GetValueOrDefault(stat, 0);
+                        <div class="col">
+                            <div class="p-1 px-2 rounded bg-black bg-opacity-40 border border-secondary border-opacity-75 d-flex align-items-center justify-content-between">
+                                <span class="small fw-bold text-secondary text-uppercase" style="font-size: 0.75rem;">@stat</span>
+                                <span class="small fw-bold @(val > 0 ? "text-success" : (val < 0 ? "text-danger" : "text-light"))">
+                                    @(val > 0 ? $"+{val}" : val.ToString())
+                                </span>
+                                <div class="btn-group btn-group-sm" style="height: 22px;">
+                                    <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => SetEnemyStage(stat, Math.Max(-6, val - 1))">-</button>
+                                    <button class="btn btn-outline-secondary py-0 px-1 text-light" type="button" @onclick="() => SetEnemyStage(stat, Math.Min(6, val + 1))">+</button>
                                 </div>
                             </div>
-                        }
+                        </div>
+                    }
+                </div>
+
+                <!-- Weakness, Status & Rebuff -->
+                <div class="d-flex flex-wrap align-items-center gap-3 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Weakness:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 140px; font-size: 0.75rem;" @bind="Enemy.Weakness" @bind:after="StateHasChanged">
+                            <option value="">None (Neutral)</option>
+                            @foreach (var t in CombatantState.AllTypes)
+                            {
+                                <option value="@t">@t</option>
+                            }
+                        </select>
                     </div>
 
-                    <!-- Weakness & Status Conditions -->
-                    <div class="row g-2 mb-3">
-                        <div class="col-6">
-                            <label class="small text-secondary">Weakness Type</label>
-                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Enemy.Weakness" @bind:after="StateHasChanged">
-                                <option value="">None (Neutral)</option>
-                                @foreach (var t in CombatantState.AllTypes)
-                                {
-                                    <option value="@t">@t</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <label class="small text-secondary">Status Condition</label>
-                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="Enemy.StatusCondition" @bind:after="StateHasChanged">
-                                <option value="">None</option>
-                                <option value="burned">Burned</option>
-                                <option value="paralyzed">Paralyzed</option>
-                                <option value="poisoned">Poisoned</option>
-                                <option value="badly poisoned">Badly Poisoned</option>
-                                <option value="frozen">Frozen</option>
-                                <option value="asleep">Asleep</option>
-                            </select>
-                        </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Status:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 130px; font-size: 0.75rem;" @bind="Enemy.StatusCondition" @bind:after="StateHasChanged">
+                            <option value="">None</option>
+                            <option value="burned">Burned</option>
+                            <option value="paralyzed">Paralyzed</option>
+                            <option value="poisoned">Poisoned</option>
+                            <option value="badly poisoned">Badly Poisoned</option>
+                            <option value="frozen">Frozen</option>
+                            <option value="asleep">Asleep</option>
+                        </select>
                     </div>
 
-                    <!-- Type Rebuff -->
-                    <div class="mb-2">
-                        <label class="small text-secondary fw-bold text-uppercase d-flex justify-content-between">
-                            <span>Enemy Type Rebuff (@Ally.Pair.Type)</span>
-                            <span class="fw-bold">@Enemy.EnemyTypeRebuffs.GetValueOrDefault(Ally.Pair.Type, 0)</span>
-                        </label>
-                        <div class="btn-group btn-group-sm w-100">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Rebuff (@Ally.Pair.Type):</span>
+                        <div class="btn-group btn-group-sm">
                             @for (int r = -3; r <= 0; r++)
                             {
                                 int rb = r;
-                                <button class="btn @(Enemy.EnemyTypeRebuffs.GetValueOrDefault(Ally.Pair.Type, 0) == rb ? "btn-primary" : "btn-outline-secondary")"
+                                <button class="btn btn-sm py-0 px-2 @(Enemy.EnemyTypeRebuffs.GetValueOrDefault(Ally.Pair.Type, 0) == rb ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
                                         @onclick="() => { Enemy.EnemyTypeRebuffs[Ally.Pair.Type] = rb; StateHasChanged(); }">
                                     @rb
                                 </button>
@@ -301,59 +303,64 @@
                 </div>
             </div>
 
-            <!-- Field Conditions -->
-            <div class="col-lg-4">
-                <div class="card bg-dark border-secondary h-100 p-3">
-                    <h6 class="text-success fw-bold mb-3"><i class="bi bi-clouds"></i> Field Effects</h6>
+            <!-- 3. Field Effects Card -->
+            <div class="card bg-dark border-secondary p-3 shadow-sm">
+                <h6 class="text-success fw-bold mb-2 d-flex align-items-center gap-2">
+                    <i class="bi bi-clouds"></i> Field Effects
+                </h6>
 
-                    <!-- Zone, Terrain, Weather -->
-                    <div class="mb-3">
-                        <label class="small text-secondary">Zone</label>
-                        <div class="input-group input-group-sm">
-                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Zone" @bind:after="StateHasChanged">
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    <!-- Zone -->
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Zone:</span>
+                        <div class="input-group input-group-sm" style="width: 170px;">
+                            <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="Field.Zone" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 @foreach (var t in CombatantState.AllTypes)
                                 {
                                     <option value="@t Zone">@t Zone</option>
                                 }
                             </select>
-                            <button class="btn @(Field.ZoneEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Field.ZoneEx = !Field.ZoneEx; StateHasChanged(); }">EX (×3)</button>
+                            <button class="btn py-0 px-2 @(Field.ZoneEx ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.ZoneEx = !Field.ZoneEx; StateHasChanged(); }">EX</button>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="small text-secondary">Terrain</label>
-                        <div class="input-group input-group-sm">
-                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Terrain" @bind:after="StateHasChanged">
+                    <!-- Terrain -->
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Terrain:</span>
+                        <div class="input-group input-group-sm" style="width: 170px;">
+                            <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="Field.Terrain" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 <option value="Electric Terrain">Electric Terrain</option>
                                 <option value="Grassy Terrain">Grassy Terrain</option>
                                 <option value="Psychic Terrain">Psychic Terrain</option>
                             </select>
-                            <button class="btn @(Field.TerrainEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Field.TerrainEx = !Field.TerrainEx; StateHasChanged(); }">EX (×3)</button>
+                            <button class="btn py-0 px-2 @(Field.TerrainEx ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TerrainEx = !Field.TerrainEx; StateHasChanged(); }">EX</button>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="small text-secondary">Weather</label>
-                        <div class="input-group input-group-sm">
-                            <select class="form-select bg-dark text-light border-secondary" @bind="Field.Weather" @bind:after="StateHasChanged">
+                    <!-- Weather -->
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Weather:</span>
+                        <div class="input-group input-group-sm" style="width: 160px;">
+                            <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="Field.Weather" @bind:after="StateHasChanged">
                                 <option value="">None</option>
                                 <option value="Sunny">Sunny</option>
                                 <option value="Rainy">Rainy</option>
                                 <option value="Sandstorm">Sandstorm</option>
                                 <option value="Hail">Hail</option>
                             </select>
-                            <button class="btn @(Field.WeatherEx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => { Field.WeatherEx = !Field.WeatherEx; StateHasChanged(); }">EX (×3)</button>
+                            <button class="btn py-0 px-2 @(Field.WeatherEx ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.WeatherEx = !Field.WeatherEx; StateHasChanged(); }">EX</button>
                         </div>
                     </div>
 
-                    <div class="mb-2">
-                        <label class="small text-secondary">Target Count</label>
-                        <div class="btn-group btn-group-sm w-100">
-                            <button class="btn @(Field.TargetCount == 1 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => { Field.TargetCount = 1; StateHasChanged(); }">1 (Single)</button>
-                            <button class="btn @(Field.TargetCount == 2 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => { Field.TargetCount = 2; StateHasChanged(); }">2 Targets</button>
-                            <button class="btn @(Field.TargetCount == 3 ? "btn-primary" : "btn-outline-secondary")" @onclick="() => { Field.TargetCount = 3; StateHasChanged(); }">3 Targets</button>
+                    <!-- Target Count -->
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Targets:</span>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 1 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 1; StateHasChanged(); }">1</button>
+                            <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 2 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 2; StateHasChanged(); }">2</button>
+                            <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 3 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 3; StateHasChanged(); }">3</button>
                         </div>
                     </div>
                 </div>
