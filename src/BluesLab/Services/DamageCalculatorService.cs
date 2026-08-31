@@ -487,9 +487,10 @@ public class DamageCalculatorService
 
         // Sync Buffs: (2 + syncBoosts) / 2
         int effectiveSyncBoosts = ally.SyncBoosts;
-        // In PMEX / PoMaTools: To be in Mega or Tera form (FormIndex > 0), the pair already synced once to transform.
+        // In PMEX / PoMaTools: To be in a Mega or Sync-Tera form, the pair already synced once to transform.
         // Therefore, all moves in that form automatically gain the Sync Buff(s) granted by that sync (+2 if Support EX, +1 otherwise)!
-        if (ally.FormIndex > 0 && (pair.HasMega || pair.HasTera || pair.Variations.Count > 0))
+        // Forms that trigger automatically on entry (e.g. Terapagos Terastal Form) or via trainer moves/stances do NOT gain automatic sync buffs.
+        if (IsSyncTransformationForm(pair, ally.FormIndex))
         {
             effectiveSyncBoosts += GetSyncBuffsGrantedBySync(ally);
         }
@@ -1133,4 +1134,30 @@ public class DamageCalculatorService
         return (isEx && (isSupportBase || isSupportExRole)) ? 2 : 1;
     }
 
+    public static bool IsSyncTransformationForm(SyncPairDetail? pair, int formIndex)
+    {
+        if (pair == null || formIndex <= 0 || pair.Variations == null || formIndex > pair.Variations.Count)
+            return false;
+
+        var form = pair.Variations[formIndex - 1];
+        string formName = form.FormName ?? string.Empty;
+
+        // Terastal Form in Terapagos is automatic upon battle entry (passive Prepare for Battle), so it does NOT require a sync move
+        if (formName.Equals("Terastal Form", StringComparison.OrdinalIgnoreCase))
+            return false;
+
+        // Mega Evolution always requires a sync move
+        if (formName.Contains("Mega", StringComparison.OrdinalIgnoreCase) || (pair.HasMega && pair.Variations.Count == 1))
+            return true;
+
+        // Stellar Form / Sync Terastallization requires a sync move
+        if (formName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) || 
+            formName.Equals("Tera", StringComparison.OrdinalIgnoreCase) ||
+            form.TerastalMoveId > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
