@@ -13,79 +13,79 @@
         <div class="grid-viewport w-100 h-100 position-relative overflow-hidden">
             <svg class="hex-svg w-100 h-100" viewBox="@ViewBoxString" preserveAspectRatio="xMidYMid meet">
                 <defs>
-                    <!-- Glowing Filter for selected/active tiles -->
                     <filter id="tile-glow" x="-30%" y="-30%" width="160%" height="160%">
-                        <feGaussianBlur stdDeviation="4" result="blur" />
-                        <feComponentTransfer in="blur" result="brightBlur">
-                            <feFuncA type="linear" slope="1.5" />
-                        </feComponentTransfer>
-                        <feMerge>
-                            <feMergeNode in="brightBlur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
+                        <feGaussianBlur stdDeviation="3" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
                     </filter>
-
-                    <!-- Center Hex Clip Path -->
-                    <clipPath id="center-hex-clip">
-                        <polygon points="@GetHexPoints(0, 0, TileRadius * 0.95)" />
-                    </clipPath>
                 </defs>
 
-                <!-- Grid Cells -->
+                <!-- Grid Cells using Brybry PNG Tile Assets -->
                 @foreach (var cell in Pair.Grid)
                 {
                     bool isActive = GridState.ActiveCells.Contains(cell.CellId);
                     bool isLocked = cell.MoveLevel > Math.Clamp(MoveLevel, 1, 5);
-                    var (fillColor, strokeColor) = GetTileColors(cell.ColorKind, isActive, isLocked);
                     var (cx, cy) = GetHexCenter(cell.Q, cell.R);
 
-                    <g class="hex-tile @(isActive ? "active" : "") @(isLocked ? "locked" : "") cursor-pointer"
+                    string panelType = GetPanelType(cell);
+                    string tileIcon = GetTileIcon(cell, panelType, isLocked);
+
+                    string bgHref = isActive ? $"data/sync-grids/{panelType}-selected.png" : $"data/sync-grids/{panelType}.png";
+                    string iconHref = (isActive && !isLocked && panelType != "arceuspanel")
+                        ? $"data/sync-grids/icons/{tileIcon}-selected.png"
+                        : $"data/sync-grids/icons/{tileIcon}.png";
+
+                    double imgX = cx - 34.5;
+                    double imgY = cy - 30.0;
+
+                    <g class="hex-tile @(isActive ? "active" : "") @(isLocked ? "locked" : "")"
+                       style="cursor: pointer;"
                        @onclick="() => OnTileClicked(cell)"
                        @onmouseover="() => HoveredCell = cell"
                        @onmouseout="() => { if (HoveredCell == cell) HoveredCell = null; }">
-                        
-                        <!-- Base Hexagon -->
-                        <polygon points="@GetHexPoints(cell.Q, cell.R)"
-                                 fill="@fillColor"
-                                 stroke="@strokeColor"
-                                 stroke-width="@(isActive ? 3.0 : 1.5)"
-                                 filter="@(isActive ? "url(#tile-glow)" : "none")" />
 
-                        <!-- Inner Accent Ring when Active -->
+                        <!-- Layer 1: Background Hex Tile Image -->
+                        <image href="@bgHref"
+                               x="@imgX"
+                               y="@imgY"
+                               width="69"
+                               height="60"
+                               class="bg-layer" />
+
+                        <!-- Layer 2: Tile Icon Image -->
+                        <image href="@iconHref"
+                               x="@imgX"
+                               y="@imgY"
+                               width="69"
+                               height="60"
+                               class="icon-layer" />
+
+                        <!-- Layer 3: Selected Glow Overlay -->
                         @if (isActive)
                         {
-                            <polygon points="@GetHexPoints(cell.Q, cell.R, TileRadius * 0.85)"
-                                     fill="none"
-                                     stroke="#ffffff"
-                                     stroke-width="1.2"
-                                     stroke-opacity="0.85" />
+                            <image href="data/sync-grids/selected-overlay.png"
+                                   x="@imgX"
+                                   y="@imgY"
+                                   width="69"
+                                   height="60"
+                                   class="overlay-layer" />
                         }
 
-                        <!-- SVG Text and Badge Markup -->
-                        @((MarkupString)RenderTileContent(cell, cx, cy, isActive, isLocked))
+                        <!-- Layer 4: Interactive Polygon Mask -->
+                        <polygon points="@GetBrybryHexPoints(cx, cy)"
+                                 style="fill: white; fill-opacity: 0; cursor: pointer; pointer-events: all;" />
                     </g>
                 }
 
-                <!-- Center Tile (Pokemon Face Portrait Image) -->
-                <g class="center-tile cursor-pointer" @onclick="OnCenterClicked">
-                    <!-- Outer glowing center hex -->
-                    <polygon points="@GetHexPoints(0, 0, TileRadius * 1.05)" fill="#111827" stroke="#f59e0b" stroke-width="3" filter="url(#tile-glow)" />
-                    
-                    <!-- Clipped Pokemon Image -->
-                    @{
-                        string pkmImg = !string.IsNullOrEmpty(Pair.PokemonIconUrl) ? Pair.PokemonIconUrl : Pair.IconUrl;
-                    }
-                    <image href="@pkmImg"
-                           clip-path="url(#center-hex-clip)"
-                           x="@(-TileRadius)"
-                           y="@(-TileRadius)"
-                           width="@(TileRadius * 2)"
-                           height="@(TileRadius * 2)"
-                           preserveAspectRatio="xMidYMid slice"
-                           onerror="this.setAttribute('href', 'img/trainers/unknown.png');" />
-
-                    <!-- Inner Golden Border -->
-                    <polygon points="@GetHexPoints(0, 0, TileRadius * 0.95)" fill="none" stroke="#fbbf24" stroke-width="1.5" />
+                <!-- Center Tile (Brybry Center Tile Asset) -->
+                <g class="center-tile" style="cursor: pointer;" @onclick="OnCenterClicked">
+                    <image href="data/sync-grids/center.png"
+                           x="-34.5"
+                           y="-30.0"
+                           width="69"
+                           height="60"
+                           class="bg-layer" />
+                    <polygon points="@GetBrybryHexPoints(0, 0)"
+                             style="fill: white; fill-opacity: 0; cursor: pointer; pointer-events: all;" />
                 </g>
             </svg>
 
@@ -115,29 +115,24 @@
     [Parameter] public EventCallback OnCenterClick { get; set; }
 
     private GridCellItem? HoveredCell;
-    private const double TileRadius = 42.0;
-    private double NormHexW = 1.5;
-    private double NormHexH = Math.Sqrt(3);
+
+    // Brybry standard tile dimensions (51 width offset per col, 30 height offset per row)
+    private const double ColWidth = 51.0;
+    private const double RowHeight = 30.0;
 
     private (double X, double Y) GetHexCenter(int q, int r)
     {
-        double x = TileRadius * NormHexW * q;
-        double y = TileRadius * NormHexH * (r + q / 2.0);
+        double x = q * ColWidth;
+        double y = (r + q / 2.0) * RowHeight * 2.0;
         return (x, y);
     }
 
-    private string GetHexPoints(int q, int r, double radius = TileRadius)
+    private string GetBrybryHexPoints(double cx, double cy)
     {
-        var (cx, cy) = GetHexCenter(q, r);
-        var points = new List<string>();
-        for (int i = 0; i < 6; i++)
-        {
-            double angle = Math.PI / 180 * (60 * i);
-            double px = cx + radius * Math.Cos(angle);
-            double py = cy + radius * Math.Sin(angle);
-            points.Add($"{px:0.#},{py:0.#}");
-        }
-        return string.Join(" ", points);
+        // Brybry standard polygon: "17,0 52,0 69,30 52,60 17,60 0,30" relative to (cx - 34.5, cy - 30)
+        double left = cx - 34.5;
+        double top = cy - 30.0;
+        return $"{left + 17:0.#},{top:0.#} {left + 52:0.#},{top:0.#} {left + 69:0.#},{top + 30:0.#} {left + 52:0.#},{top + 60:0.#} {left + 17:0.#},{top + 60:0.#} {left:0.#},{top + 30:0.#}";
     }
 
     private string ViewBoxString
@@ -149,12 +144,12 @@
             foreach (var cell in Pair.Grid)
             {
                 var (cx, cy) = GetHexCenter(cell.Q, cell.R);
-                minX = Math.Min(minX, cx - TileRadius);
-                maxX = Math.Max(maxX, cx + TileRadius);
-                minY = Math.Min(minY, cy - TileRadius);
-                maxY = Math.Max(maxY, cy + TileRadius);
+                minX = Math.Min(minX, cx - 34.5);
+                maxX = Math.Max(maxX, cx + 34.5);
+                minY = Math.Min(minY, cy - 30.0);
+                maxY = Math.Max(maxY, cy + 30.0);
             }
-            double pad = TileRadius * 1.2;
+            double pad = 40.0;
             double w = (maxX - minX) + pad * 2;
             double h = (maxY - minY) + pad * 2;
             double x = minX - pad;
@@ -163,124 +158,80 @@
         }
     }
 
-    private (string fill, string stroke) GetTileColors(string kind, bool active, bool locked)
+    private string GetPanelType(GridCellItem cell)
     {
-        if (locked)
-            return ("#1e2229", "#4b5563");
+        string title = cell.Title.Trim().ToLowerInvariant();
+        string kind = cell.ColorKind.Trim().ToLowerInvariant();
 
-        string k = kind.ToLowerInvariant();
-        return k switch
-        {
-            "stat" => active ? ("#2563eb", "#ffffff") : ("#172554", "#3b82f6"),
-            "move boost" => active ? ("#16a34a", "#ffffff") : ("#052e16", "#22c55e"),
-            "move effect" => active ? ("#dc2626", "#ffffff") : ("#450a0a", "#ef4444"),
-            "sync" => active ? ("#7c3aed", "#ffffff") : ("#2e1065", "#a855f7"),
-            "passive" => active ? ("#d97706", "#ffffff") : ("#451a03", "#f59e0b"),
-            _ => active ? ("#d97706", "#ffffff") : ("#451a03", "#f59e0b")
-        };
+        if (title.Contains("arc suit") || title.Contains("arceus") || kind.Contains("arc"))
+            return "arceuspanel";
+
+        if (kind == "stat" || title.StartsWith("hp +") || title.StartsWith("attack +") ||
+            title.StartsWith("defense +") || title.StartsWith("sp. atk +") ||
+            title.StartsWith("sp. def +") || title.StartsWith("speed +"))
+            return "statsup";
+
+        if (kind == "sync" || title.Contains("sync move"))
+            return "syncmove";
+
+        if (kind == "max" || title.Contains("max move"))
+            return "maxmove";
+
+        if (title.Contains(": power +") || kind == "move boost")
+            return "movepowerup";
+
+        if (title.Contains(": move gauge refresh") || title.Contains(": mp refresh") ||
+            title.Contains(": accuracy +") || kind == "move effect")
+            return "moveeffect";
+
+        if (title.Contains("learn ") || kind == "learn")
+            return "learnmove";
+
+        return "passiveskill";
     }
 
-    private string RenderTileContent(GridCellItem cell, double cx, double cy, bool isActive, bool isLocked)
+    private string GetTileIcon(GridCellItem cell, string panelType, bool isLocked)
     {
-        var (line1, line2) = SplitCellLabel(cell);
-        var sb = new System.Text.StringBuilder();
-        sb.Append("<g class=\"tile-labels\" style=\"user-select: none; pointer-events: none;\">");
-
-        if (!string.IsNullOrEmpty(line2))
-        {
-            string color1 = isActive ? "#ffffff" : "#d1d5db";
-            string color2 = isActive ? "#ffffff" : "#f59e0b";
-            double fs1 = TileRadius * 0.20;
-            double fs2 = TileRadius * 0.22;
-            sb.Append($"<text x=\"{cx:0.#}\" y=\"{(cy - 6):0.#}\" text-anchor=\"middle\" dominant-baseline=\"central\" fill=\"{color1}\" font-size=\"{fs1:0.#}\" font-weight=\"bold\">{System.Net.WebUtility.HtmlEncode(line1)}</text>");
-            sb.Append($"<text x=\"{cx:0.#}\" y=\"{(cy + 8):0.#}\" text-anchor=\"middle\" dominant-baseline=\"central\" fill=\"{color2}\" font-size=\"{fs2:0.#}\" font-weight=\"bold\">{System.Net.WebUtility.HtmlEncode(line2)}</text>");
-        }
-        else
-        {
-            string color = isActive ? "#ffffff" : "#f1f2f6";
-            double fs = TileRadius * 0.23;
-            sb.Append($"<text x=\"{cx:0.#}\" y=\"{cy:0.#}\" text-anchor=\"middle\" dominant-baseline=\"central\" fill=\"{color}\" font-size=\"{fs:0.#}\" font-weight=\"bold\">{System.Net.WebUtility.HtmlEncode(line1)}</text>");
-        }
-
         if (isLocked)
         {
-            double lx = cx + TileRadius * 0.55;
-            double ly = cy - TileRadius * 0.55;
-            sb.Append($"<circle cx=\"{lx:0.#}\" cy=\"{ly:0.#}\" r=\"9\" fill=\"#dc2626\" stroke=\"#ffffff\" stroke-width=\"1\" />");
-            sb.Append($"<text x=\"{lx:0.#}\" y=\"{ly:0.#}\" text-anchor=\"middle\" dominant-baseline=\"central\" fill=\"#ffffff\" font-size=\"8\" font-weight=\"bold\">{cell.MoveLevel}/5</text>");
+            int lvl = Math.Clamp(cell.MoveLevel, 2, 5);
+            return $"locked-{lvl}";
         }
 
-        if (cell.EnergyCost > 0)
+        if (panelType == "movepowerup")
         {
-            double ex = cx - TileRadius * 0.55;
-            double ey = cy - TileRadius * 0.55;
-            string ecColor = isActive ? "#ffffff" : "#9ca3af";
-            sb.Append($"<text x=\"{ex:0.#}\" y=\"{ey:0.#}\" text-anchor=\"middle\" dominant-baseline=\"central\" fill=\"{ecColor}\" font-size=\"8\" font-weight=\"bold\">{cell.EnergyCost}</text>");
+            int typeId = GetTypeId(Pair?.Type);
+            return $"movepowerup-{typeId}";
         }
 
-        sb.Append("</g>");
-        return sb.ToString();
+        return panelType;
     }
 
-    private (string line1, string line2) SplitCellLabel(GridCellItem cell)
+    private int GetTypeId(string? pairType)
     {
-        string t = cell.Title.Trim();
-        if (string.IsNullOrEmpty(t)) return ("", "");
-
-        // Stat bonus
-        if (t.StartsWith("HP +")) return ("HP", $"+{t[4..]}");
-        if (t.StartsWith("Attack +")) return ("Attack", $"+{t[8..]}");
-        if (t.StartsWith("Defense +")) return ("Defense", $"+{t[9..]}");
-        if (t.StartsWith("Sp. Atk +")) return ("Sp. Atk", $"+{t[9..]}");
-        if (t.StartsWith("Sp. Def +")) return ("Sp. Def", $"+{t[9..]}");
-        if (t.StartsWith("Speed +")) return ("Speed", $"+{t[7..]}");
-
-        // Move boosts
-        if (t.Contains(": Power +"))
+        string t = (pairType ?? "Normal").Trim().ToLowerInvariant();
+        return t switch
         {
-            var parts = t.Split(": Power +");
-            return (ShortenMoveName(parts[0]), $"Power +{parts[1]}");
-        }
-        if (t.Contains(": Accuracy +"))
-        {
-            var parts = t.Split(": Accuracy +");
-            return (ShortenMoveName(parts[0]), $"Acc +{parts[1]}");
-        }
-        if (t.Contains(": Move Gauge Refresh "))
-        {
-            var parts = t.Split(": Move Gauge Refresh ");
-            return (ShortenMoveName(parts[0]), $"MGR {parts[1]}");
-        }
-        if (t.Contains(": MP Refresh "))
-        {
-            var parts = t.Split(": MP Refresh ");
-            return (ShortenMoveName(parts[0]), $"MPR {parts[1]}");
-        }
-        if (t.Contains(":"))
-        {
-            var parts = t.Split(":", 2);
-            return (ShortenMoveName(parts[0]), parts[1].Trim());
-        }
-
-        // Single long skill names
-        if (t.Length > 11 && t.Contains(" "))
-        {
-            var words = t.Split(" ");
-            if (words.Length == 2) return (words[0], words[1]);
-            if (words.Length >= 3) return ($"{words[0]} {words[1]}", string.Join(" ", words.Skip(2)));
-        }
-
-        return (t, "");
-    }
-
-    private string ShortenMoveName(string move)
-    {
-        move = move.Trim();
-        if (move.Length <= 10) return move;
-        if (move.StartsWith("Ultimate ")) return "U-" + move[9..];
-        if (move.StartsWith("Buddy ")) return "B-" + move[6..];
-        if (move.Length > 12) return move[..10] + "..";
-        return move;
+            "normal" => 1,
+            "fire" => 2,
+            "water" => 3,
+            "electric" => 4,
+            "grass" => 5,
+            "ice" => 6,
+            "fighting" => 7,
+            "poison" => 8,
+            "ground" => 9,
+            "flying" => 10,
+            "psychic" => 11,
+            "bug" => 12,
+            "rock" => 13,
+            "ghost" => 14,
+            "dragon" => 15,
+            "dark" => 16,
+            "steel" => 17,
+            "fairy" => 18,
+            _ => 1
+        };
     }
 
     private void OnTileClicked(GridCellItem cell)
