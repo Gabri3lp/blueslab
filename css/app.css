@@ -90,15 +90,20 @@ body {
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
 }
 .hex-tile {
-    transition: transform 0.1s ease, filter 0.15s ease;
-}
-.hex-tile:hover polygon {
-    stroke: #f1c40f !important;
-    stroke-width: 2.5px;
     cursor: pointer;
+    transition: filter 0.15s ease, opacity 0.15s ease;
 }
-.hex-tile.active polygon {
-    stroke: #ffffff !important;
+.hex-tile:hover {
+    filter: brightness(1.2);
+}
+.hex-tile.locked {
+    opacity: 0.65;
+}
+.hex-tile polygon, .center-tile polygon {
+    fill: transparent !important;
+    fill-opacity: 0 !important;
+    stroke: none !important;
+    stroke-width: 0 !important;
 }
 .hex-label {
     text-shadow: 0 1px 2px #000, 0 -1px 2px #000, 1px 0 2px #000, -1px 0 2px #000;
