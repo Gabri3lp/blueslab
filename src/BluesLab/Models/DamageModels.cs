@@ -54,14 +54,14 @@ public class CombatantState
     public string Weakness { get; set; } = string.Empty;
     public string DamageField { get; set; } = string.Empty;
 
-    public static CombatantState CreateAlly(SyncPairDetail pair)
+    public static CombatantState CreateAlly(SyncPairDetail? pair = null)
     {
         var ally = new CombatantState
         {
             Pair = pair,
-            HasExRole = pair.HasEx && !string.IsNullOrEmpty(pair.ExRole),
-            SuperAwakeningLevel = pair.HasSuperAwakening ? 5 : 0,
-            StarLevel = pair.HasEx ? "5★ EX" : (pair.Rarity == 5 ? "5★ 20/20" : $"{pair.Rarity}★")
+            HasExRole = pair?.HasEx == true && !string.IsNullOrEmpty(pair.ExRole),
+            SuperAwakeningLevel = pair?.HasSuperAwakening == true ? 5 : 0,
+            StarLevel = pair?.HasEx == true ? "5★ EX" : (pair?.Rarity == 5 ? "5★ 20/20" : $"{pair?.Rarity ?? 5}★")
         };
 
         foreach (var s in StageLabels)
@@ -169,4 +169,20 @@ public class MultiplierPill
     public string Label { get; set; } = string.Empty;
     public string Value { get; set; } = string.Empty;
     public string Color { get; set; } = string.Empty;
+}
+
+public class TeamMoveDamageResult
+{
+    public MoveItem Move { get; set; } = new();
+    public bool IsAoE { get; set; }
+    public DamageResult LeftDamage { get; set; } = new();
+    public DamageResult CenterDamage { get; set; } = new();
+    public DamageResult RightDamage { get; set; } = new();
+    public int ActiveTargetIndex { get; set; } = 1;
+    public DamageResult ActiveTargetDamage => ActiveTargetIndex switch
+    {
+        0 => LeftDamage,
+        1 => CenterDamage,
+        _ => RightDamage
+    };
 }

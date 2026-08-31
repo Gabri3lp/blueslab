@@ -247,6 +247,49 @@ public class DamageCalculatorService
         return Math.Max(1, calculated);
     }
 
+    public TeamMoveDamageResult CalculateTeamDamage(
+        MoveItem move,
+        TeamBattleState team,
+        DamageRulesDocument rules)
+    {
+        var attacker = team.ActiveAttacker;
+        var activeGrid = team.ActiveAttackerGrid;
+
+        // Set shared sync boosts and calculate master passive allies
+        attacker.SyncBoosts = team.AllySyncBuffs;
+        if (attacker.Pair != null)
+        {
+            foreach (var mp in rules.MasterPassives.Where(m => string.Equals(m.SyncPair, attacker.Pair.DisplayName, StringComparison.OrdinalIgnoreCase)))
+            {
+                attacker.MasterPassiveAllyCount[mp.PassiveName] = team.GetMasterPassiveAllyCount(mp.PassiveName);
+            }
+        }
+
+        // Apply enemy team sync buffs
+        foreach (var enemy in team.Enemies)
+        {
+            enemy.SyncBoosts = team.EnemySyncBuffs;
+        }
+
+        bool isAoE = (team.Field.TargetCount > 1) ||
+                     (move.IsSync && (attacker.Pair?.Role?.Contains("Strike", StringComparison.OrdinalIgnoreCase) == true || (attacker.HasExRole && attacker.Pair?.ExRole?.Contains("Strike", StringComparison.OrdinalIgnoreCase) == true))) ||
+                     (move.Target?.Contains("all", StringComparison.OrdinalIgnoreCase) == true);
+
+        var leftRes = CalculateDamage(move, attacker, team.Enemies[0], team.Field, rules, activeGrid);
+        var centerRes = CalculateDamage(move, attacker, team.Enemies[1], team.Field, rules, activeGrid);
+        var rightRes = CalculateDamage(move, attacker, team.Enemies[2], team.Field, rules, activeGrid);
+
+        return new TeamMoveDamageResult
+        {
+            Move = move,
+            IsAoE = isAoE,
+            LeftDamage = leftRes,
+            CenterDamage = centerRes,
+            RightDamage = rightRes,
+            ActiveTargetIndex = team.ActiveTargetIndex
+        };
+    }
+
     public DamageResult CalculateDamage(
         MoveItem move,
         CombatantState ally,

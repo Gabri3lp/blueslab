@@ -1,0 +1,523 @@
+@using BluesLab.Models
+@using BluesLab.Services
+@inject SyncPairDataService DataService
+@inject DamageCalculatorService CalcService
+@inject StageService StageSvc
+
+<div class="team-calculator-container p-2 p-md-3">
+    <!-- Top Stage & Battle Conditions Bar -->
+    <div class="card bg-dark border-secondary shadow-sm mb-4">
+        <div class="card-header bg-secondary bg-opacity-25 border-secondary d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-trophy-fill text-warning fs-5"></i>
+                <span class="fw-bold text-light fs-5">3v3 Team Battle Simulator</span>
+                <span class="badge bg-primary">Stage Mode</span>
+            </div>
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+                <!-- Shared Sync Buffs -->
+                <div class="d-flex align-items-center gap-2 bg-dark p-1 px-3 rounded border border-secondary">
+                    <span class="text-info small fw-bold"><i class="bi bi-lightning-charge-fill text-warning"></i> Ally Sync Buffs:</span>
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" @onclick="() => ChangeAllySyncBuffs(-1)">-</button>
+                    <b class="text-warning fs-6">@State.AllySyncBuffs</b>
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" @onclick="() => ChangeAllySyncBuffs(1)">+</button>
+                    <span class="text-muted small">(@((1.0 + State.AllySyncBuffs * 0.5).ToString("0.#"))x)</span>
+                </div>
+
+                <div class="d-flex align-items-center gap-2 bg-dark p-1 px-3 rounded border border-secondary">
+                    <span class="text-danger small fw-bold"><i class="bi bi-shield-slash-fill"></i> Enemy Sync Buffs:</span>
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" @onclick="() => ChangeEnemySyncBuffs(-1)">-</button>
+                    <b class="text-danger fs-6">@State.EnemySyncBuffs</b>
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" @onclick="() => ChangeEnemySyncBuffs(1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body p-3">
+            <!-- Stage Selection -->
+            <div class="row g-2 align-items-center mb-3">
+                <div class="col-md-3">
+                    <label class="form-label small text-muted mb-1"><i class="bi bi-geo-alt-fill text-danger me-1"></i> League / Stadium:</label>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedLeagueId" @onchange="OnLeagueChanged">
+                        @foreach (var l in _leagues)
+                        {
+                            <option value="@l.LeagueId">@l.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label small text-muted mb-1"><i class="bi bi-swords text-warning me-1"></i> Battle / Fight:</label>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedFightId" @onchange="OnFightChanged">
+                        @{
+                            var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
+                            if (currentLeague != null)
+                            {
+                                @foreach (var f in currentLeague.Fights)
+                                {
+                                    <option value="@f.FightId">@f.Title</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-3 d-flex align-items-end">
+                    <button class="btn btn-sm btn-outline-info w-100" @onclick="LoadSelectedStage">
+                        <i class="bi bi-cloud-arrow-down-fill me-1"></i> Apply Stage to Enemies
+                    </button>
+                </div>
+            </div>
+
+            <!-- Global Field Conditions -->
+            <div class="row g-2 pt-2 border-top border-secondary align-items-center">
+                <div class="col-6 col-md-3">
+                    <label class="form-label small text-muted mb-1">Weather:</label>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="State.Field.Weather">
+                        <option value="">None (Normal)</option>
+                        <option value="Sunny">Sunny ☀️</option>
+                        <option value="Rainy">Rainy 🌧️</option>
+                        <option value="Sandstorm">Sandstorm 🏜️</option>
+                        <option value="Hail">Hail ❄️</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label small text-muted mb-1">Terrain:</label>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="State.Field.Terrain">
+                        <option value="">None</option>
+                        <option value="Electric Terrain">Electric Terrain ⚡</option>
+                        <option value="Grassy Terrain">Grassy Terrain 🌿</option>
+                        <option value="Psychic Terrain">Psychic Terrain 🔮</option>
+                    </select>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label small text-muted mb-1">Zone:</label>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="State.Field.Zone">
+                        <option value="">None</option>
+                        @foreach (var z in CombatantState.AllTypes)
+                        {
+                            <option value="@($"{z} Zone")">@($"{z} Zone")</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label small text-muted mb-1">Targets in Area:</label>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" @bind="State.Field.TargetCount">
+                        <option value="1">1 Target (Single)</option>
+                        <option value="2">2 Targets (x0.66)</option>
+                        <option value="3">3 Targets (x0.50)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Allies Row (3 Slots) -->
+    <div class="mb-4">
+        <h5 class="text-success fw-bold mb-3 d-flex align-items-center justify-content-between">
+            <span><i class="bi bi-people-fill me-2"></i> Allied Team (3 Slots)</span>
+            <span class="text-muted small fw-normal">Click an ally to set as Active Attacker</span>
+        </h5>
+
+        <div class="row g-3">
+            @for (int i = 0; i < 3; i++)
+            {
+                int slotIndex = i;
+                var ally = State.Allies[slotIndex];
+                bool isAttacker = State.ActiveAttackerIndex == slotIndex;
+
+                <div class="col-lg-4">
+                    <div class="card h-100 @(isAttacker ? "border-primary bg-primary bg-opacity-10 shadow" : "border-secondary bg-dark") p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge @(isAttacker ? "bg-primary" : "bg-secondary")">Slot @(slotIndex + 1)</span>
+                                @if (isAttacker)
+                                {
+                                    <span class="badge bg-warning text-dark"><i class="bi bi-lightning-fill"></i> Attacker</span>
+                                }
+                            </div>
+                            <button class="btn btn-sm @(isAttacker ? "btn-primary" : "btn-outline-secondary text-light")" @onclick="() => SetActiveAttacker(slotIndex)">
+                                @(isAttacker ? "Attacking" : "Select")
+                            </button>
+                        </div>
+
+                        <!-- Sync Pair Picker Dropdown -->
+                        <div class="mb-2">
+                            <select class="form-select form-select-sm bg-dark text-light border-secondary" @onchange="(e) => OnAllyPairSelected(slotIndex, e.Value?.ToString())">
+                                <option value="">-- Choose Sync Pair --</option>
+                                @foreach (var p in _allManifest)
+                                {
+                                    <option value="@p.TrainerId" selected="@(ally.Pair?.TrainerId == p.TrainerId)">@p.DisplayName</option>
+                                }
+                            </select>
+                        </div>
+
+                        @if (ally.Pair != null)
+                        {
+                            <div class="d-flex gap-2 align-items-center mb-2">
+                                @if (!string.IsNullOrEmpty(ally.Pair.PokemonIconUrl))
+                                {
+                                    <img src="@ally.Pair.PokemonIconUrl" alt="" class="rounded-circle border border-secondary" style="width: 42px; height: 42px; object-fit: cover;" />
+                                }
+                                <div class="small">
+                                    <div class="fw-bold text-light text-truncate" style="max-width: 200px;">@ally.Pair.DisplayName</div>
+                                    <div class="d-flex gap-1 mt-1">
+                                        <span class="badge type-badge type-@ally.Pair.Type.ToLowerInvariant()">@ally.Pair.Type</span>
+                                        <span class="badge bg-secondary">@ally.Pair.Role</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Levels & SA Controls -->
+                            <div class="row g-1 mb-2 small">
+                                <div class="col-4">
+                                    <label class="text-muted" style="font-size: 0.75rem;">Move Lv:</label>
+                                    <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" @bind="ally.MoveLevel">
+                                        @for (int m = 1; m <= 5; m++)
+                                        {
+                                            <option value="@m">@m/5</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-muted" style="font-size: 0.75rem;">SA Lv:</label>
+                                    <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" @bind="ally.SuperAwakeningLevel">
+                                        @for (int sa = 0; sa <= 5; sa++)
+                                        {
+                                            <option value="@sa">@(sa == 0 ? "None" : $"SA {sa}")</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-muted" style="font-size: 0.75rem;">EX Role:</label>
+                                    <button class="btn btn-sm w-100 py-0 @(ally.HasExRole ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-muted")" @onclick="() => ally.HasExRole = !ally.HasExRole" style="font-size: 0.75rem;">
+                                        @(ally.HasExRole ? "EX ON" : "EX OFF")
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Stat Buff Sliders -->
+                            <div class="bg-black bg-opacity-25 p-2 rounded border border-secondary mb-2 small">
+                                <div class="text-muted fw-bold mb-1" style="font-size: 0.7rem;">Stat Buffs:</div>
+                                @foreach (var stat in new[] { "atk", "spa", "spe", "crit" })
+                                {
+                                    int val = ally.Stages.GetValueOrDefault(stat, 0);
+                                    int maxVal = stat == "crit" ? 3 : 6;
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="text-uppercase" style="font-size: 0.75rem;">@stat: <b class="@(val > 0 ? "text-warning" : "text-muted")">+@val</b></span>
+                                        <input type="range" class="form-range w-50" min="0" max="@maxVal" value="@val" @oninput="(e) => OnAllySlider(slotIndex, stat, e)" />
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Enemies Row (3 Targets: Left, Center, Right) -->
+    <div class="mb-4">
+        <h5 class="text-danger fw-bold mb-3 d-flex align-items-center justify-content-between">
+            <span><i class="bi bi-shield-shaded me-2"></i> Enemy Targets (3v3)</span>
+            <span class="text-muted small fw-normal">Select a target to preview single-target damage</span>
+        </h5>
+
+        <div class="row g-3">
+            @for (int i = 0; i < 3; i++)
+            {
+                int targetIndex = i;
+                var enemy = State.Enemies[targetIndex];
+                bool isTarget = State.ActiveTargetIndex == targetIndex;
+                string label = targetIndex switch { 0 => "Left Enemy", 1 => "Center (Boss)", _ => "Right Enemy" };
+
+                <div class="col-lg-4">
+                    <div class="card h-100 @(isTarget ? "border-danger bg-danger bg-opacity-10 shadow" : "border-secondary bg-dark") p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge @(isTarget ? "bg-danger" : "bg-secondary")">@label</span>
+                                @if (isTarget)
+                                {
+                                    <span class="badge bg-warning text-dark"><i class="bi bi-crosshair"></i> Targeted</span>
+                                }
+                            </div>
+                            <button class="btn btn-sm @(isTarget ? "btn-danger" : "btn-outline-secondary text-light")" @onclick="() => State.ActiveTargetIndex = targetIndex">
+                                @(isTarget ? "Targeted" : "Target")
+                            </button>
+                        </div>
+
+                        <!-- Enemy Stats Summary -->
+                        <div class="row g-2 mb-2 small">
+                            <div class="col-6">
+                                <label class="text-muted" style="font-size: 0.75rem;">Weakness:</label>
+                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" @bind="enemy.Weakness">
+                                    @foreach (var t in CombatantState.AllTypes)
+                                    {
+                                        <option value="@t">@t</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="text-muted" style="font-size: 0.75rem;">Max HP:</label>
+                                <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0" value="@enemy.ManualStats.GetValueOrDefault("hp", 2000)" @onchange="@(e => OnEnemyHp(targetIndex, e))" />
+                            </div>
+                            <div class="col-6">
+                                <label class="text-muted" style="font-size: 0.75rem;">Defense:</label>
+                                <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0" value="@enemy.ManualStats.GetValueOrDefault("def", 100)" @onchange="@(e => OnEnemyDef(targetIndex, e))" />
+                            </div>
+                            <div class="col-6">
+                                <label class="text-muted" style="font-size: 0.75rem;">Sp. Def:</label>
+                                <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0" value="@enemy.ManualStats.GetValueOrDefault("spd", 100)" @onchange="@(e => OnEnemySpd(targetIndex, e))" />
+                            </div>
+                        </div>
+
+                        <!-- Enemy Debuff Sliders -->
+                        <div class="bg-black bg-opacity-25 p-2 rounded border border-secondary mb-2 small">
+                            <div class="text-muted fw-bold mb-1" style="font-size: 0.7rem;">Debuffs / Stages:</div>
+                            @foreach (var stat in new[] { "def", "spd", "spe" })
+                            {
+                                int val = enemy.Stages.GetValueOrDefault(stat, 0);
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="text-uppercase" style="font-size: 0.75rem;">@stat: <b class="@(val < 0 ? "text-danger" : (val > 0 ? "text-success" : "text-muted"))">@(val > 0 ? $"+{val}" : val.ToString())</b></span>
+                                    <input type="range" class="form-range w-50" min="-6" max="6" value="@val" @oninput="(e) => OnEnemySlider(targetIndex, stat, e)" />
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Status Condition -->
+                        <div class="small">
+                            <label class="text-muted mb-1" style="font-size: 0.75rem;">Status Condition:</label>
+                            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" @bind="enemy.StatusCondition">
+                                <option value="">None</option>
+                                <option value="burned">Burned 🔥</option>
+                                <option value="paralyzed">Paralyzed ⚡</option>
+                                <option value="poisoned">Poisoned ☠️</option>
+                                <option value="badly poisoned">Badly Poisoned 🟣</option>
+                                <option value="asleep">Asleep 💤</option>
+                                <option value="frozen">Frozen ❄️</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Damage Results Section for Active Attacker -->
+    @if (State.ActiveAttacker.Pair != null)
+    {
+        <div class="card bg-dark border-secondary shadow-sm mb-4">
+            <div class="card-header bg-secondary bg-opacity-25 border-secondary d-flex justify-content-between align-items-center">
+                <span class="fw-bold text-light fs-5">
+                    <i class="bi bi-graph-up text-warning me-2"></i> Move Damage Outputs: @State.ActiveAttacker.Pair.DisplayName
+                </span>
+                <span class="badge bg-purple">Active Attacker</span>
+            </div>
+
+            <div class="card-body">
+                <div class="d-flex flex-column gap-3">
+                    @foreach (var move in State.ActiveAttacker.Pair.Moves)
+                    {
+                        var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
+
+                        <div class="card bg-secondary bg-opacity-10 border-secondary p-3">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <div class="fw-bold text-light fs-6">@move.Name</div>
+                                    <div class="d-flex gap-1 align-items-center mt-1">
+                                        <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                        <span class="badge bg-secondary">@move.Category</span>
+                                        @if (move.IsSync)
+                                        {
+                                            <span class="badge bg-purple">Sync Move</span>
+                                        }
+                                        @if (teamResult.IsAoE)
+                                        {
+                                            <span class="badge bg-info text-dark">AoE / All Targets</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Triple Enemy Breakdown -->
+                            <div class="row g-2 mt-1">
+                                <!-- Target Left -->
+                                <div class="col-md-4">
+                                    <div class="p-2 rounded border @(State.ActiveTargetIndex == 0 ? "border-warning bg-warning bg-opacity-10" : "border-secondary bg-black bg-opacity-25") text-center">
+                                        <div class="small text-muted fw-bold mb-1">Left Enemy</div>
+                                        <div class="fs-5 fw-bold text-warning">@teamResult.LeftDamage.AvgDamage.ToString("N0")</div>
+                                        <div class="small text-muted" style="font-size: 0.75rem;">
+                                            @teamResult.LeftDamage.MinDamage.ToString("N0") - @teamResult.LeftDamage.MaxDamage.ToString("N0")
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Target Center (Boss) -->
+                                <div class="col-md-4">
+                                    <div class="p-2 rounded border @(State.ActiveTargetIndex == 1 ? "border-warning bg-warning bg-opacity-10" : "border-secondary bg-black bg-opacity-25") text-center">
+                                        <div class="small text-muted fw-bold mb-1">Center (Boss)</div>
+                                        <div class="fs-5 fw-bold text-warning">@teamResult.CenterDamage.AvgDamage.ToString("N0")</div>
+                                        <div class="small text-muted" style="font-size: 0.75rem;">
+                                            @teamResult.CenterDamage.MinDamage.ToString("N0") - @teamResult.CenterDamage.MaxDamage.ToString("N0")
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Target Right -->
+                                <div class="col-md-4">
+                                    <div class="p-2 rounded border @(State.ActiveTargetIndex == 2 ? "border-warning bg-warning bg-opacity-10" : "border-secondary bg-black bg-opacity-25") text-center">
+                                        <div class="small text-muted fw-bold mb-1">Right Enemy</div>
+                                        <div class="fs-5 fw-bold text-warning">@teamResult.RightDamage.AvgDamage.ToString("N0")</div>
+                                        <div class="small text-muted" style="font-size: 0.75rem;">
+                                            @teamResult.RightDamage.MinDamage.ToString("N0") - @teamResult.RightDamage.MaxDamage.ToString("N0")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Breakdown Multiplier Pills for Active Target -->
+                            <div class="d-flex flex-wrap gap-1 mt-2">
+                                @foreach (var pill in teamResult.ActiveTargetDamage.Breakdown)
+                                {
+                                    <span class="badge" style="background-color: @pill.Color;">
+                                        @pill.Label: @pill.Value
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private TeamBattleState State { get; set; } = new();
+    private List<StageLeague> _leagues = new();
+    private List<PairManifestItem> _allManifest = new();
+    private DamageRulesDocument _rules = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _leagues = await StageSvc.GetLeaguesAsync();
+        _allManifest = await DataService.GetManifestAsync();
+        _rules = await DataService.GetDamageRulesAsync();
+
+        if (_leagues.Count > 0)
+        {
+            var firstFight = _leagues[0].Fights.FirstOrDefault();
+            if (firstFight != null)
+            {
+                StageSvc.ApplyFightToEnemies(State, firstFight);
+            }
+        }
+
+        // Set default Slot 1 pair if available
+        if (_allManifest.Count > 0)
+        {
+            await LoadAllyPair(0, _allManifest[0].TrainerId);
+        }
+    }
+
+    private void ChangeAllySyncBuffs(int delta)
+    {
+        State.AllySyncBuffs = Math.Clamp(State.AllySyncBuffs + delta, 0, 9);
+    }
+
+    private void ChangeEnemySyncBuffs(int delta)
+    {
+        State.EnemySyncBuffs = Math.Clamp(State.EnemySyncBuffs + delta, 0, 9);
+    }
+
+    private void OnLeagueChanged(ChangeEventArgs e)
+    {
+        State.SelectedLeagueId = e.Value?.ToString() ?? "1";
+        var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
+        if (currentLeague != null && currentLeague.Fights.Count > 0)
+        {
+            State.SelectedFightId = currentLeague.Fights[0].FightId;
+            StageSvc.ApplyFightToEnemies(State, currentLeague.Fights[0]);
+        }
+    }
+
+    private void OnFightChanged(ChangeEventArgs e)
+    {
+        State.SelectedFightId = e.Value?.ToString() ?? "";
+        LoadSelectedStage();
+    }
+
+    private void LoadSelectedStage()
+    {
+        var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
+        var fight = currentLeague?.Fights.FirstOrDefault(f => f.FightId == State.SelectedFightId);
+        if (fight != null)
+        {
+            StageSvc.ApplyFightToEnemies(State, fight);
+        }
+    }
+
+    private void SetActiveAttacker(int slot)
+    {
+        State.ActiveAttackerIndex = slot;
+    }
+
+    private async Task OnAllyPairSelected(int slot, string? trainerId)
+    {
+        if (!string.IsNullOrEmpty(trainerId))
+        {
+            await LoadAllyPair(slot, trainerId);
+        }
+    }
+
+    private async Task LoadAllyPair(int slot, string trainerId)
+    {
+        var detail = await DataService.GetPairDetailAsync(trainerId);
+        if (detail != null)
+        {
+            State.Allies[slot].Pair = detail;
+        }
+    }
+
+    private void OnAllySlider(int slot, string stat, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            State.Allies[slot].Stages[stat] = val;
+        }
+    }
+
+    private void OnEnemySlider(int target, string stat, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            State.Enemies[target].Stages[stat] = val;
+        }
+    }
+
+    private void OnEnemyHp(int target, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            State.Enemies[target].ManualStats["hp"] = val;
+        }
+    }
+
+    private void OnEnemyDef(int target, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            State.Enemies[target].ManualStats["def"] = val;
+        }
+    }
+
+    private void OnEnemySpd(int target, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            State.Enemies[target].ManualStats["spd"] = val;
+        }
+    }
+}

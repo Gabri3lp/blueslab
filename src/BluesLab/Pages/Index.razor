@@ -44,7 +44,11 @@ else
                         </button>
                         <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
                                 @onclick="() => ActiveTab = 1">
-                            <i class="bi bi-calculator"></i> Damage Calculator
+                            <i class="bi bi-calculator"></i> Solo Calculator
+                        </button>
+                        <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                                @onclick="() => { ActiveTab = 2; ExpandedRight = true; }">
+                            <i class="bi bi-people-fill"></i> 3v3 Team Battle
                         </button>
                     </div>
 
@@ -64,7 +68,7 @@ else
                                           MoveLevel="MoveLevel"
                                           MoveLevelChanged="OnMoveLevelChanged" />
                     }
-                    else
+                    else if (ActiveTab == 1)
                     {
                         <DamageCalculatorPanel Ally="AllyState"
                                                Enemy="EnemyState"
@@ -72,6 +76,10 @@ else
                                                Rules="RulesDoc"
                                                MoveLevel="MoveLevel"
                                                MoveLevelChanged="OnMoveLevelChanged" />
+                    }
+                    else
+                    {
+                        <TeamBattleCalculator />
                     }
                 </div>
             </div>

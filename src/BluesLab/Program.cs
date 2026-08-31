@@ -11,5 +11,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<SyncPairDataService>();
 builder.Services.AddScoped<GridStateService>();
 builder.Services.AddScoped<DamageCalculatorService>();
+builder.Services.AddScoped<StageService>();
 
 await builder.Build().RunAsync();
