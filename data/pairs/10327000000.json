@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Kowtow Cleave",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "190",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Iron Head",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Perfect\nKowtow Cleave",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is increased.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not increased.\n\nNever misses. The more the user’s [Name:ReferencedMessageTag ] is increased, the greater the power of this attack. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by a number of ranks equal to the number of fainted Pokémon on your team.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s is increased.\nDeactivation Condition:\nWhen the user’s is not increased. Never misses. The more the user’s is increased, the greater the power of this attack. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Increases the user’s by a number of ranks equal to the number of fainted Pokémon on your team.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Applies the Free Move Next effect to the user. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Earnest DJ Vice’s\nKowtow Cleave",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99019301,
       "name": "DJ Vice’s Beat Drop",
-      "description": "Except in certain circumstances, increases the user’s [Name:ReferencedMessageTag ] by a number of ranks equal to the number of Pokémon that have taken damage when an ally takes damage from an opponent.",
+      "description": "Except in certain circumstances, increases the user’s by a number of ranks equal to the number of Pokémon that have taken damage when an ally takes damage from an opponent.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17072801,
       "name": "Ally Faints: Physical Boost 1",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally faints.",
+      "description": "Increases the user’s by ranks when an ally faints.",
       "childPassives": []
     }
   ],

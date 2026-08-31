@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Gun",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by %. Reduces attack move and sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Peak Summer\nMuddy Water",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is affected by a status condition.\nDeactivation Condition:\nWhen the user is not affected by a status condition.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises one of the following stats of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user is affected by a status condition.\nDeactivation Condition:\nWhen the user is not affected by a status condition. Never misses. Lowers the target’s by stat ranks. Raises one of the following stats of all allied sync pairs by stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs. Leaves the user burned.",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks. Applies the Gradual Healing effect to all allied sync pairs. Leaves the user burned.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rumored Seaside Beauty\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 99027901,
       "name": "Memories of Undella",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it uses [Name:MoveId Idx=\"8211\" ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when it uses [Name:MoveId Idx=\"8211\" ].",
+      "description": "Applies the to the user when it uses. Applies the to the user when it uses.",
       "childPassives": []
     },
     {
       "id": 19057101,
       "name": "Debut: Sinnoh C (Def) on Field",
-      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle.",
+      "description": "Applies to the allied field of play the first time the user enters a battle each battle.",
       "childPassives": []
     }
   ],

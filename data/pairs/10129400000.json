@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Crunch",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Defense by stat ranks.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Thieving\nNight Slash",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered [Name:ReferencedMessageTag ] on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered [Name:ReferencedMessageTag ] on the opponent’s field of play. \n\nNever misses. Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks. Except in certain circumstances, successful hits with this attack become critical hits. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the opponent’s field of play.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered on the opponent’s field of play. Never misses. Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks. Except in certain circumstances, successful hits with this attack become critical hits. Applies the to the opponent’s field of play.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Steal the Win\nDark Impact",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 17063301,
       "name": "Team Rebuff ↓ Command (Dark)",
-      "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Trainer uses a move each battle.",
+      "description": "Lowers the of all opposing sync pairs by ranks the first time the user’s Trainer uses a move each battle.",
       "childPassives": []
     },
     {
       "id": 17063409,
       "name": "Unbuffed Foe Freebie 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while none of the target’s stats are raised.",
+      "description": "Applies the to the user when its attack move is successful while none of the target’s stats are raised.",
       "childPassives": []
     },
     {

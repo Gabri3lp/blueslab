@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Gun",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Applies the Stat Reduction Defense effect to the allied field of play.",
       "isSync": false
     },
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Returns the target’s raised stats to normal.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s Defense by stat ranks. Raises the Sp. Def of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Mermaid Duo\nHydro Pump",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when none of the target’s stats are raised.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 12021504,
       "name": "Charging Infliction 4",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when its Pokémon uses a status move.",
+      "description": "Charges the user’s move gauge by when its Pokémon uses a status move.",
       "childPassives": []
     },
     {
       "id": 18043804,
       "name": "Shifty Striker 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s evasiveness by one stat rank when its Pokémon uses a move.",
+      "description": "Has a chance (%) of raising the user’s evasiveness by one stat rank when its Pokémon uses a move.",
       "childPassives": []
     },
     {

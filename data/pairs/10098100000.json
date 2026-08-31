@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Dazzling Gleam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a. (A powers up -type attacks.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Wild\nElectroweb",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared.\n\nThis attack’s power is doubled when the zone is a [Name:ReferencedMessageTag ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared. This attack’s power is doubled when the zone is a. Lowers the target’s by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"5\" ] when the zone is a [Name:ReferencedMessageTag Idx=\"4\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Reduces the user’s sync move countdown by when the zone is a.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Thundering Deity\nGigavolt Havoc",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "This attack’s power increases when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "This attack’s power increases when the terrain is.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 19024205,
       "name": "Electric Terrain Debut & Extension 5",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s terrain into the first time the user enters a battle each battle. Extends the duration of when the terrain turns into while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 13018902,
       "name": "Team Power Induction 2",
-      "description": "Powers up the moves of all allied sync pairs when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Powers up the moves of all allied sync pairs when the terrain is.",
       "childPassives": []
     },
     {
       "id": 17063609,
       "name": "Melemele Ocean Breeze",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Increases the of all allied sync pairs by ranks when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],

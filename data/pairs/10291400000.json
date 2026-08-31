@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Bubble",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Speed by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (%) of lowering the target’s Speed by stat ranks.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch.\n\nRemoves all status conditions from all allied sync pairs. Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. In addition, increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the weather is rainy.",
+      "gauge": "2",
+      "target": "All allies",
+      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch. Removes all status conditions from all allied sync pairs. Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by stat ranks. In addition, increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the weather is rainy.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Makes the weather rainy. Reduces the user’s sync move countdown by two. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Makes the weather rainy. Reduces the user’s sync move countdown by two. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Legend of the Sea\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99044201,
       "name": "Beautifully Flowing Water",
-      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP when its attack move is successful while the weather is rainy.",
+      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Restores an ally’s HP by approximately % of its maximum HP when its attack move is successful while the weather is rainy.",
       "childPassives": [
         {
           "id": 19020903,
@@ -154,20 +154,20 @@
         {
           "id": 11016509,
           "name": "Rainy Ally Hit: HP Recovery 9",
-          "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP when its attack move is successful while the weather is rainy."
+          "description": "Restores an ally’s HP by approximately % of its maximum HP when its attack move is successful while the weather is rainy."
         }
       ]
     },
     {
       "id": 99044301,
       "name": "Plenty of Energy!",
-      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"18500\" ] by [Digit:1digit ] and grants all of the following effects after your team’s sync pair uses their sync move: Makes the weather rainy. Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP.",
+      "description": "Reduces the MP for the user’s by and grants all of the following effects after your team’s sync pair uses their sync move: Makes the weather rainy. Restores the user’s HP by approximately % of its maximum HP.",
       "childPassives": []
     },
     {
       "id": 17095809,
       "name": "User Sets Rain: Team Phys & Spec Boost ↑1 9",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user makes the weather rainy.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user makes the weather rainy.",
       "childPassives": []
     }
   ],

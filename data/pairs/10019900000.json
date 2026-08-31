@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Precipice Blades",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "189",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by %. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Red\nPrecipice Blades",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "270",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nMakes the target flinch. The power of this move is not lowered even if there are multiple targets. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the weather is EX sunny. Applies the [Name:ReferencedMessageTag Idx=\"3\" ] to the user when the weather is EX sunny.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move times.\nDeactivation Condition:\nWhen this move is used. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. Lowers the target’s by stat ranks when the weather is EX sunny. Applies the to the user when the weather is EX sunny.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Increases the of an ally by ranks. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Raincloud-Scattering Lands\nPrecipice Blade",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28010201,
       "name": "Hoenn Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by %. Reduces physical attack move damage taken by all allied sync pairs by %. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 99022601,
       "name": "Hoenn Hype",
-      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the -type moves and -type sync moves of all allied sync pairs when the weather is sunny.",
       "childPassives": [
         {
           "id": 13082802,
@@ -166,7 +166,7 @@
         {
           "id": 13083102,
           "name": "Sunny: Team Ground P-Moves ↑ & S-Moves ↑ 2",
-          "description": "Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny."
+          "description": "Powers up the -type moves and -type sync moves of all allied sync pairs when the weather is sunny."
         }
       ]
     },

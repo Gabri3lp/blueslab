@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Draining Kiss",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather rainy.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared.\n\nApplies the [Name:ReferencedMessageTag ] to all allied sync pairs. Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP. HP is restored by [Digit:2digits Idx=\"3\" ]% instead when the zone is a [Name:ReferencedMessageTag Idx=\"2\" ]. Returns lowered stats of all allied sync pairs to normal when the weather is rainy.",
+      "target": "All allies",
+      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared. Applies the to all allied sync pairs. Restores the HP of all allied sync pairs by approximately % of their maximum HP. HP is restored by % instead when the zone is a. Returns lowered stats of all allied sync pairs to normal when the weather is rainy.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Critical-Hit Defense effect to the allied field of play. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs. In addition, raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the weather is rainy.",
+      "target": "All allies",
+      "description": "Applies the Critical-Hit Defense effect to the allied field of play. Raises the of all allied sync pairs by stat ranks. Applies the Gradual Healing effect to all allied sync pairs. In addition, raises the of all allied sync pairs by stat ranks when the weather is rainy.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ocean Colors\nTwinkle Tackle",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19024305,
       "name": "Fairy Zone Debut & Extension 5",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s zone into a the first time the user enters a battle each battle. (A powers up -type attacks.) Extends the duration of the when the zone turns into a while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 13021803,
       "name": "Team Whimsical Special DR 3",
-      "description": "Reduces special attack move damage taken by allies when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Reduces special attack move damage taken by allies when the zone is a.",
       "childPassives": []
     },
     {
       "id": 18107309,
       "name": "Poni Ocean Breeze",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],

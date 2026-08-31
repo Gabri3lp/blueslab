@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Stone Edge",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Accelerock",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "75",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses a sync move once.\nDeactivation Condition:\nCannot be deactivated.\n\nUses a maximum of [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the more it raises the Attack, Defense, Sp. Def, and Speed of all allied sync pairs (can be raised by up to [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] maximum). Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Activation Condition:\nWhen the user uses a sync move once.\nDeactivation Condition:\nCannot be deactivated. Uses a maximum of slots of the user’s move gauge. The more amount used, the more it raises the Attack, Defense, Sp. Def, and Speed of all allied sync pairs (can be raised by up to stat ranks maximum). Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "On the Path Together\nRock Impact",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases during a sandstorm.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99012501,
       "name": "Paulo’s Resolve",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move. Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Protects all allied sync pairs from damage from a sandstorm.",
+      "description": "Reduces the user’s sync move countdown by after using its max move. Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Protects all allied sync pairs from damage from a sandstorm.",
       "childPassives": []
     },
     {
       "id": 15013109,
       "name": "“Quick Move”: Sync CD ↓ 9",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses a move that has the quick move effect tag.",
+      "description": "Reduces the user’s sync move countdown by when it uses a move that has the quick move effect tag.",
       "childPassives": []
     },
     {
       "id": 17065509,
       "name": "“Quick Move”: Physical Boost ↑1 9",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it uses a move that has the quick move effect tag.",
+      "description": "Increases the user’s by ranks when it uses a move that has the quick move effect tag.",
       "childPassives": []
     }
   ],

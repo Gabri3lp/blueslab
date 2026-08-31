@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Sacred Fire",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "87",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Removes the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Removes the frozen condition from the user. Has a chance (%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Almighty Skies\nSacred Fire",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s HP is at [Digit:2digits ]% or more.\nDeactivation Condition:\nWhen the user’s HP is less than [Digit:2digits ]%.\n\nNever misses. Removes the frozen condition from the user. Leaves the target burned. The power of this move is not lowered even if there are multiple targets. Makes the weather EX sunny if the remaining MP is [Digit:1digit Idx=\"1\" ] when this move is selected. Lowers the target’s Defense and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] if the remaining MP is [Digit:1digit Idx=\"2\" ] when this move is selected. Applies the [Name:ReferencedMessageTag Idx=\"4\" ] to all allied sync pairs if the remaining MP is [Digit:1digit Idx=\"3\" ] when this move is selected.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s HP is at % or more.\nDeactivation Condition:\nWhen the user’s HP is less than %. Never misses. Removes the frozen condition from the user. Leaves the target burned. The power of this move is not lowered even if there are multiple targets. Makes the weather EX sunny if the remaining MP is when this move is selected. Lowers the target’s Defense and Sp. Def by stat ranks if the remaining MP is when this move is selected. Applies the to all allied sync pairs if the remaining MP is when this move is selected.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by two. Raises the user’s Defense and Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Golden Rule\nDivine Sacred Fire",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time its sync move is used each battle.",
+      "description": "Applies the to the user the first time its sync move is used each battle.",
       "isSync": true
     }
   ],
@@ -144,42 +144,42 @@
     {
       "id": 29010401,
       "name": "Flame Myth",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 29020401,
       "name": "Flame Judgment",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99028001,
       "name": "Righteous Heart of Gold",
-      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move. Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by stat ranks when the user is hit by an attack move. Raises one of the following stats of all allied sync pairs by stat ranks at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
       "childPassives": [
         {
           "id": 99017401,
           "name": "Touch at Your Own Peril",
-          "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
+          "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by stat ranks when the user is hit by an attack move."
         },
         {
           "id": 18122409,
           "name": "Take Hit: Team Same Stat ↑2 9",
-          "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)"
+          "description": "Raises one of the following stats of all allied sync pairs by stat ranks at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)"
         }
       ]
     },
     {
       "id": 99028101,
       "name": "Everlasting Rainbow",
-      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"105\" ] by one and fully restores its HP when its HP drops to half or below.",
+      "description": "Reduces the MP for the user’s by one and fully restores its HP when its HP drops to half or below.",
       "childPassives": []
     },
     {
       "id": 99028201,
       "name": "Seven-Colored Wings of Happiness",
-      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Has a chance (%) of making the target flinch when the user’s attack move against it is successful.",
       "childPassives": [
         {
           "id": 17044809,
@@ -189,7 +189,7 @@
         {
           "id": 17041304,
           "name": "Staggering 4",
-          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
+          "description": "Has a chance (%) of making the target flinch when the user’s attack move against it is successful."
         }
       ]
     }

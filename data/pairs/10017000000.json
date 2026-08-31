@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Iron Tail",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "132",
       "accuracy": "75",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Defense by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by [Digit:1digit ] instead. Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Charges the user’s move gauge by for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by instead. Raises the user’s Attack by stat ranks.",
       "isSync": false
     },
     {
@@ -134,9 +134,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "-",
-      "gauge": "-",
-      "target": "An opponent",
-      "description": "Charges the user’s move gauge by its current move level. Raises the Attack, Defense, Sp. Atk, Sp. Def, Speed, and accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "0",
+      "target": "All allies",
+      "description": "Charges the user’s move gauge by its current move level. Raises the Attack, Defense, Sp. Atk, Sp. Def, Speed, and accuracy of all allied sync pairs by stat ranks.",
       "isSync": true
     }
   ],

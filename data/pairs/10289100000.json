@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ferocious\nPlay Rough",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any moves [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s Attack and Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any moves times.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the target’s Attack and Defense by stat ranks. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Nicely Rampagey\nPlay Rough",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,25 +144,25 @@
     {
       "id": 28012401,
       "name": "Paldea Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by %. Reduces physical attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 25010101,
       "name": "Ancient Scream",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19170\" ] or an ally turns the weather sunny.",
+      "description": "Increases the user’s by ranks when it uses or an ally turns the weather sunny.",
       "childPassives": []
     },
     {
       "id": 99018001,
       "name": "Energetic Student Council President",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when its Pokémon uses a status move. Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user’s Pokémon uses a status move.",
+      "description": "Reduces the user’s sync move countdown by when its Pokémon uses a status move. Applies to the allied field of play when the user’s Pokémon uses a status move.",
       "childPassives": []
     },
     {
       "id": 99018101,
       "name": "Fruitful Attack",
-      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Charges the user’s move gauge by [Digit:1digit ] when its attack move hits.",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Charges the user’s move gauge by when its attack move hits.",
       "childPassives": []
     }
   ],

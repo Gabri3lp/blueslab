@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Acid",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move and special sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by %. Reduces special attack move and special sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Nihil\nMeteor Beam",
       "type": "Rock",
-      "category": "Status",
+      "category": "Special",
       "power": "210",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag Idx=\"4\" ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag Idx=\"4\" ] is not raised.\n\nThe user gets ready to attack. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it gets ready to attack. (The user’s Sp. Atk will not rise if it has not gotten ready to attack.) Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. Never misses. The more the target’s [Name:ReferencedMessageTag Idx=\"2\" ] is lowered, the greater the power of this attack. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it is poisoned or badly poisoned. The preparation period is skipped when a circle applies to the allied field of play, and the user will attack right away.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nWhen the user’s is not raised. The user gets ready to attack. Raises the user’s by stat ranks when it gets ready to attack. (The user’s Sp. Atk will not rise if it has not gotten ready to attack.) Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. Never misses. The more the target’s is lowered, the greater the power of this attack. Lowers the target’s by stat ranks when it is poisoned or badly poisoned. The preparation period is skipped when a circle applies to the allied field of play, and the user will attack right away.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Cute Quirks\nContinental Crush",
       "type": "Rock",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 17071509,
       "name": "Poison-Type Hit: Poison 9",
-      "description": "Leaves the target poisoned when the user’s [Name:ReferencedMessageTag ]-type attack move against it is successful.",
+      "description": "Leaves the target poisoned when the user’s -type attack move against it is successful.",
       "childPassives": []
     },
     {

@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "124",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Never misses when the weather is rainy. Has a chance (%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Fully Charged\nThunderclap",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "180",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not raised.\n\nMakes the target flinch. Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ] the first time this attack move is successful each battle. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nWhen the user’s is not raised. Makes the target flinch. Turns the field of play’s terrain into the first time this attack move is successful each battle. Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by. Raises an ally’s by stat ranks. Raises an ally’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Exclusive Stream Reveal\nThunderclap",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 25010301,
       "name": "Ancient Thunder",
-      "description": "Restores [Digit:1digit ] MP for the user’s moves that have the Quick Move effect tag when it uses [Name:MoveId Idx=\"19170\" ] or an ally turns the weather sunny.",
+      "description": "Restores MP for the user’s moves that have the Quick Move effect tag when it uses or an ally turns the weather sunny.",
       "childPassives": []
     },
     {
       "id": 18121009,
       "name": "Ally Sets WTZ: Team 1 of 5 Stats ↑2 9",
-      "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when an ally activates a weather, terrain, or zone effect: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
+      "description": "Raises one of the following stats of all allied sync pairs by stat ranks at random when an ally activates a weather, terrain, or zone effect: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
       "childPassives": []
     },
     {

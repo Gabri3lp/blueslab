@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Rock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Solid\nWood Hammer",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "280",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nNever misses. Applies the [Name:ReferencedMessageTag ] to the target. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play. Never misses. Applies the to the target. Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"6\" ] by [Digit:1digit Idx=\"7\" ] stat [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks. Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "The Verdant Virtuoso’s\nTera Blast",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target’s Type Rebuff is lowered.",
       "isSync": true
@@ -144,36 +144,36 @@
     {
       "id": 29030901,
       "name": "Paldea Rush",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by the first time your team enters a battle each battle instead. The more allied sync pairs with you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 33010501,
       "name": "Debut: Grass S-Tera",
-      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time it enters a battle each battle.",
+      "description": "The user Sync Terastallizes into type the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99037501,
       "name": "Heed My Wishes!",
-      "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle. Lowers the [Name:ReferencedMessageTag Idx=\"2\" ] of all opposing sync pairs by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "description": "Lowers the of all opposing sync pairs by ranks the first time the user’s sync move is used each battle. Lowers the of all opposing sync pairs by ranks the first time the user’s sync move is used each battle.",
       "childPassives": [
         {
           "id": 17090701,
           "name": "1st S-Move: Team Grass Rebuff ↓ 1",
-          "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle."
+          "description": "Lowers the of all opposing sync pairs by ranks the first time the user’s sync move is used each battle."
         },
         {
           "id": 17091401,
           "name": "1st S-Move: Team Rock Rebuff ↓ 1",
-          "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle."
+          "description": "Lowers the of all opposing sync pairs by ranks the first time the user’s sync move is used each battle."
         }
       ]
     },
     {
       "id": 18126609,
       "name": "Hit: Team-Synced Stat ↓ Twice 9",
-      "description": "Grants the following effect [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ] when the user’s attack move is successful: Lowers one of the target’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is lowered for all opponents.)",
+      "description": "Grants the following effect times when the user’s attack move is successful: Lowers one of the target’s following stats by stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is lowered for all opponents.)",
       "childPassives": []
     }
   ],

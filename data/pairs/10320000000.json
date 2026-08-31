@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Armor Cannon",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "192",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Lowers the user’s Defense and Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Flamethrower",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Explosive\nMystical Fire",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not raised.\n\nNever misses. The more the user’s [Name:ReferencedMessageTag Idx=\"2\" ] is lowered, the greater the power of this attack. Lowers the target’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets. The more the user’s [Name:ReferencedMessageTag Idx=\"2\" ] is lowered, the more it reduces its sync move countdown (can be reduced by up to [Digit:1digit Idx=\"3\" ] maximum). Returns the user’s lowered stats to normal, then raises the user’s same stats by the same amount.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nWhen the user’s is not raised. Never misses. The more the user’s is lowered, the greater the power of this attack. Lowers the target’s by stat ranks. The power of this move is not lowered even if there are multiple targets. The more the user’s is lowered, the more it reduces its sync move countdown (can be reduced by up to maximum). Returns the user’s lowered stats to normal, then raises the user’s same stats by the same amount.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Explosive All-Rounder\nArmor Cannon",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99020401,
       "name": "Explosive Artistry",
-      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful.",
+      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Increases the user’s by ranks when its attack move is successful.",
       "childPassives": [
         {
           "id": 17044809,
@@ -154,20 +154,20 @@
         {
           "id": 17069509,
           "name": "Hit: Special Boost ↑1 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful."
+          "description": "Increases the user’s by ranks when its attack move is successful."
         }
       ]
     },
     {
       "id": 99020601,
       "name": "Let’s Get Fired Up",
-      "description": "The user’s stats cannot be lowered when the remaining MP for its [Name:MoveId Idx=\"6096\" ] is zero.",
+      "description": "The user’s stats cannot be lowered when the remaining MP for its is zero.",
       "childPassives": []
     },
     {
       "id": 18111909,
       "name": "Hit: Evasiveness ↑ 9",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful.",
+      "description": "Raises the user’s by stat ranks when its attack move is successful.",
       "childPassives": []
     }
   ],

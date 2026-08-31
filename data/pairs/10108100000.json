@@ -82,8 +82,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target confused.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rising Flames\nHex",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "80",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nThis attack’s power is doubled against targets that are affected by a status condition, flinching, confused, or trapped. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it is paralyzed. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it is burned. Lowers the target’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the [Name:ReferencedMessageTag Idx=\"6\" ] to the user when the target is trapped. Increases the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ] when the target is confused.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play. This attack’s power is doubled against targets that are affected by a status condition, flinching, confused, or trapped. Lowers the target’s by stat ranks when it is paralyzed. Lowers the target’s by stat ranks when it is burned. Lowers the target’s by stat ranks when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the to the user when the target is trapped. Increases the user’s by ranks when the target is confused.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by. Raises the of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Arrival at the Greatest Battle\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is affected by a status condition.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99019501,
       "name": "Inbound Train Announcement",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
+      "description": "Reduces the user’s sync move countdown by when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s by ranks when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
       "childPassives": []
     },
     {
       "id": 17049809,
       "name": "Team Brain Gain 9",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "description": "Increases the of all allied sync pairs by ranks when the user’s move is successful.",
       "childPassives": []
     },
     {
       "id": 18117509,
       "name": "Move: Sp. Atk ↑2 & Crit Rate ↑1 9",
-      "description": "Grants all of the following effects when the user’s move is successful: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects when the user’s move is successful: Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "childPassives": []
     }
   ],

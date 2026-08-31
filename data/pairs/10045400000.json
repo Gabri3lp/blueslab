@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Struggle Bug",
       "type": "Bug",
-      "category": "Status",
+      "category": "Special",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Sp. Atk. by stat ranks.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by %. Reduces attack move and sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Bugs’ Singing\nLeech Life",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "120",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any circles applied to the allied field of play.\n\nLowers one of the target’s following stats by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Raises the user’s stat by the same amount. The more damage dealt to the target, the more it restores the user’s HP. Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP. Turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"1\" ] the first time this attack move is successful each battle. (A [Name:ReferencedMessageTag Idx=\"1\" ] powers up [Name:ReferencedMessageTag Idx=\"2\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any circles applied to the allied field of play. Lowers one of the target’s following stats by stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Raises the user’s stat by the same amount. The more damage dealt to the target, the more it restores the user’s HP. Restores the HP of all allied sync pairs by approximately % of their maximum HP. Turns the field of play’s zone into a the first time this attack move is successful each battle. (A powers up -type attacks.)",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP. Removes all status conditions and the flinching, confused, and trapped conditions from an ally. Applies the Gradual Healing effect to an ally. Applies the Enduring effect to an ally.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP. Removes all status conditions and the flinching, confused, and trapped conditions from an ally. Applies the Gradual Healing effect to an ally. Applies the Enduring effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Conduct a Melody of Feelings\nBug Impact",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 17073809,
       "name": "User Sets Circle: Team Phys & Spec Boost ↑1 9",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user applies a circle to the allied field of play.",
       "childPassives": []
     },
     {
       "id": 18118309,
       "name": "User Sets Circle: Team Defense & Sp. Def ↑2 9",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play.",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks when the user applies a circle to the allied field of play.",
       "childPassives": []
     },
     {

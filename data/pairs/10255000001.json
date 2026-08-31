@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Powder Snow",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "16",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the [Name:ReferencedMessageTag ] is applied to the allied field of play.\nDeactivation Condition:\nWhen the [Name:ReferencedMessageTag ] is no longer applied to the allied field of play.\n\nNever misses. Returns the raised stats of all opposing sync pairs to normal. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the opponent’s field of play. Applies the Stat Reduction Defense effect to the allied field of play. Returns lowered stats of all allied sync pairs to normal. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to all allied sync pairs. Applies the Free Move Next effect to all allied sync pairs.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the is applied to the allied field of play.\nDeactivation Condition:\nWhen the is no longer applied to the allied field of play. Never misses. Returns the raised stats of all opposing sync pairs to normal. Applies the to the opponent’s field of play. Applies the Stat Reduction Defense effect to the allied field of play. Returns lowered stats of all allied sync pairs to normal. Applies the to all allied sync pairs. Applies the Free Move Next effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by one. Raises the Defense and Sp. Def of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Severe Battle Style\nFrost Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18116209,
       "name": "Hit: Attack ↓ & Sp. Atk ↓ 9",
-      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "description": "Lowers the target’s Attack and Sp. Atk by stat ranks when the user’s attack move is successful.",
       "childPassives": []
     },
     {
       "id": 19057305,
       "name": "Debut: Field Special DR & Extension 5",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle. Extends the duration of the [Name:ReferencedMessageTag ] when the [Name:ReferencedMessageTag ] is applied to the allied field of play.",
+      "description": "Applies the to the allied field of play the first time the user enters a battle each battle. Extends the duration of the when the is applied to the allied field of play.",
       "childPassives": []
     },
     {

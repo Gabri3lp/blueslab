@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Moonblast",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "98",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Atk by stat ranks.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "45",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Starry Night\nDisarming Voice",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Reduces the user’s sync move countdown by [Digit:1digit ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to all allied sync pairs. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to all allied sync pairs. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used. Never misses. Reduces the user’s sync move countdown by. Applies the to all allied sync pairs. Applies the to all allied sync pairs. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Beautiful Dancing Songstress\nFairy Beam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18044102,
       "name": "Pep Rally 2",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "description": "Raises the Speed of all allied sync pairs by stat ranks when the user’s move is successful.",
       "childPassives": []
     },
     {
       "id": 13081102,
       "name": "Ally Speed ↑: Moves ↑ 2",
-      "description": "Powers up an ally’s moves when [Name:ReferencedMessageTag ] is raised.",
+      "description": "Powers up an ally’s moves when is raised.",
       "childPassives": []
     }
   ],

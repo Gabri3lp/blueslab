@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Dancing Flames\nFlare Blitz",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nCannot be deactivated.\n\nRemoves the frozen condition from the user. Never misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Has a chance ([Digit:2digits ]%) of leaving the target burned. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nCannot be deactivated. Removes the frozen condition from the user. Never misses. Lowers the target’s by stat ranks. Has a chance (%) of leaving the target burned. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by %. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the to the user.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Burning Red Trouble\nFire Impact",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99034701,
       "name": "Burning Up!",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally applies a circle to the allied field of play.",
+      "description": "Increases the user’s by ranks when an ally applies a circle to the allied field of play.",
       "childPassives": [
         {
           "id": 17083209,
           "name": "Ally Sets Circle: Physical Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally applies a circle to the allied field of play."
+          "description": "Increases the user’s by ranks when an ally applies a circle to the allied field of play."
         }
       ]
     },
     {
       "id": 99034501,
       "name": "The Perfect Temperature",
-      "description": "Grants all of the following effects the first time the user uses [Name:MoveId Idx=\"8212\" ] each battle: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"4\" ] to the user.",
+      "description": "Grants all of the following effects the first time the user uses each battle: Raises the user’s by stat ranks. Raises the user’s by stat ranks. Applies the to the user.",
       "childPassives": []
     },
     {

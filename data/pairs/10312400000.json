@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Shadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Souls’ Repose\nLast Respects",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Trainer uses any moves [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The more fainted Pokémon on your team, the greater the power of this attack. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets. Restores [Digit:1digit ] MP for this move when you have two or more Pokémon on your team.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s Trainer uses any moves times.\nDeactivation Condition:\nCannot be deactivated. Never misses. Except in certain circumstances, successful hits with this attack become critical hits. The more fainted Pokémon on your team, the greater the power of this attack. Lowers the target’s by stat ranks. The power of this move is not lowered even if there are multiple targets. Restores MP for this move when you have two or more Pokémon on your team.",
       "isSync": false
     },
     {
@@ -121,9 +121,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by two. Raises the user’s Attack and Sp. Atk by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Raging Soul Carrier\nGhost Impact",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Attack is raised, the greater the power of this attack.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 15016209,
       "name": "Own Ally Faints: Sync CD ↓9 (Lim. 2)",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when an ally on your team faints. When used in a co-op battle, reduces the sync move countdown of a player other than the user by [Digit:1digit ] instead when the user faints. This effect can activate up to [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"time\" P=\"times\" ] per battle.",
+      "description": "Reduces the user’s sync move countdown by when an ally on your team faints. When used in a co-op battle, reduces the sync move countdown of a player other than the user by instead when the user faints. This effect can activate up to times per battle.",
       "childPassives": []
     }
   ],

@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Shuriken",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Brutal Swing",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Boundless\nQuick Attack",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen any allies’ attack moves hit a total of 10 times while this move is deactivated.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the target’s Defense and Sp. Def by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"5\" ] by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"4\" ] type. Lowers the target’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"6\" ] type. Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen any allies’ attack moves hit a total of 10 times while this move is deactivated.\nDeactivation Condition:\nWhen this move is used. Never misses. Lowers the target’s Defense and Sp. Def by stat ranks. Lowers the target’s by ranks when the user’s sync move is type. Lowers the target’s by ranks when the user’s sync move is type. Reduces the user’s sync move countdown by. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by stat ranks. Raises the user’s Sp. Atk by stat ranks. Raises the user’s critical-hit rate by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Vivid Water\nShuriken",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s stats are lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 28011501,
       "name": "Kalos Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by %. Reduces special attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 99011901,
       "name": "Dashing Dark Transformation",
-      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its -type moves.",
       "childPassives": []
     },
     {

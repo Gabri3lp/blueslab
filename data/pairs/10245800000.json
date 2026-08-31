@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Bite",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Supereffective ↑ Next effect to an ally.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Impish\nFalse Surrender",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. If the remaining MP for the user’s [Name:MoveId Idx=\"19160\" ] is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the target’s Defense and Sp. Def by stat ranks. If the remaining MP for the user’s is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Applies the to all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"2\" ]. (An [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.) Applies the Supereffective ↑ Next effect to an ally. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of an ally by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into an. (An powers up -type attacks.) Applies the Supereffective ↑ Next effect to an ally. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of an ally by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Winning with Everyone’s Cheers\nDark Impact",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,34 +144,34 @@
     {
       "id": 29030801,
       "name": "Galar Rush",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by the first time your team enters a battle each battle instead. The more allied sync pairs with you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 99039401,
       "name": "Hometown Cheers",
-      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it turns the field of play’s zone into an [Name:ReferencedMessageTag ] each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] the first time it turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"3\" ] each battle.",
+      "description": "Raises the user’s by stat ranks the first time it turns the field of play’s zone into an each battle. Raises the user’s by stat ranks the first time it turns the field of play’s zone into an each battle.",
       "childPassives": []
     },
     {
       "id": 99039501,
       "name": "Returning Cheers with a Smile",
-      "description": "Grants all of the following effects after the user uses its max move: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Restores [Digit:1digit Idx=\"2\" ] MP of the user’s [Name:MoveId Idx=\"19160\" ].",
+      "description": "Grants all of the following effects after the user uses its max move: Reduces the user’s sync move countdown by. Turns the field of play’s zone into a. (A powers up -type attacks.) Restores MP of the user’s.",
       "childPassives": [
         {
           "id": 15011701,
           "name": "MAX Countdown 1",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move."
+          "description": "Reduces the user’s sync move countdown by after using its max move."
         },
         {
           "id": 19063601,
           "name": "Max Move: Dark Zone",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s max move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into a after using the user’s max move. (A powers up -type attacks.)"
         },
         {
           "id": 16021501,
           "name": "Max Move: Restore “Super Effective ↑” MP 1",
-          "description": "Restores [Digit:1digit ] MP of the user’s [Name:MoveId Idx=\"19160\" ] after using its max move."
+          "description": "Restores MP of the user’s after using its max move."
         }
       ]
     },

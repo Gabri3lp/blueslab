@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Grassy Glide",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Will not consume the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Will not consume the move gauge when the terrain is.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Grassy Terrain.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Attack and Sp. Atk by stat ranks. Applies the Gradual Healing effect to an ally.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Time-Transcending\nMagical Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "This attack’s power increases when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "This attack’s power increases when the terrain is.",
       "isSync": true
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": 28011001,
       "name": "Johto Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by %. Reduces physical attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 12011602,
       "name": "Turbo Turf 2",
-      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Quickly charges the move gauge when the terrain is.",
       "childPassives": []
     }
   ],

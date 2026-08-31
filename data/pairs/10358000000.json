@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Leaves all opposing sync pairs either flinching, confused, or trapped. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"3\" ]% of its maximum HP. Makes opponents target the user for a short time.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the of all opposing sync pairs by stat ranks. Leaves all opposing sync pairs either flinching, confused, or trapped. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Restores the user’s HP by approximately % of its maximum HP. Makes opponents target the user for a short time.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to the user.",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Applies the Enduring effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Just Between Us\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is flinching, confused, or trapped.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17083609,
       "name": "Ally Hits Flinching Opp: Phys & Spec Boost ↑1 9",
-      "description": "Increases an ally’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when its attack move is successful against a flinching opponent.",
+      "description": "Increases an ally’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks when its attack move is successful against a flinching opponent.",
       "childPassives": []
     },
     {
       "id": 12022609,
       "name": "Ally Hits Confused Opp: MG ↑2 9",
-      "description": "Charges an ally’s move gauge by [Digit:1digit ] when its attack move is successful against a confused opponent.",
+      "description": "Charges an ally’s move gauge by when its attack move is successful against a confused opponent.",
       "childPassives": []
     },
     {
       "id": 11015409,
       "name": "Ally Hits Trapped Opp: HP Recovery 9",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP when its attack move is successful against a trapped opponent.",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP when its attack move is successful against a trapped opponent.",
       "childPassives": []
     }
   ],

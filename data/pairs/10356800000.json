@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Bite",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by %. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Sharp Fangs\nCrunch",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any circles applied to the allied field of play.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"6\" ] by [Digit:1digit Idx=\"7\" ] stat [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag ] to the target the first time this attack move is successful each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"2\" ] the first time this attack move is successful each battle. (A [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.) Increases the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any circles applied to the allied field of play. Never misses. Lowers the target’s by stat ranks. Applies the to the target the first time this attack move is successful each battle. Turns the field of play’s zone into a the first time this attack move is successful each battle. (A powers up -type attacks.) Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by one. Raises the of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ogre Balloon–Busting Champion\nCrunch",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,40 +144,40 @@
     {
       "id": 29030901,
       "name": "Paldea Rush",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by the first time your team enters a battle each battle instead. The more allied sync pairs with you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 99044901,
       "name": "Dazzling Jinbei Look",
-      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user the first time it enters a battle each battle.",
+      "description": "Applies to the allied field of play the first time the user enters a battle each battle. Applies the to the user the first time it enters a battle each battle.",
       "childPassives": [
         {
           "id": 19069301,
           "name": "Debut: Paldea C (Phys) on Field",
-          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle."
+          "description": "Applies to the allied field of play the first time the user enters a battle each battle."
         },
         {
           "id": 17096501,
           "name": "Debut: Endure and Restore",
-          "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time it enters a battle each battle."
+          "description": "Applies the to the user the first time it enters a battle each battle."
         }
       ]
     },
     {
       "id": 99045001,
       "name": "Talent for Oustin’ Ogres",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] when it applies [Name:ReferencedMessageTag ] to the allied field of play. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user applies [Name:ReferencedMessageTag ] to the allied field of play.",
+      "description": "Reduces the user’s sync move countdown by when it applies to the allied field of play. Increases the of all allied sync pairs by ranks when the user applies to the allied field of play.",
       "childPassives": [
         {
           "id": 15016301,
           "name": "User Sets Paldea C (Phys): Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when it applies [Name:ReferencedMessageTag ] to the allied field of play."
+          "description": "Reduces the user’s sync move countdown by when it applies to the allied field of play."
         },
         {
           "id": 17096601,
           "name": "User Sets Paldea C (Phys): Team Physical Boost 1",
-          "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user applies [Name:ReferencedMessageTag ] to the allied field of play."
+          "description": "Increases the of all allied sync pairs by ranks when the user applies to the allied field of play."
         }
       ]
     },

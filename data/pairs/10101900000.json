@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Relic Song of Wonder",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch.\n\nNever misses. Has a chance ([Digit:2digits ]%) of putting the target to sleep. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises one of the following stats of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch. Never misses. Has a chance (%) of putting the target to sleep. Raises the critical-hit rate of all allied sync pairs by stat ranks. Raises one of the following stats of all allied sync pairs by stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "45",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is in Aria Forme. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is in Pirouette Forme.",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks when the user is in Aria Forme. Increases the of all allied sync pairs by ranks when the user is in Pirouette Forme.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sepia Memories\nRelic Song",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,25 +144,25 @@
     {
       "id": 28010401,
       "name": "Unova Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 99014401,
       "name": "Relic Nostalgia",
-      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes [Name:MoveId Idx=\"547\" ] in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user changes forms while it is on the field of play.",
+      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user changes forms while it is on the field of play.",
       "childPassives": []
     },
     {
       "id": 99014501,
       "name": "Psychic Performance",
-      "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful.",
+      "description": "Normal-type moves and sync moves become type. Raises the user’s by stat ranks when its move targeting an opponent is successful.",
       "childPassives": []
     },
     {
       "id": 99014601,
       "name": "Entrancing Melody",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
+      "description": "Lowers the target’s by ranks the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s by ranks the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
       "childPassives": []
     }
   ],

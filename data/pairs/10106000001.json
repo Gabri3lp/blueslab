@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Electroweb",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by stat ranks.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Leech Life",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "91",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the accuracy of all allied sync pairs by stat ranks. Raises the critical-hit rate of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Dazzlingly Bright\nElectric Beam",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18045201,
       "name": "Hype Up 1",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the Sp. Atk of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
+      "description": "Has a chance (%) of raising the Sp. Atk of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
       "childPassives": []
     },
     {
       "id": 18049704,
       "name": "Trip Up 4",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Speed by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (%) of lowering the target’s Speed by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 11010601,
       "name": "S-Move: HP Recovery (M) 1",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its sync move.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP after using its sync move.",
       "childPassives": []
     }
   ],

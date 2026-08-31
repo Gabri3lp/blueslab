@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by stat ranks.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Rock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a sandstorm is caused.\nDeactivation Condition:\nWhen the weather condition is no longer a sandstorm.\n\nNever misses. Lowers the target’s Defense, Sp. Def, and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Leaves the target paralyzed.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen a sandstorm is caused.\nDeactivation Condition:\nWhen the weather condition is no longer a sandstorm. Never misses. Lowers the target’s Defense, Sp. Def, and Speed by stat ranks. Leaves the target paralyzed.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by. Raises the of all allied sync pairs by stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Snapping Up Likes\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99020701,
       "name": "Stream Forward, Sandstorm!",
-      "description": "Causes a sandstorm when the user is hit by an attack move. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
+      "description": "Causes a sandstorm when the user is hit by an attack move. Raises the of all allied sync pairs by stat ranks when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
       "childPassives": [
         {
           "id": 19052209,
@@ -159,14 +159,14 @@
         {
           "id": 18118809,
           "name": "Take Hit: Team Evasiveness ↑2 9",
-          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
+          "description": "Raises the of all allied sync pairs by stat ranks when the user is hit by an attack move."
         }
       ]
     },
     {
       "id": 99020801,
       "name": "Take By Storm and Take a Selfie",
-      "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by [Digit:1digit ] when an opponent’s attack move targeting the user misses.",
+      "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by when an opponent’s attack move targeting the user misses.",
       "childPassives": []
     },
     {

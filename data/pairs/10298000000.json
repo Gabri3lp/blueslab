@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Twin Beam",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks twice in a row.",
       "isSync": false
     },
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Removes all status conditions from an ally.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Experimental\nStored Power",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s stats are raised by a total of ten stat ranks or more.\nDeactivation Condition:\nWhen the user’s stats are raised by a total of [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] or less.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The more the user’s stats are raised, the greater the power of this attack. Removes all of the user’s stat increases.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user’s stats are raised by a total of ten stat ranks or more.\nDeactivation Condition:\nWhen the user’s stats are raised by a total of stat ranks or less. Never misses. Except in certain circumstances, successful hits with this attack become critical hits. The more the user’s stats are raised, the greater the power of this attack. Removes all of the user’s stat increases.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "If the user’s stats are raised, the amount of increase is doubled. Applies the [Name:ReferencedMessageTag ] to the user. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user.",
+      "description": "If the user’s stats are raised, the amount of increase is doubled. Applies the to the user. Applies the to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Laid-Back Biology Teacher\nTwin Beam",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99016601,
       "name": "Jacq’s Lesson",
-      "description": "Reduces MP by [Digit:1digit ] for the user’s moves that have the Berry effect tag and raises its Sp. Atk and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful.",
+      "description": "Reduces MP by for the user’s moves that have the Berry effect tag and raises its Sp. Atk and Sp. Def by stat ranks when its attack move is successful.",
       "childPassives": []
     },
     {
       "id": 13061403,
       "name": "S-Move: Restore “Berry” MP 3",
-      "description": "Restores [Digit:1digit ] MP of the user’s moves that have the Berry effect tag after using its sync move.",
+      "description": "Restores MP of the user’s moves that have the Berry effect tag after using its sync move.",
       "childPassives": []
     },
     {
       "id": 18114109,
       "name": "Strike: Stat ↑2 9",
-      "description": "Raises one of the user’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when its attack move hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, raises one of the user’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Raises one of the user’s following stats by stat ranks at random when its attack move hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, raises one of the user’s following stats by stat ranks at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     }
   ],

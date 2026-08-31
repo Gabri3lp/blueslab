@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Crush Grip",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "260",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "The smaller the target’s percentage of remaining HP, the lower the power of this attack becomes.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a. (A powers up -type attacks.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "G Giga Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any moves, sync move, or max move a total of five times.\nDeactivation Condition:\nWhen this move is used.\n\nLowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user uses any moves, sync move, or max move a total of five times.\nDeactivation Condition:\nWhen this move is used. Lowers the target’s Defense by stat ranks. Restores the user’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Towering Tower Tycoon\nNormal Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 17065209,
       "name": "Sync Buff & Hit: Physical Boost ↑3 9",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while its team has a sync buff.",
+      "description": "Increases the user’s by ranks when its attack move is successful while its team has a sync buff.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17065301,
       "name": "Max Move: Free Move Next",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user after using its max move.",
+      "description": "Applies the to the user after using its max move.",
       "childPassives": []
     }
   ],

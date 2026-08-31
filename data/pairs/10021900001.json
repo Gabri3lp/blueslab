@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Discharge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nRestores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP. In addition, restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP. Removes all status conditions from all allied sync pairs. Applies the Gradual Healing effect to all allied sync pairs.",
+      "gauge": "2",
+      "target": "All allies",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play. Restores the HP of all allied sync pairs by approximately % of their maximum HP. In addition, restores the user’s HP by approximately % of its maximum HP. Removes all status conditions from all allied sync pairs. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Uses a maximum of [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the more it raises the [Name:ReferencedMessageTag Idx=\"5\" ] of all allied sync pairs (can be raised by up to [Digit:1digit Idx=\"6\" ] stat [EN:Qty Ref=\"6\" S=\"rank\" P=\"ranks\" ] maximum). Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the of all allied sync pairs by stat ranks. Uses a maximum of slots of the user’s move gauge. The more amount used, the more it raises the of all allied sync pairs (can be raised by up to stat ranks maximum). Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Name-Echoing\nThunder",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 28011201,
       "name": "Kanto Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 99012801,
       "name": "Pride of Pallet",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful. Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful. Has a chance (%) of making the target flinch when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 99012901,
       "name": "Roaring White Lightning",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
+      "description": "Lowers the target’s by ranks the first time the user’s attack move is successful each battle. Lowers the target’s by ranks the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
       "childPassives": []
     },
     {
