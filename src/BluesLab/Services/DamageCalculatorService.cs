@@ -778,6 +778,58 @@ public class DamageCalculatorService
                 count += isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
             }
         }
+        else if (rule.Stat == "def_spd")
+        {
+            int s1 = stages.GetValueOrDefault("def", 0);
+            int s2 = stages.GetValueOrDefault("spd", 0);
+            count = (isRaised ? Math.Max(0, s1) : Math.Max(0, -s1)) + (isRaised ? Math.Max(0, s2) : Math.Max(0, -s2));
+        }
+        else if (rule.Stat == "rebuff")
+        {
+            int reb = enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0);
+            count = isRaised ? Math.Abs(reb) : Math.Max(0, -reb);
+        }
+        else if (rule.Stat == "boost_rank_pmun")
+        {
+            count = ally.PhysicalBoostNext;
+        }
+        else if (rule.Stat == "boost_rank_smun")
+        {
+            count = ally.SpecialBoostNext;
+        }
+        else if (rule.Stat == "boost_rank_syun")
+        {
+            count = ally.SyncMoveBoostNext;
+        }
+        else if (rule.Stat.StartsWith("cond:"))
+        {
+            string cond = rule.Stat.Substring(5).ToLowerInvariant();
+            bool matched = cond switch
+            {
+                "sunny" => field.Weather == "Sunny",
+                "rain" => field.Weather == "Rainy",
+                "sandstorm" => field.Weather == "Sandstorm",
+                "hail" => field.Weather == "Hail",
+                "any_weather" => !string.IsNullOrEmpty(field.Weather),
+                "electric_terrain" => field.Terrain == "Electric Terrain",
+                "grassy_terrain" => field.Terrain == "Grassy Terrain",
+                "any_terrain" => !string.IsNullOrEmpty(field.Terrain),
+                "burned" => enemy.StatusCondition == "burned",
+                "paralyzed" => enemy.StatusCondition == "paralyzed",
+                "poisoned" => enemy.StatusCondition == "poisoned" || enemy.StatusCondition == "badly poisoned",
+                "asleep" => enemy.StatusCondition == "asleep",
+                "frozen" => enemy.StatusCondition == "frozen",
+                "any_status" => !string.IsNullOrEmpty(enemy.StatusCondition),
+                "confused" => enemy.VolatileStatus.GetValueOrDefault("confused", false),
+                "trapped" => enemy.VolatileStatus.GetValueOrDefault("trapped", false),
+                "flinching" => enemy.VolatileStatus.GetValueOrDefault("flinching", false),
+                "flinch_confuse_trap" => enemy.VolatileStatus.GetValueOrDefault("confused", false) || enemy.VolatileStatus.GetValueOrDefault("trapped", false) || enemy.VolatileStatus.GetValueOrDefault("flinching", false),
+                "target_rebuff_lowered" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0,
+                "super_effective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
+                _ => (!string.IsNullOrEmpty(field.Zone) && cond.Contains("zone") && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", "")))
+            };
+            count = matched ? 1 : 0;
+        }
         else
         {
             int s = stages.GetValueOrDefault(rule.Stat, 0);
@@ -793,7 +845,8 @@ public class DamageCalculatorService
 
         if (mult > 1.0)
         {
-            pills.Add(new MultiplierPill { Label = $"Move Scaling ({rule.Stat})", Value = $"×{mult:0.##}", Color = "#fd79a8" });
+            string label = rule.Stat.StartsWith("cond:") ? rule.Stat.Substring(5) : rule.Stat;
+            pills.Add(new MultiplierPill { Label = $"Move Scaling ({label})", Value = $"×{mult:0.##}", Color = "#fd79a8" });
         }
 
         return mult;
