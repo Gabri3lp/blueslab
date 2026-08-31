@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Shadow Force",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "The user takes on a shadow presence. After a set time, this presence fades and the user attacks. No other actions can be taken while in shadow presence. Opponents’ moves will not hit the user while it is in this presence. If the user is hit by a sync move or max move while in shadow presence, the presence will fade.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Shadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Distortion World\nShadow Force",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move once.\nDeactivation Condition:\nWhen this move is used or when attacking with this move.\n\nThe user takes on a shadow presence. After a set time, this presence fades and the user attacks. No other actions can be taken while in shadow presence. Opponents’ moves will not hit the user while it is in this presence. If the user is hit by a sync move or max move while in shadow presence, the presence will fade. The user attacks without taking on a shadow presence when the zone is a [Name:ReferencedMessageTag ]. The power of this move is not lowered even if there are multiple targets. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move once.\nDeactivation Condition:\nWhen this move is used or when attacking with this move. The user takes on a shadow presence. After a set time, this presence fades and the user attacks. No other actions can be taken while in shadow presence. Opponents’ moves will not hit the user while it is in this presence. If the user is hit by a sync move or max move while in shadow presence, the presence will fade. The user attacks without taking on a shadow presence when the zone is a. The power of this move is not lowered even if there are multiple targets. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Attack and Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Physical Move Break effect and Special Move Break effect to the user.",
+      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Attack and Sp. Atk by stat ranks. Raises the user’s by stat ranks. Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks. Applies the Physical Move Break effect and Special Move Break effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Dreaming of a Better World\nShadow Force",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28040401,
       "name": "Hisui’s Pokémon Wielder",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Lowers the [Name:ReferencedMessageTag Idx=\"1\" ] of all opposing sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Lowers the of all opposing sync pairs by ranks the first time the user’s sync move is used each battle.",
       "childPassives": [
         {
           "id": 28030401,
@@ -154,63 +154,63 @@
         {
           "id": 17086801,
           "name": "1st S-Move: Team Ghost Rebuff ↓ 1",
-          "description": "Lowers the [Name:ReferencedMessageTag Idx=\"1\" ] of all opposing sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle."
+          "description": "Lowers the of all opposing sync pairs by ranks the first time the user’s sync move is used each battle."
         }
       ]
     },
     {
       "id": 99030801,
       "name": "Devotion to the Creator",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time it enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
       "childPassives": [
         {
           "id": 15010103,
           "name": "Head Start 3",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle."
+          "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle."
         },
         {
           "id": 17086301,
           "name": "Debut: Team Ghost Rebuff ↓ 1",
-          "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle."
+          "description": "Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle."
         }
       ]
     },
     {
       "id": 99030901,
       "name": "Distorted Eldritch Presence",
-      "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Trainer uses a move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by 10 ranks the first time its Trainer uses a move each battle.",
+      "description": "Turns the field of play’s zone into an the first time the user’s Trainer uses a move each battle. (An powers up -type attacks.) Increases the user’s by 10 ranks the first time its Trainer uses a move each battle.",
       "childPassives": [
         {
           "id": 19058601,
           "name": "1st T-Move: EX Ghost Zone",
-          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Trainer uses a move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into an the first time the user’s Trainer uses a move each battle. (An powers up -type attacks.)"
         },
         {
           "id": 17086401,
           "name": "1st T-Move: Sync Move Boost 10",
-          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by 10 ranks the first time its Trainer uses a move each battle."
+          "description": "Increases the user’s by 10 ranks the first time its Trainer uses a move each battle."
         }
       ]
     },
     {
       "id": 99031001,
       "name": "The Heavens and the Earth as One",
-      "description": "Leaves the target flinching, confused, and trapped when the user’s attack move against it is successful while the zone is a [Name:ReferencedMessageTag ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful against a flinching, confused, or trapped opponent. Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against a flinching, confused, or trapped opponent.",
+      "description": "Leaves the target flinching, confused, and trapped when the user’s attack move against it is successful while the zone is a. Applies the to the user when its attack move is successful against a flinching, confused, or trapped opponent. Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks when its attack move is successful against a flinching, confused, or trapped opponent.",
       "childPassives": [
         {
           "id": 17086509,
           "name": "Ghost Zone & Hit: Interference 9",
-          "description": "Leaves the target flinching, confused, and trapped when the user’s attack move against it is successful while the zone is a [Name:ReferencedMessageTag ]."
+          "description": "Leaves the target flinching, confused, and trapped when the user’s attack move against it is successful while the zone is a."
         },
         {
           "id": 17086609,
           "name": "Hit Inter Opp: Free Move Next 9",
-          "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful against a flinching, confused, or trapped opponent."
+          "description": "Applies the to the user when its attack move is successful against a flinching, confused, or trapped opponent."
         },
         {
           "id": 17086709,
           "name": "Hit Inter Opp: Phys & Spec Boost ↑1 9",
-          "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against a flinching, confused, or trapped opponent."
+          "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks when its attack move is successful against a flinching, confused, or trapped opponent."
         }
       ]
     }

@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Searing Shot",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "152",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Has a chance (%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Confusion",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "18",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "V-create",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Defense, Sp. Def, and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Lowers the user’s Defense, Sp. Def, and Speed by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. When the user’s Attack is raised, raises the user’s Sp. Atk by the same amount. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s critical-hit rate by stat ranks. When the user’s Attack is raised, raises the user’s Sp. Atk by the same amount. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Infinite Energy\nV-create",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18045906,
       "name": "Fierce Entry 6",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Attack by stat ranks when it enters a battle.",
       "childPassives": []
     },
     {

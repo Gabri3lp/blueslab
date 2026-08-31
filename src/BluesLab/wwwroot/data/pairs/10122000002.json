@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Shadow Claw",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "40",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Ghost Zone. (A Ghost Zone powers up Ghost-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Solitary\nSpirit Shackle",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nLowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Restrain effect to the target. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s [Name:MoveId Idx=\"19640\" ] is [Digit:1digit Idx=\"6\" ] or more when attacking with this move, reduces those MP by [Digit:1digit Idx=\"6\" ] and grants all of the following effects: Turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"2\" ]. (A [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.) Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated. Lowers the target’s by stat ranks. Applies the Restrain effect to the target. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s is or more when attacking with this move, reduces those MP by and grants all of the following effects: Turns the field of play’s zone into a. (A powers up -type attacks.) Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to an ally. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by. Applies the to an ally. Increases the of an ally by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sneaky Sniper\nGhost Impact",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18126803,
       "name": "Entry: Attack ↑6 & Crit Rate ↑3",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s by stat ranks when it enters a battle. Raises the user’s by stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17091502,
       "name": "1st Ghost Wish MP 0: Physical Boost 2",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for its [Name:MoveId Idx=\"19640\" ] is zero each battle.",
+      "description": "Increases the user’s by ranks the first time the remaining MP for its is zero each battle.",
       "childPassives": []
     },
     {
       "id": 18117009,
       "name": "Hit Restrained Opp: Attack ↓ & Sp. Atk ↓ 9",
-      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a restrained opponent.",
+      "description": "Lowers the target’s Attack and Sp. Atk by stat ranks when the user’s attack move is successful against a restrained opponent.",
       "childPassives": []
     }
   ],

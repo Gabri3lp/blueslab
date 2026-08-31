@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Acid",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Ancient Power",
       "type": "Rock",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of raising the user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Applies [Name:ReferencedMessageTag ] to the opponents’ field of play. ([Name:ReferencedMessageTag ]: The sync pairs will take [Name:ReferencedMessageTag Idx=\"1\" ]-type damage whenever they take an action.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Applies to the opponents’ field of play. (: The sync pairs will take -type damage whenever they take an action.)",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to the user.",
+      "description": "Raises the user’s Sp. Atk and Sp. Def by stat ranks. Applies the Enduring effect to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Agent of the\nAncient Rock Beam",
       "type": "Rock",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "This attack’s power increases when the [Name:ReferencedMessageTag ] applies to the opponent’s field of play.",
+      "description": "This attack’s power increases when the applies to the opponent’s field of play.",
       "isSync": true
     }
   ],
@@ -156,7 +156,7 @@
     {
       "id": 19022101,
       "name": "Catalytic Infliction",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s Pokémon uses a status move each battle.",
+      "description": "Applies the to the allied field of play the first time the user’s Pokémon uses a status move each battle.",
       "childPassives": []
     }
   ],

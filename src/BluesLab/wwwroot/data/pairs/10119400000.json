@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hyper Beam",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "223",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Hyper\nBeam Z",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. The power of this move is not lowered even if there are multiple targets. Reduces the user’s sync move countdown by one. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move once.\nDeactivation Condition:\nWhen this move is used. Never misses. The power of this move is not lowered even if there are multiple targets. Reduces the user’s sync move countdown by one. Applies the Free Move Next effect to the user. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by one. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Full-Power Trial and Error\nBreakneck Blitz",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,35 +144,35 @@
     {
       "id": 99029801,
       "name": "Memory Emulator",
-      "description": "Changes the type of the user’s move to that of a single target’s weakness when the user attacks with [Name:MoveId Idx=\"6141\" ].",
+      "description": "Changes the type of the user’s move to that of a single target’s weakness when the user attacks with.",
       "childPassives": []
     },
     {
       "id": 99029301,
       "name": "Attack Program",
-      "description": "Powers up the user’s [Name:MoveId Idx=\"63\" ]. The user’s [Name:MoveId Idx=\"63\" ] never misses.",
+      "description": "Powers up the user’s. The user’s never misses.",
       "childPassives": [
         {
           "id": 13083805,
           "name": "Hyper Beam Power ↑ 5",
-          "description": "Powers up the user’s [Name:MoveId Idx=\"63\" ]."
+          "description": "Powers up the user’s."
         },
         {
           "id": 13030601,
           "name": "Hyper Beam Sure Hit",
-          "description": "The user’s [Name:MoveId Idx=\"63\" ] never misses."
+          "description": "The user’s never misses."
         }
       ]
     },
     {
       "id": 99029401,
       "name": "Recovery Program",
-      "description": "Powers up the user’s sync move when its remaining HP is at half or more. Reduces the MP for the user’s [Name:MoveId Idx=\"105\" ] by [Digit:1digit ] and restores its HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP when its HP drops to half or below.",
+      "description": "Powers up the user’s sync move when its remaining HP is at half or more. Reduces the MP for the user’s by and restores its HP by approximately % of its maximum HP when its HP drops to half or below.",
       "childPassives": [
         {
           "id": 11015601,
           "name": "Half HP: “Recover” MP ↓ & HP Recovery 5",
-          "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"105\" ] by [Digit:1digit ] and restores its HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP when its HP drops to half or below."
+          "description": "Reduces the MP for the user’s by and restores its HP by approximately % of its maximum HP when its HP drops to half or below."
         },
         {
           "id": 13083909,

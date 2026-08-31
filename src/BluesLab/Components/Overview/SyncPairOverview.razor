@@ -1,3 +1,5 @@
+@using BluesLab.Models
+@using BluesLab.Services
 @inject DamageCalculatorService CalcService
 @inject GridStateService GridState
 @implements IDisposable
@@ -9,8 +11,8 @@
     }
     else
     {
-        <!-- Header Info & Controls -->
-        <div class="card bg-dark border-secondary p-3 mb-3">
+        <!-- Header Info & Settings Bar -->
+        <div class="card bg-dark border-secondary p-3 mb-3 shadow-sm">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-3">
                     <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="56" height="56" class="rounded-circle border border-warning shadow" onerror="this.src=''img/trainers/unknown.png'';" />
@@ -118,282 +120,375 @@
             </div>
         </div>
 
-        <!-- Comprehensive Stats Table -->
-        <div class="card bg-dark border-secondary p-3 mb-3">
-            <h6 class="text-info fw-bold mb-3 d-flex align-items-center justify-content-between">
-                <span class="d-flex align-items-center gap-2">
-                    <i class="bi bi-bar-chart-fill"></i> Stats Breakdown (Lv. @Ally.CharLevel)
-                </span>
-                @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
+        <!-- Compressed Stats Bar with Tooltips & Detailed Dropdown -->
+        <div class="card bg-dark border-secondary p-3 mb-3 shadow-sm">
+            @{
+                int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 140;
+                var pot = CalcService.CalcPotentialBonus(Pair.Rarity, Ally.StarLevel);
+                var ex = Ally.HasExRole ? CalcService.GetExRoleBonus(Pair.ExRole) : new();
+                string[] statsKeys = ["hp", "atk", "def", "spa", "spd", "spe"];
+                var currentVariation = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
+                    ? Pair.Variations[Ally.FormIndex - 1]
+                    : null;
+                bool isSaActive = Pair.HasSuperAwakening && Ally.SuperAwakeningLevel >= 1;
+            }
+
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-bar-chart-fill text-info"></i>
+                    <span class="fw-bold text-light">Stats Summary (Lv. @Ally.CharLevel)</span>
+                    @if (isSaActive)
+                    {
+                        <span class="badge bg-danger text-light" style="font-size: 0.7rem;">SA +10% Active</span>
+                    }
+                </div>
+                <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
+                    <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down") me-1"></i>
+                    @(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")
+                </button>
+            </div>
+
+            <!-- Compact 6-Pill Stats Grid -->
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2">
+                @foreach (var s in statsKeys)
                 {
-                    <span class="badge bg-secondary text-warning small">
-                        Form Scaling Active: @Pair.Variations[Ally.FormIndex - 1].FormName
-                    </span>
-                }
-            </h6>
-            <div class="table-responsive">
-                <table class="table table-dark table-sm table-bordered text-center align-middle mb-0">
-                    <thead>
-                        <tr class="text-secondary small">
-                            <th class="text-start">Category</th>
-                            <th style="width: 15%;">HP</th>
-                            <th style="width: 15%;">Attack</th>
-                            <th style="width: 15%;">Defense</th>
-                            <th style="width: 15%;">Sp. Atk</th>
-                            <th style="width: 15%;">Sp. Def</th>
-                            <th style="width: 15%;">Speed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 140;
-                            var pot = CalcService.CalcPotentialBonus(Pair.Rarity, Ally.StarLevel);
-                            var ex = Ally.HasExRole ? CalcService.GetExRoleBonus(Pair.ExRole) : new();
-                            string[] statsKeys = ["hp", "atk", "def", "spa", "spd", "spe"];
-                            var currentVariation = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
-                                ? Pair.Variations[Ally.FormIndex - 1]
-                                : null;
-                            bool isSaActive = Pair.HasSuperAwakening && Ally.SuperAwakeningLevel >= 1;
-                        }
-                        <tr>
-                            <td class="text-start text-muted small">
-                                Base Stat (Lv. @Ally.CharLevel)
-                                @if (isSaActive)
-                                {
-                                    <span class="badge bg-danger text-light ms-1" style="font-size: 0.65rem;">+10% SA</span>
-                                }
-                            </td>
-                            @foreach (var s in statsKeys)
-                            {
-                                int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
-                                int saBase = rawBase;
-                                if (isSaActive)
-                                {
-                                    saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
-                                    if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
-                                        if (saFlat.TryGetValue(s, out int fb))
-                                            saBase += fb;
-                                    }
-                                }
-                                <td>@saBase</td>
-                            }
-                        </tr>
-                        <tr>
-                            <td class="text-start text-muted small">Potential + EX Role</td>
-                            @foreach (var s in statsKeys)
-                            {
-                                int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
-                                <td class="@(bonus > 0 ? "text-success" : "text-muted")">@(bonus > 0 ? $"+{bonus}" : "-")</td>
-                            }
-                        </tr>
-                        @if (currentVariation != null)
+                    int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                    int saBase = rawBase;
+                    if (isSaActive)
+                    {
+                        saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                        if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
                         {
+                            var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
+                            if (saFlat.TryGetValue(s, out int fb))
+                                saBase += fb;
+                        }
+                    }
+
+                    int potVal = pot.GetValueOrDefault(s, 0);
+                    int exVal = ex.GetValueOrDefault(s, 0);
+                    double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
+
+                    int gBonus = 0;
+                    foreach (var cell in Pair.Grid)
+                    {
+                        if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                            gBonus += sb;
+                    }
+
+                    int total = CalcService.CalcTotalStat(
+                        s,
+                        rawBase,
+                        0,
+                        potential: potVal,
+                        exBonus: exVal,
+                        formMult: formMult,
+                        hasSa: Pair.HasSuperAwakening,
+                        saLevel: Ally.SuperAwakeningLevel,
+                        role: Pair.Role,
+                        gridStat: gBonus
+                    );
+
+                    int totalBonus = (potVal + exVal + gBonus);
+                    string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
+
+                    <div class="col">
+                        <div class="p-2 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: help;">
+                            <div class="text-uppercase small text-secondary fw-bold" style="font-size: 0.75rem;">@s</div>
+                            <div class="fs-5 fw-bold text-warning">@total</div>
+                            <div class="text-muted small" style="font-size: 0.7rem;">
+                                Base @saBase @(totalBonus > 0 ? $"(+{totalBonus})" : "")
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!-- Detailed Breakdown Accordion Table -->
+            @if (ShowDetailedStats)
+            {
+                <div class="table-responsive mt-3 pt-2 border-top border-secondary">
+                    <table class="table table-dark table-sm table-bordered text-center align-middle mb-0">
+                        <thead>
+                            <tr class="text-secondary small">
+                                <th class="text-start">Category</th>
+                                <th style="width: 15%;">HP</th>
+                                <th style="width: 15%;">Attack</th>
+                                <th style="width: 15%;">Defense</th>
+                                <th style="width: 15%;">Sp. Atk</th>
+                                <th style="width: 15%;">Sp. Def</th>
+                                <th style="width: 15%;">Speed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <tr>
-                                <td class="text-start text-muted small">Form Multiplier (@currentVariation.FormName)</td>
+                                <td class="text-start text-muted small">
+                                    Base Stat (Lv. @Ally.CharLevel)
+                                    @if (isSaActive)
+                                    {
+                                        <span class="badge bg-danger text-light ms-1" style="font-size: 0.65rem;">+10% SA</span>
+                                    }
+                                </td>
                                 @foreach (var s in statsKeys)
                                 {
-                                    double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
-                                    <td class="@(mult > 1.0 ? "text-warning" : "text-muted")">@(mult > 1.0 ? $"×{mult:0.#}" : "×1.0")</td>
+                                    int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                                    int saBase = rawBase;
+                                    if (isSaActive)
+                                    {
+                                        saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                                        if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
+                                            if (saFlat.TryGetValue(s, out int fb))
+                                                saBase += fb;
+                                        }
+                                    }
+                                    <td>@saBase</td>
                                 }
                             </tr>
-                        }
-                        <tr>
-                            <td class="text-start text-muted small">Sync Grid Bonus</td>
-                            @foreach (var s in statsKeys)
-                            {
-                                int gBonus = 0;
-                                foreach (var cell in Pair.Grid)
+                            <tr>
+                                <td class="text-start text-muted small">Potential + EX Role</td>
+                                @foreach (var s in statsKeys)
                                 {
-                                    if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
-                                        gBonus += sb;
+                                    int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
+                                    <td class="@(bonus > 0 ? "text-success" : "text-muted")">@(bonus > 0 ? $"+{bonus}" : "-")</td>
                                 }
-                                <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
-                            }
-                        </tr>
-                        <tr class="table-active fw-bold fs-6">
-                            <td class="text-start text-warning">Total Stat</td>
-                            @foreach (var s in statsKeys)
+                            </tr>
+                            @if (currentVariation != null)
                             {
-                                int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
-                                int potVal = pot.GetValueOrDefault(s, 0);
-                                int exVal = ex.GetValueOrDefault(s, 0);
-                                double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
-
-                                int gBonus = 0;
-                                foreach (var cell in Pair.Grid)
-                                {
-                                    if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
-                                        gBonus += sb;
-                                }
-
-                                int total = CalcService.CalcTotalStat(
-                                    s,
-                                    rawBase,
-                                    0,
-                                    potential: potVal,
-                                    exBonus: exVal,
-                                    formMult: formMult,
-                                    hasSa: Pair.HasSuperAwakening,
-                                    saLevel: Ally.SuperAwakeningLevel,
-                                    role: Pair.Role,
-                                    gridStat: gBonus
-                                );
-
-                                <td class="text-warning">@total</td>
+                                <tr>
+                                    <td class="text-start text-muted small">Form Multiplier (@currentVariation.FormName)</td>
+                                    @foreach (var s in statsKeys)
+                                    {
+                                        double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
+                                        <td class="@(mult > 1.0 ? "text-warning" : "text-muted")">@(mult > 1.0 ? $"×{mult:0.#}" : "×1.0")</td>
+                                    }
+                                </tr>
                             }
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                            <tr>
+                                <td class="text-start text-muted small">Sync Grid Bonus</td>
+                                @foreach (var s in statsKeys)
+                                {
+                                    int gBonus = 0;
+                                    foreach (var cell in Pair.Grid)
+                                    {
+                                        if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                            gBonus += sb;
+                                    }
+                                    <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
+                                }
+                            </tr>
+                            <tr class="table-active fw-bold fs-6">
+                                <td class="text-start text-warning">Total Stat</td>
+                                @foreach (var s in statsKeys)
+                                {
+                                    int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                                    int potVal = pot.GetValueOrDefault(s, 0);
+                                    int exVal = ex.GetValueOrDefault(s, 0);
+                                    double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
+
+                                    int gBonus = 0;
+                                    foreach (var cell in Pair.Grid)
+                                    {
+                                        if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                            gBonus += sb;
+                                    }
+
+                                    int total = CalcService.CalcTotalStat(
+                                        s,
+                                        rawBase,
+                                        0,
+                                        potential: potVal,
+                                        exBonus: exVal,
+                                        formMult: formMult,
+                                        hasSa: Pair.HasSuperAwakening,
+                                        saLevel: Ally.SuperAwakeningLevel,
+                                        role: Pair.Role,
+                                        gridStat: gBonus
+                                    );
+
+                                    <td class="text-warning">@total</td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>
 
-        <!-- Moves and Passives -->
-        <div class="row g-3">
-            <!-- Moves Section (with Dynamic Base Power according to Move Level & SA) -->
-            <div class="col-lg-6">
-                <div class="card bg-dark border-secondary h-100 p-3">
-                    @{
-                        int effectiveLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : Ally.MoveLevel;
-                    }
-                    <h6 class="text-warning fw-bold mb-3 d-flex align-items-center justify-content-between">
-                        <span class="d-flex align-items-center gap-2">
-                            <i class="bi bi-lightning-fill"></i> Moves
-                        </span>
-                        <span class="badge bg-secondary text-light small">
-                            Move Lv. @effectiveLvl/5 @(Ally.SuperAwakeningLevel > 0 ? $" (SA {Ally.SuperAwakeningLevel})" : "")
-                        </span>
-                    </h6>
-                    <div class="d-flex flex-column gap-2">
-                        @foreach (var move in Pair.Moves)
-                        {
-                            int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
-                            int scaledPwr = rawPwr > 0 ? CalcService.CalcPower(rawPwr, effectiveLvl, Pair.Role, move.IsSync) : 0;
-                            int multPct = rawPwr > 0 ? CalcService.GetMoveMultiplier(effectiveLvl, Pair.Role, move.IsSync) : 100;
+        <!-- Section Switcher Tabs: Moves vs Passives -->
+        <div class="card bg-dark border-secondary p-3 shadow-sm mb-3">
+            @{
+                var activeGridPassives = Pair.Grid
+                    .Where(c => GridState.ActiveCells.Contains(c.CellId) &&
+                                (c.ColorKind.Equals("passive", StringComparison.OrdinalIgnoreCase) ||
+                                 c.ColorKind.Equals("move effect", StringComparison.OrdinalIgnoreCase) ||
+                                 c.ColorKind.Equals("learn", StringComparison.OrdinalIgnoreCase)))
+                    .ToList();
+            }
 
-                            <div class="card bg-secondary bg-opacity-25 border-secondary p-2">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <div class="fw-bold text-light">@move.Name</div>
-                                        <div class="d-flex gap-1 align-items-center mt-1">
-                                            <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
-                                            <span class="badge bg-secondary">@move.Category</span>
-                                            @if (move.IsSync)
-                                            {
-                                                <span class="badge bg-purple">Sync Move</span>
-                                            }
-                                        </div>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 pb-2 border-bottom border-secondary">
+                <div class="nav nav-pills gap-2" role="tablist">
+                    <button class="btn btn-sm @(ActiveSection == "moves" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                            @onclick='() => SetSection("moves")'>
+                        <i class="bi bi-lightning-fill me-1"></i> Moves (@Pair.Moves.Count)
+                    </button>
+                    <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light")"
+                            @onclick='() => SetSection("passives")'>
+                        <i class="bi bi-shield-check me-1"></i> Passives (@Pair.Passives.Count)
+                    </button>
+                    <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                            @onclick='() => SetSection("grid")'>
+                        <i class="bi bi-grid-fill me-1"></i> Grid Skills (@activeGridPassives.Count)
+                    </button>
+                </div>
+
+                @if (ActiveSection == "moves")
+                {
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.75rem;" @onclick="ToggleAllMoves">
+                            <i class="bi bi-arrows-expand me-1"></i> @(ExpandAllMoves ? "Collapse Descriptions" : "Expand All Descriptions")
+                        </button>
+                    </div>
+                }
+            </div>
+
+            <!-- Moves View -->
+            @if (ActiveSection == "moves")
+            {
+                int effectiveLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : Ally.MoveLevel;
+
+                <div class="d-flex flex-column gap-2">
+                    @foreach (var move in Pair.Moves)
+                    {
+                        int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
+                        int scaledPwr = rawPwr > 0 ? CalcService.CalcPower(rawPwr, effectiveLvl, Pair.Role, move.IsSync) : 0;
+                        int multPct = rawPwr > 0 ? CalcService.GetMoveMultiplier(effectiveLvl, Pair.Role, move.IsSync) : 100;
+                        bool isExpanded = ExpandAllMoves || ExpandedMoveIds.Contains(move.Id);
+
+                        <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-start cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="fw-bold text-light fs-6">@move.Name</span>
+                                        @if (move.IsSync)
+                                        {
+                                            <span class="badge bg-purple">Sync Move</span>
+                                        }
                                     </div>
+                                    <div class="d-flex gap-1 align-items-center mt-1">
+                                        <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                        <span class="badge bg-secondary">@move.Category</span>
+                                        @if (!string.IsNullOrEmpty(move.Target))
+                                        {
+                                            <span class="badge bg-dark border border-secondary text-muted" style="font-size: 0.7rem;">@move.Target</span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3">
                                     <div class="text-end small">
                                         @if (scaledPwr > 0)
                                         {
-                                            <div>Power: <b class="text-warning">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
+                                            <div>Power: <b class="text-warning fs-6">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
                                         }
                                         else
                                         {
                                             <div>Power: <b class="text-muted">-</b></div>
                                         }
-                                        <div>Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
+                                        <div class="text-muted">Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
                                     </div>
+
+                                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.75rem;" title="Toggle Description">
+                                        <i class="bi @(isExpanded ? "bi-chevron-up" : "bi-chevron-down")"></i>
+                                    </button>
                                 </div>
-                                @if (!string.IsNullOrEmpty(move.Description))
-                                {
-                                    <div class="text-secondary small mt-2">@move.Description</div>
-                                }
                             </div>
-                        }
-                    </div>
+
+                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
+                            {
+                                <div class="text-light small mt-2 pt-2 border-top border-secondary border-opacity-50">
+                                    @move.Description
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
-            </div>
+            }
 
-            <!-- Passives Section -->
-            <div class="col-lg-6">
-                <div class="card bg-dark border-secondary h-100 p-3">
-                    <h6 class="text-success fw-bold mb-3 d-flex align-items-center justify-content-between">
-                        <span class="d-flex align-items-center gap-2">
-                            <i class="bi bi-shield-check"></i> Passive Skills
-                        </span>
-                        @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
-                        {
-                            <span class="badge bg-warning text-dark small">@Pair.Variations[Ally.FormIndex - 1].FormName Passives</span>
-                        }
-                    </h6>
-                    <div class="d-flex flex-column gap-2">
-                        @{
-                            var activePassives = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count && Pair.Variations[Ally.FormIndex - 1].Passives.Count > 0)
-                                ? Pair.Variations[Ally.FormIndex - 1].Passives
-                                : Pair.Passives;
-                        }
-                        @foreach (var passive in activePassives)
-                        {
-                            <div class="card bg-secondary bg-opacity-25 border-secondary p-2">
-                                <div class="fw-bold text-light">@passive.Name</div>
-                                <div class="text-secondary small mt-1">@passive.Description</div>
-                                @if (passive.ChildPassives.Count > 0)
-                                {
-                                    <div class="mt-2 pt-2 border-top border-secondary">
-                                        <span class="text-muted small fw-bold">Combined Skills:</span>
-                                        @foreach (var child in passive.ChildPassives)
-                                        {
-                                            <div class="small ms-2 mt-1">
-                                                <span class="text-info">• @child.Name:</span> <span class="text-muted">@child.Description</span>
-                                            </div>
-                                        }
-                                    </div>
-                                }
-                            </div>
-                        }
-
-                        <!-- Super Awakening Passive (Unlocked at SA 5) -->
-                        @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
-                        {
-                            bool isSa5Active = Ally.SuperAwakeningLevel >= 5;
-                            <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-10" : "border-secondary bg-secondary bg-opacity-10 opacity-75") p-2">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <div class="fw-bold @(isSa5Active ? "text-danger" : "text-secondary")">
-                                        <i class="bi bi-star-fill text-warning me-1"></i> @Pair.SuperAwakeningPassive.Name
-                                    </div>
-                                    <span class="badge @(isSa5Active ? "bg-danger text-light" : "bg-secondary text-muted")" style="font-size: 0.7rem;">
-                                        @(isSa5Active ? "SA 5 Active" : "SA 5 Required")
-                                    </span>
-                                </div>
-                                <div class="text-secondary small">@Pair.SuperAwakeningPassive.Description</div>
-                            </div>
-                        }
-
-                        <!-- Active Grid Passives -->
-                        @{
-                            var activeGridPassives = Pair.Grid
-                                .Where(c => GridState.ActiveCells.Contains(c.CellId) &&
-                                            (c.ColorKind.Equals("passive", StringComparison.OrdinalIgnoreCase) ||
-                                             c.ColorKind.Equals("move effect", StringComparison.OrdinalIgnoreCase) ||
-                                             c.ColorKind.Equals("learn", StringComparison.OrdinalIgnoreCase)))
-                                .ToList();
-                        }
-                        @if (activeGridPassives.Count > 0)
-                        {
-                            <div class="mt-2 pt-2 border-top border-secondary">
-                                <div class="text-info small fw-bold mb-2">
-                                    <i class="bi bi-grid-fill me-1"></i> Active Grid Skills (@activeGridPassives.Count):
-                                </div>
-                                <div class="d-flex flex-column gap-1">
-                                    @foreach (var gc in activeGridPassives)
+            <!-- Passives View -->
+            @if (ActiveSection == "passives")
+            {
+                <div class="d-flex flex-column gap-2">
+                    @{
+                        var activePassives = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count && Pair.Variations[Ally.FormIndex - 1].Passives.Count > 0)
+                            ? Pair.Variations[Ally.FormIndex - 1].Passives
+                            : Pair.Passives;
+                    }
+                    @foreach (var passive in activePassives)
+                    {
+                        <div class="card bg-secondary bg-opacity-25 border-secondary p-3 shadow-sm">
+                            <div class="fw-bold text-light fs-6">@passive.Name</div>
+                            <div class="text-secondary small mt-1">@passive.Description</div>
+                            @if (passive.ChildPassives.Count > 0)
+                            {
+                                <div class="mt-2 pt-2 border-top border-secondary">
+                                    <span class="text-muted small fw-bold">Combined Skills:</span>
+                                    @foreach (var child in passive.ChildPassives)
                                     {
-                                        <div class="p-1 px-2 rounded bg-dark border border-secondary small">
-                                            <b class="text-warning">@gc.Title</b>
-                                            @if (!string.IsNullOrEmpty(gc.Description))
-                                            {
-                                                <span class="text-muted ms-1">- @gc.Description</span>
-                                            }
+                                        <div class="small ms-2 mt-1">
+                                            <span class="text-info">• @child.Name:</span> <span class="text-muted">@child.Description</span>
                                         </div>
                                     }
                                 </div>
+                            }
+                        </div>
+                    }
+
+                    <!-- Super Awakening Passive (Unlocked at SA 5) -->
+                    @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
+                    {
+                        bool isSa5Active = Ally.SuperAwakeningLevel >= 5;
+                        <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-10" : "border-secondary bg-secondary bg-opacity-10 opacity-75") p-3 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="fw-bold @(isSa5Active ? "text-danger" : "text-secondary") fs-6">
+                                    <i class="bi bi-star-fill text-warning me-1"></i> @Pair.SuperAwakeningPassive.Name
+                                </div>
+                                <span class="badge @(isSa5Active ? "bg-danger text-light" : "bg-secondary text-muted")" style="font-size: 0.75rem;">
+                                    @(isSa5Active ? "SA 5 Active" : "SA 5 Required")
+                                </span>
+                            </div>
+                            <div class="text-secondary small">@Pair.SuperAwakeningPassive.Description</div>
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- Grid Skills View -->
+            @if (ActiveSection == "grid")
+            {
+                <div class="d-flex flex-column gap-2">
+                    @if (activeGridPassives.Count == 0)
+                    {
+                        <div class="text-muted text-center py-4">
+                            No passive skills or special effects activated on the Sync Grid yet.
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var gc in activeGridPassives)
+                        {
+                            <div class="card bg-secondary bg-opacity-25 border-secondary p-2 shadow-sm">
+                                <div class="fw-bold text-info">@gc.Title</div>
+                                @if (!string.IsNullOrEmpty(gc.Description))
+                                {
+                                    <div class="text-muted small mt-1">@gc.Description</div>
+                                }
                             </div>
                         }
-                    </div>
+                    }
                 </div>
-            </div>
+            }
         </div>
     }
 </div>
@@ -403,6 +498,11 @@
     [Parameter] public CombatantState Ally { get; set; } = new();
     [Parameter] public int MoveLevel { get; set; } = 5;
     [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
+
+    private bool ShowDetailedStats { get; set; } = false;
+    private string ActiveSection { get; set; } = "moves";
+    private bool ExpandAllMoves { get; set; } = true;
+    private HashSet<int> ExpandedMoveIds { get; set; } = new();
 
     protected override void OnInitialized()
     {
@@ -418,6 +518,25 @@
     {
         Ally.FormIndex = idx;
         StateHasChanged();
+    }
+
+    private void SetSection(string section)
+    {
+        ActiveSection = section;
+        StateHasChanged();
+    }
+
+    private void ToggleMoveDesc(int moveId)
+    {
+        if (ExpandedMoveIds.Contains(moveId))
+            ExpandedMoveIds.Remove(moveId);
+        else
+            ExpandedMoveIds.Add(moveId);
+    }
+
+    private void ToggleAllMoves()
+    {
+        ExpandAllMoves = !ExpandAllMoves;
     }
 
     private async Task OnMoveLevelSelect(ChangeEventArgs e)

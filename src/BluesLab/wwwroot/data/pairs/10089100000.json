@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Freeze Shock",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "The user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed. No other actions can be taken while ready to attack.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "The user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. Has a chance (%) of leaving the target paralyzed. No other actions can be taken while ready to attack.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Ice Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user gets ready to attack.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the Attack, Sp. Atk, and Speed of all opposing sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user gets ready to attack.\nDeactivation Condition:\nWhen this move is used. Never misses. Lowers the Attack, Sp. Atk, and Speed of all opposing sync pairs by stat ranks. Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Sp. Atk by stat ranks. Raises the user’s critical-hit rate by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "World-Changing\nFreeze Shock",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Attack is lowered, the greater the power of this attack.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 15012309,
       "name": "Too Prepared 9",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when an attack move, which was conducted after leaving the counter attacking posture or after getting ready to attack, is successful.",
+      "description": "Reduces the user’s sync move countdown by when an attack move, which was conducted after leaving the counter attacking posture or after getting ready to attack, is successful.",
       "childPassives": []
     },
     {

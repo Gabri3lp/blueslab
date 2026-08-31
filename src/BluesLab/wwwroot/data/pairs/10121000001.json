@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target badly poisoned.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one poisoned or badly poisoned Pokémon on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any poisoned or badly poisoned Pokémon on the opponent’s field of play.\n\nLeaves all opposing sync pairs confused. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Move Gauge Acceleration effect to the allied field of play. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen there is at least one poisoned or badly poisoned Pokémon on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any poisoned or badly poisoned Pokémon on the opponent’s field of play. Leaves all opposing sync pairs confused. Lowers the of all opposing sync pairs by stat ranks. Applies the Move Gauge Acceleration effect to the allied field of play. Reduces the user’s sync move countdown by.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Ready to Go\nAcid Downpour",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s [Name:ReferencedMessageTag ] is raised, the greater the power of this attack.",
+      "description": "The more the user’s is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,13 +144,13 @@
     {
       "id": 18045104,
       "name": "Grand Entry 4",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk by stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17061409,
       "name": "Toxic Freebie 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when the user’s attack move is successful against a poisoned or badly poisoned opponent.",
+      "description": "Applies the to the user when the user’s attack move is successful against a poisoned or badly poisoned opponent.",
       "childPassives": []
     },
     {

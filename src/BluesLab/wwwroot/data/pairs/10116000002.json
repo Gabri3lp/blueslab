@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Flash Cannon",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Steel Zone. (A Steel Zone powers up Steel-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Super Solid\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "400",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nNever misses. Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the field of play’s zone turns into a.\nDeactivation Condition:\nWhen the field of play’s zone is no longer a. Never misses. Lowers the target’s Sp. Atk and Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Damage Guard Next effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s by stat ranks. Raises an ally’s by stat ranks. Applies the Damage Guard Next effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shining Symbol of Power\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,41 +144,41 @@
     {
       "id": 99024501,
       "name": "Shining Steel Leadership",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19670\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19670\" ].",
+      "description": "Reduces the user’s sync move countdown by when it uses. Increases the user’s by ranks when it uses.",
       "childPassives": [
         {
           "id": 15014309,
           "name": "Use Steel Wish: Sync CD ↓ 9",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19670\" ]."
+          "description": "Reduces the user’s sync move countdown by when it uses."
         },
         {
           "id": 17081109,
           "name": "Use Steel Wish: Special Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19670\" ]."
+          "description": "Increases the user’s by ranks when it uses."
         }
       ]
     },
     {
       "id": 99024601,
       "name": "I Haven’t Lost My Determination!",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move. Restores [Digit:1digit Idx=\"1\" ] MP of the user’s buddy move after using its sync move.",
+      "description": "Increases the of all allied sync pairs by ranks after using the user’s sync move. Restores MP of the user’s buddy move after using its sync move.",
       "childPassives": [
         {
           "id": 17081009,
           "name": "S-Move: Team Special Boost ↑1 9",
-          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move."
+          "description": "Increases the of all allied sync pairs by ranks after using the user’s sync move."
         },
         {
           "id": 13062301,
           "name": "S-Move: Restore B-Move MP 1",
-          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after using its sync move."
+          "description": "Restores MP of the user’s buddy move after using its sync move."
         }
       ]
     },
     {
       "id": 17076309,
       "name": "Steel Zone Hit: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Applies the to the user when its attack move is successful while the zone is a.",
       "childPassives": []
     }
   ],

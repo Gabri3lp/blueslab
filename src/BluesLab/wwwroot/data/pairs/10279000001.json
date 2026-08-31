@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Headbutt",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Attack by stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Swift",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "57",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Never misses.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s Attack and Sp. Atk by stat ranks. Raises the of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Chasing Possibilities\nNormal Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Defense is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99037101,
       "name": "Extreme Typeboost",
-      "description": "Lowers all of the following Type Rebuffs of all opposing sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle:\n- [Name:ReferencedMessageTag Idx=\"1\" ]\n- [Name:ReferencedMessageTag Idx=\"2\" ]\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]\n- [Name:ReferencedMessageTag Idx=\"6\" ]\n- [Name:ReferencedMessageTag Idx=\"7\" ]\n- [Name:ReferencedMessageTag Idx=\"8\" ]\n- [Name:ReferencedMessageTag Idx=\"9\" ]",
+      "description": "Lowers all of the following Type Rebuffs of all opposing sync pairs by ranks the first time the user’s sync move is used each battle:\n- - - - - - - - -",
       "childPassives": []
     },
     {
       "id": 19061901,
       "name": "S-Move: Normal Zone",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "description": "Turns the field of play’s zone into a after using the user’s sync move. (A powers up -type attacks.)",
       "childPassives": []
     },
     {
       "id": 18126409,
       "name": "P/S-Move on Opp: Defense & Sp. Def ↓2 9",
-      "description": "Lowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "description": "Lowers the target’s Defense and Sp. Def by stat ranks when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s Defense and Sp. Def by stat ranks after using the user’s sync move targeting that opponent.",
       "childPassives": []
     }
   ],

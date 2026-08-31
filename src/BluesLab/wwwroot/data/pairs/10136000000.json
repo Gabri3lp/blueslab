@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Dazzling Gleam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Moonblast",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "98",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Atk by stat ranks.",
       "isSync": false
     },
     {
@@ -109,7 +109,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Removes all status conditions from all allied sync pairs. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Horn Leech",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "91",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -134,9 +134,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "-",
-      "gauge": "-",
-      "target": "An opponent",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by [Digit:1digit ] instead. The higher the user’s move level, the more it raises the Sp. Atk, Sp. Def, and Speed of all allied sync pairs (can be raised by up to [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] maximum).",
+      "gauge": "0",
+      "target": "All allies",
+      "description": "Charges the user’s move gauge by for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by instead. The higher the user’s move level, the more it raises the Sp. Atk, Sp. Def, and Speed of all allied sync pairs (can be raised by up to stat ranks maximum).",
       "isSync": true
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": 18091004,
       "name": "Team Shout 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the Attack or Sp. Atk—or both—of all allied sync pairs by one stat rank when the user is hit by an attack move.",
+      "description": "Has a chance (%) of raising the Attack or Sp. Atk—or both—of all allied sync pairs by one stat rank when the user is hit by an attack move.",
       "childPassives": []
     },
     {

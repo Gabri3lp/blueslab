@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Confusion",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "18",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP. HP is restored by % instead when the weather is sunny, and % when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Moonblast",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "98",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Atk by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense, Sp. Def, and critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"1\" ]% of its maximum HP.",
+      "target": "All allies",
+      "description": "Raises the Defense, Sp. Def, and critical-hit rate of all allied sync pairs by stat ranks. The user takes damage equal to % of its maximum HP.",
       "isSync": false
     },
     {
@@ -134,9 +134,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "-",
-      "gauge": "-",
-      "target": "An opponent",
-      "description": "Restores the HP of all allied sync pairs other than the user by approximately [Digit:2digits ]% of their maximum HP. The higher the user’s move level, the higher this percentage is. (Each additional move level increases the amount of HP restored by 5%. The maximum HP restoration is approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP.) Removes all status conditions from all allied sync pairs. Removes the confused, flinching, and trapped conditions from all allied sync pairs. Charges the user’s move gauge by [Digit:1digit Idx=\"2\" ].",
+      "gauge": "0",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs other than the user by approximately % of their maximum HP. The higher the user’s move level, the higher this percentage is. (Each additional move level increases the amount of HP restored by 5%. The maximum HP restoration is approximately % of their maximum HP.) Removes all status conditions from all allied sync pairs. Removes the confused, flinching, and trapped conditions from all allied sync pairs. Charges the user’s move gauge by.",
       "isSync": true
     }
   ],

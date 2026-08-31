@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Absorb",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ].",
+      "description": "Charges the user’s move gauge by.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Clear Smog",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "63",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses. Returns the target’s raised stats to normal.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activates one of several additional effects at random. Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Removes all status conditions from all allied sync pairs. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Activates one of several additional effects at random. Restores the user’s HP by approximately % of its maximum HP. Removes all status conditions from all allied sync pairs. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Full of Surprises\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 13061009,
       "name": "Underhanded Refresh 9",
-      "description": "Restores [Digit:1digit ] MP for the user’s moves when its attack move is successful against targets that are affected by a status condition.",
+      "description": "Restores MP for the user’s moves when its attack move is successful against targets that are affected by a status condition.",
       "childPassives": []
     },
     {
       "id": 18106209,
       "name": "Team Hit Me Up 9",
-      "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
+      "description": "Raises one of the following stats of all allied sync pairs by stat ranks at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
       "childPassives": []
     }
   ],

@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Air Slash",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s evasiveness by stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Attack by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Soaring in the Clear Sky\nFlying Beam",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s [Name:ReferencedMessageTag ] is raised, the greater the power of this attack.",
+      "description": "The more the user’s is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,13 +144,13 @@
     {
       "id": 18106109,
       "name": "Grab Bag 9",
-      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s Pokémon uses a move targeting that opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Lowers one of the target’s following stats by stat ranks at random when the user’s Pokémon uses a move targeting that opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
       "id": 12020104,
       "name": "Move Gauge Refresh 4",
-      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "description": "Has a chance (%) of charging the user’s move gauge by one when its move is successful.",
       "childPassives": []
     },
     {

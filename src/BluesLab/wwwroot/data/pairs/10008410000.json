@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Leaf Storm",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by stat ranks.",
       "isSync": false
     },
     {
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Removes all status conditions from an ally.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Profusion of Flowers\nEnergy Ball",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. If the remaining MP for the user’s [Name:MoveId Idx=\"18501\" ] is [Digit:1digit Idx=\"1\" ] when attacking with this move, reduces those MP by [Digit:1digit Idx=\"1\" ] and grants the following three effects: This attack’s power increases.\n(This attack powers up by 400%.) Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. If the remaining MP for the user’s [Name:MoveId Idx=\"18501\" ] is [Digit:1digit Idx=\"3\" ] when attacking with this move, reduces those MP by [Digit:1digit Idx=\"3\" ] and grants the following three effects: This attack’s power increases.\n(This attack powers up by 200%.) Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"4\" ]% of its maximum HP. If the remaining MP for the user’s [Name:MoveId Idx=\"18501\" ] is [Digit:1digit Idx=\"5\" ] when attacking with this move, reduces those MP by [Digit:1digit Idx=\"5\" ] and grants the following three effects: This attack’s power increases.\n(This attack powers up by 50%.) Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"6\" ]% of its maximum HP. If the remaining MP for the user’s [Name:MoveId Idx=\"18501\" ] is zero when attacking with this move, has a chance ([Digit:2digits Idx=\"6\" ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nCannot be deactivated. Never misses. If the remaining MP for the user’s is when attacking with this move, reduces those MP by and grants the following three effects: This attack’s power increases.\n(This attack powers up by 400%.) Lowers the target’s Sp. Atk and Sp. Def by stat ranks. Restores the user’s HP by approximately % of its maximum HP. If the remaining MP for the user’s is when attacking with this move, reduces those MP by and grants the following three effects: This attack’s power increases.\n(This attack powers up by 200%.) Lowers the target’s Sp. Atk and Sp. Def by stat ranks. Restores the user’s HP by approximately % of its maximum HP. If the remaining MP for the user’s is when attacking with this move, reduces those MP by and grants the following three effects: This attack’s power increases.\n(This attack powers up by 50%.) Lowers the target’s Sp. Atk and Sp. Def by stat ranks. Restores the user’s HP by approximately % of its maximum HP. If the remaining MP for the user’s is zero when attacking with this move, has a chance (%) of lowering the target’s by stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Growing Vibrant Gratitude\nGrass Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 99021601,
       "name": "Mutual Love",
-      "description": "When the user’s stats would be lowered, raises its stats by the same amount instead and increases its [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "When the user’s stats would be lowered, raises its stats by the same amount instead and increases its by ranks.",
       "childPassives": []
     },
     {
       "id": 99021701,
       "name": "Bouquet Gift",
-      "description": "Restores [Digit:1digit ] MP of the user’s moves that have the Berry effect tag when it successfully attacks with [Name:MoveId Idx=\"437\" ].",
+      "description": "Restores MP of the user’s moves that have the Berry effect tag when it successfully attacks with.",
       "childPassives": []
     },
     {

@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Frenzied Sludge Wave",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play.\n\nLowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Has a chance ([Digit:2digits ]%) of leaving the target poisoned. This attack’s power increases 50% when the terrain is [Name:ReferencedMessageTag Idx=\"3\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play. Lowers the target’s by stat ranks. Has a chance (%) of leaving the target poisoned. This attack’s power increases 50% when the terrain is.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Electric Terrain.",
       "isSync": false
     },
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Overdrive",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rock Them Away\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99014001,
       "name": "Amped and Vibed",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s max move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s zone into a the first time the user’s max move is used each battle. (A powers up -type attacks.) Extends the duration of the when the zone turns into a while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 12010603,
       "name": "Turbo Charge 3",
-      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Quickly charges the move gauge when the terrain is.",
       "childPassives": []
     },
     {
       "id": 18111109,
       "name": "Hit Poisoned Opp: Attack ↓ & Hit Paralyzed Opp: Sp. Atk ↓ 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a poisoned or badly poisoned opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Lowers the target’s by stat ranks when the user’s attack move is successful against a poisoned or badly poisoned opponent. Lowers the target’s by stat ranks when the user’s attack move is successful against a paralyzed opponent.",
       "childPassives": []
     }
   ],

@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Fire Blast",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "116",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Removes all status conditions from an ally.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Super-Spicy\nOverheat",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by one to four ranks at random. (The increase is the same for all allied sync pairs.)",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used. Never misses. Increases the of all allied sync pairs by one to four ranks at random. (The increase is the same for all allied sync pairs.)",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"6\" ] by [Digit:1digit Idx=\"7\" ] stat [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Real Spicy Flavor\nFire Beam",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 99036101,
       "name": "Appetizing Super-Spicy Cooking",
-      "description": "Reduces MP by [Digit:1digit ] for the user’s moves that have the Berry effect tag and reduces its sync move countdown by [Digit:1digit ] after your team’s sync pair uses their sync move.",
+      "description": "Reduces MP by for the user’s moves that have the Berry effect tag and reduces its sync move countdown by after your team’s sync pair uses their sync move.",
       "childPassives": []
     },
     {
       "id": 99036201,
       "name": "Arven’s Special Hot Sauce",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] after using its sync move while the remaining MP for its moves that have the Berry effect tag is [Digit:1digit ] or more.",
+      "description": "Reduces the user’s sync move countdown by after using its sync move while the remaining MP for its moves that have the Berry effect tag is or more.",
       "childPassives": []
     },
     {

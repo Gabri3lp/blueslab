@@ -10,10 +10,10 @@
     }
     else
     {
-        <!-- Seamless Grid Controls Toolbar (No solid background) -->
-        <div class="grid-controls-bar w-100 d-flex flex-wrap align-items-center justify-content-between px-3 py-2 border-bottom border-secondary border-opacity-50">
-            <!-- Left: Energy & Orbs (Clean text with clear icons, no dark container box) -->
-            <div class="d-flex align-items-center gap-3">
+        <!-- Seamless Grid Controls Toolbar (No white bottom line / border-0) -->
+        <div class="grid-controls-bar w-100 d-flex align-items-center justify-content-between px-3 pt-2 pb-1 border-0">
+            <!-- Left: Energy & Orbs (Clean text with clear icons) -->
+            <div class="d-flex align-items-center gap-2 gap-md-3" style="min-width: 130px;">
                 <span class="fw-bold text-warning d-flex align-items-center gap-1 fs-6">
                     ⚡ <b>@GridState.GetRemainingEnergy(Pair)</b>/60
                 </span>
@@ -23,9 +23,8 @@
                 </span>
             </div>
 
-            <!-- Right: Move Level Gems, SA, Hard Cap, Reset, Share -->
-            <div class="d-flex flex-wrap align-items-center gap-2">
-                <!-- Move Level Gems (1-5) -->
+            <!-- Center: Move Level Gems (Centered and adjusting if SA is present) -->
+            <div class="d-flex justify-content-center align-items-center flex-grow-1">
                 <div class="d-flex align-items-center gap-1">
                     @for (int i = 1; i <= 5; i++)
                     {
@@ -56,23 +55,10 @@
                         }
                     }
                 </div>
-
-                <!-- Hard Cap Toggle -->
-                <div class="form-check form-switch d-flex align-items-center gap-1 mb-0 ms-2">
-                    <input class="form-check-input cursor-pointer" type="checkbox" id="gridHardCapSwitch" checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
-                    <label class="form-check-label text-secondary small select-none" for="gridHardCapSwitch" style="font-size: 0.8rem;">Hard Cap</label>
-                </div>
-
-                <!-- Reset Grid -->
-                <button class="btn btn-outline-danger btn-sm p-1 px-2" title="Reset Grid" @onclick="OnResetGrid">
-                    <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
-
-                <!-- Share Build -->
-                <button class="btn btn-outline-warning btn-sm p-1 px-2" title="Share Build" @onclick="OnShareClick">
-                    <i class="bi bi-share"></i>
-                </button>
             </div>
+
+            <!-- Right: Spacing placeholder for balance -->
+            <div style="min-width: 130px;" class="d-none d-md-block"></div>
         </div>
 
         <div class="grid-viewport w-100 flex-grow-1 position-relative overflow-hidden">

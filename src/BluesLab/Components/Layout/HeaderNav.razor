@@ -1,32 +1,78 @@
 @inject GridStateService GridState
 
 <header class="navbar navbar-dark bg-dark border-bottom border-secondary px-3 py-2 shadow-sm">
-    <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-start gap-2 gap-md-3">
-        <!-- Brand -->
-        <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-5">
-            <i class="bi bi-cpu-fill"></i> BLUES LAB
-        </span>
+    <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <!-- Left: Brand & Pair Selector -->
+        <div class="d-flex align-items-center gap-2 gap-md-3">
+            <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-5">
+                <i class="bi bi-cpu-fill"></i> BLUES LAB
+            </span>
 
-        <!-- Pair Selector Button -->
+            @if (CurrentPair != null)
+            {
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-2 text-light py-1 px-2 border-secondary" @onclick="OnOpenPairPicker">
+                    <img src="@CurrentPair.IconUrl" alt="@CurrentPair.DisplayName" width="28" height="28" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
+                    <span class="fw-bold small d-none d-sm-inline">@CurrentPair.DisplayName</span>
+                    <span class="badge type-badge type-@CurrentPair.Type.ToLowerInvariant()">@CurrentPair.Type</span>
+                    <i class="bi bi-chevron-down small text-muted"></i>
+                </button>
+            }
+            else
+            {
+                <button class="btn btn-warning btn-sm fw-bold" @onclick="OnOpenPairPicker">
+                    <i class="bi bi-person-plus"></i> Select Character
+                </button>
+            }
+        </div>
+
+        <!-- Right: Hard Cap Toggle, Reset Grid & Share Build -->
         @if (CurrentPair != null)
         {
-            <button class="btn btn-outline-secondary d-flex align-items-center gap-2 text-light py-1 px-2 border-secondary" @onclick="OnOpenPairPicker">
-                <img src="@CurrentPair.IconUrl" alt="@CurrentPair.DisplayName" width="28" height="28" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
-                <span class="fw-bold small d-none d-sm-inline">@CurrentPair.DisplayName</span>
-                <span class="badge type-badge type-@CurrentPair.Type.ToLowerInvariant()">@CurrentPair.Type</span>
-                <i class="bi bi-chevron-down small text-muted"></i>
-            </button>
-        }
-        else
-        {
-            <button class="btn btn-warning btn-sm fw-bold" @onclick="OnOpenPairPicker">
-                <i class="bi bi-person-plus"></i> Select Character
-            </button>
+            <div class="d-flex align-items-center gap-2">
+                <div class="form-check form-switch d-flex align-items-center gap-1 mb-0 me-1">
+                    <input class="form-check-input cursor-pointer" type="checkbox" id="headerHardCapSwitch" checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
+                    <label class="form-check-label text-secondary small select-none" for="headerHardCapSwitch" style="font-size: 0.8rem;">Hard Cap</label>
+                </div>
+
+                <button class="btn btn-outline-danger btn-sm p-1 px-2" title="Reset Grid" @onclick="OnResetGrid">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+
+                <button class="btn btn-outline-warning btn-sm p-1 px-2" title="Share Build" @onclick="OnShareClick">
+                    <i class="bi bi-share"></i>
+                </button>
+            </div>
         }
     </div>
 </header>
 
 @code {
     [Parameter] public SyncPairDetail? CurrentPair { get; set; }
+    [Parameter] public int MoveLevel { get; set; } = 5;
     [Parameter] public EventCallback OnOpenPairPicker { get; set; }
+    [Parameter] public EventCallback OnOpenShareModal { get; set; }
+
+    private void OnHardCapToggle(ChangeEventArgs e)
+    {
+        GridState.HardCap = (bool)(e.Value ?? true);
+        if (CurrentPair != null && GridState.HardCap)
+        {
+            GridState.ActivateFreeCenterCells(CurrentPair, MoveLevel);
+            GridState.PruneDisconnected(CurrentPair.Grid);
+            GridState.NotifyChanged();
+        }
+    }
+
+    private void OnResetGrid()
+    {
+        if (CurrentPair != null)
+        {
+            GridState.ResetGrid(CurrentPair, MoveLevel);
+        }
+    }
+
+    private async Task OnShareClick()
+    {
+        await OnOpenShareModal.InvokeAsync();
+    }
 }

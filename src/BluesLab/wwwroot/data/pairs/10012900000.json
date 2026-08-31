@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Drain Punch",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "91",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Almighty\nAura Sphere",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] stat [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Reduces the user’s sync move countdown by one. Increases the [Name:ReferencedMessageTag Idx=\"10\" ] of all allied sync pairs by [Digit:1digit Idx=\"11\" ] [EN:Qty Ref=\"11\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play the first time this attack move is successful each battle.\n[Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move and special sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch. Never misses. Lowers the target’s by stat ranks. Reduces the user’s sync move countdown by one. Increases the of all allied sync pairs by ranks. Applies to the allied field of play the first time this attack move is successful each battle. grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by %. Reduces special attack move and special sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Almighty\nRock Smash",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch.\n\nLowers the target’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] stat [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Reduces the user’s sync move countdown by one. Increases the [Name:ReferencedMessageTag Idx=\"10\" ] of all allied sync pairs by [Digit:1digit Idx=\"11\" ] [EN:Qty Ref=\"11\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play the first time this attack move is successful each battle.\n[Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch. Lowers the target’s by stat ranks. Reduces the user’s sync move countdown by one. Increases the of all allied sync pairs by ranks. Applies to the allied field of play the first time this attack move is successful each battle. grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by %. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP. Applies the Gradual Healing effect to all allied sync pairs. If the user’s Lucario has Mega Evolved, also applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP. Applies the Gradual Healing effect to all allied sync pairs. If the user’s Lucario has Mega Evolved, also applies the to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Fervent Fighter\nDivine Power-Up Punch",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Lucario until the end of battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "description": "Become Mega Lucario until the end of battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks the first time the user’s sync move is used each battle.",
       "isSync": true
     }
   ],
@@ -144,46 +144,46 @@
     {
       "id": 29011101,
       "name": "Fist Myth",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 29021101,
       "name": "Fist Judgment",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99040701,
       "name": "Mega Evolution Successor",
-      "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user successfully attacks with its buddy move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"2\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"2\" ] while the user is on the field. Extends the duration of the following field effects when they are applied to the allied field of play:\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]",
+      "description": "Turns the field of play’s zone into an the first time the user successfully attacks with its buddy move each battle. (An powers up -type attacks.) Extends the duration of the when the zone turns into a while the user is on the field. Extends the duration of the following field effects when they are applied to the allied field of play:\n- - -",
       "childPassives": [
         {
           "id": 19064701,
           "name": "1st B-Move Hit: EX Fighting Zone",
-          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user successfully attacks with its buddy move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into an the first time the user successfully attacks with its buddy move each battle. (An powers up -type attacks.)"
         },
         {
           "id": 19056503,
           "name": "Fighting Zone Extension 3",
-          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+          "description": "Extends the duration of the when the zone turns into a while the user is on the field."
         },
         {
           "id": 19064803,
           "name": "Kalos C (3 Kinds) Extension 3",
-          "description": "Extends the duration of the following field effects when they are applied to the allied field of play:\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]"
+          "description": "Extends the duration of the following field effects when they are applied to the allied field of play:\n- - -"
         }
       ]
     },
     {
       "id": 99040801,
       "name": "Guiding Aura of Victory",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
       "childPassives": [
         {
           "id": 18123509,
           "name": "Hit: Team Defense ↑2 & Sp. Def ↑2 9",
-          "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful."
+          "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks when the user’s attack move is successful."
         },
         {
           "id": 17044809,
@@ -195,7 +195,7 @@
     {
       "id": 17089801,
       "name": "Entry: Team Physical & Special Boost 1",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user enters a battle.",
       "childPassives": []
     }
   ],

@@ -82,9 +82,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by stat ranks.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Fiery Wings Flare Blitz",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nRemoves the frozen condition from the user. If the target's stats are lowered, the amount of decrease is doubled. Makes the weather sunny the first time this attack move is successful each battle. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play. Removes the frozen condition from the user. If the target's stats are lowered, the amount of decrease is doubled. Makes the weather sunny the first time this attack move is successful each battle. Has a chance (%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Sp. Atk by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Burning Love\nFire Blast",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s stats are lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 28012001,
       "name": "Kanto Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by %. Reduces physical attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 99013001,
       "name": "Love of Pallet",
-      "description": "Lowers the target’s Attack, Sp. Atk, and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move targeting that opponent.",
+      "description": "Lowers the target’s Attack, Sp. Atk, and Sp. Def by stat ranks when the user’s Pokémon uses a status move targeting that opponent.",
       "childPassives": []
     },
     {
       "id": 99013101,
       "name": "Sky-Illuminating White Blaze",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move targeting the opponent each battle. This effect can activate only once per battle. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
+      "description": "Lowers the target’s by ranks the first time the user’s Pokémon uses a status move targeting the opponent each battle. This effect can activate only once per battle. Lowers the target’s by ranks the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
       "childPassives": []
     },
     {

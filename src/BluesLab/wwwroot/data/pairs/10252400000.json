@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "High Horsepower",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "106",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Driven\nHigh Horsepower",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. If the remaining MP for the user’s [Name:MoveId Idx=\"241\" ] is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised. Never misses. Except in certain circumstances, successful hits with this attack become critical hits. If the remaining MP for the user’s is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Teaching Tenacity\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,41 +144,41 @@
     {
       "id": 99035401,
       "name": "Ideal Weather for Training",
-      "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "description": "The power of the user’s is doubled when the weather is sunny. Turns the field of play’s zone into a when an ally turns the weather sunny. (A powers up -type attacks.)",
       "childPassives": [
         {
           "id": 13084401,
           "name": "Sunny: High Horsepower Power ×2",
-          "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny."
+          "description": "The power of the user’s is doubled when the weather is sunny."
         },
         {
           "id": 19060601,
           "name": "Ally Sets Sunny W: Ground Zone",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into a when an ally turns the weather sunny. (A powers up -type attacks.)"
         }
       ]
     },
     {
       "id": 99035501,
       "name": "Veteran Trainer’s Ingenuity",
-      "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle. Restores [Digit:1digit ] MP of the user’s buddy move after using its max move.",
+      "description": "Restores MP of the user’s buddy move the first time its sync move is used each battle. Restores MP of the user’s buddy move after using its max move.",
       "childPassives": [
         {
           "id": 13061101,
           "name": "1st S-Move: Restore B-Move MP 1",
-          "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle."
+          "description": "Restores MP of the user’s buddy move the first time its sync move is used each battle."
         },
         {
           "id": 16021001,
           "name": "Max Move: Restore B-Move MP 1",
-          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after using its max move."
+          "description": "Restores MP of the user’s buddy move after using its max move."
         }
       ]
     },
     {
       "id": 99035601,
       "name": "Hot Hoenn Sun",
-      "description": "Powers up the user’s sync move and max move when the weather is sunny. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move.",
+      "description": "Powers up the user’s sync move and max move when the weather is sunny. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Restores MP for the status moves of the user’s Pokémon after using the user’s max move.",
       "childPassives": [
         {
           "id": 16030909,
@@ -193,7 +193,7 @@
         {
           "id": 16021102,
           "name": "Max Move: Restore Status P-Move MP 2",
-          "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move."
+          "description": "Restores MP for the status moves of the user’s Pokémon after using the user’s max move."
         }
       ]
     }

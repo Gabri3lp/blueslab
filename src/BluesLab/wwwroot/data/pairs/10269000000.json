@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Swift",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "57",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Never misses.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the to the user.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Quick Attack",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "94",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP. Restores [Digit:1digit ] MP of the user’s moves that have the quick move effect tag. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the Physical Moves ↑ Next effect or Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. (The same type of effect is increased for all allied sync pairs.)",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP. Restores MP of the user’s moves that have the quick move effect tag. Raises the of all allied sync pairs by stat ranks. Increases the Physical Moves ↑ Next effect or Special Moves ↑ Next effect of all allied sync pairs by ranks. (The same type of effect is increased for all allied sync pairs.)",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Partner Promenade\nVeevee Volley",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 13061209,
       "name": "“Quick Move”: Restore T-Move MP 9",
-      "description": "Restores [Digit:1digit ] MP for the user’s Trainer when it uses a move that has the quick move effect tag.",
+      "description": "Restores MP for the user’s Trainer when it uses a move that has the quick move effect tag.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 11013804,
       "name": "1st Use Status P-Move: HP Recovery 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time its Pokémon uses a status move each battle.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP the first time its Pokémon uses a status move each battle.",
       "childPassives": []
     }
   ],

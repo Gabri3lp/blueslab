@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Puts all opposing sync pairs to sleep. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used. Never misses. Lowers the of all opposing sync pairs by stat ranks. Puts all opposing sync pairs to sleep. Reduces the user’s sync move countdown by. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s Attack by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by. Raises the user’s Attack by stat ranks. Raises the user’s critical-hit rate by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Mind-Skill-Body Mastery\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17066501,
       "name": "Max Move: Team Free Move Next",
-      "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs after using the user’s max move.",
+      "description": "Applies the to all allied sync pairs after using the user’s max move.",
       "childPassives": []
     },
     {
       "id": 18109409,
       "name": "Use Status P-Move: Stat ↑ 9",
-      "description": "Raises one of the user’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when its Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Raises one of the user’s following stats by stat ranks at random when its Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
       "id": 12011602,
       "name": "Turbo Turf 2",
-      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Quickly charges the move gauge when the terrain is.",
       "childPassives": []
     }
   ],

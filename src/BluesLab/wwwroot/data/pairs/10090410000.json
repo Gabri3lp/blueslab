@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Supereffective ↑ Next effect to an ally.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nNever misses. Lowers the target’s Attack, Defense, and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the No Evasion effect to the target. Applies the Restrain effect to the target.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play. Never misses. Lowers the target’s Attack, Defense, and Speed by stat ranks. Applies the No Evasion effect to the target. Applies the Restrain effect to the target.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Raises an ally’s by stat ranks. Increases the of an ally by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Illuminating\nNormal Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Defense is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17063101,
       "name": "Rebuff Reducing Hit (Weakness)",
-      "description": "Lowers the target’s Type Rebuff of its weakness type by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle.",
+      "description": "Lowers the target’s Type Rebuff of its weakness type by ranks the first time the user’s attack move is successful each battle.",
       "childPassives": []
     },
     {
       "id": 17063209,
       "name": "Team Immunizing Command 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs when the user’s Trainer uses a move. This effect can activate only once per battle.",
+      "description": "Applies the to all allied sync pairs when the user’s Trainer uses a move. This effect can activate only once per battle.",
       "childPassives": []
     },
     {
       "id": 18107209,
       "name": "Team Easy Target Speed Up 9",
-      "description": "Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against an opponent with the [Name:ReferencedMessageTag ] applied.",
+      "description": "Raises the of all allied sync pairs by stat ranks when the user’s attack move is successful against an opponent with the applied.",
       "childPassives": []
     }
   ],

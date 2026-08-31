@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Air Slash",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the Attack and Sp. Atk of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Turns the field of play’s zone into a Flying Zone. (A Flying Zone powers up Flying-type attacks.) Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used. Never misses. Lowers the Attack and Sp. Atk of all opposing sync pairs by stat ranks. Turns the field of play’s zone into a Flying Zone. (A Flying Zone powers up Flying-type attacks.) Raises the of all allied sync pairs by stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by one. Raises the Defense and Sp. Def of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Peculiar Flavor\nFlying Beam",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17083409,
       "name": "Ally Stat ↑: Sync Move Boost ↑1 9",
-      "description": "Increases an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when any of its stats are raised.",
+      "description": "Increases an ally’s by ranks when any of its stats are raised.",
       "childPassives": []
     },
     {
       "id": 11015302,
       "name": "1st Time Take S-Move Hit: Team HP Recovery 2",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP the first time the user is hit by a sync move each battle.",
+      "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP the first time the user is hit by a sync move each battle.",
       "childPassives": []
     },
     {
       "id": 17083509,
       "name": "Take S-Move Hit: Team Phys & Spec Boost ↑1 9",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by a sync move.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user is hit by a sync move.",
       "childPassives": []
     }
   ],

@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tera Starstorm",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Kaleidoscopic\nTera Starstorm",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs. Never misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the target’s by ranks. Reduces the user’s sync move countdown by. Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs. Never misses. Lowers the target’s by ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to the user. If the user is in Stellar Form, also grants all of the following effects: Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Increases the user’s by ranks. Increases the user’s by ranks. Applies the Enduring effect to the user. If the user is in Stellar Form, also grants all of the following effects: Increases the user’s by ranks. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ancient Indigo Disk\nTera Starstorm",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28041001,
       "name": "Paldea’s Grand Mystery",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
       "childPassives": [
         {
           "id": 28030901,
@@ -167,13 +167,13 @@
     {
       "id": 15015306,
       "name": "Debut: Sync CD ↓ & Sp. Atk ↑6",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time it enters a battle each battle. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. Raises the user’s by stat ranks the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99040101,
       "name": "Terastal Shell",
-      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the MP for the user’s by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately % of its maximum HP. Increases the user’s by ranks.",
       "childPassives": []
     }
   ],

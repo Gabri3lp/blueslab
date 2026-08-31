@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Fly",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "169",
       "accuracy": "95",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "The user begins flying. After a set time, the user stops flying and attacks. No other actions can be taken while flying. Most moves used by opponents will not hit the user while it is flying. If the user is hit by a sync move or max move while flying, it will stop flying.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Bulldoze",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "80",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Speed of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Spunky Sis\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 28020501,
       "name": "Ground Teamwork",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 11010301,
       "name": "Ridicure 1",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP by approximately 20% of its maximum HP when an opponent’s attack move targeting the user misses.",
+      "description": "Has a chance (%) of restoring the user’s HP by approximately 20% of its maximum HP when an opponent’s attack move targeting the user misses.",
       "childPassives": []
     },
     {
       "id": 13060303,
       "name": "Quick Combo 3",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP for the user’s moves that have the quick move effect tag when its attack move is successful.",
+      "description": "Has a chance (%) of restoring one MP for the user’s moves that have the quick move effect tag when its attack move is successful.",
       "childPassives": []
     },
     {

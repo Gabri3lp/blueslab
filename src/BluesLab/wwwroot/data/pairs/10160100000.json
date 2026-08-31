@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Moonblast",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "98",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Atk by stat ranks.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Psychic Terrain.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Neo\nPsycho Cut",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Physical",
       "power": "140",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The power of this move is not lowered even if there are multiple targets. Decreases the amount of move gauge slots needed to use this move by [Digit:1digit Idx=\"1\" ] when the terrain is [Name:ReferencedMessageTag ].",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared. Never misses. Except in certain circumstances, successful hits with this attack become critical hits. The power of this move is not lowered even if there are multiple targets. Decreases the amount of move gauge slots needed to use this move by when the terrain is.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user when the terrain is [Name:ReferencedMessageTag Idx=\"1\" ].",
+      "description": "Raises the user’s Attack and Sp. Atk by stat ranks. Applies the to the user when the terrain is.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Guileless Jest\nShattered Psyche",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19024505,
       "name": "Psychic Terrain Debut & Extension 5",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s terrain into the first time the user enters a battle each battle. Extends the duration of when the terrain turns into while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 13019002,
       "name": "Team Weird Vibes 2",
-      "description": "Powers up the moves of all allied sync pairs when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Powers up the moves of all allied sync pairs when the terrain is.",
       "childPassives": []
     },
     {
       "id": 17063709,
       "name": "Akala Ocean Breeze",
-      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],

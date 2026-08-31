@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Razor Shell",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "103",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Defense by stat ranks.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Jaw Lock",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "140",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Applies the Restrain effect to the target and the user.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rock Tomb",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s Speed by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the weather is rainy.",
+      "description": "Raises the user’s Attack by stat ranks. Raises the user’s critical-hit rate by stat ranks. In addition, raises the user’s Speed by stat ranks when the weather is rainy.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Flood the Stadium\nLiquidation",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is restrained.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 17043603,
       "name": "Restrained Freebie 3",
-      "description": "Has a chance ([Digit:2digits ]%) of applying the Free Move Next effect to the user when its attack move is successful while it is restrained.",
+      "description": "Has a chance (%) of applying the Free Move Next effect to the user when its attack move is successful while it is restrained.",
       "childPassives": []
     }
   ],

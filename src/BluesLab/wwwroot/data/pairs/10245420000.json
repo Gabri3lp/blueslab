@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Breaking Swipe",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Attack by stat ranks.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Spring Breeze\nScale Shot",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Attacks the target two to five times in a row. Raises one of the user’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random when attacking at least three times in a row: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user when attacking at least four times in a row. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] when attacking five times in a row. If the remaining MP for the user’s [Name:MoveId Idx=\"18500\" ] is [Digit:1digit Idx=\"1\" ] or more when attacking with this move, reduces those MP by [Digit:1digit Idx=\"1\" ] and grants all of the following effects: Maximizes the number of attacks. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised. Never misses. Raises the user’s by stat ranks. Attacks the target two to five times in a row. Raises one of the user’s following stats by stat ranks at random when attacking at least three times in a row: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the to the user when attacking at least four times in a row. Increases the user’s by ranks when attacking five times in a row. If the remaining MP for the user’s is or more when attacking with this move, reduces those MP by and grants all of the following effects: Maximizes the number of attacks. Reduces the user’s sync move countdown by.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Zoom Around School\nDragon Impact",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Attack is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,34 +144,34 @@
     {
       "id": 99024101,
       "name": "Hungry Buddy",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
+      "description": "Reduces the user’s sync move countdown by the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the of all allied sync pairs by ranks the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
       "childPassives": [
         {
           "id": 15013301,
           "name": "1st “Berry” MP 0: Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
+          "description": "Reduces the user’s sync move countdown by the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
         },
         {
           "id": 17080801,
           "name": "1st “Berry” MP 0: Team Physical Boost 1",
-          "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
+          "description": "Increases the of all allied sync pairs by ranks the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
         }
       ]
     },
     {
       "id": 99024201,
       "name": "Ms. Marnie’s Motorcycling Skills",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit. Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "description": "Has a chance (%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of restoring the user’s HP for each hit. Has a chance (%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of charging the user’s move gauge by one for each hit.",
       "childPassives": [
         {
           "id": 11012202,
           "name": "Restoring Strike 2",
-          "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit."
+          "description": "Has a chance (%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of restoring the user’s HP for each hit."
         },
         {
           "id": 12021902,
           "name": "Recharging Strike 2",
-          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit."
+          "description": "Has a chance (%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of charging the user’s move gauge by one for each hit."
         }
       ]
     },

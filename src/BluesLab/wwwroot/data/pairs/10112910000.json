@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Reigning\nThunder Fang",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Leaves the target paralyzed. Has a chance ([Digit:2digits Idx=\"2\" ]%) of making the target flinch.",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the target’s by stat ranks. Leaves the target paralyzed. Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to an ally.",
+      "gauge": "1",
+      "target": "An ally",
+      "description": "Applies the to an ally.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Thunderous Roar\nWild Charge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s terrain into Electric Terrain. Reduces the user’s sync move countdown by one. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used. Never misses. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s terrain into Electric Terrain. Reduces the user’s sync move countdown by one. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Restores the user’s HP by approximately % of its maximum HP. Restores the HP of all allied sync pairs by approximately % of their maximum HP. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Lightning Dasher\nWild Charge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28041101,
       "name": "Johto’s Thundering Legend",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Raises the sync buff of the user’s team by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Raises the sync buff of the user’s team by ranks the first time its sync move is used each battle.",
       "childPassives": [
         {
           "id": 28030201,
@@ -154,42 +154,42 @@
         {
           "id": 17083101,
           "name": "1st S-Move: Sync Buff ↑ 1",
-          "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+          "description": "Raises the sync buff of the user’s team by ranks the first time its sync move is used each battle."
         }
       ]
     },
     {
       "id": 99042601,
       "name": "Earth-Shaking Roar",
-      "description": "Grants all of the following effects when the terrain is [Name:ReferencedMessageTag ]: Powers up the moves of all allied sync pairs. Powers up the sync moves of all allied sync pairs. Reduces attack move damage taken by allies.",
+      "description": "Grants all of the following effects when the terrain is: Powers up the moves of all allied sync pairs. Powers up the sync moves of all allied sync pairs. Reduces attack move damage taken by allies.",
       "childPassives": [
         {
           "id": 13018902,
           "name": "Team Power Induction 2",
-          "description": "Powers up the moves of all allied sync pairs when the terrain is [Name:ReferencedMessageTag ]."
+          "description": "Powers up the moves of all allied sync pairs when the terrain is."
         },
         {
           "id": 16031702,
           "name": "Electric Terrain: Team S-Moves ↑ 2",
-          "description": "Powers up the sync moves of all allied sync pairs when the terrain is [Name:ReferencedMessageTag ]."
+          "description": "Powers up the sync moves of all allied sync pairs when the terrain is."
         },
         {
           "id": 13024702,
           "name": "Electric Terrain: Team Attack Move DR 2",
-          "description": "Reduces attack move damage taken by allies when the terrain is [Name:ReferencedMessageTag ]."
+          "description": "Reduces attack move damage taken by allies when the terrain is."
         }
       ]
     },
     {
       "id": 99042701,
       "name": "Rough and Swirling Electric Energy",
-      "description": "Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "description": "Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by stat ranks when the user’s attack move is successful.",
       "childPassives": []
     },
     {
       "id": 19067001,
       "name": "Debut / 1st S-Move: Johto C (Phys & Spec) on Field",
-      "description": "Applies [Name:ReferencedMessageTag ] and [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play the first time the user enters a battle each battle. Applies [Name:ReferencedMessageTag ] and [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play the first time the user’s sync move is used each battle.",
+      "description": "Applies and to the allied field of play the first time the user enters a battle each battle. Applies and to the allied field of play the first time the user’s sync move is used each battle.",
       "childPassives": []
     }
   ],

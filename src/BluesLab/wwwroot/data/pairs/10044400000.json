@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Sand Tomb",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Grudgeful Bulldoze",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "120",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one trapped Pokémon on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any trapped Pokémon on the opponent’s field of play.\n\nLowers the target’s Defense and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Defense and Speed of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen there is at least one trapped Pokémon on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any trapped Pokémon on the opponent’s field of play. Lowers the target’s Defense and Speed by stat ranks. Raises the Defense and Speed of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Menacing Memories\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is trapped.",
       "isSync": true

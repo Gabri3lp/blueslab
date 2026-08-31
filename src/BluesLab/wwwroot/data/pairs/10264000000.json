@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "124",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Never misses when the weather is rainy. Has a chance (%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Charges the user’s move gauge by [Digit:1digit Idx=\"1\" ]. Applies the Gradual Healing effect to the user. Applies the Supereffective ↑ Next effect to the user. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP. Charges the user’s move gauge by. Applies the Gradual Healing effect to the user. Applies the Supereffective ↑ Next effect to the user. Applies the to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Best Buddies\nThunderbolt",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "400",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any moves three times.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Uses a maximum of [Digit:1digit ] [EN:Qty S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the greater the power of this attack.",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen the user uses any moves three times.\nDeactivation Condition:\nCannot be deactivated. Never misses. Uses a maximum of slots of the user’s move gauge. The more amount used, the greater the power of this attack.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s Sp. Atk and Speed by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s remaining HP is at half or more.",
+      "description": "Raises the user’s Sp. Atk by stat ranks. Raises the user’s critical-hit rate by stat ranks. In addition, raises the user’s Sp. Atk and Speed by stat ranks when the user’s remaining HP is at half or more.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Best Buds 10,000,000\nVolt Thunderbolt",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Except in certain circumstances, successful hits with this attack become critical hits.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 28011301,
       "name": "Kanto Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by %. Reduces special attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 99011401,
       "name": "Ash’s Passion",
-      "description": "Powers up the user’s [Name:MoveId Idx=\"87\" ]. Decreases the amount of move gauge slots the user needs to use [Name:MoveId Idx=\"87\" ] by [Digit:1digit ]. The user’s [Name:MoveId Idx=\"87\" ] never misses.",
+      "description": "Powers up the user’s. Decreases the amount of move gauge slots the user needs to use by. The user’s never misses.",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 17049402,
       "name": "Initial Pinch Special Boost 2",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it is in a pinch each battle.",
+      "description": "Increases the user’s by ranks the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],

@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Mirror Shot",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "57",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s accuracy by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Status Move Defense effect to the allied field of play. Applies the Stat Reduction Defense effect to the allied field of play. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Status Move Defense effect to the allied field of play. Applies the Stat Reduction Defense effect to the allied field of play. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Piece It Together\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18070609,
       "name": "Team Stat Steal 9",
-      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, or Speed. Raises this stat for all allied sync pairs by the same amount.",
+      "description": "Lowers one of the target’s following stats by stat ranks at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, or Speed. Raises this stat for all allied sync pairs by the same amount.",
       "childPassives": []
     },
     {
       "id": 18070709,
       "name": "Retaliatory Stat Steal 9",
-      "description": "Lowers one of the following stats of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, or Speed. Raises the user’s stat by the same amount.",
+      "description": "Lowers one of the following stats of an opponent that attacked the user by stat ranks at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, or Speed. Raises the user’s stat by the same amount.",
       "childPassives": []
     },
     {
       "id": 18102609,
       "name": "Full-Bracing Command 9",
-      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its Trainer uses a move.",
+      "description": "Raises the user’s Defense and Sp. Def by stat ranks when its Trainer uses a move.",
       "childPassives": []
     }
   ],

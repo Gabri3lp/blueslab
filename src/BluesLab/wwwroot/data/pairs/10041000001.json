@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Flash Cannon",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Sp. Def by stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Discharge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Attack and Sp. Atk by stat ranks. Raises an ally’s by stat ranks. Applies the Enduring effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "One Hundred Percent\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99013901,
       "name": "Factory Knowledge",
-      "description": "Powers up the moves of all allied sync pairs when attacking a target that is restrained. Applies the [Name:ReferencedMessageTag ] to the target when the user’s attack move against it is successful.",
+      "description": "Powers up the moves of all allied sync pairs when attacking a target that is restrained. Applies the to the target when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 17066909,
       "name": "Hit Restrained Opp: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful against a restrained opponent.",
+      "description": "Applies the to the user when its attack move is successful against a restrained opponent.",
       "childPassives": []
     },
     {
       "id": 17067009,
       "name": "Hit Restrained Opp: Supereffective ↑ Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful against a restrained opponent.",
+      "description": "Applies the to the user when its attack move is successful against a restrained opponent.",
       "childPassives": []
     }
   ],

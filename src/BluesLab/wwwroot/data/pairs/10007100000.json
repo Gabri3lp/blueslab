@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared.\n\nRaises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Charges the user’s move gauge by [Digit:1digit Idx=\"2\" ] when the weather is sunny.",
+      "target": "All allies",
+      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared. Raises the of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks. Charges the user’s move gauge by when the weather is sunny.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when the weather is sunny.",
+      "target": "All allies",
+      "description": "Raises the of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks when the weather is sunny.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Gentle Warning\nBloom Doom",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19024405,
       "name": "Grassy Terrain Debut & Extension 5",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s terrain into the first time the user enters a battle each battle. Extends the duration of when the terrain turns into while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 13021903,
       "name": "Team Verdant Physical DR 3",
-      "description": "Reduces physical attack move damage taken by allies when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Reduces physical attack move damage taken by allies when the terrain is.",
       "childPassives": []
     },
     {
       "id": 17063509,
       "name": "Ula’ula Ocean Breeze",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Increases the of all allied sync pairs by ranks when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],

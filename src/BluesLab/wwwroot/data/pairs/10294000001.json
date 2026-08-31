@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Fang",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "46",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch. Has a chance (%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by %. Reduces attack move and sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs by stat ranks. Applies the to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Chilling Snowy Mountains\nIce Impact",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,24 +144,24 @@
     {
       "id": 99023601,
       "name": "Frozen-Over Passion",
-      "description": "Powers up the [Name:ReferencedMessageTag Idx=\"1\" ]-type moves of all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play.",
+      "description": "Powers up the -type moves of all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user applies a circle to the allied field of play.",
       "childPassives": [
         {
           "id": 17079902,
           "name": "Team Ice Moves ↑ 2",
-          "description": "Powers up the [Name:ReferencedMessageTag ]-type moves of all allied sync pairs."
+          "description": "Powers up the -type moves of all allied sync pairs."
         },
         {
           "id": 17073809,
           "name": "User Sets Circle: Team Phys & Spec Boost ↑1 9",
-          "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play."
+          "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user applies a circle to the allied field of play."
         }
       ]
     },
     {
       "id": 15010301,
       "name": "Adrenaline 1",
-      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "description": "Reduces the sync move countdown by the first time the user’s sync move is used each battle.",
       "childPassives": []
     },
     {

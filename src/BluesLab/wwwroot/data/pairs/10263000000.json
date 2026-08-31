@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Gunk Shot",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "194",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Has a chance (%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ].",
+      "description": "Charges the user’s move gauge by.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack, Sp. Atk, and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the target is poisoned or badly poisoned. Fails when the target is not poisoned or badly poisoned.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Attack, Sp. Atk, and Speed by stat ranks when the target is poisoned or badly poisoned. Fails when the target is not poisoned or badly poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"6\" ]. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Still Good with It\nPoison Impact",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s stats are lowered, the greater the power of this attack.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 17064501,
       "name": "Max Move Hit: Team Poison Rebuff ↓ 1",
-      "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful.",
+      "description": "Lowers the of all opposing sync pairs by ranks when the user’s max move targeting an opponent is successful.",
       "childPassives": []
     },
     {

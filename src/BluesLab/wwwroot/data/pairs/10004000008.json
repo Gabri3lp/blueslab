@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Razor Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "43",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately % of its maximum HP. HP is restored by % instead when the weather is sunny, and % when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Grassy Glide",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Will not consume the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Will not consume the move gauge when the terrain is.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"5\" ] of all allied sync pairs by [Digit:1digit Idx=\"6\" ] [EN:Qty Ref=\"6\" S=\"rank\" P=\"ranks\" ]. Lowers the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] stat [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Raises the of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks. Lowers the user’s by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sun-Grown Fighting Spirit\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Defense is lowered, the greater the power of this attack.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 17014201,
       "name": "Grassy Terrain: Team Condition Nullification",
-      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is.",
       "childPassives": []
     },
     {
       "id": 18117909,
       "name": "P-Move/S-Move on Opp: Defense ↓ 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "description": "Lowers the target’s by stat ranks when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s by stat ranks after using the user’s sync move targeting that opponent.",
       "childPassives": []
     }
   ],

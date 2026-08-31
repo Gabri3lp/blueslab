@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Brutal Swing",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Dark Zone. (A Dark Zone powers up Dark-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Wild Whirlwind\nDarkest Lariat",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nIgnores the target’s raised stats. Lowers the target’s Defense and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s [Name:MoveId Idx=\"19660\" ] is [Digit:1digit ] or more when attacking with this move, reduces those MP by [Digit:1digit ] and grants all of the following effects: Turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"2\" ]. (A [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.) Reduces the user’s sync move countdown by two.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Ignores the target’s raised stats. Lowers the target’s Defense and Speed by stat ranks. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s is or more when attacking with this move, reduces those MP by and grants all of the following effects: Turns the field of play’s zone into a. (A powers up -type attacks.) Reduces the user’s sync move countdown by two.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Applies the Supereffective ↑ Next effect to an ally. Applies the Damage Guard Next effect to an ally.",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by. Applies the Supereffective ↑ Next effect to an ally. Applies the Damage Guard Next effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Bring Out the Best\nDark Impact",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18126803,
       "name": "Entry: Attack ↑6 & Crit Rate ↑3",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s by stat ranks when it enters a battle. Raises the user’s by stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17093401,
       "name": "1st “Dark Wish” MP 0: Sync Move Boost ↑10",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by 10 ranks the first time the remaining MP for its [Name:MoveId Idx=\"19660\" ] is zero each battle.",
+      "description": "Increases the user’s by 10 ranks the first time the remaining MP for its is zero each battle.",
       "childPassives": []
     },
     {
       "id": 17093509,
       "name": "User Sets Dark Zone: Team Physical Boost ↑1 9",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+      "description": "Increases the of all allied sync pairs by ranks when the user turns the field of play’s zone into a.",
       "childPassives": []
     }
   ],

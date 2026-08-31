@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Almighty\nMortal Spin",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Leaves the target poisoned. Removes a damage field from the allied field of play. Removes the trapped condition from the user.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the target’s Defense and Sp. Def by stat ranks. Leaves the target poisoned. Removes a damage field from the allied field of play. Removes the trapped condition from the user.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Almighty\nVenoshock",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "80",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play.\n\nNever misses. This attack’s power is doubled when the target is poisoned or badly poisoned. Applies the Physical Move Break effect and Special Move Break effect to the target the first time this attack move is successful each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play. Never misses. This attack’s power is doubled when the target is poisoned or badly poisoned. Applies the Physical Move Break effect and Special Move Break effect to the target the first time this attack move is successful each battle. Turns the field of play’s zone into a. (A powers up -type attacks.) Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Uses a maximum of [Digit:1digit ] [EN:Qty S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the more it raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs (can be raised by up to [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] maximum).",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by two. Uses a maximum of slots of the user’s move gauge. The more amount used, the more it raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs (can be raised by up to stat ranks maximum).",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Dazzling Brilliance\nDivine Mortal Spin",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks the first time the user’s sync move is used each battle.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 29011301,
       "name": "Toxic Myth",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 29021301,
       "name": "Toxic Judgment",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99044401,
       "name": "Incapable of Holding Back",
-      "description": "Leaves all opposing sync pairs badly poisoned the first time the user enters a battle each battle. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Leaves all opposing sync pairs badly poisoned the first time the user enters a battle each battle. Raises the of all allied sync pairs by stat ranks when the user enters a battle.",
       "childPassives": [
         {
           "id": 17088301,
@@ -166,31 +166,31 @@
         {
           "id": 18096103,
           "name": "Team Sharp Entry 3",
-          "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle."
+          "description": "Raises the critical-hit rate of all allied sync pairs by stat ranks when the user enters a battle."
         }
       ]
     },
     {
       "id": 99044501,
       "name": "Inspiring All Who Watch",
-      "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ]. Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP when the user is hit by a sync move while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a. Restores the HP of all allied sync pairs by approximately % of their maximum HP when the user is hit by a sync move while the zone is a.",
       "childPassives": [
         {
           "id": 11016609,
           "name": "Poison Zone & Take Hit: Team HP Recovery 9",
-          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ]."
+          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a."
         },
         {
           "id": 11016702,
           "name": "Poison Zone & Take S-Move Hit: Team HP Recovery 2",
-          "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP when the user is hit by a sync move while the zone is a [Name:ReferencedMessageTag ]."
+          "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP when the user is hit by a sync move while the zone is a."
         }
       ]
     },
     {
       "id": 21011701,
       "name": "Poison Zone: Team Crit Immunity",
-      "description": "Protects all allied sync pairs against critical hits when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Protects all allied sync pairs against critical hits when the zone is a.",
       "childPassives": []
     }
   ],

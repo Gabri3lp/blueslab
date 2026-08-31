@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Brutal Swing",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Water Shuriken",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen any allies’ attack moves hit a total of 10 times while this move is deactivated.\nDeactivation Condition:\nWhen this move is used.\n\nRaises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"1\" ] type. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"1\" ] type. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Increases the [Name:ReferencedMessageTag Idx=\"6\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s sync move is [Name:ReferencedMessageTag Idx=\"5\" ] type. Makes the weather rainy when the user’s sync move is [Name:ReferencedMessageTag Idx=\"5\" ] type.",
+      "target": "All allies",
+      "description": "Activation Condition:\nWhen any allies’ attack moves hit a total of 10 times while this move is deactivated.\nDeactivation Condition:\nWhen this move is used. Raises the of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks when the user’s sync move is type. Turns the field of play’s zone into a when the user’s sync move is type. (A powers up -type attacks.) Increases the of all allied sync pairs by ranks when the user’s sync move is type. Makes the weather rainy when the user’s sync move is type.",
       "isSync": false
     },
     {
@@ -121,9 +121,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the Sp. Atk and critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the of all allied sync pairs by stat ranks. Raises the Sp. Atk and critical-hit rate of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shrouded\nNight Slash",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 28011401,
       "name": "Kalos Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by %. Reduces physical attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by % and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
       "childPassives": []
     },
     {
       "id": 99012101,
       "name": "Calm Fighter Water Transformation",
-      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its -type moves.",
       "childPassives": []
     },
     {

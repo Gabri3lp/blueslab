@@ -19,9 +19,11 @@ else
     <div class="d-flex flex-column flex-lg-row vh-100 overflow-hidden bg-dark text-light">
         <!-- Left Side: Brand, Pair Selector & Hex Grid View -->
         <div class="hex-grid-pane @(ExpandedRight ? "col-lg-5" : "col-lg-6") d-flex flex-column border-end border-secondary bg-black bg-opacity-25 overflow-hidden">
-            <!-- HeaderNav (Left pane only: Brand & Pair Selector) -->
+            <!-- HeaderNav (Left pane: Brand, Pair Selector, Hard Cap, Reset & Share) -->
             <HeaderNav CurrentPair="ActivePair"
-                       OnOpenPairPicker="() => ShowPairPicker = true" />
+                       MoveLevel="MoveLevel"
+                       OnOpenPairPicker="() => ShowPairPicker = true"
+                       OnOpenShareModal="() => ShowShareModal = true" />
 
             <!-- Hex Grid View (contains seamless Grid Controls toolbar + SVG Canvas) -->
             <div class="flex-grow-1 overflow-hidden d-flex flex-column">

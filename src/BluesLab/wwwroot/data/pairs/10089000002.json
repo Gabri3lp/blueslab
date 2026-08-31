@@ -82,9 +82,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by stat ranks.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Soaring Ancient Dreams\nRock Impact",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Defense is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 15010101,
       "name": "Head Start 1",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 12021501,
       "name": "Charging Infliction 1",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when its Pokémon uses a status move.",
+      "description": "Charges the user’s move gauge by when its Pokémon uses a status move.",
       "childPassives": []
     }
   ],

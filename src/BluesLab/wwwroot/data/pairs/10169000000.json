@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Facade",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the user is poisoned, badly poisoned, paralyzed, or burned. Ignores lowered Attack from burns.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP. Charges the user’s move gauge by [Digit:1digit ] for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by [Digit:1digit ] instead.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP. Charges the user’s move gauge by for each allied sync pair on the field. When used in a co-op battle, charges the move gauges of all allied players by instead.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Museum Director\nNormal Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18110509,
       "name": "Use Status P-Move on Opp: Sp. Def ↓ 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move targeting that opponent.",
+      "description": "Lowers the target’s by stat ranks when the user’s Pokémon uses a status move targeting that opponent.",
       "childPassives": []
     },
     {
       "id": 19025601,
       "name": "Debut: Field Special DR",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle.",
+      "description": "Applies the to the allied field of play the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 18093002,
       "name": "Team Pinpoint Entry 2",
-      "description": "Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Raises the accuracy of all allied sync pairs by stat ranks when the user enters a battle.",
       "childPassives": []
     }
   ],

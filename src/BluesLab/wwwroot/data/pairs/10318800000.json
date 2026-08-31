@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Petal Blizzard",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s by stat ranks. Increases the user’s by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Director of the Academy\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Attack is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17076609,
       "name": "Strike: Sync Move Boost ↑1 9",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move hits. If the move has the Multistrike effect tag, increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit.",
+      "description": "Increases the user’s by ranks when its attack move hits. If the move has the Multistrike effect tag, increases the user’s by ranks for each hit.",
       "childPassives": []
     },
     {
       "id": 12021904,
       "name": "Recharging Strike 4",
-      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "description": "Has a chance (%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of charging the user’s move gauge by one for each hit.",
       "childPassives": []
     },
     {
       "id": 15013602,
       "name": "1st T-Move: Sync CD ↓ 2",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Trainer uses a move each battle.",
+      "description": "Reduces the user’s sync move countdown by the first time its Trainer uses a move each battle.",
       "childPassives": []
     }
   ],

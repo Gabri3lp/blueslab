@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Headbutt",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Crafty Poisonous\nSmog",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen [Name:ReferencedMessageTag ] applies to the opponent’s field of play.\nDeactivation Condition:\nWhen the opponent’s field of play is no longer [Name:ReferencedMessageTag ].\n\nLeaves the target badly poisoned. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time this attack move is successful each battle. Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen applies to the opponent’s field of play.\nDeactivation Condition:\nWhen the opponent’s field of play is no longer. Leaves the target badly poisoned. Lowers the target’s by ranks the first time this attack move is successful each battle. Raises the Defense and Sp. Def of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by. Raises the Attack and Sp. Atk of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Designer’s Way of the Ninja\nGunk Shot",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -161,13 +161,13 @@
     {
       "id": 19051801,
       "name": "Debut: Poison DF",
-      "description": "Applies [Name:ReferencedMessageTag ] to the opponents’ field of play the first time the user enters a battle each battle. ([Name:ReferencedMessageTag ]: The sync pairs will take [Name:ReferencedMessageTag Idx=\"1\" ]-type damage whenever they take an action.)",
+      "description": "Applies to the opponents’ field of play the first time the user enters a battle each battle. (: The sync pairs will take -type damage whenever they take an action.)",
       "childPassives": []
     },
     {
       "id": 13082102,
       "name": "Poison DF on Opp: Team Moves ↑ 2",
-      "description": "Powers up the moves of all allied sync pairs when [Name:ReferencedMessageTag ] applies to the opponent’s field of play.",
+      "description": "Powers up the moves of all allied sync pairs when applies to the opponent’s field of play.",
       "childPassives": []
     }
   ],

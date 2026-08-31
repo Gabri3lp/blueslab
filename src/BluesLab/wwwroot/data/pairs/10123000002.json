@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Play Rough",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "111",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Attack by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (%) of lowering the target’s Attack by stat ranks.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a. (A powers up -type attacks.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Elegant\nPlay Rough",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nLowers the target’s Attack and Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s [Name:MoveId Idx=\"19680\" ] is [Digit:1digit ] or more when attacking with this move, reduces those MP by [Digit:1digit ] and grants all of the following effects: Turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"2\" ]. (A [Name:ReferencedMessageTag Idx=\"2\" ] powers up [Name:ReferencedMessageTag Idx=\"3\" ]-type attacks.) Increases the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Lowers the target’s Attack and Sp. Atk by stat ranks. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s is or more when attacking with this move, reduces those MP by and grants all of the following effects: Turns the field of play’s zone into a. (A powers up -type attacks.) Increases the of all allied sync pairs by ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Applies the Supereffective ↑ Next effect to an ally. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by. Applies the Supereffective ↑ Next effect to an ally. Increases the of an ally by ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Moonlit Melody\nFairy Impact",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18126803,
       "name": "Entry: Attack ↑6 & Crit Rate ↑3",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s by stat ranks when it enters a battle. Raises the user’s by stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17097003,
       "name": "1st “Fairy Wish” MP 0: Team Physical Boost 3",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s [Name:MoveId Idx=\"19680\" ] is zero each battle.",
+      "description": "Increases the of all allied sync pairs by ranks the first time the remaining MP for the user’s is zero each battle.",
       "childPassives": []
     },
     {
       "id": 18129609,
       "name": "Fairy Zone Hit: Defense ↓2 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Lowers the target’s by stat ranks when the user’s attack move is successful while the zone is a.",
       "childPassives": []
     }
   ],
