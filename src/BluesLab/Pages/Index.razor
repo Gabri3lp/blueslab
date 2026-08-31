@@ -16,72 +16,71 @@
 }
 else
 {
-    <div class="d-flex flex-column vh-100 overflow-hidden bg-dark text-light">
-        <HeaderNav CurrentPair="ActivePair"
-                   MoveLevel="MoveLevel"
-                   MoveLevelChanged="OnMoveLevelChanged"
-                   OnOpenPairPicker="() => ShowPairPicker = true"
-                   OnOpenShareModal="() => ShowShareModal = true" />
+    <div class="d-flex flex-column flex-lg-row vh-100 overflow-hidden bg-dark text-light">
+        <!-- Left Side: Brand, Pair Selector & Hex Grid View -->
+        <div class="hex-grid-pane @(ExpandedRight ? "col-lg-5" : "col-lg-6") d-flex flex-column border-end border-secondary bg-black bg-opacity-25 overflow-hidden">
+            <!-- HeaderNav (Left pane only: Brand & Pair Selector) -->
+            <HeaderNav CurrentPair="ActivePair"
+                       OnOpenPairPicker="() => ShowPairPicker = true" />
 
-        <!-- Main Content Area -->
-        <div class="flex-grow-1 d-flex flex-column flex-lg-row overflow-hidden">
-            
-            <!-- Left Side: Hex Grid View -->
-            <div class="hex-grid-pane @(ExpandedRight ? "col-lg-5" : "col-lg-6") d-flex flex-column border-end border-secondary p-2 bg-black bg-opacity-25 overflow-hidden">
+            <!-- Hex Grid View (contains seamless Grid Controls toolbar + SVG Canvas) -->
+            <div class="flex-grow-1 overflow-hidden d-flex flex-column">
                 <HexGridView Pair="ActivePair"
                              MoveLevel="MoveLevel"
-                             OnCenterClick="() => ShowPairPicker = true" />
+                             MoveLevelChanged="OnMoveLevelChanged"
+                             OnCenterClick="() => ShowPairPicker = true"
+                             OnOpenShareModal="() => ShowShareModal = true" />
             </div>
+        </div>
 
-            <!-- Right Side: Overview & Calculator Tabs -->
-            <div class="right-panel-pane @(ExpandedRight ? "col-lg-7" : "col-lg-6") d-flex flex-column overflow-hidden">
-                <!-- Tab Switcher & Collapse Toggle -->
-                <div class="d-flex align-items-center justify-content-between px-3 pt-2 pb-1 border-bottom border-secondary bg-dark">
-                    <div class="nav nav-pills gap-2" role="tablist">
-                        <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                                @onclick="() => ActiveTab = 0">
-                            <i class="bi bi-info-circle"></i> Overview
-                        </button>
-                        <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                                @onclick="() => ActiveTab = 1">
-                            <i class="bi bi-calculator"></i> Solo Calculator
-                        </button>
-                        <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                                @onclick="() => { ActiveTab = 2; ExpandedRight = true; }">
-                            <i class="bi bi-people-fill"></i> 3v3 Team Battle
-                        </button>
-                    </div>
-
-                    <button class="btn btn-outline-secondary btn-sm"
-                            title="@(ExpandedRight ? "Shrink Panel" : "Expand Panel")"
-                            @onclick="() => ExpandedRight = !ExpandedRight">
-                        <i class="bi @(ExpandedRight ? "bi-chevron-right" : "bi-arrows-angle-expand")"></i>
+        <!-- Right Side: Overview & Calculator Tabs (No Header above it!) -->
+        <div class="right-panel-pane @(ExpandedRight ? "col-lg-7" : "col-lg-6") d-flex flex-column overflow-hidden">
+            <!-- Tab Switcher & Collapse Toggle -->
+            <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary bg-dark shadow-sm">
+                <div class="nav nav-pills gap-2" role="tablist">
+                    <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                            @onclick="() => ActiveTab = 0">
+                        <i class="bi bi-info-circle"></i> Overview
+                    </button>
+                    <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                            @onclick="() => ActiveTab = 1">
+                        <i class="bi bi-calculator"></i> Solo Calculator
+                    </button>
+                    <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                            @onclick="() => { ActiveTab = 2; ExpandedRight = true; }">
+                        <i class="bi bi-people-fill"></i> 3v3 Team Battle
                     </button>
                 </div>
 
-                <!-- Tab Body Content -->
-                <div class="flex-grow-1 overflow-auto p-2">
-                    @if (ActiveTab == 0)
-                    {
-                        <SyncPairOverview Pair="ActivePair"
-                                          Ally="AllyState"
-                                          MoveLevel="MoveLevel"
-                                          MoveLevelChanged="OnMoveLevelChanged" />
-                    }
-                    else if (ActiveTab == 1)
-                    {
-                        <DamageCalculatorPanel Ally="AllyState"
-                                               Enemy="EnemyState"
-                                               Field="BattleField"
-                                               Rules="RulesDoc"
-                                               MoveLevel="MoveLevel"
-                                               MoveLevelChanged="OnMoveLevelChanged" />
-                    }
-                    else
-                    {
-                        <TeamBattleCalculator />
-                    }
-                </div>
+                <button class="btn btn-outline-secondary btn-sm"
+                        title="@(ExpandedRight ? "Shrink Panel" : "Expand Panel")"
+                        @onclick="() => ExpandedRight = !ExpandedRight">
+                    <i class="bi @(ExpandedRight ? "bi-chevron-right" : "bi-arrows-angle-expand")"></i>
+                </button>
+            </div>
+
+            <!-- Tab Body Content -->
+            <div class="flex-grow-1 overflow-auto p-2">
+                @if (ActiveTab == 0)
+                {
+                    <SyncPairOverview Pair="ActivePair"
+                                      Ally="AllyState"
+                                      MoveLevel="MoveLevel"
+                                      MoveLevelChanged="OnMoveLevelChanged" />
+                }
+                else if (ActiveTab == 1)
+                {
+                    <DamageCalculatorPanel Ally="AllyState"
+                                           Enemy="EnemyState"
+                                           Field="BattleField"
+                                           Rules="RulesDoc"
+                                           MoveLevel="MoveLevel"
+                                           MoveLevelChanged="OnMoveLevelChanged" />
+                }
+                else
+                {
+                    <TeamBattleCalculator />
+                }
             </div>
         </div>
     </div>

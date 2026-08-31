@@ -1,16 +1,81 @@
 @inject GridStateService GridState
 
-<div class="hex-grid-container position-relative w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+<div class="hex-grid-container position-relative w-100 h-100 d-flex flex-column">
     @if (Pair == null || Pair.Grid.Count == 0)
     {
-        <div class="text-center py-5 text-muted">
+        <div class="text-center py-5 text-muted m-auto">
             <i class="bi bi-grid-3x3-gap fs-1 d-block mb-2"></i>
             No sync grid available for this character.
         </div>
     }
     else
     {
-        <div class="grid-viewport w-100 h-100 position-relative overflow-hidden">
+        <!-- Seamless Grid Controls Toolbar (No solid background) -->
+        <div class="grid-controls-bar w-100 d-flex flex-wrap align-items-center justify-content-between px-3 py-2 border-bottom border-secondary border-opacity-50">
+            <!-- Left: Energy & Orbs (Clean text with clear icons, no dark container box) -->
+            <div class="d-flex align-items-center gap-3">
+                <span class="fw-bold text-warning d-flex align-items-center gap-1 fs-6">
+                    ⚡ <b>@GridState.GetRemainingEnergy(Pair)</b>/60
+                </span>
+                <span class="text-secondary opacity-50">|</span>
+                <span class="fw-bold text-info d-flex align-items-center gap-1 fs-6">
+                    🔮 <b>@GridState.GetTotalOrbs(Pair)</b>
+                </span>
+            </div>
+
+            <!-- Right: Move Level Gems, SA, Hard Cap, Reset, Share -->
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <!-- Move Level Gems (1-5) -->
+                <div class="d-flex align-items-center gap-1">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        int lvl = i;
+                        <img src="@(MoveLevel >= lvl ? "img/sync_level_on.png" : "img/sync_level_off.png")"
+                             alt="Lv.@lvl"
+                             width="26"
+                             height="26"
+                             class="cursor-pointer @(MoveLevel >= lvl ? "" : "opacity-50")"
+                             title="Move Level @lvl/5"
+                             @onclick="() => OnMoveLevelClick(lvl)" />
+                    }
+
+                    <!-- Super Awakening (6-10) -->
+                    @if (Pair.HasSuperAwakening)
+                    {
+                        <span class="text-secondary opacity-50 mx-1">|</span>
+                        @for (int i = 6; i <= 10; i++)
+                        {
+                            int lvl = i;
+                            <img src="img/transcendance.png"
+                                 alt="SA.@(lvl-5)"
+                                 width="26"
+                                 height="26"
+                                 class="cursor-pointer @(MoveLevel >= lvl ? "" : "opacity-25")"
+                                 title="Super Awakening @(lvl-5)/5"
+                                 @onclick="() => OnMoveLevelClick(MoveLevel == lvl ? lvl - 1 : lvl)" />
+                        }
+                    }
+                </div>
+
+                <!-- Hard Cap Toggle -->
+                <div class="form-check form-switch d-flex align-items-center gap-1 mb-0 ms-2">
+                    <input class="form-check-input cursor-pointer" type="checkbox" id="gridHardCapSwitch" checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
+                    <label class="form-check-label text-secondary small select-none" for="gridHardCapSwitch" style="font-size: 0.8rem;">Hard Cap</label>
+                </div>
+
+                <!-- Reset Grid -->
+                <button class="btn btn-outline-danger btn-sm p-1 px-2" title="Reset Grid" @onclick="OnResetGrid">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+
+                <!-- Share Build -->
+                <button class="btn btn-outline-warning btn-sm p-1 px-2" title="Share Build" @onclick="OnShareClick">
+                    <i class="bi bi-share"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid-viewport w-100 flex-grow-1 position-relative overflow-hidden">
             <svg class="hex-svg w-100 h-100" viewBox="@ViewBoxString" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <filter id="tile-glow" x="-30%" y="-30%" width="160%" height="160%">
@@ -112,9 +177,41 @@
 @code {
     [Parameter] public SyncPairDetail? Pair { get; set; }
     [Parameter] public int MoveLevel { get; set; } = 5;
+    [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
     [Parameter] public EventCallback OnCenterClick { get; set; }
+    [Parameter] public EventCallback OnOpenShareModal { get; set; }
 
     private GridCellItem? HoveredCell;
+
+    private async Task OnMoveLevelClick(int lvl)
+    {
+        MoveLevel = lvl;
+        await MoveLevelChanged.InvokeAsync(lvl);
+    }
+
+    private void OnHardCapToggle(ChangeEventArgs e)
+    {
+        GridState.HardCap = (bool)(e.Value ?? true);
+        if (Pair != null && GridState.HardCap)
+        {
+            GridState.ActivateFreeCenterCells(Pair, MoveLevel);
+            GridState.PruneDisconnected(Pair.Grid);
+            GridState.NotifyChanged();
+        }
+    }
+
+    private void OnResetGrid()
+    {
+        if (Pair != null)
+        {
+            GridState.ResetGrid(Pair, MoveLevel);
+        }
+    }
+
+    private async Task OnShareClick()
+    {
+        await OnOpenShareModal.InvokeAsync();
+    }
 
     // Brybry standard tile dimensions (51 width offset per col, 30 height offset per row)
     private const double ColWidth = 51.0;
