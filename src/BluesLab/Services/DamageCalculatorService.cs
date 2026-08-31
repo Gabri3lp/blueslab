@@ -970,44 +970,320 @@ public class DamageCalculatorService
 
         if (rule == null)
         {
-            if (move.IsSync && !string.IsNullOrEmpty(move.Description))
+            if (!string.IsNullOrEmpty(move.Description))
             {
-                // Target Lowered Stats: step is 167 per stage up to 1000 (total base 1000 + 1000 = 2000 => 2.0x)
+                double descMult = 1.0;
+                string desc = move.Description;
+
+                // 1. Dual Screens / Damage Reductions in move descriptions
+                if (desc.Contains("Physical Damage Reduction effect and Special Damage Reduction effect apply to the allied field", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.PhysicalDamageReduction && ally.SpecialDamageReduction)
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Dual Screens)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+                else if (desc.Contains("Physical Damage Reduction effect applies to the allied field", StringComparison.OrdinalIgnoreCase) && desc.Contains("increases 50%", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.PhysicalDamageReduction)
+                    {
+                        descMult *= 1.5;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Phys Red)", Value = "×1.5", Color = "#fd79a8" });
+                    }
+                }
+                else if (desc.Contains("Special Damage Reduction effect applies to the allied field", StringComparison.OrdinalIgnoreCase) && desc.Contains("increases 50%", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.SpecialDamageReduction)
+                    {
+                        descMult *= 1.5;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Spec Red)", Value = "×1.5", Color = "#fd79a8" });
+                    }
+                }
+
+                // 2. Team does NOT have a sync buff (e.g. Red Anniversary Charizard B Dragon Claw)
+                if (desc.Contains("team does not have a sync buff", StringComparison.OrdinalIgnoreCase) && (desc.Contains("doubled", StringComparison.OrdinalIgnoreCase) || desc.Contains("power is doubled", StringComparison.OrdinalIgnoreCase)))
+                {
+                    if (ally.SyncBoosts == 0)
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (No Sync Buff)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 3. Target HP <= 50% (e.g. Brine)
+                if ((desc.Contains("remaining HP is at half or below", StringComparison.OrdinalIgnoreCase) || desc.Contains("HP is half or less", StringComparison.OrdinalIgnoreCase)) && (desc.Contains("doubled", StringComparison.OrdinalIgnoreCase) || desc.Contains("power is doubled", StringComparison.OrdinalIgnoreCase)))
+                {
+                    if (enemy.HpPercent <= 50)
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Target HP ≤50%)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 4. User HP pinch / low (e.g. Flail, Reversal, in a pinch)
+                if (desc.Contains("percentage of remaining HP", StringComparison.OrdinalIgnoreCase) || desc.Contains("less HP the user has", StringComparison.OrdinalIgnoreCase) || desc.Contains("more damage the user has taken", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.HpPercent < 100)
+                    {
+                        double hpScale = 1.0 + (100 - ally.HpPercent) / 100.0;
+                        descMult *= hpScale;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Low HP)", Value = $"×{hpScale:0.##}", Color = "#fd79a8" });
+                    }
+                }
+                else if (desc.Contains("in a pinch", StringComparison.OrdinalIgnoreCase) && desc.Contains("increases 20%", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.HpPercent <= 33)
+                    {
+                        descMult *= 1.2;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Pinch)", Value = "×1.2", Color = "#fd79a8" });
+                    }
+                }
+
+                // 5. Super Effective 30% increase in description
+                if (desc.Contains("30% when it is super effective", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase))
+                    {
+                        descMult *= 1.3;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (SE 30%)", Value = "×1.3", Color = "#fd79a8" });
+                    }
+                }
+
+                // 6. Target Speed is raised (doubles)
+                if (desc.Contains("target’s Speed is raised", StringComparison.OrdinalIgnoreCase) || desc.Contains("target's Speed is raised", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (enemy.Stages.GetValueOrDefault("spe", 0) > 0 && (desc.Contains("doubled", StringComparison.OrdinalIgnoreCase) || desc.Contains("power is doubled", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Target Spe+)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 7. Mega Evolved in description (doubles)
+                if (desc.Contains("Mega Evolved", StringComparison.OrdinalIgnoreCase) && desc.Contains("doubles", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.FormIndex > 0)
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Mega)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 8. User poisoned/paralyzed/burned (e.g. Facade)
+                if (desc.Contains("user is poisoned, badly poisoned, paralyzed, or burned", StringComparison.OrdinalIgnoreCase) || desc.Contains("user is affected by a status condition", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(ally.StatusCondition))
+                    {
+                        double m = move.IsSync ? 2.0 : (desc.Contains("doubled", StringComparison.OrdinalIgnoreCase) ? 2.0 : 1.5);
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (User Status)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 9. Target Status / Interferences (Hex, Venoshock, B moves, etc.)
+                if (desc.Contains("affected by a status condition, flinching, confused, or trapped", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(enemy.StatusCondition) || enemy.VolatileStatus.Values.Any(v => v))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Status/Hindrance)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+                else if (desc.Contains("target is affected by a status condition", StringComparison.OrdinalIgnoreCase) || desc.Contains("target has a status condition", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(enemy.StatusCondition))
+                    {
+                        double m = move.IsSync ? 2.0 : (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) ? 1.5 : (desc.Contains("20%", StringComparison.OrdinalIgnoreCase) ? 1.2 : 2.0));
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Status)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+                else
+                {
+                    if (desc.Contains("target is paralyzed", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "paralyzed")
+                    {
+                        double m = move.IsSync ? 2.0 : (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) ? 1.5 : 2.0);
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Paralyzed)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is burned", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "burned")
+                    {
+                        double m = move.IsSync ? 2.0 : (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) ? 1.5 : 2.0);
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Burned)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                    if ((desc.Contains("target is poisoned", StringComparison.OrdinalIgnoreCase) || desc.Contains("poisoned or badly poisoned", StringComparison.OrdinalIgnoreCase)) && (enemy.StatusCondition == "poisoned" || enemy.StatusCondition == "badly poisoned"))
+                    {
+                        double m = move.IsSync ? 2.0 : (desc.Contains("doubled", StringComparison.OrdinalIgnoreCase) ? 2.0 : (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) ? 1.5 : 2.0));
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Poisoned)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is asleep", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "asleep")
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Asleep)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is frozen", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "frozen")
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Frozen)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is confused", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("confused", false))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Confused)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is trapped", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("trapped", false))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Trapped)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is flinching", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("flinching", false))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Flinching)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    if (desc.Contains("target is restrained", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("restrained", false))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Restrained)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 10. Weather / Terrain / Zone in Move descriptions
+                if (desc.Contains("terrain is", StringComparison.OrdinalIgnoreCase) || desc.Contains("terrain applies", StringComparison.OrdinalIgnoreCase) || desc.Contains("terrain is in effect", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(field.Terrain))
+                    {
+                        double m = move.IsSync ? 2.0 : (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) ? 1.5 : 2.0);
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling ({field.Terrain})", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+                if (desc.Contains("weather is sunny", StringComparison.OrdinalIgnoreCase) || desc.Contains("during sunny weather", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Sunny") { descMult *= 2.0; pills.Add(new MultiplierPill { Label = "Move Scaling (Sun)", Value = "×2.0", Color = "#fd79a8" }); }
+                }
+                if (desc.Contains("during a sandstorm", StringComparison.OrdinalIgnoreCase) || desc.Contains("weather is sandstorm", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Sandstorm") { descMult *= 2.0; pills.Add(new MultiplierPill { Label = "Move Scaling (Sand)", Value = "×2.0", Color = "#fd79a8" }); }
+                }
+                if (desc.Contains("during a hailstorm", StringComparison.OrdinalIgnoreCase) || desc.Contains("during hail", StringComparison.OrdinalIgnoreCase) || desc.Contains("weather is hail", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Hail") { descMult *= 2.0; pills.Add(new MultiplierPill { Label = "Move Scaling (Hail)", Value = "×2.0", Color = "#fd79a8" }); }
+                }
+                if (desc.Contains("zone is a", StringComparison.OrdinalIgnoreCase) || desc.Contains("zone applies", StringComparison.OrdinalIgnoreCase) || desc.Contains("in a zone", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(field.Zone))
+                    {
+                        double m = 2.0;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling ({field.Zone})", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+                if (desc.Contains("weather conditions, a terrain, or a zone are in effect", StringComparison.OrdinalIgnoreCase) || desc.Contains("weather conditions are in effect", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(field.Weather) || !string.IsNullOrEmpty(field.Terrain) || !string.IsNullOrEmpty(field.Zone))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (WTZ)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 11. Circle active on allied field in description
+                if (desc.Contains("circle applies to the allied field of play", StringComparison.OrdinalIgnoreCase) || desc.Contains("when a circle applies", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.CircleActive.Values.Any(d => d.Values.Any(v => v)))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Circle)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 12. Damage Field in description
+                if (desc.Contains("applies to the opponent’s field of play", StringComparison.OrdinalIgnoreCase) || desc.Contains("applies to the opponent's field of play", StringComparison.OrdinalIgnoreCase) || desc.Contains("damage field applies", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(enemy.DamageField))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Dmg Field)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 13. Type Rebuff lowered in description
+                if (desc.Contains("Type Rebuff is lowered", StringComparison.OrdinalIgnoreCase) || desc.Contains("type rebuff is lowered", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0))
+                    {
+                        double m = 2.0;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Rebuff-)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 14. Target has sync buff (e.g. +50% or doubled)
+                if (desc.Contains("target has a sync buff", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (enemy.SyncBoosts > 0 || enemy.HasSyncBuff)
+                    {
+                        double m = desc.Contains("doubled", StringComparison.OrdinalIgnoreCase) ? 2.0 : 1.5;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Target Sync Buff)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 15. User Sync Buff scaling
+                if (desc.Contains("user’s sync buff is raised", StringComparison.OrdinalIgnoreCase) || desc.Contains("user's sync buff is raised", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.SyncBoosts > 0)
+                    {
+                        double m = 1.0 + Math.Min(ally.SyncBoosts, 10) * 0.10;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (Sync Buffs +{ally.SyncBoosts})", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 16. Stats lowered on Target: Defense, Sp. Def, Speed, Attack, Sp. Atk, Accuracy, Evasiveness
                 string[] stats = ["def", "spd", "spe", "atk", "spa", "acc", "eva"];
                 string[] names = ["Defense", "Sp. Def", "Speed", "Attack", "Sp. Atk", "accuracy", "evasiveness"];
                 for (int i = 0; i < stats.Length; i++)
                 {
-                    if (move.Description.Contains($"more the target’s {names[i]} is lowered", StringComparison.OrdinalIgnoreCase) ||
-                        move.Description.Contains($"more the target's {names[i]} is lowered", StringComparison.OrdinalIgnoreCase))
+                    if (desc.Contains($"more the target’s {names[i]} is lowered", StringComparison.OrdinalIgnoreCase) ||
+                        desc.Contains($"more the target's {names[i]} is lowered", StringComparison.OrdinalIgnoreCase) ||
+                        desc.Contains($"more the currently targeted opponent’s {names[i]} is lowered", StringComparison.OrdinalIgnoreCase))
                     {
                         int st = enemy.Stages.GetValueOrDefault(stats[i], 0);
                         if (st < 0)
                         {
                             int stageCount = Math.Clamp(-st, 0, 6);
-                            int bonus1000 = Math.Min(stageCount * 167, 1000);
+                            int descStep = move.IsSync ? 167 : 50;
+                            int bonus1000 = Math.Min(stageCount * descStep, 1000);
                             double m = (1000 + bonus1000) / 1000.0;
-                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
-                            return m;
+                            descMult *= m;
+                            pills.Add(new MultiplierPill { Label = $"Scaling ({names[i]}-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
                         }
                     }
-                    if (move.Description.Contains($"more the user’s {names[i]} is raised", StringComparison.OrdinalIgnoreCase) ||
-                        move.Description.Contains($"more the user's {names[i]} is raised", StringComparison.OrdinalIgnoreCase))
+                    if (desc.Contains($"more the user’s {names[i]} is raised", StringComparison.OrdinalIgnoreCase) ||
+                        desc.Contains($"more the user's {names[i]} is raised", StringComparison.OrdinalIgnoreCase) ||
+                        desc.Contains($"more the user’s {names[i]} is increased", StringComparison.OrdinalIgnoreCase))
                     {
                         int st = ally.Stages.GetValueOrDefault(stats[i], 0);
                         if (st > 0)
                         {
                             int stageCount = Math.Clamp(st, 0, 6);
-                            int bonus1000 = Math.Min(stageCount * 167, 1000);
+                            int descStep = move.IsSync ? 167 : 50;
+                            int bonus1000 = Math.Min(stageCount * descStep, 1000);
                             double m = (1000 + bonus1000) / 1000.0;
-                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
-                            return m;
+                            descMult *= m;
+                            pills.Add(new MultiplierPill { Label = $"Scaling ({names[i]}+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
                         }
                     }
                 }
 
-                // All Stats user raised (e.g. "The more the user’s stats are raised...")
-                if (move.Description.Contains("more the user’s stats are raised", StringComparison.OrdinalIgnoreCase) ||
-                    move.Description.Contains("more the user's stats are raised", StringComparison.OrdinalIgnoreCase))
+                // 17. All Stats user raised
+                if (desc.Contains("more the user’s stats are raised", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the user's stats are raised", StringComparison.OrdinalIgnoreCase))
                 {
                     int sumRaised = 0;
                     foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
@@ -1017,16 +1293,17 @@ public class DamageCalculatorService
                     }
                     if (sumRaised > 0)
                     {
-                        int bonus1000 = Math.Min(sumRaised * 67, 1200);
+                        int descStep = move.IsSync ? 67 : 26;
+                        int bonus1000 = Math.Min(sumRaised * descStep, 1200);
                         double m = (1000 + bonus1000) / 1000.0;
-                        pills.Add(new MultiplierPill { Label = "Sync Scaling (Stats+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
-                        return m;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Scaling (Stats+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
                     }
                 }
 
-                // All Stats target lowered (e.g. "The more the target’s stats are lowered...")
-                if (move.Description.Contains("more the target’s stats are lowered", StringComparison.OrdinalIgnoreCase) ||
-                    move.Description.Contains("more the target's stats are lowered", StringComparison.OrdinalIgnoreCase))
+                // 18. All Stats target lowered
+                if (desc.Contains("more the target’s stats are lowered", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the target's stats are lowered", StringComparison.OrdinalIgnoreCase))
                 {
                     int sumLowered = 0;
                     foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
@@ -1036,86 +1313,42 @@ public class DamageCalculatorService
                     }
                     if (sumLowered > 0)
                     {
-                        int bonus1000 = Math.Min(sumLowered * 67, 1200);
+                        int descStep = move.IsSync ? 67 : 26;
+                        int bonus1000 = Math.Min(sumLowered * descStep, 1200);
                         double m = (1000 + bonus1000) / 1000.0;
-                        pills.Add(new MultiplierPill { Label = "Sync Scaling (Stats-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
-                        return m;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Scaling (Stats-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
                     }
                 }
 
-                // Status Conditions on Target
-                if (move.Description.Contains("target is paralyzed", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "paralyzed")
+                // 19. Defense or Sp. Def lowered on target
+                if (desc.Contains("Defense or Sp. Def are lowered", StringComparison.OrdinalIgnoreCase))
                 {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Paralyzed)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
-                }
-                if (move.Description.Contains("target is burned", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "burned")
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Burned)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
-                }
-                if (move.Description.Contains("target is poisoned", StringComparison.OrdinalIgnoreCase) && (enemy.StatusCondition == "poisoned" || enemy.StatusCondition == "badly poisoned"))
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Poisoned)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
-                }
-                if (move.Description.Contains("target is asleep", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "asleep")
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Asleep)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
-                }
-                if (move.Description.Contains("target is frozen", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "frozen")
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Frozen)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
+                    int defS = enemy.Stages.GetValueOrDefault("def", 0);
+                    int spdS = enemy.Stages.GetValueOrDefault("spd", 0);
+                    int sum = (defS < 0 ? -defS : 0) + (spdS < 0 ? -spdS : 0);
+                    if (sum > 0)
+                    {
+                        int bonus1000 = Math.Min(sum * 50, 600);
+                        double m = (1000 + bonus1000) / 1000.0;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Scaling (Def/SpD-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
+                    }
                 }
 
-                // Volatile Status on Target (Confused, Trapped, Flinching)
-                if (move.Description.Contains("confused", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("confused", false))
+                // 20. None of the target's stats are raised
+                if (desc.Contains("none of the target’s stats are raised", StringComparison.OrdinalIgnoreCase) || desc.Contains("none of the target's stats are raised", StringComparison.OrdinalIgnoreCase))
                 {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Confused)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
-                }
-                if (move.Description.Contains("trapped", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("trapped", false))
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Trapped)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
-                }
-                if (move.Description.Contains("flinching", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("flinching", false))
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Flinching)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
+                    if (enemy.Stages.Values.All(v => v <= 0))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (No Target Buffs)", Value = "×2.0", Color = "#fd79a8" });
+                    }
                 }
 
-                // Weather / Terrain / Zone
-                if (move.Description.Contains("weather is sunny", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during sunny weather", StringComparison.OrdinalIgnoreCase))
+                if (descMult > 1.0)
                 {
-                    if (field.Weather == "Sunny") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Sun)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
-                }
-                if (move.Description.Contains("weather is rainy", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during rainy weather", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (field.Weather == "Rainy") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Rain)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
-                }
-                if (move.Description.Contains("weather is sandstorm", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during a sandstorm", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (field.Weather == "Sandstorm") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Sand)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
-                }
-                if (move.Description.Contains("weather is hail", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during hail", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("hailstorm", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (field.Weather == "Hail") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Hail)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
-                }
-                if (move.Description.Contains("terrain is", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("a terrain", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (!string.IsNullOrEmpty(field.Terrain)) { pills.Add(new MultiplierPill { Label = $"Sync Scaling ({field.Terrain})", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
-                }
-                if (move.Description.Contains("zone is", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("a zone", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("in a zone", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (!string.IsNullOrEmpty(field.Zone)) { pills.Add(new MultiplierPill { Label = $"Sync Scaling ({field.Zone})", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
-                }
-                if (move.Description.Contains("rebuff", StringComparison.OrdinalIgnoreCase) && enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0)
-                {
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Rebuff-)", Value = "×2.0", Color = "#fd79a8" });
-                    return 2.0;
+                    return descMult;
                 }
             }
             return 1.0;
