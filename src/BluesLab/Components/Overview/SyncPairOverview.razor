@@ -342,15 +342,6 @@
                         <i class="bi bi-grid-fill me-1"></i> Grid Skills (@activeGridPassives.Count)
                     </button>
                 </div>
-
-                @if (ActiveSection == "moves")
-                {
-                    <div class="d-flex align-items-center gap-2">
-                        <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.75rem;" @onclick="ToggleAllMoves">
-                            <i class="bi bi-arrows-expand me-1"></i> @(ExpandAllMoves ? "Collapse Descriptions" : "Expand All Descriptions")
-                        </button>
-                    </div>
-                }
             </div>
 
             <!-- Moves View -->
@@ -364,7 +355,7 @@
                         int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
                         int scaledPwr = rawPwr > 0 ? CalcService.CalcPower(rawPwr, effectiveLvl, Pair.Role, move.IsSync) : 0;
                         int multPct = rawPwr > 0 ? CalcService.GetMoveMultiplier(effectiveLvl, Pair.Role, move.IsSync) : 100;
-                        bool isExpanded = ExpandAllMoves || ExpandedMoveIds.Contains(move.Id);
+                        bool isExpanded = ExpandedMoveIds.Contains(move.Id);
 
                         <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3 shadow-sm">
                             <div class="d-flex justify-content-between align-items-start cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
@@ -501,7 +492,6 @@
 
     private bool ShowDetailedStats { get; set; } = false;
     private string ActiveSection { get; set; } = "moves";
-    private bool ExpandAllMoves { get; set; } = true;
     private HashSet<int> ExpandedMoveIds { get; set; } = new();
 
     protected override void OnInitialized()
@@ -532,11 +522,6 @@
             ExpandedMoveIds.Remove(moveId);
         else
             ExpandedMoveIds.Add(moveId);
-    }
-
-    private void ToggleAllMoves()
-    {
-        ExpandAllMoves = !ExpandAllMoves;
     }
 
     private async Task OnMoveLevelSelect(ChangeEventArgs e)
