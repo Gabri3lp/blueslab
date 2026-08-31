@@ -605,21 +605,21 @@ public class DamageCalculatorService
             }
         }
 
-        // Breaks (only apply to regular moves, not Sync Moves: x1.5 damage)
+        // Breaks on Target (only apply to regular moves, not Sync Moves: x1.5 damage)
         if (!move.IsSync)
         {
-            if (isPhysical && (ally.PhysicalBreak || enemy.PhysicalBreak)) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
-            if (isSpecial && (ally.SpecialBreak || enemy.SpecialBreak)) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
+            if (isPhysical && enemy.PhysicalBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
+            if (isSpecial && enemy.SpecialBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
         }
 
-        // Damage Reductions (Reflect / Light Screen / Defensive Shields: x0.66 damage)
-        if (isPhysical && (enemy.PhysicalDamageReduction || ally.PhysicalDamageReduction))
+        // Damage Reductions on Target (Reflect / Light Screen on opponent reduces damage taken: x0.66 damage)
+        if (isPhysical && enemy.PhysicalDamageReduction)
         {
             ne *= 2.0;
             he *= 3.0;
             pills.Add(new MultiplierPill { Label = "Phys Dmg Red", Value = "×0.66", Color = "#e67e22" });
         }
-        if (isSpecial && (enemy.SpecialDamageReduction || ally.SpecialDamageReduction))
+        if (isSpecial && enemy.SpecialDamageReduction)
         {
             ne *= 2.0;
             he *= 3.0;
@@ -932,7 +932,12 @@ public class DamageCalculatorService
                     "circle_active" or "battle_circle" or "battle_circle_active" or "any_circle" => ally.CircleActive.Values.Any(d => d.Values.Any(v => v)),
                     "physical_circle" => ally.CircleActive.Values.Any(d => d.GetValueOrDefault("physical")),
                     "special_circle" => ally.CircleActive.Values.Any(d => d.GetValueOrDefault("special")),
-                    "defensive_circle" => ally.CircleActive.Values.Any(d => d.GetValueOrDefault("defensive")),
+                    "physical_damage_reduction" or "phys_dmg_red" or "physical_reduction" => ally.PhysicalDamageReduction || enemy.PhysicalDamageReduction,
+                    "special_damage_reduction" or "spec_dmg_red" or "special_reduction" => ally.SpecialDamageReduction || enemy.SpecialDamageReduction,
+                    "damage_reduction" or "any_damage_reduction" => ally.PhysicalDamageReduction || ally.SpecialDamageReduction || enemy.PhysicalDamageReduction || enemy.SpecialDamageReduction,
+                    "physical_break" or "phys_break" => enemy.PhysicalBreak || ally.PhysicalBreak,
+                    "special_break" or "spec_break" => enemy.SpecialBreak || ally.SpecialBreak,
+                    "has_break" or "any_break" => enemy.PhysicalBreak || enemy.SpecialBreak || ally.PhysicalBreak || ally.SpecialBreak,
                     "only_one_alive" or "berry" or "first_sync" => true,
                     "all_stats_not_high" => ally.Stages.Values.All(v => v <= 0),
                     "any_stat_in_low" => ally.Stages.Values.Any(v => v < 0),
