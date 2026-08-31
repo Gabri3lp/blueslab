@@ -319,7 +319,7 @@
 
             <div class="card-body">
                 <div class="d-flex flex-column gap-3">
-                    @foreach (var move in State.ActiveAttacker.Pair.Moves)
+                    @foreach (var move in State.ActiveAttacker.Pair.Moves.Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0))
                     {
                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
 

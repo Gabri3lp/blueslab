@@ -385,7 +385,7 @@
         get
         {
             if (Ally.Pair == null) return Enumerable.Empty<MoveItem>();
-            return Ally.Pair.Moves;
+            return Ally.Pair.Moves.Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0);
         }
     }
 
