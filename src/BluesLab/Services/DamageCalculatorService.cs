@@ -126,8 +126,14 @@ public class DamageCalculatorService
         return new() { ["hp"] = hp, ["def"] = def, ["spd"] = spd };
     }
 
-    public int GetSaMovePowerBonus(int saLevel, string role, bool isSync)
+    public int GetMoveMultiplier(int fullMoveLevel, string role, bool isSync)
     {
+        int baseLevel = Math.Clamp(Math.Min(fullMoveLevel, 5), 1, 5);
+        int baseMultiplier = 100 + (baseLevel - 1) * 5;
+
+        if (fullMoveLevel <= 5) return baseMultiplier;
+
+        int saLevel = fullMoveLevel - 5;
         string r = role.ToLowerInvariant().Trim();
         bool isStrikeSprint = r.StartsWith("strike") || r.StartsWith("sprint");
         bool isTechField = r.StartsWith("tech") || r.StartsWith("field");
@@ -136,32 +142,35 @@ public class DamageCalculatorService
         {
             if (!isSync)
             {
-                if (saLevel >= 4) return 40;
-                if (saLevel >= 2) return 10;
+                if (saLevel >= 4) return 160;
+                if (saLevel >= 2) return 130;
             }
             else
             {
-                if (saLevel >= 3) return 20;
+                if (saLevel >= 3) return 140;
             }
         }
         else if (isTechField)
         {
             if (isSync)
             {
-                if (saLevel >= 4) return 40;
-                if (saLevel >= 2) return 10;
+                if (saLevel >= 4) return 160;
+                if (saLevel >= 2) return 130;
             }
             else
             {
-                if (saLevel >= 3) return 20;
+                if (saLevel >= 3) return 140;
             }
         }
-        return 0;
+
+        return baseMultiplier;
     }
 
-    public int CalcPower(int basePower, int moveLevel, int saBonus = 0, double increment = 1.0)
+    public int CalcPower(int basePower, int fullMoveLevel, string role, bool isSync, double increment = 1.0)
     {
-        int scaled = (int)Math.Floor(basePower * (100.0 + (moveLevel - 1) * 5 + saBonus) / 100.0);
+        if (basePower <= 0) return 0;
+        int mult = GetMoveMultiplier(fullMoveLevel, role, isSync);
+        int scaled = (int)Math.Floor((double)basePower * mult / 100.0);
         return (int)Math.Floor(scaled * increment);
     }
 
@@ -255,12 +264,12 @@ public class DamageCalculatorService
 
         // 1. Move Base Power & SA
         int rawPower = int.TryParse(move.Power, out int parsedPwr) ? parsedPwr : 0;
-        int saBonus = pair.HasSuperAwakening ? GetSaMovePowerBonus(ally.SuperAwakeningLevel, pair.Role, move.IsSync) : 0;
+        int fullMoveLevel = ally.SuperAwakeningLevel > 0 ? (5 + ally.SuperAwakeningLevel) : ally.MoveLevel;
         bool isTechExSync = move.IsSync && (pair.Role.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
             (ally.HasExRole && pair.ExRole.StartsWith("Tech", StringComparison.OrdinalIgnoreCase)));
         double syncIncrement = isTechExSync ? 1.5 : 1.0;
 
-        int power = CalcPower(rawPower, ally.MoveLevel, saBonus, syncIncrement);
+        int power = CalcPower(rawPower, fullMoveLevel, pair.Role, move.IsSync, syncIncrement);
 
         // Grid Power
         int gridPower = 0;

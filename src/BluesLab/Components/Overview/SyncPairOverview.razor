@@ -170,6 +170,12 @@
                                 if (isSaActive)
                                 {
                                     saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                                    if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
+                                        if (saFlat.TryGetValue(s, out int fb))
+                                            saBase += fb;
+                                    }
                                 }
                                 <td>@saBase</td>
                             }
@@ -245,15 +251,27 @@
 
         <!-- Moves and Passives -->
         <div class="row g-3">
-            <!-- Moves Section -->
+            <!-- Moves Section (with Dynamic Base Power according to Move Level & SA) -->
             <div class="col-lg-6">
                 <div class="card bg-dark border-secondary h-100 p-3">
-                    <h6 class="text-warning fw-bold mb-3 d-flex align-items-center gap-2">
-                        <i class="bi bi-lightning-fill"></i> Moves
+                    @{
+                        int effectiveLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : Ally.MoveLevel;
+                    }
+                    <h6 class="text-warning fw-bold mb-3 d-flex align-items-center justify-content-between">
+                        <span class="d-flex align-items-center gap-2">
+                            <i class="bi bi-lightning-fill"></i> Moves
+                        </span>
+                        <span class="badge bg-secondary text-light small">
+                            Move Lv. @effectiveLvl/5 @(Ally.SuperAwakeningLevel > 0 ? $" (SA {Ally.SuperAwakeningLevel})" : "")
+                        </span>
                     </h6>
                     <div class="d-flex flex-column gap-2">
                         @foreach (var move in Pair.Moves)
                         {
+                            int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
+                            int scaledPwr = rawPwr > 0 ? CalcService.CalcPower(rawPwr, effectiveLvl, Pair.Role, move.IsSync) : 0;
+                            int multPct = rawPwr > 0 ? CalcService.GetMoveMultiplier(effectiveLvl, Pair.Role, move.IsSync) : 100;
+
                             <div class="card bg-secondary bg-opacity-25 border-secondary p-2">
                                 <div class="d-flex justify-content-between align-items-start">
                                     <div>
@@ -268,7 +286,14 @@
                                         </div>
                                     </div>
                                     <div class="text-end small">
-                                        <div>Power: <b class="text-warning">@move.Power</b></div>
+                                        @if (scaledPwr > 0)
+                                        {
+                                            <div>Power: <b class="text-warning">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
+                                        }
+                                        else
+                                        {
+                                            <div>Power: <b class="text-muted">-</b></div>
+                                        }
                                         <div>Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
                                     </div>
                                 </div>
