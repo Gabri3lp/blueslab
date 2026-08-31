@@ -15,6 +15,7 @@ public class GridStateService
     ];
 
     public HashSet<long> ActiveCells { get; } = new();
+    public List<long> ActiveLearnMoveOrder { get; } = new();
     public bool HardCap { get; set; } = true;
     public int MaxEnergy { get; set; } = 60;
 
@@ -25,6 +26,7 @@ public class GridStateService
     public void ResetGrid(SyncPairDetail? pair, int moveLevel)
     {
         ActiveCells.Clear();
+        ActiveLearnMoveOrder.Clear();
         if (pair != null && HardCap)
         {
             ActivateFreeCenterCells(pair, moveLevel);
@@ -117,6 +119,7 @@ public class GridStateService
         }
 
         ActiveCells.IntersectWith(connected);
+        ActiveLearnMoveOrder.RemoveAll(id => !ActiveCells.Contains(id));
     }
 
     public void ToggleCell(SyncPairDetail pair, GridCellItem cell, int moveLevel)
@@ -124,6 +127,7 @@ public class GridStateService
         if (ActiveCells.Contains(cell.CellId))
         {
             ActiveCells.Remove(cell.CellId);
+            ActiveLearnMoveOrder.Remove(cell.CellId);
             if (HardCap)
             {
                 PruneDisconnected(pair.Grid);
@@ -136,9 +140,53 @@ public class GridStateService
             if (HardCap && (GetRemainingEnergy(pair) - cell.EnergyCost) < 0) return;
 
             ActiveCells.Add(cell.CellId);
+            if (cell.ColorKind == "learn" || cell.Title.StartsWith("Learn ", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!ActiveLearnMoveOrder.Contains(cell.CellId))
+                {
+                    ActiveLearnMoveOrder.Add(cell.CellId);
+                }
+            }
         }
 
         NotifyChanged();
+    }
+
+    public List<MoveItem> GetLearnedMoves(SyncPairDetail? pair)
+    {
+        var moves = new List<MoveItem>();
+        if (pair == null) return moves;
+
+        foreach (var cellId in ActiveLearnMoveOrder.Take(3))
+        {
+            var cell = pair.Grid.FirstOrDefault(c => c.CellId == cellId);
+            if (cell != null && !string.IsNullOrEmpty(cell.Title))
+            {
+                string moveName = cell.Title.Contains(":") ? cell.Title.Substring(0, cell.Title.IndexOf(":")).Trim() : cell.Title.Trim();
+                if (moveName.StartsWith("Learn ", StringComparison.OrdinalIgnoreCase))
+                {
+                    moveName = moveName.Substring(6).Trim();
+                }
+
+                // Check if already in pair moves
+                if (!pair.Moves.Any(m => string.Equals(m.Name, moveName, StringComparison.OrdinalIgnoreCase)))
+                {
+                    moves.Add(new MoveItem
+                    {
+                        Name = moveName,
+                        Type = pair.Type,
+                        Category = "Special",
+                        Power = "100",
+                        Accuracy = "100",
+                        Gauge = "2",
+                        Description = cell.Description,
+                        IsSync = false
+                    });
+                }
+            }
+        }
+
+        return moves;
     }
 
     public string ExportBuildToken(List<GridCellItem> grid)
@@ -160,6 +208,24 @@ public class GridStateService
     {
         try
         {
+            token = token.Trim();
+            // Handle comma-separated cell IDs
+            if (token.Contains(","))
+            {
+                var ids = token.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                ActiveCells.Clear();
+                foreach (var idStr in ids)
+                {
+                    if (long.TryParse(idStr, out long parsedId))
+                    {
+                        ActiveCells.Add(parsedId);
+                    }
+                }
+                if (HardCap) PruneDisconnected(grid);
+                NotifyChanged();
+                return;
+            }
+
             string b64 = token.Replace("-", "+").Replace("_", "/");
             switch (b64.Length % 4)
             {

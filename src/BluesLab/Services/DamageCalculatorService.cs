@@ -135,10 +135,10 @@ public class DamageCalculatorService
 
         int saLevel = fullMoveLevel - 5;
         string r = role.ToLowerInvariant().Trim();
-        bool isStrikeSprint = r.StartsWith("strike") || r.StartsWith("sprint");
+        bool isStrikeSprintMulti = r.StartsWith("strike") || r.StartsWith("sprint") || r.StartsWith("multi");
         bool isTechField = r.StartsWith("tech") || r.StartsWith("field");
 
-        if (isStrikeSprint)
+        if (isStrikeSprintMulti)
         {
             if (!isSync)
             {
@@ -187,6 +187,7 @@ public class DamageCalculatorService
         int gear = 0,
         int gridStat = 0,
         bool isBurned = false,
+        bool ignoreBurnPenalty = false,
         int mitigation = 0,
         bool critOffense = false,
         bool critDefense = false)
@@ -211,8 +212,8 @@ public class DamageCalculatorService
         }
         else
         {
-            double scaledVal = (rawBase + gear) * formMult;
-            afterMult = (int)Math.Floor(scaledVal);
+            double scaledVal = rawBase * formMult;
+            afterMult = (int)Math.Floor(scaledVal) + gear;
         }
 
         int beforeStage = afterMult + gridStat;
@@ -230,7 +231,7 @@ public class DamageCalculatorService
             variation = 1.0 - (1.0 - variation) * (1.0 - mit);
         }
 
-        if (isBurned && stat == "atk")
+        if (isBurned && stat == "atk" && !ignoreBurnPenalty)
         {
             variation *= 0.8;
         }
@@ -413,6 +414,10 @@ public class DamageCalculatorService
             }
         }
 
+        bool hasBurnUseless = move.Name.Equals("Facade", StringComparison.OrdinalIgnoreCase) ||
+                              move.Id == 263 ||
+                              (pair.Passives != null && pair.Passives.Any(p => p.Id == 99015901 || p.Name.Contains("Fiery Dance") || p.Name.Contains("Danza Ardiente")));
+
         int attackerStat = CalcTotalStat(
             atkStatKey,
             jsonAtkStat,
@@ -426,6 +431,7 @@ public class DamageCalculatorService
             gear: ally.Gear.GetValueOrDefault(atkStatKey, 0),
             gridStat: gridAtkStat,
             isBurned: ally.StatusCondition == "burned",
+            ignoreBurnPenalty: hasBurnUseless,
             critOffense: ally.IsCriticalMove
         );
 
@@ -446,6 +452,17 @@ public class DamageCalculatorService
         double ne = 1.0;
         double he = 1.0;
 
+        // Special Multiplier: Ash's Passion (99011401) on Thunder x1.30
+        if (pair.Passives != null && pair.Passives.Any(p => p.Id == 99011401 || p.Name.Contains("Ash’s Passion") || p.Name.Contains("Ash's Passion")))
+        {
+            if (move.Name.Equals("Thunder", StringComparison.OrdinalIgnoreCase) || move.Name.Equals("打雷", StringComparison.OrdinalIgnoreCase))
+            {
+                ne *= 13.0;
+                he *= 10.0;
+                pills.Add(new MultiplierPill { Label = "Ash’s Passion", Value = "×1.3", Color = "#f1c40f" });
+            }
+        }
+
         // Weather, Terrain, Zone
         if (!string.IsNullOrEmpty(field.Weather))
         {
@@ -464,6 +481,28 @@ public class DamageCalculatorService
             ne *= 3.0;
             he *= field.ZoneEx ? 1.0 : 2.0;
             pills.Add(new MultiplierPill { Label = field.Zone, Value = field.ZoneEx ? "×3.0" : "×1.5", Color = "#8e44ad" });
+        }
+
+        // Tera Boost
+        bool isTeraForm = ally.FormIndex > 0 && ally.FormIndex <= pair.Variations.Count &&
+            (pair.Variations[ally.FormIndex - 1].FormName?.Contains("Tera", StringComparison.OrdinalIgnoreCase) == true ||
+             pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true ||
+             pair.Variations[ally.FormIndex - 1].TerastalMoveId > 0);
+
+        if (isTeraForm)
+        {
+            if (isStellarForm)
+            {
+                ne *= 2.0;
+                pills.Add(new MultiplierPill { Label = "Stellar Boost", Value = "×2.0", Color = "#9b59b6" });
+            }
+            else if (string.Equals(effectiveMoveType, pair.Type, StringComparison.OrdinalIgnoreCase) || 
+                     string.Equals(effectiveMoveType, pair.Variations[ally.FormIndex - 1].Type, StringComparison.OrdinalIgnoreCase))
+            {
+                ne *= 3.0;
+                he *= 2.0;
+                pills.Add(new MultiplierPill { Label = "Tera Boost", Value = "×1.5", Color = "#3498db" });
+            }
         }
 
         // Type Effectiveness
@@ -503,7 +542,13 @@ public class DamageCalculatorService
         }
 
         // Target count (AoE scaling)
-        if (field.TargetCount > 1 && !move.IsSync)
+        bool isNonDecay = (move.Target?.Contains("all", StringComparison.OrdinalIgnoreCase) == true &&
+                          (move.Description.Contains("not reduced", StringComparison.OrdinalIgnoreCase) ||
+                           move.Description.Contains("damage is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                           move.Name.Contains("Precipice Blades", StringComparison.OrdinalIgnoreCase) ||
+                           move.Name.Contains("Origin Pulse", StringComparison.OrdinalIgnoreCase)));
+
+        if (field.TargetCount > 1 && !move.IsSync && !isNonDecay)
         {
             if (field.TargetCount == 3)
             {
@@ -560,11 +605,25 @@ public class DamageCalculatorService
             }
         }
 
-        // Breaks (only apply to regular moves, not Sync Moves)
+        // Breaks (only apply to regular moves, not Sync Moves: x1.5 damage)
         if (!move.IsSync)
         {
-            if (isPhysical && ally.PhysicalBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
-            if (isSpecial && ally.SpecialBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
+            if (isPhysical && (ally.PhysicalBreak || enemy.PhysicalBreak)) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
+            if (isSpecial && (ally.SpecialBreak || enemy.SpecialBreak)) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
+        }
+
+        // Damage Reductions (Reflect / Light Screen / Defensive Shields: x0.66 damage)
+        if (isPhysical && (enemy.PhysicalDamageReduction || ally.PhysicalDamageReduction))
+        {
+            ne *= 2.0;
+            he *= 3.0;
+            pills.Add(new MultiplierPill { Label = "Phys Dmg Red", Value = "×0.66", Color = "#e67e22" });
+        }
+        if (isSpecial && (enemy.SpecialDamageReduction || ally.SpecialDamageReduction))
+        {
+            ne *= 2.0;
+            he *= 3.0;
+            pills.Add(new MultiplierPill { Label = "Spec Dmg Red", Value = "×0.66", Color = "#e67e22" });
         }
 
         // 5. Final Roll Computation (Math.fround matching PMEX engine)
@@ -735,15 +794,38 @@ public class DamageCalculatorService
             return 0;
         }
 
+        // SpecialMulti passives like Ash's Passion are applied multiplicatively in CalculateDamage
+        if (dp.Name.Contains("Ash’s Passion") || dp.Name.Contains("Ash's Passion"))
+        {
+            return 0;
+        }
+
         return dp.Mechanism switch
         {
             "user_stat_raised" => CalcStatScaling(dp.Stat, ally.Stages, true, move.IsSync),
             "target_stat_lowered" => CalcStatScaling(dp.Stat, enemy.Stages, false, move.IsSync),
             "stat_is_raised" => (ally.Stages.GetValueOrDefault(dp.Stat, 0) > 0 ? dp.Value * 0.1 : 0),
             "stat_is_lowered" => (enemy.Stages.GetValueOrDefault(dp.Stat, 0) < 0 ? dp.Value * 0.1 : 0),
+            "hp_scaling" => CalcHpScaling(
+                dp.StatTarget == "target" ? enemy.HpPercent : ally.HpPercent,
+                dp.Value,
+                isTarget: dp.StatTarget == "target",
+                isLessHp: dp.Conditions.Count == 0 || dp.Conditions.Any(g => g.Any(c => c.Contains("low") || c.Contains("less") || c.Contains("reduced")))
+            ),
             "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move) ? dp.Value * 0.1 : 0),
             _ => 0
         };
+    }
+
+    public static double CalcHpScaling(int hpPercent, int passiveValue, bool isTarget, bool isLessHp = true)
+    {
+        // PoMaTools 4-tier HP scaling:
+        // HP = 100% -> 0, 51-99% -> 1, 34-50% -> 2, <= 33% -> 3
+        int tier = hpPercent >= 100 ? 0 : (hpPercent >= 51 ? 1 : (hpPercent >= 34 ? 2 : 3));
+        double[] thresholds = isLessHp ? [0.0, 0.25, 0.50, 1.00] : [1.00, 0.50, 0.25, 0.0];
+        double factor = isTarget ? 0.10 : 0.05;
+        double rawBonus = (passiveValue * 10.0) * factor * thresholds[tier];
+        return Math.Ceiling(rawBonus * 100.0) / 100.0 / 100.0;
     }
 
     private double CalcStatScaling(string statKey, Dictionary<string, int> stages, bool isRaised, bool isSync)
@@ -835,11 +917,30 @@ public class DamageCalculatorService
                     "flinch_confuse_trap" => enemy.VolatileStatus.GetValueOrDefault("confused", false) || enemy.VolatileStatus.GetValueOrDefault("trapped", false) || enemy.VolatileStatus.GetValueOrDefault("flinching", false),
                     "critical" => ally.IsCriticalMove,
                     "super_effective" or "super_efective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
-                    "has_rebuff" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) != 0,
+                    "has_rebuff" or "rebuff_lowered" or "target_rebuff" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0),
+                    "user_rebuff" => ally.UserTypeRebuffs.Values.Any(v => v < 0),
                     "hp_full" => ally.HpPercent >= 100,
-                    "hp_low" => ally.HpPercent <= 33,
+                    "hp_low" => ally.HpPercent <= 33 || ally.HpPercent <= 20,
                     "hp_reduced" => ally.HpPercent < 100,
-                    _ => cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))
+                    "hp_half_more" or "hp_above_half" => ally.HpPercent >= 50,
+                    "hp_half_less" => ally.HpPercent <= 50,
+                    "target_hp_low" => enemy.HpPercent <= 33 || enemy.HpPercent <= 20,
+                    "target_hp_half_less" => enemy.HpPercent <= 50,
+                    "damage_field" or "any_damage_field" => !string.IsNullOrEmpty(enemy.DamageField) || !string.IsNullOrEmpty(ally.DamageField),
+                    "target_damage_field" => !string.IsNullOrEmpty(enemy.DamageField),
+                    "user_damage_field" => !string.IsNullOrEmpty(ally.DamageField),
+                    "circle_active" or "battle_circle" or "battle_circle_active" or "any_circle" => ally.CircleActive.Values.Any(d => d.Values.Any(v => v)),
+                    "physical_circle" => ally.CircleActive.Values.Any(d => d.GetValueOrDefault("physical")),
+                    "special_circle" => ally.CircleActive.Values.Any(d => d.GetValueOrDefault("special")),
+                    "defensive_circle" => ally.CircleActive.Values.Any(d => d.GetValueOrDefault("defensive")),
+                    "only_one_alive" or "berry" or "first_sync" => true,
+                    "all_stats_not_high" => ally.Stages.Values.All(v => v <= 0),
+                    "any_stat_in_low" => ally.Stages.Values.Any(v => v < 0),
+                    "target_all_stats_not_high" => enemy.Stages.Values.All(v => v <= 0),
+                    "target_any_stat_in_low" => enemy.Stages.Values.Any(v => v < 0),
+                    _ => (cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))) ||
+                         (cond.Contains("damage_field") && ((!string.IsNullOrEmpty(ally.DamageField) && ally.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))) || (!string.IsNullOrEmpty(enemy.DamageField) && enemy.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))))) ||
+                         (cond.Contains("circle") && ally.CircleActive.Any(kv => kv.Key.ToLowerInvariant().Contains(cond.Replace("_circle", "")) && kv.Value.Values.Any(v => v)))
                 };
                 if (!match) { allMatch = false; break; }
             }

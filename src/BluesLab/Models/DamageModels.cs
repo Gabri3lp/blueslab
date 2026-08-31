@@ -38,6 +38,8 @@ public class CombatantState
     public bool SuperEffectiveNext { get; set; }
     public bool PhysicalBreak { get; set; }
     public bool SpecialBreak { get; set; }
+    public bool PhysicalDamageReduction { get; set; }
+    public bool SpecialDamageReduction { get; set; }
     public int SyncMoveBoostNext { get; set; }
 
     public Dictionary<string, int> Gear { get; set; } = new();

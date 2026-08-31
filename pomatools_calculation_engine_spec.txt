@@ -1,0 +1,559 @@
+# Especificación Técnica Completa: Motor de Cálculos, Pasivas Custom, Super Despertar y Sync Grid (PoMaTools)
+
+Este documento detalla todas las fórmulas matemáticas, algoritmos, modelos de datos, multiplicadores, pasivas custom (`PASSIVE_OVERRIDES`), movimientos con efectos especiales (`MOVE_OVERRIDES`), modos de activación condicional (`LogicType`), reglas de **Super Despertar (Awakening 6-10)**, escalados particulares y serialización del **Tablero Compi (Sync Grid)** extraídos directamente del código fuente de **[PoMaTools](https://pomatools.site/)**.
+
+---
+
+## 1. Arquitectura y Modelos de Datos
+
+El sistema desacopla el cálculo en tres motores coordinados por el evaluador principal:
+
+```mermaid
+flowchart TD
+    subgraph Data [1. Modelos Base]
+        P[Pair Data: Base Stats, Moves, Passives]
+        G[Grid Data: Energy, Orbs, Tiles]
+    end
+
+    subgraph StatEngine [2. Motor de Estadísticas]
+        P --> S1[Interpolación Lineal 7 Puntos]
+        S1 --> S2[Rareza & Potencial 20/20]
+        S2 --> S3[Rol EX Bonus & Awakening 6-10]
+        G --> S4[Casillas Stat Tablero]
+        S3 & S4 --> S5[Stat Base Plana]
+        S5 --> S6[Rangos -6 a +6 & Regla Crítico]
+    end
+
+    subgraph MoveEngine [3. Motor de Potencia]
+        P --> M1[Escalado Nivel 1/5 a 5/5: +5% por nivel]
+        M1 --> M2[Super Despertar 6-10 por Rol]
+        M2 --> M3[Tech 6★ EX x1.5]
+        G --> M4[Casillas Potencia Tablero]
+        M4 --> M5[MOVE_OVERRIDES: Facade, Hex, etc.]
+        M5 --> M6[Pasivas Aditivas & Multiplicativas]
+    end
+
+    subgraph DamageCalc [4. Motor de Daño]
+        S6 & M6 --> D1[Fórmula Maestra de Daño]
+        E[Entorno: WTZ, Círculos, Rebuffs, Sync Buffs] --> D1
+        D1 --> D2[11 Rolls Aleatorios: 0.90 a 1.00]
+    end
+```
+
+### 1.1 Enumeraciones Fundamentales
+
+```typescript
+export enum Type {
+  NORMAL = 1, FIRE = 2, WATER = 3, ELECTRIC = 4, GRASS = 5,
+  ICE = 6, FIGHTING = 7, POISON = 8, GROUND = 9, FLYING = 10,
+  PSYCHIC = 11, BUG = 12, ROCK = 13, GHOST = 14, DRAGON = 15,
+  DARK = 16, STEEL = 17, FAIRY = 18, STELLAR = 99
+}
+
+export enum Role {
+  PHYSICAL_STRIKE = 0,
+  SPECIAL_STRIKE = 1,
+  SUPPORT = 2,
+  TECH = 3,
+  SPRINT = 4,
+  FIELD = 5,
+  MULTI = 6,
+  STRIKE = 999
+}
+
+export enum MoveScope {
+  Move = "Move",
+  Sync = "Sync",
+  Max = "Max",
+  MoveAndMax = "MoveAndMax",
+  MaxAndSync = "MaxAndSync",
+  MoveAndSync = "MoveAndSync",
+  MoveSpecial = "MoveSpecial",
+  MovePhysical = "MovePhysical",
+  All = "All",
+  Specific = "Specific"
+}
+
+export enum EffectLogic {
+  PowerBoost = "PowerBoost", // Aumento de potencia de movimiento
+  StatBoost = "StatBoost",   // Aumento directo de estadística
+  ExtraType = "ExtraType"    // Modificador de tipo/efecto especial
+}
+
+export enum GridColor {
+  STATS_UP = "#779EFF",      // Aumento de Estadísticas
+  MOVE_POWER_UP = "#47D147", // Potencia de Movimiento
+  DYNAMAX_MOVE = "#FF80BF",  // Potencia de Movimiento Dinamax
+  MOVE_EFFECT = "#FF0066",   // Efectos (Llenabarras, Precisión, etc.)
+  PASSIVE_SKILL = "#FFC266", // Habilidades Pasivas
+  SYNC_MOVE = "#BF80FF",     // Potencia de Movimiento Compi
+  LEARN_MOVE = "#7ADAF4"     // Aprender Movimiento (Academia)
+}
+```
+
+---
+
+## 2. Modos de Activación Condicional (`LogicType` y `checkCondition`)
+
+El método `DamageEngine.checkCondition` evalúa si una pasiva o multiplicador se activa según el estado del combate:
+
+```typescript
+export enum LogicType {
+  Direct = "Direct",                     // Siempre activo (sin condición)
+  DamageField = "DamageField",           // Campo de daño específico en el objetivo
+  Terrain = "Terrain",                   // Terreno activo específico
+  Zone = "Zone",                         // Zona activa específica
+  BattleCircle = "BattleCircle",         // Círculo regional activo y subclase coincidente
+  Weather = "Weather",                   // Clima activo específico
+  Abnormal = "Abnormal",                 // Estado alterado específico en objetivo/usuario
+  Hindrance = "Hindrance",               // Interferencia específica (Confusión, Retroceso, etc.)
+  Rebuff = "Rebuff",                     // Resistencia de tipo negativa (< 0)
+  AnyFieldEffect = "AnyFieldEffect",     // Cualquier Clima, Terreno o Zona activo
+  WeatherChange = "WeatherChange",       // Cualquier clima activo (distinto de normal)
+  WeatherNormal = "WeatherNormal",       // Clima despejado normal
+  TerrainActive = "TerrainActive",       // Cualquier terreno o zona activo
+  BattleCircleActive = "BattleCircleActive", // Cualquier círculo regional activo
+  StatChange = "StatChange",             // Estadística aumentada (>0) o reducida (<0)
+  AbnormalActive = "AbnormalActive",     // Cualquier estado alterado activo
+  HindranceActive = "HindranceActive",   // Cualquier interferencia activa
+  AllStatNotInHigh = "AllStatNotInHigh", // Todas las estadísticas <= 0
+  AnyStatInLow = "AnyStatInLow",         // Al menos una estadística < 0
+  HPLow = "HPLow",                       // PS actuales <= 20%
+  HPHalf = "HPHalf",                     // PS actuales > 50% (o < 50% según dirección)
+  HPDecreased = "HPDecreased",           // PS actuales < 100%
+  Critical = "Critical",                 // El ataque es un golpe crítico
+  SuperEffective = "SuperEffective",     // El ataque es súper eficaz
+  Recoil = "Recoil",                     // El movimiento tiene daño de retroceso
+  MoveType = "MoveType",                 // El tipo del ataque coincide con la clave
+  SyncBuffs = "SyncBuffs",               // Fervor compi acumulado > 0 (o === 0)
+  Berry = "Berry",                       // Bayas restantes !== 0
+  GaugeSpeedBoostOn = "GaugeSpeedBoostOn", // Aceleración de barra de movimiento activa
+  FirstUseSyncMove = "FirstUseSyncMove", // Primer movimiento compi del combate
+  GaugeScaling = "GaugeScaling",         // Escalado por barras de energía
+  SingleStatScaling = "SingleStatScaling", // Escalado por 1 estadística
+  TotalStatScaling = "TotalStatScaling", // Escalado por suma de estadísticas
+  HPScaling = "HPScaling",               // Escalado por % de vida restante
+  BoostScaling = "BoostScaling",         // Escalado por acumulación de "Siguiente Daño ↑"
+  GaugeCost = "GaugeCost",               // Multiplicador por coste de barras consumidas
+  SpecialMulti = "SpecialMulti",         // Multiplicador especial multiplicativo
+  IsMega = "IsMega",                     // Megaevolución activa
+  IsSpecialForm = "IsSpecialForm",       // Forma especial activa (p. ej. Ogerpon)
+  OnlyOneAlive = "OnlyOneAlive",         // Solo queda 1 miembro vivo en el equipo
+  Compound = "Compound",                 // Múltiples condiciones simultáneas (AND)
+  MultiStatusActive = "MultiStatusActive", // Múltiples estados/interferencias
+  MasterPassive = "MasterPassive",       // Pasiva Maestra regional
+  ArcSuitPassive = "ArcSuitPassive",     // Pasiva de Traje Arcano
+  TeamWorkPassive = "TeamWorkPassive",   // Pasiva de Trabajo en Equipo
+  SpecialHandler = "SpecialHandler"      // Función JavaScript personalizada
+}
+```
+
+### 2.1 Reglas de Evaluación de `checkCondition`
+
+```typescript
+function checkCondition(cond: Condition, sourceIndex: number, env: BattleEnv, moveType: Type, moveTag?: string, conditions?: Condition[]): boolean {
+  if (!cond) return false;
+  
+  // Selección del sujeto (Objetivo, Usuario o Compañero de equipo)
+  const user = (sourceIndex !== -1 && env.teammates?.[sourceIndex]) ? env.teammates[sourceIndex] : env.user;
+  const targetObj = (detail: string) => detail.includes("對手") ? env.target : detail.includes("我方") ? env.user : user;
+
+  switch (cond.logic) {
+    case LogicType.Direct:
+    case LogicType.GaugeCost:
+    case LogicType.SpecialMulti:
+      return true;
+
+    case LogicType.DamageField:
+      return cond.key.includes(env.target.damageField);
+
+    case LogicType.Terrain:
+      return cond.key.includes(env.terrain);
+
+    case LogicType.Zone:
+      return cond.key.includes(env.zone);
+
+    case LogicType.Weather:
+      return cond.key.includes(env.weather);
+
+    case LogicType.BattleCircle: {
+      const [region, circleType] = cond.key.split("_");
+      return !!env.battleCircles[region]?.actives[circleType];
+    }
+
+    case LogicType.GaugeSpeedBoostOn:
+      return env.gaugeAcceleration;
+
+    case LogicType.FirstUseSyncMove:
+      return env.special.firstUseSync;
+
+    case LogicType.Abnormal: {
+      const currentAbnormal = targetObj(cond.detail).abnormal;
+      return cond.key === "中毒" && currentAbnormal === "劇毒" ? true : cond.key.includes(currentAbnormal);
+    }
+
+    case LogicType.Hindrance: {
+      const currentHindrance = targetObj(cond.detail).hindrance;
+      return Object.keys(currentHindrance).some(k => currentHindrance[k] && cond.key.includes(k));
+    }
+
+    case LogicType.Rebuff: {
+      const rebuffs = env.target.typeRebuffs;
+      return cond.key === "任意" ? Object.values(rebuffs).some(v => v < 0) : (rebuffs[cond.key] || 0) < 0;
+    }
+
+    case LogicType.AnyFieldEffect:
+      return env.terrain !== "無" || env.weather !== "無" || env.zone !== "無";
+
+    case LogicType.WeatherChange:
+      return env.weather !== "無";
+
+    case LogicType.WeatherNormal:
+      return env.weather === "無";
+
+    case LogicType.TerrainActive:
+      return env.terrain !== "無" || env.zone !== "無";
+
+    case LogicType.BattleCircleActive:
+      return Object.values(env.battleCircles).some(c => Object.values(c.actives).some(a => a === true));
+
+    case LogicType.StatChange: {
+      const ranks = targetObj(cond.detail).ranks;
+      const statKey = getStatKeyByStatCnName(cond.key);
+      const val = ranks[statKey] || 0;
+      return cond.direction.includes("下降") ? val < 0 : val > 0;
+    }
+
+    case LogicType.AbnormalActive:
+      return targetObj(cond.detail).abnormal !== "無";
+
+    case LogicType.HindranceActive:
+      return Object.values(targetObj(cond.detail).hindrance).some(active => !!active);
+
+    case LogicType.AllStatNotInHigh:
+      return Object.values(targetObj(cond.detail).ranks).every(v => typeof v === "number" && v <= 0);
+
+    case LogicType.AnyStatInLow:
+      return Object.values(targetObj(cond.detail).ranks).some(v => typeof v === "number" && v < 0);
+
+    case LogicType.HPLow:
+      return targetObj(cond.detail).currentHPPercent <= 20;
+
+    case LogicType.HPHalf: {
+      const hp = targetObj(cond.detail).currentHPPercent;
+      return cond.direction?.includes("以上") ? hp > 50 : hp < 50;
+    }
+
+    case LogicType.HPDecreased:
+      return targetObj(cond.detail).currentHPPercent < 100;
+
+    case LogicType.Critical:
+      return env.settings.isCritical;
+
+    case LogicType.SuperEffective:
+      return env.settings.effectiveType.includes(getTypeCnNameByTypeIndex(moveType));
+
+    case LogicType.Recoil:
+      return moveTag === "反衝";
+
+    case LogicType.MoveType:
+      return cond.key.includes(getTypeCnNameByTypeIndex(moveType));
+
+    case LogicType.SyncBuffs: {
+      const sb = targetObj(cond.detail).syncBuff || 0;
+      return cond.direction?.includes("充滿") ? sb > 0 : sb === 0;
+    }
+
+    case LogicType.Berry:
+      return env.settings.berry !== 0;
+
+    case LogicType.IsMega:
+      return env.special.isMega;
+
+    case LogicType.IsSpecialForm:
+      return env.special.specialForm === cond.key;
+
+    case LogicType.OnlyOneAlive: {
+      const entry = env.settings.entryMembers ?? 1;
+      const fainted = env.settings.faintedMembers ?? 0;
+      return Math.max(0, entry - fainted) === 1;
+    }
+
+    case LogicType.Compound:
+      return !conditions || conditions.length === 0 ? true : conditions.every(c => checkCondition(c, sourceIndex, env, moveType, moveTag));
+
+    case LogicType.MultiStatusActive: {
+      if (cond.keys?.abnormal) {
+        const currentAbnormal = targetObj(cond.detail).abnormal;
+        if ((cond.keys.abnormal.includes("劇毒") && currentAbnormal === "中毒") || cond.keys.abnormal.includes(currentAbnormal)) return true;
+      }
+      if (cond.keys?.hindrance) {
+        const currentHindrance = targetObj(cond.detail).hindrance;
+        return Object.keys(currentHindrance).some(k => currentHindrance[k] && cond.keys.hindrance.includes(k));
+      }
+      return false;
+    }
+
+    default:
+      return false;
+  }
+}
+```
+
+---
+
+## 3. Pasivas Custom y Handlers Especiales (`PASSIVE_OVERRIDES`)
+
+PoMaTools utiliza una tabla de sobreescritura de pasivas (`PASSIVE_OVERRIDES`) para modelar habilidades con mecánicas únicas que no se pueden representar con una simple fórmula estática.
+
+### 3.1 Handlers JavaScript Especiales
+
+#### 1. Aumento de Daño por Estadísticas del Equipo (`13085001` - *Stat Ranks Power Boost G*)
+Suma todos los aumentos de estadística positivos del usuario o compañero:
+$$\text{Bonus} = \min\left(\sum_{\text{stats}} \max(0, \text{rank}), 30\right) \times 0.01$$
+*(Otorga $+1\%$ de daño por cada incremento positivo en cualquier estadística del equipo, hasta un máximo de $+30\%$.)*
+
+```typescript
+handler: (env: BattleEnv, sourceIndex: number) => {
+  let user = env.user;
+  if (sourceIndex !== -1 && env.teammates?.[sourceIndex]) user = env.teammates[sourceIndex];
+  const ranks = user.ranks;
+  let totalPositive = 0;
+  for (const stat of ["atk", "def", "spa", "spd", "spe", "acc", "eva"]) {
+    const val = ranks[stat] || 0;
+    if (val > 0) totalPositive += val;
+  }
+  return Math.min(totalPositive, 30) * 0.01; // Máximo +30%
+}
+```
+
+#### 2. Aumento de Daño por Fervor Compi Acumulado (`13086001` - *Sync Buff Power Boost*)
+Otorga $+10\%$ de potencia por cada uso de movimiento compi del equipo, hasta un límite de 5 usos ($+50\%$):
+$$\text{Bonus} = \min(\text{syncBuffCount}, 5) \times 0.10$$
+
+```typescript
+handler: (env: BattleEnv, sourceIndex: number) => {
+  let user = env.user;
+  if (sourceIndex !== -1 && env.teammates?.[sourceIndex]) user = env.teammates[sourceIndex];
+  return Math.min(user.syncBuff || 0, 5) * 0.10; // Máximo +50%
+}
+```
+
+### 3.2 Pasivas con Modificadores Particulares
+
+| ID Pasiva | Nombre / Personaje | Efecto y Lógica | Fórmula / Multiplicador |
+| :--- | :--- | :--- | :--- |
+| **`99044601`** | *Furia del Superviviente* (Marshadow / Pecharunt) | `LogicType.OnlyOneAlive`<br>`EffectLogic.StatBoost` + `PowerBoost` | **Estadísticas $\times 1.5$** (+50% a Atk, Def, SpA, SpD, Spe) y **$+90\%$ de daño** a todos los movimientos. |
+| **`99046701`** | *Reparto de Vitalidad (Baya)* | `LogicType.Berry`<br>`EffectLogic.PowerBoost` | **$+200\%$ de potencia** al Movimiento Compi (`value: 2.0`) mientras queden bayas. |
+| **`99011401`** | *Pasión de Ash* (Ash & Pikachu) | `LogicType.SpecialMulti`<br>`MoveScope.Specific` (*Trueno*) | Multiplicador multiplicativo independiente de **$\times 1.3$** sobre el movimiento Trueno. |
+| **`99015901`** | *Danza Ardiente* | `LogicType.AbnormalActive`<br>`ExtraLogic.BurnUseless` | **$+50\%$ de daño** si sufre cualquier estado alterado y anula la penalización de ataque por quemadura. |
+| **`99014501`**<br>**`99014502`** | *Pista Musical* (Meloetta / Silvally) | `ExtraLogic.NormalTypeShift`<br>`ExtraLogic.TypeShift` | Convierte movimientos normales al tipo especificado (Psíquico / Lucha) y ajusta los multiplicadores de tipo. |
+| **`28041101`**<br>**`28041201`** | *Leyendas de Johto* (Raikou / Entei / Suicune) | `LogicType.MasterPassive`<br>`ExtraLogic.SyncBuffAdd` | Pasiva Maestra ($+20\%$ base $+15\%$/aliado) y otorga **$+1$ Fervor Compi extra** en el primer movimiento compi. |
+| **`13014701`** | *Máscaras de Ogerpon* | `LogicType.Compound`<br>(`IsSpecialForm` AND `MoveType`) | $+50\%$ de potencia únicamente cuando la forma actual coincide con el tipo del ataque. |
+| **`99022601`** | *Pasión de Hoenn* (Groudon) | `LogicType.Compound`<br>(`Weather: 晴天` AND `MoveType: 地面`) | $+20\%$ de daño a ataques de tipo Tierra bajo Día Soleado. |
+
+---
+
+## 4. Movimientos Especiales con Sobreescritura (`MOVE_OVERRIDES`)
+
+Los movimientos con multiplicadores condicionales se configuran en `MOVE_OVERRIDES` y se evalúan mediante `DamageEngine.resolveMoveMultiplier`:
+
+```typescript
+export const MOVE_OVERRIDES = {
+  // 263: Imagen (Facade) - Doble potencia bajo estado alterado (excepto sueño) y anula penalización de quemadura
+  263: [
+    { id: "263", name: "硬撐", effect: EffectLogic.PowerBoost, boost: 200,
+      condition: { key: "複合狀態", detail: "自身", logic: LogicType.MultiStatusActive,
+        keys: { abnormal: ["灼傷", "麻痺", "冰凍", "劇毒", "中毒"] } } },
+    { id: "263", name: "硬撐", effect: EffectLogic.ExtraType, extra: { logic: ExtraLogic.BurnUseless } }
+  ],
+  // 360: Giro Bola (Gyro Ball) - Doble potencia si la velocidad del rival está aumentada
+  360: [{ id: "360", name: "陀螺球", effect: EffectLogic.PowerBoost, boost: 200,
+    condition: { key: "速度", detail: "對手", direction: "提高", logic: LogicType.StatChange } }],
+  // 362: Salmuera (Brine) - Doble potencia si el rival tiene <= 50% PS
+  362: [{ id: "362", name: "鹽水", effect: EffectLogic.PowerBoost, boost: 200,
+    condition: { key: "HP一半", detail: "對手", direction: "以下", logic: LogicType.HPHalf } }],
+  // 474: Carga Tóxica (Venoshock) - Doble potencia si el rival está envenenado o gravemente envenenado
+  474: [{ id: "474", name: "毒液衝擊", effect: EffectLogic.PowerBoost, boost: 200,
+    condition: { key: "中毒", detail: "對手", logic: LogicType.Abnormal } }],
+  // 506: Infortunio (Hex) - Doble potencia si el rival tiene cualquier estado alterado
+  506: [{ id: "506", name: "禍不單行", effect: EffectLogic.PowerBoost, boost: 200,
+    condition: { key: "異常狀態", detail: "對手", logic: LogicType.AbnormalActive } }],
+  // 744: Cañón Dinamax (Dynamax Cannon) - +50% de potencia si el rival tiene fervor compi
+  744: [{ id: "744", name: "極巨炮", effect: EffectLogic.PowerBoost, boost: 150,
+    condition: { key: "氣魄", detail: "對手", direction: "充滿", logic: LogicType.SyncBuffs } }],
+  // 781: Cuchilla Corona (Behemoth Blade) - +50% si el rival tiene fervor compi
+  781: [{ id: "781", name: "巨獸斬", effect: EffectLogic.PowerBoost, boost: 150,
+    condition: { key: "氣魄", detail: "對手", direction: "充滿", logic: LogicType.SyncBuffs } }],
+  // 782: Embate Corona (Behemoth Bash) - +50% si el rival tiene fervor compi
+  782: [{ id: "782", name: "巨獸彈", effect: EffectLogic.PowerBoost, boost: 150,
+    condition: { key: "氣魄", detail: "對手", direction: "充滿", logic: LogicType.SyncBuffs } }],
+  // 844: Patrulla Espectral (Bitter Malice) - Doble potencia bajo estado alterado
+  844: [{ id: "844", name: "群魔亂舞", effect: EffectLogic.PowerBoost, boost: 200,
+    condition: { key: "異常狀態", detail: "對手", logic: LogicType.AbnormalActive } }],
+  // 878: Choque Colisión (Collision Course) - +30% si es súper eficaz
+  878: [{ id: "878", name: "全開猛撞", effect: EffectLogic.PowerBoost, boost: 130,
+    condition: { key: "效果絕佳", detail: "自身", logic: LogicType.SuperEffective } }],
+  // 879: Electropropulsión (Electro Drift) - +30% si es súper eficaz
+  879: [{ id: "879", name: "閃電猛衝", effect: EffectLogic.PowerBoost, boost: 130,
+    condition: { key: "效果絕佳", detail: "自身", logic: LogicType.SuperEffective } }],
+  // 81000: Movimiento Dinamax Behemoth Blade - Doble potencia si el rival tiene fervor compi
+  81000: [{ id: "81000", name: "掌握明日迎向勝利之巨獸斬", effect: EffectLogic.PowerBoost, boost: 200,
+    condition: { key: "氣魄", detail: "對手", direction: "充滿", logic: LogicType.SyncBuffs } }]
+};
+```
+
+---
+
+## 5. Super Despertar (Awakening 6/5 a 10/5)
+
+Para niveles de movimiento y despertar superiores a 5/5 ($6 \le \text{bonusLevel} \le 10$), se aplican multiplicadores acumulativos por cada nivel adicional según el rol del personaje:
+
+```typescript
+export const AwakeningBonusConfig = {
+  // 0: Strike Físico & 1: Strike Especial & 4: Sprint
+  0: [
+    { stat: { common: { mode: "multi", value: 1.1 } } },                                 // Nivel 6: Stats x1.1
+    { move: { mode: "multi", value: 1.1 } },                                             // Nivel 7: Movimientos regulares x1.1 (+10%)
+    { syncMove: { mode: "multi", value: 1.2 }, moveDynamax: { mode: "multi", value: 1.2 } }, // Nivel 8: Compi y Dinamax x1.2 (+20%)
+    { move: { mode: "multi", value: 1.3 } }                                              // Nivel 9: Movimientos regulares x1.3 (+30%)
+  ],
+  1: [ /* Mismo que Rol 0 */ ],
+  4: [ /* Mismo que Rol 0 */ ],
+
+  // 2: Support
+  2: [
+    { stat: { common: { mode: "multi", value: 1.1 } } },                                 // Nivel 6: Stats x1.1
+    { stat: { hp: { mode: "flat", value: 50 } } },                                       // Nivel 7: HP +50
+    { stat: { def: { mode: "flat", value: 20 }, spd: { mode: "flat", value: 20 } } },   // Nivel 8: Def +20, SpD +20
+    { stat: { hp: { mode: "flat", value: 100 } } }                                       // Nivel 9: HP +100
+  ],
+
+  // 3: Tech & 5: Field
+  3: [
+    { stat: { common: { mode: "multi", value: 1.1 } } },                                 // Nivel 6: Stats x1.1
+    { syncMove: { mode: "multi", value: 1.1 }, moveDynamax: { mode: "multi", value: 1.1 } }, // Nivel 7: Compi y Dinamax x1.1 (+10%)
+    { move: { mode: "multi", value: 1.2 } },                                             // Nivel 8: Movimientos regulares x1.2 (+20%)
+    { syncMove: { mode: "multi", value: 1.3 }, moveDynamax: { mode: "multi", value: 1.3 } }  // Nivel 9: Compi y Dinamax x1.3 (+30%)
+  ],
+  5: [ /* Mismo que Rol 3 */ ]
+};
+```
+
+### Cálculo de Potencia en Super Despertar (`MovePowerCalculator.calculateAwakeningBonus`)
+
+Para calcular la potencia base con Super Despertar:
+$$\text{Multiplier} = 1.20 + \sum_{r = 6}^{\text{bonusLevel}} (\text{AwakeningConfig}[r-6].\text{value} - 1.0)$$
+$$\text{Power} = \left\lfloor \text{BasePower} \times \frac{\text{Multiplier} \times 100}{100} \right\rfloor$$
+
+---
+
+## 6. Escalados Particulares de Pasivas (`getPassiveScalingMultiplier`)
+
+### 6.1 Escalado por Estadística Individual (`SingleStatScaling`)
+- **Movimiento Regular:** `SINGLE_STAT_MOVE_MULTIPLIERS = [0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30]` ($+5\%$ por rango de estadística hasta $+30\%$ a $+6$).
+- **Movimiento Compi:** `SINGLE_STAT_SYNC_MULTIPLIERS = [0, 0.17, 0.33, 0.50, 0.67, 0.84, 1.00]` ($+100\%$ de daño compi a $+6$, duplicando el daño).
+
+### 6.2 Escalado por Suma Total de Estadísticas (`TotalStatScaling`)
+Suma todos los rangos positivos o negativos:
+$$\text{TotalRanks} = \sum_{\text{stats}} (\text{direction} == \text{"下降"} ? |\min(0, \text{rank})| : \max(0, \text{rank}))$$
+- **Movimiento Regular:** Indexado en `TOTAL_STAT_MOVE_MULTIPLIERS` (hasta $+110\%$ con 44 rangos acumulados).
+- **Movimiento Compi:** Indexado en `TOTAL_STAT_SYNC_MULTIPLIERS = [0, 0.07, 0.13, 0.20, 0.27, 0.33, 0.40, 0.47, 0.53, 0.60, 0.67, 0.73, 0.80, 0.87, 0.93, 1.00, 1.07, 1.13, 1.20]` ($+120\%$ con 18 rangos).
+
+### 6.3 Escalado por Porcentaje de PS Restantes (`HPScaling`)
+Se evalúa el porcentaje de vida $\text{HP}\%$:
+- $\text{HP} = 100\% \implies \text{índice } 0$
+- $51\% \le \text{HP} \le 99\% \implies \text{índice } 1$
+- $34\% \le \text{HP} \le 50\% \implies \text{índice } 2$
+- $\text{HP} \le 33\% \implies \text{índice } 3$
+
+Tablas de umbrales:
+- `HP_LESS_THRESHOLD = [0, 0.25, 0.50, 1.00]` (más daño cuanto menos vida).
+- `HP_MORE_THRESHOLD = [1.00, 0.50, 0.25, 0]` (más daño cuanto más vida).
+
+$$\text{FactorObjetivo} = \begin{cases} 0.10 & \text{si evalúa al objetivo rival (對手)} \\ 0.05 & \text{si evalúa al propio usuario (我方 / 自身)} \end{cases}$$
+$$\text{Bonus} = \frac{\lceil (\text{value} \times 10) \times \text{FactorObjetivo} \times \text{Umbral} \times 100 \rceil}{100}$$
+
+### 6.4 Escalado por Acumulaciones de "Siguiente Daño ↑" (`BoostScaling`)
+- **Físico:** $\text{value} \times \text{user.boosts.physical}$
+- **Especial:** $\text{value} \times \text{user.boosts.special}$
+- **Compi:** $\text{value} \times \text{user.boosts.sync}$
+
+### 6.5 Pasivas Maestras (`MasterPassive`) y Traje Arcano (`ArcSuitPassive`)
+$$\text{Bonus} = \text{baseValue} + (\text{tagCount} - 1) \times \text{value}$$
+*(Ejemplo: $\text{baseValue} = 0.20 (+20\%)$, $\text{value} = 0.15 (+15\%)$ por cada aliado adicional de la misma región. Con 3 aliados de la región: $0.20 + 2 \times 0.15 = +50\%$.)*
+
+---
+
+## 7. Motor de Estadísticas (`StatValueCalculator`)
+
+Calcula la estadística plana final antes de rangos de combate:
+
+$$\text{BaseStat} = \lfloor \text{SegmentInterp}(L, \text{statList}) \rfloor$$
+$$\text{Stat}_{\text{plana}} = \text{BaseStat} + \text{RarityBonus} + \text{ExRoleBonus} + \text{AwakeningFlat} + \text{GridStatBonus} + \text{ThemeBonus} + \text{GearBonus}$$
+
+### 7.1 Rangos de Estadística y Regla de Crítico
+
+$$\text{GENERAL\_RANK\_MULTIPLIERS} = [0.55, 0.58, 0.62, 0.66, 0.71, 0.80, 1.00, 1.25, 1.40, 1.50, 1.60, 1.70, 1.80]$$
+- **Atacante:** Si `isCritical == true`, se ignoran las reducciones negativas del atacante ($\max(\text{Stat}_{\text{combate}}, \text{Stat}_{\text{plana}})$).
+- **Defensor:** Si `isCritical == true`, se ignoran los aumentos positivos de defensa del rival ($\min(\text{Def}_{\text{combate}}, \text{Def}_{\text{plana}})$).
+
+---
+
+## 8. Fórmula Maestra de Daño (`DamageEngine`)
+
+Para cada uno de los 11 rolls aleatorios del juego:
+$$\text{DAMAGE\_ROLLS} = [0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.00]$$
+
+$$\text{Daño}(R) = \left\lfloor \text{FinalMovePower} \times \left( \frac{\text{UserStat} \times 0.5}{\text{TargetStat}} \times \text{EnvBoost} \times \text{GearBoost} \times R \right) \right\rfloor$$
+
+### 8.1 Multiplicador Ambiental Total (`EnvBoost`)
+
+$$\text{EnvBoost} = \text{WTZ} \times \text{Circles} \times \text{Rebuff} \times \text{SuperEffective} \times \text{Critical} \times \text{ScopeDecay} \times \text{SyncBuff} \times \text{CritBuffState}$$
+
+1. **WTZ (Clima / Terreno / Zona):** $\times 1.5$ (Normal) / $\times 3.0$ (EX).
+2. **Círculos Regionales:** $\text{ATK\_CIRCLE\_MULTIPLIERS} = [1.0, 1.2, 1.3, 1.4]$ para niveles 0 a 3.
+3. **Rebuffs de Tipo:** $\text{REBUFF\_MULTIPLIERS} = [1.0, 1.3, 1.5, 1.6]$ para debilidades de $-1$ a $-3$.
+4. **Súper Efectivo:** $\times 2.0$ (o $\times 3.0$ con "Siguiente Súper Eficaz ↑").
+5. **Golpe Crítico:** $\times 1.5$ (o $\times 2.25$ con estado de daño crítico).
+6. **Reducción de Área (Target Scope):** $\times 1.0$ (1 objetivo), $\times \frac{2}{3} \approx 0.6666$ (2 objetivos), $\times 0.50$ (3 objetivos). Anulada si tiene `NonDecay` o es Compi Strike 6★ EX.
+7. **Fervor Compi:** $1 + (\text{syncBuffCount} \times 0.5)$ ($+50\%$ aditivo por uso de compi).
+8. **Teracristal:** $\times 1.5$ (Tipo normal coincidente) / $\times 2.0$ (Estelar).
+
+---
+
+## 9. Sistema del Tablero Compi (Sync Grid)
+
+### 9.1 Gestión de Energía y Orbes
+- **Energía Restante:** $\text{lastEnergy} = 60 - \sum_{t \in \text{selected}} t.\text{energy}$
+- **Coste de Orbes Multiuso:** $\text{costOrbs} = \sum_{t \in \text{selected}} t.\text{orb}$
+- **Coste de Orbes de Expansión:**
+  - $\text{costTMOrbs} = \sum t.\text{requiredItems.tmOrb}$
+  - $\text{costSparkyOrbs} = \sum t.\text{requiredItems.sparkyOrb}$
+  - $\text{costFieryOrbs} = \sum t.\text{requiredItems.fieryOrb}$
+  - $\text{costLeafOrbs} = \sum t.\text{requiredItems.leafyOrb}$
+  - $\text{costBubblyOrbs} = \sum t.\text{requiredItems.bubblyOrb}$
+
+### 9.2 Accesibilidad de Casillas
+$$\text{isTileReachable}(t) \iff t.\text{level} \le \text{bonusLevel}$$
+
+### 9.3 Compis de la Academia (`LEARN_MOVE`)
+Para parejas de la Academia (`Exclusivity.ACADEMY = 997`), las casillas activas de color `#7ADAF4` añaden hasta 3 movimientos al Pokémon en orden cronológico de activación (`activatedAt`).
+
+### 9.4 Geometría Hexagonal y Serialización URL (`lz-string`)
+$$\text{Posición X: } Q(x) = x \times 75$$
+$$\text{Posición Y: } Z(x, y) = -y \times (50 \times \sqrt{3}) + (x > 0 ? -|x| : |x|) \times \left( \frac{50 \times \sqrt{3}}{2} \right)$$
+
+El estado se comprime usando `lz-string`:
+```typescript
+import LZString from "lz-string";
+
+export function encodeGrid(state: object): string {
+  return LZString.compressToEncodedURIComponent(JSON.stringify(state));
+}
+
+export function decodeGrid(hash: string): any {
+  const json = LZString.decompressFromEncodedURIComponent(hash);
+  return json ? JSON.parse(json) : null;
+}
+```
