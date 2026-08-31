@@ -300,6 +300,22 @@
                             }
                         </div>
                     </div>
+
+                    <!-- Volatile Status Interferences -->
+                    <div class="d-flex align-items-center gap-1">
+                        <button class="btn btn-sm py-0 px-2 @(Enemy.VolatileStatus.GetValueOrDefault("confused", false) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                @onclick='() => { Enemy.VolatileStatus["confused"] = !Enemy.VolatileStatus.GetValueOrDefault("confused", false); StateHasChanged(); }'>
+                            Confused
+                        </button>
+                        <button class="btn btn-sm py-0 px-2 @(Enemy.VolatileStatus.GetValueOrDefault("trapped", false) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                @onclick='() => { Enemy.VolatileStatus["trapped"] = !Enemy.VolatileStatus.GetValueOrDefault("trapped", false); StateHasChanged(); }'>
+                            Trapped
+                        </button>
+                        <button class="btn btn-sm py-0 px-2 @(Enemy.VolatileStatus.GetValueOrDefault("flinching", false) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                @onclick='() => { Enemy.VolatileStatus["flinching"] = !Enemy.VolatileStatus.GetValueOrDefault("flinching", false); StateHasChanged(); }'>
+                            Flinching
+                        </button>
+                    </div>
                 </div>
             </div>
 
