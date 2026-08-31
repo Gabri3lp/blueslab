@@ -898,27 +898,27 @@ public class DamageCalculatorService
                 }
 
                 // Weather / Terrain / Zone
-                if (move.Description.Contains("when the weather is sunny", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during sunny weather", StringComparison.OrdinalIgnoreCase))
+                if (move.Description.Contains("weather is sunny", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during sunny weather", StringComparison.OrdinalIgnoreCase))
                 {
                     if (field.Weather == "Sunny") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Sun)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
                 }
-                if (move.Description.Contains("when the weather is rainy", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during rainy weather", StringComparison.OrdinalIgnoreCase))
+                if (move.Description.Contains("weather is rainy", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during rainy weather", StringComparison.OrdinalIgnoreCase))
                 {
                     if (field.Weather == "Rainy") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Rain)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
                 }
-                if (move.Description.Contains("when the weather is sandstorm", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during a sandstorm", StringComparison.OrdinalIgnoreCase))
+                if (move.Description.Contains("weather is sandstorm", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during a sandstorm", StringComparison.OrdinalIgnoreCase))
                 {
                     if (field.Weather == "Sandstorm") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Sand)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
                 }
-                if (move.Description.Contains("when the weather is hail", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during hail", StringComparison.OrdinalIgnoreCase))
+                if (move.Description.Contains("weather is hail", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during hail", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("hailstorm", StringComparison.OrdinalIgnoreCase))
                 {
                     if (field.Weather == "Hail") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Hail)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
                 }
-                if (move.Description.Contains("when the terrain is", StringComparison.OrdinalIgnoreCase))
+                if (move.Description.Contains("terrain is", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("a terrain", StringComparison.OrdinalIgnoreCase))
                 {
                     if (!string.IsNullOrEmpty(field.Terrain)) { pills.Add(new MultiplierPill { Label = $"Sync Scaling ({field.Terrain})", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
                 }
-                if (move.Description.Contains("when a zone is", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("in a zone", StringComparison.OrdinalIgnoreCase))
+                if (move.Description.Contains("zone is", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("a zone", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("in a zone", StringComparison.OrdinalIgnoreCase))
                 {
                     if (!string.IsNullOrEmpty(field.Zone)) { pills.Add(new MultiplierPill { Label = $"Sync Scaling ({field.Zone})", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
                 }
