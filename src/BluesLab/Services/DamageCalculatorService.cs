@@ -691,8 +691,23 @@ public class DamageCalculatorService
         CombatantState enemy,
         FieldState field)
     {
+        if (dp.SubPassives != null && dp.SubPassives.Count > 0)
+        {
+            double subTotal = 0;
+            foreach (var sp in dp.SubPassives)
+            {
+                subTotal += EvalSingleDamagePassive(sp, move, ally, enemy, field);
+            }
+            return subTotal;
+        }
+
         if (move.IsSync && string.Equals(dp.AppliesTo, "moves", StringComparison.OrdinalIgnoreCase)) return 0;
         if (!move.IsSync && string.Equals(dp.AppliesTo, "sync_move", StringComparison.OrdinalIgnoreCase)) return 0;
+
+        if (!string.IsNullOrEmpty(dp.MoveName) && !MatchesMoveName(move.Name, dp.MoveName, move.IsSync))
+        {
+            return 0;
+        }
 
         return dp.Mechanism switch
         {
