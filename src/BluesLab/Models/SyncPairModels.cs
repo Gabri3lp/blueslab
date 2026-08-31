@@ -268,6 +268,9 @@ public class VariationItem
     [JsonPropertyName("formName")]
     public string FormName { get; set; } = string.Empty;
 
+    [JsonPropertyName("type")]
+    public string Type { get; set; } = string.Empty;
+
     [JsonPropertyName("actorId")]
     public string ActorId { get; set; } = string.Empty;
 

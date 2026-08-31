@@ -307,6 +307,22 @@ public class DamageCalculatorService
 
         // 1. Move Base Power & SA
         int rawPower = int.TryParse(move.Power, out int parsedPwr) ? parsedPwr : 0;
+        
+        string effectiveMoveType = move.Type;
+        bool isStellarForm = ally.FormIndex > 0 && ally.FormIndex <= pair.Variations.Count &&
+            (string.Equals(pair.Variations[ally.FormIndex - 1].Type, "Stellar", StringComparison.OrdinalIgnoreCase) ||
+             (pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true));
+
+        if (isStellarForm)
+        {
+            effectiveMoveType = "Stellar";
+            // Terapagos Stellar Form doubles the base power of Tera Starstorm and Kaleidoscopic Tera Starstorm
+            if (!move.IsSync && (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase)))
+            {
+                rawPower *= 2;
+            }
+        }
+
         int fullMoveLevel = ally.SuperAwakeningLevel > 0 ? (5 + ally.SuperAwakeningLevel) : ally.MoveLevel;
         bool isEx = ally.StarLevel.Contains("EX", StringComparison.OrdinalIgnoreCase) || ally.StarLevel.Contains("6★");
         bool isTechBase = pair.Role.StartsWith("Tech", StringComparison.OrdinalIgnoreCase);
@@ -451,8 +467,9 @@ public class DamageCalculatorService
         }
 
         // Type Effectiveness
-        bool isSuperEffective = !string.IsNullOrEmpty(enemy.Weakness) &&
-            string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase);
+        bool isSuperEffective = (!string.IsNullOrEmpty(enemy.Weakness) &&
+            string.Equals(effectiveMoveType, enemy.Weakness, StringComparison.OrdinalIgnoreCase)) ||
+            (isStellarForm && !string.IsNullOrEmpty(enemy.Weakness));
 
         if (isSuperEffective)
         {
@@ -501,7 +518,7 @@ public class DamageCalculatorService
         }
 
         // Type Rebuffs
-        int rebuff = enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0);
+        int rebuff = enemy.EnemyTypeRebuffs.GetValueOrDefault(effectiveMoveType, 0);
         if (rebuff != 0)
         {
             switch (rebuff)
