@@ -49,6 +49,9 @@ public class PairManifestItem
     [JsonPropertyName("iconUrl")]
     public string IconUrl { get; set; } = string.Empty;
 
+    [JsonPropertyName("pokemonIconUrl")]
+    public string PokemonIconUrl { get; set; } = string.Empty;
+
     [JsonPropertyName("gridTileCount")]
     public int GridTileCount { get; set; }
 }
@@ -108,6 +111,9 @@ public class SyncPairDetail
 
     [JsonPropertyName("iconUrl")]
     public string IconUrl { get; set; } = string.Empty;
+
+    [JsonPropertyName("pokemonIconUrl")]
+    public string PokemonIconUrl { get; set; } = string.Empty;
 
     [JsonPropertyName("stats")]
     public PairStats Stats { get; set; } = new();
