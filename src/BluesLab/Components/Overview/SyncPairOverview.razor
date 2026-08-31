@@ -344,6 +344,53 @@
                                 }
                             </div>
                         }
+
+                        <!-- Super Awakening Passive (Unlocked at SA 5) -->
+                        @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
+                        {
+                            bool isSa5Active = Ally.SuperAwakeningLevel >= 5;
+                            <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-10" : "border-secondary bg-secondary bg-opacity-10 opacity-75") p-2">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="fw-bold @(isSa5Active ? "text-danger" : "text-secondary")">
+                                        <i class="bi bi-star-fill text-warning me-1"></i> @Pair.SuperAwakeningPassive.Name
+                                    </div>
+                                    <span class="badge @(isSa5Active ? "bg-danger text-light" : "bg-secondary text-muted")" style="font-size: 0.7rem;">
+                                        @(isSa5Active ? "SA 5 Active" : "SA 5 Required")
+                                    </span>
+                                </div>
+                                <div class="text-secondary small">@Pair.SuperAwakeningPassive.Description</div>
+                            </div>
+                        }
+
+                        <!-- Active Grid Passives -->
+                        @{
+                            var activeGridPassives = Pair.Grid
+                                .Where(c => GridState.ActiveCells.Contains(c.CellId) &&
+                                            (c.ColorKind.Equals("passive", StringComparison.OrdinalIgnoreCase) ||
+                                             c.ColorKind.Equals("move effect", StringComparison.OrdinalIgnoreCase) ||
+                                             c.ColorKind.Equals("learn", StringComparison.OrdinalIgnoreCase)))
+                                .ToList();
+                        }
+                        @if (activeGridPassives.Count > 0)
+                        {
+                            <div class="mt-2 pt-2 border-top border-secondary">
+                                <div class="text-info small fw-bold mb-2">
+                                    <i class="bi bi-grid-fill me-1"></i> Active Grid Skills (@activeGridPassives.Count):
+                                </div>
+                                <div class="d-flex flex-column gap-1">
+                                    @foreach (var gc in activeGridPassives)
+                                    {
+                                        <div class="p-1 px-2 rounded bg-dark border border-secondary small">
+                                            <b class="text-warning">@gc.Title</b>
+                                            @if (!string.IsNullOrEmpty(gc.Description))
+                                            {
+                                                <span class="text-muted ms-1">- @gc.Description</span>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

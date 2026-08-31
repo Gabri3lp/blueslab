@@ -46,6 +46,9 @@ public class PairManifestItem
     [JsonPropertyName("hasSuperAwakening")]
     public bool HasSuperAwakening { get; set; }
 
+    [JsonPropertyName("superAwakeningPassive")]
+    public PassiveItem? SuperAwakeningPassive { get; set; }
+
     [JsonPropertyName("iconUrl")]
     public string IconUrl { get; set; } = string.Empty;
 
@@ -105,6 +108,9 @@ public class SyncPairDetail
 
     [JsonPropertyName("hasSuperAwakening")]
     public bool HasSuperAwakening { get; set; }
+
+    [JsonPropertyName("superAwakeningPassive")]
+    public PassiveItem? SuperAwakeningPassive { get; set; }
 
     [JsonPropertyName("syncMoveName")]
     public string SyncMoveName { get; set; } = string.Empty;

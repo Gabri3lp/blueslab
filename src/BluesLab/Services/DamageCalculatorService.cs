@@ -560,6 +560,20 @@ public class DamageCalculatorService
         // Innate / Variation Passives
         if (ally.Pair != null)
         {
+            // Super Awakening Passive (Unlocked at SA 5)
+            if (ally.SuperAwakeningLevel >= 5 && ally.Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(ally.Pair.SuperAwakeningPassive.Name))
+            {
+                var saRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, ally.Pair.SuperAwakeningPassive.Name, StringComparison.OrdinalIgnoreCase));
+                if (saRule != null)
+                {
+                    double v = EvalSingleDamagePassive(saRule, move, ally, enemy, field);
+                    if (v > 0)
+                    {
+                        total += v;
+                        pills.Add(new MultiplierPill { Label = $"SA: {saRule.Name}", Value = $"+{v * 100:0.#}%", Color = "#e74c3c" });
+                    }
+                }
+            }
             var passivesList = (ally.FormIndex > 0 && ally.FormIndex <= ally.Pair.Variations.Count && ally.Pair.Variations[ally.FormIndex - 1].Passives.Count > 0)
                 ? ally.Pair.Variations[ally.FormIndex - 1].Passives
                 : ally.Pair.Passives;
@@ -693,24 +707,60 @@ public class DamageCalculatorService
 
         if (rule == null)
         {
-            if (move.IsSync && move.Description.Contains("more the target’s Defense is lowered", StringComparison.OrdinalIgnoreCase))
+            if (move.IsSync && !string.IsNullOrEmpty(move.Description))
             {
-                int defStage = enemy.Stages.GetValueOrDefault("def", 0);
-                if (defStage < 0)
+                // Target Lowered Stats
+                string[] stats = ["def", "spd", "spe", "atk", "spa"];
+                string[] names = ["Defense", "Sp. Def", "Speed", "Attack", "Sp. Atk"];
+                for (int i = 0; i < stats.Length; i++)
                 {
-                    double m = 1.0 + Math.Abs(defStage) * (1.0 / 6.0);
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Def-)", Value = $"×{m:0.##}", Color = "#fd79a8" });
-                    return m;
+                    if (move.Description.Contains($"more the target’s {names[i]} is lowered", StringComparison.OrdinalIgnoreCase))
+                    {
+                        int st = enemy.Stages.GetValueOrDefault(stats[i], 0);
+                        if (st < 0)
+                        {
+                            double m = 1.0 + Math.Abs(st) * (1.0 / 6.0);
+                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}-)", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                            return m;
+                        }
+                    }
+                    if (move.Description.Contains($"more the user’s {names[i]} is raised", StringComparison.OrdinalIgnoreCase))
+                    {
+                        int st = ally.Stages.GetValueOrDefault(stats[i], 0);
+                        if (st > 0)
+                        {
+                            double m = 1.0 + st * (1.0 / 6.0);
+                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}+)", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                            return m;
+                        }
+                    }
                 }
-            }
-            if (move.IsSync && move.Description.Contains("more the target’s Speed is lowered", StringComparison.OrdinalIgnoreCase))
-            {
-                int speStage = enemy.Stages.GetValueOrDefault("spe", 0);
-                if (speStage < 0)
+
+                // Status Conditions on Target
+                if (move.Description.Contains("target is paralyzed", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "paralyzed")
                 {
-                    double m = 1.0 + Math.Abs(speStage) * (1.0 / 6.0);
-                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Spe-)", Value = $"×{m:0.##}", Color = "#fd79a8" });
-                    return m;
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Paralyzed)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+                if (move.Description.Contains("target is burned", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "burned")
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Burned)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+                if (move.Description.Contains("target is poisoned", StringComparison.OrdinalIgnoreCase) && (enemy.StatusCondition == "poisoned" || enemy.StatusCondition == "badly poisoned"))
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Poisoned)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+                if (move.Description.Contains("target is asleep", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "asleep")
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Asleep)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+                if (move.Description.Contains("target is frozen", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "frozen")
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Frozen)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
                 }
             }
             return 1.0;
