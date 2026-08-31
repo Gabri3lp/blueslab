@@ -700,7 +700,7 @@ public class DamageCalculatorService
             "target_stat_lowered" => CalcStatScaling(dp.Stat, enemy.Stages, false, move.IsSync),
             "stat_is_raised" => (ally.Stages.GetValueOrDefault(dp.Stat, 0) > 0 ? dp.Value * 0.1 : 0),
             "stat_is_lowered" => (enemy.Stages.GetValueOrDefault(dp.Stat, 0) < 0 ? dp.Value * 0.1 : 0),
-            "flat_boost" => (EvalConditions(dp.Conditions, field, enemy) ? dp.Value * 0.1 : 0),
+            "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move) ? dp.Value * 0.1 : 0),
             _ => 0
         };
     }
@@ -747,7 +747,7 @@ public class DamageCalculatorService
         }
     }
 
-    private bool EvalConditions(List<List<string>> conditionGroups, FieldState field, CombatantState enemy)
+    private bool EvalConditions(List<List<string>> conditionGroups, FieldState field, CombatantState ally, CombatantState enemy, MoveItem move)
     {
         if (conditionGroups.Count == 0) return true;
         foreach (var andGroup in conditionGroups)
@@ -755,21 +755,50 @@ public class DamageCalculatorService
             bool allMatch = true;
             foreach (var c in andGroup)
             {
-                bool match = c switch
+                string cond = c.ToLowerInvariant().Trim();
+                bool match = cond switch
                 {
                     "sunny" => field.Weather == "Sunny",
-                    "rain" => field.Weather == "Rainy",
+                    "rain" or "rainy" => field.Weather == "Rainy",
                     "sandstorm" => field.Weather == "Sandstorm",
                     "hail" => field.Weather == "Hail",
+                    "no_weather" => string.IsNullOrEmpty(field.Weather),
+                    "any_weather" => !string.IsNullOrEmpty(field.Weather),
+                    "electric_terrain" => field.Terrain == "Electric Terrain",
+                    "grassy_terrain" => field.Terrain == "Grassy Terrain",
+                    "psychic_terrain" => field.Terrain == "Psychic Terrain",
+                    "any_terrain" => !string.IsNullOrEmpty(field.Terrain),
+                    "fairy_zone" => field.Zone == "Fairy Zone",
+                    "dragon_zone" => field.Zone == "Dragon Zone",
+                    "dark_zone" => field.Zone == "Dark Zone",
+                    "ghost_zone" => field.Zone == "Ghost Zone",
+                    "flying_zone" => field.Zone == "Flying Zone",
+                    "grass_zone" => field.Zone == "Grass Zone",
+                    "fire_zone" => field.Zone == "Fire Zone",
+                    "ground_zone" => field.Zone == "Ground Zone",
+                    "rock_zone" => field.Zone == "Rock Zone",
+                    "steel_zone" => field.Zone == "Steel Zone",
+                    "electric_zone" => field.Zone == "Electric Zone",
+                    "poison_zone" => field.Zone == "Poison Zone",
+                    "normal_zone" => field.Zone == "Normal Zone",
+                    "any_weather_terrain_zone" => !string.IsNullOrEmpty(field.Weather) || !string.IsNullOrEmpty(field.Terrain) || !string.IsNullOrEmpty(field.Zone),
                     "burned" => enemy.StatusCondition == "burned",
                     "paralyzed" => enemy.StatusCondition == "paralyzed",
                     "poisoned" => enemy.StatusCondition == "poisoned" || enemy.StatusCondition == "badly poisoned",
                     "frozen" => enemy.StatusCondition == "frozen",
                     "asleep" => enemy.StatusCondition == "asleep",
+                    "any_status" or "any_condition" => !string.IsNullOrEmpty(enemy.StatusCondition),
                     "confused" => enemy.VolatileStatus.GetValueOrDefault("confused", false),
                     "trapped" => enemy.VolatileStatus.GetValueOrDefault("trapped", false),
                     "flinching" => enemy.VolatileStatus.GetValueOrDefault("flinching", false),
-                    _ => true
+                    "flinch_confuse_trap" => enemy.VolatileStatus.GetValueOrDefault("confused", false) || enemy.VolatileStatus.GetValueOrDefault("trapped", false) || enemy.VolatileStatus.GetValueOrDefault("flinching", false),
+                    "critical" => ally.IsCriticalMove,
+                    "super_effective" or "super_efective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
+                    "has_rebuff" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) != 0,
+                    "hp_full" => ally.HpPercent >= 100,
+                    "hp_low" => ally.HpPercent <= 33,
+                    "hp_reduced" => ally.HpPercent < 100,
+                    _ => cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))
                 };
                 if (!match) { allMatch = false; break; }
             }
