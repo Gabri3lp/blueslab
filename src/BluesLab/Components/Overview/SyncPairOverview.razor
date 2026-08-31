@@ -25,7 +25,7 @@
                             }
                         </h5>
                         <div class="d-flex flex-wrap align-items-center gap-2">
-                            <span class="badge type-badge type-@Pair.Type.ToLowerInvariant()">@Pair.Type</span>
+                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant()">@EffectivePairType</span>
                             <span class="badge bg-secondary">@Pair.Role</span>
                             @if (!string.IsNullOrEmpty(Pair.ExRole))
                             {
@@ -352,12 +352,12 @@
                 <div class="d-flex flex-column gap-2">
                     @foreach (var move in Pair.Moves)
                     {
-                        int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
-                        int scaledPwr = rawPwr > 0 ? CalcService.CalcPower(rawPwr, effectiveLvl, Pair.Role, move.IsSync) : 0;
-                        int multPct = rawPwr > 0 ? CalcService.GetMoveMultiplier(effectiveLvl, Pair.Role, move.IsSync) : 100;
+                        var (scaledPwr, multPct) = GetEffectiveMovePower(move, effectiveLvl);
+                        string moveType = GetEffectiveMoveType(move);
+                        string moveTarget = GetEffectiveMoveTarget(move);
                         bool isExpanded = ExpandedMoveIds.Contains(move.Id);
 
-                        <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3 shadow-sm">
+                        <div class="card move-card move-card-@moveType.ToLowerInvariant() p-3 shadow-sm">
                             <div class="d-flex justify-content-between align-items-start cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
                                 <div>
                                     <div class="d-flex align-items-center gap-2">
@@ -368,11 +368,11 @@
                                         }
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-1">
-                                        <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                        <span class="badge type-badge type-@moveType.ToLowerInvariant()">@moveType</span>
                                         <span class="badge bg-secondary">@move.Category</span>
-                                        @if (!string.IsNullOrEmpty(move.Target))
+                                        @if (!string.IsNullOrEmpty(moveTarget))
                                         {
-                                            <span class="badge bg-dark border border-secondary text-light opacity-75" style="font-size: 0.7rem;">@move.Target</span>
+                                            <span class="badge bg-dark border border-secondary text-light opacity-75" style="font-size: 0.7rem;">@moveTarget</span>
                                         }
                                     </div>
                                 </div>
@@ -412,9 +412,7 @@
             {
                 <div class="d-flex flex-column gap-2">
                     @{
-                        var activePassives = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count && Pair.Variations[Ally.FormIndex - 1].Passives.Count > 0)
-                            ? Pair.Variations[Ally.FormIndex - 1].Passives
-                            : Pair.Passives;
+                        var activePassives = GetEffectivePassives();
                     }
                     @foreach (var passive in activePassives)
                     {
@@ -502,6 +500,107 @@
     private void OnGridUpdated()
     {
         InvokeAsync(StateHasChanged);
+    }
+
+    private string EffectivePairType
+    {
+        get
+        {
+            if (Pair == null) return "Normal";
+            if (Ally.FormIndex > 0 && Pair.Variations != null && Ally.FormIndex <= Pair.Variations.Count)
+            {
+                var form = Pair.Variations[Ally.FormIndex - 1];
+                if (!string.IsNullOrEmpty(form.Type)) return form.Type;
+                if (form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase)) return "Stellar";
+            }
+            return Pair.Type;
+        }
+    }
+
+    private string GetEffectiveMoveType(MoveItem move)
+    {
+        if (Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count)
+        {
+            var form = Pair.Variations[Ally.FormIndex - 1];
+            if (form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) || string.Equals(form.Type, "Stellar", StringComparison.OrdinalIgnoreCase))
+            {
+                if (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase) || move.IsSync)
+                {
+                    return "Stellar";
+                }
+            }
+            else if (!string.IsNullOrEmpty(form.Type))
+            {
+                return form.Type;
+            }
+        }
+        return move.Type;
+    }
+
+    private (int ScaledPower, int MultPct) GetEffectiveMovePower(MoveItem move, int effectiveLvl)
+    {
+        int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
+        if (rawPwr <= 0) return (0, 100);
+
+        bool isStellarForm = Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count &&
+            (Pair.Variations[Ally.FormIndex - 1].FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) ||
+             string.Equals(Pair.Variations[Ally.FormIndex - 1].Type, "Stellar", StringComparison.OrdinalIgnoreCase));
+
+        if (isStellarForm && !move.IsSync && (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase)))
+        {
+            rawPwr *= 2;
+        }
+
+        int scaledPwr = CalcService.CalcPower(rawPwr, effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync);
+        int multPct = CalcService.GetMoveMultiplier(effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync);
+        return (scaledPwr, multPct);
+    }
+
+    private string GetEffectiveMoveTarget(MoveItem move)
+    {
+        bool isStellarForm = Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count &&
+            (Pair.Variations[Ally.FormIndex - 1].FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) ||
+             string.Equals(Pair.Variations[Ally.FormIndex - 1].Type, "Stellar", StringComparison.OrdinalIgnoreCase));
+
+        if (isStellarForm && (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase)))
+        {
+            return "All opponents";
+        }
+        return move.Target;
+    }
+
+    private List<PassiveItem> GetEffectivePassives()
+    {
+        if (Pair == null) return new List<PassiveItem>();
+        if (Ally.FormIndex == 0 || Ally.FormIndex > Pair.Variations.Count)
+        {
+            return Pair.Passives;
+        }
+
+        var variation = Pair.Variations[Ally.FormIndex - 1];
+        if (variation.Passives == null || variation.Passives.Count == 0)
+        {
+            return Pair.Passives;
+        }
+
+        var list = new List<PassiveItem>();
+        // Keep master passives and unique overarching passives from base form
+        foreach (var p in Pair.Passives)
+        {
+            if (p.Name.Contains("Mystery", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Curiosity", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Myth", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Pride", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Spirit", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Flagbearer", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Master", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Judgment", StringComparison.OrdinalIgnoreCase))
+            {
+                list.Add(p);
+            }
+        }
+        list.AddRange(variation.Passives);
+        return list;
     }
 
     private void SetForm(int idx)

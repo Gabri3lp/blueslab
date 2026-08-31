@@ -17,7 +17,7 @@
                     <div>
                         <div class="fw-bold text-light">@Ally.Pair.DisplayName</div>
                         <div class="d-flex gap-1 align-items-center">
-                            <span class="badge type-badge type-@Ally.Pair.Type.ToLowerInvariant()">@Ally.Pair.Type</span>
+                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant()">@EffectivePairType</span>
                             <span class="badge bg-secondary">@Ally.Pair.Role</span>
                             @if (!string.IsNullOrEmpty(Ally.Pair.ExRole))
                             {
@@ -121,7 +121,7 @@
                                     }
                                 </div>
                                 <div class="d-flex gap-1 align-items-center mt-1">
-                                    <span class="badge type-badge type-@move.Type.ToLowerInvariant()" style="font-size: 0.7rem;">@move.Type</span>
+                                    <span class="badge type-badge type-@GetEffectiveMoveType(move).ToLowerInvariant()" style="font-size: 0.7rem;">@GetEffectiveMoveType(move)</span>
                                     <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
                                     <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">Power: <b class="text-warning">@result.ScaledMovePower</b></span>
                                 </div>
@@ -401,6 +401,41 @@
     private void OnGridStateUpdated()
     {
         InvokeAsync(StateHasChanged);
+    }
+
+    private string EffectivePairType
+    {
+        get
+        {
+            if (Ally.Pair == null) return "Normal";
+            if (Ally.FormIndex > 0 && Ally.Pair.Variations != null && Ally.FormIndex <= Ally.Pair.Variations.Count)
+            {
+                var form = Ally.Pair.Variations[Ally.FormIndex - 1];
+                if (!string.IsNullOrEmpty(form.Type)) return form.Type;
+                if (form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase)) return "Stellar";
+            }
+            return Ally.Pair.Type;
+        }
+    }
+
+    private string GetEffectiveMoveType(MoveItem move)
+    {
+        if (Ally.FormIndex > 0 && Ally.Pair?.Variations != null && Ally.FormIndex <= Ally.Pair.Variations.Count)
+        {
+            var form = Ally.Pair.Variations[Ally.FormIndex - 1];
+            if (form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) || string.Equals(form.Type, "Stellar", StringComparison.OrdinalIgnoreCase))
+            {
+                if (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase) || move.IsSync)
+                {
+                    return "Stellar";
+                }
+            }
+            else if (!string.IsNullOrEmpty(form.Type))
+            {
+                return form.Type;
+            }
+        }
+        return move.Type;
     }
 
     private IEnumerable<MoveItem> ActiveMoves
