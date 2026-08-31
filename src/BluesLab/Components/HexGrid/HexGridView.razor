@@ -206,7 +206,7 @@
     private (double X, double Y) GetHexCenter(int q, int r)
     {
         double x = q * ColWidth;
-        double y = (r + q / 2.0) * RowHeight * 2.0;
+        double y = -(r + q / 2.0) * RowHeight * 2.0;
         return (x, y);
     }
 
