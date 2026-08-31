@@ -541,14 +541,97 @@ public class DamageCalculatorService
             pills.Add(new MultiplierPill { Label = "Sync Buffs", Value = $"×{1.0 + effectiveSyncBoosts * 0.5:0.#}", Color = "#e67e22" });
         }
 
-        // Target count (AoE scaling)
-        bool isNonDecay = (move.Target?.Contains("all", StringComparison.OrdinalIgnoreCase) == true &&
-                          (move.Description.Contains("not reduced", StringComparison.OrdinalIgnoreCase) ||
-                           move.Description.Contains("damage is not reduced", StringComparison.OrdinalIgnoreCase) ||
-                           move.Name.Contains("Precipice Blades", StringComparison.OrdinalIgnoreCase) ||
-                           move.Name.Contains("Origin Pulse", StringComparison.OrdinalIgnoreCase)));
+        // Target count (AoE scaling: only applies to moves that hit all opponents and do NOT have no-decay protection)
+        bool isAoEMove = move.Target != null && (
+            move.Target.Contains("all", StringComparison.OrdinalIgnoreCase) ||
+            move.Target.Contains("opponents", StringComparison.OrdinalIgnoreCase) ||
+            move.Target.Contains("entire", StringComparison.OrdinalIgnoreCase)
+        );
 
-        if (field.TargetCount > 1 && !move.IsSync && !isNonDecay)
+        // Check if passive grants Extend Range / No AoE power reduction (e.g. Extend Range, Expand Reach, Arc Suit passives, etc.)
+        bool hasAoENoDecayPassive = false;
+        if (pair != null)
+        {
+            var passives = pair.Passives ?? new List<PassiveItem>();
+            if (ally.FormIndex > 0 && pair.Variations != null && ally.FormIndex <= pair.Variations.Count && pair.Variations[ally.FormIndex - 1].Passives != null)
+            {
+                passives = pair.Variations[ally.FormIndex - 1].Passives;
+            }
+
+            foreach (var ps in passives)
+            {
+                string pDesc = ps.Description ?? string.Empty;
+                string pName = ps.Name ?? string.Empty;
+                if (pDesc.Contains("not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("target all opponents is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("target all opponents is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("moves affected by this passive skill are not lowered", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("moves affected by this passive skill are not reduced", StringComparison.OrdinalIgnoreCase) ||
+                    pName.Contains("Extend Range", StringComparison.OrdinalIgnoreCase) ||
+                    pName.Contains("Expand Reach", StringComparison.OrdinalIgnoreCase))
+                {
+                    hasAoENoDecayPassive = true;
+                    break;
+                }
+            }
+
+            // Also check Super Awakening Passive
+            if (!hasAoENoDecayPassive && ally.SuperAwakeningLevel >= 5 && pair.SuperAwakeningPassive != null)
+            {
+                string saDesc = pair.SuperAwakeningPassive.Description ?? string.Empty;
+                if (saDesc.Contains("not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                    saDesc.Contains("not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                    saDesc.Contains("target all opponents is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                    saDesc.Contains("target all opponents is not lowered", StringComparison.OrdinalIgnoreCase))
+                {
+                    hasAoENoDecayPassive = true;
+                }
+            }
+
+            // Also check active grid cells
+            if (!hasAoENoDecayPassive && pair.Grid != null)
+            {
+                foreach (var cellId in activeGridCells)
+                {
+                    var cell = pair.Grid.FirstOrDefault(c => c.CellId == cellId);
+                    if (cell != null)
+                    {
+                        string cDesc = cell.Description ?? string.Empty;
+                        if (cDesc.Contains("not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            cDesc.Contains("not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            cDesc.Contains("target all opponents is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            cDesc.Contains("target all opponents is not lowered", StringComparison.OrdinalIgnoreCase))
+                        {
+                            hasAoENoDecayPassive = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Check if the move itself has no decay in its description or name
+        string mDesc = move.Description ?? string.Empty;
+        bool isMoveNoDecay = mDesc.Contains("not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("not lowered when there are multiple opponents", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("not reduced when there are multiple opponents", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not lowered when there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not reduced when there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("damage is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("damage is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this attack is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this attack is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this move is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this move is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power is not lowered", StringComparison.OrdinalIgnoreCase);
+
+        // AoE penalty only applies to multi-target moves (and NOT to sync moves, and NOT if protected by move or passive)
+        if (field.TargetCount > 1 && isAoEMove && !move.IsSync && !isMoveNoDecay && !hasAoENoDecayPassive)
         {
             if (field.TargetCount == 3)
             {
