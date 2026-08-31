@@ -308,8 +308,10 @@ public class DamageCalculatorService
         // 1. Move Base Power & SA
         int rawPower = int.TryParse(move.Power, out int parsedPwr) ? parsedPwr : 0;
         int fullMoveLevel = ally.SuperAwakeningLevel > 0 ? (5 + ally.SuperAwakeningLevel) : ally.MoveLevel;
-        bool isTechExSync = move.IsSync && (pair.Role.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
-            (ally.HasExRole && pair.ExRole.StartsWith("Tech", StringComparison.OrdinalIgnoreCase)));
+        bool isEx = ally.StarLevel.Contains("EX", StringComparison.OrdinalIgnoreCase) || ally.StarLevel.Contains("6★");
+        bool isTechBase = pair.Role.StartsWith("Tech", StringComparison.OrdinalIgnoreCase);
+        bool isTechExRole = ally.HasExRole && !string.IsNullOrEmpty(pair.ExRole) && pair.ExRole.StartsWith("Tech", StringComparison.OrdinalIgnoreCase);
+        bool isTechExSync = move.IsSync && isEx && (isTechBase || isTechExRole);
         double syncIncrement = isTechExSync ? 1.5 : 1.0;
 
         int power = CalcPower(rawPower, fullMoveLevel, pair.Role, move.IsSync, syncIncrement);
@@ -332,7 +334,7 @@ public class DamageCalculatorService
 
         int baseMovePower = power + gridPower;
 
-        // Passive skill power ups + Master Skills + PMUN/SMUN stacks
+        // Passive skill power ups + Master Skills + PMUN/SMUN/SYUN stacks
         int passivePercentage = (int)Math.Round(EvalPassivePowerUps(move, ally, enemy, field, rules, activeGridCells, pills) * 100);
         int masterPercentage = (int)Math.Round(EvalMasterPassives(move, ally, rules) * 100);
         if (masterPercentage > 0)
@@ -341,9 +343,16 @@ public class DamageCalculatorService
         }
 
         int boostNextPercentage = 0;
-        if (isPhysical) boostNextPercentage += ally.PhysicalBoostNext * 40;
-        if (isSpecial) boostNextPercentage += ally.SpecialBoostNext * 40;
-        if (move.IsSync) boostNextPercentage += ally.SyncMoveBoostNext * 40;
+        if (!move.IsSync)
+        {
+            if (isPhysical) boostNextPercentage += ally.PhysicalBoostNext * 40;
+            if (isSpecial) boostNextPercentage += ally.SpecialBoostNext * 40;
+        }
+        else
+        {
+            // SYUN stacks provide +10% per stack to sync moves matching PoMaTools engine
+            boostNextPercentage += ally.SyncMoveBoostNext * 10;
+        }
 
         int totalPowerupPercent = 100 + passivePercentage + masterPercentage + boostNextPercentage;
 
@@ -517,9 +526,12 @@ public class DamageCalculatorService
             }
         }
 
-        // Breaks
-        if (isPhysical && ally.PhysicalBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
-        if (isSpecial && ally.SpecialBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
+        // Breaks (only apply to regular moves, not Sync Moves)
+        if (!move.IsSync)
+        {
+            if (isPhysical && ally.PhysicalBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
+            if (isSpecial && ally.SpecialBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
+        }
 
         // 5. Final Roll Computation (Math.fround matching PMEX engine)
         ne *= attackerStat;
@@ -689,17 +701,35 @@ public class DamageCalculatorService
                 int s = stages.GetValueOrDefault(k, 0);
                 count += isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
             }
-            double step = isSync ? 0.0667 : 0.026;
-            double max = isSync ? 1.2 : 1.1;
-            return Math.Clamp(Math.Round(count * step, 2), 0.0, max);
+            if (isSync)
+            {
+                // PoMaTools: Math.round(Math.min(count, 18) * 667 / 100) -> 0% to 120%
+                int pct = (int)Math.Round(Math.Min(count, 18) * 667.0 / 100.0);
+                return pct / 100.0;
+            }
+            else
+            {
+                // PoMaTools: Math.min(Math.floor(count * 26 / 10), 110) -> 0% to 110%
+                int pct = Math.Min((int)Math.Floor(count * 26.0 / 10.0), 110);
+                return pct / 100.0;
+            }
         }
         else
         {
             int s = stages.GetValueOrDefault(statKey, 0);
             int count = isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
-            double step = isSync ? 0.167 : 0.05;
-            double max = isSync ? 1.0 : 0.3;
-            return Math.Clamp(Math.Round(count * step, 2), 0.0, max);
+            if (isSync)
+            {
+                // PoMaTools: Math.round(Math.max(stages, 0) * 167 / 10) -> gives 17, 33, 50, 67, 84, 100%
+                int pct = (int)Math.Round(count * 167.0 / 10.0);
+                return pct / 100.0;
+            }
+            else
+            {
+                // PoMaTools: count * 5 -> gives 5, 10, 15, 20, 25, 30%
+                int pct = count * 5;
+                return pct / 100.0;
+            }
         }
     }
 
@@ -752,30 +782,74 @@ public class DamageCalculatorService
         {
             if (move.IsSync && !string.IsNullOrEmpty(move.Description))
             {
-                // Target Lowered Stats
-                string[] stats = ["def", "spd", "spe", "atk", "spa"];
-                string[] names = ["Defense", "Sp. Def", "Speed", "Attack", "Sp. Atk"];
+                // Target Lowered Stats: step is 167 per stage up to 1000 (total base 1000 + 1000 = 2000 => 2.0x)
+                string[] stats = ["def", "spd", "spe", "atk", "spa", "acc", "eva"];
+                string[] names = ["Defense", "Sp. Def", "Speed", "Attack", "Sp. Atk", "accuracy", "evasiveness"];
                 for (int i = 0; i < stats.Length; i++)
                 {
-                    if (move.Description.Contains($"more the target’s {names[i]} is lowered", StringComparison.OrdinalIgnoreCase))
+                    if (move.Description.Contains($"more the target’s {names[i]} is lowered", StringComparison.OrdinalIgnoreCase) ||
+                        move.Description.Contains($"more the target's {names[i]} is lowered", StringComparison.OrdinalIgnoreCase))
                     {
                         int st = enemy.Stages.GetValueOrDefault(stats[i], 0);
                         if (st < 0)
                         {
-                            double m = 1.0 + Math.Abs(st) * (1.0 / 6.0);
-                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}-)", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                            int stageCount = Math.Clamp(-st, 0, 6);
+                            int bonus1000 = Math.Min(stageCount * 167, 1000);
+                            double m = (1000 + bonus1000) / 1000.0;
+                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
                             return m;
                         }
                     }
-                    if (move.Description.Contains($"more the user’s {names[i]} is raised", StringComparison.OrdinalIgnoreCase))
+                    if (move.Description.Contains($"more the user’s {names[i]} is raised", StringComparison.OrdinalIgnoreCase) ||
+                        move.Description.Contains($"more the user's {names[i]} is raised", StringComparison.OrdinalIgnoreCase))
                     {
                         int st = ally.Stages.GetValueOrDefault(stats[i], 0);
                         if (st > 0)
                         {
-                            double m = 1.0 + st * (1.0 / 6.0);
-                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}+)", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                            int stageCount = Math.Clamp(st, 0, 6);
+                            int bonus1000 = Math.Min(stageCount * 167, 1000);
+                            double m = (1000 + bonus1000) / 1000.0;
+                            pills.Add(new MultiplierPill { Label = $"Sync Scaling ({names[i]}+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
                             return m;
                         }
+                    }
+                }
+
+                // All Stats user raised (e.g. "The more the user’s stats are raised...")
+                if (move.Description.Contains("more the user’s stats are raised", StringComparison.OrdinalIgnoreCase) ||
+                    move.Description.Contains("more the user's stats are raised", StringComparison.OrdinalIgnoreCase))
+                {
+                    int sumRaised = 0;
+                    foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
+                    {
+                        int s = ally.Stages.GetValueOrDefault(k, 0);
+                        if (s > 0) sumRaised += Math.Clamp(s, 0, 6);
+                    }
+                    if (sumRaised > 0)
+                    {
+                        int bonus1000 = Math.Min(sumRaised * 67, 1200);
+                        double m = (1000 + bonus1000) / 1000.0;
+                        pills.Add(new MultiplierPill { Label = "Sync Scaling (Stats+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
+                        return m;
+                    }
+                }
+
+                // All Stats target lowered (e.g. "The more the target’s stats are lowered...")
+                if (move.Description.Contains("more the target’s stats are lowered", StringComparison.OrdinalIgnoreCase) ||
+                    move.Description.Contains("more the target's stats are lowered", StringComparison.OrdinalIgnoreCase))
+                {
+                    int sumLowered = 0;
+                    foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
+                    {
+                        int s = enemy.Stages.GetValueOrDefault(k, 0);
+                        if (s < 0) sumLowered += Math.Clamp(-s, 0, 6);
+                    }
+                    if (sumLowered > 0)
+                    {
+                        int bonus1000 = Math.Min(sumLowered * 67, 1200);
+                        double m = (1000 + bonus1000) / 1000.0;
+                        pills.Add(new MultiplierPill { Label = "Sync Scaling (Stats-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
+                        return m;
                     }
                 }
 
@@ -803,6 +877,54 @@ public class DamageCalculatorService
                 if (move.Description.Contains("target is frozen", StringComparison.OrdinalIgnoreCase) && enemy.StatusCondition == "frozen")
                 {
                     pills.Add(new MultiplierPill { Label = "Sync Scaling (Frozen)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+
+                // Volatile Status on Target (Confused, Trapped, Flinching)
+                if (move.Description.Contains("confused", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("confused", false))
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Confused)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+                if (move.Description.Contains("trapped", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("trapped", false))
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Trapped)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+                if (move.Description.Contains("flinching", StringComparison.OrdinalIgnoreCase) && enemy.VolatileStatus.GetValueOrDefault("flinching", false))
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Flinching)", Value = "×2.0", Color = "#fd79a8" });
+                    return 2.0;
+                }
+
+                // Weather / Terrain / Zone
+                if (move.Description.Contains("when the weather is sunny", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during sunny weather", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Sunny") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Sun)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
+                }
+                if (move.Description.Contains("when the weather is rainy", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during rainy weather", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Rainy") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Rain)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
+                }
+                if (move.Description.Contains("when the weather is sandstorm", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during a sandstorm", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Sandstorm") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Sand)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
+                }
+                if (move.Description.Contains("when the weather is hail", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("during hail", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (field.Weather == "Hail") { pills.Add(new MultiplierPill { Label = "Sync Scaling (Hail)", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
+                }
+                if (move.Description.Contains("when the terrain is", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(field.Terrain)) { pills.Add(new MultiplierPill { Label = $"Sync Scaling ({field.Terrain})", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
+                }
+                if (move.Description.Contains("when a zone is", StringComparison.OrdinalIgnoreCase) || move.Description.Contains("in a zone", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (!string.IsNullOrEmpty(field.Zone)) { pills.Add(new MultiplierPill { Label = $"Sync Scaling ({field.Zone})", Value = "×2.0", Color = "#fd79a8" }); return 2.0; }
+                }
+                if (move.Description.Contains("rebuff", StringComparison.OrdinalIgnoreCase) && enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0)
+                {
+                    pills.Add(new MultiplierPill { Label = "Sync Scaling (Rebuff-)", Value = "×2.0", Color = "#fd79a8" });
                     return 2.0;
                 }
             }
@@ -856,6 +978,7 @@ public class DamageCalculatorService
                 "any_weather" => !string.IsNullOrEmpty(field.Weather),
                 "electric_terrain" => field.Terrain == "Electric Terrain",
                 "grassy_terrain" => field.Terrain == "Grassy Terrain",
+                "psychic_terrain" => field.Terrain == "Psychic Terrain",
                 "any_terrain" => !string.IsNullOrEmpty(field.Terrain),
                 "burned" => enemy.StatusCondition == "burned",
                 "paralyzed" => enemy.StatusCondition == "paralyzed",
@@ -879,17 +1002,22 @@ public class DamageCalculatorService
             count = isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
         }
 
-        double step = rule.StepPer1000 / 1000.0;
-        double mult = 1.0 + count * step;
+        int step = rule.StepPer1000 > 0 ? rule.StepPer1000 : (move.IsSync ? (rule.Stat == "all_stats" ? 67 : 167) : 50);
+        int bonus = count * step;
         if (rule.CapPer1000 > 0)
         {
-            mult = Math.Clamp(mult, 0.0, rule.CapPer1000 / 1000.0);
+            bonus = Math.Min(bonus, rule.CapPer1000);
+        }
+        else if (move.IsSync)
+        {
+            bonus = Math.Min(bonus, rule.Stat == "all_stats" ? 1200 : 1000);
         }
 
+        double mult = (1000 + bonus) / 1000.0;
         if (mult > 1.0)
         {
             string label = rule.Stat.StartsWith("cond:") ? rule.Stat.Substring(5) : rule.Stat;
-            pills.Add(new MultiplierPill { Label = $"Move Scaling ({label})", Value = $"×{mult:0.##}", Color = "#fd79a8" });
+            pills.Add(new MultiplierPill { Label = $"Move Scaling ({label})", Value = $"×{mult:0.###}", Color = "#fd79a8" });
         }
 
         return mult;
@@ -901,7 +1029,8 @@ public class DamageCalculatorService
         string normMove = moveName.Replace("\r", "").Replace("\n", " ").Trim();
         string normTarget = targetName.Replace("\r", "").Replace("\n", " ").Trim();
         if (string.Equals(normMove, normTarget, StringComparison.OrdinalIgnoreCase)) return true;
-        if (isSync && (normTarget.EndsWith("Sync Beam", StringComparison.OrdinalIgnoreCase) ||
+        if (isSync && (normTarget.Contains("Sync Move", StringComparison.OrdinalIgnoreCase) ||
+                       normTarget.EndsWith("Sync Beam", StringComparison.OrdinalIgnoreCase) ||
                        normTarget.EndsWith("Sync Impact", StringComparison.OrdinalIgnoreCase) ||
                        normTarget.EndsWith("Tera Blast", StringComparison.OrdinalIgnoreCase) ||
                        normMove.Contains(normTarget, StringComparison.OrdinalIgnoreCase) ||
