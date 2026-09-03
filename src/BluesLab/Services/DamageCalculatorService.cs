@@ -497,13 +497,13 @@ public class DamageCalculatorService
             pills.Add(new MultiplierPill { Label = field.Zone, Value = field.ZoneEx ? "×3.0" : "×1.5", Color = "#8e44ad" });
         }
 
-        // Tera Boost
+        // Tera Boost (does not apply to Sync Moves)
         bool isTeraForm = ally.FormIndex > 0 && ally.FormIndex <= pair.Variations.Count &&
             (pair.Variations[ally.FormIndex - 1].FormName?.Contains("Tera", StringComparison.OrdinalIgnoreCase) == true ||
              pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true ||
              pair.Variations[ally.FormIndex - 1].TerastalMoveId > 0);
 
-        if (isTeraForm)
+        if (isTeraForm && !move.IsSync)
         {
             if (isStellarForm)
             {
