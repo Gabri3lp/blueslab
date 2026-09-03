@@ -84,7 +84,7 @@
       "accuracy": "90",
       "gauge": "1",
       "target": "An opponent",
-      "description": "Lowers the target’s accuracy by stat ranks.",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "90",
       "gauge": "3",
       "target": "All opponents",
-      "description": "Has a chance (%) of making the target flinch.",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen a sandstorm is caused.\nDeactivation Condition:\nWhen the weather condition is no longer a sandstorm. Never misses. Lowers the target’s Defense, Sp. Def, and Speed by stat ranks. Leaves the target paralyzed.",
+      "description": "Activation Condition: When a sandstorm is caused.\nDeactivation Condition: When the weather condition is no longer a sandstorm.\n\nNever misses. Lowers the target’s Defense, Sp. Def, and Speed by 1 stat rank. Leaves the target paralyzed.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Reduces the user’s sync move countdown by. Raises the of all allied sync pairs by stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the critical-hit rate of all allied sync pairs by 3 stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -144,12 +144,12 @@
     {
       "id": 99020701,
       "name": "Stream Forward, Sandstorm!",
-      "description": "Causes a sandstorm when the user is hit by an attack move. Raises the of all allied sync pairs by stat ranks when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
+      "description": "Causes a sandstorm when the user is hit by an attack move. Raises the evasiveness of all allied sync pairs by 2 stat ranks when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
       "childPassives": [
         {
           "id": 19052209,
           "name": "Take Hit: Sandstorm 9",
-          "description": "Causes a sandstorm when the user is hit by an attack move."
+          "description": "Has a chance (100%) of causing a sandstorm when the user is hit by an attack move."
         },
         {
           "id": 17014101,
@@ -159,20 +159,20 @@
         {
           "id": 18118809,
           "name": "Take Hit: Team Evasiveness ↑2 9",
-          "description": "Raises the of all allied sync pairs by stat ranks when the user is hit by an attack move."
+          "description": "Has a chance (100%) of raising the evasiveness of all allied sync pairs by 2 stat ranks when the user is hit by an attack move."
         }
       ]
     },
     {
       "id": 99020801,
       "name": "Take By Storm and Take a Selfie",
-      "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by when an opponent’s attack move targeting the user misses.",
+      "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by 1 when an opponent’s attack move targeting the user misses.",
       "childPassives": []
     },
     {
       "id": 11015009,
       "name": "Hit Paralyzed Opp: Team HP Recovery 9",
-      "description": "Restores the HP of all allied sync pairs when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (100%) of restoring the HP of all allied sync pairs when the user’s attack move is successful against a paralyzed opponent.",
       "childPassives": []
     }
   ],

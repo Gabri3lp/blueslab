@@ -84,7 +84,7 @@
       "accuracy": "0",
       "gauge": "1",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the target’s Defense and Sp. Def by stat ranks. Leaves the target poisoned. Removes a damage field from the allied field of play. Removes the trapped condition from the user.",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s Defense and Sp. Def by 3 stat ranks. Leaves the target badly poisoned. Removes a damage field from the allied field of play. Removes the trapped condition from the user.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "An opponent",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play. Never misses. This attack’s power is doubled when the target is poisoned or badly poisoned. Applies the Physical Move Break effect and Special Move Break effect to the target the first time this attack move is successful each battle. Turns the field of play’s zone into a. (A powers up -type attacks.) Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play.\n\nNever misses. This attack’s power is doubled when the target is poisoned or badly poisoned. Applies the Physical Move Break effect and Special Move Break effect to the target the first time this attack move is successful each battle. Turns the field of play’s zone into a Poison Zone. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Reduces the user’s sync move countdown by two. Uses a maximum of slots of the user’s move gauge. The more amount used, the more it raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs (can be raised by up to stat ranks maximum).",
+      "description": "Reduces the user’s sync move countdown by two. Uses a maximum of slots of the user’s move gauge. The more amount used, the more it raises the Attack, Defense, Sp. Atk, and Sp. Def of all allied sync pairs (can be raised by up to stat ranks maximum).",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks the first time the user’s sync move is used each battle.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 3 ranks the first time the user’s sync move is used each battle.",
       "isSync": true
     }
   ],
@@ -150,13 +150,13 @@
     {
       "id": 29021301,
       "name": "Toxic Judgment",
-      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
+      "description": "Raises the Poison Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Poison Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99044401,
       "name": "Incapable of Holding Back",
-      "description": "Leaves all opposing sync pairs badly poisoned the first time the user enters a battle each battle. Raises the of all allied sync pairs by stat ranks when the user enters a battle.",
+      "description": "Leaves all opposing sync pairs badly poisoned the first time the user enters a battle each battle. Raises the Attack and Sp. Atk of all allied sync pairs by 4 stat ranks when the user enters a battle.",
       "childPassives": [
         {
           "id": 17088301,
@@ -166,7 +166,7 @@
         {
           "id": 18096103,
           "name": "Team Sharp Entry 3",
-          "description": "Raises the critical-hit rate of all allied sync pairs by stat ranks when the user enters a battle."
+          "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks when the user enters a battle."
         }
       ]
     },

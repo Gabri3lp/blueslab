@@ -84,7 +84,7 @@
       "accuracy": "95",
       "gauge": "1",
       "target": "An opponent",
-      "description": "Has a chance (%) of raising the user’s Attack by stat ranks.",
+      "description": "Has a chance (10%) of raising the user’s Attack by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "1",
       "target": "An ally",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
+      "description": "Restores an ally’s HP by approximately 60% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Turns the field of play’s zone into a. (A powers up -type attacks.) Raises the Defense and Sp. Def of all allied sync pairs by stat ranks.",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nTurns the field of play’s zone into a Steel Zone. (A Steel Zone powers up Steel-type attacks.) Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 4 stat ranks. Raises the accuracy of all allied sync pairs by 1 stat rank. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -144,39 +144,39 @@
     {
       "id": 99040501,
       "name": "Black Steel in Galar Skies",
-      "description": "Grants all of the following effects when the user turns the field of play’s zone into a: Reduces the user’s sync move countdown by. Applies to the allied field of play. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Grants all of the following effects when the user turns the field of play’s zone into a Steel Zone: Reduces the user’s sync move countdown by 1. Applies Galar Circle (Defensive) to the allied field of play. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "childPassives": [
         {
           "id": 15016001,
           "name": "User Sets Steel Zone: Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by when it turns the field of play’s zone into a."
+          "description": "Reduces the user’s sync move countdown by 1 when it turns the field of play’s zone into a Steel Zone."
         },
         {
           "id": 19065001,
           "name": "User Sets Steel Zone: Galar C (Def) on Field",
-          "description": "Applies to the allied field of play when the user turns the field of play’s zone into a."
+          "description": "Applies Galar Circle (Defensive) to the allied field of play when the user turns the field of play’s zone into a Steel Zone."
         },
         {
           "id": 17093109,
           "name": "User Sets Steel Zone: Team Phys & Spec Boost ↑1 9",
-          "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when the user turns the field of play’s zone into a."
+          "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user turns the field of play’s zone into a Steel Zone."
         }
       ]
     },
     {
       "id": 99040601,
       "name": "Winged Reign of Terror",
-      "description": "Extends the duration of the when the zone turns into a while the user is on the field. Extends the duration of when is applied to the allied field of play.",
+      "description": "Extends the duration of the Steel Zone when the zone turns into a Steel Zone while the user is on the field. Extends the duration of Galar Circle (Defensive) when Galar Circle (Defensive) is applied to the allied field of play.",
       "childPassives": [
         {
           "id": 19057003,
           "name": "Galar C (Defensive) Extension 3",
-          "description": "Extends the duration of when is applied to the allied field of play."
+          "description": "Extends the duration of Galar Circle (Defensive) when Galar Circle (Defensive) is applied to the allied field of play."
         },
         {
           "id": 19027803,
           "name": "Steel Zone Extension 3",
-          "description": "Extends the duration of the when the zone turns into a while the user is on the field."
+          "description": "Extends the duration of the Steel Zone when the zone turns into a Steel Zone while the user is on the field."
         }
       ]
     },

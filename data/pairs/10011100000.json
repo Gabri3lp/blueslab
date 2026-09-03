@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition on the opponent’s field of play. Lowers the target’s by stat ranks. Has a chance (%) of leaving the target poisoned. This attack’s power increases 50% when the terrain is.",
+      "description": "Activation Condition: When there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon affected by a status condition on the opponent’s field of play.\n\nLowers the target’s Sp. Def by 2 stat ranks. Has a chance (10%) of leaving the target poisoned. This attack’s power increases 50% when the terrain is Electric Terrain.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 99014001,
       "name": "Amped and Vibed",
-      "description": "Turns the field of play’s zone into a the first time the user’s max move is used each battle. (A powers up -type attacks.) Extends the duration of the when the zone turns into a while the user is on the field.",
+      "description": "Turns the field of play’s zone into a Poison Zone the first time the user’s max move is used each battle. (A Poison Zone powers up Poison-type attacks.) Extends the duration of the Poison Zone when the zone turns into a Poison Zone while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 12010603,
       "name": "Turbo Charge 3",
-      "description": "Quickly charges the move gauge when the terrain is.",
+      "description": "Quickly charges the move gauge when the terrain is Electric Terrain.",
       "childPassives": []
     },
     {
       "id": 18111109,
       "name": "Hit Poisoned Opp: Attack ↓ & Hit Paralyzed Opp: Sp. Atk ↓ 9",
-      "description": "Lowers the target’s by stat ranks when the user’s attack move is successful against a poisoned or badly poisoned opponent. Lowers the target’s by stat ranks when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s attack move is successful against a poisoned or badly poisoned opponent. Has a chance (100%) of lowering the target’s Sp. Atk by 1 stat rank when the user’s attack move is successful against a paralyzed opponent.",
       "childPassives": []
     }
   ],

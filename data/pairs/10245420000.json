@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Lowers the target’s Attack by stat ranks.",
+      "description": "Lowers the target’s Attack by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
+      "description": "Restores an ally’s HP by approximately 20% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised. Never misses. Raises the user’s by stat ranks. Attacks the target two to five times in a row. Raises one of the user’s following stats by stat ranks at random when attacking at least three times in a row: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the to the user when attacking at least four times in a row. Increases the user’s by ranks when attacking five times in a row. If the remaining MP for the user’s is or more when attacking with this move, reduces those MP by and grants all of the following effects: Maximizes the number of attacks. Reduces the user’s sync move countdown by.",
+      "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nNever misses. Raises the user’s Speed by 1 stat rank. Attacks the target two to five times in a row. Raises one of the user’s following stats by 1 stat rank at random when attacking at least three times in a row: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the Free Move Next effect to the user when attacking at least four times in a row. Increases the user’s Physical Moves ↑ Next effect by 3 ranks when attacking five times in a row. If the remaining MP for the user’s Sitrus Berry is 1 or more when attacking with this move, reduces those MP by 1 and grants all of the following effects: Maximizes the number of attacks. Reduces the user’s sync move countdown by 1.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s Speed by 2 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -144,34 +144,34 @@
     {
       "id": 99024101,
       "name": "Hungry Buddy",
-      "description": "Reduces the user’s sync move countdown by the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the of all allied sync pairs by ranks the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
       "childPassives": [
         {
           "id": 15013301,
           "name": "1st “Berry” MP 0: Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
+          "description": "Reduces the user’s sync move countdown by 1 the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
         },
         {
           "id": 17080801,
           "name": "1st “Berry” MP 0: Team Physical Boost 1",
-          "description": "Increases the of all allied sync pairs by ranks the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
+          "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank(s) the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
         }
       ]
     },
     {
       "id": 99024201,
       "name": "Ms. Marnie’s Motorcycling Skills",
-      "description": "Has a chance (%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of restoring the user’s HP for each hit. Has a chance (%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of charging the user’s move gauge by one for each hit.",
+      "description": "Has a chance (30%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance (30%) of restoring the user’s HP for each hit. Has a chance (30%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (30%) of charging the user’s move gauge by one for each hit.",
       "childPassives": [
         {
           "id": 11012202,
           "name": "Restoring Strike 2",
-          "description": "Has a chance (%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of restoring the user’s HP for each hit."
+          "description": "Has a chance (30%) of restoring the user’s HP when its attack move hits. If the move has the multistrike effect tag, has a chance (30%) of restoring the user’s HP for each hit."
         },
         {
           "id": 12021902,
           "name": "Recharging Strike 2",
-          "description": "Has a chance (%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (%) of charging the user’s move gauge by one for each hit."
+          "description": "Has a chance (30%) of charging the user’s move gauge by one when its attack move hits. If the move has the multistrike effect tag, has a chance (30%) of charging the user’s move gauge by one for each hit."
         }
       ]
     },

@@ -84,7 +84,7 @@
       "accuracy": "85",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
+      "description": "Has a chance (40%) of lowering the target’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "An ally",
-      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by %. Reduces special attack move and special sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Sinnoh Circle (Special) to the allied field of play. Sinnoh Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Sinnoh theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen your team’s sync move countdown is reduced by while this move is deactivated.\nDeactivation Condition:\nWhen this move is used. Except in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s by stat ranks. The power of this move is not lowered even if there are multiple targets. Increases the of all allied sync pairs by ranks.",
+      "description": "Activation Condition: When your team’s sync move countdown is reduced by 3 while this move is deactivated.\nDeactivation Condition: When this move is used.\n\nExcept in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s Sp. Def by 2 stat ranks. The power of this move is not lowered even if there are multiple targets. Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the of all allied sync pairs by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the Speed of all allied sync pairs by 4 stat ranks. Raises the user’s evasiveness by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,39 +144,39 @@
     {
       "id": 99022001,
       "name": "Conveying Kindness",
-      "description": "Reduces the user’s sync move countdown by the first time it applies to the allied field of play each battle. Raises the user’s by stat ranks the first time it applies to the allied field of play each battle.",
+      "description": "Reduces the user’s sync move countdown by 3 the first time it applies Sinnoh Circle (Special) to the allied field of play each battle. Raises the user’s Sp. Atk by 4 stat ranks the first time it applies Sinnoh Circle (Special) to the allied field of play each battle.",
       "childPassives": [
         {
           "id": 15014003,
           "name": "1st Time User Sets Sinnoh C (Spec): Sync CD ↓ 3",
-          "description": "Reduces the user’s sync move countdown by the first time it applies to the allied field of play each battle."
+          "description": "Reduces the user’s sync move countdown by 3 the first time it applies Sinnoh Circle (Special) to the allied field of play each battle."
         },
         {
           "id": 18119404,
           "name": "1st Time User Sets Sinnoh C (Spec): Sp. Atk ↑ 4",
-          "description": "Raises the user’s by stat ranks the first time it applies to the allied field of play each battle."
+          "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time it applies Sinnoh Circle (Special) to the allied field of play each battle."
         }
       ]
     },
     {
       "id": 99022101,
       "name": "Blossoming Talent",
-      "description": "Raises the user’s accuracy and critical-hit rate by stat ranks when its move is successful. Charges the user’s move gauge by when its move is successful.",
+      "description": "Raises the user’s accuracy and critical-hit rate by 1 stat rank when its move is successful. Charges the user’s move gauge by 2 when its move is successful.",
       "childPassives": [
         {
           "id": 18106401,
           "name": "Precision 1",
-          "description": "Raises the user’s by stat ranks when its move is successful."
+          "description": "Raises the user’s accuracy by 1 stat rank when its move is successful."
         },
         {
           "id": 18094401,
           "name": "Critical Eye 1",
-          "description": "Raises the user’s critical-hit rate by stat ranks when its move is successful."
+          "description": "Raises the user’s critical-hit rate by 1 stat rank when its move is successful."
         },
         {
           "id": 18117209,
           "name": "Move: MG ↑2 9",
-          "description": "Charges the user’s move gauge by when its move is successful."
+          "description": "Has a chance (100%) of charging the user’s move gauge by 2 when its move is successful."
         }
       ]
     },

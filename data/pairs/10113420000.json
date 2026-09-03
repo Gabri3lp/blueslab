@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "3",
       "target": "An opponent",
-      "description": "Has a chance (%) of lowering the target’s Sp. Def by stat ranks.",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "An ally",
-      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by %. Reduces special attack move and special sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Johto Circle (Special) to the allied field of play. Johto Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Johto theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All allies",
-      "description": "Activation Condition:\nWhen is applied to the allied field of play.\nDeactivation Condition:\nCannot be deactivated. Raises the Defense and Sp. Def of all allied sync pairs by stat ranks. Increases the of all allied sync pairs by ranks.",
+      "description": "Activation Condition: When Johto Circle (Special) is applied to the allied field of play.\nDeactivation Condition: Cannot be deactivated.\n\nRaises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Applies the Gradual Healing effect to an ally. Applies the Critical Hit Next effect to an ally. Increases the of an ally by ranks.",
+      "description": "Applies the Gradual Healing effect to an ally. Applies the Critical Hit Next effect to an ally. Increases the Special Moves ↑ Next effect of an ally by 3 ranks.",
       "isSync": false
     },
     {
@@ -144,29 +144,29 @@
     {
       "id": 99035101,
       "name": "Caring Iron Guard",
-      "description": "Grants all of the following effects the first time the user applies to the allied field of play each battle: Raises the of all allied sync pairs by stat ranks. Raises the of all allied sync pairs by stat ranks. Applies the to all allied sync pairs.",
+      "description": "Grants all of the following effects the first time the user applies Johto Circle (Special) to the allied field of play each battle: Raises the Sp. Atk of all allied sync pairs by 4 stat ranks. Raises the critical-hit rate of all allied sync pairs by 3 stat ranks. Applies the Enduring effect to all allied sync pairs.",
       "childPassives": [
         {
           "id": 18125204,
           "name": "1st Time User Sets Johto C (Spec): Team Sp. Atk ↑ 4",
-          "description": "Raises the of all allied sync pairs by stat ranks the first time the user applies to the allied field of play each battle."
+          "description": "Raises the Sp. Atk of all allied sync pairs by 4 stat ranks the first time the user applies Johto Circle (Special) to the allied field of play each battle."
         },
         {
           "id": 18125303,
           "name": "1st Time User Sets Johto C (Spec): Team Crit Rate ↑ 3",
-          "description": "Raises the of all allied sync pairs by stat ranks the first time the user applies to the allied field of play each battle."
+          "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks the first time the user applies Johto Circle (Special) to the allied field of play each battle."
         },
         {
           "id": 17088701,
           "name": "1st Time User Sets Johto C (Spec): Team Endure",
-          "description": "Applies the to all allied sync pairs the first time the user applies to the allied field of play each battle."
+          "description": "Applies the Enduring effect to all allied sync pairs the first time the user applies Johto Circle (Special) to the allied field of play each battle."
         }
       ]
     },
     {
       "id": 99035201,
       "name": "Hang On, Steel Heart!",
-      "description": "Applies the to the target the first time the user’s attack move against that target is successful each battle. Lowers the target’s by stat ranks when the user’s attack move against it is successful.",
+      "description": "Applies the Special Move Break effect to the target the first time the user’s attack move against that target is successful each battle. Lowers the target’s Sp. Def by 2 stat ranks when the user’s attack move against it is successful.",
       "childPassives": [
         {
           "id": 17097701,
@@ -176,14 +176,14 @@
         {
           "id": 18118509,
           "name": "Hit: Sp. Def ↓2 9",
-          "description": "Lowers the target’s by stat ranks when the user’s attack move against it is successful."
+          "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s attack move against it is successful."
         }
       ]
     },
     {
       "id": 17088909,
       "name": "Johto C (Spec) & Move: Free Move Next 9",
-      "description": "Applies the to the user when its move is successful while applies to the allied field of play.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its move is successful while Johto Circle (Special) applies to the allied field of play.",
       "childPassives": []
     }
   ],

@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "0",
       "target": "An opponent",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Uses a maximum of slots of the user’s move gauge. This attack’s power increases based on the amount used. Turns the field of play’s zone into a. (A powers up -type attacks.)",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nUses a maximum of 6 slots of the user’s move gauge. This attack’s power increases based on the amount used. Turns the field of play’s zone into a Bug Zone. (A Bug Zone powers up Bug-type attacks.)",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Sp. Atk by 6 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "Increases the user’s by ranks.",
+      "description": "Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 29010601,
       "name": "Insect Myth",
-      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Bug theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 29020601,
       "name": "Insect Judgment",
-      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
+      "description": "Raises the Bug Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Bug Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99025201,
       "name": "The Wandering Champion",
-      "description": "Normal-type moves become -type moves. When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "description": "Normal-type moves become Bug-type moves. When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
       "childPassives": [
         {
           "id": 23012101,
@@ -173,12 +173,12 @@
     {
       "id": 99026301,
       "name": "Been Through Enough",
-      "description": "The user’s moves never miss. Increases the user’s by ranks when an ally turns the field of play’s zone into a.",
+      "description": "The user’s moves never miss. Increases the user’s Special Moves ↑ Next effect by 1 rank when an ally turns the field of play’s zone into a Bug Zone.",
       "childPassives": [
         {
           "id": 17082509,
           "name": "Ally Sets Bug Zone: Special Boost ↑1 9",
-          "description": "Increases the user’s by ranks when an ally turns the field of play’s zone into a."
+          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 1 rank when an ally turns the field of play’s zone into a Bug Zone."
         },
         {
           "id": 13030101,
@@ -190,7 +190,7 @@
     {
       "id": 15010303,
       "name": "Adrenaline 3",
-      "description": "Reduces the sync move countdown by the first time the user’s sync move is used each battle.",
+      "description": "Reduces the sync move countdown by 3 the first time the user’s sync move is used each battle.",
       "childPassives": []
     }
   ],
