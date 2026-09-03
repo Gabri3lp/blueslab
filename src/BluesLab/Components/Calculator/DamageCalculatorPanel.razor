@@ -102,7 +102,7 @@
                     <button class="btn btn-outline-info btn-sm py-0 px-2" style="font-size: 0.75rem;" @onclick="() => _showCirclesPanel = !_showCirclesPanel">
                         <i class="bi bi-record-circle me-1"></i> Battle Circles @(GetActiveCirclesCount() > 0 ? $"({GetActiveCirclesCount()})" : "")
                     </button>
-                    @if (!string.IsNullOrEmpty(Field.Zone) || !string.IsNullOrEmpty(Field.Terrain) || !string.IsNullOrEmpty(Field.Weather) || Field.TargetCount != 1 || !string.IsNullOrEmpty(Ally.DamageField) || !string.IsNullOrEmpty(Enemy.DamageField))
+                    @if (!string.IsNullOrEmpty(Field.Zone) || !string.IsNullOrEmpty(Field.Terrain) || !string.IsNullOrEmpty(Field.Weather) || Field.TargetCount != 1 || !string.IsNullOrEmpty(Ally.DamageField) || !string.IsNullOrEmpty(Enemy.DamageField) || Ally.PhysicalDamageReduction || Ally.SpecialDamageReduction || Enemy.PhysicalDamageReduction || Enemy.SpecialDamageReduction)
                     {
                         <button class="btn btn-outline-secondary btn-sm py-0 px-2 text-muted" style="font-size: 0.7rem;" @onclick="ResetFieldEffects">
                             Reset Field
@@ -113,13 +113,13 @@
 
             <!-- Primary Field Conditions: Zone, Terrain, Weather, Targets -->
             <div class="d-flex flex-wrap align-items-center gap-3">
-                <!-- Zone -->
+                <!-- Zone (13 Valid PMEX Zones) -->
                 <div class="d-flex align-items-center gap-1">
                     <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Zone:</span>
                     <div class="input-group input-group-sm" style="width: 170px;">
                         <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="Field.Zone" @bind:after="StateHasChanged">
                             <option value="">None</option>
-                            @foreach (var t in CombatantState.AllTypes)
+                            @foreach (var t in CombatantState.ValidZoneTypes)
                             {
                                 <option value="@t Zone">@t Zone</option>
                             }
@@ -168,7 +168,37 @@
                 </div>
             </div>
 
-            <!-- Damage Fields: User Side & Target Side -->
+            <!-- Target Side Field Effects (Damage Field & Screens) - Target on Top -->
+            <div class="d-flex flex-wrap align-items-center gap-3 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                <div class="d-flex align-items-center gap-2">
+                    <span class="small text-danger fw-bold" style="font-size: 0.75rem;"><i class="bi bi-crosshair"></i> Target Damage Field:</span>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 170px; font-size: 0.75rem;" @bind="Enemy.DamageField" @bind:after="StateHasChanged">
+                        <option value="">None (Inactive)</option>
+                        @foreach (var t in CombatantState.AllTypes)
+                        {
+                            <option value="@t">@t Damage Field</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-flex align-items-center gap-1">
+                    <span class="small text-danger fw-bold me-1" style="font-size: 0.75rem;"><i class="bi bi-shield"></i> Target Screens:</span>
+                    <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.PhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                            title="Physical Damage Reduction (Reflect)"
+                            @onclick="() => { Enemy.PhysicalDamageReduction = !Enemy.PhysicalDamageReduction; StateHasChanged(); }">
+                        <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <span>Phys Dmg Red</span>
+                    </button>
+                    <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.SpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                            title="Special Damage Reduction (Light Screen)"
+                            @onclick="() => { Enemy.SpecialDamageReduction = !Enemy.SpecialDamageReduction; StateHasChanged(); }">
+                        <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <span>Spec Dmg Red</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- User Side Field Effects (Damage Field & Screens) - User Below Target -->
             <div class="d-flex flex-wrap align-items-center gap-3 mt-2 pt-2 border-top border-secondary border-opacity-50">
                 <div class="d-flex align-items-center gap-2">
                     <span class="small text-info fw-bold" style="font-size: 0.75rem;"><i class="bi bi-shield-check"></i> User Damage Field:</span>
@@ -181,15 +211,20 @@
                     </select>
                 </div>
 
-                <div class="d-flex align-items-center gap-2">
-                    <span class="small text-danger fw-bold" style="font-size: 0.75rem;"><i class="bi bi-crosshair"></i> Target Damage Field:</span>
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 170px; font-size: 0.75rem;" @bind="Enemy.DamageField" @bind:after="StateHasChanged">
-                        <option value="">None (Inactive)</option>
-                        @foreach (var t in CombatantState.AllTypes)
-                        {
-                            <option value="@t">@t Damage Field</option>
-                        }
-                    </select>
+                <div class="d-flex align-items-center gap-1">
+                    <span class="small text-info fw-bold me-1" style="font-size: 0.75rem;"><i class="bi bi-shield"></i> User Screens:</span>
+                    <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Ally.PhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                            title="Physical Damage Reduction (Reflect)"
+                            @onclick="() => { Ally.PhysicalDamageReduction = !Ally.PhysicalDamageReduction; StateHasChanged(); }">
+                        <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <span>Phys Dmg Red</span>
+                    </button>
+                    <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Ally.SpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                            title="Special Damage Reduction (Light Screen)"
+                            @onclick="() => { Ally.SpecialDamageReduction = !Ally.SpecialDamageReduction; StateHasChanged(); }">
+                        <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <span>Spec Dmg Red</span>
+                    </button>
                 </div>
             </div>
 
@@ -224,14 +259,14 @@
                             </button>
                         </div>
 
-                        <!-- Same-Region Allies Count -->
+                        <!-- Same-Region Allies Count (Minimum 1 Ally) -->
                         <div class="d-flex align-items-center gap-1">
                             <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Allies:</span>
                             <div class="btn-group btn-group-sm">
-                                @for (int a = 0; a <= 3; a++)
+                                @for (int a = 1; a <= 3; a++)
                                 {
                                     int count = a;
-                                    <button class="btn btn-sm py-0 px-2 @(Ally.CircleAllyCount.GetValueOrDefault(_selectedCircleRegion, 0) == count ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                    <button class="btn btn-sm py-0 px-2 @(Ally.CircleAllyCount.GetValueOrDefault(_selectedCircleRegion, 1) == count ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
                                             @onclick="() => SetCircleAllyCount(_selectedCircleRegion, count)">
                                         @count
                                     </button>
@@ -247,7 +282,7 @@
                             <span class="small text-muted" style="font-size: 0.7rem;">Active:</span>
                             @foreach (var r in CombatantState.CircleRegions)
                             {
-                                int allies = Ally.CircleAllyCount.GetValueOrDefault(r, 0);
+                                int allies = Ally.CircleAllyCount.GetValueOrDefault(r, 1);
                                 if (IsCircleActive(r, "physical"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1" style="font-size: 0.7rem;">
@@ -294,7 +329,8 @@
                 @foreach (var move in ActiveMoves)
                 {
                     var result = CalcService.CalculateDamage(move, Ally, Enemy, Field, Rules, GridState.ActiveCells);
-                    <div class="card bg-dark border-secondary p-2 px-3 shadow-sm">
+                    string moveType = GetEffectiveMoveType(move);
+                    <div class="card move-card move-card-@moveType.ToLowerInvariant() p-2 px-3 shadow-sm">
                         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                             <div>
                                 <div class="d-flex align-items-center gap-2">
@@ -305,7 +341,7 @@
                                     }
                                 </div>
                                 <div class="d-flex gap-1 align-items-center mt-1">
-                                    <span class="badge type-badge type-@GetEffectiveMoveType(move).ToLowerInvariant()" style="font-size: 0.7rem;">@GetEffectiveMoveType(move)</span>
+                                    <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@moveType</span>
                                     <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
                                     <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">Power: <b class="text-warning">@result.ScaledMovePower</b></span>
                                 </div>
@@ -335,116 +371,9 @@
             </div>
         </div>
 
-        <!-- 4. User & Target Cards Section -->
+        <!-- 4. Target & User Cards Section (Target Above User) -->
         <div class="d-flex flex-column gap-2">
-            <!-- 4A. User Card (Renamed from Attacker Buffs) -->
-            <div class="card bg-dark border-secondary p-3 shadow-sm">
-                <h6 class="text-info fw-bold mb-2 d-flex align-items-center gap-2">
-                    <i class="bi bi-person-fill"></i> User
-                </h6>
-
-                <!-- User Stat Stages Dropdowns -->
-                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2">
-                    @foreach (var stat in new[] { "atk", "def", "spa", "spd", "spe", "crit" })
-                    {
-                        int val = Ally.Stages.GetValueOrDefault(stat, stat == "crit" ? 3 : 6);
-                        int maxStage = stat == "crit" ? 3 : 6;
-                        int minStage = stat == "crit" ? 0 : -6;
-                        <div class="col">
-                            <div class="p-1 px-2 rounded bg-black bg-opacity-40 border border-secondary border-opacity-75 d-flex align-items-center justify-content-between gap-1">
-                                <span class="small fw-bold text-secondary text-uppercase" style="font-size: 0.75rem;">@stat</span>
-                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center"
-                                        style="width: 58px; font-size: 0.75rem; height: 26px;"
-                                        value="@val"
-                                        @onchange="(e) => OnAllyStageSelect(stat, e)">
-                                    @for (int s = maxStage; s >= minStage; s--)
-                                    {
-                                        <option value="@s">@(s > 0 ? $"+{s}" : s.ToString())</option>
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                <!-- Next Boosts (PMUN, SMUN, SYUN & Toggles) -->
-                <div class="d-flex flex-wrap align-items-center gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
-                    <!-- PMUN Dropdown -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
-                        <span class="text-light fw-bold">PMUN:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
-                                value="@Ally.PhysicalBoostNext"
-                                @onchange="OnPmunSelect">
-                            @for (int b = 0; b <= 10; b++)
-                            {
-                                <option value="@b">@b</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- SMUN Dropdown -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
-                        <span class="text-light fw-bold">SMUN:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
-                                value="@Ally.SpecialBoostNext"
-                                @onchange="OnSmunSelect">
-                            @for (int b = 0; b <= 10; b++)
-                            {
-                                <option value="@b">@b</option>
-                            }
-                        </select>
-                    </div>
-
-                    <!-- SYUN (Sync Move Up Next) Dropdown -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
-                        <span class="text-light fw-bold">SYUN:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
-                                value="@Ally.SyncMoveBoostNext"
-                                @onchange="OnSyunSelect">
-                            @for (int b = 0; b <= 10; b++)
-                            {
-                                <option value="@b">@b</option>
-                            }
-                        </select>
-                    </div>
-
-                    <button class="btn btn-sm py-1 px-2 @(Ally.IsCriticalMove ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.IsCriticalMove = !Ally.IsCriticalMove; StateHasChanged(); }">Crit Hit</button>
-                    <button class="btn btn-sm py-1 px-2 @(Ally.SuperEffectiveNext ? "btn-danger" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SuperEffectiveNext = !Ally.SuperEffectiveNext; StateHasChanged(); }">SE Next (×3)</button>
-                    <button class="btn btn-sm py-1 px-2 @(Ally.PhysicalBreak ? "btn-pink" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.PhysicalBreak = !Ally.PhysicalBreak; StateHasChanged(); }">Phys Break</button>
-                    <button class="btn btn-sm py-1 px-2 @(Ally.SpecialBreak ? "btn-pink" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SpecialBreak = !Ally.SpecialBreak; StateHasChanged(); }">Spec Break</button>
-                    <button class="btn btn-sm py-1 px-2 @(Ally.PhysicalDamageReduction ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.PhysicalDamageReduction = !Ally.PhysicalDamageReduction; StateHasChanged(); }">Phys Dmg Red</button>
-                    <button class="btn btn-sm py-1 px-2 @(Ally.SpecialDamageReduction ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SpecialDamageReduction = !Ally.SpecialDamageReduction; StateHasChanged(); }">Spec Dmg Red</button>
-                </div>
-
-                <!-- Sync Buffs & Lucky Skill -->
-                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
-                    <div class="d-flex align-items-center gap-2">
-                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Sync Buff: <b class="text-warning">×@(1.0 + Ally.SyncBoosts * 0.5)</b></span>
-                        <div class="btn-group btn-group-sm">
-                            @for (int sb = 0; sb <= 9; sb++)
-                            {
-                                int s = sb;
-                                <button class="btn btn-sm py-0 px-2 @(Ally.SyncBoosts == s ? "btn-warning fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SyncBoosts = s; StateHasChanged(); }">
-                                    @s
-                                </button>
-                            }
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center gap-2">
-                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Lucky Skill:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 180px; font-size: 0.75rem;" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
-                            <option value="">(None)</option>
-                            @foreach (var ls in Rules.LuckySkills.Where(s => s.IsAvailableFor(Ally.Pair.Role, Ally.Pair.DisplayName)))
-                            {
-                                <option value="@ls.Name">@ls.Name</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4B. Target Card (Renamed from Defender / Enemy) -->
+            <!-- 4A. Target Card (On Top) -->
             <div class="card bg-dark border-secondary p-3 shadow-sm">
                 <h6 class="text-danger fw-bold mb-2 d-flex align-items-center gap-2">
                     <i class="bi bi-crosshair"></i> Target
@@ -514,50 +443,51 @@
                         </button>
                     </div>
 
-                    <!-- Target Breaks and Reductions -->
+                    <!-- Target Breaks with Official Icons -->
                     <div class="d-flex align-items-center gap-1 ms-auto">
-                        <button class="btn btn-sm py-0 px-2 @(Enemy.PhysicalBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.PhysicalBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
                                 @onclick="() => { Enemy.PhysicalBreak = !Enemy.PhysicalBreak; StateHasChanged(); }">
-                            Phys Break
+                            <img src="img/battle/break_phys.png" alt="" style="height: 16px; width: 16px; object-fit: contain;" />
+                            <span>Phys Break</span>
                         </button>
-                        <button class="btn btn-sm py-0 px-2 @(Enemy.SpecialBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.SpecialBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
                                 @onclick="() => { Enemy.SpecialBreak = !Enemy.SpecialBreak; StateHasChanged(); }">
-                            Spec Break
-                        </button>
-                        <button class="btn btn-sm py-0 px-2 @(Enemy.PhysicalDamageReduction ? "btn-warning fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
-                                @onclick="() => { Enemy.PhysicalDamageReduction = !Enemy.PhysicalDamageReduction; StateHasChanged(); }">
-                            Phys Dmg Red
-                        </button>
-                        <button class="btn btn-sm py-0 px-2 @(Enemy.SpecialDamageReduction ? "btn-warning fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
-                                @onclick="() => { Enemy.SpecialDamageReduction = !Enemy.SpecialDamageReduction; StateHasChanged(); }">
-                            Spec Dmg Red
+                            <img src="img/battle/break_spec.png" alt="" style="height: 16px; width: 16px; object-fit: contain;" />
+                            <span>Spec Break</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Comprehensive Multi-Type Rebuff Section -->
+                <!-- Comprehensive Multi-Type Rebuff Section for Target with Official Icons -->
                 <div class="mt-2 pt-2 border-top border-secondary border-opacity-50">
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
                         <div class="d-flex flex-wrap align-items-center gap-2">
-                            <span class="small text-secondary fw-bold" style="font-size: 0.75rem;"><i class="bi bi-shield-slash"></i> Type Rebuff:</span>
+                            <span class="small text-danger fw-bold d-flex align-items-center gap-1" style="font-size: 0.75rem;">
+                                <i class="bi bi-shield-slash"></i> Target Rebuff:
+                            </span>
                             
-                            <!-- Type Picker -->
-                            <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 120px; font-size: 0.75rem;" value="@_selectedRebuffType" @onchange="OnRebuffTypeSelect">
-                                @foreach (var t in CombatantState.AllTypes)
-                                {
-                                    <option value="@t">@t</option>
-                                }
-                            </select>
+                            <!-- Type Picker with Official Icon Preview -->
+                            <div class="input-group input-group-sm" style="width: 145px;">
+                                <span class="input-group-text bg-dark border-secondary p-1">
+                                    <img src="@CombatantState.GetTypeIcon(_selectedEnemyRebuffType)" alt="" width="18" height="18" />
+                                </span>
+                                <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" value="@_selectedEnemyRebuffType" @onchange="OnEnemyRebuffTypeSelect">
+                                    @foreach (var t in CombatantState.AllTypes)
+                                    {
+                                        <option value="@t">@t</option>
+                                    }
+                                </select>
+                            </div>
 
-                            <!-- Value Selector for Selected Type -->
+                            <!-- Value Selector for Selected Type (-3 to +3) -->
                             <div class="btn-group btn-group-sm">
                                 @for (int r = -3; r <= 3; r++)
                                 {
                                     int rb = r;
-                                    int curVal = Enemy.EnemyTypeRebuffs.GetValueOrDefault(_selectedRebuffType, 0);
+                                    int curVal = Enemy.EnemyTypeRebuffs.GetValueOrDefault(_selectedEnemyRebuffType, 0);
                                     <button class="btn btn-sm py-0 px-2 @(curVal == rb ? (rb < 0 ? "btn-primary fw-bold" : (rb > 0 ? "btn-danger fw-bold" : "btn-secondary text-light")) : "btn-outline-secondary text-light")"
                                             style="font-size: 0.75rem;"
-                                            @onclick="() => SetRebuff(_selectedRebuffType, rb)">
+                                            @onclick="() => SetEnemyRebuff(_selectedEnemyRebuffType, rb)">
                                         @(rb > 0 ? $"+{rb}" : rb.ToString())
                                     </button>
                                 }
@@ -565,40 +495,41 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <button class="btn btn-sm btn-outline-info py-0 px-2" style="font-size: 0.75rem;" @onclick="() => _showAllRebuffs = !_showAllRebuffs">
-                                <i class="bi bi-grid-3x3-gap me-1"></i> Rebuffs @(GetActiveRebuffsCount() > 0 ? $"({GetActiveRebuffsCount()})" : "")
+                            <button class="btn btn-sm btn-outline-info py-0 px-2" style="font-size: 0.75rem;" @onclick="() => _showAllEnemyRebuffs = !_showAllEnemyRebuffs">
+                                <i class="bi bi-grid-3x3-gap me-1"></i> All Types @(GetActiveEnemyRebuffsCount() > 0 ? $"({GetActiveEnemyRebuffsCount()})" : "")
                             </button>
-                            @if (GetActiveRebuffsCount() > 0)
+                            @if (GetActiveEnemyRebuffsCount() > 0)
                             {
-                                <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.7rem;" @onclick="ClearAllRebuffs">
+                                <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.7rem;" @onclick="ClearAllEnemyRebuffs">
                                     Clear All
                                 </button>
                             }
                         </div>
                     </div>
 
-                    <!-- Active Rebuff Badges List -->
-                    @if (GetActiveRebuffsCount() > 0)
+                    <!-- Active Target Rebuff Badges List with Official Icons -->
+                    @if (GetActiveEnemyRebuffsCount() > 0)
                     {
                         <div class="d-flex flex-wrap gap-1 align-items-center mb-2">
-                            <span class="small text-muted" style="font-size: 0.7rem;">Active Rebuffs:</span>
+                            <span class="small text-muted" style="font-size: 0.7rem;">Active Target Rebuffs:</span>
                             @foreach (var (t, val) in Enemy.EnemyTypeRebuffs.Where(kv => kv.Value != 0))
                             {
                                 string typeName = t;
                                 int rVal = val;
-                                <span class="badge type-badge type-@typeName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.75rem; cursor: pointer;" @onclick="() => _selectedRebuffType = typeName">
+                                <span class="badge type-badge type-@typeName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.75rem; cursor: pointer;" @onclick="() => _selectedEnemyRebuffType = typeName">
+                                    <img src="@CombatantState.GetTypeIcon(typeName)" alt="" width="16" height="16" />
                                     <span>@typeName: @(rVal > 0 ? $"+{rVal}" : rVal.ToString())</span>
-                                    <i class="bi bi-x-circle-fill opacity-75" title="Remove rebuff" @onclick:stopPropagation="true" @onclick="() => SetRebuff(typeName, 0)"></i>
+                                    <i class="bi bi-x-circle-fill opacity-75" title="Remove rebuff" @onclick:stopPropagation="true" @onclick="() => SetEnemyRebuff(typeName, 0)"></i>
                                 </span>
                             }
                         </div>
                     }
 
-                    <!-- Expandable Full 19-Type Rebuff Grid -->
-                    @if (_showAllRebuffs)
+                    <!-- Expandable Full 19-Type Rebuff Grid with Official Icons -->
+                    @if (_showAllEnemyRebuffs)
                     {
                         <div class="bg-black bg-opacity-30 p-2 rounded border border-secondary border-opacity-50 mt-2">
-                            <div class="small fw-bold text-muted mb-2" style="font-size: 0.7rem;">All 19 Type Rebuffs:</div>
+                            <div class="small fw-bold text-muted mb-2" style="font-size: 0.7rem;">All 19 Target Type Rebuffs:</div>
                             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-2">
                                 @foreach (var t in CombatantState.AllTypes)
                                 {
@@ -606,11 +537,225 @@
                                     int curVal = Enemy.EnemyTypeRebuffs.GetValueOrDefault(typeName, 0);
                                     <div class="col">
                                         <div class="p-1 px-2 rounded bg-dark border @(curVal != 0 ? "border-primary" : "border-secondary") d-flex align-items-center justify-content-between gap-1">
-                                            <span class="badge type-badge type-@typeName.ToLowerInvariant() py-0 px-1" style="font-size: 0.65rem;">@typeName</span>
+                                            <div class="d-flex align-items-center gap-1">
+                                                <img src="@CombatantState.GetTypeIcon(typeName)" alt="" width="18" height="18" />
+                                                <span class="badge type-badge type-@typeName.ToLowerInvariant() py-0 px-1" style="font-size: 0.65rem;">@typeName</span>
+                                            </div>
                                             <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center"
                                                     style="width: 50px; font-size: 0.7rem; height: 22px;"
                                                     value="@curVal"
-                                                    @onchange="(e) => OnGridRebuffChange(typeName, e)">
+                                                    @onchange="(e) => OnGridEnemyRebuffChange(typeName, e)">
+                                                @for (int r = -3; r <= 3; r++)
+                                                {
+                                                    <option value="@r">@(r > 0 ? $"+{r}" : r.ToString())</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- 4B. User Card (Below Target) -->
+            <div class="card bg-dark border-secondary p-3 shadow-sm">
+                <h6 class="text-info fw-bold mb-2 d-flex align-items-center gap-2">
+                    <i class="bi bi-person-fill"></i> User
+                </h6>
+
+                <!-- User Stat Stages Dropdowns -->
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2">
+                    @foreach (var stat in new[] { "atk", "def", "spa", "spd", "spe", "crit" })
+                    {
+                        int val = Ally.Stages.GetValueOrDefault(stat, stat == "crit" ? 3 : 6);
+                        int maxStage = stat == "crit" ? 3 : 6;
+                        int minStage = stat == "crit" ? 0 : -6;
+                        <div class="col">
+                            <div class="p-1 px-2 rounded bg-black bg-opacity-40 border border-secondary border-opacity-75 d-flex align-items-center justify-content-between gap-1">
+                                <span class="small fw-bold text-secondary text-uppercase" style="font-size: 0.75rem;">@stat</span>
+                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center"
+                                        style="width: 58px; font-size: 0.75rem; height: 26px;"
+                                        value="@val"
+                                        @onchange="(e) => OnAllyStageSelect(stat, e)">
+                                    @for (int s = maxStage; s >= minStage; s--)
+                                    {
+                                        <option value="@s">@(s > 0 ? $"+{s}" : s.ToString())</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Next Boosts (PMUN, SMUN, SYUN, Crit Hit, SE Next & Breaks) -->
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                    <!-- PMUN Dropdown -->
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
+                        <span class="text-light fw-bold">PMUN:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
+                                value="@Ally.PhysicalBoostNext"
+                                @onchange="OnPmunSelect">
+                            @for (int b = 0; b <= 10; b++)
+                            {
+                                <option value="@b">@b</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- SMUN Dropdown -->
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
+                        <span class="text-light fw-bold">SMUN:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
+                                value="@Ally.SpecialBoostNext"
+                                @onchange="OnSmunSelect">
+                            @for (int b = 0; b <= 10; b++)
+                            {
+                                <option value="@b">@b</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- SYUN (Sync Move Up Next) Dropdown -->
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
+                        <span class="text-light fw-bold">SYUN:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
+                                value="@Ally.SyncMoveBoostNext"
+                                @onchange="OnSyunSelect">
+                            @for (int b = 0; b <= 10; b++)
+                            {
+                                <option value="@b">@b</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button class="btn btn-sm py-1 px-2 @(Ally.IsCriticalMove ? "btn-warning" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.IsCriticalMove = !Ally.IsCriticalMove; StateHasChanged(); }">Crit Hit</button>
+                    <button class="btn btn-sm py-1 px-2 @(Ally.SuperEffectiveNext ? "btn-danger" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SuperEffectiveNext = !Ally.SuperEffectiveNext; StateHasChanged(); }">SE Next (×3)</button>
+                    <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center gap-1 @(Ally.PhysicalBreak ? "btn-pink" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.PhysicalBreak = !Ally.PhysicalBreak; StateHasChanged(); }">
+                        <img src="img/battle/break_phys.png" alt="" style="height: 16px; width: 16px; object-fit: contain;" />
+                        <span>Phys Break</span>
+                    </button>
+                    <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center gap-1 @(Ally.SpecialBreak ? "btn-pink" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SpecialBreak = !Ally.SpecialBreak; StateHasChanged(); }">
+                        <img src="img/battle/break_spec.png" alt="" style="height: 16px; width: 16px; object-fit: contain;" />
+                        <span>Spec Break</span>
+                    </button>
+                </div>
+
+                <!-- Sync Buffs & Lucky Skill -->
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Sync Buff: <b class="text-warning">×@(1.0 + Ally.SyncBoosts * 0.5)</b></span>
+                        <div class="btn-group btn-group-sm">
+                            @for (int sb = 0; sb <= 9; sb++)
+                            {
+                                int s = sb;
+                                <button class="btn btn-sm py-0 px-2 @(Ally.SyncBoosts == s ? "btn-warning fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Ally.SyncBoosts = s; StateHasChanged(); }">
+                                    @s
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Lucky Skill:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 180px; font-size: 0.75rem;" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
+                            <option value="">(None)</option>
+                            @foreach (var ls in Rules.LuckySkills.Where(s => s.IsAvailableFor(Ally.Pair.Role, Ally.Pair.DisplayName)))
+                            {
+                                <option value="@ls.Name">@ls.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Multi-Type Rebuff Section for User with Official Icons -->
+                <div class="mt-2 pt-2 border-top border-secondary border-opacity-50">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="small text-info fw-bold d-flex align-items-center gap-1" style="font-size: 0.75rem;">
+                                <i class="bi bi-shield-slash"></i> User Rebuff:
+                            </span>
+                            
+                            <!-- Type Picker with Official Icon Preview -->
+                            <div class="input-group input-group-sm" style="width: 145px;">
+                                <span class="input-group-text bg-dark border-secondary p-1">
+                                    <img src="@CombatantState.GetTypeIcon(_selectedUserRebuffType)" alt="" width="18" height="18" />
+                                </span>
+                                <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" value="@_selectedUserRebuffType" @onchange="OnUserRebuffTypeSelect">
+                                    @foreach (var t in CombatantState.AllTypes)
+                                    {
+                                        <option value="@t">@t</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <!-- Value Selector for Selected Type (-3 to +3) -->
+                            <div class="btn-group btn-group-sm">
+                                @for (int r = -3; r <= 3; r++)
+                                {
+                                    int rb = r;
+                                    int curVal = Ally.UserTypeRebuffs.GetValueOrDefault(_selectedUserRebuffType, 0);
+                                    <button class="btn btn-sm py-0 px-2 @(curVal == rb ? (rb < 0 ? "btn-primary fw-bold" : (rb > 0 ? "btn-danger fw-bold" : "btn-secondary text-light")) : "btn-outline-secondary text-light")"
+                                            style="font-size: 0.75rem;"
+                                            @onclick="() => SetUserRebuff(_selectedUserRebuffType, rb)">
+                                        @(rb > 0 ? $"+{rb}" : rb.ToString())
+                                    </button>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-info py-0 px-2" style="font-size: 0.75rem;" @onclick="() => _showAllUserRebuffs = !_showAllUserRebuffs">
+                                <i class="bi bi-grid-3x3-gap me-1"></i> All Types @(GetActiveUserRebuffsCount() > 0 ? $"({GetActiveUserRebuffsCount()})" : "")
+                            </button>
+                            @if (GetActiveUserRebuffsCount() > 0)
+                            {
+                                <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.7rem;" @onclick="ClearAllUserRebuffs">
+                                    Clear All
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Active User Rebuff Badges List with Official Icons -->
+                    @if (GetActiveUserRebuffsCount() > 0)
+                    {
+                        <div class="d-flex flex-wrap gap-1 align-items-center mb-2">
+                            <span class="small text-muted" style="font-size: 0.7rem;">Active User Rebuffs:</span>
+                            @foreach (var (t, val) in Ally.UserTypeRebuffs.Where(kv => kv.Value != 0))
+                            {
+                                string typeName = t;
+                                int rVal = val;
+                                <span class="badge type-badge type-@typeName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.75rem; cursor: pointer;" @onclick="() => _selectedUserRebuffType = typeName">
+                                    <img src="@CombatantState.GetTypeIcon(typeName)" alt="" width="16" height="16" />
+                                    <span>@typeName: @(rVal > 0 ? $"+{rVal}" : rVal.ToString())</span>
+                                    <i class="bi bi-x-circle-fill opacity-75" title="Remove rebuff" @onclick:stopPropagation="true" @onclick="() => SetUserRebuff(typeName, 0)"></i>
+                                </span>
+                            }
+                        </div>
+                    }
+
+                    <!-- Expandable Full 19-Type Rebuff Grid with Official Icons -->
+                    @if (_showAllUserRebuffs)
+                    {
+                        <div class="bg-black bg-opacity-30 p-2 rounded border border-secondary border-opacity-50 mt-2">
+                            <div class="small fw-bold text-muted mb-2" style="font-size: 0.7rem;">All 19 User Type Rebuffs:</div>
+                            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-2">
+                                @foreach (var t in CombatantState.AllTypes)
+                                {
+                                    string typeName = t;
+                                    int curVal = Ally.UserTypeRebuffs.GetValueOrDefault(typeName, 0);
+                                    <div class="col">
+                                        <div class="p-1 px-2 rounded bg-dark border @(curVal != 0 ? "border-primary" : "border-secondary") d-flex align-items-center justify-content-between gap-1">
+                                            <div class="d-flex align-items-center gap-1">
+                                                <img src="@CombatantState.GetTypeIcon(typeName)" alt="" width="18" height="18" />
+                                                <span class="badge type-badge type-@typeName.ToLowerInvariant() py-0 px-1" style="font-size: 0.65rem;">@typeName</span>
+                                            </div>
+                                            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center"
+                                                    style="width: 50px; font-size: 0.7rem; height: 22px;"
+                                                    value="@curVal"
+                                                    @onchange="(e) => OnGridUserRebuffChange(typeName, e)">
                                                 @for (int r = -3; r <= 3; r++)
                                                 {
                                                     <option value="@r">@(r > 0 ? $"+{r}" : r.ToString())</option>
@@ -636,9 +781,11 @@
     [Parameter] public int MoveLevel { get; set; } = 5;
     [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
 
-    private string _selectedRebuffType = "Fire";
+    private string _selectedEnemyRebuffType = "Fire";
+    private string _selectedUserRebuffType = "Fire";
     private string _selectedCircleRegion = "Kanto";
-    private bool _showAllRebuffs = false;
+    private bool _showAllEnemyRebuffs = false;
+    private bool _showAllUserRebuffs = false;
     private bool _showCirclesPanel = false;
 
     protected override void OnInitialized()
@@ -646,7 +793,8 @@
         GridState.OnGridChanged += OnGridStateUpdated;
         if (Ally.Pair != null && !string.IsNullOrEmpty(Ally.Pair.Type))
         {
-            _selectedRebuffType = Ally.Pair.Type;
+            _selectedUserRebuffType = Ally.Pair.Type;
+            _selectedEnemyRebuffType = Ally.Pair.Type;
         }
     }
 
@@ -774,26 +922,45 @@
         }
     }
 
-    private void OnRebuffTypeSelect(ChangeEventArgs e)
+    private void OnEnemyRebuffTypeSelect(ChangeEventArgs e)
     {
-        _selectedRebuffType = e.Value?.ToString() ?? "Fire";
+        _selectedEnemyRebuffType = e.Value?.ToString() ?? "Fire";
     }
 
-    private void SetRebuff(string type, int val)
+    private void OnUserRebuffTypeSelect(ChangeEventArgs e)
+    {
+        _selectedUserRebuffType = e.Value?.ToString() ?? "Fire";
+    }
+
+    private void SetEnemyRebuff(string type, int val)
     {
         Enemy.EnemyTypeRebuffs[type] = val;
         StateHasChanged();
     }
 
-    private void OnGridRebuffChange(string type, ChangeEventArgs e)
+    private void SetUserRebuff(string type, int val)
+    {
+        Ally.UserTypeRebuffs[type] = val;
+        StateHasChanged();
+    }
+
+    private void OnGridEnemyRebuffChange(string type, ChangeEventArgs e)
     {
         if (int.TryParse(e.Value?.ToString(), out int val))
         {
-            SetRebuff(type, val);
+            SetEnemyRebuff(type, val);
         }
     }
 
-    private void ClearAllRebuffs()
+    private void OnGridUserRebuffChange(string type, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            SetUserRebuff(type, val);
+        }
+    }
+
+    private void ClearAllEnemyRebuffs()
     {
         foreach (var t in CombatantState.AllTypes)
         {
@@ -802,9 +969,23 @@
         StateHasChanged();
     }
 
-    private int GetActiveRebuffsCount()
+    private void ClearAllUserRebuffs()
+    {
+        foreach (var t in CombatantState.AllTypes)
+        {
+            Ally.UserTypeRebuffs[t] = 0;
+        }
+        StateHasChanged();
+    }
+
+    private int GetActiveEnemyRebuffsCount()
     {
         return Enemy.EnemyTypeRebuffs.Count(kv => kv.Value != 0);
+    }
+
+    private int GetActiveUserRebuffsCount()
+    {
+        return Ally.UserTypeRebuffs.Count(kv => kv.Value != 0);
     }
 
     private bool IsCircleActive(string region, string circleType)
@@ -844,6 +1025,10 @@
         Field.TargetCount = 3;
         Ally.DamageField = string.Empty;
         Enemy.DamageField = string.Empty;
+        Ally.PhysicalDamageReduction = false;
+        Ally.SpecialDamageReduction = false;
+        Enemy.PhysicalDamageReduction = false;
+        Enemy.SpecialDamageReduction = false;
         foreach (var r in CombatantState.CircleRegions)
         {
             if (Ally.CircleActive.ContainsKey(r))
@@ -852,7 +1037,7 @@
                 Ally.CircleActive[r]["special"] = false;
                 Ally.CircleActive[r]["defensive"] = false;
             }
-            Ally.CircleAllyCount[r] = 0;
+            Ally.CircleAllyCount[r] = 1;
         }
         StateHasChanged();
     }

@@ -464,19 +464,33 @@ public class DamageCalculatorService
         }
 
         // Weather, Terrain, Zone
-        if (!string.IsNullOrEmpty(field.Weather))
+        bool isFire = string.Equals(effectiveMoveType, "Fire", StringComparison.OrdinalIgnoreCase);
+        bool isWater = string.Equals(effectiveMoveType, "Water", StringComparison.OrdinalIgnoreCase);
+        bool isElectric = string.Equals(effectiveMoveType, "Electric", StringComparison.OrdinalIgnoreCase);
+        bool isGrass = string.Equals(effectiveMoveType, "Grass", StringComparison.OrdinalIgnoreCase);
+        bool isPsychic = string.Equals(effectiveMoveType, "Psychic", StringComparison.OrdinalIgnoreCase);
+
+        bool weatherBoost = (field.Weather.Equals("Sunny", StringComparison.OrdinalIgnoreCase) && isFire) ||
+                            (field.Weather.Equals("Rainy", StringComparison.OrdinalIgnoreCase) && isWater);
+        if (weatherBoost)
         {
             ne *= 3.0;
             he *= field.WeatherEx ? 1.0 : 2.0;
             pills.Add(new MultiplierPill { Label = field.Weather, Value = field.WeatherEx ? "×3.0" : "×1.5", Color = "#d35400" });
         }
-        if (!string.IsNullOrEmpty(field.Terrain))
+
+        bool terrainBoost = (field.Terrain.Equals("Electric Terrain", StringComparison.OrdinalIgnoreCase) && isElectric) ||
+                            (field.Terrain.Equals("Grassy Terrain", StringComparison.OrdinalIgnoreCase) && isGrass) ||
+                            (field.Terrain.Equals("Psychic Terrain", StringComparison.OrdinalIgnoreCase) && isPsychic);
+        if (terrainBoost)
         {
             ne *= 3.0;
             he *= field.TerrainEx ? 1.0 : 2.0;
             pills.Add(new MultiplierPill { Label = field.Terrain, Value = field.TerrainEx ? "×3.0" : "×1.5", Color = "#27ae60" });
         }
-        if (!string.IsNullOrEmpty(field.Zone))
+
+        bool zoneBoost = !string.IsNullOrEmpty(field.Zone) && field.Zone.StartsWith(effectiveMoveType, StringComparison.OrdinalIgnoreCase);
+        if (zoneBoost)
         {
             ne *= 3.0;
             he *= field.ZoneEx ? 1.0 : 2.0;
@@ -664,7 +678,7 @@ public class DamageCalculatorService
         // Circles
         foreach (var region in CombatantState.CircleRegions)
         {
-            int allies = Math.Clamp(ally.CircleAllyCount.GetValueOrDefault(region, 0), 0, 3);
+            int allies = Math.Clamp(ally.CircleAllyCount.GetValueOrDefault(region, 1), 1, 3);
             var active = ally.CircleActive.GetValueOrDefault(region);
             if (active != null)
             {

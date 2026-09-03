@@ -13,6 +13,38 @@ public class CombatantState
         "Kanto", "Johto", "Hoenn", "Sinnoh", "Unova",
         "Kalos", "Alola", "Galar", "Paldea", "Pasio"
     ];
+    public static readonly string[] ValidZoneTypes = [
+        "Normal", "Ice", "Fighting", "Poison", "Ground",
+        "Flying", "Bug", "Rock", "Ghost", "Dragon",
+        "Dark", "Steel", "Fairy"
+    ];
+    public static readonly Dictionary<string, string> TypeIconMap = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Normal"] = "img/battle/TYPE_001.png",
+        ["Fire"] = "img/battle/TYPE_002.png",
+        ["Water"] = "img/battle/TYPE_003.png",
+        ["Electric"] = "img/battle/TYPE_004.png",
+        ["Grass"] = "img/battle/TYPE_005.png",
+        ["Ice"] = "img/battle/TYPE_006.png",
+        ["Fighting"] = "img/battle/TYPE_007.png",
+        ["Poison"] = "img/battle/TYPE_008.png",
+        ["Ground"] = "img/battle/TYPE_009.png",
+        ["Flying"] = "img/battle/TYPE_010.png",
+        ["Psychic"] = "img/battle/TYPE_011.png",
+        ["Bug"] = "img/battle/TYPE_012.png",
+        ["Rock"] = "img/battle/TYPE_013.png",
+        ["Ghost"] = "img/battle/TYPE_014.png",
+        ["Dragon"] = "img/battle/TYPE_015.png",
+        ["Dark"] = "img/battle/TYPE_016.png",
+        ["Steel"] = "img/battle/TYPE_017.png",
+        ["Fairy"] = "img/battle/TYPE_018.png",
+        ["Stellar"] = "img/battle/TYPE_099.png"
+    };
+
+    public static string GetTypeIcon(string type)
+    {
+        return TypeIconMap.TryGetValue(type, out var icon) ? icon : "img/battle/NONE.png";
+    }
 
     public SyncPairDetail? Pair { get; set; }
     public int FormIndex { get; set; }
@@ -80,11 +112,14 @@ public class CombatantState
                 ["special"] = false,
                 ["defensive"] = false
             };
-            ally.CircleAllyCount[r] = 0;
+            ally.CircleAllyCount[r] = 1;
         }
 
         foreach (var t in AllTypes)
+        {
             ally.UserTypeRebuffs[t] = 0;
+            ally.EnemyTypeRebuffs[t] = 0;
+        }
 
         ally.VolatileStatus = new Dictionary<string, bool>
         {
@@ -125,7 +160,10 @@ public class CombatantState
             enemy.Stages[s] = s == "crit" ? 0 : -6;
 
         foreach (var t in AllTypes)
+        {
+            enemy.UserTypeRebuffs[t] = 0;
             enemy.EnemyTypeRebuffs[t] = 0;
+        }
 
         enemy.VolatileStatus = new Dictionary<string, bool>
         {
