@@ -339,6 +339,10 @@
                                     {
                                         <span class="badge bg-purple" style="font-size: 0.7rem;">Sync Move</span>
                                     }
+                                    else if (move.IsMax)
+                                    {
+                                        <span class="badge btn-pink text-white" style="font-size: 0.7rem;">Max Move</span>
+                                    }
                                 </div>
                                 <div class="d-flex gap-1 align-items-center mt-1">
                                     <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@moveType</span>
@@ -844,8 +848,9 @@
         {
             if (Ally.Pair == null) return Enumerable.Empty<MoveItem>();
             var regularMoves = Ally.Pair.Moves.Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0);
+            var maxMoves = CalcService.GetMaxMoves(Ally.Pair);
             var learned = GridState.GetLearnedMoves(Ally.Pair);
-            return regularMoves.Concat(learned);
+            return regularMoves.Concat(maxMoves).Concat(learned);
         }
     }
 

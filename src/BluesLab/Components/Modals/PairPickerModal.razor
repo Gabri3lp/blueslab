@@ -52,6 +52,7 @@
                         <span class="text-muted small">Special:</span>
                         <button class="btn btn-sm @(FilterMega ? "btn-warning" : "btn-outline-secondary")" @onclick="() => FilterMega = !FilterMega">Mega</button>
                         <button class="btn btn-sm @(FilterTera ? "btn-info" : "btn-outline-secondary")" @onclick="() => FilterTera = !FilterTera">Tera</button>
+                        <button class="btn btn-sm @(FilterDMax ? "btn-pink" : "btn-outline-secondary")" @onclick="() => FilterDMax = !FilterDMax">Dynamax</button>
                         <button class="btn btn-sm @(FilterSA ? "btn-danger" : "btn-outline-secondary")" @onclick="() => FilterSA = !FilterSA">Super Awakening</button>
                         <button class="btn btn-sm @(FilterEx ? "btn-primary" : "btn-outline-secondary")" @onclick="() => FilterEx = !FilterEx">6★ EX</button>
                         @if (HasActiveFilters)
@@ -117,10 +118,11 @@
     private string SelectedRole = "";
     private bool FilterMega;
     private bool FilterTera;
+    private bool FilterDMax;
     private bool FilterSA;
     private bool FilterEx;
 
-    private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterSA || FilterEx;
+    private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterDMax || FilterSA || FilterEx;
 
     protected override async Task OnInitializedAsync()
     {
@@ -171,6 +173,7 @@
                     return false;
                 if (FilterMega && !p.HasMega) return false;
                 if (FilterTera && !p.HasTera) return false;
+                if (FilterDMax && !p.HasDynamax) return false;
                 if (FilterSA && !p.HasSuperAwakening) return false;
                 if (FilterEx && !p.HasEx) return false;
                 return true;
@@ -185,6 +188,7 @@
         SelectedRole = "";
         FilterMega = false;
         FilterTera = false;
+        FilterDMax = false;
         FilterSA = false;
         FilterEx = false;
     }

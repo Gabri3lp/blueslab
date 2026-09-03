@@ -325,6 +325,8 @@
                                  c.ColorKind.Equals("move effect", StringComparison.OrdinalIgnoreCase) ||
                                  c.ColorKind.Equals("learn", StringComparison.OrdinalIgnoreCase)))
                     .ToList();
+                var maxMovesList = CalcService.GetMaxMoves(Pair);
+                var allDisplayMoves = Pair.Moves.Concat(maxMovesList).ToList();
             }
 
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-2 pb-1 border-bottom border-secondary">
@@ -332,7 +334,7 @@
                     <button class="btn btn-sm @(ActiveSection == "moves" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("moves")'>
-                        <i class="bi bi-lightning-fill me-1"></i> Moves (@Pair.Moves.Count)
+                        <i class="bi bi-lightning-fill me-1"></i> Moves (@allDisplayMoves.Count)
                     </button>
                     <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
@@ -346,7 +348,7 @@
                     </button>
                 </div>
 
-                @if (ActiveSection == "moves" && Pair.Moves.Count > 0)
+                @if (ActiveSection == "moves" && allDisplayMoves.Count > 0)
                 {
                     <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light"
                             style="font-size: 0.75rem; height: 26px;"
@@ -364,7 +366,7 @@
                 int effectiveLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : Ally.MoveLevel;
 
                 <div class="d-flex flex-column gap-1">
-                    @foreach (var move in Pair.Moves)
+                    @foreach (var move in allDisplayMoves)
                     {
                         var (scaledPwr, multPct) = GetEffectiveMovePower(move, effectiveLvl);
                         string moveType = GetEffectiveMoveType(move);
@@ -379,6 +381,10 @@
                                         @if (move.IsSync)
                                         {
                                             <span class="badge bg-purple py-0 px-1" style="font-size: 0.7rem;">Sync Move</span>
+                                        }
+                                        else if (move.IsMax)
+                                        {
+                                            <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">Max Move</span>
                                         }
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-0.5">
@@ -592,8 +598,8 @@
             rawPwr *= 2;
         }
 
-        int scaledPwr = CalcService.CalcPower(rawPwr, effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync);
-        int multPct = CalcService.GetMoveMultiplier(effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync);
+        int scaledPwr = CalcService.CalcPower(rawPwr, effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync, isMax: move.IsMax);
+        int multPct = CalcService.GetMoveMultiplier(effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync, isMax: move.IsMax);
         return (scaledPwr, multPct);
     }
 

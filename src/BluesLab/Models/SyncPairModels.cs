@@ -43,6 +43,9 @@ public class PairManifestItem
     [JsonPropertyName("hasTera")]
     public bool HasTera { get; set; }
 
+    [JsonPropertyName("hasDynamax")]
+    public bool HasDynamax { get; set; }
+
     [JsonPropertyName("hasSuperAwakening")]
     public bool HasSuperAwakening { get; set; }
 
@@ -105,6 +108,9 @@ public class SyncPairDetail
 
     [JsonPropertyName("hasTera")]
     public bool HasTera { get; set; }
+
+    [JsonPropertyName("hasDynamax")]
+    public bool HasDynamax { get; set; }
 
     [JsonPropertyName("hasSuperAwakening")]
     public bool HasSuperAwakening { get; set; }
@@ -231,6 +237,9 @@ public class MoveItem
 
     [JsonPropertyName("isSync")]
     public bool IsSync { get; set; }
+
+    [JsonPropertyName("isMax")]
+    public bool IsMax { get; set; }
 }
 
 public class PassiveItem

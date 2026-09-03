@@ -319,7 +319,12 @@
 
             <div class="card-body">
                 <div class="d-flex flex-column gap-3">
-                    @foreach (var move in State.ActiveAttacker.Pair.Moves.Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0))
+                    @{
+                        var activeAttackerMoves = State.ActiveAttacker.Pair.Moves
+                            .Concat(CalcService.GetMaxMoves(State.ActiveAttacker.Pair))
+                            .Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0);
+                    }
+                    @foreach (var move in activeAttackerMoves)
                     {
                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
 
@@ -333,6 +338,10 @@
                                         @if (move.IsSync)
                                         {
                                             <span class="badge bg-purple">Sync Move</span>
+                                        }
+                                        else if (move.IsMax)
+                                        {
+                                            <span class="badge btn-pink text-white">Max Move</span>
                                         }
                                         @if (teamResult.IsAoE)
                                         {

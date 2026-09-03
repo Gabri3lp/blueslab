@@ -126,8 +126,14 @@ public class DamageCalculatorService
         return new() { ["hp"] = hp, ["def"] = def, ["spd"] = spd };
     }
 
-    public int GetMoveMultiplier(int fullMoveLevel, string role, bool isSync)
+    public int GetMoveMultiplier(int fullMoveLevel, string role, bool isSync, bool isMax = false)
     {
+        if (isMax)
+        {
+            int baseLvl = Math.Clamp(Math.Min(fullMoveLevel, 5), 1, 5);
+            return 100 + (baseLvl - 1) * 5;
+        }
+
         int baseLevel = Math.Clamp(Math.Min(fullMoveLevel, 5), 1, 5);
         int baseMultiplier = 100 + (baseLevel - 1) * 5;
 
@@ -166,10 +172,10 @@ public class DamageCalculatorService
         return baseMultiplier;
     }
 
-    public int CalcPower(int basePower, int fullMoveLevel, string role, bool isSync, double increment = 1.0)
+    public int CalcPower(int basePower, int fullMoveLevel, string role, bool isSync, double increment = 1.0, bool isMax = false)
     {
         if (basePower <= 0) return 0;
-        int mult = GetMoveMultiplier(fullMoveLevel, role, isSync);
+        int mult = GetMoveMultiplier(fullMoveLevel, role, isSync, isMax);
         int scaled = (int)Math.Floor((double)basePower * mult / 100.0);
         return (int)Math.Floor(scaled * increment);
     }
@@ -331,7 +337,7 @@ public class DamageCalculatorService
         bool isTechExSync = move.IsSync && isEx && (isTechBase || isTechExRole);
         double syncIncrement = isTechExSync ? 1.5 : 1.0;
 
-        int power = CalcPower(rawPower, fullMoveLevel, pair.Role, move.IsSync, syncIncrement);
+        int power = CalcPower(rawPower, fullMoveLevel, pair.Role, move.IsSync, syncIncrement, move.IsMax);
 
         // Grid Power
         int gridPower = 0;
@@ -360,12 +366,12 @@ public class DamageCalculatorService
         }
 
         int boostNextPercentage = 0;
-        if (!move.IsSync)
+        if (!move.IsSync && !move.IsMax)
         {
             if (isPhysical) boostNextPercentage += ally.PhysicalBoostNext * 40;
             if (isSpecial) boostNextPercentage += ally.SpecialBoostNext * 40;
         }
-        else
+        else if (move.IsSync)
         {
             // SYUN stacks provide +10% per stack to sync moves matching PoMaTools engine
             boostNextPercentage += ally.SyncMoveBoostNext * 10;
@@ -503,7 +509,7 @@ public class DamageCalculatorService
              pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true ||
              pair.Variations[ally.FormIndex - 1].TerastalMoveId > 0);
 
-        if (isTeraForm && !move.IsSync)
+        if (isTeraForm && !move.IsSync && !move.IsMax)
         {
             if (isStellarForm)
             {
@@ -555,8 +561,8 @@ public class DamageCalculatorService
             pills.Add(new MultiplierPill { Label = "Sync Buffs", Value = $"×{1.0 + effectiveSyncBoosts * 0.5:0.#}", Color = "#e67e22" });
         }
 
-        // Target count (AoE scaling: only applies to moves that hit all opponents and do NOT have no-decay protection)
-        bool isAoEMove = move.Target != null && (
+        // Target count (AoE scaling: only applies to moves that hit all opponents, exempting Sync Moves and Max Moves)
+        bool isAoEMove = !move.IsMax && move.Target != null && (
             move.Target.Contains("all", StringComparison.OrdinalIgnoreCase) ||
             move.Target.Contains("opponents", StringComparison.OrdinalIgnoreCase) ||
             move.Target.Contains("entire", StringComparison.OrdinalIgnoreCase)
@@ -889,6 +895,7 @@ public class DamageCalculatorService
 
         if (move.IsSync && string.Equals(dp.AppliesTo, "moves", StringComparison.OrdinalIgnoreCase)) return 0;
         if (!move.IsSync && string.Equals(dp.AppliesTo, "sync_move", StringComparison.OrdinalIgnoreCase)) return 0;
+        if (move.IsMax && (string.Equals(dp.AppliesTo, "sync_move", StringComparison.OrdinalIgnoreCase) || string.Equals(dp.AppliesTo, "p_moves", StringComparison.OrdinalIgnoreCase))) return 0;
 
         if (!string.IsNullOrEmpty(dp.MoveName) && !MatchesMoveName(move.Name, dp.MoveName, move.IsSync))
         {
@@ -1806,5 +1813,157 @@ public class DamageCalculatorService
         }
 
         return false;
+    }
+
+    public static readonly Dictionary<string, string> TypeToDefaultMaxMove = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Normal"] = "Max Strike",
+        ["Fire"] = "Max Flare",
+        ["Water"] = "Max Geyser",
+        ["Grass"] = "Max Overgrowth",
+        ["Electric"] = "Max Lightning",
+        ["Ice"] = "Max Hailstorm",
+        ["Fighting"] = "Max Knuckle",
+        ["Poison"] = "Max Ooze",
+        ["Ground"] = "Max Quake",
+        ["Flying"] = "Max Airstream",
+        ["Psychic"] = "Max Mindstorm",
+        ["Bug"] = "Max Flutterby",
+        ["Rock"] = "Max Rockfall",
+        ["Ghost"] = "Max Phantasm",
+        ["Dragon"] = "Max Wyrmwind",
+        ["Dark"] = "Max Darkness",
+        ["Steel"] = "Max Steelspike",
+        ["Fairy"] = "Max Starfall"
+    };
+
+    public bool HasDynamax(SyncPairDetail? pair)
+    {
+        if (pair == null) return false;
+        if (pair.HasDynamax) return true;
+
+        bool hasDMaxGrid = pair.Grid.Any(c =>
+        {
+            string t = c.Title.Replace("\r", "").Replace("\n", " ");
+            return c.ColorKind.Equals("max", StringComparison.OrdinalIgnoreCase) ||
+                   t.Contains("G-Max", StringComparison.OrdinalIgnoreCase) ||
+                   t.Contains("Max Move", StringComparison.OrdinalIgnoreCase) ||
+                   (t.StartsWith("Max ", StringComparison.OrdinalIgnoreCase) && t.Contains(":") && !t.Contains("Maximum", StringComparison.OrdinalIgnoreCase));
+        });
+        if (hasDMaxGrid) return true;
+
+        bool hasDMaxPassive = pair.Passives.Any(p =>
+            (p.Name.StartsWith("MAX ", StringComparison.OrdinalIgnoreCase) || p.Name.Contains("Max Moves", StringComparison.OrdinalIgnoreCase)) &&
+            !p.Description.Contains("opponent's max move", StringComparison.OrdinalIgnoreCase) &&
+            !p.Description.Contains("opposing sync pairs' max moves", StringComparison.OrdinalIgnoreCase)
+        );
+        return hasDMaxPassive;
+    }
+
+    public List<MoveItem> GetMaxMoves(SyncPairDetail? pair)
+    {
+        var list = new List<MoveItem>();
+        if (pair == null || !HasDynamax(pair)) return list;
+
+        var gridMaxNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var cell in pair.Grid)
+        {
+            if (cell.PowerBonus != null)
+            {
+                foreach (var key in cell.PowerBonus.Keys)
+                {
+                    string norm = key.Replace("\r", "").Replace("\n", " ").Trim();
+                    if ((norm.StartsWith("Max ", StringComparison.OrdinalIgnoreCase) || norm.StartsWith("G-Max", StringComparison.OrdinalIgnoreCase)) &&
+                        !norm.Contains("Sync", StringComparison.OrdinalIgnoreCase))
+                    {
+                        gridMaxNames.Add(norm);
+                    }
+                }
+            }
+            string titleNorm = cell.Title.Replace("\r", "").Replace("\n", " ").Trim();
+            if (titleNorm.StartsWith("G-Max", StringComparison.OrdinalIgnoreCase) ||
+                (titleNorm.StartsWith("Max ", StringComparison.OrdinalIgnoreCase) && !titleNorm.Contains("Maximum", StringComparison.OrdinalIgnoreCase)))
+            {
+                string candidate = titleNorm.Contains(":") ? titleNorm.Substring(0, titleNorm.IndexOf(":")).Trim() : titleNorm;
+                if (candidate.StartsWith("Max ", StringComparison.OrdinalIgnoreCase) || candidate.StartsWith("G-Max", StringComparison.OrdinalIgnoreCase))
+                {
+                    gridMaxNames.Add(candidate);
+                }
+            }
+        }
+
+        bool hitsAll = pair.Passives.Any(p =>
+            p.Name.Equals("Targets Maxed", StringComparison.OrdinalIgnoreCase) ||
+            p.Name.Contains("P-Moves & Max Moves Expansion", StringComparison.OrdinalIgnoreCase)
+        );
+
+        bool normalBecomesGround = pair.Passives.Any(p => p.Name.Contains("Giovanni’s Cunning") || p.Name.Contains("Giovanni's Cunning"));
+
+        var regularAtkMoves = pair.Moves.Where(m => !m.IsSync && !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0).ToList();
+
+        int maxMoveId = 99000;
+        var seenNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var atkMove in regularAtkMoves)
+        {
+            string moveType = atkMove.Type;
+            if (normalBecomesGround && moveType.Equals("Normal", StringComparison.OrdinalIgnoreCase))
+            {
+                moveType = "Ground";
+            }
+
+            string? matchedName = null;
+            foreach (var gn in gridMaxNames)
+            {
+                if (gn.StartsWith("G-Max", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (string.Equals(moveType, pair.Type, StringComparison.OrdinalIgnoreCase))
+                    {
+                        matchedName = gn;
+                        break;
+                    }
+                }
+                else if (TypeToDefaultMaxMove.TryGetValue(moveType, out var expectedName) && string.Equals(gn, expectedName, StringComparison.OrdinalIgnoreCase))
+                {
+                    matchedName = gn;
+                    break;
+                }
+            }
+
+            matchedName ??= TypeToDefaultMaxMove.TryGetValue(moveType, out var defName) ? defName : "Max Strike";
+
+            int basePwr = int.TryParse(atkMove.Power, out int bp) ? bp : 0;
+            int maxBasePower = (basePwr >= 150 || atkMove.Gauge == "4") ? 450 : 400;
+
+            if (seenNames.Contains(matchedName))
+            {
+                var existing = list.FirstOrDefault(m => string.Equals(m.Name, matchedName, StringComparison.OrdinalIgnoreCase));
+                if (existing != null && int.TryParse(existing.Power, out int ep) && maxBasePower > ep)
+                {
+                    existing.Power = maxBasePower.ToString();
+                }
+                continue;
+            }
+
+            seenNames.Add(matchedName);
+
+            list.Add(new MoveItem
+            {
+                Id = maxMoveId++,
+                Slot = 6 + list.Count,
+                Name = matchedName,
+                Type = moveType,
+                Category = atkMove.Category,
+                Power = maxBasePower.ToString(),
+                Accuracy = "-",
+                Gauge = "0",
+                Target = hitsAll ? "All opponents" : "An opponent",
+                Description = "Max move. Never misses. Cannot be reduced by multiple target damage reduction.",
+                IsSync = false,
+                IsMax = true
+            });
+        }
+
+        return list;
     }
 }
