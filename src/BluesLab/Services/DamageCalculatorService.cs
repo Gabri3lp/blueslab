@@ -710,17 +710,21 @@ public class DamageCalculatorService
         }
 
         // Damage Reductions on Target (Reflect / Light Screen on opponent reduces damage taken: x0.66 damage)
-        if (isPhysical && enemy.PhysicalDamageReduction)
+        // Critical hits ignore damage reduction screens on the target
+        if (!ally.IsCriticalMove)
         {
-            ne *= 2.0;
-            he *= 3.0;
-            pills.Add(new MultiplierPill { Label = "Phys Dmg Red", Value = "×0.66", Color = "#e67e22" });
-        }
-        if (isSpecial && enemy.SpecialDamageReduction)
-        {
-            ne *= 2.0;
-            he *= 3.0;
-            pills.Add(new MultiplierPill { Label = "Spec Dmg Red", Value = "×0.66", Color = "#e67e22" });
+            if (isPhysical && enemy.PhysicalDamageReduction)
+            {
+                ne *= 2.0;
+                he *= 3.0;
+                pills.Add(new MultiplierPill { Label = "Phys Dmg Red", Value = "×0.66", Color = "#e67e22" });
+            }
+            if (isSpecial && enemy.SpecialDamageReduction)
+            {
+                ne *= 2.0;
+                he *= 3.0;
+                pills.Add(new MultiplierPill { Label = "Spec Dmg Red", Value = "×0.66", Color = "#e67e22" });
+            }
         }
 
         // 5. Final Roll Computation (Math.fround matching PMEX engine)
