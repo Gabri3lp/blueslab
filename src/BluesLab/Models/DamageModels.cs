@@ -48,7 +48,7 @@ public class CombatantState
 
     public SyncPairDetail? Pair { get; set; }
     public int FormIndex { get; set; }
-    public string CharLevel { get; set; } = "140";
+    public string CharLevel { get; set; } = "180";
     public string StarLevel { get; set; } = "5★ EX";
     public bool HasExRole { get; set; } = true;
     public int SuperAwakeningLevel { get; set; }

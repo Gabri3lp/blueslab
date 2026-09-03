@@ -92,6 +92,7 @@
                         <option value="130">Lv. 130</option>
                         <option value="140">Lv. 140</option>
                         <option value="150">Lv. 150</option>
+                        <option value="180">Lv. 180</option>
                         <option value="200">Lv. 200</option>
                     </select>
 
@@ -123,7 +124,7 @@
         <!-- Compressed Stats Bar with Tooltips & Detailed Dropdown -->
         <div class="card bg-dark border-secondary p-2 mb-2 shadow-sm">
             @{
-                int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 140;
+                int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 180;
                 var pot = CalcService.CalcPotentialBonus(Pair.Rarity, Ally.StarLevel);
                 var ex = Ally.HasExRole ? CalcService.GetExRoleBonus(Pair.ExRole) : new();
                 string[] statsKeys = ["hp", "atk", "def", "spa", "spd", "spe"];

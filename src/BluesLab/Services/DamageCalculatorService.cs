@@ -388,7 +388,7 @@ public class DamageCalculatorService
 
         // 2. Attacker Stat (Offense) with Form Scale
         string atkStatKey = isPhysical ? "atk" : "spa";
-        int jsonAtkStat = pair.Stats.GetStatAtLevel(atkStatKey, int.TryParse(ally.CharLevel, out int cl) ? cl : 140);
+        int jsonAtkStat = pair.Stats.GetStatAtLevel(atkStatKey, int.TryParse(ally.CharLevel, out int cl) ? cl : 180);
         var potBonus = CalcPotentialBonus(pair.Rarity, ally.StarLevel);
         int exAtkBonus = ally.HasExRole ? GetExRoleBonus(pair.ExRole).GetValueOrDefault(atkStatKey, 0) : 0;
         
@@ -704,7 +704,21 @@ public class DamageCalculatorService
                 {
                     ne *= 105.0 + 5.0 * allies;
                     he *= 100.0;
+                    pills.Add(new MultiplierPill { Label = $"{region} Circle (Def)", Value = $"×{(105.0 + 5.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
                 }
+            }
+        }
+
+        // Enemy Defensive Circles (reduces incoming attack & sync damage to enemy)
+        foreach (var region in CombatantState.CircleRegions)
+        {
+            int enemyAllies = Math.Clamp(enemy.CircleAllyCount.GetValueOrDefault(region, 1), 1, 3);
+            var enemyActive = enemy.CircleActive.GetValueOrDefault(region);
+            if (enemyActive != null && enemyActive.GetValueOrDefault("defensive"))
+            {
+                ne *= 100.0 - (10.0 + 3.0 * enemyAllies);
+                he *= 100.0;
+                pills.Add(new MultiplierPill { Label = $"{region} Circle (Enemy Def)", Value = $"×{(100.0 - (10.0 + 3.0 * enemyAllies)) / 100.0:0.##}", Color = "#6c5ce7" });
             }
         }
 
