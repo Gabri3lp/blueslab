@@ -4,7 +4,7 @@
 @inject GridStateService GridState
 @implements IDisposable
 
-<div class="sync-pair-overview p-2">
+<div class="sync-pair-overview">
     @if (Pair == null)
     {
         <div class="text-center py-5 text-muted">Please select a Sync Pair to view overview.</div>
@@ -12,28 +12,28 @@
     else
     {
         <!-- Header Info & Settings Bar -->
-        <div class="card bg-dark border-secondary p-3 mb-3 shadow-sm">
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
-                <div class="d-flex align-items-center gap-3">
-                    <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="56" height="56" class="rounded-circle border border-warning shadow" onerror="this.src=''img/trainers/unknown.png'';" />
+        <div class="card bg-dark border-secondary p-2 mb-2 shadow-sm">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <div class="d-flex align-items-center gap-2">
+                    <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="44" height="44" class="rounded-circle border border-warning shadow-sm" onerror="this.src='img/trainers/unknown.png';" />
                     <div>
-                        <h5 class="fw-bold text-light mb-1">
-                            @Pair.DisplayName
+                        <div class="d-flex align-items-center flex-wrap gap-1">
+                            <span class="fw-bold text-light" style="font-size: 1rem;">@Pair.DisplayName</span>
                             @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
                             {
-                                <span class="badge bg-warning text-dark fs-6 ms-2">(@Pair.Variations[Ally.FormIndex - 1].FormName)</span>
+                                <span class="badge bg-warning text-dark py-0 px-1" style="font-size: 0.7rem;">(@Pair.Variations[Ally.FormIndex - 1].FormName)</span>
                             }
-                        </h5>
-                        <div class="d-flex flex-wrap align-items-center gap-2">
-                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant()">@EffectivePairType</span>
-                            <span class="badge bg-secondary">@Pair.Role</span>
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center gap-1 mt-0.5">
+                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant() py-0 px-1.5" style="font-size: 0.7rem;">@EffectivePairType</span>
+                            <span class="badge bg-secondary py-0 px-1.5" style="font-size: 0.7rem;">@Pair.Role</span>
                             @if (!string.IsNullOrEmpty(Pair.ExRole))
                             {
-                                <span class="badge bg-indigo">EX: @Pair.ExRole</span>
+                                <span class="badge bg-indigo py-0 px-1.5" style="font-size: 0.7rem;">EX: @Pair.ExRole</span>
                             }
                             @if (!string.IsNullOrEmpty(Pair.Weakness))
                             {
-                                <span class="badge bg-dark border border-danger text-danger">Weakness: @Pair.Weakness</span>
+                                <span class="badge bg-dark border border-danger text-danger py-0 px-1.5" style="font-size: 0.7rem;">Weakness: @Pair.Weakness</span>
                             }
                         </div>
                     </div>
@@ -43,14 +43,14 @@
                 @if (Pair.Variations.Count > 0 || Pair.HasMega || Pair.HasTera)
                 {
                     <div class="btn-group btn-group-sm">
-                        <button class="btn @(Ally.FormIndex == 0 ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(0)">
+                        <button class="btn @(Ally.FormIndex == 0 ? "btn-warning fw-bold" : "btn-outline-secondary") py-0 px-2" style="font-size: 0.78rem; height: 28px;" @onclick="() => SetForm(0)">
                             Base Form
                         </button>
                         @for (int i = 0; i < Pair.Variations.Count; i++)
                         {
                             int idx = i + 1;
                             var v = Pair.Variations[i];
-                            <button class="btn @(Ally.FormIndex == idx ? "btn-warning fw-bold" : "btn-outline-secondary")" @onclick="() => SetForm(idx)">
+                            <button class="btn @(Ally.FormIndex == idx ? "btn-warning fw-bold" : "btn-outline-secondary") py-0 px-2" style="font-size: 0.78rem; height: 28px;" @onclick="() => SetForm(idx)">
                                 @v.FormName
                             </button>
                         }
@@ -58,11 +58,11 @@
                 }
 
                 <!-- Star Level, Level, Move Level & EX Role Controls -->
-                <div class="d-flex flex-wrap align-items-center gap-2">
+                <div class="d-flex flex-wrap align-items-center gap-1">
                     <!-- Move Level Selector (1-5) -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary">
-                        <span class="small text-muted fw-bold">Move Lv:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 50px;" value="@Ally.MoveLevel" @onchange="OnMoveLevelSelect">
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 rounded border border-secondary" style="height: 28px;">
+                        <span class="small text-muted fw-bold" style="font-size: 0.72rem;">Move Lv:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 46px; font-size: 0.8rem;" value="@Ally.MoveLevel" @onchange="OnMoveLevelSelect">
                             <option value="1">1/5</option>
                             <option value="2">2/5</option>
                             <option value="3">3/5</option>
@@ -71,7 +71,7 @@
                         </select>
                     </div>
 
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 100px;" @bind="Ally.StarLevel" @bind:after="StateHasChanged">
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary px-1.5" style="width: 88px; height: 28px; font-size: 0.8rem;" @bind="Ally.StarLevel" @bind:after="StateHasChanged">
                         <option value="3★">3★</option>
                         <option value="4★">4★</option>
                         <option value="5★">5★</option>
@@ -83,7 +83,7 @@
                     </select>
 
                     <!-- Level Selector -->
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 95px;" @bind="Ally.CharLevel" @bind:after="StateHasChanged">
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary px-1.5" style="width: 82px; height: 28px; font-size: 0.8rem;" @bind="Ally.CharLevel" @bind:after="StateHasChanged">
                         <option value="1">Lv. 1</option>
                         <option value="30">Lv. 30</option>
                         <option value="45">Lv. 45</option>
@@ -97,9 +97,9 @@
 
                     @if (Pair.HasSuperAwakening)
                     {
-                        <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-danger">
-                            <span class="text-danger small fw-bold">SA:</span>
-                            <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 45px;" value="@Ally.SuperAwakeningLevel" @onchange="OnSaLevelSelect">
+                        <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-1.5 rounded border border-danger" style="height: 28px;">
+                            <span class="text-danger fw-bold" style="font-size: 0.72rem;">SA:</span>
+                            <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 36px; font-size: 0.8rem;" value="@Ally.SuperAwakeningLevel" @onchange="OnSaLevelSelect">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -112,7 +112,7 @@
 
                     @if (Pair.HasEx && !string.IsNullOrEmpty(Pair.ExRole))
                     {
-                        <button class="btn btn-sm @(Ally.HasExRole ? "btn-indigo" : "btn-outline-secondary")" @onclick="() => { Ally.HasExRole = !Ally.HasExRole; StateHasChanged(); }">
+                        <button class="btn btn-sm @(Ally.HasExRole ? "btn-indigo" : "btn-outline-secondary") py-0 px-2" style="height: 28px; font-size: 0.8rem;" @onclick="() => { Ally.HasExRole = !Ally.HasExRole; StateHasChanged(); }">
                             EX Role
                         </button>
                     }
@@ -121,7 +121,7 @@
         </div>
 
         <!-- Compressed Stats Bar with Tooltips & Detailed Dropdown -->
-        <div class="card bg-dark border-secondary p-3 mb-3 shadow-sm">
+        <div class="card bg-dark border-secondary p-2 mb-2 shadow-sm">
             @{
                 int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 140;
                 var pot = CalcService.CalcPotentialBonus(Pair.Rarity, Ally.StarLevel);
@@ -133,23 +133,23 @@
                 bool isSaActive = Pair.HasSuperAwakening && Ally.SuperAwakeningLevel >= 1;
             }
 
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
-                <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-bar-chart-fill text-info"></i>
-                    <span class="fw-bold text-light">Stats Summary (Lv. @Ally.CharLevel)</span>
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-1 pb-1 border-bottom border-secondary border-opacity-50">
+                <div class="d-flex align-items-center gap-1">
+                    <i class="bi bi-bar-chart-fill text-info" style="font-size: 0.85rem;"></i>
+                    <span class="fw-bold text-light" style="font-size: 0.85rem;">Stats Summary (Lv. @Ally.CharLevel)</span>
                     @if (isSaActive)
                     {
-                        <span class="badge bg-danger text-light" style="font-size: 0.7rem;">SA +10% Active</span>
+                        <span class="badge bg-danger text-light py-0 px-1" style="font-size: 0.65rem;">SA +10% Active</span>
                     }
                 </div>
-                <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
+                <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.72rem; height: 24px;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
                     <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down") me-1"></i>
                     @(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")
                 </button>
             </div>
 
             <!-- Compact 6-Pill Stats Grid -->
-            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-2">
+            <div class="row row-cols-3 row-cols-sm-6 g-1">
                 @foreach (var s in statsKeys)
                 {
                     int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
@@ -193,11 +193,11 @@
                     string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
 
                     <div class="col">
-                        <div class="p-2 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: help;">
-                            <div class="text-uppercase small text-secondary fw-bold" style="font-size: 0.75rem;">@s</div>
-                            <div class="fs-5 fw-bold text-warning">@total</div>
-                            <div class="text-muted small" style="font-size: 0.7rem;">
-                                Base @saBase @(totalBonus > 0 ? $"(+{totalBonus})" : "")
+                        <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: help;">
+                            <div class="text-uppercase text-secondary fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px; line-height: 1;">@s</div>
+                            <div class="fw-bold text-warning" style="font-size: 1.05rem; line-height: 1.2;">@total</div>
+                            <div class="text-muted text-truncate" style="font-size: 0.65rem; line-height: 1;">
+                                Base @saBase@(totalBonus > 0 ? $" (+{totalBonus})" : "")
                             </div>
                         </div>
                     </div>
@@ -207,8 +207,8 @@
             <!-- Detailed Breakdown Accordion Table -->
             @if (ShowDetailedStats)
             {
-                <div class="table-responsive mt-3 pt-2 border-top border-secondary">
-                    <table class="table table-dark table-sm table-bordered text-center align-middle mb-0">
+                <div class="table-responsive mt-2 pt-1 border-top border-secondary">
+                    <table class="table table-dark table-sm table-bordered text-center align-middle mb-0" style="font-size: 0.78rem;">
                         <thead>
                             <tr class="text-secondary small">
                                 <th class="text-start">Category</th>
@@ -222,11 +222,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="text-start text-muted small">
+                                <td class="text-start text-muted">
                                     Base Stat (Lv. @Ally.CharLevel)
                                     @if (isSaActive)
                                     {
-                                        <span class="badge bg-danger text-light ms-1" style="font-size: 0.65rem;">+10% SA</span>
+                                        <span class="badge bg-danger text-light ms-1 py-0 px-1" style="font-size: 0.6rem;">+10% SA</span>
                                     }
                                 </td>
                                 @foreach (var s in statsKeys)
@@ -247,7 +247,7 @@
                                 }
                             </tr>
                             <tr>
-                                <td class="text-start text-muted small">Potential + EX Role</td>
+                                <td class="text-start text-muted">Potential + EX Role</td>
                                 @foreach (var s in statsKeys)
                                 {
                                     int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
@@ -257,7 +257,7 @@
                             @if (currentVariation != null)
                             {
                                 <tr>
-                                    <td class="text-start text-muted small">Form Multiplier (@currentVariation.FormName)</td>
+                                    <td class="text-start text-muted">Form Multiplier (@currentVariation.FormName)</td>
                                     @foreach (var s in statsKeys)
                                     {
                                         double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
@@ -266,7 +266,7 @@
                                 </tr>
                             }
                             <tr>
-                                <td class="text-start text-muted small">Sync Grid Bonus</td>
+                                <td class="text-start text-muted">Sync Grid Bonus</td>
                                 @foreach (var s in statsKeys)
                                 {
                                     int gBonus = 0;
@@ -278,7 +278,7 @@
                                     <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
                                 }
                             </tr>
-                            <tr class="table-active fw-bold fs-6">
+                            <tr class="table-active fw-bold">
                                 <td class="text-start text-warning">Total Stat</td>
                                 @foreach (var s in statsKeys)
                                 {
@@ -317,7 +317,7 @@
         </div>
 
         <!-- Section Switcher Tabs: Moves vs Passives -->
-        <div class="card bg-dark border-secondary p-3 shadow-sm mb-3">
+        <div class="card bg-dark border-secondary p-2 shadow-sm mb-2">
             @{
                 var activeGridPassives = Pair.Grid
                     .Where(c => GridState.ActiveCells.Contains(c.CellId) &&
@@ -327,21 +327,35 @@
                     .ToList();
             }
 
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3 pb-2 border-bottom border-secondary">
-                <div class="nav nav-pills gap-2" role="tablist">
-                    <button class="btn btn-sm @(ActiveSection == "moves" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-2 pb-1 border-bottom border-secondary">
+                <div class="nav nav-pills gap-1" role="tablist">
+                    <button class="btn btn-sm @(ActiveSection == "moves" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
+                            style="font-size: 0.8rem;"
                             @onclick='() => SetSection("moves")'>
                         <i class="bi bi-lightning-fill me-1"></i> Moves (@Pair.Moves.Count)
                     </button>
-                    <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light")"
+                    <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
+                            style="font-size: 0.8rem;"
                             @onclick='() => SetSection("passives")'>
                         <i class="bi bi-shield-check me-1"></i> Passives (@Pair.Passives.Count)
                     </button>
-                    <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                    <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
+                            style="font-size: 0.8rem;"
                             @onclick='() => SetSection("grid")'>
                         <i class="bi bi-grid-fill me-1"></i> Grid Skills (@activeGridPassives.Count)
                     </button>
                 </div>
+
+                @if (ActiveSection == "moves" && Pair.Moves.Count > 0)
+                {
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light"
+                            style="font-size: 0.75rem; height: 26px;"
+                            @onclick="ToggleAllMoveDescs"
+                            title="@(AllExpanded ? "Collapse all move descriptions" : "Expand all move descriptions")">
+                        <i class="bi @(AllExpanded ? "bi-chevron-contract" : "bi-chevron-expand") me-1"></i>
+                        @(AllExpanded ? "Collapse All" : "Expand All")
+                    </button>
+                }
             </div>
 
             <!-- Moves View -->
@@ -349,48 +363,48 @@
             {
                 int effectiveLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : Ally.MoveLevel;
 
-                <div class="d-flex flex-column gap-2">
+                <div class="d-flex flex-column gap-1">
                     @foreach (var move in Pair.Moves)
                     {
                         var (scaledPwr, multPct) = GetEffectiveMovePower(move, effectiveLvl);
                         string moveType = GetEffectiveMoveType(move);
                         string moveTarget = GetEffectiveMoveTarget(move);
-                        bool isExpanded = ExpandedMoveIds.Contains(move.Id);
+                        bool isExpanded = !CollapsedMoveIds.Contains(move.Id);
 
-                        <div class="card move-card move-card-@moveType.ToLowerInvariant() p-3 shadow-sm">
-                            <div class="d-flex justify-content-between align-items-start cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
+                        <div class="card move-card move-card-@moveType.ToLowerInvariant() px-3 py-2 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
                                 <div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="fw-bold text-light fs-6">@move.Name</span>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <span class="fw-bold text-light" style="font-size: 0.95rem;">@move.Name</span>
                                         @if (move.IsSync)
                                         {
-                                            <span class="badge bg-purple">Sync Move</span>
+                                            <span class="badge bg-purple py-0 px-1" style="font-size: 0.7rem;">Sync Move</span>
                                         }
                                     </div>
-                                    <div class="d-flex gap-1 align-items-center mt-1">
-                                        <span class="badge type-badge type-@moveType.ToLowerInvariant()">@moveType</span>
-                                        <span class="badge bg-secondary">@move.Category</span>
+                                    <div class="d-flex gap-1 align-items-center mt-0.5">
+                                        <span class="badge type-badge type-@moveType.ToLowerInvariant() py-0 px-1" style="font-size: 0.7rem;">@moveType</span>
+                                        <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
                                         @if (!string.IsNullOrEmpty(moveTarget))
                                         {
-                                            <span class="badge bg-dark border border-secondary text-light opacity-75" style="font-size: 0.7rem;">@moveTarget</span>
+                                            <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
                                         }
                                     </div>
                                 </div>
 
                                 <div class="d-flex align-items-center gap-3">
-                                    <div class="text-end small">
+                                    <div class="text-end small" style="line-height: 1.25;">
                                         @if (scaledPwr > 0)
                                         {
-                                            <div>Power: <b class="text-warning fs-6">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
+                                            <div>Power: <b class="text-warning">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
                                         }
                                         else
                                         {
                                             <div>Power: <b class="text-muted">-</b></div>
                                         }
-                                        <div class="text-muted">Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
+                                        <div class="text-muted" style="font-size: 0.75rem;">Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
                                     </div>
 
-                                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.75rem;" title="Toggle Description">
+                                    <button class="btn btn-sm btn-outline-secondary py-0 px-1 text-light" style="font-size: 0.75rem; height: 24px; width: 24px;" title="Toggle Description">
                                         <i class="bi @(isExpanded ? "bi-chevron-up" : "bi-chevron-down")"></i>
                                     </button>
                                 </div>
@@ -398,7 +412,7 @@
 
                             @if (isExpanded && !string.IsNullOrEmpty(move.Description))
                             {
-                                <div class="text-light small mt-2 pt-2 border-top border-secondary border-opacity-50">
+                                <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
                                     @move.Description
                                 </div>
                             }
@@ -410,22 +424,22 @@
             <!-- Passives View -->
             @if (ActiveSection == "passives")
             {
-                <div class="d-flex flex-column gap-2">
+                <div class="d-flex flex-column gap-1">
                     @{
                         var activePassives = GetEffectivePassives();
                     }
                     @foreach (var passive in activePassives)
                     {
-                        <div class="card bg-secondary bg-opacity-25 border-secondary p-3 shadow-sm">
-                            <div class="fw-bold text-light fs-6">@passive.Name</div>
-                            <div class="text-secondary small mt-1">@passive.Description</div>
+                        <div class="card bg-secondary bg-opacity-25 border-secondary px-3 py-2 shadow-sm">
+                            <div class="fw-bold text-light" style="font-size: 0.92rem;">@passive.Name</div>
+                            <div class="text-secondary small mt-0.5" style="font-size: 0.82rem; line-height: 1.35;">@passive.Description</div>
                             @if (passive.ChildPassives.Count > 0)
                             {
-                                <div class="mt-2 pt-2 border-top border-secondary">
-                                    <span class="text-muted small fw-bold">Combined Skills:</span>
+                                <div class="mt-1 pt-1 border-top border-secondary border-opacity-50">
+                                    <span class="text-muted small fw-bold" style="font-size: 0.75rem;">Combined Skills:</span>
                                     @foreach (var child in passive.ChildPassives)
                                     {
-                                        <div class="small ms-2 mt-1">
+                                        <div class="small ms-2 mt-0.5" style="font-size: 0.78rem;">
                                             <span class="text-info">• @child.Name:</span> <span class="text-muted">@child.Description</span>
                                         </div>
                                     }
@@ -438,16 +452,16 @@
                     @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
                     {
                         bool isSa5Active = Ally.SuperAwakeningLevel >= 5;
-                        <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-10" : "border-secondary bg-secondary bg-opacity-10 opacity-75") p-3 shadow-sm">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="fw-bold @(isSa5Active ? "text-danger" : "text-secondary") fs-6">
+                        <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-10" : "border-secondary bg-secondary bg-opacity-10 opacity-75") px-3 py-2 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-0.5">
+                                <div class="fw-bold @(isSa5Active ? "text-danger" : "text-secondary")" style="font-size: 0.92rem;">
                                     <i class="bi bi-star-fill text-warning me-1"></i> @Pair.SuperAwakeningPassive.Name
                                 </div>
-                                <span class="badge @(isSa5Active ? "bg-danger text-light" : "bg-secondary text-muted")" style="font-size: 0.75rem;">
+                                <span class="badge @(isSa5Active ? "bg-danger text-light" : "bg-secondary text-muted") py-0 px-1" style="font-size: 0.7rem;">
                                     @(isSa5Active ? "SA 5 Active" : "SA 5 Required")
                                 </span>
                             </div>
-                            <div class="text-secondary small">@Pair.SuperAwakeningPassive.Description</div>
+                            <div class="text-secondary small" style="font-size: 0.82rem; line-height: 1.35;">@Pair.SuperAwakeningPassive.Description</div>
                         </div>
                     }
                 </div>
@@ -456,10 +470,10 @@
             <!-- Grid Skills View -->
             @if (ActiveSection == "grid")
             {
-                <div class="d-flex flex-column gap-2">
+                <div class="d-flex flex-column gap-1">
                     @if (activeGridPassives.Count == 0)
                     {
-                        <div class="text-muted text-center py-4">
+                        <div class="text-muted text-center py-3 small">
                             No passive skills or special effects activated on the Sync Grid yet.
                         </div>
                     }
@@ -467,11 +481,11 @@
                     {
                         @foreach (var gc in activeGridPassives)
                         {
-                            <div class="card bg-secondary bg-opacity-25 border-secondary p-2 shadow-sm">
-                                <div class="fw-bold text-info">@gc.Title</div>
+                            <div class="card bg-secondary bg-opacity-25 border-secondary px-3 py-1.5 shadow-sm">
+                                <div class="fw-bold text-info" style="font-size: 0.88rem;">@gc.Title</div>
                                 @if (!string.IsNullOrEmpty(gc.Description))
                                 {
-                                    <div class="text-muted small mt-1">@gc.Description</div>
+                                    <div class="text-muted small mt-0.5" style="font-size: 0.8rem; line-height: 1.3;">@gc.Description</div>
                                 }
                             </div>
                         }
@@ -490,16 +504,43 @@
 
     private bool ShowDetailedStats { get; set; } = false;
     private string ActiveSection { get; set; } = "moves";
-    private HashSet<int> ExpandedMoveIds { get; set; } = new();
+    private HashSet<int> CollapsedMoveIds { get; set; } = new();
+    private string? _lastPairTrainerId;
 
     protected override void OnInitialized()
     {
         GridState.OnGridChanged += OnGridUpdated;
     }
 
+    protected override void OnParametersSet()
+    {
+        if (Pair?.TrainerId != _lastPairTrainerId)
+        {
+            _lastPairTrainerId = Pair?.TrainerId;
+            CollapsedMoveIds.Clear();
+        }
+    }
+
     private void OnGridUpdated()
     {
         InvokeAsync(StateHasChanged);
+    }
+
+    private bool AllExpanded => Pair?.Moves.All(m => !CollapsedMoveIds.Contains(m.Id)) ?? true;
+
+    private void ToggleAllMoveDescs()
+    {
+        if (Pair == null) return;
+        if (AllExpanded)
+        {
+            foreach (var m in Pair.Moves)
+                CollapsedMoveIds.Add(m.Id);
+        }
+        else
+        {
+            CollapsedMoveIds.Clear();
+        }
+        StateHasChanged();
     }
 
     private string EffectivePairType
@@ -617,10 +658,10 @@
 
     private void ToggleMoveDesc(int moveId)
     {
-        if (ExpandedMoveIds.Contains(moveId))
-            ExpandedMoveIds.Remove(moveId);
+        if (CollapsedMoveIds.Contains(moveId))
+            CollapsedMoveIds.Remove(moveId);
         else
-            ExpandedMoveIds.Add(moveId);
+            CollapsedMoveIds.Add(moveId);
     }
 
     private async Task OnMoveLevelSelect(ChangeEventArgs e)
