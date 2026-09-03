@@ -137,7 +137,6 @@ public class GridStateService
         {
             if (cell.MoveLevel > Math.Clamp(moveLevel, 1, 5)) return;
             if (HardCap && !IsAdjacentToActiveOrCenter(cell, pair.Grid)) return;
-            if (HardCap && (GetRemainingEnergy(pair) - cell.EnergyCost) < 0) return;
 
             ActiveCells.Add(cell.CellId);
             if (cell.ColorKind == "learn" || cell.Title.StartsWith("Learn ", StringComparison.OrdinalIgnoreCase))

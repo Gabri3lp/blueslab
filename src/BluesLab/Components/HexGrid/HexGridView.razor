@@ -14,8 +14,11 @@
         <div class="grid-controls-bar w-100 d-flex align-items-center justify-content-between px-3 pt-2 pb-1 border-0">
             <!-- Left: Energy & Orbs (Clean text with clear icons) -->
             <div class="d-flex align-items-center gap-2 gap-md-3" style="min-width: 130px;">
-                <span class="fw-bold text-warning d-flex align-items-center gap-1 fs-6">
-                    ⚡ <b>@GridState.GetRemainingEnergy(Pair)</b>/60
+                @{
+                    int remainingEnergy = GridState.GetRemainingEnergy(Pair);
+                }
+                <span class="fw-bold @(remainingEnergy < 0 ? "text-danger" : "text-warning") d-flex align-items-center gap-1 fs-6">
+                    ⚡ <b>@remainingEnergy</b>/60
                 </span>
                 <span class="text-secondary opacity-50">|</span>
                 <span class="fw-bold text-info d-flex align-items-center gap-1 fs-6">
