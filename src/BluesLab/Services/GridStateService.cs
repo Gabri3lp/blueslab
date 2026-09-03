@@ -51,6 +51,29 @@ public class GridStateService
             .Sum(c => c.OrbCost);
     }
 
+    public bool HasSpecialOrbs(SyncPairDetail? pair)
+    {
+        return pair != null && pair.Grid.Any(c => c.Custom != null && c.Custom.Any(x => x > 0));
+    }
+
+    public int[] GetSpecialOrbsUsed(SyncPairDetail? pair)
+    {
+        var totals = new int[5];
+        if (pair == null) return totals;
+
+        foreach (var cell in pair.Grid)
+        {
+            if (ActiveCells.Contains(cell.CellId) && cell.Custom != null)
+            {
+                for (int i = 0; i < Math.Min(5, cell.Custom.Count); i++)
+                {
+                    totals[i] += cell.Custom[i];
+                }
+            }
+        }
+        return totals;
+    }
+
     public bool IsAdjacentToCenter(GridCellItem cell)
     {
         foreach (var d in HexDirections)

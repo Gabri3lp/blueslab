@@ -330,4 +330,7 @@ public class GridCellItem
 
     [JsonPropertyName("powerBonus")]
     public Dictionary<string, int> PowerBonus { get; set; } = new();
+
+    [JsonPropertyName("custom")]
+    public List<int>? Custom { get; set; }
 }
