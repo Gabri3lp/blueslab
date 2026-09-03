@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import json
 import urllib.request
@@ -224,9 +224,33 @@ def main():
             IMG_TRAINERS_DIR / f"{uid}.png"
         ))
 
-        t_verbose = lsd["trainer_verbose_name_en"].get(trainer_id, "").replace("\n", " ").strip()
-        t_name = t_verbose if t_verbose else lsd["trainer_name_en"].get(trainer_base_id, f"Trainer #{trainer_base_id}")
-        m_name = lsd["monster_name_en"].get(monster_base_id, f"Monster #{monster_base_id}")
+        import re
+        t_verbose = lsd["trainer_verbose_name_en"].get(trainer_id, "").strip()
+        if t_verbose:
+            t_name = re.sub(r'\s+', ' ', t_verbose).strip()
+        else:
+            alt_tid = tb.get("altTrainerNameId", "")
+            tname_id = tb.get("trainerNameId", "")
+            if alt_tid and alt_tid in lsd["trainer_name_en"]:
+                t_name = lsd["trainer_name_en"][alt_tid]
+            elif tname_id and tname_id in lsd["trainer_name_en"]:
+                t_name = lsd["trainer_name_en"][tname_id]
+            elif t_actor.startswith("ch"):
+                ch_key = t_actor.split("_")[0]
+                t_name = lsd["trainer_name_en"].get(ch_key, f"Trainer #{trainer_base_id}")
+            elif t_actor == "hero" or trainer_base_id.startswith("107") or trainer_base_id.startswith("108") or tname_id == "ch8000":
+                t_name = "Main Character"
+            else:
+                t_name = lsd["trainer_name_en"].get(trainer_base_id, f"Trainer #{trainer_base_id}")
+
+        mname_id = str(mb.get("monsterNameId", ""))
+        if mname_id and mname_id in lsd["monster_name_en"]:
+            m_name = lsd["monster_name_en"][mname_id]
+        elif monster_base_id in lsd["monster_name_en"]:
+            m_name = lsd["monster_name_en"][monster_base_id]
+        else:
+            m_name = f"Monster #{monster_base_id}"
+
         display_name = f"{t_name} & {m_name}"
 
         type_name = TYPE_MAP.get(t.get("type", 0), "Normal")
