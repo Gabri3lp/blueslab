@@ -3,8 +3,8 @@
   "trainerBaseId": "10024540",
   "monsterId": "20245400000",
   "monsterBaseId": "2008610000",
-  "displayName": "Marnie  (Summer 2021) & Grimmsnarl",
-  "trainerName": "Marnie  (Summer 2021)",
+  "displayName": "Marnie (Summer 2021) & Grimmsnarl",
+  "trainerName": "Marnie (Summer 2021)",
   "monsterName": "Grimmsnarl",
   "type": "Fairy",
   "weakness": "Fairy",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Spirit Break",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "140",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Lowers the target’s Sp. Atk. by 1 stat rank.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Crunch",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Raises the user’s Attack and Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Applies the Gradual Healing effect to the user. Applies the Enduring effect to the user. When the user’s Defense is raised, raises the user’s Sp. Def by the same amount. When the user’s Attack is raised, raises the user’s Speed by the same amount.",
+      "description": "Applies the Gradual Healing effect to the user. Applies the Enduring effect to the user. When the user’s Defense is raised, raises the user’s Sp. Def by the same amount. When the user’s Attack is raised, raises the user’s Speed by the same amount.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Kickback Summer\nFairy Impact",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18094209,
       "name": "Critical Infliction 9",
-      "description": "Raises the user’s critical-hit rate by one stat rank when its Pokémon uses a status move.",
+      "description": "Has a chance (100%) of raising the user’s critical-hit rate by one stat rank when its Pokémon uses a status move.",
       "childPassives": []
     },
     {
       "id": 17044204,
       "name": "Super Infliction 4",
-      "description": "Has a chance ([Digit:2digits ]%) of applying the Supereffective ↑ Next effect to the user when its Pokémon uses a status move.",
+      "description": "Has a chance (50%) of applying the Supereffective ↑ Next effect to the user when its Pokémon uses a status move.",
       "childPassives": []
     },
     {
@@ -896,5 +896,6 @@
         "Kickback Summer\nFairy Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/086100_128.png"
 }

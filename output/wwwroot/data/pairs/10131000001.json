@@ -3,13 +3,13 @@
   "trainerBaseId": "10013100",
   "monsterId": "20131000001",
   "monsterBaseId": "20008200",
-  "displayName": "Trainer #10013100 & Magneton",
-  "trainerName": "Trainer #10013100",
+  "displayName": "Clemont & Magneton",
+  "trainerName": "Clemont",
   "monsterName": "Magneton",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Spark",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the accuracy of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Thanks to Science\nElectric Impact",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -890,5 +890,6 @@
         "Thanks to Science\nElectric Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/008200_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10001700",
   "monsterId": "20017000002",
   "monsterBaseId": "20000901",
-  "displayName": "Trainer #10001700 & Monster #20000901",
-  "trainerName": "Trainer #10001700",
-  "monsterName": "Monster #20000901",
+  "displayName": "Leaf & Blastoise",
+  "trainerName": "Leaf",
+  "monsterName": "Blastoise",
   "type": "Water",
   "weakness": "Grass",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Water Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to an ally.",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises an ally’s Defense by 4 stat ranks. Applies the Enduring effect to an ally.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Full Blast\nHydro Cannon",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "180",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the weather turns rainy.\nDeactivation Condition:\nWhen the weather condition is no longer rainy.\n\nLowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the weather turns rainy.\nDeactivation Condition: When the weather condition is no longer rainy.\n\nLowers the target’s Attack and Sp. Atk by 1 stat rank. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Kaboom Kaboom\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18116604,
       "name": "Entry: Sp. Atk ↑ & Sp. Def ↑ 4",
-      "description": "Raises the user’s Sp. Atk and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk and Sp. Def by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 18046409,
       "name": "Mind Games 9",
-      "description": "Lowers the target’s Sp. Def by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Sp. Def by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     }
   ],
@@ -911,5 +911,7 @@
         "Kaboom Kaboom\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Blastoise",
+  "pokemonIconUrl": "img/pokemon/054200_128.png"
 }

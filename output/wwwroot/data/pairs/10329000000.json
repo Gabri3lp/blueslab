@@ -3,13 +3,13 @@
   "trainerBaseId": "10032900",
   "monsterId": "20329000000",
   "monsterBaseId": "2009270000",
-  "displayName": "Trainer #10032900 & Dachsbun",
-  "trainerName": "Trainer #10032900",
+  "displayName": "Ortega & Dachsbun",
+  "trainerName": "Ortega",
   "monsterName": "Dachsbun",
   "type": "Fairy",
   "weakness": "Poison",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Draining Kiss",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Paldea Circle (Defensive) to the allied field of play. Paldea Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Paldea theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Critical-Hit Defense effect to the allied field of play. Applies the Physical Damage Reduction effect to the allied field of play. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nNever misses. Lowers the Attack of all opposing sync pairs by 2 stat ranks. Applies the Critical-Hit Defense effect to the allied field of play. Applies the Physical Damage Reduction effect to the allied field of play. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank. Applies the Gradual Healing effect to all allied sync pairs. Raises the Fire Type Rebuff of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Cute and Cranky Mechanic\nPlay Rough",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,24 +144,24 @@
     {
       "id": 99023201,
       "name": "The Competitive Heir",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move.",
       "childPassives": [
         {
           "id": 17079609,
           "name": "Take Hit: Team Physical Boost ↑1 9",
-          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
+          "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move."
         },
         {
           "id": 17079709,
           "name": "Take Hit: Team Special Boost ↑1 9",
-          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
+          "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move."
         }
       ]
     },
     {
       "id": 99023301,
       "name": "Well-Baked Strategy",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by [Name:ReferencedMessageTag ]-type attack moves or [Name:ReferencedMessageTag ]-type sync moves.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by Fire-type attack moves or Fire-type sync moves.",
       "childPassives": []
     },
     {
@@ -991,5 +991,10 @@
         "Cute and Cranky Mechanic\nPlay Rough": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/092700_128.png",
+  "superAwakeningPassive": {
+    "name": "The Heir-Mechanic’s Pride",
+    "description": "Reduces the user’s sync move countdown by 2 the first time it uses Paldea Solidarity each battle. Turns the field of play’s zone into a Fairy Zone the first time the user uses Paldea Solidarity each battle. (A Fairy Zone powers up Fairy-type attacks.) Increases the Sync Move ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move."
+  }
 }

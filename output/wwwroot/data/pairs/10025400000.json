@@ -3,13 +3,13 @@
   "trainerBaseId": "10002540",
   "monsterId": "20025400000",
   "monsterBaseId": "2005551131",
-  "displayName": "Candice  (Palentine's 2024) & Darmanitan",
-  "trainerName": "Candice  (Palentine's 2024)",
+  "displayName": "Candice (Palentine's 2024) & Darmanitan",
+  "trainerName": "Candice (Palentine's 2024)",
   "monsterName": "Darmanitan",
   "type": "Ice",
   "weakness": "Rock",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Icicle Crash",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Fighting Spirit\nIcicle Crash",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "120",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Pokémon uses a move once.\nDeactivation Condition:\nWhen this move is used.\n\nThe more times [Name:MoveId Idx=\"556\" ] is used before this move is used (up to a maximum of four times), the greater the power of this attack. (This attack powers up by 50% every time the user’s [Name:MoveId Idx=\"556\" ] is used. The maximum power-up is 200%.) After using this attack, its power returns to normal. Makes the target flinch.",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user’s Pokémon uses a move once.\nDeactivation Condition: When this move is used.\n\nThe more times Icicle Crash is used before this move is used (up to a maximum of four times), the greater the power of this attack. (This attack powers up by 50% every time the user’s Icicle Crash is used. The maximum power-up is 200%.) After using this attack, its power returns to normal. Makes the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Flavor of Memories\nIce Impact",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99015801,
       "name": "Is This Your Order?",
-      "description": "Changes the user to Galarian Form (Zen Mode) when its HP drops to approximately [Digit:2digits ]% or below, or changes the user to Galarian Form (Standard Mode) when its HP rises to approximately [Digit:2digits ]% or above. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when it changes forms while it is on the field of play.",
+      "description": "Changes the user to Galarian Form (Zen Mode) when its HP drops to approximately 50% or below, or changes the user to Galarian Form (Standard Mode) when its HP rises to approximately 50% or above. Increases the user’s Physical Moves ↑ Next effect by 2 ranks when it changes forms while it is on the field of play.",
       "childPassives": []
     },
     {
@@ -905,5 +905,6 @@
         "Flavor of Memories\nIce Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/083900_128.png"
 }

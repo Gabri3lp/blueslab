@@ -3,13 +3,13 @@
   "trainerBaseId": "10030400",
   "monsterId": "20304000000",
   "monsterBaseId": "2009821100",
-  "displayName": "Trainer #10030400 & Dudunsparce",
-  "trainerName": "Trainer #10030400",
+  "displayName": "Larry & Dudunsparce",
+  "trainerName": "Larry",
   "monsterName": "Dudunsparce",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hyper Drill",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Bullet Speed\nHyper Drill",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any moves [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"5\" ] to the user.",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any moves 1 time.\nDeactivation Condition: When this move is used.\n\nNever misses. Lowers the target’s Defense by 2 stat ranks. Lowers the target’s Normal Type Rebuff by 1 rank. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Reduces the user’s sync move countdown by 1. Raises the Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Exceptional Everyman\nHyper Drill",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target’s Type Rebuff is lowered.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99017201,
       "name": "Working Man’s Methods",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s [Name:ReferencedMessageTag Idx=\"2\" ].",
+      "description": "Raises the user’s Attack by 4 stat ranks when it enters a battle. Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17063101,
       "name": "Rebuff Reducing Hit (Weakness)",
-      "description": "Lowers the target’s Type Rebuff of its weakness type by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle.",
+      "description": "Lowers the target’s Type Rebuff of its weakness type by 1 rank the first time the user’s attack move is successful each battle.",
       "childPassives": []
     }
   ],
@@ -984,5 +984,10 @@
         "Exceptional Everyman\nHyper Drill": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/098211_128.png",
+  "superAwakeningPassive": {
+    "name": "The Exceptional Everyman",
+    "description": "Turns the field of play’s zone into a Normal Zone the first time the user enters a battle each battle. Turns the field of play’s zone into a Normal Zone the first time the user’s sync move is used each battle. (A Normal Zone powers up Normal-type attacks.) Extends the duration of the Normal Zone when the zone turns into a Normal Zone while the user is on the field."
+  }
 }

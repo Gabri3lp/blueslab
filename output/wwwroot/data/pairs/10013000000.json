@@ -3,13 +3,13 @@
   "trainerBaseId": "10001300",
   "monsterId": "20013000000",
   "monsterBaseId": "20084000",
-  "displayName": "Trainer #10001300 & Mudsdale",
-  "trainerName": "Trainer #10001300",
+  "displayName": "Hapu & Mudsdale",
+  "trainerName": "Hapu",
   "monsterName": "Mudsdale",
   "type": "Ground",
   "weakness": "Grass",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s accuracy by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "High Horsepower",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "106",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 1 stat rank. Raises the user’s Defense by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ultimately Worthy\nTectonic Rage",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -878,5 +878,6 @@
         "Ultimately Worthy\nTectonic Rage": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/066100_128.png"
 }

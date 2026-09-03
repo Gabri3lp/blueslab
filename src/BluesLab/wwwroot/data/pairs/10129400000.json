@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "3",
       "target": "An opponent",
-      "description": "Has a chance (%) of lowering the target’s Defense by stat ranks.",
+      "description": "Has a chance (20%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Raises the Attack of all allied sync pairs by stat ranks.",
+      "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered on the opponent’s field of play. Never misses. Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks. Except in certain circumstances, successful hits with this attack become critical hits. Applies the to the opponent’s field of play.",
+      "description": "Activation Condition: When there is at least one Pokémon with a lowered Dark Type Rebuff on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon with a lowered Dark Type Rebuff on the opponent’s field of play.\n\nNever misses. Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks. Except in certain circumstances, successful hits with this attack become critical hits. Applies the No Stat Increases effect to the opponent’s field of play.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the user’s evasiveness by 1 stat rank. Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -144,13 +144,13 @@
     {
       "id": 17063301,
       "name": "Team Rebuff ↓ Command (Dark)",
-      "description": "Lowers the of all opposing sync pairs by ranks the first time the user’s Trainer uses a move each battle.",
+      "description": "Lowers the Dark Type Rebuff of all opposing sync pairs by 1 rank the first time the user’s Trainer uses a move each battle.",
       "childPassives": []
     },
     {
       "id": 17063409,
       "name": "Unbuffed Foe Freebie 9",
-      "description": "Applies the to the user when its attack move is successful while none of the target’s stats are raised.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while none of the target’s stats are raised.",
       "childPassives": []
     },
     {

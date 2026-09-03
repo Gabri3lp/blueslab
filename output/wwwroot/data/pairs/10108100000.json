@@ -9,7 +9,7 @@
   "type": "Ghost",
   "weakness": "Ground",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -82,8 +82,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target confused.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rising Flames\nHex",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "80",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nThis attack’s power is doubled against targets that are affected by a status condition, flinching, confused, or trapped. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it is paralyzed. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it is burned. Lowers the target’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the [Name:ReferencedMessageTag Idx=\"6\" ] to the user when the target is trapped. Increases the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ] when the target is confused.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nThis attack’s power is doubled against targets that are affected by a status condition, flinching, confused, or trapped. Lowers the target’s Defense by 2 stat ranks when it is paralyzed. Lowers the target’s Sp. Def by 2 stat ranks when it is burned. Lowers the target’s Speed by 2 stat ranks when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the Free Move Next effect to the user when the target is trapped. Increases the user’s Special Moves ↑ Next effect by 1 rank when the target is confused.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by 2. Raises the Speed of all allied sync pairs by 4 stat ranks. Raises the evasiveness of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Arrival at the Greatest Battle\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is affected by a status condition.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99019501,
       "name": "Inbound Train Announcement",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
+      "description": "Reduces the user’s sync move countdown by 2 when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s Special Moves ↑ Next effect by 2 ranks when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
       "childPassives": []
     },
     {
       "id": 17049809,
       "name": "Team Brain Gain 9",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user’s move is successful.",
       "childPassives": []
     },
     {
       "id": 18117509,
       "name": "Move: Sp. Atk ↑2 & Crit Rate ↑1 9",
-      "description": "Grants all of the following effects when the user’s move is successful: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Has a chance (100%) of granting all of the following effects when the user’s move is successful: Raises the user’s Sp. Atk by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank.",
       "childPassives": []
     }
   ],
@@ -989,5 +989,10 @@
         "Arrival at the Greatest Battle\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/060900_128.png",
+  "superAwakeningPassive": {
+    "name": "All Aboard to Victory",
+    "description": "Powers up the user’s sync move against targets that are affected by a status condition. Turns the field of play’s zone into a Ghost Zone after using the user’s max move. (A Ghost Zone powers up Ghost-type attacks.) Extends the duration of the Ghost Zone when the zone turns into a Ghost Zone while the user is on the field."
+  }
 }

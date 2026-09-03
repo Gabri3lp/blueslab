@@ -3,13 +3,13 @@
   "trainerBaseId": "10011600",
   "monsterId": "20116000004",
   "monsterBaseId": "20039501",
-  "displayName": "Trainer #10011600 & Monster #20039501",
-  "trainerName": "Trainer #10011600",
-  "monsterName": "Monster #20039501",
+  "displayName": "Dawn & Empoleon",
+  "trainerName": "Dawn",
+  "monsterName": "Empoleon",
   "type": "Steel",
   "weakness": "Electric",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Flash Cannon",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Steel Zone. (A Steel Zone powers up Steel-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Super Solid\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "400",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nNever misses. Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the field of play’s zone turns into a Steel Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Steel Zone.\n\nNever misses. Lowers the target’s Sp. Atk and Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Damage Guard Next effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Sp. Atk by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks. Applies the Damage Guard Next effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shining Symbol of Power\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,41 +144,41 @@
     {
       "id": 99024501,
       "name": "Shining Steel Leadership",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19670\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19670\" ].",
+      "description": "Reduces the user’s sync move countdown by 1 when it uses Steel Wish. Increases the user’s Special Moves ↑ Next effect by 2 ranks when it uses Steel Wish.",
       "childPassives": [
         {
           "id": 15014309,
           "name": "Use Steel Wish: Sync CD ↓ 9",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19670\" ]."
+          "description": "Has a chance (100%) of reducing the user’s sync move countdown by 1 when it uses Steel Wish."
         },
         {
           "id": 17081109,
           "name": "Use Steel Wish: Special Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19670\" ]."
+          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 2 ranks when it uses Steel Wish."
         }
       ]
     },
     {
       "id": 99024601,
       "name": "I Haven’t Lost My Determination!",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move. Restores [Digit:1digit Idx=\"1\" ] MP of the user’s buddy move after using its sync move.",
+      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank after using the user’s sync move. Restores 1 MP of the user’s buddy move after using its sync move.",
       "childPassives": [
         {
           "id": 17081009,
           "name": "S-Move: Team Special Boost ↑1 9",
-          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move."
+          "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank after using the user’s sync move."
         },
         {
           "id": 13062301,
           "name": "S-Move: Restore B-Move MP 1",
-          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after using its sync move."
+          "description": "Restores 1 MP of the user’s buddy move after using its sync move."
         }
       ]
     },
     {
       "id": 17076309,
       "name": "Steel Zone Hit: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the zone is a Steel Zone.",
       "childPassives": []
     }
   ],
@@ -922,5 +922,7 @@
         "Shining Symbol of Power\nSteel Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Empoleon",
+  "pokemonIconUrl": "img/pokemon/039501_128.png"
 }

@@ -84,7 +84,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nWhen the user’s is not raised. Never misses. Lowers the target’s by stat ranks. Increases the user’s by one to four ranks at random. In addition, increases the user’s by ranks when the target is poisoned or badly poisoned.",
+      "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses. Lowers the target’s Sp. Def by 2 stat ranks. Increases the user’s Special Moves ↑ Next effect by one to four ranks at random. In addition, increases the user’s Special Moves ↑ Next effect by 1 rank when the target is poisoned or badly poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "Self",
-      "description": "Applies the to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Turns the field of play’s zone into a. (A powers up -type attacks.) Applies the Gradual Healing effect to the user. Increases the user’s by three to five ranks at random.",
+      "description": "Turns the field of play’s zone into a Ground Zone. (A Ground Zone powers up Ground-type attacks.) Applies the Gradual Healing effect to the user. Increases the user’s Special Moves ↑ Next effect by three to five ranks at random.",
       "isSync": false
     },
     {
@@ -144,39 +144,39 @@
     {
       "id": 99038901,
       "name": "It’s About to Get Shaky!",
-      "description": "Turns the field of play’s zone into a the first time the user’s Pokémon uses a status move each battle. (A powers up -type attacks.) Extends the duration of the when the zone turns into a while the user is on the field. When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "description": "Turns the field of play’s zone into a Ground Zone the first time the user’s Pokémon uses a status move each battle. (A Ground Zone powers up Ground-type attacks.) Extends the duration of the Ground Zone when the zone turns into a Ground Zone while the user is on the field. When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
       "childPassives": [
         {
           "id": 19063201,
           "name": "1st Use Status P-Move: Ground Zone",
-          "description": "Turns the field of play’s zone into a the first time the user’s Pokémon uses a status move each battle. (A powers up -type attacks.)"
+          "description": "Turns the field of play’s zone into a Ground Zone the first time the user’s Pokémon uses a status move each battle. (A Ground Zone powers up Ground-type attacks.)"
         },
         {
           "id": 19028203,
           "name": "Ground Zone Extension 3",
-          "description": "Extends the duration of the when the zone turns into a while the user is on the field."
+          "description": "Extends the duration of the Ground Zone when the zone turns into a Ground Zone while the user is on the field."
         },
         {
           "id": 17041109,
           "name": "Go Viral 9",
-          "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs."
+          "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
         }
       ]
     },
     {
       "id": 18127204,
       "name": "Debut: Sp. Atk ↑4 & Crit Rate ↑3",
-      "description": "Raises the user’s by stat ranks the first time it enters a battle each battle. Raises the user’s by stat ranks the first time it enters a battle each battle.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time it enters a battle each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time it enters a battle each battle.",
       "childPassives": [
         {
           "id": 18120504,
           "name": "Debut: Sp. Atk ↑ 4",
-          "description": "Raises the user’s by stat ranks the first time it enters a battle each battle."
+          "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time it enters a battle each battle."
         },
         {
           "id": 18126103,
           "name": "Debut: Crit Rate ↑ 3",
-          "description": "Raises the user’s by stat ranks the first time it enters a battle each battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time it enters a battle each battle."
         }
       ]
     },

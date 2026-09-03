@@ -3,8 +3,8 @@
   "trainerBaseId": "10025200",
   "monsterId": "20252000000",
   "monsterBaseId": "2008510000",
-  "displayName": "Trainer #10025200 & Centiskorch",
-  "trainerName": "Trainer #10025200",
+  "displayName": "Kabu & Centiskorch",
+  "trainerName": "Kabu",
   "monsterName": "Centiskorch",
   "type": "Fire",
   "weakness": "Rock",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ember",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Blazing\nFlame Wheel",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one trapped Pokémon on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any trapped Pokémon on the opponent’s field of play.\n\nRemoves the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned. Restores the HP of all allied sync pairs when the target is burned. Restores the HP of all allied sync pairs when the target is trapped.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When there is at least one trapped Pokémon on the opponent’s field of play.\nDeactivation Condition: When there are no longer any trapped Pokémon on the opponent’s field of play.\n\nRemoves the frozen condition from the user. Has a chance (10%) of leaving the target burned. Restores the HP of all allied sync pairs when the target is burned. Restores the HP of all allied sync pairs when the target is trapped.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Raises the user’s Fire Type Rebuff by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ever-Burning Man\nFire Impact",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18115104,
       "name": "Max Move: Team Attack ↑ & Team Sp. Atk ↑ 4",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] after using the user’s max move.",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 4 stat ranks after using the user’s max move.",
       "childPassives": []
     },
     {
       "id": 18115203,
       "name": "1st Use Status P-Move: Team Crit Rate ↑ 3",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move each battle.",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks the first time the user’s Pokémon uses a status move each battle.",
       "childPassives": []
     },
     {
       "id": 17049609,
       "name": "Hot to the Touch 9",
-      "description": "Leaves an opponent that attacked the user burned when the user is hit by an attack move.",
+      "description": "Has a chance (100%) of leaving an opponent that attacked the user burned when the user is hit by an attack move.",
       "childPassives": []
     }
   ],
@@ -991,5 +991,10 @@
         "Ever-Burning Man\nFire Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/085100_128.png",
+  "superAwakeningPassive": {
+    "name": "The Ever-Burning Man",
+    "description": "Powers up the sync moves of all allied sync pairs when attacking a target that is trapped. Makes the weather sunny after using the user’s max move. Extends the duration of sunny weather when the weather turns sunny while the user is on the field."
+  }
 }

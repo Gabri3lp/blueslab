@@ -3,13 +3,13 @@
   "trainerBaseId": "10011000",
   "monsterId": "20110010000",
   "monsterBaseId": "20005400",
-  "displayName": "Misty  (Swimsuit) & Psyduck",
-  "trainerName": "Misty  (Swimsuit)",
+  "displayName": "Misty (Swimsuit) & Psyduck",
+  "trainerName": "Misty (Swimsuit)",
   "monsterName": "Psyduck",
   "type": "Water",
   "weakness": "Grass",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Gun",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -109,7 +109,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Removes all status conditions from an ally.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "All-Out Offense\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18041201,
       "name": "Look Alive 1",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s evasiveness by one stat rank when it is hit by an attack move.",
+      "description": "Has a chance (20%) of raising the user’s evasiveness by one stat rank when it is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -898,5 +898,6 @@
         "All-Out Offense\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/005400_128.png"
 }

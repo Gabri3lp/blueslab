@@ -3,13 +3,13 @@
   "trainerBaseId": "10020600",
   "monsterId": "20206000000",
   "monsterBaseId": "20037800",
-  "displayName": "Trainer #10020600 & Regice",
-  "trainerName": "Trainer #10020600",
+  "displayName": "Dana & Regice",
+  "trainerName": "Dana",
   "monsterName": "Regice",
   "type": "Ice",
   "weakness": "Fire",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Frost Breath",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Except in certain circumstances, successful hits with this attack become critical hits.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Supereffective ↑ Next effect to an ally.",
+      "target": "An ally",
+      "description": "Applies the Supereffective ↑ Next effect to an ally.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,7 +122,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Fully restores an ally’s HP. Applies the Damage Guard Next effect to an ally.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Competitive Sister\nFrost Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28020701,
       "name": "Ice Teamwork",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 10%. The more allied sync pairs with the Ice theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is 20%, and the maximum damage reduction is 14%.)",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 18048909,
       "name": "Team Toughen Up 9",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the Defense of all allied sync pairs by one stat rank when the user is hit by an attack move.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Competitive Sister\nFrost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/037800_128.png"
 }

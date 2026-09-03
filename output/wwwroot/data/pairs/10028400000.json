@@ -3,13 +3,13 @@
   "trainerBaseId": "10002840",
   "monsterId": "20028400000",
   "monsterBaseId": "20085601",
-  "displayName": "Clair  (New Year's 2024) & Monster #20085601",
-  "trainerName": "Clair  (New Year's 2024)",
-  "monsterName": "Monster #20085601",
+  "displayName": "Clair (New Year's 2024) & Drampa",
+  "trainerName": "Clair (New Year's 2024)",
+  "monsterName": "Drampa",
   "type": "Dragon",
   "weakness": "Ice",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Twister",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dragon Breath",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "New Year’s Dance\nDragon Beam",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 17068109,
       "name": "T-Move: Team Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs when the user’s Trainer uses a move.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to all allied sync pairs when the user’s Trainer uses a move.",
       "childPassives": []
     },
     {
       "id": 11012702,
       "name": "1st S-Move: Team HP Recovery (M) 2",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP the first time the user’s sync move is used each battle.",
+      "description": "Restores the HP of all allied sync pairs by approximately 40% of their maximum HP the first time the user’s sync move is used each battle.",
       "childPassives": []
     },
     {
@@ -896,5 +896,7 @@
         "New Year’s Dance\nDragon Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Drampa",
+  "pokemonIconUrl": "img/pokemon/047000_128.png"
 }

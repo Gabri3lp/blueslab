@@ -3,13 +3,13 @@
   "trainerBaseId": "10009610",
   "monsterId": "20096100000",
   "monsterBaseId": "20022400",
-  "displayName": "Siebold  (Holiday 2019) & Octillery",
-  "trainerName": "Siebold  (Holiday 2019)",
+  "displayName": "Siebold (Holiday 2019) & Octillery",
+  "trainerName": "Siebold (Holiday 2019)",
   "monsterName": "Octillery",
   "type": "Water",
   "weakness": "Electric",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Octazooka",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "56",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of lowering the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Scald",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "87",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Removes the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Removes the frozen condition from the user. Has a chance (30%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Defense and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Defense and Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Gourmet Octazooka",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is burned.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 18040904,
       "name": "Fortuitous 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (50%) of raising one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
@@ -900,5 +900,6 @@
         "Gourmet Octazooka": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/022400_128.png"
 }

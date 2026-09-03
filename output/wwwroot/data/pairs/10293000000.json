@@ -3,13 +3,13 @@
   "trainerBaseId": "10029300",
   "monsterId": "20293000000",
   "monsterBaseId": "20076701",
-  "displayName": "Trainer #10029300 & Monster #20076701",
-  "trainerName": "Trainer #10029300",
-  "monsterName": "Monster #20076701",
+  "displayName": "Penny & Sylveon",
+  "trainerName": "Penny",
+  "monsterName": "Sylveon",
   "type": "Fairy",
   "weakness": "Steel",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Disarming Voice",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Never misses.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Starry Draining Kiss",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "120",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Returns the target’s raised stats to normal, then raises the user’s same stats by the same amount. Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nNever misses. Returns the target’s raised stats to normal, then raises the user’s same stats by the same amount. Restores the user’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the Sp. Atk of all allied sync pairs by 4 stat ranks. Raises the critical-hit rate of all allied sync pairs by 2 stat ranks. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Bright Hacker’s\nDisarming Voice",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17066701,
       "name": "1st Hit: Fairy Rebuff ↓",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle.",
+      "description": "Lowers the target’s Fairy Type Rebuff by 1 rank the first time the user’s attack move is successful each battle.",
       "childPassives": []
     },
     {
       "id": 18046409,
       "name": "Mind Games 9",
-      "description": "Lowers the target’s Sp. Def by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Sp. Def by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 17046209,
       "name": "Team Smart Command 9",
-      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by one rank when the user’s Trainer uses a move.",
+      "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by one rank when the user’s Trainer uses a move.",
       "childPassives": []
     }
   ],
@@ -982,5 +982,11 @@
         "Bright Hacker’s\nDisarming Voice": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Sylveon",
+  "pokemonIconUrl": "img/pokemon/076701_128.png",
+  "superAwakeningPassive": {
+    "name": "Twinkling Star",
+    "description": "Reduces the sync move countdown by 3 the first time the user’s sync move is used each battle. Reduces attack move damage taken by allies when the Type Rebuff of an opponent that attacked them is lowered."
+  }
 }

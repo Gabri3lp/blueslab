@@ -3,13 +3,13 @@
   "trainerBaseId": "10002100",
   "monsterId": "20021000001",
   "monsterBaseId": "20010300",
-  "displayName": "Trainer #10002100 & Exeggutor",
-  "trainerName": "Trainer #10002100",
+  "displayName": "Blue & Exeggutor",
+  "trainerName": "Blue",
   "monsterName": "Exeggutor",
   "type": "Grass",
   "weakness": "Bug",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Seed Bomb",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Stomp",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Knock Ya Down\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     },
     {
       "id": 18041304,
       "name": "Posthaste 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
+      "description": "Has a chance (50%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -894,5 +894,6 @@
         "Knock Ya Down\nGrass Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/010300_128.png"
 }

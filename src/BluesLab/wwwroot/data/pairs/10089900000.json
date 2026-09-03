@@ -84,7 +84,7 @@
       "accuracy": "95",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Has a chance (%) of lowering the target’s by stat ranks.",
+      "description": "Has a chance (40%) of lowering the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP.",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play. Never misses. The more the target’s stats are lowered, the greater the power of this attack. Lowers the target’s by stat ranks.",
+      "description": "Activation Condition: When there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nNever misses. The more the target’s stats are lowered, the greater the power of this attack. Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s by stat ranks. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Raises the user’s Sp. Atk by 6 stat ranks. Raises the user’s accuracy by 1 stat rank. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "Grants the following effect 10 times: Lowers one of the target’s following stats by stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
+      "description": "Grants the following effect 10 times: Lowers one of the target’s following stats by 1 stat rank at random: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
       "isSync": true
     }
   ],
@@ -144,31 +144,31 @@
     {
       "id": 29010501,
       "name": "Dread Myth",
-      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Dark theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 29020501,
       "name": "Dread Judgment",
-      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
+      "description": "Raises the Dark Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Dark Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99023001,
       "name": "The Bridge Between Pokémon and Humans",
-      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by. Raises the chance of lowering stat values with the additional effects of the user’s moves. When an opponent’s stat is lowered by the additional effects of the user’s moves, it is lowered by six times the stat ranks.",
+      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by 2. Raises the chance of lowering stat values with the additional effects of the user’s moves. When an opponent’s stat is lowered by the additional effects of the user’s moves, it is lowered by six times the stat ranks.",
       "childPassives": []
     },
     {
       "id": 99023101,
       "name": "Math Genius",
-      "description": "If the target’s is lowered when the user’s attack move is successful, grants the following effect a number of times equal to the number of ranks the is lowered: Lowers one of the target’s following stats by stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
+      "description": "If the target’s accuracy is lowered when the user’s attack move is successful, grants the following effect a number of times equal to the number of ranks the accuracy is lowered: Lowers one of the target’s following stats by 1 stat rank at random: Attack, Defense, Sp. Atk, Sp. Def, or Speed.",
       "childPassives": []
     },
     {
       "id": 19054701,
       "name": "Entry: No Stat ↑ on Field",
-      "description": "Applies the to the opponents’ field of play when the user enters a battle.",
+      "description": "Applies the No Stat Increases effect to the opponents’ field of play when the user enters a battle.",
       "childPassives": []
     }
   ],

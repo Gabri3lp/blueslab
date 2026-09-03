@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Has a chance (%) of leaving the target badly poisoned.",
+      "description": "Has a chance (50%) of leaving the target badly poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by.",
+      "description": "Charges the user’s move gauge by 3.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Never misses. Leaves the target badly poisoned. Leaves the target confused. The power of this move is not lowered even if there are multiple targets.",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Leaves the target badly poisoned. Leaves the target confused. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Raises the user’s by stat ranks. Increases the user’s by ranks.",
+      "description": "Reduces the user’s sync move countdown by two. Raises the user’s Sp. Atk by 6 stat ranks. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -144,7 +144,7 @@
     {
       "id": 28040501,
       "name": "Cool Girl from Kitakami",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of when is applied to the allied field of play.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of Paldea Circle (Special) when Paldea Circle (Special) is applied to the allied field of play.",
       "childPassives": [
         {
           "id": 28030901,
@@ -154,20 +154,20 @@
         {
           "id": 19061003,
           "name": "Paldea C (Spec) Extension 3",
-          "description": "Extends the duration of when is applied to the allied field of play."
+          "description": "Extends the duration of Paldea Circle (Special) when Paldea Circle (Special) is applied to the allied field of play."
         }
       ]
     },
     {
       "id": 99035801,
       "name": "C’mon, Let’s Finish This!",
-      "description": "Reduces the MP for the user’s by and grants all of the following effects after your team’s sync pair uses their sync move: Applies to the allied field of play. Increases the user’s by ranks. Charges the user’s move gauge by.",
+      "description": "Reduces the MP for the user’s Move Gauge Boost by 1 and grants all of the following effects after your team’s sync pair uses their sync move: Applies Paldea Circle (Special) to the allied field of play. Increases the user’s Special Moves ↑ Next effect by 3 ranks. Charges the user’s move gauge by 6.",
       "childPassives": []
     },
     {
       "id": 99035901,
       "name": "That Crit Came Out of Nowhere!",
-      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Restores MP of the user’s buddy move after your team’s sync pair uses their sync move.",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Restores 1 MP of the user’s buddy move after your team’s sync pair uses their sync move.",
       "childPassives": [
         {
           "id": 18051501,
@@ -177,24 +177,24 @@
         {
           "id": 13061509,
           "name": "Team S-Move: Restore B-Move MP 9",
-          "description": "Restores MP of the user’s buddy move after your team’s sync pair uses their sync move."
+          "description": "Has a chance (100%) of restoring 1 MP of the user’s buddy move after your team’s sync pair uses their sync move."
         }
       ]
     },
     {
       "id": 99036001,
       "name": "Didn’t Hit Your Head, Did You?",
-      "description": "Lowers the target’s by stat ranks when the user’s attack move is successful against a confused opponent. Increases the user’s by ranks when its attack move is successful against a poisoned or badly poisoned opponent.",
+      "description": "Lowers the target’s Sp. Def by 2 stat ranks when the user’s attack move is successful against a confused opponent. Increases the user’s Sync Move ↑ Next effect by 2 ranks when its attack move is successful against a poisoned or badly poisoned opponent.",
       "childPassives": [
         {
           "id": 18125909,
           "name": "Hit Confused Opp: Sp. Def ↓2 9",
-          "description": "Lowers the target’s by stat ranks when the user’s attack move is successful against a confused opponent."
+          "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s attack move is successful against a confused opponent."
         },
         {
           "id": 17089509,
           "name": "Hit Poisoned Opp: S-Move Boost ↑2 9",
-          "description": "Increases the user’s by ranks when its attack move is successful against a poisoned or badly poisoned opponent."
+          "description": "Has a chance (100%) of increasing the user’s Sync Move ↑ Next effect by 2 ranks when its attack move is successful against a poisoned or badly poisoned opponent."
         }
       ]
     }

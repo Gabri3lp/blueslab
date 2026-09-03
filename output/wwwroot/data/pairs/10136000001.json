@@ -3,13 +3,13 @@
   "trainerBaseId": "10013600",
   "monsterId": "20136000001",
   "monsterBaseId": "20000100",
-  "displayName": "Trainer #10013600 & Bulbasaur",
-  "trainerName": "Trainer #10013600",
+  "displayName": "Professor Sycamore & Bulbasaur",
+  "trainerName": "Professor Sycamore",
   "monsterName": "Bulbasaur",
   "type": "Grass",
   "weakness": "Psychic",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Leaf Storm",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Def, Speed, and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Def, Speed, and critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Bon Voyage\nGrass Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -896,5 +896,6 @@
         "Bon Voyage\nGrass Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/000100_128.png"
 }

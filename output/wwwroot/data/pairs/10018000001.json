@@ -3,13 +3,13 @@
   "trainerBaseId": "10001800",
   "monsterId": "20018000003",
   "monsterBaseId": "20013501",
-  "displayName": "Trainer #10001800 & Monster #20013501",
-  "trainerName": "Trainer #10001800",
-  "monsterName": "Monster #20013501",
+  "displayName": "Kris & Jolteon",
+  "trainerName": "Kris",
+  "monsterName": "Jolteon",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Shock",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Discharge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Jolt of Genius\nElectric Beam",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19023501,
       "name": "Power Plant",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] after using the user’s sync move.",
+      "description": "Turns the field of play’s terrain into Electric Terrain after using the user’s sync move.",
       "childPassives": []
     },
     {
       "id": 18021601,
       "name": "Team Electric Current",
-      "description": "Stats cannot be lowered for all allied sync pairs when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Stats cannot be lowered for all allied sync pairs when the terrain is Electric Terrain.",
       "childPassives": []
     },
     {
       "id": 18104609,
       "name": "Snaring Strike 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "description": "Has a chance (100%) of lowering the target’s evasiveness by 1 stat rank when the user’s Pokémon uses a move targeting that opponent. Has a chance (100%) of lowering the target’s evasiveness by 1 stat rank after using the user’s sync move targeting that opponent.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,7 @@
         "Jolt of Genius\nElectric Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Jolteon",
+  "pokemonIconUrl": "img/pokemon/066300_128.png"
 }

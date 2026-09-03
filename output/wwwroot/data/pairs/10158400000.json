@@ -3,13 +3,13 @@
   "trainerBaseId": "10015840",
   "monsterId": "20158400000",
   "monsterBaseId": "20064712",
-  "displayName": "Diantha  (Special Costume) & Keldeo",
-  "trainerName": "Diantha  (Special Costume)",
+  "displayName": "Diantha (Special Costume) & Keldeo",
+  "trainerName": "Diantha (Special Costume)",
   "monsterName": "Keldeo",
   "type": "Fighting",
   "weakness": "Grass",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Secret Sword",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Deals damage based on the target’s Defense rather than Sp. Def.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Deals damage based on the target’s Defense rather than Sp. Def.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ].",
+      "description": "Charges the user’s move gauge by 3.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Aura Sphere",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Shining Valor\nFighting Beam",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Deals damage based on the target’s Defense rather than Sp. Def. The more the user’s Defense is raised, the greater the power of this attack.",
+      "description": "Deals damage based on the target’s Defense rather than Sp. Def. The more the user’s Defense is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 18070309,
       "name": "Armor Leech 9",
-      "description": "Lowers the target’s Defense by one stat rank and raises the user’s Defense by the same amount when the user’s attack move against the target is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank and raising the user’s Defense by the same amount when the user’s attack move against the target is successful.",
       "childPassives": []
     },
     {
       "id": 18070409,
       "name": "Mind Leech 9",
-      "description": "Lowers the target’s Sp. Def by one stat rank and raises the user’s Sp. Def by the same amount when the user’s attack move against the target is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Sp. Def by one stat rank and raising the user’s Sp. Def by the same amount when the user’s attack move against the target is successful.",
       "childPassives": []
     },
     {
       "id": 18070509,
       "name": "Speed Leech 9",
-      "description": "Lowers the target’s Speed by one stat rank and raises the user’s Speed by the same amount when the user’s attack move against the target is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Speed by one stat rank and raising the user’s Speed by the same amount when the user’s attack move against the target is successful.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Shining Valor\nFighting Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/064712_128.png"
 }

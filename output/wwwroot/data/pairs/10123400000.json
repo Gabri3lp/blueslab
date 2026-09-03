@@ -3,13 +3,13 @@
   "trainerBaseId": "10012340",
   "monsterId": "20123400000",
   "monsterBaseId": "20021201",
-  "displayName": "Selene  (Special Costume) & Scizor",
-  "trainerName": "Selene  (Special Costume)",
+  "displayName": "Selene (Special Costume) & Scizor",
+  "trainerName": "Selene (Special Costume)",
   "monsterName": "Scizor",
   "type": "Steel",
   "weakness": "Fire",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Physical)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Metal Claw",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "21",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Attack by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of raising the user’s Attack by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Steel Zone. (A Steel Zone powers up Steel-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Metallic\nBullet Punch",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nNever misses. Makes the target flinch. If the user’s Scizor has Mega Evolved, also restores [Digit:1digit Idx=\"1\" ] MP of its buddy move.",
+      "target": "An opponent",
+      "description": "Activation Condition: When the field of play’s zone turns into a Steel Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Steel Zone.\n\nNever misses. Makes the target flinch. If the user’s Scizor has Mega Evolved, also restores 1 MP of its buddy move.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Attack and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Raises an ally’s Attack and critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Crushing Red Justice\nSteel Impact",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Scizor until the end of battle.",
+      "description": "Become Mega Scizor until the end of battle.",
       "isSync": true
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": 18094609,
       "name": "Team Offensive Defense 9",
-      "description": "Raises the Defense of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of raising the Defense of all allied sync pairs by one stat rank when the user’s attack move is successful.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 13017702,
       "name": "Metallic Power 2",
-      "description": "Powers up the user’s moves when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Powers up the user’s moves when the zone is a Steel Zone.",
       "childPassives": []
     }
   ],
@@ -966,5 +966,6 @@
         "Crushing Red Justice\nSteel Impact": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/021201_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10000090",
   "monsterId": "20000900000",
   "monsterBaseId": "20014400",
-  "displayName": "Red  (Champion) & Articuno",
-  "trainerName": "Red  (Champion)",
+  "displayName": "Red (Champion) & Articuno",
+  "trainerName": "Red (Champion)",
   "monsterName": "Articuno",
   "type": "Ice",
   "weakness": "Rock",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Blizzard",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "126",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses during a hailstorm. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Never misses during a hailstorm. Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Frozen Wings Ice Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nIgnores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Leaves the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nIgnores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Leaves the target frozen.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Sp. Atk by 6 stat ranks. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Silence of the\nRaging Blizzard",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 28011301,
       "name": "Kanto Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Kanto theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
       "id": 99012601,
       "name": "Journey from Pallet",
-      "description": "The user’s moves never miss. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move hits. The more the user’s [Name:ReferencedMessageTag ] is increased, the more it powers up its sync move.",
+      "description": "The user’s moves never miss. Increases the user’s Special Moves ↑ Next effect by 1 rank when its attack move hits. The more the user’s Special Moves ↑ Next effect is increased, the more it powers up its sync move.",
       "childPassives": []
     },
     {
       "id": 99012701,
       "name": "Shimmering White Snow",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
+      "description": "Lowers the target’s Ice Type Rebuff by 1 rank the first time the user’s attack move is successful each battle. Lowers the target’s Ice Type Rebuff by 1 rank the first time the user’s sync move targeting the opponent is successful each battle. This effect can activate only once per battle.",
       "childPassives": []
     },
     {
@@ -924,5 +924,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/028900_128.png"
 }

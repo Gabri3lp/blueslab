@@ -3,13 +3,13 @@
   "trainerBaseId": "10028700",
   "monsterId": "20287000001",
   "monsterBaseId": "2009060001",
-  "displayName": "Trainer #10028700 & Monster #2009060001",
-  "trainerName": "Trainer #10028700",
-  "monsterName": "Monster #2009060001",
+  "displayName": "Juliana & Sprigatito",
+  "trainerName": "Juliana",
+  "monsterName": "Sprigatito",
   "type": "Grass",
   "weakness": "Poison",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Energy Ball",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "49",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Grassy Terrain.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk and accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk and accuracy of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 3 stat ranks. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Bright Mesmerizing Smile\nGrass Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17061709,
       "name": "Attack Trap 9",
-      "description": "Leaves the target trapped when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of leaving the target trapped when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 17014201,
       "name": "Grassy Terrain: Team Condition Nullification",
-      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is Grassy Terrain.",
       "childPassives": []
     },
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Bright Mesmerizing Smile\nGrass Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/090600_128.png"
 }

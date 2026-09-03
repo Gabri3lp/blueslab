@@ -3,13 +3,13 @@
   "trainerBaseId": "10013900",
   "monsterId": "20139000002",
   "monsterBaseId": "20076701",
-  "displayName": "Trainer #10013900 & Monster #20076701",
-  "trainerName": "Trainer #10013900",
-  "monsterName": "Monster #20076701",
+  "displayName": "Shauna & Sylveon",
+  "trainerName": "Shauna",
+  "monsterName": "Sylveon",
   "type": "Fairy",
   "weakness": "Steel",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Draining Kiss",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Really Really Exciting Battle\nFairy Beam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,13 +144,13 @@
     {
       "id": 15010101,
       "name": "Head Start 1",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 12021502,
       "name": "Charging Infliction 2",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when its Pokémon uses a status move.",
+      "description": "Charges the user’s move gauge by 2 when its Pokémon uses a status move.",
       "childPassives": []
     },
     {
@@ -898,5 +898,7 @@
         "Really Really Exciting Battle\nFairy Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Sylveon",
+  "pokemonIconUrl": "img/pokemon/076701_128.png"
 }

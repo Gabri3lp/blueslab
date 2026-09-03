@@ -3,13 +3,13 @@
   "trainerBaseId": "10013400",
   "monsterId": "20134000000",
   "monsterBaseId": "2004860000",
-  "displayName": "Trainer #10013400 & Monster #2004860000",
-  "trainerName": "Trainer #10013400",
-  "monsterName": "Monster #2004860000",
+  "displayName": "Palmer & Regigigas",
+  "trainerName": "Palmer",
+  "monsterName": "Regigigas",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Crush Grip",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "260",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "The smaller the target’s percentage of remaining HP, the lower the power of this attack becomes.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a Normal Zone. (A Normal Zone powers up Normal-type attacks.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "G Giga Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any moves, sync move, or max move a total of five times.\nDeactivation Condition:\nWhen this move is used.\n\nLowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any moves, sync move, or max move a total of five times.\nDeactivation Condition: When this move is used.\n\nLowers the target’s Defense by 6 stat ranks. Restores the user’s HP by approximately 50% of its maximum HP.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 3 stat ranks. Raises the user’s critical-hit rate by 2 stat ranks. Increases the user’s Physical Moves ↑ Next effect by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Towering Tower Tycoon\nNormal Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 17065209,
       "name": "Sync Buff & Hit: Physical Boost ↑3 9",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while its team has a sync buff.",
+      "description": "Has a chance (100%) of increasing the user’s Physical Moves ↑ Next effect by 3 ranks when its attack move is successful while its team has a sync buff.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17065301,
       "name": "Max Move: Free Move Next",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user after using its max move.",
+      "description": "Applies the Free Move Next effect to the user after using its max move.",
       "childPassives": []
     }
   ],
@@ -1001,5 +1001,11 @@
         "Towering Tower Tycoon\nNormal Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Regigigas",
+  "pokemonIconUrl": "img/pokemon/048600_128.png",
+  "superAwakeningPassive": {
+    "name": "Words of the Tower Tycoon",
+    "description": "Powers up the user’s sync move when the zone is a Normal Zone. Turns the field of play’s zone into a Normal Zone after using the user’s max move. (A Normal Zone powers up Normal-type attacks.) Extends the duration of the Normal Zone when the zone turns into a Normal Zone while the user is on the field."
+  }
 }

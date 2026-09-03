@@ -3,13 +3,13 @@
   "trainerBaseId": "10024340",
   "monsterId": "20243400000",
   "monsterBaseId": "2008180000",
-  "displayName": "Gloria  (Summer 2021) & Inteleon",
-  "trainerName": "Gloria  (Summer 2021)",
+  "displayName": "Gloria (Summer 2021) & Inteleon",
+  "trainerName": "Gloria (Summer 2021)",
   "monsterName": "Inteleon",
   "type": "Water",
   "weakness": "Electric",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Snipe Shot",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "128",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Air Slash",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dark Pulse",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "95",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Critical Hit Next effect to the user. Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Raises the user’s Sp. Atk and Speed by 1 stat rank. Applies the Critical Hit Next effect to the user. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Summer Soaking\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 13060509,
       "name": "Critical Refresh 9",
-      "description": "Restores one MP for the user when it lands a critical hit.",
+      "description": "Has a chance (100%) of restoring one MP for the user when it lands a critical hit.",
       "childPassives": []
     },
     {
       "id": 17043904,
       "name": "Critical Freebie 4",
-      "description": "Has a chance ([Digit:2digits ]%) of applying the Free Move Next effect to the user when it lands a critical hit.",
+      "description": "Has a chance (50%) of applying the Free Move Next effect to the user when it lands a critical hit.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Summer Soaking\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/081800_128.png"
 }

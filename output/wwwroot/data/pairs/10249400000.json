@@ -3,8 +3,8 @@
   "trainerBaseId": "10024940",
   "monsterId": "20249400000",
   "monsterBaseId": "2008751100",
-  "displayName": "Nessa  (Holiday 2021) & Eiscue",
-  "trainerName": "Nessa  (Holiday 2021)",
+  "displayName": "Nessa (Holiday 2021) & Eiscue",
+  "trainerName": "Nessa (Holiday 2021)",
   "monsterName": "Eiscue",
   "type": "Ice",
   "weakness": "Fire",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Powder Snow",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "16",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Causes a hailstorm.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Icicle Crash",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. In addition, applies the Gradual Healing effect to all allied sync pairs during a hailstorm.",
+      "description": "Raises the user’s Attack by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank. In addition, applies the Gradual Healing effect to all allied sync pairs during a hailstorm.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Naughty or Noice \nIce Impact",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases during a hailstorm.",
       "isSync": true
@@ -905,5 +905,6 @@
         "Naughty or Noice \nIce Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/087511_128.png"
 }

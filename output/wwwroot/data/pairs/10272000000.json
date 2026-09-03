@@ -3,13 +3,13 @@
   "trainerBaseId": "10027200",
   "monsterId": "20272000000",
   "monsterBaseId": "2000800032",
-  "displayName": "Trainer #10027200 & Monster #2000800032",
-  "trainerName": "Trainer #10027200",
-  "monsterName": "Monster #2000800032",
+  "displayName": "Klara & Slowbro",
+  "trainerName": "Klara",
+  "monsterName": "Slowbro",
   "type": "Poison",
   "weakness": "Ghost",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Poison Jab",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Poisonous\nShell Side Arm",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "240",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Physical Moves ↑ Next effect or Special Moves ↑ Next effect is increased.\nDeactivation Condition:\nWhen the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect are not increased.\n\nThis move’s category changes to Physical when the user’s Physical Moves ↑ Next effect rank is higher than its Special Moves ↑ Next effect rank. Conversely, this move’s category changes to Special when the user’s Special Moves ↑ Next effect rank is equal to or higher than its Physical Moves ↑ Next effect rank. The category for this move’s corresponding max move will not change from Special. Never misses. Leaves the target poisoned. In addition, grants the following two effects when this move’s category is Physical: Lowers the target’s Attack and Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Restores the user’s HP. In addition, grants the following two effects when this move’s category is Special: Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user’s Physical Moves ↑ Next effect or Special Moves ↑ Next effect is increased.\nDeactivation Condition: When the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect are not increased.\n\nThis move’s category changes to Physical when the user’s Physical Moves ↑ Next effect rank is higher than its Special Moves ↑ Next effect rank. Conversely, this move’s category changes to Special when the user’s Special Moves ↑ Next effect rank is equal to or higher than its Physical Moves ↑ Next effect rank. The category for this move’s corresponding max move will not change from Special. Never misses. Leaves the target poisoned. In addition, grants the following two effects when this move’s category is Physical: Lowers the target’s Attack and Defense by 2 stat ranks. Restores the user’s HP. In addition, grants the following two effects when this move’s category is Special: Lowers the target’s Sp. Atk and Sp. Def by 2 stat ranks. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Colorful, Caring, and Charismatic\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 99017501,
       "name": "Full-Course Feast of Venom",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it successfully attacks with [Name:MoveId Idx=\"398\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it successfully attacks with [Name:MoveId Idx=\"188\" ].",
+      "description": "Increases the user’s Physical Moves ↑ Next effect by 1 rank when it successfully attacks with Poison Jab. Increases the user’s Special Moves ↑ Next effect by 1 rank when it successfully attacks with Sludge Bomb.",
       "childPassives": []
     },
     {
       "id": 17071003,
       "name": "Physical Max Move: Physical Boost 3",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its physical max move.",
+      "description": "Increases the user’s Physical Moves ↑ Next effect by 3 rank(s) after using its physical max move.",
       "childPassives": []
     },
     {
       "id": 17071103,
       "name": "Special Max Move: Special Boost 3",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its special max move.",
+      "description": "Increases the user’s Special Moves ↑ Next effect by 3 rank(s) after using its special max move.",
       "childPassives": []
     }
   ],
@@ -1009,5 +1009,11 @@
         "Colorful, Caring, and Charismatic\nPoison Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Slowbro",
+  "pokemonIconUrl": "img/pokemon/008000_128.png",
+  "superAwakeningPassive": {
+    "name": "Krazy for Klara",
+    "description": "Status conditions cannot be inflicted on any allied sync pairs when the zone is a Poison Zone. Turns the field of play’s zone into a Poison Zone after using the user’s max move. (A Poison Zone powers up Poison-type attacks.) Extends the duration of the Poison Zone when the zone turns into a Poison Zone while the user is on the field."
+  }
 }

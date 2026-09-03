@@ -84,7 +84,7 @@
       "accuracy": "0",
       "gauge": "4",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nCannot be deactivated. Never misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets. If the user’s Pidgeot has Mega Evolved, also doubles this attack’s power. When the user’s team does not have a sync buff, also reduces the user’s sync move countdown by.",
+      "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets. If the user’s Pidgeot has Mega Evolved, also doubles this attack’s power. When the user’s team does not have a sync buff, also reduces the user’s sync move countdown by 3.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "Self",
-      "description": "Applies the to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "95",
       "gauge": "2",
       "target": "An opponent",
-      "description": "Has a chance (%) of making the target flinch.",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Increases the user’s by ranks. If the user’s Pidgeot has Mega Evolved, also restores MP of its.",
+      "description": "Reduces the user’s sync move countdown by one. Increases the user’s Special Moves ↑ Next effect by 5 ranks. If the user’s Pidgeot has Mega Evolved, also restores 1 MP of its Almighty Air Slash.",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Pidgeot until the end of battle. Applies the to the user the first time its sync move is used each battle.",
+      "description": "Become Mega Pidgeot until the end of battle. Applies the Enduring effect to the user the first time its sync move is used each battle.",
       "isSync": true
     }
   ],
@@ -144,24 +144,24 @@
     {
       "id": 29010701,
       "name": "Sky Myth",
-      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Flying theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 29020701,
       "name": "Sky Judgment",
-      "description": "Raises the of all allied sync pairs by ranks the first time the user enters a battle each battle. Lowers the of all opposing sync pairs by ranks the first time the user enters a battle each battle.",
+      "description": "Raises the Flying Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Flying Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99034901,
       "name": "Mach 2 Desire to Improve",
-      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s by stat ranks. Applies the to the user. Increases the user’s by ranks.",
+      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s Sp. Atk by 6 stat ranks. Applies the Free Move Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "childPassives": [
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by stat ranks when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
         },
         {
           "id": 17043101,
@@ -171,24 +171,24 @@
         {
           "id": 17074002,
           "name": "Entry: Special Boost 2",
-          "description": "Increases the user’s by ranks when it enters a battle."
+          "description": "Increases the user’s Special Moves ↑ Next effect by 2 rank(s) when it enters a battle."
         }
       ]
     },
     {
       "id": 99035001,
       "name": "Strongest Genes in Kanto",
-      "description": "Applies to the allied field of play the first time the user’s attack move is successful each battle. Applies to the allied field of play the first time the user’s sync move is used each battle.",
+      "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user’s attack move is successful each battle. Applies Kanto Circle (Special) to the allied field of play the first time the user’s sync move is used each battle.",
       "childPassives": [
         {
           "id": 19060401,
           "name": "1st Hit: Kanto C (Spec) on Field",
-          "description": "Applies to the allied field of play the first time the user’s attack move is successful each battle."
+          "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user’s attack move is successful each battle."
         },
         {
           "id": 19060501,
           "name": "1st S-Move: Kanto C (Spec) on Field",
-          "description": "Applies to the allied field of play the first time the user’s sync move is used each battle."
+          "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user’s sync move is used each battle."
         }
       ]
     },

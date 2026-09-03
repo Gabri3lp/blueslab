@@ -3,13 +3,13 @@
   "trainerBaseId": "10008900",
   "monsterId": "20089000000",
   "monsterBaseId": "20064400",
-  "displayName": "Trainer #10008900 & Zekrom",
-  "trainerName": "Trainer #10008900",
+  "displayName": "N & Zekrom",
+  "trainerName": "N",
   "monsterName": "Zekrom",
   "type": "Electric",
   "weakness": "Dragon",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Bolt Strike",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "189",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Outrage",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "115",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Leaves the user confused.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. When the user’s team does not have a sync buff, also applies the Supereffective ↑ Next effect to the user.",
+      "description": "Raises the user’s Speed by 2 stat ranks. Raises the user’s accuracy by 1 stat rank. Lowers the user’s Defense by 1 stat rank. When the user’s team does not have a sync buff, also applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Bridging\nBolt Strike",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "childPassives": []
     }
   ],
@@ -988,5 +988,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/064400_128.png",
+  "superAwakeningPassive": {
+    "name": "Unova’s Hero",
+    "description": "Powers up the user’s sync move when its Attack is raised. Powers up the user’s sync move that is super effective. Increases the user’s Physical Moves ↑ Next effect by one rank when its Trainer uses a move."
+  }
 }

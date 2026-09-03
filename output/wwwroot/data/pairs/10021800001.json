@@ -3,13 +3,13 @@
   "trainerBaseId": "10002180",
   "monsterId": "20021800001",
   "monsterBaseId": "20000600",
-  "displayName": "Blue  (Classic) & Charizard",
-  "trainerName": "Blue  (Classic)",
+  "displayName": "Blue (Classic) & Charizard",
+  "trainerName": "Blue (Classic)",
   "monsterName": "Charizard",
   "type": "Fire",
   "weakness": "Water",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Heat Wave",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "109",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Flare Blitz",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "123",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Removes the frozen condition from the user. The user also takes 25% of the damage it dealt to the target. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Removes the frozen condition from the user. The user also takes 25% of the damage it dealt to the target. Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Neo\nBlast Burn",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "180",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the weather turns sunny.\nDeactivation Condition:\nWhen the weather condition is no longer sunny.\n\nLowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the weather turns sunny.\nDeactivation Condition: When the weather condition is no longer sunny.\n\nLowers the target’s Defense and Sp. Def by 1 stat rank. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"3\" ] to an ally.",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by 1. Raises an ally’s Attack by 4 stat ranks. Applies the Supereffective ↑ Next effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Burning Rivalry\nFire Beam",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 18114704,
       "name": "Entry: Sp. Atk ↑ & Speed ↑ 4",
-      "description": "Raises the user’s Sp. Atk and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk and Speed by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
@@ -911,5 +911,6 @@
         "Burning Rivalry\nFire Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/000600_128.png"
 }

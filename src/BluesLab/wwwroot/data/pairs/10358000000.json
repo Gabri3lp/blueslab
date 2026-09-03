@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "3",
       "target": "An opponent",
-      "description": "Has a chance (%) of leaving the target poisoned.",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Raises the critical-hit rate of all allied sync pairs by stat ranks.",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Never misses. Lowers the of all opposing sync pairs by stat ranks. Leaves all opposing sync pairs either flinching, confused, or trapped. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Restores the user’s HP by approximately % of its maximum HP. Makes opponents target the user for a short time.",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Lowers the evasiveness of all opposing sync pairs by 2 stat ranks. Leaves all opposing sync pairs either flinching, confused, or trapped. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Restores the user’s HP by approximately 10% of its maximum HP. Makes opponents target the user for a short time.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s by stat ranks. Applies the Enduring effect to the user.",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s evasiveness by 6 stat ranks. Applies the Enduring effect to the user.",
       "isSync": false
     },
     {
@@ -144,19 +144,19 @@
     {
       "id": 17083609,
       "name": "Ally Hits Flinching Opp: Phys & Spec Boost ↑1 9",
-      "description": "Increases an ally’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by ranks when its attack move is successful against a flinching opponent.",
+      "description": "Has a chance (100%) of increasing an ally’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank when its attack move is successful against a flinching opponent.",
       "childPassives": []
     },
     {
       "id": 12022609,
       "name": "Ally Hits Confused Opp: MG ↑2 9",
-      "description": "Charges an ally’s move gauge by when its attack move is successful against a confused opponent.",
+      "description": "Has a chance (100%) of charging an ally’s move gauge by 2 when its attack move is successful against a confused opponent.",
       "childPassives": []
     },
     {
       "id": 11015409,
       "name": "Ally Hits Trapped Opp: HP Recovery 9",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP when its attack move is successful against a trapped opponent.",
+      "description": "Has a chance (100%) of restoring an ally’s HP by approximately 10% of its maximum HP when its attack move is successful against a trapped opponent.",
       "childPassives": []
     }
   ],

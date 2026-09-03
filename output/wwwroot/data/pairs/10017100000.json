@@ -9,7 +9,7 @@
   "type": "Grass",
   "weakness": "Psychic",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Razor Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "43",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. If the user’s Venusaur has Mega Evolved, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. When used in a co-op battle, reduces the sync move countdown of all allied players instead. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by 1. If the user’s Venusaur has Mega Evolved, reduces the user’s sync move countdown by 2. When used in a co-op battle, reduces the sync move countdown of all allied players instead. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Frenzy Plant",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "178",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Tenacious\nFrenzy Plant",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Venusaur until the end of battle. This attack’s power increases when the target is poisoned or badly poisoned.",
+      "description": "Become Mega Venusaur until the end of battle. This attack’s power increases when the target is poisoned or badly poisoned.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 17042204,
       "name": "Venomous 4",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target badly poisoned when the user’s move targeting that opponent is successful.",
+      "description": "Has a chance (50%) of leaving the target badly poisoned when the user’s move targeting that opponent is successful.",
       "childPassives": []
     },
     {
       "id": 18047809,
       "name": "Sundering 9",
-      "description": "Lowers the target’s Defense or Sp. Def—or both—by one stat rank when the user’s move targeting that opponent is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense or Sp. Def—or both—by one stat rank when the user’s move targeting that opponent is successful.",
       "childPassives": []
     },
     {
       "id": 15010302,
       "name": "Adrenaline 2",
-      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "description": "Reduces the sync move countdown by 2 the first time the user’s sync move is used each battle.",
       "childPassives": []
     }
   ],
@@ -1061,5 +1061,10 @@
         "Tenacious\nFrenzy Plant": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/006200_128.png",
+  "superAwakeningPassive": {
+    "name": "A Journey in Green Awaits",
+    "description": "Powers up the moves of all allied sync pairs when attacking a target that is poisoned or badly poisoned. The user’s moves never miss. Lowers the target’s Grass Type Rebuff by 1 rank the first time the user’s attack move is successful each battle."
+  }
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10028440",
   "monsterId": "20284400000",
   "monsterBaseId": "2009010000",
-  "displayName": "Adaman  (Special Costume) & Ursaluna",
-  "trainerName": "Adaman  (Special Costume)",
+  "displayName": "Adaman (Special Costume) & Ursaluna",
+  "trainerName": "Adaman (Special Costume)",
   "monsterName": "Ursaluna",
   "type": "Ground",
   "weakness": "Water",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Facade",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the user is poisoned, badly poisoned, paralyzed, or burned. Ignores lowered Attack from burns.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Hazy\nHeadlong Rush",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is burned.\nDeactivation Condition:\nWhen the user is not burned.\n\nNever misses. The smaller the user’s percentage of remaining HP, the greater the power of this attack.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user is burned.\nDeactivation Condition: When the user is not burned.\n\nNever misses. The smaller the user’s percentage of remaining HP, the greater the power of this attack.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Leaves the user burned.",
+      "description": "Raises the user’s Attack by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Leaves the user burned.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Moonlit Moves\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -890,5 +890,6 @@
         "Moonlit Moves\nGround Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/090100_128.png"
 }

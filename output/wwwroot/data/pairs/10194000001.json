@@ -3,13 +3,13 @@
   "trainerBaseId": "10019400",
   "monsterId": "20194000002",
   "monsterBaseId": "20046100",
-  "displayName": "Trainer #10019400 & Weavile",
-  "trainerName": "Trainer #10019400",
+  "displayName": "Cyrus & Weavile",
+  "trainerName": "Cyrus",
   "monsterName": "Weavile",
   "type": "Ice",
   "weakness": "Fighting",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Icicle Crash",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into an Ice Zone. (An Ice Zone powers up Ice-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Frigid Storm\nIce Punch",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nLeaves the target frozen. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time this attack move is successful each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised. Leaves the target frozen. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an the first time this attack move is successful each battle. (An powers up -type attacks.)",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces an ally’s sync move countdown by [Digit:1digit Idx=\"4\" ]. Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Reduces an ally’s sync move countdown by 1. Raises an ally’s Attack by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rid of Incomplete Spirit\nIce Impact",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,17 +144,17 @@
     {
       "id": 99049801,
       "name": "Cool and Clever Judgment",
-      "description": "The user’s moves never miss. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is an [Name:ReferencedMessageTag ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the zone is an [Name:ReferencedMessageTag Idx=\"2\" ].",
+      "description": "The user’s moves never miss. Applies the to the user when its attack move is successful while the zone is an. Increases the user’s by ranks when its attack move is successful while the zone is an.",
       "childPassives": [
         {
           "id": 17098109,
           "name": "Ice Zone Hit: Free Move Next 9",
-          "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is an [Name:ReferencedMessageTag ]."
+          "description": "Applies the to the user when its attack move is successful while the zone is an."
         },
         {
           "id": 17098209,
           "name": "Ice Zone Hit: Physical Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the zone is an [Name:ReferencedMessageTag ]."
+          "description": "Increases the user’s Physical Moves ↑ Next effect by 2 ranks when its attack move is successful while the zone is an Ice Zone."
         },
         {
           "id": 13030101,
@@ -166,13 +166,13 @@
     {
       "id": 17092509,
       "name": "Ally Sets WTZ: Team Physical Boost ↑1 9",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     },
     {
       "id": 19070801,
       "name": "User Sets Ice Zone: Sinnoh C (Phys) on Field",
-      "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s zone into an [Name:ReferencedMessageTag ].",
+      "description": "Applies to the allied field of play when the user turns the field of play’s zone into an.",
       "childPassives": []
     }
   ],
@@ -908,5 +908,6 @@
         "Rid of Incomplete Spirit\nIce Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/046100_128.png"
 }

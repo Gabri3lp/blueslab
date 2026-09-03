@@ -84,7 +84,7 @@
       "accuracy": "90",
       "gauge": "3",
       "target": "An opponent",
-      "description": "Lowers the user’s Sp. Atk by stat ranks.",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Activation Condition:\nWhen the sync buff of the user’s team is zero.\nDeactivation Condition:\nWhen the sync buff of the user’s team is or more. Raises the user’s Attack, Defense, Sp. Atk, and Speed by stat ranks.",
+      "description": "Activation Condition: When the sync buff of the user’s team is zero.\nDeactivation Condition: When the sync buff of the user’s team is 1 or more.\n\nRaises the user’s Attack, Defense, Sp. Atk, and Speed by 6 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Increases the user’s by 10 ranks when its is increased. Increases the user’s by 10 ranks when its is increased.",
+      "description": "Reduces the user’s sync move countdown by two. Increases the user’s Physical Moves ↑ Next effect by 10 ranks when its Physical Moves ↑ Next effect is increased. Increases the user’s Special Moves ↑ Next effect by 10 ranks when its Special Moves ↑ Next effect is increased.",
       "isSync": false
     },
     {
@@ -144,39 +144,39 @@
     {
       "id": 29030401,
       "name": "Sinnoh Rush",
-      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by the first time your team enters a battle each battle instead. The more allied sync pairs with you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Sinnoh theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 99034101,
       "name": "Dance of Yellow Tones",
-      "description": "Applies the to the target when the user’s physical attack move against it is successful. Applies the to the target when the user’s special attack move against it is successful. Only one of these effects can activate once per battle.",
+      "description": "Applies the Physical Move Break effect to the target when the user’s physical attack move against it is successful. Applies the Special Move Break effect to the target when the user’s special attack move against it is successful. Only one of these effects can activate once per battle.",
       "childPassives": []
     },
     {
       "id": 99034201,
       "name": "Dance of Green Tones",
-      "description": "Lowers the target’s by stat ranks when the user’s physical attack move against it is successful. Increases the user’s by ranks when its physical attack move is successful. Lowers the target’s by stat ranks when the user’s special attack move against it is successful. Increases the user’s by ranks when its special attack move is successful.",
+      "description": "Lowers the target’s Defense by 2 stat ranks when the user’s physical attack move against it is successful. Increases the user’s Physical Moves ↑ Next effect by 3 ranks when its physical attack move is successful. Lowers the target’s Sp. Def by 2 stat ranks when the user’s special attack move against it is successful. Increases the user’s Special Moves ↑ Next effect by 3 ranks when its special attack move is successful.",
       "childPassives": [
         {
           "id": 18113209,
           "name": "Phys Hit: Defense ↓2 9",
-          "description": "Lowers the target’s by stat ranks when the user’s physical attack move against it is successful."
+          "description": "Has a chance (100%) of lowering the target’s Defense by 2 stat ranks when the user’s physical attack move against it is successful."
         },
         {
           "id": 18125409,
           "name": "Phys Hit: Physical Boost ↑3 9",
-          "description": "Increases the user’s by ranks when its physical attack move is successful."
+          "description": "Has a chance (100%) of increasing the user’s Physical Moves ↑ Next effect by 3 ranks when its physical attack move is successful."
         },
         {
           "id": 18113309,
           "name": "Spec Hit: Sp. Def ↓2 9",
-          "description": "Lowers the target’s by stat ranks when the user’s special attack move against it is successful."
+          "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s special attack move against it is successful."
         },
         {
           "id": 18125509,
           "name": "Spec Hit: Special Boost ↑3 9",
-          "description": "Increases the user’s by ranks when its special attack move is successful."
+          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 3 ranks when its special attack move is successful."
         }
       ]
     },

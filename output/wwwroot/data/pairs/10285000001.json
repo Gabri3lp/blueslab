@@ -3,13 +3,13 @@
   "trainerBaseId": "10028500",
   "monsterId": "20285000001",
   "monsterBaseId": "20013600",
-  "displayName": "Trainer #10028500 & Flareon",
-  "trainerName": "Trainer #10028500",
+  "displayName": "Irida & Flareon",
+  "trainerName": "Irida",
   "monsterName": "Flareon",
   "type": "Fire",
   "weakness": "Water",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Fire Fang",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "47",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Flare Blitz",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "123",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Removes the frozen condition from the user. The user also takes 25% of the damage it dealt to the target. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Removes the frozen condition from the user. The user also takes 25% of the damage it dealt to the target. Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Raises the user’s Sp. Def by 1 stat rank. Raises the user’s critical-hit rate by 2 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Can’t Stand the Swelter\nFire Impact",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is burned.",
       "isSync": true
@@ -898,5 +898,6 @@
         "Can’t Stand the Swelter\nFire Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/013600_128.png"
 }

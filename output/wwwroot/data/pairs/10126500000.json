@@ -3,13 +3,13 @@
   "trainerBaseId": "10012641",
   "monsterId": "20126500000",
   "monsterBaseId": "20038000",
-  "displayName": "May  (Anniversary 2022) & Latias",
-  "trainerName": "May  (Anniversary 2022)",
+  "displayName": "May (Anniversary 2022) & Latias",
+  "trainerName": "May (Anniversary 2022)",
   "monsterName": "Latias",
   "type": "Psychic",
   "weakness": "Ice",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mist Ball",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of lowering the target’s Sp. Atk by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Psychic Terrain.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Defense and Sp. Def by 2 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Friendship Forging\nMist Ball",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Latias until the end of battle. The more the target’s Sp. Atk is lowered, the greater the power of this attack.",
+      "description": "Become Mega Latias until the end of battle. The more the target’s Sp. Atk is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,13 +144,13 @@
     {
       "id": 13016701,
       "name": "Added Insult",
-      "description": "The more the target’s Sp. Atk and Sp. Def are lowered, the more it powers up the user’s moves.",
+      "description": "The more the target’s Sp. Atk and Sp. Def are lowered, the more it powers up the user’s moves.",
       "childPassives": []
     },
     {
       "id": 17047609,
       "name": "Psychic Freebie 9",
-      "description": "Applies the Free Move Next effect to the user when its attack move is successful while the terrain is Psychic Terrain.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the terrain is Psychic Terrain.",
       "childPassives": []
     },
     {
@@ -1047,5 +1047,10 @@
         "Friendship Forging\nMist Ball": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/038000_128.png",
+  "superAwakeningPassive": {
+    "name": "The Red Wings of an Honest Heart",
+    "description": "Reduces the user’s sync move countdown by 2 the first time it enters a battle each battle. Extends the duration of Psychic Terrain when the terrain turns into Psychic Terrain while the user is on the field. Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user uses Psychic Wish."
+  }
 }

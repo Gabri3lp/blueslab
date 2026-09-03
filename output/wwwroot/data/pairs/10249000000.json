@@ -3,13 +3,13 @@
   "trainerBaseId": "10024900",
   "monsterId": "20249000000",
   "monsterBaseId": "2008340000",
-  "displayName": "Trainer #10024900 & Drednaw",
-  "trainerName": "Trainer #10024900",
+  "displayName": "Nessa & Drednaw",
+  "trainerName": "Nessa",
   "monsterName": "Drednaw",
   "type": "Water",
   "weakness": "Grass",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Razor Shell",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "103",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Jaw Lock",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "140",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Applies the Restrain effect to the target and the user.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rock Tomb",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s Speed by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the weather is rainy.",
+      "description": "Raises the user’s Attack by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank. In addition, raises the user’s Speed by 3 stat ranks when the weather is rainy.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Flood the Stadium\nLiquidation",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is restrained.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18091709,
       "name": "Ripple Effect 9",
-      "description": "When a move used by the user’s Pokémon lowers an opponent’s stat, lowers the same stat for all opposing sync pairs instead.",
+      "description": "When a move used by the user’s Pokémon lowers an opponent’s stat, has a chance (100%) of lowering the same stat for all opposing sync pairs instead.",
       "childPassives": []
     },
     {
       "id": 17043603,
       "name": "Restrained Freebie 3",
-      "description": "Has a chance ([Digit:2digits ]%) of applying the Free Move Next effect to the user when its attack move is successful while it is restrained.",
+      "description": "Has a chance (40%) of applying the Free Move Next effect to the user when its attack move is successful while it is restrained.",
       "childPassives": []
     }
   ],
@@ -986,5 +986,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/083400_128.png"
 }

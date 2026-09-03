@@ -3,13 +3,13 @@
   "trainerBaseId": "10006000",
   "monsterId": "20060000001",
   "monsterBaseId": "20016901",
-  "displayName": "Trainer #10006000 & Monster #20016901",
-  "trainerName": "Trainer #10006000",
-  "monsterName": "Monster #20016901",
+  "displayName": "Janine & Crobat",
+  "trainerName": "Janine",
+  "monsterName": "Crobat",
   "type": "Poison",
   "weakness": "Electric",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Poison Fang",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "34",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target badly poisoned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of leaving the target badly poisoned.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Venoshock",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target is poisoned or badly poisoned.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed and evasiveness of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks. Raises the Speed and evasiveness of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shadow-Slinking\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18040504,
       "name": "Fast-Track 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "description": "Has a chance (50%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
       "childPassives": []
     },
     {
       "id": 11010601,
       "name": "S-Move: HP Recovery (M) 1",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its sync move.",
+      "description": "Restores the user’s HP by approximately 20% of its maximum HP after using its sync move.",
       "childPassives": []
     },
     {
@@ -888,5 +888,7 @@
         "Shadow-Slinking\nPoison Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Crobat",
+  "pokemonIconUrl": "img/pokemon/016901_128.png"
 }

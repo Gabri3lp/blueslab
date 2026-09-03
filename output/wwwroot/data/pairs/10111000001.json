@@ -3,13 +3,13 @@
   "trainerBaseId": "10011100",
   "monsterId": "20111000001",
   "monsterBaseId": "20014800",
-  "displayName": "Trainer #10011100 & Dragonair",
-  "trainerName": "Trainer #10011100",
+  "displayName": "Lance & Dragonair",
+  "trainerName": "Lance",
   "monsterName": "Dragonair",
   "type": "Dragon",
   "weakness": "Fairy",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -82,8 +82,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Hyper Beam",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "223",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"5\" ] of all allied sync pairs by [Digit:1digit Idx=\"6\" ] stat [EN:Qty Ref=\"6\" S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"7\" ]% of its remaining HP.",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Sp. Atk by 4 stat ranks. Raises the Speed of all allied sync pairs by 2 stat ranks. Raises the accuracy of all allied sync pairs by 1 stat rank. The user takes damage equal to 20% of its remaining HP.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Virtually Unstoppable\nDragon Beam",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 17064004,
       "name": "Shocked Hit Freebie 4",
-      "description": "Has a chance ([Digit:2digits Idx=\"1\" ]%) of applying the [Name:ReferencedMessageTag ] to the user when its attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (50%) of applying the Free Move Next effect to the user when its attack move is successful against a paralyzed opponent.",
       "childPassives": []
     },
     {
       "id": 17064101,
       "name": "Afflict Dragon TR ↓",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move targeting the opponent each battle. This effect can activate only once per battle.",
+      "description": "Lowers the target’s Dragon Type Rebuff by 1 rank the first time the user’s Pokémon uses a status move targeting the opponent each battle. This effect can activate only once per battle.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "Virtually Unstoppable\nDragon Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/014800_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10036700",
   "monsterId": "20367000001",
   "monsterBaseId": "20075100",
-  "displayName": "Trainer #10036700 & Avalugg",
-  "trainerName": "Trainer #10036700",
+  "displayName": "Urbain & Avalugg",
+  "trainerName": "Urbain",
   "monsterName": "Avalugg",
   "type": "Ice",
   "weakness": "Fire",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Fang",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "46",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Weight of Responsibility\nIce Impact",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     },
     {
@@ -896,5 +896,6 @@
         "Weight of Responsibility\nIce Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/075100_128.png"
 }

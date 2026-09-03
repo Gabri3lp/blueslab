@@ -3,13 +3,13 @@
   "trainerBaseId": "10014300",
   "monsterId": "20143000000",
   "monsterBaseId": "20011000",
-  "displayName": "Trainer #10014300 & Weezing",
-  "trainerName": "Trainer #10014300",
+  "displayName": "Petrel & Weezing",
+  "trainerName": "Petrel",
   "monsterName": "Weezing",
   "type": "Poison",
   "weakness": "Psychic",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Clear Smog",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "63",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses. Returns the target’s raised stats to normal.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user. Applies the Enduring effect to the user.",
+      "description": "Raises the user’s Defense by 2 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Supereffective ↑ Next effect to the user. Applies the Enduring effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Deceiving Disguise\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 99013501,
       "name": "Petrel’s Ploy",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful. Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "description": "Has a chance (30%) of lowering the target’s Sp. Def by 1 stat rank when the user’s attack move against it is successful. Has a chance (30%) of making the target flinch when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "childPassives": []
     },
     {
@@ -898,5 +898,6 @@
         "Deceiving Disguise\nPoison Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/011000_128.png"
 }

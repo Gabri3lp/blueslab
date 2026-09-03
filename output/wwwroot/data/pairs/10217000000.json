@@ -3,13 +3,13 @@
   "trainerBaseId": "10021700",
   "monsterId": "20217000000",
   "monsterBaseId": "20045300",
-  "displayName": "Trainer #10021700 & Croagunk",
-  "trainerName": "Trainer #10021700",
+  "displayName": "Looker & Croagunk",
+  "trainerName": "Looker",
   "monsterName": "Croagunk",
   "type": "Poison",
   "weakness": "Psychic",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Poison Sting",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "12",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Poison Jab",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Speed by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s Speed by 2 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Hard-Boiled\nPoison Jab",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 17041002,
       "name": "Toxic Chance 2",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned when a move targeting that opponent is successful.",
+      "description": "Has a chance (30%) of leaving the target poisoned when a move targeting that opponent is successful.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,6 @@
         "Hard-Boiled\nPoison Jab": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/045300_128.png"
 }

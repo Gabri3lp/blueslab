@@ -3,9 +3,9 @@
   "trainerBaseId": "10024400",
   "monsterId": "20244000003",
   "monsterBaseId": "2008710001",
-  "displayName": "Trainer #10024400 & Monster #2008710001",
-  "trainerName": "Trainer #10024400",
-  "monsterName": "Monster #2008710001",
+  "displayName": "Hop & Pincurchin",
+  "trainerName": "Hop",
+  "monsterName": "Pincurchin",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Field",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Zing Zap",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Attack and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Attack and critical-hit rate by 2 stat ranks. Applies the Gradual Healing effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Pin It Down\nElectric Impact",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19028001,
       "name": "Debut: Electric Terrain",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] the first time the user enters a battle each battle.",
+      "description": "Turns the field of play’s terrain into Electric Terrain the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 12010603,
       "name": "Turbo Charge 3",
-      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Quickly charges the move gauge when the terrain is Electric Terrain.",
       "childPassives": []
     },
     {
       "id": 18105709,
       "name": "Disheartening Shock 9",
-      "description": "Lowers the target’s Attack and Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Attack and Defense by 1 stat rank when the user’s attack move is successful against a paralyzed opponent.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "Pin It Down\nElectric Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/087100_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10012000",
   "monsterId": "20120000002",
   "monsterBaseId": "20035001",
-  "displayName": "Trainer #10012000 & Milotic",
-  "trainerName": "Trainer #10012000",
+  "displayName": "Lusamine & Milotic",
+  "trainerName": "Lusamine",
   "monsterName": "Milotic",
   "type": "Water",
   "weakness": "Electric",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Water Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Returns the target’s raised stats to normal.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Caring Isn’t Enough\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18090302,
       "name": "Team Speedy Entry 2",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks when the user enters a battle.",
       "childPassives": []
     },
     {
       "id": 18102909,
       "name": "Trip Twice 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Speed by 2 stat ranks when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 15012001,
       "name": "Afflicter’s Fervor 1",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle.",
+      "description": "Reduces the sync move countdown by 1 the first time the user’s Pokémon uses a status move each battle.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,6 @@
         "Caring Isn’t Enough\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/035001_128.png"
 }

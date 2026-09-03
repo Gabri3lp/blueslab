@@ -3,13 +3,13 @@
   "trainerBaseId": "10012800",
   "monsterId": "20128000000",
   "monsterBaseId": "20047500",
-  "displayName": "Trainer #10012800 & Gallade",
-  "trainerName": "Trainer #10012800",
+  "displayName": "Wally & Gallade",
+  "trainerName": "Wally",
   "monsterName": "Gallade",
   "type": "Fighting",
   "weakness": "Ghost",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Low Sweep",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Focus Blast",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Special",
       "power": "142",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Sp. Atk by 1 stat rank. Raises the user’s accuracy by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Rallying\nClose Combat",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Gallade until the end of battle. Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Become Mega Gallade until the end of battle. Raises the user’s critical-hit rate by 1 stat rank.",
       "isSync": true
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": 18041309,
       "name": "Posthaste 9",
-      "description": "Raises the user’s Speed by two stat ranks when it is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
       "childPassives": []
     }
   ],
@@ -1055,5 +1055,6 @@
         "Rallying\nClose Combat": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/047500_128.png"
 }

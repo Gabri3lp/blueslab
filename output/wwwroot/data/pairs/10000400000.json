@@ -3,13 +3,13 @@
   "trainerBaseId": "10000040",
   "monsterId": "20000400000",
   "monsterBaseId": "20000602",
-  "displayName": "Red  (Anniversary 2025) & Monster #20000602",
-  "trainerName": "Red  (Anniversary 2025)",
-  "monsterName": "Monster #20000602",
+  "displayName": "Red (Anniversary 2025) & Charizard",
+  "trainerName": "Red (Anniversary 2025)",
+  "monsterName": "Charizard",
   "type": "Dragon",
   "weakness": "Ice",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Shining\nDragon Claw",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Applies the [Name:ReferencedMessageTag ] to the target. This attack’s power is doubled when the user’s team does not have a sync buff. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s team does not have a sync buff.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nNever misses. Applies the Physical Move Break effect to the target. This attack’s power is doubled when the user’s team does not have a sync buff. Lowers the target’s Defense by 6 stat ranks when the user’s team does not have a sync buff.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Treasured Scales\nOutrage",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "66",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. The more the user’s [Name:ReferencedMessageTag ] is increased, the greater the power of this attack. Removes all of the user’s [Name:ReferencedMessageTag ] ranks.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nNever misses. The more the user’s Special Moves ↑ Next effect is increased, the greater the power of this attack. Removes all of the user’s Special Moves ↑ Next effect ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 3 ranks. Increases the user’s Sync Move ↑ Next effect by 5 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shine at the Summit\nTera Blast",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28040201,
       "name": "Kanto’s Shining Legend",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] after using its sync move.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Kanto theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Increases the user’s Physical Moves ↑ Next effect by 3 ranks after using its sync move.",
       "childPassives": [
         {
           "id": 28030101,
@@ -154,52 +154,52 @@
         {
           "id": 17086009,
           "name": "S-Move: Physical Boost ↑3 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its sync move."
+          "description": "Has a chance (100%) of increasing the user’s Physical Moves ↑ Next effect by 3 ranks after using its sync move."
         }
       ]
     },
     {
       "id": 33011501,
       "name": "Debut: Dragon S-Tera",
-      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time it enters a battle each battle.",
+      "description": "The user Sync Terastallizes into Dragon type the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99030301,
       "name": "Dragon Aura Overflow",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s attack move is successful each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s sync move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s zone into a Dragon Zone the first time the user’s attack move is successful each battle. Turns the field of play’s zone into a Dragon Zone the first time the user’s sync move is used each battle. (A Dragon Zone powers up Dragon-type attacks.) Extends the duration of the Dragon Zone when the zone turns into a Dragon Zone while the user is on the field.",
       "childPassives": [
         {
           "id": 19058201,
           "name": "1st Hit: Dragon Zone",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s attack move is successful each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into a Dragon Zone the first time the user’s attack move is successful each battle. (A Dragon Zone powers up Dragon-type attacks.)"
         },
         {
           "id": 19050701,
           "name": "1st S-Move: Dragon Zone",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s sync move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into a Dragon Zone the first time the user’s sync move is used each battle. (A Dragon Zone powers up Dragon-type attacks.)"
         },
         {
           "id": 19025805,
           "name": "Dragon Zone Extension 5",
-          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+          "description": "Extends the duration of the Dragon Zone when the zone turns into a Dragon Zone while the user is on the field."
         }
       ]
     },
     {
       "id": 99030401,
       "name": "Living Legend’s Intuition",
-      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s sync move is used each battle. Raises the sync buff of the user’s team by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+      "description": "Applies Kanto Circle (Physical) to the allied field of play the first time the user’s sync move is used each battle. Raises the sync buff of the user’s team by 1 rank the first time its sync move is used each battle.",
       "childPassives": [
         {
           "id": 19058301,
           "name": "1st S-Move: Kanto C (Phys) on Field",
-          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s sync move is used each battle."
+          "description": "Applies Kanto Circle (Physical) to the allied field of play the first time the user’s sync move is used each battle."
         },
         {
           "id": 17083101,
           "name": "1st S-Move: Sync Buff ↑ 1",
-          "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+          "description": "Raises the sync buff of the user’s team by 1 rank(s) the first time its sync move is used each battle."
         }
       ]
     }
@@ -987,5 +987,7 @@
         "Shine at the Summit\nTera Blast": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Charizard",
+  "pokemonIconUrl": "img/pokemon/064100_128.png"
 }

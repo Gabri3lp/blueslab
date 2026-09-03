@@ -3,8 +3,8 @@
   "trainerBaseId": "10015600",
   "monsterId": "20156000000",
   "monsterBaseId": "20044800",
-  "displayName": "Trainer #10015600 & Lucario",
-  "trainerName": "Trainer #10015600",
+  "displayName": "Riley & Lucario",
+  "trainerName": "Riley",
   "monsterName": "Lucario",
   "type": "Fighting",
   "weakness": "Fire",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Close Combat",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "124",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Iron Tail",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "132",
       "accuracy": "75",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s Defense and Sp. Def by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Attack by 4 stat ranks. Raises the user’s Defense and Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Aura Driven\nFighting Impact",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 15011703,
       "name": "MAX Countdown 3",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "description": "Reduces the user’s sync move countdown by 3 after using its max move.",
       "childPassives": []
     },
     {
       "id": 18093809,
       "name": "Dashing Team 9",
-      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
       "childPassives": []
     },
     {
@@ -905,5 +905,6 @@
         "Aura Driven\nFighting Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/044800_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10010680",
   "monsterId": "20106800000",
   "monsterBaseId": "20058700",
-  "displayName": "Elesa  (Classic) & Emolga",
-  "trainerName": "Elesa  (Classic)",
+  "displayName": "Elesa (Classic) & Emolga",
+  "trainerName": "Elesa (Classic)",
   "monsterName": "Emolga",
   "type": "Electric",
   "weakness": "Ice",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Shock",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Nuzzle",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An ally",
       "description": "Applies the Special Damage Reduction effect to the allied field of play.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the Sp. Def of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Sp. Atk by 4 stat ranks. Raises the Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Showstopping\nElectric Beam",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s stats are lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18097109,
       "name": "Shock Factor 9",
-      "description": "Lowers the target’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by one stat rank when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by one stat rank when the user’s attack move is successful against a paralyzed opponent.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17045709,
       "name": "Viral Hit 9",
-      "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, inflicts the same status condition on all opposing sync pairs.",
+      "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, has a chance (100%) of inflicting the same status condition on all opposing sync pairs.",
       "childPassives": []
     }
   ],
@@ -999,5 +999,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/058700_128.png",
+  "superAwakeningPassive": {
+    "name": "The Shining Beauty",
+    "description": "Powers up the user’s max move when the target is paralyzed. Powers up the moves of all allied sync pairs when the terrain is Electric Terrain. Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field."
+  }
 }

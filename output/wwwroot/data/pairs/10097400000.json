@@ -3,13 +3,13 @@
   "trainerBaseId": "10009740",
   "monsterId": "20097400000",
   "monsterBaseId": "20049211",
-  "displayName": "Marley  (Palentine's 2025) & Shaymin",
-  "trainerName": "Marley  (Palentine's 2025)",
+  "displayName": "Marley (Palentine's 2025) & Shaymin",
+  "trainerName": "Marley (Palentine's 2025)",
   "monsterName": "Shaymin",
   "type": "Grass",
   "weakness": "Fire",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Seed Flare",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "185",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Has a chance (40%) of lowering the target’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move and special sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Sinnoh Circle (Special) to the allied field of play. Sinnoh Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Sinnoh theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Blessed\nSeed Flare",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync move countdown is reduced by [Digit:1digit ] while this move is deactivated.\nDeactivation Condition:\nWhen this move is used.\n\nExcept in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets. Increases the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When your team’s sync move countdown is reduced by 3 while this move is deactivated.\nDeactivation Condition: When this move is used.\n\nExcept in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s Sp. Def by 2 stat ranks. The power of this move is not lowered even if there are multiple targets. Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the Speed of all allied sync pairs by 4 stat ranks. Raises the user’s evasiveness by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Blooming Gratitude and Courage\nGrass Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,39 +144,39 @@
     {
       "id": 99022001,
       "name": "Conveying Kindness",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"3\" ] the first time it applies [Name:ReferencedMessageTag ] to the allied field of play each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it applies [Name:ReferencedMessageTag ] to the allied field of play each battle.",
+      "description": "Reduces the user’s sync move countdown by 3 the first time it applies Sinnoh Circle (Special) to the allied field of play each battle. Raises the user’s Sp. Atk by 4 stat ranks the first time it applies Sinnoh Circle (Special) to the allied field of play each battle.",
       "childPassives": [
         {
           "id": 15014003,
           "name": "1st Time User Sets Sinnoh C (Spec): Sync CD ↓ 3",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it applies [Name:ReferencedMessageTag ] to the allied field of play each battle."
+          "description": "Reduces the user’s sync move countdown by 3 the first time it applies Sinnoh Circle (Special) to the allied field of play each battle."
         },
         {
           "id": 18119404,
           "name": "1st Time User Sets Sinnoh C (Spec): Sp. Atk ↑ 4",
-          "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it applies [Name:ReferencedMessageTag ] to the allied field of play each battle."
+          "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time it applies Sinnoh Circle (Special) to the allied field of play each battle."
         }
       ]
     },
     {
       "id": 99022101,
       "name": "Blossoming Talent",
-      "description": "Raises the user’s accuracy and critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its move is successful. Charges the user’s move gauge by [Digit:1digit ] when its move is successful.",
+      "description": "Raises the user’s accuracy and critical-hit rate by 1 stat rank when its move is successful. Charges the user’s move gauge by 2 when its move is successful.",
       "childPassives": [
         {
           "id": 18106401,
           "name": "Precision 1",
-          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its move is successful."
+          "description": "Raises the user’s accuracy by 1 stat rank when its move is successful."
         },
         {
           "id": 18094401,
           "name": "Critical Eye 1",
-          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its move is successful."
+          "description": "Raises the user’s critical-hit rate by 1 stat rank when its move is successful."
         },
         {
           "id": 18117209,
           "name": "Move: MG ↑2 9",
-          "description": "Charges the user’s move gauge by [Digit:1digit ] when its move is successful."
+          "description": "Has a chance (100%) of charging the user’s move gauge by 2 when its move is successful."
         }
       ]
     },
@@ -927,5 +927,6 @@
         "Blooming Gratitude and Courage\nGrass Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/049211_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10002000",
   "monsterId": "20020000000",
   "monsterBaseId": "20050100",
-  "displayName": "Trainer #10002000 & Oshawott",
-  "trainerName": "Trainer #10002000",
+  "displayName": "Hilbert & Oshawott",
+  "trainerName": "Hilbert",
   "monsterName": "Oshawott",
   "type": "Water",
   "weakness": "Electric",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Aqua Tail",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "56",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "The smaller the user’s percentage of remaining HP, the more it raises the Attack of all allied sync pairs (can be raised by up to [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] maximum).",
+      "target": "All allies",
+      "description": "The smaller the user’s percentage of remaining HP, the more it raises the Attack of all allied sync pairs (can be raised by up to 6 stat ranks maximum).",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Waterfall",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Water\nSync Impact",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -980,5 +980,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/050100_128.png"
 }

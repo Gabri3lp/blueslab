@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "An opponent",
-      "description": "Has a chance (%) of leaving the target frozen.",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
+      "description": "Restores an ally’s HP by approximately 20% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nCannot be deactivated. Never misses. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s Speed and accuracy by stat ranks. The power of this move is not lowered even if there are multiple targets.",
+      "description": "Activation Condition: When the user’s evasiveness is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s Speed and accuracy by 1 stat rank. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Increases the user’s by ranks.",
+      "description": "Reduces the user’s sync move countdown by 2. Raises the user’s critical-hit rate by 3 stat ranks. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 18117704,
       "name": "Entry: Sp. Atk ↑ & Evasiveness ↑ 4",
-      "description": "Raises the user’s Sp. Atk and evasiveness by stat ranks when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk and evasiveness by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17073109,
       "name": "Hit: “Berry” MP ↓ & Special Boost ↑3 9",
-      "description": "Reduces MP by for the user’s moves that have the Berry effect tag and increases its by ranks when its attack move is successful.",
+      "description": "Has a chance (100%) of reducing MP by 1 for the user’s moves that have the Berry effect tag and increasing its Special Moves ↑ Next effect by 3 ranks when its attack move is successful.",
       "childPassives": []
     },
     {
       "id": 15013303,
       "name": "1st “Berry” MP 0: Sync CD ↓ 3",
-      "description": "Reduces the user’s sync move countdown by the first time the remaining MP for its moves that have the Berry effect tag is zero each battle.",
+      "description": "Reduces the user’s sync move countdown by 3 the first time the remaining MP for its moves that have the Berry effect tag is zero each battle.",
       "childPassives": []
     }
   ],

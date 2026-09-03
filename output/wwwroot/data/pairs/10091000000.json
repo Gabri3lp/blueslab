@@ -3,13 +3,13 @@
   "trainerBaseId": "10009100",
   "monsterId": "20091000000",
   "monsterBaseId": "20044501",
-  "displayName": "Trainer #10009100 & Garchomp",
-  "trainerName": "Trainer #10009100",
+  "displayName": "Cynthia & Garchomp",
+  "trainerName": "Cynthia",
   "monsterName": "Garchomp",
   "type": "Ground",
   "weakness": "Ice",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Stomping Tantrum",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "44",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the user’s previous move failed.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Earthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. These stats are raised by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] instead during a sandstorm.",
+      "description": "Raises the user’s Speed and critical-hit rate by 1 stat rank. These stats are raised by 2 stat ranks instead during a sandstorm.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Earthquake of\nAncient Lore",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Garchomp until the end of battle.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18040502,
       "name": "Fast-Track 2",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "description": "Has a chance (30%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
       "childPassives": []
     },
     {
@@ -1145,5 +1145,10 @@
         "Earthquake of\nAncient Lore": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/044501_128.png",
+  "superAwakeningPassive": {
+    "name": "Celestic’s Curious Mind",
+    "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Causes a sandstorm the first time the user enters a battle each battle. The more the user’s Speed is raised, the more it powers up the user’s sync move."
+  }
 }

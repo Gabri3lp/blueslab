@@ -3,13 +3,13 @@
   "trainerBaseId": "10018100",
   "monsterId": "20181000000",
   "monsterBaseId": "20071513",
-  "displayName": "Trainer #10018100 & Florges",
-  "trainerName": "Trainer #10018100",
+  "displayName": "Trevor & Florges",
+  "trainerName": "Trevor",
   "monsterName": "Florges",
   "type": "Fairy",
   "weakness": "Steel",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Vine Whip",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP. HP is restored by 60% instead when the weather is sunny, and 40% when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Disarming Voice",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Never misses.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Special Damage Reduction effect to the allied field of play. Raises the Sp. Atk and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Applies the Special Damage Reduction effect to the allied field of play. Raises the Sp. Atk and Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Perfect Test Scores\nFairy Beam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18105909,
       "name": "Satisfied Snicker 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Sp. Atk by 1 stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 17030204,
       "name": "Healing Hand 4",
-      "description": "Has a chance ([Digit:2digits ]%) of removing all status conditions from all allied sync pairs when the user’s Pokémon uses a move.",
+      "description": "Has a chance (50%) of removing all status conditions from all allied sync pairs when the user’s Pokémon uses a move.",
       "childPassives": []
     },
     {
       "id": 11011003,
       "name": "Team Fist Bump 3",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
+      "description": "Has a chance (40%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Perfect Test Scores\nFairy Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/071513_128.png"
 }

@@ -9,7 +9,7 @@
   "type": "Dark",
   "weakness": "Fairy",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -82,8 +82,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Dark Zone. (A Dark Zone powers up Dark-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dark Pulse",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "95",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy and critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks. Raises the user’s accuracy and critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Perfect World\nDark Pulse",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the zone is a Dark Zone.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 18097709,
       "name": "Bad Break 9",
-      "description": "Lowers one of the following stats of all opposing sync pairs by one stat rank at random when the user’s Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (100%) of lowering one of the following stats of all opposing sync pairs by one stat rank at random when the user’s Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
@@ -976,5 +976,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/049100_128.png",
+  "superAwakeningPassive": {
+    "name": "Dark, Slumbering World",
+    "description": "Reduces the user’s sync move countdown by 1 when it uses Dark Wish. Powers up the moves of all allied sync pairs when attacking a target that is asleep. Lowers one of the following stats of all opposing sync pairs by one stat rank at random when the user’s Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
+  }
 }

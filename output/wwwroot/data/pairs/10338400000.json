@@ -3,13 +3,13 @@
   "trainerBaseId": "10033840",
   "monsterId": "20338400000",
   "monsterBaseId": "20016401",
-  "displayName": "Perrin  (Academy) & Monster #20016401",
-  "trainerName": "Perrin  (Academy)",
-  "monsterName": "Monster #20016401",
+  "displayName": "Perrin (Academy) & Noctowl",
+  "trainerName": "Perrin (Academy)",
+  "monsterName": "Noctowl",
   "type": "Flying",
   "weakness": "Rock",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Aerial Ace",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Paldea Circle (Physical) to the allied field of play. Paldea Circle (Physical) grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by 10%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Paldea theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Eagle Eye\nZen Headbutt",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any circles applied to the allied field of play.\n\nNever misses. Makes the target flinch. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When a circle is applied to the allied field of play.\nDeactivation Condition: When there are no longer any circles applied to the allied field of play.\n\nNever misses. Makes the target flinch. Increases the user’s Sync Move ↑ Next effect by 5 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Attack by 3 stat ranks. Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Real Good Shot\nFlying Impact",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Attack is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,51 +144,51 @@
     {
       "id": 99040901,
       "name": "Turning On the Flash!",
-      "description": "Lowers the target’s Defense and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful. Has a chance ([Digit:2digits Idx=\"1\" ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "description": "Lowers the target’s Defense and Speed by 2 stat ranks when the user’s attack move against it is successful. Has a chance (30%) of making the target flinch when the user’s attack move against it is successful.",
       "childPassives": [
         {
           "id": 18100509,
           "name": "Defense Destroyer 9",
-          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
+          "description": "Has a chance (100%) of lowering the target’s Defense by 2 stat ranks when the user’s attack move against it is successful."
         },
         {
           "id": 18102909,
           "name": "Trip Twice 9",
-          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
+          "description": "Has a chance (100%) of lowering the target’s Speed by 2 stat ranks when the user’s attack move against it is successful."
         },
         {
           "id": 17041302,
           "name": "Staggering 2",
-          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
+          "description": "Has a chance (30%) of making the target flinch when the user’s attack move against it is successful."
         }
       ]
     },
     {
       "id": 99041001,
       "name": "Raising the Shutter Speed!",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when the user applies a circle to the allied field of play. Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play.",
+      "description": "Reduces the user’s sync move countdown by 1 when the user applies a circle to the allied field of play. Extends the duration of Paldea Circle (Physical) when Paldea Circle (Physical) is applied to the allied field of play. Raises the Speed of all allied sync pairs by 2 stat ranks when the user applies a circle to the allied field of play.",
       "childPassives": [
         {
           "id": 15015901,
           "name": "User Sets Circle: Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it applies a circle to the allied field of play."
+          "description": "Reduces the user’s sync move countdown by 1 when it applies a circle to the allied field of play."
         },
         {
           "id": 18127909,
           "name": "User Sets Circle: Team Speed ↑2 9",
-          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play."
+          "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 2 stat ranks when the user applies a circle to the allied field of play."
         },
         {
           "id": 19064903,
           "name": "Paldea C (Phys) Extension 3",
-          "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play."
+          "description": "Extends the duration of Paldea Circle (Physical) when Paldea Circle (Physical) is applied to the allied field of play."
         }
       ]
     },
     {
       "id": 13085303,
       "name": "1st Use S-Move: S-Moves ×4",
-      "description": "The power of the user’s sync move is quadrupled the first time its sync move is used each battle.",
+      "description": "The power of the user’s sync move is multiplied by 4 the first time its sync move is used each battle.",
       "childPassives": []
     }
   ],
@@ -930,5 +930,7 @@
         "Real Good Shot\nFlying Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Noctowl",
+  "pokemonIconUrl": "img/pokemon/016401_128.png"
 }

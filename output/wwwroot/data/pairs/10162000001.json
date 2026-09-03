@@ -3,13 +3,13 @@
   "trainerBaseId": "10016200",
   "monsterId": "20162000001",
   "monsterBaseId": "20013600",
-  "displayName": "Trainer #10016200 & Flareon",
-  "trainerName": "Trainer #10016200",
+  "displayName": "Lucas & Flareon",
+  "trainerName": "Lucas",
   "monsterName": "Flareon",
   "type": "Fire",
   "weakness": "Rock",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ember",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Heat Wave",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "109",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s critical-hit rate by 1 stat rank. Raises the Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Red-Hot Research\nFire Beam",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is burned.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 18104209,
       "name": "Blunting Strike 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s Pokémon uses a move targeting that opponent. Has a chance (100%) of lowering the target’s Attack by 1 stat rank after using the user’s sync move targeting that opponent.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "Red-Hot Research\nFire Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/013600_128.png"
 }

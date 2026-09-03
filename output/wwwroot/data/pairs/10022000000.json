@@ -3,13 +3,13 @@
   "trainerBaseId": "10002200",
   "monsterId": "20022000000",
   "monsterBaseId": "20075100",
-  "displayName": "Trainer #10002200 & Avalugg",
-  "trainerName": "Trainer #10002200",
+  "displayName": "Wulfric & Avalugg",
+  "trainerName": "Wulfric",
   "monsterName": "Avalugg",
   "type": "Ice",
   "weakness": "Fire",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Fang",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "46",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Avalanche",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "75",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "The user takes up a counterattacking posture. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while in this posture. The user will leave this posture if hit by an attack move while it is in this counterattacking posture, then attack the target with double the power of this attack.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Makes opponents target the user for a short time. Raises the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Makes opponents target the user for a short time. Raises the user’s Defense by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Unstoppable\nAvalanche",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -878,5 +878,10 @@
         "Unstoppable\nAvalanche": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/016900_128.png",
+  "superAwakeningPassive": {
+    "name": "Great Detective of Lumiose City",
+    "description": "Reduces the user’s sync move countdown by 1 the first time its sync move is used each battle. Lowers the target’s Poison Type Rebuff by 1 rank the first time the user’s attack move is successful each battle. Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful."
+  }
 }

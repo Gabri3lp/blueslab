@@ -3,13 +3,13 @@
   "trainerBaseId": "10030100",
   "monsterId": "20301000000",
   "monsterBaseId": "20057100",
-  "displayName": "Trainer #10030100 & Zoroark",
-  "trainerName": "Trainer #10030100",
+  "displayName": "Brycen-Man & Zoroark",
+  "trainerName": "Brycen-Man",
   "monsterName": "Zoroark",
   "type": "Dark",
   "weakness": "Fighting",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Night Daze",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "166",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Has a chance (40%) of lowering the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Stat Reduction Defense effect to the allied field of play.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Trainer uses any moves [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Lowers the target’s Sp. Atk and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s Trainer uses any moves 1 time.\nDeactivation Condition: When this move is used.\n\nNever misses. Lowers the target’s Sp. Atk and Sp. Def by 2 stat ranks. Lowers the target’s Dark Type Rebuff by 1 rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Dye This World\nDark Beam",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": 17070209,
       "name": "Hit Rebuff ↓ Opp: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while the target’s Type Rebuff is lowered.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the target’s Type Rebuff is lowered.",
       "childPassives": []
     },
     {
@@ -888,5 +888,6 @@
         "Dye This World\nDark Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/057100_128.png"
 }

@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately % of its maximum HP.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user’s HP is at % or more.\nDeactivation Condition:\nWhen the user’s HP is less than %. Raises the Attack, Defense, Sp. Atk, Sp. Def, and Speed of all allied sync pairs by stat ranks.",
+      "description": "Activation Condition: When the user’s HP is at 80% or more.\nDeactivation Condition: When the user’s HP is less than 80%.\n\nRaises the Attack, Defense, Sp. Atk, Sp. Def, and Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Raises the user’s Water Type Rebuff and Ghost Type Rebuff by ranks.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Raises the user’s Water Type Rebuff and Ghost Type Rebuff by 1 rank.",
       "isSync": false
     },
     {
@@ -144,19 +144,19 @@
     {
       "id": 99017401,
       "name": "Touch at Your Own Peril",
-      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by stat ranks when the user is hit by an attack move.",
+      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by 2 stat ranks when the user is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 17070801,
       "name": "“Heals” Move: Team Gradual Healing",
-      "description": "Applies the to all allied sync pairs when the user uses a move that has the heals effect tag.",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs when the user uses a move that has the heals effect tag.",
       "childPassives": []
     },
     {
       "id": 11011009,
       "name": "Team Fist Bump 9",
-      "description": "Restores the HP of all allied sync pairs when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
       "childPassives": []
     }
   ],

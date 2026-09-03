@@ -3,13 +3,13 @@
   "trainerBaseId": "10004810",
   "monsterId": "20048100000",
   "monsterBaseId": "20031900",
-  "displayName": "Sygna Suit  Grimsley & Sharpedo",
-  "trainerName": "Sygna Suit  Grimsley",
+  "displayName": "Sygna Suit Grimsley & Sharpedo",
+  "trainerName": "Sygna Suit Grimsley",
   "monsterName": "Sharpedo",
   "type": "Water",
   "weakness": "Fairy",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Waterfall",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Liquidation",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Removes all status conditions from the user. Raises the user’s evasiveness and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"1\" ]% of its remaining HP. If the user’s Sharpedo has Mega Evolved, also raises the user’s Attack by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Removes all status conditions from the user. Raises the user’s evasiveness and critical-hit rate by 3 stat ranks. The user takes damage equal to 90% of its remaining HP. If the user’s Sharpedo has Mega Evolved, also raises the user’s Attack by 6 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "High-Stakes\nLiquidation",
       "type": "Water",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Sharpedo until the end of battle.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18040502,
       "name": "Fast-Track 2",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "description": "Has a chance (30%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
       "childPassives": []
     },
     {
@@ -1053,5 +1053,6 @@
         "High-Stakes\nLiquidation": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/031900_128.png"
 }

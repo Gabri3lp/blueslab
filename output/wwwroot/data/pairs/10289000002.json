@@ -3,13 +3,13 @@
   "trainerBaseId": "10028900",
   "monsterId": "20289000002",
   "monsterBaseId": "2009120000",
-  "displayName": "Trainer #10028900 & Quaxly",
-  "trainerName": "Trainer #10028900",
+  "displayName": "Nemona & Quaxly",
+  "trainerName": "Nemona",
   "monsterName": "Quaxly",
   "type": "Water",
   "weakness": "Electric",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hydro Pump",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "125",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ].",
+      "description": "Charges the user’s move gauge by 3.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather rainy.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s accuracy by 2 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Put Out Any Fire\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 17040709,
       "name": "Flabbergast 9",
-      "description": "Leaves the target confused when the user’s move targeting that opponent is successful.",
+      "description": "Has a chance (100%) of leaving the target confused when a move targeting that opponent is successful.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Put Out Any Fire\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/091200_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10003200",
   "monsterId": "20032000000",
   "monsterBaseId": "20008600",
-  "displayName": "Trainer #10003200 & Seel",
-  "trainerName": "Trainer #10003200",
+  "displayName": "Pryce & Seel",
+  "trainerName": "Pryce",
   "monsterName": "Seel",
   "type": "Ice",
   "weakness": "Electric",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Icy Wind",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk and Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ice\nSync Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -892,5 +892,10 @@
         "Winter’s Lesson\nAurora Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/093600_128.png",
+  "superAwakeningPassive": {
+    "name": "Team Star’s All-Rounder",
+    "description": "Applies Paldea Circle (Special) to the allied field of play the first time the user enters a battle each battle. Applies Paldea Circle (Special) to the allied field of play the first time the user’s sync move is used each battle. Restores the user’s HP whenever its Pokémon takes an action when a circle applies to the allied field of play."
+  }
 }

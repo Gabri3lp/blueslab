@@ -3,13 +3,13 @@
   "trainerBaseId": "10024500",
   "monsterId": "20245000001",
   "monsterBaseId": "20045401",
-  "displayName": "Trainer #10024500 & Toxicroak",
-  "trainerName": "Trainer #10024500",
+  "displayName": "Marnie & Toxicroak",
+  "trainerName": "Marnie",
   "monsterName": "Toxicroak",
   "type": "Poison",
   "weakness": "Psychic",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Sludge Wave",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "97",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Raises the user’s critical-hit rate by 3 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Get You Goin’\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s accuracy is lowered, the greater the power of this attack.",
       "isSync": true
@@ -900,5 +900,6 @@
         "Get You Goin’\nPoison Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/045401_128.png"
 }

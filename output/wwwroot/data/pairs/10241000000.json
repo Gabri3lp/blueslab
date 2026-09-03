@@ -3,13 +3,13 @@
   "trainerBaseId": "10024100",
   "monsterId": "20241000000",
   "monsterBaseId": "20011000",
-  "displayName": "Trainer #10024100 & Weezing",
-  "trainerName": "Trainer #10024100",
+  "displayName": "James & Weezing",
+  "trainerName": "James",
   "monsterName": "Weezing",
   "type": "Poison",
   "weakness": "Psychic",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": false,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Sludge",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Leaves the target poisoned.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Raises the user’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP. Raises the user’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Make It Double\nSludge",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is poisoned or badly poisoned.",
       "isSync": true
@@ -246,5 +246,6 @@
       },
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/011000_128.png"
 }

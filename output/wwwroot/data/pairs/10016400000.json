@@ -3,13 +3,13 @@
   "trainerBaseId": "10001640",
   "monsterId": "20016400000",
   "monsterBaseId": "20046800",
-  "displayName": "Skyla  (Holiday 2020) & Togekiss",
-  "trainerName": "Skyla  (Holiday 2020)",
+  "displayName": "Skyla (Holiday 2020) & Togekiss",
+  "trainerName": "Skyla (Holiday 2020)",
   "monsterName": "Togekiss",
   "type": "Flying",
   "weakness": "Electric",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Air Slash",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Tri Attack",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "117",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned, paralyzed, or frozen.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of leaving the target burned, paralyzed, or frozen.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s Speed and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises one of the following stats of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, accuracy, or evasiveness.",
+      "target": "All allies",
+      "description": "Raises the user’s Speed and critical-hit rate by 1 stat rank. Raises one of the following stats of all allied sync pairs by 2 stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, accuracy, or evasiveness.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Good Tidings\nAir Slash",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is affected by a status condition.",
       "isSync": true
@@ -900,5 +900,6 @@
         "Good Tidings\nAir Slash": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/046800_128.png"
 }

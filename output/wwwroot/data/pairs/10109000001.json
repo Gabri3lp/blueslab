@@ -3,13 +3,13 @@
   "trainerBaseId": "10010900",
   "monsterId": "20109000001",
   "monsterBaseId": "20053300",
-  "displayName": "Trainer #10010900 & Gurdurr",
-  "trainerName": "Trainer #10010900",
+  "displayName": "Emmet & Gurdurr",
+  "trainerName": "Emmet",
   "monsterName": "Gurdurr",
   "type": "Fighting",
   "weakness": "Psychic",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -82,9 +82,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s accuracy by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Dynamic Punch",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "198",
       "accuracy": "50",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Leaves the target confused.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Great Battle\nFighting Impact",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s [Name:ReferencedMessageTag ] is raised, the greater the power of this attack.",
+      "description": "The more the user’s Attack is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 18090102,
       "name": "Pinpoint Entry 2",
-      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s accuracy by 2 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 18106109,
       "name": "Grab Bag 9",
-      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s Pokémon uses a move targeting that opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (100%) of lowering one of the target’s following stats by 1 stat rank at random when the user’s Pokémon uses a move targeting that opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
       "id": 12020109,
       "name": "Move Gauge Refresh 9",
-      "description": "Charges the user’s move gauge by one when its move is successful.",
+      "description": "Has a chance (100%) of charging the user’s move gauge by one when its move is successful.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Great Battle\nFighting Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/053300_128.png"
 }

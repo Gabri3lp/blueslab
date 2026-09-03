@@ -3,13 +3,13 @@
   "trainerBaseId": "10018700",
   "monsterId": "20187000000",
   "monsterBaseId": "20047101",
-  "displayName": "Trainer #10018700 & Monster #20047101",
-  "trainerName": "Trainer #10018700",
-  "monsterName": "Monster #20047101",
+  "displayName": "Sina & Glaceon",
+  "trainerName": "Sina",
+  "monsterName": "Glaceon",
   "type": "Ice",
   "weakness": "Rock",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 20% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Beautiful\nIcy Wind",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag Idx=\"4\" ] is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s Speed and accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s evasiveness is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s Speed and accuracy by 1 stat rank. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 2. Raises the user’s critical-hit rate by 3 stat ranks. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Beautifully Beautiful\nSubzero Slammer",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 18117704,
       "name": "Entry: Sp. Atk ↑ & Evasiveness ↑ 4",
-      "description": "Raises the user’s Sp. Atk and evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk and evasiveness by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17073109,
       "name": "Hit: “Berry” MP ↓ & Special Boost ↑3 9",
-      "description": "Reduces MP by [Digit:1digit ] for the user’s moves that have the Berry effect tag and increases its [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move is successful.",
+      "description": "Has a chance (100%) of reducing MP by 1 for the user’s moves that have the Berry effect tag and increasing its Special Moves ↑ Next effect by 3 ranks when its attack move is successful.",
       "childPassives": []
     },
     {
       "id": 15013303,
       "name": "1st “Berry” MP 0: Sync CD ↓ 3",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle.",
+      "description": "Reduces the user’s sync move countdown by 3 the first time the remaining MP for its moves that have the Berry effect tag is zero each battle.",
       "childPassives": []
     }
   ],
@@ -986,5 +986,11 @@
         "Beautifully Beautiful\nSubzero Slammer": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Glaceon",
+  "pokemonIconUrl": "img/pokemon/047101_128.png",
+  "superAwakeningPassive": {
+    "name": "Stop Right There!",
+    "description": "Turns the field of play’s zone into an Ice Zone the first time the user enters a battle each battle. (An Ice Zone powers up Ice-type attacks.) Increases the user’s Special Moves ↑ Next effect by 3 ranks the first time it enters a battle each battle. Applies the Enduring effect to the user if its HP is full when it enters a battle."
+  }
 }

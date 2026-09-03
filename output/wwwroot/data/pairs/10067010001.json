@@ -3,13 +3,13 @@
   "trainerBaseId": "10006701",
   "monsterId": "20067010001",
   "monsterBaseId": "2009991200",
-  "displayName": "Trainer #10006701 & Gimmighoul",
-  "trainerName": "Trainer #10006701",
+  "displayName": "Rachel & Gimmighoul",
+  "trainerName": "Rachel",
   "monsterName": "Gimmighoul",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Astonish",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "12",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Shadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank. Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Roaming in the Dark\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99019401,
       "name": "The Power Behind the Future King",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 18096209,
       "name": "Group Morale Boost 9",
-      "description": "Raises the Sp. Atk of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
+      "description": "Has a chance (100%) of raising the Sp. Atk of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
       "childPassives": []
     },
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -902,5 +902,6 @@
         "Roaming in the Dark\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/099912_128.png"
 }

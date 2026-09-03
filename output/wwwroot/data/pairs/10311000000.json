@@ -3,13 +3,13 @@
   "trainerBaseId": "10031100",
   "monsterId": "20311000000",
   "monsterBaseId": "20044600",
-  "displayName": "Trainer #10031100 & Munchlax",
-  "trainerName": "Trainer #10031100",
+  "displayName": "Mai & Munchlax",
+  "trainerName": "Mai",
   "monsterName": "Munchlax",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Headbutt",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a Normal Zone. (A Normal Zone powers up Normal-type attacks.)",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nApplies the Gradual Healing effect to the user. Applies the Damage Guard Next effect to the user. Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nApplies the Gradual Healing effect to the user. Applies the Damage Guard Next effect to the user. Applies the Take Next \"All\" Move effect to the user.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. These stats are raised by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] instead when the zone is a [Name:ReferencedMessageTag Idx=\"1\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 3 stat ranks. These stats are raised by 6 stat ranks instead when the zone is a Normal Zone.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Big Sis Warden\nGiga Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,36 +144,36 @@
     {
       "id": 29030401,
       "name": "Sinnoh Rush",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Sinnoh theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 99033601,
       "name": "Blessings of the Fieldlands",
-      "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ]. Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP when it is hit by a sync move while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a Normal Zone. Restores the user’s HP by approximately 20% of its maximum HP when it is hit by a sync move while the zone is a Normal Zone.",
       "childPassives": [
         {
           "id": 11015709,
           "name": "Normal Zone & Take Hit: Team HP Recovery 9",
-          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ]."
+          "description": "Has a chance (100%) of restoring the HP of all allied sync pairs when the user is hit by an attack move while the zone is a Normal Zone."
         },
         {
           "id": 11015802,
           "name": "Normal Zone & Take S-Move Hit: HP Recovery 2",
-          "description": "Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP when it is hit by a sync move while the zone is a [Name:ReferencedMessageTag ]."
+          "description": "Restores the user’s HP by approximately 20% of its maximum HP when it is hit by a sync move while the zone is a Normal Zone."
         }
       ]
     },
     {
       "id": 18116209,
       "name": "Hit: Attack ↓ & Sp. Atk ↓ 9",
-      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack and Sp. Atk by 1 stat rank when the user’s attack move is successful.",
       "childPassives": []
     },
     {
       "id": 18022501,
       "name": "Normal Zone: Team All Stats ↓ Immunity",
-      "description": "Stats cannot be lowered for all allied sync pairs when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Stats cannot be lowered for all allied sync pairs when the zone is a Normal Zone.",
       "childPassives": []
     }
   ],
@@ -995,5 +995,10 @@
         "Big Sis Warden\nGiga Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/044600_128.png",
+  "superAwakeningPassive": {
+    "name": "Warden of the Obsidian Fieldlands",
+    "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Reduces the sync move countdown by 1 the first time the user’s sync move is used each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank after your team’s sync pair uses their sync move."
+  }
 }

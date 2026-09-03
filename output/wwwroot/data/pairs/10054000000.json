@@ -3,13 +3,13 @@
   "trainerBaseId": "10005400",
   "monsterId": "20054000000",
   "monsterBaseId": "20016900",
-  "displayName": "Trainer #10005400 & Crobat",
-  "trainerName": "Trainer #10005400",
+  "displayName": "Koga & Crobat",
+  "trainerName": "Koga",
   "monsterName": "Crobat",
   "type": "Poison",
   "weakness": "Electric",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Poison Fang",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "34",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target badly poisoned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of leaving the target badly poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Venoshock",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target is poisoned or badly poisoned.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s evasiveness by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Modern Ninja\nSludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is poisoned or badly poisoned.",
       "isSync": true
@@ -892,5 +892,6 @@
         "Modern Ninja\nSludge Bomb": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/016900_128.png"
 }

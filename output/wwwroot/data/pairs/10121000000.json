@@ -3,13 +3,13 @@
   "trainerBaseId": "10012100",
   "monsterId": "20121000000",
   "monsterBaseId": "20080601",
-  "displayName": "Trainer #10012100 & Salazzle",
-  "trainerName": "Trainer #10012100",
+  "displayName": "Plumeria & Salazzle",
+  "trainerName": "Plumeria",
   "monsterName": "Salazzle",
   "type": "Poison",
   "weakness": "Water",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Smog",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "21",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (40%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ].",
+      "description": "Charges the user’s move gauge by 3.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Sludge Wave",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "97",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "The fuller the user’s move gauge when this move is selected, the more this move raises the user’s Sp. Atk and Speed (can be raised by up to [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] maximum).",
+      "description": "The fuller the user’s move gauge when this move is selected, the more this move raises the user’s Sp. Atk and Speed (can be raised by up to 3 stat ranks maximum).",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Wicked Enforcer\nAcid Downpour",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -988,5 +988,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/080601_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10000400",
   "monsterId": "20004000004",
   "monsterBaseId": "20061901",
-  "displayName": "Trainer #10000400 & Monster #20061901",
-  "trainerName": "Trainer #10000400",
-  "monsterName": "Monster #20061901",
+  "displayName": "Hilda & Mienfoo",
+  "trainerName": "Hilda",
+  "monsterName": "Mienfoo",
   "type": "Fighting",
   "weakness": "Flying",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Low Sweep",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rock Smash",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Strengthened Spirit\nFighting Impact",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 11013909,
       "name": "Hit: HP Recovery 9",
-      "description": "Restores the user’s HP when its attack move is successful.",
+      "description": "Has a chance (100%) of restoring the user’s HP when its attack move is successful.",
       "childPassives": []
     },
     {
       "id": 18040709,
       "name": "Defense Crush 9",
-      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
@@ -898,5 +898,7 @@
         "Strengthened Spirit\nFighting Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Mienfoo",
+  "pokemonIconUrl": "img/pokemon/061500_128.png"
 }

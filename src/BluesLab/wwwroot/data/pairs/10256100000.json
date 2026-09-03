@@ -84,7 +84,7 @@
       "accuracy": "70",
       "gauge": "3",
       "target": "An opponent",
-      "description": "Never misses when the weather is rainy. Has a chance (%) of leaving the target paralyzed.",
+      "description": "Never misses when the weather is rainy. Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "100",
       "gauge": "3",
       "target": "An opponent",
-      "description": "Has a chance (%) of leaving the target poisoned.",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "4",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared. The power of this move is not lowered even if there are multiple targets. Decreases the amount of move gauge slots needed to use this move by when the zone is a. This attack’s power increases 20% when the target is affected by a status condition.",
+      "description": "Activation Condition: When weather, terrain, or zone effects are activated.\nDeactivation Condition: When all weather, terrain, and zone effects are cleared.\n\nThe power of this move is not lowered even if there are multiple targets. Decreases the amount of move gauge slots needed to use this move by 2 when the zone is a Poison Zone. This attack’s power increases 20% when the target is affected by a status condition.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Turns the field of play’s zone into a. (A powers up -type attacks.) Raises the user’s Sp. Atk and critical-hit rate by stat ranks.",
+      "description": "Turns the field of play’s zone into a Poison Zone. (A Poison Zone powers up Poison-type attacks.) Raises the user’s Sp. Atk and critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -144,19 +144,19 @@
     {
       "id": 99014101,
       "name": "Low-Key Melancholy",
-      "description": "Turns the field of play’s terrain into the first time the user’s attack move is successful each battle. Extends the duration of when the terrain turns into while the user is on the field.",
+      "description": "Turns the field of play’s terrain into Electric Terrain the first time the user’s attack move is successful each battle. Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 12011903,
       "name": "Poisonous Acceleration 3",
-      "description": "Quickly charges the move gauge when the zone is a.",
+      "description": "Quickly charges the move gauge when the zone is a Poison Zone.",
       "childPassives": []
     },
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "childPassives": []
     }
   ],

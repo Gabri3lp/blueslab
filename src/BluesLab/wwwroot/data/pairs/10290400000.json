@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "An opponent",
-      "description": "Has a chance (%) of leaving the target confused.",
+      "description": "Has a chance (10%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "Self",
-      "description": "Applies the to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "3",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user’s is raised.\nDeactivation Condition:\nWhen the user’s is not raised. Never misses. Except in certain circumstances, successful hits with this attack become critical hits. Raises the of all allied sync pairs by stat ranks. If the remaining MP for the user’s is or more when attacking with this move, increases the of all allied sync pairs by ranks.",
+      "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. Raises the Speed of all allied sync pairs by 2 stat ranks. If the remaining MP for the user’s Go Faster! is 1 or more when attacking with this move, increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. The more the user’s Speed is raised, the more it reduces its sync move countdown (can be reduced by up to maximum). The more the user’s Speed is raised, the more it increases its (can be increased by up to ranks maximum).",
+      "description": "Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. The more the user’s Speed is raised, the more it reduces its sync move countdown (can be reduced by up to 3 maximum). The more the user’s Speed is raised, the more it increases its Special Moves ↑ Next effect (can be increased by up to 3 ranks maximum).",
       "isSync": false
     },
     {
@@ -136,7 +136,7 @@
       "accuracy": "-",
       "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,35 +144,35 @@
     {
       "id": 99024001,
       "name": "Full Star Ranking",
-      "description": "Raises the user’s by stat ranks when it enters a battle. Raises the user’s by stat ranks when it enters a battle. Increases the user’s by ranks when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks when it enters a battle. Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle. Increases the user’s Sync Move ↑ Next effect by 4 ranks when it enters a battle.",
       "childPassives": [
         {
           "id": 18045104,
           "name": "Grand Entry 4",
-          "description": "Raises the user’s Sp. Atk by stat ranks when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by 4 stat ranks when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by stat ranks when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
         },
         {
           "id": 17074104,
           "name": "Entry: Sync Move Boost 4",
-          "description": "Increases the user’s by ranks when it enters a battle."
+          "description": "Increases the user’s Sync Move ↑ Next effect by 4 rank(s) when it enters a battle."
         }
       ]
     },
     {
       "id": 17080509,
       "name": "T-Move MP 0 & Hit: Free Move Next 9",
-      "description": "Applies the to the user when its attack move is successful while the remaining MP for its Trainer’s moves is zero.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the remaining MP for its Trainer’s moves is zero.",
       "childPassives": []
     },
     {
       "id": 17080609,
       "name": "T-Move MP 0 & Hit: Special Boost ↑2 9",
-      "description": "Increases the user’s by ranks when its attack move is successful while the remaining MP for its Trainer’s moves is zero.",
+      "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 2 ranks when its attack move is successful while the remaining MP for its Trainer’s moves is zero.",
       "childPassives": []
     }
   ],

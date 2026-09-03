@@ -3,13 +3,13 @@
   "trainerBaseId": "10011340",
   "monsterId": "20113400000",
   "monsterBaseId": "20088100",
-  "displayName": "Jasmine  (Special Costume) & Celesteela",
-  "trainerName": "Jasmine  (Special Costume)",
+  "displayName": "Jasmine (Special Costume) & Celesteela",
+  "trainerName": "Jasmine (Special Costume)",
   "monsterName": "Celesteela",
   "type": "Steel",
   "weakness": "Electric",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Absorb",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "All allies",
       "description": "Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Flash Cannon",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by 3 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Iron Will\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18096101,
       "name": "Team Sharp Entry 1",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 1 stat rank when the user enters a battle.",
       "childPassives": []
     },
     {
       "id": 18096209,
       "name": "Group Morale Boost 9",
-      "description": "Raises the Sp. Atk of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
+      "description": "Has a chance (100%) of raising the Sp. Atk of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
       "childPassives": []
     },
     {
@@ -896,5 +896,6 @@
         "Iron Will\nSteel Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/088100_128.png"
 }

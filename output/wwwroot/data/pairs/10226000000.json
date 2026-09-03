@@ -3,13 +3,13 @@
   "trainerBaseId": "10022600",
   "monsterId": "20226000000",
   "monsterBaseId": "20043501",
-  "displayName": "Trainer #10022600 & Monster #20043501",
-  "trainerName": "Trainer #10022600",
-  "monsterName": "Monster #20043501",
+  "displayName": "Jupiter & Skuntank",
+  "trainerName": "Jupiter",
+  "monsterName": "Skuntank",
   "type": "Poison",
   "weakness": "Ground",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Venoshock",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target is poisoned or badly poisoned.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target badly poisoned.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Stoic Passionate Commander\nPoison Beam",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,17 +144,17 @@
     {
       "id": 99050001,
       "name": "Wafting Poison Stench",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s Pokémon uses a status move each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "description": "Turns the field of play’s zone into a the first time the user’s Pokémon uses a status move each battle. (A powers up -type attacks.) When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
       "childPassives": [
         {
           "id": 19070901,
           "name": "1st Use Status P-Move: Poison Zone",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s Pokémon uses a status move each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into a the first time the user’s Pokémon uses a status move each battle. (A powers up -type attacks.)"
         },
         {
           "id": 17041109,
           "name": "Go Viral 9",
-          "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs."
+          "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
         }
       ]
     },
@@ -903,5 +903,7 @@
         "Stoic Passionate Commander\nPoison Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Skuntank",
+  "pokemonIconUrl": "img/pokemon/043501_128.png"
 }

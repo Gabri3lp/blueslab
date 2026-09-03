@@ -3,13 +3,13 @@
   "trainerBaseId": "10013040",
   "monsterId": "20130400000",
   "monsterBaseId": "20054700",
-  "displayName": "Serena  (Palentine's 2021) & Whimsicott",
-  "trainerName": "Serena  (Palentine's 2021)",
+  "displayName": "Serena (Palentine's 2021) & Whimsicott",
+  "trainerName": "Serena (Palentine's 2021)",
   "monsterName": "Whimsicott",
   "type": "Fairy",
   "weakness": "Poison",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Moonblast",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "98",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of lowering the target’s Sp. Atk by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user.",
+      "target": "All allies",
+      "description": "Raises the user’s Sp. Atk by 1 stat rank. Raises the Speed of all allied sync pairs by 2 stat ranks. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Semisweet\nFairy Beam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 17041109,
       "name": "Go Viral 9",
-      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Semisweet\nFairy Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/054700_128.png"
 }

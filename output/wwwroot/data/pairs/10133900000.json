@@ -3,13 +3,13 @@
   "trainerBaseId": "10013390",
   "monsterId": "20133900000",
   "monsterBaseId": "21024800",
-  "displayName": "Silver  (Champion) & Monster #21024800",
-  "trainerName": "Silver  (Champion)",
-  "monsterName": "Monster #21024800",
+  "displayName": "Silver (Champion) & Tyranitar",
+  "trainerName": "Silver (Champion)",
+  "monsterName": "Tyranitar",
   "type": "Rock",
   "weakness": "Fighting",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Stone Edge",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Johto Circle (Physical) to the allied field of play. Johto Circle (Physical) grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by 10%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Johto theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Massive\nRock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nMakes the target flinch. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Activation Condition: When your team’s sync pair uses a sync move 1 time.\nDeactivation Condition: When this move is used.\n\nMakes the target flinch. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. In addition, grants all of the following effects during a sandstorm: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"6\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. In addition, grants all of the following effects during a sandstorm: Reduces the user’s sync move countdown by 1. Raises the user’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Emotional Resolve\nRock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Tyranitar until the end of battle.",
+      "description": "Become Mega Tyranitar until the end of battle.",
       "isSync": true
     }
   ],
@@ -144,7 +144,7 @@
     {
       "id": 28011001,
       "name": "Johto Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Johto theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 13015901,
       "name": "Fuel Economy 1",
-      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by [Digit:1digit ].",
+      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by 1.",
       "childPassives": []
     }
   ],
@@ -993,5 +993,7 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonName": "Tyranitar",
+  "pokemonIconUrl": "img/pokemon/024800_128.png"
 }

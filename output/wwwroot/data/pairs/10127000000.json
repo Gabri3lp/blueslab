@@ -3,13 +3,13 @@
   "trainerBaseId": "10012700",
   "monsterId": "20127000000",
   "monsterBaseId": "20035001",
-  "displayName": "Trainer #10012700 & Milotic",
-  "trainerName": "Trainer #10012700",
+  "displayName": "Wallace & Milotic",
+  "trainerName": "Wallace",
   "monsterName": "Milotic",
   "type": "Water",
   "weakness": "Electric",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Brine",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target’s remaining HP is at half or below.",
       "isSync": false
     },
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Whirlpool",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -109,7 +109,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Status Condition Reflection effect to the allied field of play. Applies the Enduring effect to the user.",
       "isSync": false
     },
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Mirror Coat",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The user takes up a counterattacking posture. Using this move again will cause the user to leave this posture. No other actions can be taken while in this posture. The user will leave this posture if hit by a special attack move while it is in this counterattacking posture, then attack the opponent that made the hit. The more damage the user has taken, the greater the power of this attack.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Aquatic Prince\nHydro Pump",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is trapped.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 11010602,
       "name": "S-Move: HP Recovery (M) 2",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its sync move.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP after using its sync move.",
       "childPassives": []
     }
   ],
@@ -982,5 +982,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/035001_128.png"
 }

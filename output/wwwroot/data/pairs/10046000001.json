@@ -3,8 +3,8 @@
   "trainerBaseId": "10004600",
   "monsterId": "20046000001",
   "monsterBaseId": "20029100",
-  "displayName": "Trainer #10004600 & Ninjask",
-  "trainerName": "Trainer #10004600",
+  "displayName": "Noland & Ninjask",
+  "trainerName": "Noland",
   "monsterName": "Ninjask",
   "type": "Bug",
   "weakness": "Electric",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Struggle Bug",
       "type": "Bug",
-      "category": "Status",
+      "category": "Special",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Sp. Atk. by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Accelerating X-Scissor",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised to its maximum stat rank.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not raised to its maximum stat rank.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Leaves the target confused.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user’s Speed is raised to its maximum stat rank.\nDeactivation Condition: When the user’s Speed is not raised to its maximum stat rank.\n\nNever misses. Lowers the target’s accuracy by 1 stat rank. Leaves the target confused.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Raises the user’s Attack and evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense and Sp. Def by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 3. Raises the user’s Attack and evasiveness by 2 stat ranks. Lowers the user’s Defense and Sp. Def by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Knowledge from Experience\nBug Impact",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18111009,
       "name": "Hit: Team Speed ↑2 9",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 2 stat ranks when the user’s attack move is successful.",
       "childPassives": []
     },
     {
       "id": 18048309,
       "name": "Overwhelm 9",
-      "description": "Lowers the target’s Attack by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
@@ -894,5 +894,6 @@
         "Knowledge from Experience\nBug Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/029100_128.png"
 }

@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "1",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user’s Defense is raised.\nDeactivation Condition:\nCannot be deactivated. Lowers the target’s Attack and Sp. Atk by stat ranks. Leaves the target either flinching, confused, or trapped. Leaves the target paralyzed. The power of this move is not lowered even if there are multiple targets.",
+      "description": "Activation Condition:\nWhen the user’s Defense is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nLowers the target’s Attack and Sp. Atk by 2 stat ranks. Leaves the target either flinching, confused, or trapped. Leaves the target paralyzed. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "An ally",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by %. Reduces attack move and sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Sinnoh Circle (Defensive) to the allied field of play. Sinnoh Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Sinnoh theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An opponent",
-      "description": "Activation Condition:\nWhen the user uses a sync move once.\nDeactivation Condition:\nWhen this move is used. Never misses. Reduces the user’s sync move countdown by the first time this attack move is successful each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Activation Condition:\nWhen the user uses a sync move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Reduces the user’s sync move countdown by 2 the first time this attack move is successful each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
       "isSync": false
     },
     {
@@ -154,14 +154,14 @@
         {
           "id": 19027905,
           "name": "Sinnoh C (Defensive) Extension 5",
-          "description": "Extends the duration of when is applied to the allied field of play."
+          "description": "Extends the duration of Sinnoh Circle (Defensive) when Sinnoh Circle (Defensive) is applied to the allied field of play."
         }
       ]
     },
     {
       "id": 99047201,
       "name": "Total Control of Time",
-      "description": "Grants all of the following effects the first time the user enters a battle each battle: Turns the field of play’s zone into an. (An powers up -type attacks.) Applies to the allied field of play. Raises the Defense and Sp. Def of all allied sync pairs by stat ranks.",
+      "description": "Grants all of the following effects the first time the user enters a battle each battle: Turns the field of play’s zone into a Dragon Zone. (A Dragon Zone powers up Dragon-type attacks.) Applies Free Move Next to the allied field of play. Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks.",
       "childPassives": [
         {
           "id": 19070401,
@@ -171,25 +171,25 @@
         {
           "id": 19057101,
           "name": "Debut: Sinnoh C (Def) on Field",
-          "description": "Applies to the allied field of play the first time the user enters a battle each battle."
+          "description": "Applies Sinnoh Circle (Defensive) to the allied field of play the first time the user enters a battle each battle."
         },
         {
           "id": 18126704,
           "name": "Debut: Team Defense ↑ & Sp. Def ↑ 4",
-          "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks the first time the user enters a battle each battle."
+          "description": "Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks the first time the user enters a battle each battle."
         }
       ]
     },
     {
       "id": 17075709,
       "name": "Ally Sets Circle: Team Phys & Spec Boost ↑1 9",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when an ally applies a circle to the allied field of play.",
+      "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally applies a circle to the allied field of play.",
       "childPassives": []
     },
     {
       "id": 17085009,
       "name": "Ally Sets WTZ: Team Phys & Spec Boost ↑1 9",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks when an ally activates a weather, terrain, or zone effect.",
+      "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],

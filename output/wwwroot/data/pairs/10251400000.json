@@ -3,13 +3,13 @@
   "trainerBaseId": "10025140",
   "monsterId": "20251400000",
   "monsterBaseId": "20073614",
-  "displayName": "Allister  (Fall 2022) & Gourgeist",
-  "trainerName": "Allister  (Fall 2022)",
+  "displayName": "Allister (Fall 2022) & Gourgeist",
+  "trainerName": "Allister (Fall 2022)",
   "monsterName": "Gourgeist",
   "type": "Ghost",
   "weakness": "Fire",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hex",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target is affected by a status condition.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Ghost Type Rebuff by 1 rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activates zero to five effects from several additional effects at random. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Activates zero to five effects from several additional effects at random. Raises the critical-hit rate of all allied sync pairs by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Matching Masks\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 12020409,
       "name": "Revenge Boost 9",
-      "description": "Charges the user’s move gauge by one when it is hit by an attack move.",
+      "description": "Has a chance (100%) of charging the user’s move gauge by one when the user is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "Matching Masks\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/073614_128.png"
 }

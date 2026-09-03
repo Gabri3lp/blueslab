@@ -3,13 +3,13 @@
   "trainerBaseId": "10021600",
   "monsterId": "20216000000",
   "monsterBaseId": "21024500",
-  "displayName": "Trainer #10021600 & Monster #21024500",
-  "trainerName": "Trainer #10021600",
-  "monsterName": "Monster #21024500",
+  "displayName": "Eusine & Suicune",
+  "trainerName": "Eusine",
+  "monsterName": "Suicune",
   "type": "Water",
   "weakness": "Electric",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Whirlpool",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Blizzard",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "126",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses during a hailstorm. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Never misses during a hailstorm. Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Purifying\nSurf",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any moves twice.\nDeactivation Condition:\nCannot be deactivated.\n\nHas a chance ([Digit:2digits ]%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user uses any moves twice.\nDeactivation Condition: Cannot be deactivated.\n\nHas a chance (20%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -121,9 +121,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Condition Nullification effect to all allied sync pairs.",
+      "gauge": "3",
+      "target": "All allies",
+      "description": "Raises the user’s Sp. Atk by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Condition Nullification effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Dignified Dash\nHydro Pump",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 12021909,
       "name": "Recharging Strike 9",
-      "description": "Charges the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, charges the user’s move gauge by one for each hit.",
+      "description": "Has a chance (100%) of charging the user’s move gauge by one when its attack move hits. If the move has the multistrike effect tag, has a chance (100%) of charging the user’s move gauge by one for each hit.",
       "childPassives": []
     },
     {
@@ -978,5 +978,11 @@
         "Dignified Dash\nHydro Pump": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Suicune",
+  "pokemonIconUrl": "img/pokemon/024500_128.png",
+  "superAwakeningPassive": {
+    "name": "Chaser of the North Wind",
+    "description": "Reduces the user’s sync move countdown by 1 the first time its Trainer uses a move each battle. Makes the weather rainy the first time the user’s sync move is used each battle. Increases the user’s Special Moves ↑ Next effect by 2 ranks the first time its Pokémon uses a move each battle."
+  }
 }

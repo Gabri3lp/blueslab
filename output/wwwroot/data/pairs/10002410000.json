@@ -3,13 +3,13 @@
   "trainerBaseId": "10000241",
   "monsterId": "20002410000",
   "monsterBaseId": "20023101",
-  "displayName": "Lyra  (Special Costume) & Monster #20023101",
-  "trainerName": "Lyra  (Special Costume)",
-  "monsterName": "Monster #20023101",
+  "displayName": "Lyra (Special Costume) & Phanpy",
+  "trainerName": "Lyra (Special Costume)",
+  "monsterName": "Phanpy",
   "type": "Ground",
   "weakness": "Water",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Earthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Type Resistant effect to the user. The resistant type is the type of the last attack it was hit by.",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 1 stat rank. Raises the Defense of all allied sync pairs by 3 stat ranks. Applies the Type Resistant effect to the user. The resistant type is the type of the last attack it was hit by.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Darling Deception\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 17062601,
       "name": "Rebuff Reducing Hit (Ground)",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle.",
+      "description": "Lowers the target’s Ground Type Rebuff by 1 rank the first time the user’s attack move is successful each battle.",
       "childPassives": []
     },
     {
       "id": 17061009,
       "name": "Team Mighty Sync 9",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move. This effect can activate only once per battle.",
+      "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank after using the user’s sync move. This effect can activate only once per battle.",
       "childPassives": []
     },
     {
       "id": 18099609,
       "name": "Team Beef Up 9",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the Attack of all allied sync pairs by 1 stat rank when the user is hit by an attack move.",
       "childPassives": []
     }
   ],
@@ -886,5 +886,7 @@
         "Darling Deception\nGround Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Phanpy",
+  "pokemonIconUrl": "img/pokemon/023101_128.png"
 }

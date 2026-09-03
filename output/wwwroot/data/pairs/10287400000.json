@@ -3,13 +3,13 @@
   "trainerBaseId": "10028740",
   "monsterId": "20287400000",
   "monsterBaseId": "2010241100",
-  "displayName": "Juliana  (Anniversary 2026) & Terapagos",
-  "trainerName": "Juliana  (Anniversary 2026)",
+  "displayName": "Juliana (Anniversary 2026) & Terapagos",
+  "trainerName": "Juliana (Anniversary 2026)",
   "monsterName": "Terapagos",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Tera Starstorm",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Kaleidoscopic\nTera Starstorm",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs. Never misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Lowers the target’s Normal Type Rebuff by 3 ranks. Reduces the user’s sync move countdown by 3. Replaces the effects of the user’s moves with the following when it is in Stellar Form. This move’s type becomes Stellar type. This attack’s power becomes double that of when the user is in Normal Form or Terastal Form. The target becomes all opposing sync pairs. Never misses. Lowers the target’s Stellar Type Rebuff by 3 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to the user. If the user is in Stellar Form, also grants all of the following effects: Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Increases the user’s Special Moves ↑ Next effect by 3 ranks. Increases the user’s Sync Move ↑ Next effect by 5 ranks. Applies the Enduring effect to the user. If the user is in Stellar Form, also grants all of the following effects: Increases the user’s Special Moves ↑ Next effect by 2 ranks. Increases the user’s Sync Move ↑ Next effect by 5 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ancient Indigo Disk\nTera Starstorm",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28041001,
       "name": "Paldea’s Grand Mystery",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
       "childPassives": [
         {
           "id": 28030901,
@@ -167,20 +167,21 @@
     {
       "id": 15015306,
       "name": "Debut: Sync CD ↓ & Sp. Atk ↑6",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time it enters a battle each battle. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Raises the user’s Sp. Atk by 6 stat ranks the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99040101,
       "name": "Terastal Shell",
-      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the MP for the user’s Potion by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately 60% of its maximum HP. Increases the user’s Special Moves ↑ Next effect by 3 ranks.",
       "childPassives": []
     }
   ],
   "variations": [
     {
       "formId": 2,
-      "formName": "Form 2",
+      "formName": "Terastal Form",
+      "type": "Normal",
       "actorId": "pm1024_12_00_terapagos",
       "statMultiplier": {
         "atk": 1.0,
@@ -193,19 +194,20 @@
         {
           "id": 33012001,
           "name": "1st S-Move: Stellar S-Tera",
-          "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time its sync move is used each battle."
+          "description": "The user Sync Terastallizes into Stellar type the first time its sync move is used each battle."
         },
         {
           "id": 15015601,
           "name": "Terastal Energy Amplified",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] when the user changes into Terastal Form. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user changes into Terastal Form."
+          "description": "Reduces the user’s sync move countdown by 2 when the user changes into Terastal Form. Raises the user’s Sp. Atk by 1 stat rank when the user changes into Terastal Form."
         }
       ],
       "terastalMoveId": 0
     },
     {
       "formId": 7,
-      "formName": "Tera",
+      "formName": "Stellar Form",
+      "type": "Stellar",
       "actorId": "pm1024_13_00_terapagos",
       "statMultiplier": {
         "atk": 1.0,
@@ -223,7 +225,7 @@
         {
           "id": 15015501,
           "name": "Debut: Sync CD ↓3 & Normal Zone",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time it enters a battle each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Reduces the user’s sync move countdown by 3 the first time it enters a battle each battle. Turns the field of play’s zone into a Normal Zone the first time the user enters a battle each battle. (A Normal Zone powers up Normal-type attacks.)"
         }
       ],
       "terastalMoveId": 4050
@@ -998,5 +1000,6 @@
         "Ancient Indigo Disk\nTera Starstorm": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/102411_128.png"
 }

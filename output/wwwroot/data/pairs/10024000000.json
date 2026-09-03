@@ -3,13 +3,13 @@
   "trainerBaseId": "10002400",
   "monsterId": "20024000000",
   "monsterBaseId": "20060901",
-  "displayName": "Trainer #10002400 & Chandelure",
-  "trainerName": "Trainer #10002400",
+  "displayName": "Shauntal & Chandelure",
+  "trainerName": "Shauntal",
   "monsterName": "Chandelure",
   "type": "Ghost",
   "weakness": "Rock",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hex",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target is affected by a status condition.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Shadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s evasiveness by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Leaves the user burned.",
+      "description": "Raises the user’s Speed by 3 stat ranks. Raises the user’s evasiveness by 2 stat ranks. Leaves the user burned.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Dark Tales of the\nShadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -894,5 +894,6 @@
         "Dark Tales of the\nShadow Ball": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/002400_128.png"
 }

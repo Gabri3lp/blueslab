@@ -3,13 +3,13 @@
   "trainerBaseId": "10009800",
   "monsterId": "20098000000",
   "monsterBaseId": "20002661",
-  "displayName": "Trainer #10009800 & Raichu",
-  "trainerName": "Trainer #10009800",
+  "displayName": "Hau & Raichu",
+  "trainerName": "Hau",
   "monsterName": "Raichu",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Shock",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Discharge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s evasiveness by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed by 3 stat ranks. Raises the user’s evasiveness by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Endless Summer\nGigavolt Havoc",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,6 @@
         "Endless Summer\nGigavolt Havoc": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/002661_128.png"
 }

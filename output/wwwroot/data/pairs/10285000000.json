@@ -3,13 +3,13 @@
   "trainerBaseId": "10028500",
   "monsterId": "20285000000",
   "monsterBaseId": "20047101",
-  "displayName": "Trainer #10028500 & Monster #20047101",
-  "trainerName": "Trainer #10028500",
-  "monsterName": "Monster #20047101",
+  "displayName": "Irida & Glaceon",
+  "trainerName": "Irida",
+  "monsterName": "Glaceon",
   "type": "Ice",
   "weakness": "Steel",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Icy Wind",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into an Ice Zone. (An Ice Zone powers up Ice-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dancing\nIce Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a hailstorm is caused.\nDeactivation Condition:\nWhen the weather condition is no longer a hailstorm.\n\nNever misses. Has a chance ([Digit:2digits ]%) of leaving the target frozen. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Move Gauge Acceleration effect to the allied field of play. Applies the Free Move Next effect to the user.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When a hailstorm is caused.\nDeactivation Condition: When the weather condition is no longer a hailstorm.\n\nNever misses. Has a chance (10%) of leaving the target frozen. Lowers the target’s Sp. Def by 4 stat ranks. Applies the Move Gauge Acceleration effect to the allied field of play. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"4\" ] to all allied sync pairs during a hailstorm.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Gradual Healing effect to all allied sync pairs during a hailstorm.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Great Wide World\nIce Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases during a hailstorm.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28011901,
       "name": "Sinnoh Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Sinnoh theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
@@ -926,5 +926,7 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonName": "Glaceon",
+  "pokemonIconUrl": "img/pokemon/047101_128.png"
 }

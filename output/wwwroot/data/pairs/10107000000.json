@@ -3,13 +3,13 @@
   "trainerBaseId": "10010700",
   "monsterId": "20107000000",
   "monsterBaseId": "20051200",
-  "displayName": "Trainer #10010700 & Simisage",
-  "trainerName": "Trainer #10010700",
+  "displayName": "Cilan & Simisage",
+  "trainerName": "Cilan",
   "monsterName": "Simisage",
   "type": "Grass",
   "weakness": "Fire",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Vine Whip",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 20% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit Idx=\"7\" ] stat [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Applies Unova Circle (Defensive) to the allied field of play. Unova Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Unova theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Fragrant Green Trouble\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99034601,
       "name": "The Best Tea Leaves",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an ally applies a circle to the allied field of play.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally applies a circle to the allied field of play.",
       "childPassives": [
         {
           "id": 17075709,
           "name": "Ally Sets Circle: Team Phys & Spec Boost ↑1 9",
-          "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an ally applies a circle to the allied field of play."
+          "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally applies a circle to the allied field of play."
         }
       ]
     },
     {
       "id": 11015904,
       "name": "Take P/S-Move Hit & Half HP: Use Berry & HP Recovery 4",
-      "description": "Reduces MP by [Digit:1digit ] for the user’s moves that have the Berry effect tag and restores its HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP when its HP is left at half or below after it is hit by an attack move or sync move.",
+      "description": "Reduces MP by 1 for the user’s moves that have the Berry effect tag and restores its HP by approximately 40% of its maximum HP when its HP is left at half or below after it is hit by an attack move or sync move.",
       "childPassives": []
     },
     {
@@ -898,5 +898,6 @@
         "Fragrant Green Trouble\nGrass Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/051200_128.png"
 }

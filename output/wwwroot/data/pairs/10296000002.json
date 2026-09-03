@@ -3,13 +3,13 @@
   "trainerBaseId": "10029600",
   "monsterId": "20296000002",
   "monsterBaseId": "2009410000",
-  "displayName": "Trainer #10029600 & Kilowattrel",
-  "trainerName": "Trainer #10029600",
+  "displayName": "Iono & Kilowattrel",
+  "trainerName": "Iono",
   "monsterName": "Kilowattrel",
   "type": "Electric",
   "weakness": "Rock",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Discharge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Thunder",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "124",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Never misses when the weather is rainy. Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk and Speed by 4 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Flyin’ High\nElectric Beam",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 12020206,
       "name": "Rejuvenate 6",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move.",
+      "description": "Charges the user’s move gauge by 6 after using a sync move.",
       "childPassives": []
     },
     {
@@ -900,5 +900,6 @@
         "Flyin’ High\nElectric Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/094100_128.png"
 }

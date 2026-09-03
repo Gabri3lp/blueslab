@@ -3,13 +3,13 @@
   "trainerBaseId": "10001401",
   "monsterId": "20014010001",
   "monsterBaseId": "20050900",
-  "displayName": "Trainer #10001401 & Purrloin",
-  "trainerName": "Trainer #10001401",
+  "displayName": "Cheren & Purrloin",
+  "trainerName": "Cheren",
   "monsterName": "Purrloin",
   "type": "Dark",
   "weakness": "Fighting",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -82,9 +82,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dark Pulse",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "95",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk and Speed by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Toward My Ideals\nDark Beam",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -150,7 +150,7 @@
     {
       "id": 12020102,
       "name": "Move Gauge Refresh 2",
-      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "description": "Has a chance (30%) of charging the user’s move gauge by one when its move is successful.",
       "childPassives": []
     },
     {
@@ -900,5 +900,6 @@
         "Toward My Ideals\nDark Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/050900_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10016200",
   "monsterId": "20162000000",
   "monsterBaseId": "20048300",
-  "displayName": "Trainer #10016200 & Dialga",
-  "trainerName": "Trainer #10016200",
+  "displayName": "Lucas & Dialga",
+  "trainerName": "Lucas",
   "monsterName": "Dialga",
   "type": "Dragon",
   "weakness": "Fighting",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Roar of Time",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "178",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Dragon Zone. (A Dragon Zone powers up Dragon-type attacks.)",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks. Raises the user’s accuracy by 1 stat rank. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Illuminating\nRoar of Time",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the zone is a Dragon Zone.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18045104,
       "name": "Grand Entry 4",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 17046309,
       "name": "Commanded Freebie 9",
-      "description": "Applies the Free Move Next effect to the user when its Trainer uses a move.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its Trainer uses a move.",
       "childPassives": []
     },
     {
       "id": 15010301,
       "name": "Adrenaline 1",
-      "description": "Reduces the sync move countdown by [Digit:1digit ] the first time the user’s sync move is used each battle.",
+      "description": "Reduces the sync move countdown by 1 the first time the user’s sync move is used each battle.",
       "childPassives": []
     }
   ],
@@ -978,5 +978,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/048300_128.png",
+  "superAwakeningPassive": {
+    "name": "Shiny Adamant",
+    "description": "Reduces the user’s sync move countdown by 1 when it uses Dragon Wish. Increases the user’s Special Moves ↑ Next effect by 1 rank when its Trainer uses a move."
+  }
 }

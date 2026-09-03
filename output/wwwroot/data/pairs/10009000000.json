@@ -3,13 +3,13 @@
   "trainerBaseId": "10000900",
   "monsterId": "20009000000",
   "monsterBaseId": "20028900",
-  "displayName": "Trainer #10000900 & Slaking",
-  "trainerName": "Trainer #10000900",
+  "displayName": "Norman & Slaking",
+  "trainerName": "Norman",
   "monsterName": "Slaking",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Body Slam",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Double-Edge",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "167",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The user also takes 25% of the damage it dealt to the target.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Charges the user’s move gauge by [Digit:1digit Idx=\"1\" ].",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP. Charges the user’s move gauge by 2.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Power-Chasing\nGiga Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -892,5 +892,10 @@
         "Power-Chasing\nGiga Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/037600_128.png",
+  "superAwakeningPassive": {
+    "name": "Proud of Being the Best",
+    "description": "Powers up the user’s moves and sync move when its Defense is raised. Applies the Enduring effect to all allied sync pairs the first time the user’s sync move is used each battle. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user uses a move that has the Quick Move effect tag."
+  }
 }

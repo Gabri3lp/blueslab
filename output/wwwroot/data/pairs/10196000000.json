@@ -3,13 +3,13 @@
   "trainerBaseId": "10019600",
   "monsterId": "20196000000",
   "monsterBaseId": "20076900",
-  "displayName": "Trainer #10019600 & Yveltal",
-  "trainerName": "Trainer #10019600",
+  "displayName": "Lysandre & Yveltal",
+  "trainerName": "Lysandre",
   "monsterName": "Yveltal",
   "type": "Flying",
   "weakness": "Fairy",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Oblivion Wing",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "146",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "The more damage dealt to the target, the more it restores the user’s HP. Each use restores up to approximately [Digit:2digits ]% of the user’s maximum HP.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "The more damage dealt to the target, the more it restores the user’s HP. Each use restores up to approximately 50% of the user’s maximum HP.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dark Pulse",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "95",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ]. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Charges the user’s move gauge by 2. Reduces the user’s sync move countdown by 1. Raises the user’s critical-hit rate by 2 stat ranks. Lowers the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Cleansing\nOblivion Wing",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 11010601,
       "name": "S-Move: HP Recovery (M) 1",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its sync move.",
+      "description": "Restores the user’s HP by approximately 20% of its maximum HP after using its sync move.",
       "childPassives": []
     },
     {
@@ -984,5 +984,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/076900_128.png",
+  "superAwakeningPassive": {
+    "name": "He Who Weeps and Takes",
+    "description": "Reduces the user’s sync move countdown by 2 the first time it enters a battle each battle. Powers up the Flying-type moves of all allied sync pairs. Powers up the Dark-type moves of all allied sync pairs."
+  }
 }

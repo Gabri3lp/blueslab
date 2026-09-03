@@ -3,13 +3,13 @@
   "trainerBaseId": "10006100",
   "monsterId": "20061000001",
   "monsterBaseId": "20002401",
-  "displayName": "Trainer #10006100 & Monster #20002401",
-  "trainerName": "Trainer #10006100",
-  "monsterName": "Monster #20002401",
+  "displayName": "Agatha & Arbok",
+  "trainerName": "Agatha",
+  "monsterName": "Arbok",
   "type": "Poison",
   "weakness": "Psychic",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Poison Sting",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "12",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Wrap",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack, Sp. Atk, and critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack, Sp. Atk, and critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Elder’s Experience\nPoison Impact",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 11013204,
       "name": "Team Underhanded Heal 4",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when the user’s attack move is successful against targets that are affected by a status condition.",
+      "description": "Has a chance (50%) of restoring the HP of all allied sync pairs when the user’s attack move is successful against targets that are affected by a status condition.",
       "childPassives": []
     },
     {
       "id": 18107509,
       "name": "Full-Bracing P-Move 9",
-      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its Pokémon uses a move.",
+      "description": "Has a chance (100%) of raising the user’s Defense and Sp. Def by 1 stat rank when its Pokémon uses a move.",
       "childPassives": []
     },
     {
@@ -890,5 +890,7 @@
         "Elder’s Experience\nPoison Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Arbok",
+  "pokemonIconUrl": "img/pokemon/002401_128.png"
 }

@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Restores an ally’s HP by approximately % of its maximum HP.",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Never misses. Leaves all opposing sync pairs confused. Turns the field of play’s zone into a. (A powers up -type attacks.) Reduces the user’s sync move countdown by one. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Leaves all opposing sync pairs confused. Turns the field of play’s zone into a Ghost Zone. Reduces the user’s sync move countdown by 1. Increases the Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "All allies",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks. Applies the Damage Guard Next effect to the user.",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -144,7 +144,7 @@
     {
       "id": 29030901,
       "name": "Paldea Rush",
-      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by the first time your team enters a battle each battle instead. The more allied sync pairs with you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Paldea theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
@@ -156,17 +156,17 @@
     {
       "id": 99042301,
       "name": "Power of a Deeply Held Grudge",
-      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs. Lowers the target’s Attack and Sp. Atk by stat ranks when the user’s attack move is successful against targets that are affected by a status condition.",
+      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs. Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s attack move is successful against targets that are affected by a status condition.",
       "childPassives": [
         {
           "id": 17041109,
           "name": "Go Viral 9",
-          "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs."
+          "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
         },
         {
           "id": 18128309,
           "name": "Hit Status Cond Opp: Attack ↓ & Sp. Atk ↓ 9",
-          "description": "Lowers the target’s Attack and Sp. Atk by stat ranks when the user’s attack move is successful against targets that are affected by a status condition."
+          "description": "Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s attack move is successful against targets that are affected by a status condition."
         }
       ]
     },

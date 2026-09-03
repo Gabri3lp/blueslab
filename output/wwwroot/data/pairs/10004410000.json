@@ -3,13 +3,13 @@
   "trainerBaseId": "10000441",
   "monsterId": "20004410000",
   "monsterBaseId": "2108530001",
-  "displayName": "Hilda  (Summer 2022) & Monster #2108530001",
-  "trainerName": "Hilda  (Summer 2022)",
-  "monsterName": "Monster #2108530001",
+  "displayName": "Hilda (Summer 2022) & Grapploct",
+  "trainerName": "Hilda (Summer 2022)",
+  "monsterName": "Grapploct",
   "type": "Fighting",
   "weakness": "Psychic",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Brick Break",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "35",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Removes the Physical and Special Damage Reduction effects from the opponents’ field of play.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Returns the target’s raised stats to normal (except critical-hit rate), then lowers the target’s same stats by the same amount.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Never Give Up\nFighting Impact",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18099609,
       "name": "Team Beef Up 9",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the Attack of all allied sync pairs by 1 stat rank when the user is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 19022101,
       "name": "Catalytic Infliction",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s Pokémon uses a status move each battle.",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play the first time the user’s Pokémon uses a status move each battle.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,7 @@
         "Never Give Up\nFighting Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Grapploct",
+  "pokemonIconUrl": "img/pokemon/085300_128.png"
 }

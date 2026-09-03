@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately % of its maximum HP.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move once.\nDeactivation Condition:\nWhen this move is used. Never misses. The power of this move is not lowered even if there are multiple targets. Reduces the user’s sync move countdown by one. Applies the Free Move Next effect to the user. Increases the user’s by ranks.",
+      "description": "Activation Condition: When your team’s sync pair uses a sync move once.\nDeactivation Condition: When this move is used.\n\nNever misses. The power of this move is not lowered even if there are multiple targets. Reduces the user’s sync move countdown by one. Applies the Free Move Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -144,35 +144,35 @@
     {
       "id": 99029801,
       "name": "Memory Emulator",
-      "description": "Changes the type of the user’s move to that of a single target’s weakness when the user attacks with.",
+      "description": "Changes the type of the user’s move to that of a single target’s weakness when the user attacks with Hyper Beam Z.",
       "childPassives": []
     },
     {
       "id": 99029301,
       "name": "Attack Program",
-      "description": "Powers up the user’s. The user’s never misses.",
+      "description": "Powers up the user’s Hyper Beam. The user’s Hyper Beam never misses.",
       "childPassives": [
         {
           "id": 13083805,
           "name": "Hyper Beam Power ↑ 5",
-          "description": "Powers up the user’s."
+          "description": "Powers up the user’s Hyper Beam."
         },
         {
           "id": 13030601,
           "name": "Hyper Beam Sure Hit",
-          "description": "The user’s never misses."
+          "description": "The user’s Hyper Beam never misses."
         }
       ]
     },
     {
       "id": 99029401,
       "name": "Recovery Program",
-      "description": "Powers up the user’s sync move when its remaining HP is at half or more. Reduces the MP for the user’s by and restores its HP by approximately % of its maximum HP when its HP drops to half or below.",
+      "description": "Powers up the user’s sync move when its remaining HP is at half or more. Reduces the MP for the user’s Recover by 1 and restores its HP by approximately 50% of its maximum HP when its HP drops to half or below.",
       "childPassives": [
         {
           "id": 11015601,
           "name": "Half HP: “Recover” MP ↓ & HP Recovery 5",
-          "description": "Reduces the MP for the user’s by and restores its HP by approximately % of its maximum HP when its HP drops to half or below."
+          "description": "Reduces the MP for the user’s Recover by 1 and restores its HP by approximately 50% of its maximum HP when its HP drops to half or below."
         },
         {
           "id": 13083909,

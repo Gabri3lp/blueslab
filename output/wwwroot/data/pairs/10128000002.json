@@ -3,13 +3,13 @@
   "trainerBaseId": "10012800",
   "monsterId": "20128000002",
   "monsterBaseId": "20033400",
-  "displayName": "Trainer #10012800 & Altaria",
-  "trainerName": "Trainer #10012800",
+  "displayName": "Wally & Altaria",
+  "trainerName": "Wally",
   "monsterName": "Altaria",
   "type": "Dragon",
   "weakness": "Ice",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Dragon Claw",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dragon Breath",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s Attack and Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Attack and Sp. Atk by 4 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Much, Much Stronger\nDragon Impact",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 15010101,
       "name": "Head Start 1",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 18110209,
       "name": "Hit Paralyzed Opp: Defense ↓ & Sp. Def ↓ 9",
-      "description": "Lowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Defense and Sp. Def by 1 stat rank when the user’s attack move is successful against a paralyzed opponent.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Much, Much Stronger\nDragon Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/033400_128.png"
 }

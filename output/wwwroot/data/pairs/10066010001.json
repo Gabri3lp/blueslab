@@ -3,13 +3,13 @@
   "trainerBaseId": "10006601",
   "monsterId": "20066010001",
   "monsterBaseId": "20055300",
-  "displayName": "Trainer #10006601 & Krookodile",
-  "trainerName": "Trainer #10006601",
+  "displayName": "Lear & Krookodile",
+  "trainerName": "Lear",
   "monsterName": "Krookodile",
   "type": "Dark",
   "weakness": "Ice",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Power Trip",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "13",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Brutal Swing",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s Speed by 2 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Poetic Justice\nDark Impact",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18040909,
       "name": "Fortuitous 9",
-      "description": "Raises one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (100%) of raising one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
       "id": 18040709,
       "name": "Defense Crush 9",
-      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 18040101,
       "name": "Terrify 1",
-      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Lowers the Attack of all opposing sync pairs by 1 stat rank when the user enters a battle.",
       "childPassives": []
     }
   ],
@@ -898,5 +898,6 @@
         "Poetic Justice\nDark Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/055300_128.png"
 }

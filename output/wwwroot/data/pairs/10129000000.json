@@ -3,13 +3,13 @@
   "trainerBaseId": "10012900",
   "monsterId": "20129000000",
   "monsterBaseId": "20038400",
-  "displayName": "Trainer #10012900 & Rayquaza",
-  "trainerName": "Trainer #10012900",
+  "displayName": "Zinnia & Rayquaza",
+  "trainerName": "Zinnia",
   "monsterName": "Rayquaza",
   "type": "Dragon",
   "weakness": "Rock",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Outrage",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "115",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Leaves the user confused.",
       "isSync": false
     },
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Aerial Ace",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Removes the flinching, confused, and trapped conditions from the user. Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Speed and accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Removes the flinching, confused, and trapped conditions from the user. Raises the user’s Attack and Sp. Atk by 2 stat ranks. Raises the user’s Speed and accuracy by 1 stat rank. Lowers the user’s Defense and Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Draco Meteor",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Dimensional Defender\nDraco Meteor",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -924,5 +924,6 @@
         "Dimensional Defender\nDraco Meteor": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/038400_128.png"
 }

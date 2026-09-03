@@ -3,13 +3,13 @@
   "trainerBaseId": "10010840",
   "monsterId": "20108400000",
   "monsterBaseId": "20061700",
-  "displayName": "Ingo  (Special Costume) & Accelgor",
-  "trainerName": "Ingo  (Special Costume)",
+  "displayName": "Ingo (Special Costume) & Accelgor",
+  "trainerName": "Ingo (Special Costume)",
   "monsterName": "Accelgor",
   "type": "Bug",
   "weakness": "Flying",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Quick Attack",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "94",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Bug Zone. (A Bug Zone powers up Bug-type attacks.)",
       "isSync": false
     },
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Infestation",
       "type": "Bug",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the accuracy and evasiveness of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s evasiveness by 2 stat ranks. Raises the accuracy and evasiveness of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Express Line\nBug Impact",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is trapped.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18098209,
       "name": "Team Viral Haste 9",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon or Trainer uses a status move.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 1 stat rank when the user’s Pokémon or Trainer uses a status move.",
       "childPassives": []
     },
     {
       "id": 18040709,
       "name": "Defense Crush 9",
-      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
@@ -896,5 +896,6 @@
         "Express Line\nBug Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/061700_128.png"
 }

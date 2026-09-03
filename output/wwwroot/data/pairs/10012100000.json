@@ -3,13 +3,13 @@
   "trainerBaseId": "10001210",
   "monsterId": "20012100000",
   "monsterBaseId": "2008020000",
-  "displayName": "Sygna Suit  Korrina & Monster #2008020000",
-  "trainerName": "Sygna Suit  Korrina",
-  "monsterName": "Monster #2008020000",
+  "displayName": "Sygna Suit Korrina & Marshadow",
+  "trainerName": "Sygna Suit Korrina",
+  "monsterName": "Marshadow",
   "type": "Ghost",
   "weakness": "Fairy",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Spectral Thief",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "85",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Shadow Punch",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Speed and evasiveness by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s Speed and evasiveness by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shadow-Shrouded\nSpectral Thief",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when none of the target’s stats are raised.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 18040909,
       "name": "Fortuitous 9",
-      "description": "Raises one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (100%) of raising one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     }
   ],
@@ -984,5 +984,7 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonName": "Marshadow",
+  "pokemonIconUrl": "img/pokemon/075800_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10000080",
   "monsterId": "20000800001",
   "monsterBaseId": "20000300",
-  "displayName": "Trainer #10000080 & Venusaur",
-  "trainerName": "Trainer #10000080",
+  "displayName": "Red & Venusaur",
+  "trainerName": "Red",
   "monsterName": "Venusaur",
   "type": "Grass",
   "weakness": "Fire",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Razor Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "43",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Defense and Sp. Def by 2 stat ranks. Applies the Gradual Healing effect to an ally.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Giga\nFrenzy Plant",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "180",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s terrain turns into [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s terrain is no longer [Name:ReferencedMessageTag ].\n\nLowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. The power of this move is not lowered even if there are multiple targets.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the field of play’s terrain turns into Grassy Terrain.\nDeactivation Condition: When the field of play’s terrain is no longer Grassy Terrain.\n\nLowers the target’s Sp. Def by 2 stat ranks. The power of this move is not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Silent Overgrowth\nGrass Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18093304,
       "name": "Ferocious Entry 4",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Attack and Sp. Atk by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 18111809,
       "name": "Move on Opp: Attack ↓ &/ Sp. Atk ↓ 9",
-      "description": "Lowers the target’s Attack or Sp. Atk—or both—by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s move targeting that opponent is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack or Sp. Atk—or both—by 1 stat rank when the user’s move targeting that opponent is successful.",
       "childPassives": []
     }
   ],
@@ -903,5 +903,6 @@
         "Silent Overgrowth\nGrass Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/011400_128.png"
 }

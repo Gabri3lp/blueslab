@@ -3,13 +3,13 @@
   "trainerBaseId": "10012800",
   "monsterId": "20128000001",
   "monsterBaseId": "20030101",
-  "displayName": "Trainer #10012800 & Monster #20030101",
-  "trainerName": "Trainer #10012800",
-  "monsterName": "Monster #20030101",
+  "displayName": "Wally & Delcatty",
+  "trainerName": "Wally",
+  "monsterName": "Delcatty",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Attack by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Becoming Stronger\nNormal Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18041204,
       "name": "Look Alive 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s evasiveness by one stat rank when it is hit by an attack move.",
+      "description": "Has a chance (50%) of raising the user’s evasiveness by one stat rank when it is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -894,5 +894,7 @@
         "Becoming Stronger\nNormal Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Delcatty",
+  "pokemonIconUrl": "img/pokemon/030101_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10025900",
   "monsterId": "20259000000",
   "monsterBaseId": "2008350000",
-  "displayName": "Trainer #10025900 & Yamper",
-  "trainerName": "Trainer #10025900",
+  "displayName": "Sonia & Yamper",
+  "trainerName": "Sonia",
   "monsterName": "Yamper",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Spark",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Goodest Boy\nWild Charge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18096909,
       "name": "Team Swift Reaction 9",
-      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by one stat rank when the user is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 18040709,
       "name": "Defense Crush 9",
-      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     }
   ],
@@ -902,5 +902,6 @@
         "Goodest Boy\nWild Charge": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/083500_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10004900",
   "monsterId": "20049000000",
   "monsterBaseId": "20035601",
-  "displayName": "Trainer #10004900 & Dusclops",
-  "trainerName": "Trainer #10004900",
+  "displayName": "Phoebe & Dusclops",
+  "trainerName": "Phoebe",
   "monsterName": "Dusclops",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Shadow Punch",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Charges the user’s move gauge by up to [Digit:1digit ] for each allied sync pair on the field. The smaller the user’s percentage of remaining HP, the more it charges the move gauge. When used in a co-op battle, charges the move gauges of all allied players by up to [Digit:1digit ] instead. The smaller the user’s percentage of remaining HP, the more it raises the Attack of all allied sync pairs (can be raised by up to [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] maximum).",
+      "target": "All allies",
+      "description": "Charges the user’s move gauge by up to 3 for each allied sync pair on the field. The smaller the user’s percentage of remaining HP, the more it charges the move gauge. When used in a co-op battle, charges the move gauges of all allied players by up to 3 instead. The smaller the user’s percentage of remaining HP, the more it raises the Attack of all allied sync pairs (can be raised by up to 4 stat ranks maximum).",
       "isSync": false
     },
     {
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Double-Edge",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "167",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The user also takes 25% of the damage it dealt to the target.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ghost\nSync Impact",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -984,5 +984,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/035601_128.png"
 }

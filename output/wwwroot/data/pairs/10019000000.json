@@ -3,13 +3,13 @@
   "trainerBaseId": "10001900",
   "monsterId": "20019000000",
   "monsterBaseId": "20025200",
-  "displayName": "Trainer #10001900 & Treecko",
-  "trainerName": "Trainer #10001900",
+  "displayName": "Brendan & Treecko",
+  "trainerName": "Brendan",
   "monsterName": "Treecko",
   "type": "Grass",
   "weakness": "Poison",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Leaf Storm",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Uses a maximum of [Digit:1digit ] [EN:Qty S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the more it raises the user’s Attack and Sp. Atk (can be raised by up to [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] maximum).",
+      "description": "Uses a maximum of 3 slots of the user’s move gauge. The more amount used, the more it raises the user’s Attack and Sp. Atk (can be raised by up to 6 stat ranks maximum).",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Grass\nSync Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -892,5 +892,6 @@
         "Leaf Blade\nof Sundering": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/077600_128.png"
 }

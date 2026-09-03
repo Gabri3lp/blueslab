@@ -3,13 +3,13 @@
   "trainerBaseId": "10012200",
   "monsterId": "20122000001",
   "monsterBaseId": "20019600",
-  "displayName": "Trainer #10012200 & Espeon",
-  "trainerName": "Trainer #10012200",
+  "displayName": "Elio & Espeon",
+  "trainerName": "Elio",
   "monsterName": "Espeon",
   "type": "Psychic",
   "weakness": "Bug",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Confusion",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "18",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP. HP is restored by 60% instead when the weather is sunny, and 40% when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Psychic",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Shining High\nShattered Psyche",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 19024901,
       "name": "Weird World",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] after using the user’s sync move.",
+      "description": "Turns the field of play’s terrain into Psychic Terrain after using the user’s sync move.",
       "childPassives": []
     },
     {
       "id": 17013201,
       "name": "Psychic Terrain: Team Condition Nullification",
-      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when the terrain is Psychic Terrain.",
       "childPassives": []
     },
     {
       "id": 18111209,
       "name": "P-Move/S-Move on Opp: Sp. Def ↓2 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using the user’s sync move targeting that opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s Pokémon uses a move targeting that opponent. Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks after using the user’s sync move targeting that opponent.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Shining High\nShattered Psyche": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/019600_128.png"
 }

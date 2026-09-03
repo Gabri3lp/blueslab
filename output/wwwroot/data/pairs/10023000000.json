@@ -3,13 +3,13 @@
   "trainerBaseId": "10002300",
   "monsterId": "20023000000",
   "monsterBaseId": "20024201",
-  "displayName": "Trainer #10002300 & Blissey",
-  "trainerName": "Trainer #10002300",
+  "displayName": "Cheryl & Blissey",
+  "trainerName": "Cheryl",
   "monsterName": "Blissey",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hyper Voice",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "63",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP. Raises an ally’s Defense and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP. Raises an ally’s Defense and Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Flamethrower",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Blissful Echo\nHyper Voice",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 17030202,
       "name": "Healing Hand 2",
-      "description": "Has a chance ([Digit:2digits ]%) of removing all status conditions from all allied sync pairs when the user’s Pokémon uses a move.",
+      "description": "Has a chance (30%) of removing all status conditions from all allied sync pairs when the user’s Pokémon uses a move.",
       "childPassives": []
     }
   ],
@@ -888,5 +888,6 @@
         "Blissful Echo\nHyper Voice": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/024201_128.png"
 }

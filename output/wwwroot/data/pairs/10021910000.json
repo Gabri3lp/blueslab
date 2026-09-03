@@ -9,7 +9,7 @@
   "type": "Flying",
   "weakness": "Rock",
   "role": "Multi",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Sacred\nHurricane",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets. If the user’s Pidgeot has Mega Evolved, also doubles this attack’s power. When the user’s team does not have a sync buff, also reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ].",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets. If the user’s Pidgeot has Mega Evolved, also doubles this attack’s power. When the user’s team does not have a sync buff, also reduces the user’s sync move countdown by 3.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Air Slash",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. If the user’s Pidgeot has Mega Evolved, also restores [Digit:1digit Idx=\"2\" ] MP of its [Name:MoveId Idx=\"6159\" ].",
+      "description": "Reduces the user’s sync move countdown by one. Increases the user’s Special Moves ↑ Next effect by 5 ranks. If the user’s Pidgeot has Mega Evolved, also restores 1 MP of its Almighty Air Slash.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Blue Beyond the Clouds\nAlmighty Hurricane",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Pidgeot until the end of battle. Applies the [Name:ReferencedMessageTag ] to the user the first time its sync move is used each battle.",
+      "description": "Become Mega Pidgeot until the end of battle. Applies the Enduring effect to the user the first time its sync move is used each battle.",
       "isSync": true
     }
   ],
@@ -144,24 +144,24 @@
     {
       "id": 29010701,
       "name": "Sky Myth",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Flying theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 29020701,
       "name": "Sky Judgment",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Raises the Flying Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Flying Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99034901,
       "name": "Mach 2 Desire to Improve",
-      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag Idx=\"4\" ] to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s Sp. Atk by 6 stat ranks. Applies the Free Move Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "childPassives": [
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
         },
         {
           "id": 17043101,
@@ -171,24 +171,24 @@
         {
           "id": 17074002,
           "name": "Entry: Special Boost 2",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle."
+          "description": "Increases the user’s Special Moves ↑ Next effect by 2 rank(s) when it enters a battle."
         }
       ]
     },
     {
       "id": 99035001,
       "name": "Strongest Genes in Kanto",
-      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s attack move is successful each battle. Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s sync move is used each battle.",
+      "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user’s attack move is successful each battle. Applies Kanto Circle (Special) to the allied field of play the first time the user’s sync move is used each battle.",
       "childPassives": [
         {
           "id": 19060401,
           "name": "1st Hit: Kanto C (Spec) on Field",
-          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s attack move is successful each battle."
+          "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user’s attack move is successful each battle."
         },
         {
           "id": 19060501,
           "name": "1st S-Move: Kanto C (Spec) on Field",
-          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user’s sync move is used each battle."
+          "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user’s sync move is used each battle."
         }
       ]
     },
@@ -1013,5 +1013,6 @@
         "Blue Beyond the Clouds\nAlmighty Hurricane": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/001800_128.png"
 }

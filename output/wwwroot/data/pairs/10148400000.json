@@ -3,13 +3,13 @@
   "trainerBaseId": "10014840",
   "monsterId": "20148400000",
   "monsterBaseId": "20035400",
-  "displayName": "Morty  (Fall 2021) & Banette",
-  "trainerName": "Morty  (Fall 2021)",
+  "displayName": "Morty (Fall 2021) & Banette",
+  "trainerName": "Morty (Fall 2021)",
   "monsterName": "Banette",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Shadow Claw",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "40",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Defense by 2 stat ranks. Raises the user’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Midnight Fright\nGhost Impact",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Banette until the end of battle. This attack’s power increases when the target is burned.",
+      "description": "Become Mega Banette until the end of battle. This attack’s power increases when the target is burned.",
       "isSync": true
     }
   ],
@@ -150,7 +150,7 @@
     {
       "id": 17041109,
       "name": "Go Viral 9",
-      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs.",
       "childPassives": []
     },
     {
@@ -963,5 +963,6 @@
         "Midnight Fright\nGhost Impact": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/035400_128.png"
 }

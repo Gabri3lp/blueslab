@@ -3,13 +3,13 @@
   "trainerBaseId": "10013500",
   "monsterId": "20135000000",
   "monsterBaseId": "20035900",
-  "displayName": "Trainer #10013500 & Absol",
-  "trainerName": "Trainer #10013500",
+  "displayName": "Sidney & Absol",
+  "trainerName": "Sidney",
   "monsterName": "Absol",
   "type": "Dark",
   "weakness": "Bug",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Night Slash",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "40",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Brutal Swing",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Uses a maximum of [Digit:1digit ] [EN:Qty S=\"slot\" P=\"slots\" ] of the user’s move gauge. The more amount used, the more it raises the user’s Attack (can be raised by up to [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] maximum). Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Enduring effect to the user.",
+      "description": "Uses a maximum of 3 slots of the user’s move gauge. The more amount used, the more it raises the user’s Attack (can be raised by up to 4 stat ranks maximum). Raises the user’s critical-hit rate by 3 stat ranks. Applies the Enduring effect to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Most Excellent\nNight Slash",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Absol until the end of battle. Critical hits land more easily. This attack’s power increases when the target is confused.",
+      "description": "Become Mega Absol until the end of battle. Critical hits land more easily. This attack’s power increases when the target is confused.",
       "isSync": true
     }
   ],
@@ -150,7 +150,7 @@
     {
       "id": 17042409,
       "name": "Criticonfuse 9",
-      "description": "Leaves the target confused when the user’s move is a critical hit.",
+      "description": "Has a chance (100%) of leaving the target confused when the user’s move is a critical hit.",
       "childPassives": []
     },
     {
@@ -1057,5 +1057,6 @@
         "Most Excellent\nNight Slash": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/035900_128.png"
 }

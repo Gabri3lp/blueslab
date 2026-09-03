@@ -3,13 +3,13 @@
   "trainerBaseId": "10003140",
   "monsterId": "20031400000",
   "monsterBaseId": "20038500",
-  "displayName": "Tate  (Summer 2023) & Jirachi",
-  "trainerName": "Tate  (Summer 2023)",
+  "displayName": "Tate (Summer 2023) & Jirachi",
+  "trainerName": "Tate (Summer 2023)",
   "monsterName": "Jirachi",
   "type": "Steel",
   "weakness": "Ground",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Flash Cannon",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Friends Forever\nSteel Beam",
       "type": "Steel",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Attack is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 14010401,
       "name": "2 P-Moves: Doom Desire",
-      "description": "Every two times the user’s Pokémon uses a move, deals additional damage to the opponent targeted by the second move. (Type: [Name:ReferencedMessageTag ], Category: [Name:ReferencedMessageTag Idx=\"1\" ]) This additional damage is not affected by some status changes.",
+      "description": "Every two times the user’s Pokémon uses a move, deals additional damage to the opponent targeted by the second move. (Type: Steel, Category: Special) This additional damage is not affected by some status changes.",
       "childPassives": []
     },
     {
       "id": 18107901,
       "name": "Use Doom Desire: Team Same Stat ↑2",
-      "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user uses [Name:PassiveSkillId Idx=\"14010401\" ]: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "description": "Raises one of the following stats of all allied sync pairs by 2 stat ranks at random when the user uses 2 P-Moves: Doom Desire: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
       "childPassives": []
     },
     {
       "id": 18108009,
       "name": "P-Move on Opp: Sp. Def ↓2 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s Pokémon uses a move targeting that opponent.",
       "childPassives": []
     }
   ],
@@ -888,5 +888,6 @@
         "Friends Forever\nSteel Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/038500_128.png"
 }

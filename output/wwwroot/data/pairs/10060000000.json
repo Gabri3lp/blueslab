@@ -3,13 +3,13 @@
   "trainerBaseId": "10006000",
   "monsterId": "20060000000",
   "monsterBaseId": "20016801",
-  "displayName": "Trainer #10006000 & Ariados",
-  "trainerName": "Trainer #10006000",
+  "displayName": "Janine & Ariados",
+  "trainerName": "Janine",
   "monsterName": "Ariados",
   "type": "Poison",
   "weakness": "Fire",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Cross Poison",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "38",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Critical hits land more easily. Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Critical hits land more easily. Has a chance (10%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Attack, Sp. Atk, and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the target is poisoned or badly poisoned. Fails when the target is not poisoned or badly poisoned.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Attack, Sp. Atk, and Speed by 1 stat rank when the target is poisoned or badly poisoned. Fails when the target is not poisoned or badly poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed and evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed and evasiveness by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ninja Spirit\nCross Poison",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is poisoned or badly poisoned.",
       "isSync": true
@@ -882,5 +882,6 @@
         "Ninja Spirit\nCross Poison": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/016801_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10004500",
   "monsterId": "20045900000",
   "monsterBaseId": "20012300",
-  "displayName": "Trainer #10004500 & Scyther",
-  "trainerName": "Trainer #10004500",
+  "displayName": "Bugsy & Scyther",
+  "trainerName": "Bugsy",
   "monsterName": "Scyther",
   "type": "Bug",
   "weakness": "Rock",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -82,9 +82,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Fury Cutter",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "8",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Except in certain circumstances, grants all of the following effects:\nThis move’s power increases when successfully used in succession.\nIf the user takes an action other than this move, its power returns to normal.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Except in certain circumstances, grants all of the following effects: This move’s power increases when successfully used in succession. If the user takes an action other than this move, its power returns to normal.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the critical-hit rate of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Always Researching\nBug Impact",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18041303,
       "name": "Posthaste 3",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
+      "description": "Has a chance (40%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 18042602,
       "name": "On the Run 2",
-      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time it is in a pinch each battle.",
+      "description": "Raises the user’s evasiveness by 2 stat ranks the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Always Researching\nBug Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/012300_128.png"
 }

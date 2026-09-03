@@ -3,8 +3,8 @@
   "trainerBaseId": "10028900",
   "monsterId": "20289000001",
   "monsterBaseId": "20082921",
-  "displayName": "Trainer #10028900 & Lycanroc",
-  "trainerName": "Trainer #10028900",
+  "displayName": "Nemona & Lycanroc",
+  "trainerName": "Nemona",
   "monsterName": "Lycanroc",
   "type": "Rock",
   "weakness": "Steel",
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Stone Edge",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Applies [Name:ReferencedMessageTag ] to the opponents’ field of play. ([Name:ReferencedMessageTag ]: The sync pairs will take [Name:ReferencedMessageTag Idx=\"1\" ]-type damage whenever they take an action.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Applies Rock Damage Field to the opponents’ field of play. (Rock Damage Field: The sync pairs will take Rock-type damage whenever they take an action.)",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Accelerock",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "75",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises an ally’s Attack by 2 stat ranks. Raises an ally’s critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Happy to Go All Out\nRock Impact",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19027601,
       "name": "Debut: Rock Zone",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "description": "Turns the field of play’s zone into a Rock Zone the first time the user enters a battle each battle. (A Rock Zone powers up Rock-type attacks.)",
       "childPassives": []
     },
     {
       "id": 12012003,
       "name": "Lithic Acceleration 3",
-      "description": "Quickly charges the move gauge when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Quickly charges the move gauge when the zone is a Rock Zone.",
       "childPassives": []
     },
     {
       "id": 18070309,
       "name": "Armor Leech 9",
-      "description": "Lowers the target’s Defense by one stat rank and raises the user’s Defense by the same amount when the user’s attack move against the target is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank and raising the user’s Defense by the same amount when the user’s attack move against the target is successful.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "Happy to Go All Out\nRock Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/082921_128.png"
 }

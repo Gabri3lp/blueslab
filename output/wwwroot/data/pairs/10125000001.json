@@ -3,13 +3,13 @@
   "trainerBaseId": "10012500",
   "monsterId": "20125000001",
   "monsterBaseId": "20016800",
-  "displayName": "Trainer #10012500 & Ariados",
-  "trainerName": "Trainer #10012500",
+  "displayName": "Guzma & Ariados",
+  "trainerName": "Guzma",
   "monsterName": "Ariados",
   "type": "Bug",
   "weakness": "Fire",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Poison Sting",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "12",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Struggle Bug",
       "type": "Bug",
-      "category": "Status",
+      "category": "Special",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Sp. Atk. by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 2 stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shake Things Up\nSavage Spin-Out",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18048309,
       "name": "Overwhelm 9",
-      "description": "Lowers the target’s Attack by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 18049709,
       "name": "Trip Up 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Speed by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
@@ -898,5 +898,6 @@
         "Shake Things Up\nSavage Spin-Out": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/016800_128.png"
 }

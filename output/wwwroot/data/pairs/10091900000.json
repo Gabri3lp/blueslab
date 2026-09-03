@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Sand Tomb",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Causes a sandstorm.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Almighty Rending\nEarthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a sandstorm is caused.\nDeactivation Condition:\nCannot be deactivated.\n\nLowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack hits a target that is trapped.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When a sandstorm is caused.\nDeactivation Condition: Cannot be deactivated.\n\nLowers the target’s Defense by 1 stat rank. Increases the user’s Sync Move ↑ Next effect by 1 rank when its attack hits a target that is trapped.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Applies the Gradual Healing effect to the user. Applies the Supereffective ↑ Next effect to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Applies the Gradual Healing effect to the user. Applies the Supereffective ↑ Next effect to the user. Increases the user’s Sync Move ↑ Next effect by 5 ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Cataclysmic Divine\nEarthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Garchomp until the end of battle. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Become Mega Garchomp until the end of battle. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 29010301,
       "name": "Earth Myth",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Ground theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 29020301,
       "name": "Earth Judgment",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Raises the Ground Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Ground Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99018701,
       "name": "Myth Archeologist",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user causes a sandstorm. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s zone into a Ground Zone when the user causes a sandstorm. (A Ground Zone powers up Ground-type attacks.) Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Extends the duration of the Ground Zone when the zone turns into a Ground Zone while the user is on the field.",
       "childPassives": []
     },
     {
@@ -168,7 +168,7 @@
     {
       "id": 99018901,
       "name": "Unbending Pride",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle.",
+      "description": "Reduces the sync move countdown by 1 the first time the user’s Pokémon uses a status move each battle. Raises the user’s Attack by 6 stat ranks the first time its Pokémon uses a status move each battle.",
       "childPassives": []
     }
   ],
@@ -979,5 +979,6 @@
         "Cataclysmic Divine\nEarthquake": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/044501_128.png"
 }

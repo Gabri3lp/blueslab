@@ -3,13 +3,13 @@
   "trainerBaseId": "10005800",
   "monsterId": "20058000001",
   "monsterBaseId": "20063000",
-  "displayName": "Trainer #10005800 & Mandibuzz",
-  "trainerName": "Trainer #10005800",
+  "displayName": "Kahili & Mandibuzz",
+  "trainerName": "Kahili",
   "monsterName": "Mandibuzz",
   "type": "Flying",
   "weakness": "Electric",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Aerial Ace",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Stat Reduction Defense effect to the allied field of play.",
       "isSync": false
     },
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Returns the target’s raised stats to normal, then raises the user’s same stats by the same amount.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Attack by 4 stat ranks. Raises the user’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Alola Return Flight\nFlying Impact",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 17047409,
       "name": "Gobsmack 9",
-      "description": "Leaves the target confused when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of leaving the target confused when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 18041309,
       "name": "Posthaste 9",
-      "description": "Raises the user’s Speed by two stat ranks when it is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,6 @@
         "Alola Return Flight\nFlying Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/063000_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10004900",
   "monsterId": "20049000002",
   "monsterBaseId": "20030200",
-  "displayName": "Trainer #10004900 & Sableye",
-  "trainerName": "Trainer #10004900",
+  "displayName": "Phoebe & Sableye",
+  "trainerName": "Phoebe",
   "monsterName": "Sableye",
   "type": "Ghost",
   "weakness": "Fairy",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Astonish",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "12",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Phantom Force",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "The user takes on a phantom presence. After a set time, this presence fades and the user attacks. No other actions can be taken while in phantom presence. Opponents’ moves will not hit the user while it is in this presence. If the user is hit by a sync move or max move while in phantom presence, the presence will fade.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Attack and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Attack and critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Tight Bonds That Can’t Be Seen\nGhost Impact",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 15012001,
       "name": "Afflicter’s Fervor 1",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle.",
+      "description": "Reduces the sync move countdown by 1 the first time the user’s Pokémon uses a status move each battle.",
       "childPassives": []
     },
     {
       "id": 12020901,
       "name": "Fail Forward 1",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when an opponent’s attack move targeting the user misses.",
+      "description": "Charges the user’s move gauge by 1 when an opponent’s attack move targeting the user misses.",
       "childPassives": []
     },
     {
       "id": 18093809,
       "name": "Dashing Team 9",
-      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
       "childPassives": []
     }
   ],
@@ -902,5 +902,6 @@
         "Tight Bonds That Can’t Be Seen\nGhost Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/030200_128.png"
 }

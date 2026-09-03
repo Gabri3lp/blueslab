@@ -3,13 +3,13 @@
   "trainerBaseId": "10000100",
   "monsterId": "20001000000",
   "monsterBaseId": "20082911",
-  "displayName": "Trainer #10000100 & Lycanroc",
-  "trainerName": "Trainer #10000100",
+  "displayName": "Kukui & Lycanroc",
+  "trainerName": "Kukui",
   "monsterName": "Lycanroc",
   "type": "Rock",
   "weakness": "Water",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Rock Tomb",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Accelerock",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "75",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Restores [Digit:1digit ] MP of the user’s moves that have the quick move effect tag. Raises the user’s Attack by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Restores 3 MP of the user’s moves that have the quick move effect tag. Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -121,9 +121,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Lowers the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Island Splintered\nStormshards",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Removes the Physical and Special Damage Reduction effects from the opponents’ field of play.",
       "isSync": true
@@ -980,5 +980,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/041900_128.png"
 }

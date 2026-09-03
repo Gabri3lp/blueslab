@@ -3,13 +3,13 @@
   "trainerBaseId": "10011300",
   "monsterId": "20113000000",
   "monsterBaseId": "20020801",
-  "displayName": "Trainer #10011300 & Steelix",
-  "trainerName": "Trainer #10011300",
+  "displayName": "Jasmine & Steelix",
+  "trainerName": "Jasmine",
   "monsterName": "Steelix",
   "type": "Steel",
   "weakness": "Water",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Gyro Ball",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "44",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target’s Speed is raised.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -109,7 +109,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Applies the Critical-Hit Defense effect to the allied field of play. Applies the Stat Reduction Defense effect to the allied field of play.",
       "isSync": false
     },
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Iron Tail",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "132",
       "accuracy": "75",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Steel-Clad\nIron Tail",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Steelix until the end of battle. The more the user’s Defense is raised, the greater the power of this attack.",
+      "description": "Become Mega Steelix until the end of battle. The more the user’s Defense is raised, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -1044,5 +1044,6 @@
         "Steel-Clad\nIron Tail": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/020801_128.png"
 }

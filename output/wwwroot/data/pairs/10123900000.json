@@ -3,13 +3,13 @@
   "trainerBaseId": "10012390",
   "monsterId": "20123900000",
   "monsterBaseId": "21086513",
-  "displayName": "Selene  (Champion) & Monster #21086513",
-  "trainerName": "Selene  (Champion)",
-  "monsterName": "Monster #21086513",
+  "displayName": "Selene (Champion) & Necrozma",
+  "trainerName": "Selene (Champion)",
+  "monsterName": "Necrozma",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Moongeist Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP. HP is restored by 60% instead when the weather is sunny, and 40% when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Lunar\nMoongeist Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "430",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nIgnores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. The more MP remaining for the user’s [Name:MoveId Idx=\"236\" ] when attacking with this move, the more it reduces its sync move countdown (can be reduced by up to [Digit:1digit Idx=\"1\" ] maximum).",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nIgnores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s Sp. Def by 3 stat ranks. The more MP remaining for the user’s Moonlight when attacking with this move, the more it reduces its sync move countdown (can be reduced by up to 3 maximum).",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move and special sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "target": "An ally",
+      "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 3 ranks. Applies Alola Circle (Special) to the allied field of play. Alola Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Alola theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Dawn Lunar Eclipse\nMoongeist Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
+      "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit.",
       "isSync": true
     }
   ],
@@ -144,18 +144,18 @@
     {
       "id": 28010701,
       "name": "Alola Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Alola theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Alola theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
       "id": 99026801,
       "name": "The Beast That Calls the Moon",
-      "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play. When an attack move used by the user’s Pokémon that targets itself or an ally is successful, that attack’s target becomes all allied sync pairs. When an attack move used by the user’s Pokémon that targets an opponent is successful, that attack’s target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "description": "Extends the duration of Alola Circle (Special) when Alola Circle (Special) is applied to the allied field of play. When an attack move used by the user’s Pokémon that targets itself or an ally is successful, that attack’s target becomes all allied sync pairs. When an attack move used by the user’s Pokémon that targets an opponent is successful, that attack’s target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
       "childPassives": [
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
         },
         {
           "id": 18051501,
@@ -170,20 +170,20 @@
         {
           "id": 19029305,
           "name": "Alola C (Spec) Extension 5",
-          "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play."
+          "description": "Extends the duration of Alola Circle (Special) when Alola Circle (Special) is applied to the allied field of play."
         }
       ]
     },
     {
       "id": 99026901,
       "name": "Continuously Expel Energy",
-      "description": "Grants one of the following effects depending on how many opponents were hit after using the user’s sync move:\nApplies the [Name:ReferencedMessageTag ] to the user when exactly three opponents were hit.\nCharges the user’s move gauge by [Digit:1digit Idx=\"1\" ] and increases its [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when exactly two opponents were hit.\nIncreases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] when exactly one opponent was hit.",
+      "description": "Grants one of the following effects depending on how many opponents were hit after using the user’s sync move: Applies the Free Move Next effect to the user when exactly three opponents were hit. Charges the user’s move gauge by 2 and increases its Special Moves ↑ Next effect by 1 rank when exactly two opponents were hit. Increases the user’s Special Moves ↑ Next effect by 3 ranks when exactly one opponent was hit.",
       "childPassives": []
     },
     {
       "id": 99027001,
       "name": "Warm Moonlight",
-      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"236\" ] by [Digit:1digit ] and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"1\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the MP for the user’s Moonlight by 1 and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately 50% of its maximum HP. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "childPassives": []
     }
   ],
@@ -951,5 +951,7 @@
         "Dawn Lunar Eclipse\nMoongeist Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Necrozma",
+  "pokemonIconUrl": "img/pokemon/086513_128.png"
 }

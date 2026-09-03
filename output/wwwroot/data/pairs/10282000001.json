@@ -3,13 +3,13 @@
   "trainerBaseId": "10028200",
   "monsterId": "20282000001",
   "monsterBaseId": "20010000",
-  "displayName": "Trainer #10028200 & Voltorb",
-  "trainerName": "Trainer #10028200",
+  "displayName": "Ball Guy & Voltorb",
+  "trainerName": "Ball Guy",
   "monsterName": "Voltorb",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Shock",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Not Any Old Ball\nElectric Beam",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -150,13 +150,13 @@
     {
       "id": 18114309,
       "name": "Use Status P-Move on Opp: Defense ↓2 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move targeting that opponent.",
+      "description": "Has a chance (100%) of lowering the target’s Defense by 2 stat ranks when the user’s Pokémon uses a status move targeting that opponent.",
       "childPassives": []
     },
     {
       "id": 12021502,
       "name": "Charging Infliction 2",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when its Pokémon uses a status move.",
+      "description": "Charges the user’s move gauge by 2 when its Pokémon uses a status move.",
       "childPassives": []
     }
   ],
@@ -898,5 +898,6 @@
         "Not Any Old Ball\nElectric Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/010000_128.png"
 }

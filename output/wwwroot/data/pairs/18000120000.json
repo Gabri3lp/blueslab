@@ -3,13 +3,13 @@
   "trainerBaseId": "10700000",
   "monsterId": "28000120000",
   "monsterBaseId": "20087300",
-  "displayName": "Trainer #10700000 & Solgaleo",
-  "trainerName": "Trainer #10700000",
+  "displayName": "Main Character & Solgaleo",
+  "trainerName": "Main Character",
   "monsterName": "Solgaleo",
   "type": "Steel",
   "weakness": "Ground",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Metal Claw",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "21",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Attack by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of raising the user’s Attack by 1 stat rank.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Sunsteel Strike",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "isSync": false
     },
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "3",
       "target": "Self",
-      "description": "Raises the user’s Attack, Sp. Atk, and accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack, Sp. Atk, and accuracy by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Focus Blast",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Special",
       "power": "142",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shining Friendship\nSunraze Smash",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -980,5 +980,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/087300_128.png"
 }

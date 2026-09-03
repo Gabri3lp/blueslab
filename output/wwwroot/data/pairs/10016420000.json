@@ -3,13 +3,13 @@
   "trainerBaseId": "10001642",
   "monsterId": "20016420000",
   "monsterBaseId": "20018901",
-  "displayName": "Skyla  (Summer 2025) & Monster #20018901",
-  "trainerName": "Skyla  (Summer 2025)",
-  "monsterName": "Monster #20018901",
+  "displayName": "Skyla (Summer 2025) & Jumpluff",
+  "trainerName": "Skyla (Summer 2025)",
+  "monsterName": "Jumpluff",
   "type": "Grass",
   "weakness": "Ice",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Sunny\nSolar Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nThe user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. The preparation period is skipped when the weather is sunny, and the user will attack right away. Never misses. Lowers the target’s Sp. Def and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The more the user’s [Name:ReferencedMessageTag Idx=\"1\" ] is raised, the more it increases its [Name:ReferencedMessageTag Idx=\"2\" ] (can be increased by up to [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] maximum). Removes all of the user’s Speed increases.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nThe user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. The preparation period is skipped when the weather is sunny, and the user will attack right away. Never misses. Lowers the target’s Sp. Def and Speed by 2 stat ranks. The more the user’s Speed is raised, the more it increases its Special Moves ↑ Next effect (can be increased by up to 3 ranks maximum). Removes all of the user’s Speed increases.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by one. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by one. Raises the user’s Speed by 2 stat ranks. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Floating Around the World\nGrass Beam",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the weather is sunny.",
       "isSync": true
@@ -144,46 +144,46 @@
     {
       "id": 99028301,
       "name": "Let’s Have Some Fun!",
-      "description": "Grants all of the following effects the first time the user’s Pokémon uses a status move each battle: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"4\" ]. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects the first time the user’s Pokémon uses a status move each battle: Reduces the user’s sync move countdown by 2. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "childPassives": [
         {
           "id": 18121904,
           "name": "1st Use Status P-Move: Sp. Atk ↑ 4",
-          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle."
+          "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time its Pokémon uses a status move each battle."
         },
         {
           "id": 18122003,
           "name": "1st Use Status P-Move: Crit Rate ↑ 3",
-          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time its Pokémon uses a status move each battle."
         },
         {
           "id": 15012002,
           "name": "Afflicter’s Fervor 2",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle."
+          "description": "Reduces the sync move countdown by 2 the first time the user’s Pokémon uses a status move each battle."
         }
       ]
     },
     {
       "id": 99028401,
       "name": "Let’s Vacay!",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move.",
+      "description": "Raises the user’s Speed by 6 stat ranks when its Pokémon uses a status move. Increases the user’s Special Moves ↑ Next effect by 2 ranks when its Pokémon uses a status move.",
       "childPassives": [
         {
           "id": 18122609,
           "name": "Use Status P-Move: Speed ↑6 9",
-          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move."
+          "description": "Has a chance (100%) of raising the user’s Speed by 6 stat ranks when its Pokémon uses a status move."
         },
         {
           "id": 17084309,
           "name": "Use Status P-Move: Special Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move."
+          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 2 ranks when its Pokémon uses a status move."
         }
       ]
     },
     {
       "id": 99028501,
       "name": "Perfect for a Day Out",
-      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful while the weather is sunny. Increases an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the weather is sunny.",
+      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field. Raises the Speed of all allied sync pairs by 1 stat rank when an ally’s attack move is successful while the weather is sunny. Increases an ally’s Special Moves ↑ Next effect by 1 rank when its attack move is successful while the weather is sunny.",
       "childPassives": [
         {
           "id": 19020805,
@@ -193,12 +193,12 @@
         {
           "id": 18122709,
           "name": "Sunny Ally Hit: Team Speed ↑ 9",
-          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful while the weather is sunny."
+          "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 1 stat rank when an ally’s attack move is successful while the weather is sunny."
         },
         {
           "id": 17084409,
           "name": "Sunny Ally Hit: Special Boost ↑1 9",
-          "description": "Increases an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the weather is sunny."
+          "description": "Has a chance (100%) of increasing an ally’s Special Moves ↑ Next effect by 1 rank when its attack move is successful while the weather is sunny."
         }
       ]
     }
@@ -937,5 +937,7 @@
         "Floating Around the World\nGrass Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Jumpluff",
+  "pokemonIconUrl": "img/pokemon/018901_128.png"
 }

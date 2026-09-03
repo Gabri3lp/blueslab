@@ -3,13 +3,13 @@
   "trainerBaseId": "10012690",
   "monsterId": "20126900000",
   "monsterBaseId": "21038201",
-  "displayName": "May  (Champion) & Monster #21038201",
-  "trainerName": "May  (Champion)",
-  "monsterName": "Monster #21038201",
+  "displayName": "May (Champion) & Kyogre",
+  "trainerName": "May (Champion)",
+  "monsterName": "Kyogre",
   "type": "Water",
   "weakness": "Grass",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Origin Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "189",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Thunder",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "124",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Never misses when the weather is rainy. Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Blue\nOrigin Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "600",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the weather turns EX rainy.\nDeactivation Condition:\nWhen the weather condition is no longer EX rainy.\n\nMakes the target flinch.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition: When the weather turns EX rainy.\nDeactivation Condition: When the weather condition is no longer EX rainy.\n\nMakes the target flinch.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Increases the Sync Move ↑ Next effect of an ally by 4 ranks. Increases the user’s Sync Move ↑ Next effect by 4 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Storm-Summoning Seas\nOrigin Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,29 +144,29 @@
     {
       "id": 28010301,
       "name": "Hoenn Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
       "id": 99022701,
       "name": "Blue Power Awakening",
-      "description": "Become Primal Kyogre until the end of battle the first time the user enters a battle each battle.",
+      "description": "Become Primal Kyogre until the end of battle the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99022901,
       "name": "Hoenn Blessing",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when its attack move hits while the weather is rainy. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move hits while the weather is rainy.",
+      "description": "Charges the user’s move gauge by 1 when its attack move hits while the weather is rainy. Increases the user’s Sync Move ↑ Next effect by 1 rank when its attack move hits while the weather is rainy.",
       "childPassives": [
         {
           "id": 17079509,
           "name": "Rainy Strike: Sync Move Boost ↑1 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit."
+          "description": "Has a chance (100%) of increasing the user’s Sync Move ↑ Next effect by 1 rank when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, has a chance (100%) of increasing the user’s Sync Move ↑ Next effect by 1 rank for each hit."
         },
         {
           "id": 12022409,
           "name": "Rainy Strike: MG ↑ 9",
-          "description": "Charges the user’s move gauge by [Digit:1digit ] when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, charges the user’s move gauge by [Digit:1digit ] for each hit."
+          "description": "Has a chance (100%) of charging the user’s move gauge by 1 when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, has a chance (100%) of charging the user’s move gauge by 1 for each hit."
         }
       ]
     },
@@ -971,5 +971,6 @@
         "Storm-Summoning Seas\nOrigin Pulse": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/038201_128.png"
 }

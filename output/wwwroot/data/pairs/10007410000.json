@@ -3,13 +3,13 @@
   "trainerBaseId": "10000741",
   "monsterId": "20007410000",
   "monsterBaseId": "20059300",
-  "displayName": "Acerola  (Summer 2024) & Jellicent",
-  "trainerName": "Acerola  (Summer 2024)",
+  "displayName": "Acerola (Summer 2024) & Jellicent",
+  "trainerName": "Acerola (Summer 2024)",
   "monsterName": "Jellicent",
   "type": "Ghost",
   "weakness": "Electric",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Gun",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Shoreline\nOminous Wind",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s HP is at [Digit:2digits ]% or more.\nDeactivation Condition:\nWhen the user’s HP is less than [Digit:2digits ]%.\n\nRaises the Attack, Defense, Sp. Atk, Sp. Def, and Speed of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s HP is at 80% or more.\nDeactivation Condition: When the user’s HP is less than 80%.\n\nRaises the Attack, Defense, Sp. Atk, Sp. Def, and Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Water Type Rebuff and Ghost Type Rebuff by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Raises the user’s Water Type Rebuff and Ghost Type Rebuff by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Full-Moon Ocean Invite\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99017401,
       "name": "Touch at Your Own Peril",
-      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by 2 stat ranks when the user is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 17070801,
       "name": "“Heals” Move: Team Gradual Healing",
-      "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs when the user uses a move that has the heals effect tag.",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs when the user uses a move that has the heals effect tag.",
       "childPassives": []
     },
     {
       "id": 11011009,
       "name": "Team Fist Bump 9",
-      "description": "Restores the HP of all allied sync pairs when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,6 @@
         "Full-Moon Ocean Invite\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/059300_128.png"
 }

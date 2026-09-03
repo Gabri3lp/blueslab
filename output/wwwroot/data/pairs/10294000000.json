@@ -3,13 +3,13 @@
   "trainerBaseId": "10029400",
   "monsterId": "20294000000",
   "monsterBaseId": "2009750000",
-  "displayName": "Trainer #10029400 & Cetitan",
-  "trainerName": "Trainer #10029400",
+  "displayName": "Grusha & Cetitan",
+  "trainerName": "Grusha",
   "monsterName": "Cetitan",
   "type": "Ice",
   "weakness": "Steel",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Fang",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "46",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Absolute Zero\nIce Avalanche",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
       "gauge": "0",
       "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Defense is raised.\nDeactivation Condition:\nWhen the user’s Defense is not raised.\n\nThe user takes up a defensive posture. Using this move again will make the user leave this defensive posture, then attack. No other actions can be taken when in this defensive posture. Nullifies an attack move that targets the user or all allies while in this defensive posture, then the user leaves the defensive posture and attacks the target with double the power of this attack. Lowers the Attack and Sp. Atk of this attack’s target by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Activation Condition: When the user’s Defense is raised.\nDeactivation Condition: When the user’s Defense is not raised.\n\nThe user takes up a defensive posture. Using this move again will make the user leave this defensive posture, then attack. No other actions can be taken when in this defensive posture. Nullifies an attack move that targets the user or all allies while in this defensive posture, then the user leaves the defensive posture and attacks the target with double the power of this attack. Lowers the Attack and Sp. Atk of this attack’s target by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into an Ice Zone. (An Ice Zone powers up Ice-type attacks.) Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into an Ice Zone. (An Ice Zone powers up Ice-type attacks.) Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sub-zero Shredder\nAvalanche",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -980,5 +980,10 @@
         "Sub-zero Shredder\nAvalanche": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/097500_128.png",
+  "superAwakeningPassive": {
+    "name": "The Sub-zero Shredder",
+    "description": "Reduces special attack move damage taken by allies when the zone is an Ice Zone. Turns the field of play’s zone into an Ice Zone the first time the user’s sync move is used each battle. (An Ice Zone powers up Ice-type attacks.) Extends the duration of the Ice Zone when the zone turns into an Ice Zone while the user is on the field."
+  }
 }

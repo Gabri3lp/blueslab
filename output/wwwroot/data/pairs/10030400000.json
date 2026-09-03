@@ -3,13 +3,13 @@
   "trainerBaseId": "10003040",
   "monsterId": "20030400000",
   "monsterBaseId": "20088100",
-  "displayName": "Liza  (Summer 2023) & Celesteela",
-  "trainerName": "Liza  (Summer 2023)",
+  "displayName": "Liza (Summer 2023) & Celesteela",
+  "trainerName": "Liza (Summer 2023)",
   "monsterName": "Celesteela",
   "type": "Flying",
   "weakness": "Electric",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Giga Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "223",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Raises the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. When the user’s Defense is raised, raises the user’s Attack by the same amount.",
+      "description": "Raises the user’s accuracy by 1 stat rank. Raises the user’s critical-hit rate by 3 stat ranks. When the user’s Defense is raised, raises the user’s Attack by the same amount.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Forever Friends\nFlying Impact",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18105109,
       "name": "Shielding Infliction+ 9",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move.",
+      "description": "Has a chance (100%) of raising the user’s Defense by 2 stat ranks when its Pokémon uses a status move.",
       "childPassives": []
     },
     {
       "id": 17060709,
       "name": "Infliction Freebie 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its Pokémon uses a status move.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its Pokémon uses a status move.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,10 @@
         "Forever Friends\nFlying Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/098200_128.png",
+  "superAwakeningPassive": {
+    "name": "The Exceptional Everyman",
+    "description": "Turns the field of play’s zone into a Normal Zone the first time the user enters a battle each battle. Turns the field of play’s zone into a Normal Zone the first time the user’s sync move is used each battle. (A Normal Zone powers up Normal-type attacks.) Extends the duration of the Normal Zone when the zone turns into a Normal Zone while the user is on the field."
+  }
 }

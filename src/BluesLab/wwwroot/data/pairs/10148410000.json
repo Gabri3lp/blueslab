@@ -84,7 +84,7 @@
       "accuracy": "100",
       "gauge": "4",
       "target": "An opponent",
-      "description": "This attack’s power is doubled when the target is affected by a status condition. Has a chance (%) of leaving the target burned.",
+      "description": "This attack’s power is doubled when the target is affected by a status condition. Has a chance (30%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "An ally",
-      "description": "Increases the of all allied sync pairs by ranks. Applies to the allied field of play. grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by %. Reduces special attack move and special sync move damage taken by all allied sync pairs by %. The more sync pairs with that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by % and reduces damage by %. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Johto Circle (Special) to the allied field of play. Johto Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Johto theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move times.\nDeactivation Condition:\nWhen this move is used. Never misses. This attack’s power is doubled when the target is affected by a status condition. Lowers the target’s Sp. Def and Speed by stat ranks. Leaves the target burned.",
+      "description": "Activation Condition: When your team’s sync pair uses a sync move 1 time.\nDeactivation Condition: When this move is used.\n\nNever misses. This attack’s power is doubled when the target is affected by a status condition. Lowers the target’s Sp. Def and Speed by 3 stat ranks. Leaves the target burned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by. Raises the user’s by stat ranks. Raises the user’s by stat ranks.",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -154,31 +154,31 @@
         {
           "id": 17045709,
           "name": "Viral Hit 9",
-          "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, inflicts the same status condition on all opposing sync pairs."
+          "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
         }
       ]
     },
     {
       "id": 99024401,
       "name": "The Mystic Seer Teacher’s Scary Stories",
-      "description": "Lowers one of the target’s following stats by stat ranks at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the to the user when its attack move is successful against a burned opponent.",
+      "description": "Lowers one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the Free Move Next effect to the user when its attack move is successful against a burned opponent.",
       "childPassives": [
         {
           "id": 17080909,
           "name": "Hit Burned Opp: Free Move Next 9",
-          "description": "Applies the to the user when its attack move is successful against a burned opponent."
+          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful against a burned opponent."
         },
         {
           "id": 18120809,
           "name": "Hit Burned Opp: Stat ↓2 9",
-          "description": "Lowers one of the target’s following stats by stat ranks at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
+          "description": "Has a chance (100%) of lowering one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
         }
       ]
     },
     {
       "id": 17080709,
       "name": "Ally Hits Burned Opp: Special Boost ↑1 9",
-      "description": "Increases an ally’s by ranks when its attack move is successful against a burned opponent.",
+      "description": "Has a chance (100%) of increasing an ally’s Special Moves ↑ Next effect by 1 rank when its attack move is successful against a burned opponent.",
       "childPassives": []
     }
   ],

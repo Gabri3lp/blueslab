@@ -3,13 +3,13 @@
   "trainerBaseId": "10028700",
   "monsterId": "20287000000",
   "monsterBaseId": "2010071100",
-  "displayName": "Trainer #10028700 & Koraidon",
-  "trainerName": "Trainer #10028700",
+  "displayName": "Juliana & Koraidon",
+  "trainerName": "Juliana",
   "monsterName": "Koraidon",
   "type": "Fighting",
   "weakness": "Fairy",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Collision Course",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "152",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "This attack’s power increases 30% when it is super effective.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "S Collision\nCourse",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the weather turns sunny.\nDeactivation Condition:\nWhen the weather condition is no longer sunny.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. This attack’s power increases 30% when it is super effective. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. If the remaining MP for the user’s [Name:MoveId Idx=\"241\" ] is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition: When the weather turns sunny.\nDeactivation Condition: When the weather condition is no longer sunny.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. This attack’s power increases 30% when it is super effective. Lowers the target’s Defense by 3 stat ranks. If the remaining MP for the user’s Sunny Day is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Reduces the user’s sync move countdown by 1. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when the weather is sunny.",
+      "description": "Raises the user’s Attack by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. In addition, raises the user’s Speed by 6 stat ranks when the weather is sunny.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Ripening Oranges\nAncient Collision Course",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,18 +144,18 @@
     {
       "id": 28012401,
       "name": "Paldea Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
       "id": 99021401,
       "name": "Hungry Pulse",
-      "description": "The user’s [Name:ReferencedMessageTag ] increases 30% when the weather is sunny. Makes the weather sunny the first time the user enters a battle each battle. Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "description": "The user’s Attack increases 30% when the weather is sunny. Makes the weather sunny the first time the user enters a battle each battle. Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
       "childPassives": [
         {
           "id": 23011903,
           "name": "Sunny: Attack ↑ 3",
-          "description": "The user’s [Name:ReferencedMessageTag ] increases 30% when the weather is sunny."
+          "description": "The user’s Attack increases 30% when the weather is sunny."
         },
         {
           "id": 19020601,
@@ -172,17 +172,17 @@
     {
       "id": 99021501,
       "name": "My Very Own Treasure",
-      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle. Restores [Digit:1digit Idx=\"2\" ] MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle.",
+      "description": "Increases the user’s Physical Moves ↑ Next effect by 2 ranks the first time its sync move is used each battle. Restores 1 MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle.",
       "childPassives": [
         {
           "id": 17074302,
           "name": "1st S-Move: Physical Boost 2",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+          "description": "Increases the user’s Physical Moves ↑ Next effect by 2 rank(s) the first time its sync move is used each battle."
         },
         {
           "id": 13061801,
           "name": "1st S-Move: Restore Status P-Move MP 1",
-          "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle."
+          "description": "Restores 1 MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle."
         }
       ]
     },
@@ -961,5 +961,6 @@
         "Ripening Oranges\nAncient Collision Course": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/100711_128.png"
 }

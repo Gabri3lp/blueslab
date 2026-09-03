@@ -3,13 +3,13 @@
   "trainerBaseId": "10000490",
   "monsterId": "20004900000",
   "monsterBaseId": "2010100000",
-  "displayName": "Hilda  (Champion) & Iron Leaves",
-  "trainerName": "Hilda  (Champion)",
+  "displayName": "Hilda (Champion) & Iron Leaves",
+  "trainerName": "Hilda (Champion)",
   "monsterName": "Iron Leaves",
   "type": "Psychic",
   "weakness": "Bug",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Giga Impact",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "223",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Shining Sword\nPsyblade",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Physical",
       "power": "350",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. This attack’s power increases 50% when a terrain applies to the field of play. Turns the field of play’s terrain into [Name:ReferencedMessageTag ] when the terrain is [Name:ReferencedMessageTag ]. Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ] when the terrain is [Name:ReferencedMessageTag Idx=\"1\" ]. Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"2\" ] when the terrain is [Name:ReferencedMessageTag Idx=\"2\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. This attack’s power increases 50% when a terrain applies to the field of play. Turns the field of play’s terrain into Electric Terrain when the terrain is Electric Terrain. Turns the field of play’s terrain into Grassy Terrain when the terrain is Grassy Terrain. Turns the field of play’s terrain into Psychic Terrain when the terrain is Psychic Terrain.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s terrain into Electric Terrain. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Turns the field of play’s terrain into Electric Terrain. Raises the user’s Attack by 6 stat ranks. Applies the Free Move Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "A Future of Helping One Another\nPsyblade",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28040701,
       "name": "Unova’s Hotblooded Girl",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
       "childPassives": [
         {
           "id": 28030501,
@@ -161,23 +161,23 @@
     {
       "id": 25010401,
       "name": "Shining Blades of the Future",
-      "description": "Grants all of the following effects when the user uses [Name:MoveId Idx=\"19170\" ] or an ally turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ]: Reduces the user’s sync move countdown by [Digit:1digit ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects when the user uses Booster Energy or an ally turns the field of play’s terrain into Electric Terrain: Reduces the user’s sync move countdown by 1. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "childPassives": []
     },
     {
       "id": 99036501,
       "name": "Future-Honed Strike",
-      "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves. Decreases the amount of move gauge slots the user needs to use [Name:MoveId Idx=\"416\" ] by [Digit:1digit Idx=\"1\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "description": "Normal-type moves become Psychic-type moves. Decreases the amount of move gauge slots the user needs to use Giga Impact by 1. Lowers the target’s Defense by 3 stat ranks when the user’s attack move against it is successful.",
       "childPassives": [
         {
           "id": 13050901,
           "name": "Psychic Shift",
-          "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves."
+          "description": "Normal-type moves become Psychic-type moves."
         },
         {
           "id": 18126009,
           "name": "Hit: Defense ↓3 9",
-          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
+          "description": "Has a chance (100%) of lowering the target’s Defense by 3 stat ranks when the user’s attack move against it is successful."
         }
       ]
     },
@@ -961,5 +961,6 @@
         "A Future of Helping One Another\nPsyblade": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/047700_128.png"
 }

@@ -84,7 +84,7 @@
       "accuracy": "90",
       "gauge": "4",
       "target": "An opponent",
-      "description": "Removes the frozen condition from the user. Has a chance (%) of leaving the target burned.",
+      "description": "Removes the frozen condition from the user. Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used. Removes the frozen condition from the user. Has a chance (%) of leaving the target burned. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Applies the to all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by ranks.",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nRemoves the frozen condition from the user. Has a chance (10%) of leaving the target burned. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Applies the Supereffective ↑ Next effect to all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Reduces the sync move countdown of an ally by. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of an ally by ranks.",
+      "description": "Reduces the sync move countdown of an ally by 1. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of an ally by 2 ranks.",
       "isSync": false
     },
     {
@@ -144,35 +144,35 @@
     {
       "id": 99021301,
       "name": "Fiery Combo",
-      "description": "Raises the user’s by stat ranks when it enters a battle. Raises the user’s by stat ranks when it enters a battle. Raises the user’s by stat ranks when it enters a battle.",
+      "description": "Raises the user’s Attack by 4 stat ranks when it enters a battle. Raises the user’s accuracy by 2 stat ranks when it enters a battle. Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle.",
       "childPassives": [
         {
           "id": 18045904,
           "name": "Fierce Entry 4",
-          "description": "Raises the user’s Attack by stat ranks when it enters a battle."
+          "description": "Raises the user’s Attack by 4 stat ranks when it enters a battle."
         },
         {
           "id": 18090102,
           "name": "Pinpoint Entry 2",
-          "description": "Raises the user’s accuracy by stat ranks when it enters a battle."
+          "description": "Raises the user’s accuracy by 2 stat ranks when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by stat ranks when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
         }
       ]
     },
     {
       "id": 19053801,
       "name": "User Sets Sunny W: Galar C (Def) on Field",
-      "description": "Applies to the allied field of play when the user turns the weather sunny.",
+      "description": "Applies Galar Circle (Defensive) to the allied field of play when the user turns the weather sunny.",
       "childPassives": []
     },
     {
       "id": 17078409,
       "name": "Sunny Hit: Free Move Next 9",
-      "description": "Applies the to the user when its attack move is successful while the weather is sunny.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the weather is sunny.",
       "childPassives": []
     }
   ],

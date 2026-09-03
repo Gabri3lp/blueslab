@@ -3,13 +3,13 @@
   "trainerBaseId": "10010090",
   "monsterId": "20100900000",
   "monsterBaseId": "21061200",
-  "displayName": "Nate  (Champion) & Monster #21061200",
-  "trainerName": "Nate  (Champion)",
-  "monsterName": "Monster #21061200",
+  "displayName": "Nate (Champion) & Haxorus",
+  "trainerName": "Nate (Champion)",
+  "monsterName": "Haxorus",
   "type": "Dragon",
   "weakness": "Fairy",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Scale Shot",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "16",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Attacks the target two to five times in a row. Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Attacks the target two to five times in a row. Raises the user’s Speed by 1 stat rank. Lowers the user’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Unova Circle (Physical) to the allied field of play. Unova Circle (Physical) grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by 10%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Unova theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Dark Black Outrage",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Reduces the user’s sync move countdown by [Digit:1digit ].",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nNever misses. Reduces the user’s sync move countdown by 1.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Returns the user’s lowered stats to normal. Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user.",
+      "description": "Returns the user’s lowered stats to normal. Raises the user’s Speed by 3 stat ranks. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Resonating Will\nDragon Claw",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 28012101,
       "name": "Unova Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
       "id": 99014801,
       "name": "Strategy: Focus on Attack!",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Trainer uses a move. Increases the user’s Physical Moves ↑ Next effect by one rank when its Trainer uses a move.",
+      "description": "Raises the user’s Attack by 6 stat ranks when its Trainer uses a move. Increases the user’s Physical Moves ↑ Next effect by one rank when its Trainer uses a move.",
       "childPassives": []
     },
     {
       "id": 99014901,
       "name": "Better Than Perfect Opportunity",
-      "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move.",
+      "description": "Restores 1 MP of the user’s buddy move after your team’s sync pair uses their sync move. Increases the user’s Physical Moves ↑ Next effect by 1 rank after your team’s sync pair uses their sync move.",
       "childPassives": []
     },
     {
@@ -928,5 +928,7 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonName": "Haxorus",
+  "pokemonIconUrl": "img/pokemon/061200_128.png"
 }

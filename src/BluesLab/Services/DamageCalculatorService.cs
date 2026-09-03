@@ -1051,6 +1051,12 @@ public class DamageCalculatorService
         return false;
     }
 
+    private static string NormalizeMoveName(string? name)
+    {
+        if (string.IsNullOrWhiteSpace(name)) return "";
+        return string.Join(" ", name.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+    }
+
     private double EvalMoveScaling(
         MoveItem move,
         CombatantState ally,
@@ -1061,16 +1067,22 @@ public class DamageCalculatorService
     {
         if (ally.Pair == null) return 1.0;
 
+        string normMoveName = NormalizeMoveName(move.Name);
+        string pairName = ally.Pair.DisplayName;
+
         var rule = rules.MoveScaling.FirstOrDefault(ms =>
-            (string.Equals(ms.SyncPair, ally.Pair.DisplayName, StringComparison.OrdinalIgnoreCase) || ms.SyncPair == "*") &&
-            string.Equals(ms.MoveName, move.Name, StringComparison.OrdinalIgnoreCase));
+            (ms.SyncPair == "*" ||
+             string.Equals(ms.SyncPair, pairName, StringComparison.OrdinalIgnoreCase) ||
+             ms.SyncPair.StartsWith(pairName, StringComparison.OrdinalIgnoreCase) ||
+             pairName.StartsWith(ms.SyncPair, StringComparison.OrdinalIgnoreCase)) &&
+            string.Equals(NormalizeMoveName(ms.MoveName), normMoveName, StringComparison.OrdinalIgnoreCase));
 
         if (rule == null)
         {
             if (!string.IsNullOrEmpty(move.Description))
             {
                 double descMult = 1.0;
-                string desc = move.Description;
+                string desc = NormalizeMoveName(move.Description);
 
                 // 1. Dual Screens / Damage Reductions in move descriptions
                 if (desc.Contains("Physical Damage Reduction effect and Special Damage Reduction effect apply to the allied field", StringComparison.OrdinalIgnoreCase))
@@ -1249,7 +1261,49 @@ public class DamageCalculatorService
                 }
 
                 // 10. Weather / Terrain / Zone in Move descriptions
-                if (desc.Contains("terrain is", StringComparison.OrdinalIgnoreCase) || desc.Contains("terrain applies", StringComparison.OrdinalIgnoreCase) || desc.Contains("terrain is in effect", StringComparison.OrdinalIgnoreCase))
+                // Specific Zone checking
+                string[] zoneTypes = ["Ghost", "Dark", "Fairy", "Rock", "Dragon", "Steel", "Poison", "Flying", "Bug", "Fighting", "Electric", "Grass", "Water", "Fire", "Ice", "Ground", "Psychic", "Normal"];
+                bool matchedSpecificZone = false;
+                foreach (var zt in zoneTypes)
+                {
+                    if (desc.Contains($"zone is a {zt} Zone", StringComparison.OrdinalIgnoreCase) || desc.Contains($"zone is an {zt} Zone", StringComparison.OrdinalIgnoreCase))
+                    {
+                        matchedSpecificZone = true;
+                        if (!string.IsNullOrEmpty(field.Zone) && field.Zone.Contains(zt, StringComparison.OrdinalIgnoreCase))
+                        {
+                            double m = 2.0;
+                            descMult *= m;
+                            pills.Add(new MultiplierPill { Label = $"Move Scaling ({zt} Zone)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                        }
+                    }
+                }
+                if (!matchedSpecificZone && (desc.Contains("zone is a", StringComparison.OrdinalIgnoreCase) || desc.Contains("zone applies", StringComparison.OrdinalIgnoreCase) || desc.Contains("in a zone", StringComparison.OrdinalIgnoreCase)))
+                {
+                    if (!string.IsNullOrEmpty(field.Zone))
+                    {
+                        double m = 2.0;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling ({field.Zone})", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+
+                // Specific Terrain checking
+                string[] terrainTypes = ["Electric", "Grassy", "Psychic"];
+                bool matchedSpecificTerrain = false;
+                foreach (var tt in terrainTypes)
+                {
+                    if (desc.Contains($"terrain is {tt} Terrain", StringComparison.OrdinalIgnoreCase))
+                    {
+                        matchedSpecificTerrain = true;
+                        if (!string.IsNullOrEmpty(field.Terrain) && field.Terrain.Contains(tt, StringComparison.OrdinalIgnoreCase))
+                        {
+                            double m = move.IsSync ? 2.0 : (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) ? 1.5 : 2.0);
+                            descMult *= m;
+                            pills.Add(new MultiplierPill { Label = $"Move Scaling ({tt} Terrain)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                        }
+                    }
+                }
+                if (!matchedSpecificTerrain && (desc.Contains("terrain is", StringComparison.OrdinalIgnoreCase) || desc.Contains("terrain applies", StringComparison.OrdinalIgnoreCase) || desc.Contains("terrain is in effect", StringComparison.OrdinalIgnoreCase)))
                 {
                     if (!string.IsNullOrEmpty(field.Terrain))
                     {
@@ -1258,6 +1312,7 @@ public class DamageCalculatorService
                         pills.Add(new MultiplierPill { Label = $"Move Scaling ({field.Terrain})", Value = $"×{m:0.#}", Color = "#fd79a8" });
                     }
                 }
+
                 if (desc.Contains("weather is sunny", StringComparison.OrdinalIgnoreCase) || desc.Contains("during sunny weather", StringComparison.OrdinalIgnoreCase))
                 {
                     if (field.Weather == "Sunny") { descMult *= 2.0; pills.Add(new MultiplierPill { Label = "Move Scaling (Sun)", Value = "×2.0", Color = "#fd79a8" }); }
@@ -1269,15 +1324,6 @@ public class DamageCalculatorService
                 if (desc.Contains("during a hailstorm", StringComparison.OrdinalIgnoreCase) || desc.Contains("during hail", StringComparison.OrdinalIgnoreCase) || desc.Contains("weather is hail", StringComparison.OrdinalIgnoreCase))
                 {
                     if (field.Weather == "Hail") { descMult *= 2.0; pills.Add(new MultiplierPill { Label = "Move Scaling (Hail)", Value = "×2.0", Color = "#fd79a8" }); }
-                }
-                if (desc.Contains("zone is a", StringComparison.OrdinalIgnoreCase) || desc.Contains("zone applies", StringComparison.OrdinalIgnoreCase) || desc.Contains("in a zone", StringComparison.OrdinalIgnoreCase))
-                {
-                    if (!string.IsNullOrEmpty(field.Zone))
-                    {
-                        double m = 2.0;
-                        descMult *= m;
-                        pills.Add(new MultiplierPill { Label = $"Move Scaling ({field.Zone})", Value = $"×{m:0.#}", Color = "#fd79a8" });
-                    }
                 }
                 if (desc.Contains("weather conditions, a terrain, or a zone are in effect", StringComparison.OrdinalIgnoreCase) || desc.Contains("weather conditions are in effect", StringComparison.OrdinalIgnoreCase))
                 {
@@ -1443,6 +1489,149 @@ public class DamageCalculatorService
                     }
                 }
 
+                // 21. Next Effects (PMUN, SMUN, SYUN) in move descriptions
+                if (desc.Contains("more the user’s Physical Moves ↑ Next effect is increased", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the user's Physical Moves ↑ Next effect is increased", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.PhysicalBoostNext > 0)
+                    {
+                        double m = 1.0 + ally.PhysicalBoostNext * 0.50;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (PMUN +{ally.PhysicalBoostNext})", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                    }
+                }
+                if (desc.Contains("more the user’s Special Moves ↑ Next effect is increased", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the user's Special Moves ↑ Next effect is increased", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.SpecialBoostNext > 0)
+                    {
+                        double m = 1.0 + ally.SpecialBoostNext * 0.50;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (SMUN +{ally.SpecialBoostNext})", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                    }
+                }
+                if (desc.Contains("more the user’s Sync Move ↑ Next effect is increased", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the user's Sync Move ↑ Next effect is increased", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (ally.SyncMoveBoostNext > 0)
+                    {
+                        double m = 1.0 + ally.SyncMoveBoostNext * 0.50;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (SYUN +{ally.SyncMoveBoostNext})", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 22. Rebuff on user
+                if (desc.Contains("more the user’s", StringComparison.OrdinalIgnoreCase) && desc.Contains("Type Rebuff is increased", StringComparison.OrdinalIgnoreCase))
+                {
+                    int reb = ally.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0);
+                    if (reb > 0)
+                    {
+                        double m = 1.0 + reb * 0.50;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (User Rebuff +{reb})", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 23. User Defense lowered
+                if (desc.Contains("more the user’s Defense is lowered", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the user's Defense is lowered", StringComparison.OrdinalIgnoreCase))
+                {
+                    int defLowered = ally.Stages.GetValueOrDefault("def", 0);
+                    if (defLowered < 0)
+                    {
+                        int stagesCount = Math.Clamp(-defLowered, 0, 6);
+                        double m = 1.0 + stagesCount * 0.20;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (User Def -{stagesCount})", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 24. User Defense or Sp. Def raised
+                if (desc.Contains("more the user’s Defense or Sp. Def are raised", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more the user's Defense or Sp. Def are raised", StringComparison.OrdinalIgnoreCase))
+                {
+                    int defR = Math.Max(0, ally.Stages.GetValueOrDefault("def", 0));
+                    int spdR = Math.Max(0, ally.Stages.GetValueOrDefault("spd", 0));
+                    int sum = defR + spdR;
+                    if (sum > 0)
+                    {
+                        double m = 1.0 + Math.Min(sum, 12) * 0.10;
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = $"Move Scaling (User Def/SpD +{sum})", Value = $"×{m:0.##}", Color = "#fd79a8" });
+                    }
+                }
+
+                // 25. No field effects on opponent and entire field
+                if (desc.Contains("no field effects on the opponents’ field of play and also no effects on the entire field of play", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("no field effects on the opponents' field of play and also no effects on the entire field of play", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (string.IsNullOrEmpty(field.Weather) && string.IsNullOrEmpty(field.Terrain) && string.IsNullOrEmpty(field.Zone) && string.IsNullOrEmpty(enemy.DamageField))
+                    {
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (No Field Effects)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // 26. Gauge slots used / amount used
+                if (desc.Contains("Uses a maximum of 6 slots of the user’s move gauge", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("The more amount used, the greater the power", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("increases based on the amount used", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 2.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (6 Gauges Used)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                }
+
+                // 27. Fainted allies
+                if (desc.Contains("more fainted Pokémon on your team", StringComparison.OrdinalIgnoreCase) ||
+                    desc.Contains("more fainted Pokemon on your team", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 2.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (Fainted Allies)", Value = $"×{m:0.#}", Color = "#fd79a8" });
+                }
+
+                // 28. Hit count / times used
+                if (desc.Contains("power increases each time the user is hit", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 7.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (Max Hits Taken)", Value = "×7.0", Color = "#fd79a8" });
+                }
+                if (desc.Contains("more times Icicle Crash is used", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 3.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (4x Icicle Crash)", Value = "×3.0", Color = "#fd79a8" });
+                }
+                if (desc.Contains("power increases for each hit", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 2.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (Multi-hit)", Value = "×2.0", Color = "#fd79a8" });
+                }
+                if (desc.Contains("power increases when successfully used in succession", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 2.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (Succession)", Value = "×2.0", Color = "#fd79a8" });
+                }
+
+                // 29. Specific MP Scaling (Erika Lum Berry, Cynthia Spiritomb)
+                if (desc.Contains("remaining MP for the user’s Lum Berry", StringComparison.OrdinalIgnoreCase) || desc.Contains("powers up by 400%", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 5.0; // 400% powerup = 5.0x
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (3 MP Lum Berry)", Value = "×5.0", Color = "#fd79a8" });
+                }
+                if (desc.Contains("The more MP reduced, the greater the power of this attack", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = 2.0;
+                    descMult *= m;
+                    pills.Add(new MultiplierPill { Label = "Move Scaling (Max MP Reduced)", Value = "×2.0", Color = "#fd79a8" });
+                }
+
                 if (descMult > 1.0)
                 {
                     return descMult;
@@ -1471,8 +1660,14 @@ public class DamageCalculatorService
         }
         else if (rule.Stat == "rebuff")
         {
-            int reb = enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0);
-            count = isRaised ? Math.Abs(reb) : Math.Max(0, -reb);
+            var rebuffs = rule.Who == "user" ? ally.EnemyTypeRebuffs : enemy.EnemyTypeRebuffs;
+            int reb = rebuffs.GetValueOrDefault(move.Type, 0);
+            count = isRaised ? Math.Max(0, reb) : Math.Max(0, -reb);
+        }
+        else if (rule.Stat == "hp")
+        {
+            int hpPct = rule.Who == "user" ? ally.HpPercent : enemy.HpPercent;
+            count = isRaised ? (hpPct >= 100 ? 1 : 0) : Math.Clamp(100 - hpPct, 0, 100);
         }
         else if (rule.Stat == "boost_rank_pmun")
         {
@@ -1506,12 +1701,18 @@ public class DamageCalculatorService
                 "asleep" => enemy.StatusCondition == "asleep",
                 "frozen" => enemy.StatusCondition == "frozen",
                 "any_status" => !string.IsNullOrEmpty(enemy.StatusCondition),
+                "user_any_status" => !string.IsNullOrEmpty(ally.StatusCondition),
                 "confused" => enemy.VolatileStatus.GetValueOrDefault("confused", false),
                 "trapped" => enemy.VolatileStatus.GetValueOrDefault("trapped", false),
                 "flinching" => enemy.VolatileStatus.GetValueOrDefault("flinching", false),
+                "restrained" => enemy.VolatileStatus.GetValueOrDefault("restrained", false),
                 "flinch_confuse_trap" => enemy.VolatileStatus.GetValueOrDefault("confused", false) || enemy.VolatileStatus.GetValueOrDefault("trapped", false) || enemy.VolatileStatus.GetValueOrDefault("flinching", false),
-                "target_rebuff_lowered" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0,
+                "target_rebuff_lowered" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0),
                 "super_effective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
+                "target_sync_buff" => enemy.SyncBoosts > 0 || enemy.HasSyncBuff,
+                "target_hp_half" => enemy.HpPercent <= 50,
+                "user_prev_move_failed" => true,
+                "damage_field" or "damage_field_dmfd_13" => !string.IsNullOrEmpty(enemy.DamageField),
                 _ => (!string.IsNullOrEmpty(field.Zone) && cond.Contains("zone") && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", "")))
             };
             count = matched ? 1 : 0;
@@ -1522,7 +1723,13 @@ public class DamageCalculatorService
             count = isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
         }
 
-        int step = rule.StepPer1000 > 0 ? rule.StepPer1000 : (move.IsSync ? (rule.Stat == "all_stats" ? 67 : 167) : 50);
+        int step = rule.StepPer1000 > 0 ? rule.StepPer1000 : (
+            rule.Stat == "boost_rank_pmun" || rule.Stat == "boost_rank_smun" ? 500 :
+            rule.Stat == "boost_rank_syun" ? 500 :
+            rule.Stat == "hp" ? 10 :
+            rule.Stat.StartsWith("cond:") ? 1000 :
+            (move.IsSync ? (rule.Stat == "all_stats" ? 67 : 167) : 50)
+        );
         int bonus = count * step;
         if (rule.CapPer1000 > 0)
         {

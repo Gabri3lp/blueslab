@@ -3,13 +3,13 @@
   "trainerBaseId": "10010110",
   "monsterId": "20101100000",
   "monsterBaseId": "20022501",
-  "displayName": "Rosa  (Holiday 2019) & Delibird",
-  "trainerName": "Rosa  (Holiday 2019)",
+  "displayName": "Rosa (Holiday 2019) & Delibird",
+  "trainerName": "Rosa (Holiday 2019)",
   "monsterName": "Delibird",
   "type": "Flying",
   "weakness": "Steel",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Aerial Ace",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Never misses.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises one of the following stats of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, accuracy, or evasiveness.",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the Speed of all allied sync pairs by 1 stat rank. Raises one of the following stats of all allied sync pairs by 2 stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, accuracy, or evasiveness.",
       "isSync": false
     },
     {
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Drill Peck",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Special Delivery\nDrill Peck",
       "type": "Flying",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -902,5 +902,6 @@
         "Special Delivery\nDrill Peck": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/022501_128.png"
 }

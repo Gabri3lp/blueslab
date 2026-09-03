@@ -3,13 +3,13 @@
   "trainerBaseId": "10000710",
   "monsterId": "20007100000",
   "monsterBaseId": "20083200",
-  "displayName": "Sygna Suit  Acerola & Tapu Bulu",
-  "trainerName": "Sygna Suit  Acerola",
+  "displayName": "Sygna Suit Acerola & Tapu Bulu",
+  "trainerName": "Sygna Suit Acerola",
   "monsterName": "Tapu Bulu",
   "type": "Grass",
   "weakness": "Flying",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen weather, terrain, or zone effects are activated.\nDeactivation Condition:\nWhen all weather, terrain, and zone effects are cleared.\n\nRaises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"3\" ] of all allied sync pairs by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Charges the user’s move gauge by [Digit:1digit Idx=\"2\" ] when the weather is sunny.",
+      "target": "All allies",
+      "description": "Activation Condition: When weather, terrain, or zone effects are activated.\nDeactivation Condition: When all weather, terrain, and zone effects are cleared.\n\nRaises the Attack of all allied sync pairs by 2 stat ranks. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank. Charges the user’s move gauge by 2 when the weather is sunny.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when the weather is sunny.",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 3 stat ranks. Raises the Speed of all allied sync pairs by 2 stat ranks when the weather is sunny.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Gentle Warning\nBloom Doom",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19024405,
       "name": "Grassy Terrain Debut & Extension 5",
-      "description": "Turns the field of play’s terrain into [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Turns the field of play’s terrain into Grassy Terrain the first time the user enters a battle each battle. Extends the duration of Grassy Terrain when the terrain turns into Grassy Terrain while the user is on the field.",
       "childPassives": []
     },
     {
       "id": 13021903,
       "name": "Team Verdant Physical DR 3",
-      "description": "Reduces physical attack move damage taken by allies when the terrain is [Name:ReferencedMessageTag ].",
+      "description": "Reduces physical attack move damage taken by allies when the terrain is Grassy Terrain.",
       "childPassives": []
     },
     {
       "id": 17063509,
       "name": "Ula’ula Ocean Breeze",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],
@@ -980,5 +980,10 @@
         "Gentle Warning\nBloom Doom": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/083200_128.png",
+  "superAwakeningPassive": {
+    "name": "Guardian’s Abundance",
+    "description": "Reduces special attack move damage taken by allies when the weather is sunny. Extends the duration of sunny weather when the weather turns sunny while the user is on the field. Turns the field of play’s terrain into Grassy Terrain the first time the user uses Sunny Day each battle."
+  }
 }

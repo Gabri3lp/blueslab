@@ -3,13 +3,13 @@
   "trainerBaseId": "10030240",
   "monsterId": "20302400000",
   "monsterBaseId": "21019501",
-  "displayName": "Rika  (Palentine's 2026) & Monster #21019501",
-  "trainerName": "Rika  (Palentine's 2026)",
-  "monsterName": "Monster #21019501",
+  "displayName": "Rika (Palentine's 2026) & Quagsire",
+  "trainerName": "Rika (Palentine's 2026)",
+  "monsterName": "Quagsire",
   "type": "Ground",
   "weakness": "Grass",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Precipitous Cliffs\nEarth Power",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not raised.\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by one to four ranks at random. In addition, increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when the target is poisoned or badly poisoned.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses. Lowers the target’s Sp. Def by 2 stat ranks. Increases the user’s Special Moves ↑ Next effect by one to four ranks at random. In addition, increases the user’s Special Moves ↑ Next effect by 1 rank when the target is poisoned or badly poisoned.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target badly poisoned.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Applies the Gradual Healing effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by three to five ranks at random.",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a Ground Zone. (A Ground Zone powers up Ground-type attacks.) Applies the Gradual Healing effect to the user. Increases the user’s Special Moves ↑ Next effect by three to five ranks at random.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rock Your World\nGround Beam",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,39 +144,39 @@
     {
       "id": 99038901,
       "name": "It’s About to Get Shaky!",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s Pokémon uses a status move each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field. When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "description": "Turns the field of play’s zone into a Ground Zone the first time the user’s Pokémon uses a status move each battle. (A Ground Zone powers up Ground-type attacks.) Extends the duration of the Ground Zone when the zone turns into a Ground Zone while the user is on the field. When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
       "childPassives": [
         {
           "id": 19063201,
           "name": "1st Use Status P-Move: Ground Zone",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s Pokémon uses a status move each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into a Ground Zone the first time the user’s Pokémon uses a status move each battle. (A Ground Zone powers up Ground-type attacks.)"
         },
         {
           "id": 19028203,
           "name": "Ground Zone Extension 3",
-          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+          "description": "Extends the duration of the Ground Zone when the zone turns into a Ground Zone while the user is on the field."
         },
         {
           "id": 17041109,
           "name": "Go Viral 9",
-          "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs."
+          "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
         }
       ]
     },
     {
       "id": 18127204,
       "name": "Debut: Sp. Atk ↑4 & Crit Rate ↑3",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time it enters a battle each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time it enters a battle each battle.",
       "childPassives": [
         {
           "id": 18120504,
           "name": "Debut: Sp. Atk ↑ 4",
-          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
+          "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time it enters a battle each battle."
         },
         {
           "id": 18126103,
           "name": "Debut: Crit Rate ↑ 3",
-          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time it enters a battle each battle."
         }
       ]
     },
@@ -917,5 +917,7 @@
         "Rock Your World\nGround Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Quagsire",
+  "pokemonIconUrl": "img/pokemon/019501_128.png"
 }

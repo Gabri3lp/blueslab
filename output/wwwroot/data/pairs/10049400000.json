@@ -3,13 +3,13 @@
   "trainerBaseId": "10004940",
   "monsterId": "20049400000",
   "monsterBaseId": "20056301",
-  "displayName": "Phoebe  (Fall 2023) & Monster #20056301",
-  "trainerName": "Phoebe  (Fall 2023)",
-  "monsterName": "Monster #20056301",
+  "displayName": "Phoebe (Fall 2023) & Cofagrigus",
+  "trainerName": "Phoebe (Fall 2023)",
+  "monsterName": "Cofagrigus",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Shadow Claw",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "40",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Phantom Force",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "100",
       "gauge": "0",
-      "target": "Self",
+      "target": "An opponent",
       "description": "The user takes on a phantom presence. After a set time, this presence fades and the user attacks. No other actions can be taken while in phantom presence. Opponents’ moves will not hit the user while it is in this presence. If the user is hit by a sync move or max move while in phantom presence, the presence will fade.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Glimmering Gold\nGhost Impact",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 17013101,
       "name": "Take Hit: Ignore Attack ↑ & Sp. Atk ↑",
-      "description": "Except in certain circumstances, ignores the opponent’s raised Attack and Sp. Atk when the user is hit by an attack move.",
+      "description": "Except in certain circumstances, ignores the opponent’s raised Attack and Sp. Atk when the user is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 18110609,
       "name": "Hit: Team Attack ↑ & Sp. Atk ↑ 9",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "description": "Has a chance (100%) of raising the Attack and Sp. Atk of all allied sync pairs by 1 stat rank when the user’s attack move is successful.",
       "childPassives": []
     },
     {
@@ -892,5 +892,7 @@
         "Glimmering Gold\nGhost Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Cofagrigus",
+  "pokemonIconUrl": "img/pokemon/056301_128.png"
 }

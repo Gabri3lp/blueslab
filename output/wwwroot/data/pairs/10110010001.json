@@ -3,13 +3,13 @@
   "trainerBaseId": "10011001",
   "monsterId": "20110010001",
   "monsterBaseId": "20005501",
-  "displayName": "Trainer #10011001 & Monster #20005501",
-  "trainerName": "Trainer #10011001",
-  "monsterName": "Monster #20005501",
+  "displayName": "Misty & Golduck",
+  "trainerName": "Misty",
+  "monsterName": "Golduck",
   "type": "Water",
   "weakness": "Electric",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Gun",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "75",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Muddy Water",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "116",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (30%) of lowering the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Open Ocean Dive\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s accuracy is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18090102,
       "name": "Pinpoint Entry 2",
-      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s accuracy by 2 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 18049009,
       "name": "Hem In 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s evasiveness by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,7 @@
         "Open Ocean Dive\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Golduck",
+  "pokemonIconUrl": "img/pokemon/005501_128.png"
 }

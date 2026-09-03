@@ -3,13 +3,13 @@
   "trainerBaseId": "10011700",
   "monsterId": "20117000000",
   "monsterBaseId": "20084600",
-  "displayName": "Trainer #10011700 & Incineroar",
-  "trainerName": "Trainer #10011700",
+  "displayName": "The Masked Royal & Incineroar",
+  "trainerName": "The Masked Royal",
   "monsterName": "Incineroar",
   "type": "Dark",
   "weakness": "Rock",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Brutal Swing",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Darkest Lariat",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "90",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Ignores the target’s raised stats.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s evasiveness by 1 stat rank. Raises the Speed of all allied sync pairs by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Heel Turn\nMalicious Moonsault",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18040101,
       "name": "Terrify 1",
-      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Lowers the Attack of all opposing sync pairs by 1 stat rank when the user enters a battle.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 18093709,
       "name": "Dishearten 9",
-      "description": "Lowers the target’s Attack or Defense—or both—by one stat rank when the user’s move targeting that opponent is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack or Defense—or both—by one stat rank when the user’s move targeting that opponent is successful.",
       "childPassives": []
     }
   ],
@@ -988,5 +988,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/084600_128.png"
 }

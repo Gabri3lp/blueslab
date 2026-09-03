@@ -3,8 +3,8 @@
   "trainerBaseId": "10013640",
   "monsterId": "20136400000",
   "monsterBaseId": "20072900",
-  "displayName": "Sycamore  (Holiday 2023) & Gogoat",
-  "trainerName": "Sycamore  (Holiday 2023)",
+  "displayName": "Sycamore (Holiday 2023) & Gogoat",
+  "trainerName": "Sycamore (Holiday 2023)",
   "monsterName": "Gogoat",
   "type": "Grass",
   "weakness": "Fire",
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Razor Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "43",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks. Raises the Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Gallop with Glee\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 99014701,
       "name": "Grass-Type Research Results",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s attack move is successful each battle.",
+      "description": "Lowers the target’s Grass Type Rebuff by 1 rank the first time the user’s attack move is successful each battle. Raises the Grass Type Rebuff of all allied sync pairs by 1 rank the first time the user’s attack move is successful each battle.",
       "childPassives": []
     },
     {
       "id": 11013909,
       "name": "Hit: HP Recovery 9",
-      "description": "Restores the user’s HP when its attack move is successful.",
+      "description": "Has a chance (100%) of restoring the user’s HP when its attack move is successful.",
       "childPassives": []
     },
     {
       "id": 24012401,
       "name": "Group Grass Guard",
-      "description": "Reduces the damage all allied sync pairs take when attacked by [Name:ReferencedMessageTag ]-type moves.",
+      "description": "Reduces the damage all allied sync pairs take when attacked by Grass-type moves.",
       "childPassives": []
     }
   ],
@@ -886,5 +886,6 @@
         "Gallop with Glee\nGrass Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/072900_128.png"
 }

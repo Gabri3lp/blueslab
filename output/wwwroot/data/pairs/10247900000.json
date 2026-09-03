@@ -9,7 +9,7 @@
   "type": "Fire",
   "weakness": "Electric",
   "role": "Multi",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Inferno",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "183",
       "accuracy": "50",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Almighty\nFire Blast",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "700",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one burned Pokémon on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any burned Pokémon on the opponent’s field of play.\n\nLeaves the target burned.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition: When there is at least one burned Pokémon on the opponent’s field of play.\nDeactivation Condition: When there are no longer any burned Pokémon on the opponent’s field of play.\n\nLeaves the target burned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user.",
+      "description": "Raises the user’s Sp. Atk by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Fiery Determination Divine\nFire Blast",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Applies the Supereffective ↑ Next effect to the user.",
       "isSync": true
     }
   ],
@@ -144,13 +144,13 @@
     {
       "id": 29010401,
       "name": "Flame Myth",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Fire theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 29020401,
       "name": "Flame Judgment",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Raises the Fire Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Fire Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 99020101,
       "name": "Champion Time!",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] after using its max move. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its max move.",
+      "description": "Reduces the user’s sync move countdown by 3 after using its max move. Increases the user’s Special Moves ↑ Next effect by 3 ranks after using its max move.",
       "childPassives": []
     },
     {
@@ -981,5 +981,6 @@
         "Fiery Determination Divine\nFire Blast": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/000600_128.png"
 }

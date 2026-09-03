@@ -3,13 +3,13 @@
   "trainerBaseId": "10033800",
   "monsterId": "20338000000",
   "monsterBaseId": "2000580041",
-  "displayName": "Trainer #10033800 & Growlithe",
-  "trainerName": "Trainer #10033800",
+  "displayName": "Perrin & Growlithe",
+  "trainerName": "Perrin",
   "monsterName": "Growlithe",
   "type": "Rock",
   "weakness": "Water",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Head Smash",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "188",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The user also takes approximately 33% of the damage it dealt to the target.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Applies [Name:ReferencedMessageTag ] to the opponents’ field of play. ([Name:ReferencedMessageTag ]: The sync pairs will take [Name:ReferencedMessageTag Idx=\"1\" ]-type damage whenever they take an action.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Applies Rock Damage Field to the opponents’ field of play. (Rock Damage Field: The sync pairs will take Rock-type damage whenever they take an action.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Pebbly\nRock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "350",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen [Name:ReferencedMessageTag ] applies to the opponent’s field of play.\nDeactivation Condition:\nWhen the opponent’s field of play is no longer [Name:ReferencedMessageTag ].\n\nLowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"3\" ] the first time this attack move is successful each battle. (An [Name:ReferencedMessageTag Idx=\"3\" ] powers up [Name:ReferencedMessageTag Idx=\"4\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When Rock Damage Field applies to the opponent’s field of play.\nDeactivation Condition: When the opponent’s field of play is no longer Rock Damage Field.\n\nLowers the target’s Defense by 2 stat ranks. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an EX Rock Zone the first time this attack move is successful each battle. (An EX Rock Zone powers up Rock-type attacks.)",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Applies the Supereffective ↑ Next effect to an ally. Applies the Enduring effect to an ally.",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by 1. Applies the Supereffective ↑ Next effect to an ally. Applies the Enduring effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Traveling Photo Enthusiast\nRock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,40 +144,40 @@
     {
       "id": 29030901,
       "name": "Paldea Rush",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Paldea theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 99033701,
       "name": "Great Photo Op!",
-      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it applies [Name:ReferencedMessageTag ] to the opponent's field of play each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ] the first time it applies [Name:ReferencedMessageTag ] to the opponent’s field of play each battle.",
+      "description": "Raises the user’s Attack by 6 stat ranks the first time it applies Rock Damage Field to the opponent's field of play each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time it applies Rock Damage Field to the opponent’s field of play each battle.",
       "childPassives": [
         {
           "id": 18124306,
           "name": "1st Time User Sets Rock DF: Attack ↑ 6",
-          "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it applies [Name:ReferencedMessageTag ] to the opponent's field of play each battle."
+          "description": "Raises the user’s Attack by 6 stat ranks the first time it applies Rock Damage Field to the opponent's field of play each battle."
         },
         {
           "id": 18124403,
           "name": "1st Time User Sets Rock DF: Crit Rate ↑ 3",
-          "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it applies [Name:ReferencedMessageTag ] to the opponent's field of play each battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time it applies Rock Damage Field to the opponent's field of play each battle."
         }
       ]
     },
     {
       "id": 99033801,
       "name": "Keep It Going!",
-      "description": "Lowers one of the target’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful while [Name:ReferencedMessageTag ] applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user when its attack move is successful while [Name:ReferencedMessageTag ] applies to the opponent’s field of play.",
+      "description": "Lowers one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful while Rock Damage Field applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the Free Move Next effect to the user when its attack move is successful while Rock Damage Field applies to the opponent’s field of play.",
       "childPassives": [
         {
           "id": 18124509,
           "name": "Rock DF on Opp & Hit: Stat ↓2 9",
-          "description": "Lowers one of the target’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful while [Name:ReferencedMessageTag ] applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
+          "description": "Has a chance (100%) of lowering one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful while Rock Damage Field applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
         },
         {
           "id": 17087909,
           "name": "Rock DF on Opp & Hit: Free Move Next 9",
-          "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while [Name:ReferencedMessageTag ] applies to the opponent’s field of play."
+          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while Rock Damage Field applies to the opponent’s field of play."
         }
       ]
     },
@@ -1019,5 +1019,10 @@
         "Traveling Photo Enthusiast\nRock Slide": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/005800_128.png",
+  "superAwakeningPassive": {
+    "name": "Traveler with a Thing for Photography",
+    "description": "Reduces the user’s sync move countdown by 1 the first time its sync move is used each battle. Powers up the sync moves of all allied sync pairs when Rock Damage Field applies to the opponent’s field of play. Extends the duration of the Rock Zone when the zone turns into a Rock Zone while the user is on the field."
+  }
 }

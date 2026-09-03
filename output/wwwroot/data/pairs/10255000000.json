@@ -3,13 +3,13 @@
   "trainerBaseId": "10025500",
   "monsterId": "20255000000",
   "monsterBaseId": "20013101",
-  "displayName": "Trainer #10025500 & Lapras",
-  "trainerName": "Trainer #10025500",
+  "displayName": "Melony & Lapras",
+  "trainerName": "Melony",
   "monsterName": "Lapras",
   "type": "Ice",
   "weakness": "Rock",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ice Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An ally",
       "description": "Applies the Status Condition Defense effect to the allied field of play.",
       "isSync": false
     },
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "45",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Chilling Invitation\nFrost Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 19022605,
       "name": "Persisting Shield 5",
-      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the [Name:ReferencedMessageTag ] is applied to the allied field of play.",
+      "description": "Extends the duration of the Physical Damage Reduction effect when the Physical Damage Reduction effect is applied to the allied field of play.",
       "childPassives": []
     },
     {
       "id": 19022705,
       "name": "Persisting Barrier 5",
-      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the [Name:ReferencedMessageTag ] is applied to the allied field of play.",
+      "description": "Extends the duration of the Special Damage Reduction effect when the Special Damage Reduction effect is applied to the allied field of play.",
       "childPassives": []
     },
     {
       "id": 19022805,
       "name": "Persisting Immunity 5",
-      "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the [Name:ReferencedMessageTag ] is applied to the allied field of play.",
+      "description": "Extends the duration of the Status Condition Defense effect when the Status Condition Defense effect is applied to the allied field of play.",
       "childPassives": []
     }
   ],
@@ -903,5 +903,6 @@
         "Chilling Invitation\nFrost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/013101_128.png"
 }

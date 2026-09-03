@@ -3,13 +3,13 @@
   "trainerBaseId": "10015810",
   "monsterId": "20158100000",
   "monsterBaseId": "21077200",
-  "displayName": "Sygna Suit  Diantha & Monster #21077200",
-  "trainerName": "Sygna Suit  Diantha",
-  "monsterName": "Monster #21077200",
+  "displayName": "Sygna Suit Diantha & Diancie",
+  "trainerName": "Sygna Suit Diantha",
+  "monsterName": "Diancie",
   "type": "Rock",
   "weakness": "Steel",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Rock Tomb",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a Rock Zone. (A Rock Zone powers up Rock-type attacks.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Pink\nDiamond Storm",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "163",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nLowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the field of play’s zone turns into a Rock Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Rock Zone.\n\nLowers the target’s Defense by 2 stat ranks. Raises the Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. When the user’s Defense is raised, raises the user’s Sp. Def by the same amount. Applies the Gradual Healing effect to the user. If the user’s Diancie has Mega Evolved, also grants all of the following effects: Reduces the user’s sync move countdown by [Digit:1digit ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. When the user’s Defense is raised, raises the user’s Sp. Def by the same amount. Applies the Gradual Healing effect to the user. If the user’s Diancie has Mega Evolved, also grants all of the following effects: Reduces the user’s sync move countdown by 1. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Noble Beauty\nDiamond Storm",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Become Mega Diancie until the end of battle. This attack’s power increases when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Become Mega Diancie until the end of battle. This attack’s power increases when the zone is a Rock Zone.",
       "isSync": true
     }
   ],
@@ -144,13 +144,13 @@
     {
       "id": 18040202,
       "name": "Trip Wire 2",
-      "description": "Lowers the Speed of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Lowers the Speed of all opposing sync pairs by 2 stat ranks when the user enters a battle.",
       "childPassives": []
     },
     {
       "id": 18103609,
       "name": "Honing Hit 9",
-      "description": "Grants all of the following effects when the user’s move is successful:\nRaises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].\nRaises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Has a chance (100%) of granting all of the following effects when the user’s move is successful: Raises the user’s Attack by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank.",
       "childPassives": []
     },
     {
@@ -1041,5 +1041,11 @@
         "Noble Beauty\nDiamond Storm": 30
       }
     }
-  ]
+  ],
+  "pokemonName": "Diancie",
+  "pokemonIconUrl": "img/pokemon/077200_128.png",
+  "superAwakeningPassive": {
+    "name": "The Royal Kalos Princess",
+    "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Turns the field of play’s zone into a Rock Zone the first time the user enters a battle each battle. (A Rock Zone powers up Rock-type attacks.) Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally activates a weather, terrain, or zone effect."
+  }
 }

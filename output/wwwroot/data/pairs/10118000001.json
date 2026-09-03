@@ -3,13 +3,13 @@
   "trainerBaseId": "10011800",
   "monsterId": "20118000001",
   "monsterBaseId": "20086301",
-  "displayName": "Trainer #10011800 & Monster #20086301",
-  "trainerName": "Trainer #10011800",
-  "monsterName": "Monster #20086301",
+  "displayName": "Lillie & Comfey",
+  "trainerName": "Lillie",
+  "monsterName": "Comfey",
   "type": "Fairy",
   "weakness": "Steel",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Dazzling Gleam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "50",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Wrap",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Petal Blizzard",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user.",
+      "description": "Raises the user’s Attack and Sp. Atk by 2 stat ranks. Applies the Free Move Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Vibrant\nFairy Beam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Attack is lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18048309,
       "name": "Overwhelm 9",
-      "description": "Lowers the target’s Attack by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
       "id": 11010701,
       "name": "S-Move: Team HP Recovery (M) 1",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after using the user’s sync move.",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP after using the user’s sync move.",
       "childPassives": []
     },
     {
@@ -894,5 +894,7 @@
         "Vibrant\nFairy Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Comfey",
+  "pokemonIconUrl": "img/pokemon/086301_128.png"
 }

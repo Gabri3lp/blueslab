@@ -3,13 +3,13 @@
   "trainerBaseId": "10015500",
   "monsterId": "20155000000",
   "monsterBaseId": "20071001",
-  "displayName": "Trainer #10015500 & Monster #20071001",
-  "trainerName": "Trainer #10015500",
-  "monsterName": "Monster #20071001",
+  "displayName": "Drasna & Dragalge",
+  "trainerName": "Drasna",
+  "monsterName": "Dragalge",
   "type": "Dragon",
   "weakness": "Psychic",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Draco Meteor",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target badly poisoned.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user.",
+      "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 2 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Infinite Smile\nDragon Pulse",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is poisoned or badly poisoned.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 17046009,
       "name": "Super Freebie 9",
-      "description": "Applies the Free Move Next effect to the user when its move is super effective.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its move is super effective.",
       "childPassives": []
     },
     {
       "id": 18021801,
       "name": "Team Sp. Atk ↓ Immunity",
-      "description": "Sp. Atk cannot be lowered for all allied sync pairs.",
+      "description": "Sp. Atk cannot be lowered for all allied sync pairs.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,7 @@
         "Infinite Smile\nDragon Pulse": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Dragalge",
+  "pokemonIconUrl": "img/pokemon/071001_128.png"
 }

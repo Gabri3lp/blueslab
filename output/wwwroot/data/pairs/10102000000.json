@@ -3,13 +3,13 @@
   "trainerBaseId": "10010200",
   "monsterId": "20102000000",
   "monsterBaseId": "20051801",
-  "displayName": "Trainer #10010200 & Monster #20051801",
-  "trainerName": "Trainer #10010200",
-  "monsterName": "Monster #20051801",
+  "displayName": "Bianca & Musharna",
+  "trainerName": "Bianca",
+  "monsterName": "Musharna",
   "type": "Psychic",
   "weakness": "Bug",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Stored Power",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Psychic Terrain.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Defense, Sp. Atk, and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. These stats are raised by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] instead when the terrain is Psychic Terrain.",
+      "description": "Raises the user’s Defense, Sp. Atk, and Sp. Def by 1 stat rank. These stats are raised by 2 stat ranks instead when the terrain is Psychic Terrain.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Psychic",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Truth-Seeking\nFuture Sight",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
+      "description": "The more the target’s Sp. Def is lowered, the greater the power of this attack.",
       "isSync": true
     }
   ],
@@ -978,5 +978,7 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonName": "Musharna",
+  "pokemonIconUrl": "img/pokemon/051801_128.png"
 }

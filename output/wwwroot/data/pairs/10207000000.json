@@ -3,13 +3,13 @@
   "trainerBaseId": "10020700",
   "monsterId": "20207000000",
   "monsterBaseId": "20064000",
-  "displayName": "Trainer #10020700 & Virizion",
-  "trainerName": "Trainer #10020700",
+  "displayName": "Morgan & Virizion",
+  "trainerName": "Morgan",
   "monsterName": "Virizion",
   "type": "Grass",
   "weakness": "Flying",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Bullet Seed",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "15",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user.",
+      "description": "Applies the Damage Guard Next effect to the user.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 4 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Elegant Eldest Sister\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,25 +144,25 @@
     {
       "id": 28020901,
       "name": "Grass Teamwork",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 10%. The more allied sync pairs with the Grass theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is 20%, and the maximum damage reduction is 14%.)",
       "childPassives": []
     },
     {
       "id": 18043109,
       "name": "Focus Group 9",
-      "description": "Raises the critical-hit rate of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
+      "description": "Has a chance (100%) of raising the critical-hit rate of all allied sync pairs by one stat rank when the user’s Pokémon uses a move.",
       "childPassives": []
     },
     {
       "id": 12021903,
       "name": "Recharging Strike 3",
-      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "description": "Has a chance (40%) of charging the user’s move gauge by one when its attack move hits. If the move has the multistrike effect tag, has a chance (40%) of charging the user’s move gauge by one for each hit.",
       "childPassives": []
     },
     {
       "id": 11010701,
       "name": "S-Move: Team HP Recovery (M) 1",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after using the user’s sync move.",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP after using the user’s sync move.",
       "childPassives": []
     }
   ],
@@ -898,5 +898,6 @@
         "Elegant Eldest Sister\nGrass Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/064000_128.png"
 }

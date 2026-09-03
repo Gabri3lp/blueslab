@@ -3,13 +3,13 @@
   "trainerBaseId": "10019800",
   "monsterId": "20198000000",
   "monsterBaseId": "20033601",
-  "displayName": "Trainer #10019800 & Monster #20033601",
-  "trainerName": "Trainer #10019800",
-  "monsterName": "Monster #20033601",
+  "displayName": "Lucy & Seviper",
+  "trainerName": "Lucy",
+  "monsterName": "Seviper",
   "type": "Poison",
   "weakness": "Psychic",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Poison Fang",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "34",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target badly poisoned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of leaving the target badly poisoned.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Wrap",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Removes all status conditions from the user. Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Removes all status conditions from the user. Raises the user’s Defense and Sp. Def by 1 stat rank. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Sludge Bomb",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target poisoned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target poisoned.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Pike Queen\nPoison Fang",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is poisoned or badly poisoned.",
       "isSync": true
@@ -900,5 +900,7 @@
         "Pike Queen\nPoison Fang": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Seviper",
+  "pokemonIconUrl": "img/pokemon/033601_128.png"
 }

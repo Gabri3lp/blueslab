@@ -3,13 +3,13 @@
   "trainerBaseId": "10005300",
   "monsterId": "20053000000",
   "monsterBaseId": "20073900",
-  "displayName": "Trainer #10005300 & Amaura",
-  "trainerName": "Trainer #10005300",
+  "displayName": "Grant & Amaura",
+  "trainerName": "Grant",
   "monsterName": "Amaura",
   "type": "Rock",
   "weakness": "Steel",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Rock Tomb",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Def by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rock Slide",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "105",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ]. Raises the user’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Charges the user’s move gauge by 2. Raises the user’s accuracy by 1 stat rank. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rock\nSync Impact",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -896,5 +896,6 @@
         "Crazy Cool\nRock Tomb": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/073900_128.png"
 }

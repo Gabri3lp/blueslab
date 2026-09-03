@@ -3,13 +3,13 @@
   "trainerBaseId": "10014000",
   "monsterId": "20140000002",
   "monsterBaseId": "20011200",
-  "displayName": "Trainer #10014000 & Rhydon",
-  "trainerName": "Trainer #10014000",
+  "displayName": "Giovanni & Rhydon",
+  "trainerName": "Giovanni",
   "monsterName": "Rhydon",
   "type": "Ground",
   "weakness": "Grass",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Physical)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Crushing Earthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "120",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nThe more the user’s Sp. Atk is raised, the greater the power of this attack. Causes a sandstorm the first time this attack move is successful each battle. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nThe more the user’s Sp. Atk is raised, the greater the power of this attack. Causes a sandstorm the first time this attack move is successful each battle. Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Icy Wind",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Surf",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Critical Hit Next effect to an ally. Applies the Supereffective ↑ Next effect to an ally. Applies the [Name:ReferencedMessageTag ] to an ally. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] during a sandstorm.",
+      "target": "An ally",
+      "description": "Applies the Critical Hit Next effect to an ally. Applies the Supereffective ↑ Next effect to an ally. Applies the Free Move Next effect to an ally. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of an ally by 1 rank during a sandstorm.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Remembering the Past\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 18093306,
       "name": "Ferocious Entry 6",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Attack and Sp. Atk by 6 stat ranks when it enters a battle.",
       "childPassives": []
     }
   ],
@@ -894,5 +894,6 @@
         "Remembering the Past\nGround Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/011200_128.png"
 }

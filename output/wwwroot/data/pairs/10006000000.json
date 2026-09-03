@@ -3,13 +3,13 @@
   "trainerBaseId": "10000600",
   "monsterId": "20006000000",
   "monsterBaseId": "20039200",
-  "displayName": "Trainer #10000600 & Infernape",
-  "trainerName": "Trainer #10000600",
+  "displayName": "Flint & Infernape",
+  "trainerName": "Flint",
   "monsterName": "Infernape",
   "type": "Fire",
   "weakness": "Water",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Fire Punch",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Fire Blast",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "116",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack and Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Burn-It-All\nOverheat",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -894,5 +894,6 @@
         "Burn-It-All\nOverheat": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/016900_128.png"
 }

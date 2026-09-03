@@ -3,8 +3,8 @@
   "trainerBaseId": "10011900",
   "monsterId": "20119000002",
   "monsterBaseId": "20046100",
-  "displayName": "Trainer #10011900 & Weavile",
-  "trainerName": "Trainer #10011900",
+  "displayName": "Gladion & Weavile",
+  "trainerName": "Gladion",
   "monsterName": "Weavile",
   "type": "Ice",
   "weakness": "Fighting",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Triple Axel",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "20",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Attacks up to three times in a row. \nThis attack’s power increases for each hit. \n(The second attack is twice as powerful as the first attack, and the third attack is three times as powerful as the first attack.) After using this move, the attack’s power returns to normal.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Attacks up to three times in a row. This attack’s power increases for each hit. (The second attack is twice as powerful as the first attack, and the third attack is three times as powerful as the first attack.) After using this move, the attack’s power returns to normal.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP.",
+      "target": "All allies",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Icy Wind",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "92",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Defense and Sp. Def by 2 stat ranks. Applies the Gradual Healing effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "See More of the World\nIce Impact",
       "type": "Ice",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 11014209,
       "name": "Use Move When Ice Zone: Team HP Recovery 9",
-      "description": "Restores the HP of all allied sync pairs when the user uses a move while the zone is an Ice Zone.",
+      "description": "Has a chance (100%) of restoring the HP of all allied sync pairs when the user uses a move while the zone is an Ice Zone.",
       "childPassives": []
     },
     {
       "id": 18102204,
       "name": "Unfortunate Strike 4",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, has a chance ([Digit:2digits ]%) of lowering one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (50%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, has a chance (50%) of lowering one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "See More of the World\nIce Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/046100_128.png"
 }

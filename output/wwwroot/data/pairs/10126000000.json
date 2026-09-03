@@ -3,13 +3,13 @@
   "trainerBaseId": "10012600",
   "monsterId": "20126000000",
   "monsterBaseId": "20025800",
-  "displayName": "Trainer #10012600 & Mudkip",
-  "trainerName": "Trainer #10012600",
+  "displayName": "May & Mudkip",
+  "trainerName": "May",
   "monsterName": "Mudkip",
   "type": "Water",
   "weakness": "Grass",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Water Gun",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "20",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather rainy.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Earth Power",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ]. Raises the user’s Sp. Atk and critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Charges the user’s move gauge by 2. Raises the user’s Sp. Atk and critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Water\nSync Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -1036,5 +1036,6 @@
         "Best Buddy\nMuddy Water": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/025800_128.png"
 }

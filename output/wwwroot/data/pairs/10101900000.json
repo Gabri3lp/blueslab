@@ -3,13 +3,13 @@
   "trainerBaseId": "10010190",
   "monsterId": "20101900000",
   "monsterBaseId": "20064811",
-  "displayName": "Rosa  (Champion) & Meloetta",
-  "trainerName": "Rosa  (Champion)",
+  "displayName": "Rosa (Champion) & Meloetta",
+  "trainerName": "Rosa (Champion)",
   "monsterName": "Meloetta",
   "type": "Psychic",
   "weakness": "Bug",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Relic Song of Wonder",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "100",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user is not in a pinch.\nDeactivation Condition:\nWhen the user is in a pinch.\n\nNever misses. Has a chance ([Digit:2digits ]%) of putting the target to sleep. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises one of the following stats of all allied sync pairs by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user is not in a pinch.\nDeactivation Condition: When the user is in a pinch.\n\nNever misses. Has a chance (30%) of putting the target to sleep. Raises the critical-hit rate of all allied sync pairs by 1 stat rank. Raises one of the following stats of all allied sync pairs by 2 stat ranks at random: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "45",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is in Aria Forme. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is in Pirouette Forme.",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks. Increases the Special Moves ↑ Next effect of all allied sync pairs by 2 ranks when the user is in Aria Forme. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 2 ranks when the user is in Pirouette Forme.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sepia Memories\nRelic Song",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "300",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,25 +144,25 @@
     {
       "id": 28010401,
       "name": "Unova Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 99014401,
       "name": "Relic Nostalgia",
-      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes [Name:MoveId Idx=\"547\" ] in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user changes forms while it is on the field of play.",
+      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes Relic Song in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user changes forms while it is on the field of play.",
       "childPassives": []
     },
     {
       "id": 99014501,
       "name": "Psychic Performance",
-      "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful.",
+      "description": "Normal-type moves and sync moves become Psychic type. Raises the user’s Sp. Def by 1 stat rank when its move targeting an opponent is successful.",
       "childPassives": []
     },
     {
       "id": 99014601,
       "name": "Entrancing Melody",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
+      "description": "Lowers the target’s Psychic Type Rebuff by 1 rank the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s Fighting Type Rebuff by 1 rank the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
       "childPassives": []
     }
   ],
@@ -939,5 +939,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/064811_128.png"
 }

@@ -3,9 +3,9 @@
   "trainerBaseId": "10014200",
   "monsterId": "20142000000",
   "monsterBaseId": "20002401",
-  "displayName": "Trainer #10014200 & Monster #20002401",
-  "trainerName": "Trainer #10014200",
-  "monsterName": "Monster #20002401",
+  "displayName": "Ariana & Arbok",
+  "trainerName": "Ariana",
+  "monsterName": "Arbok",
   "type": "Poison",
   "weakness": "Ground",
   "role": "Tech",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Acid",
       "type": "Poison",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Poison Fang",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "34",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target badly poisoned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of leaving the target badly poisoned.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Punish the Meddlers\nPoison Impact",
       "type": "Poison",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s stats are lowered, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99013401,
       "name": "Ariana’s Coercion",
-      "description": "Lowers the Attack and Sp. Atk of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Lowers the Attack and Sp. Atk of all opposing sync pairs by 2 stat ranks the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17061704,
       "name": "Attack Trap 4",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target trapped when the user’s attack move against it is successful.",
+      "description": "Has a chance (50%) of leaving the target trapped when the user’s attack move against it is successful.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,7 @@
         "Punish the Meddlers\nPoison Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Arbok",
+  "pokemonIconUrl": "img/pokemon/002401_128.png"
 }

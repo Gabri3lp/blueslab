@@ -3,13 +3,13 @@
   "trainerBaseId": "10011200",
   "monsterId": "20112000000",
   "monsterBaseId": "20015500",
-  "displayName": "Trainer #10011200 & Cyndaquil",
-  "trainerName": "Trainer #10011200",
+  "displayName": "Ethan & Cyndaquil",
+  "trainerName": "Ethan",
   "monsterName": "Cyndaquil",
   "type": "Fire",
   "weakness": "Rock",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Flamethrower",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Eruption",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "135",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "The smaller the user’s percentage of remaining HP, the lower the power of this attack becomes.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Raises the user’s Speed and evasiveness by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP. Raises the user’s Speed and evasiveness by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Fire\nSync Beam",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -974,5 +974,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/015500_128.png"
 }

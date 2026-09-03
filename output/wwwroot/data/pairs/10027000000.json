@@ -3,13 +3,13 @@
   "trainerBaseId": "10002700",
   "monsterId": "20027000000",
   "monsterBaseId": "20040701",
-  "displayName": "Trainer #10002700 & Roserade",
-  "trainerName": "Trainer #10002700",
+  "displayName": "Gardenia & Roserade",
+  "trainerName": "Gardenia",
   "monsterName": "Roserade",
   "type": "Grass",
   "weakness": "Flying",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Absorb",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "19",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Leaf Storm",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Vivid\nLeaf Storm",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -886,5 +886,6 @@
         "Vivid\nLeaf Storm": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/040701_128.png"
 }

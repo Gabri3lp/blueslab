@@ -3,13 +3,13 @@
   "trainerBaseId": "10024600",
   "monsterId": "20246000001",
   "monsterBaseId": "2008180000",
-  "displayName": "Trainer #10024600 & Inteleon",
-  "trainerName": "Trainer #10024600",
+  "displayName": "Bede & Inteleon",
+  "trainerName": "Bede",
   "monsterName": "Inteleon",
   "type": "Water",
   "weakness": "Grass",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Snipe Shot",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "128",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather rainy.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "High-Pressure\nSnipe Shot",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "400",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nCritical hits land more easily. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When your team’s sync pair uses a sync move 1 time.\nDeactivation Condition: When this move is used.\n\nCritical hits land more easily. Lowers the target’s Sp. Def by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to an ally. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by 1. Applies the Supereffective ↑ Next effect to an ally. Increases the Special Moves ↑ Next effect of an ally by 3 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sharpshooting Judgment\nWater Beam",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,30 +144,30 @@
     {
       "id": 99021001,
       "name": "Gentleman’s Combo",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle. Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle.",
       "childPassives": [
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
         }
       ]
     },
     {
       "id": 19053601,
       "name": "User Sets Rain: Galar C (Spec) on Field",
-      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play when the user makes the weather rainy.",
+      "description": "Applies Galar Circle (Special) to the allied field of play when the user makes the weather rainy.",
       "childPassives": []
     },
     {
       "id": 17078009,
       "name": "Rainy Hit: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while the weather is rainy.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the weather is rainy.",
       "childPassives": []
     }
   ],
@@ -924,5 +924,6 @@
         "Sharpshooting Judgment\nWater Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/081800_128.png"
 }

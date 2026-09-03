@@ -3,13 +3,13 @@
   "trainerBaseId": "10012400",
   "monsterId": "20124000001",
   "monsterBaseId": "20080401",
-  "displayName": "Trainer #10012400 & Monster #20080401",
-  "trainerName": "Trainer #10012400",
-  "monsterName": "Monster #20080401",
+  "displayName": "Mallow & Shiinotic",
+  "trainerName": "Mallow",
+  "monsterName": "Shiinotic",
   "type": "Grass",
   "weakness": "Poison",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Giga Drain",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "91",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Def of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target paralyzed.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"4\" ] of all allied sync pairs by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 4 stat ranks. Raises the accuracy of all allied sync pairs by 1 stat rank. Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Strong Kick to It\nBloom Doom",
       "type": "Grass",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18109009,
       "name": "“Absorbs” Hit: Attack ↓ 9",
-      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move that has the absorbs effect tag is successful.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s attack move that has the absorbs effect tag is successful.",
       "childPassives": []
     },
     {
       "id": 11013509,
       "name": "Hit Paralyzed Opp: HP Recovery 9",
-      "description": "Restores the user’s HP when its attack move is successful against a paralyzed opponent.",
+      "description": "Has a chance (100%) of restoring the user’s HP when its attack move is successful against a paralyzed opponent.",
       "childPassives": []
     },
     {
@@ -890,5 +890,7 @@
         "Strong Kick to It\nBloom Doom": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Shiinotic",
+  "pokemonIconUrl": "img/pokemon/080401_128.png"
 }

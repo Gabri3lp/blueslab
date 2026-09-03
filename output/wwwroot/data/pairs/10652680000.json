@@ -3,13 +3,13 @@
   "trainerBaseId": "10065268",
   "monsterId": "20652680000",
   "monsterBaseId": "20009301",
-  "displayName": "Helena  (Hex Maniac) & Monster #20009301",
-  "trainerName": "Helena  (Hex Maniac)",
-  "monsterName": "Monster #20009301",
+  "displayName": "Helena (Hex Maniac) & Haunter",
+  "trainerName": "Helena (Hex Maniac)",
+  "monsterName": "Haunter",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": false,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Shadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "99",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Lick",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Physical",
       "power": "12",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s evasiveness by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Scary-but-True\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -898,5 +898,7 @@
         "Scary-but-True\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Haunter",
+  "pokemonIconUrl": "img/pokemon/009301_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10004300",
   "monsterId": "20043000000",
   "monsterBaseId": "20029600",
-  "displayName": "Trainer #10004300 & Makuhita",
-  "trainerName": "Trainer #10004300",
+  "displayName": "Brawly & Makuhita",
+  "trainerName": "Brawly",
   "monsterName": "Makuhita",
   "type": "Fighting",
   "weakness": "Flying",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Rock Smash",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (50%) of lowering the target’s Defense by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Brick Break",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "35",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Removes the Physical and Special Damage Reduction effects from the opponents’ field of play.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s Defense and Sp. Def by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 2 stat ranks. Raises the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Fighting\nSync Impact",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -888,5 +888,6 @@
         "Arm Thrust of\nMighty Waves": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/029600_128.png"
 }

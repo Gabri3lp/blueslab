@@ -3,13 +3,13 @@
   "trainerBaseId": "10015200",
   "monsterId": "20152000000",
   "monsterBaseId": "20041600",
-  "displayName": "Trainer #10015200 & Vespiquen",
-  "trainerName": "Trainer #10015200",
+  "displayName": "Aaron & Vespiquen",
+  "trainerName": "Aaron",
   "monsterName": "Vespiquen",
   "type": "Bug",
   "weakness": "Ice",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Attack Order",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "80",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "1",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "1",
       "target": "Self",
-      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 2 stat ranks. Raises the critical-hit rate of all allied sync pairs by 1 stat rank. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Perfect Swarm\nAttack Order",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 23011209,
       "name": "Stat Share 9",
-      "description": "When a status move used by the user’s Pokémon raises its stats only, raises the same stats by the same amount for all allied sync pairs instead.",
+      "description": "When a status move used by the user’s Pokémon raises its stats only, has a chance (100%) of raising the same stats by the same amount for all allied sync pairs instead.",
       "childPassives": []
     },
     {
       "id": 11011601,
       "name": "“Heals” Move: Team HP Recovery (M) 1",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP when the user uses a move that has the heals effect tag.",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP when the user uses a move that has the heals effect tag.",
       "childPassives": []
     },
     {
       "id": 12020104,
       "name": "Move Gauge Refresh 4",
-      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "description": "Has a chance (50%) of charging the user’s move gauge by one when its move is successful.",
       "childPassives": []
     }
   ],
@@ -896,5 +896,6 @@
         "Perfect Swarm\nAttack Order": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/041600_128.png"
 }

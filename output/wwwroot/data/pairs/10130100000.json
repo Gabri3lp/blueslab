@@ -3,13 +3,13 @@
   "trainerBaseId": "10013010",
   "monsterId": "20130100000",
   "monsterBaseId": "20077000",
-  "displayName": "Sygna Suit  Serena & Zygarde",
-  "trainerName": "Sygna Suit  Serena",
+  "displayName": "Sygna Suit Serena & Zygarde",
+  "trainerName": "Sygna Suit Serena",
   "monsterName": "Zygarde",
   "type": "Dragon",
   "weakness": "Ice",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Thousand Waves",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "140",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "Applies the Restrain effect to the target.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Core Enforcer",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -121,9 +121,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "description": "Raises the user’s Attack and Sp. Atk by 6 stat ranks. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,12 +131,12 @@
       "slot": 5,
       "name": "Ecosystem\nCore Enforcer",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
-      "description": "Transform into Complete Forme until the end of battle.",
+      "description": "Transform into Complete Forme until the end of battle.",
       "isSync": true
     }
   ],
@@ -144,19 +144,19 @@
     {
       "id": 28010801,
       "name": "Kalos Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Kalos theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 17047301,
       "name": "Strong Start 1",
-      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank(s) the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 15010101,
       "name": "Head Start 1",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle.",
       "childPassives": []
     },
     {
@@ -961,5 +961,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/077000_128.png"
 }

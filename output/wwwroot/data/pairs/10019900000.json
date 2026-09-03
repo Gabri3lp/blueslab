@@ -3,13 +3,13 @@
   "trainerBaseId": "10001990",
   "monsterId": "20019900000",
   "monsterBaseId": "21038301",
-  "displayName": "Brendan  (Champion) & Monster #21038301",
-  "trainerName": "Brendan  (Champion)",
-  "monsterName": "Monster #21038301",
+  "displayName": "Brendan (Champion) & Groudon",
+  "trainerName": "Brendan (Champion)",
+  "monsterName": "Groudon",
   "type": "Ground",
   "weakness": "Water",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Physical)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Precipice Blades",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "189",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Hoenn Circle (Physical) to the allied field of play. Hoenn Circle (Physical) grants all of the following effects: Powers up the physical attack moves and physical sync moves of all allied sync pairs by 10%. Reduces physical attack move and physical sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Hoenn theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Red\nPrecipice Blades",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "270",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move [Digit:1digit ] [EN:Qty S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nMakes the target flinch. The power of this move is not lowered even if there are multiple targets. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the weather is EX sunny. Applies the [Name:ReferencedMessageTag Idx=\"3\" ] to the user when the weather is EX sunny.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When your team’s sync pair uses a sync move 1 time.\nDeactivation Condition: When this move is used.\n\nMakes the target flinch. The power of this move is not lowered even if there are multiple targets. Lowers the target’s Defense by 3 stat ranks when the weather is EX sunny. Applies the Free Move Next effect to the user when the weather is EX sunny.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect of an ally by 2 ranks. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Raincloud-Scattering Lands\nPrecipice Blade",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 28010201,
       "name": "Hoenn Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
       "id": 99022401,
       "name": "Red Power Awakening",
-      "description": "Become Primal Groudon until the end of battle the first time the user enters a battle each battle.",
+      "description": "Become Primal Groudon until the end of battle the first time the user enters a battle each battle.",
       "childPassives": []
     },
     {
       "id": 99022601,
       "name": "Hoenn Hype",
-      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the Ground-type moves and Ground-type sync moves of all allied sync pairs when the weather is sunny.",
       "childPassives": [
         {
           "id": 13082802,
@@ -166,7 +166,7 @@
         {
           "id": 13083102,
           "name": "Sunny: Team Ground P-Moves ↑ & S-Moves ↑ 2",
-          "description": "Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny."
+          "description": "Powers up the Ground-type moves and Ground-type sync moves of all allied sync pairs when the weather is sunny."
         }
       ]
     },
@@ -973,5 +973,10 @@
         "Raincloud-Scattering Lands\nPrecipice Blade": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/028600_128.png",
+  "superAwakeningPassive": {
+    "name": "The Arena Tycoon’s Judgment",
+    "description": "Powers up the moves of all allied sync pairs when attacking a target that is asleep. Reduces attack move damage taken by allies when the terrain is Grassy Terrain. Turns the field of play’s terrain into Grassy Terrain the first time the user’s Trainer uses a move each battle."
+  }
 }

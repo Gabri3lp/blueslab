@@ -3,13 +3,13 @@
   "trainerBaseId": "10024200",
   "monsterId": "20242000000",
   "monsterBaseId": "2008120000",
-  "displayName": "Trainer #10024200 & Rillaboom",
-  "trainerName": "Trainer #10024200",
+  "displayName": "Victor & Rillaboom",
+  "trainerName": "Victor",
   "monsterName": "Rillaboom",
   "type": "Grass",
   "weakness": "Fire",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Drum Beating",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "High Horsepower",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "106",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Attack by 6 stat ranks. Applies the Free Move Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 1 rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Strategically Sound\nGrass Impact",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "childPassives": []
     },
     {
@@ -995,5 +995,10 @@
         "Strategically Sound\nGrass Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/081200_128.png",
+  "superAwakeningPassive": {
+    "name": "Soothing Sounds in the Woods",
+    "description": "Powers up the user’s max move when its Attack is raised. Turns the field of play’s terrain into Grassy Terrain the first time the user enters a battle each battle. Turns the field of play’s terrain into Grassy Terrain after using the user’s G-Max Drum Solo."
+  }
 }

@@ -9,7 +9,7 @@
   "type": "Dragon",
   "weakness": "Ground",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Dynamax Cannon",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "144",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "This attack’s power increases 50% when the target has a sync buff.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user. Lowers the user’s Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Sp. Atk by 3 stat ranks. Applies the Supereffective ↑ Next effect to the user. Lowers the user’s Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Eternal Champion\nDragon Beam",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18094504,
       "name": "Lucky Seven 4",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance (50%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by one stat rank when the user’s attack move against it is successful.",
       "childPassives": []
     },
     {
@@ -997,5 +997,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/089000_128.png",
+  "superAwakeningPassive": {
+    "name": "Eternal Champion",
+    "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Increases the user’s Special Moves ↑ Next effect by 3 ranks after using its max move. Increases the user’s Sync Move ↑ Next effect by 5 ranks after using its max move."
+  }
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10006701",
   "monsterId": "20067010000",
   "monsterBaseId": "20019700",
-  "displayName": "Trainer #10006701 & Umbreon",
-  "trainerName": "Trainer #10006701",
+  "displayName": "Rachel & Umbreon",
+  "trainerName": "Rachel",
   "monsterName": "Umbreon",
   "type": "Dark",
   "weakness": "Fairy",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "25",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Snarl",
       "type": "Dark",
-      "category": "Status",
+      "category": "Special",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Sp. Atk. by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP. Removes all status conditions from an ally. Removes the flinching, confused, and trapped conditions from an ally. Applies the Enduring effect to an ally. Applies the Gradual Healing effect to an ally when the user’s team has a sync buff.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 60% of its maximum HP. Removes all status conditions from an ally. Removes the flinching, confused, and trapped conditions from an ally. Applies the Enduring effect to an ally. Applies the Gradual Healing effect to an ally when the user’s team has a sync buff.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Hellooo\nFeint Attack",
       "type": "Dark",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 11011101,
       "name": "Team Triage Tank 1",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when the user is hit by an attack move.",
+      "description": "Has a chance (20%) of restoring the HP of all allied sync pairs when the user is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 12020404,
       "name": "Revenge Boost 4",
-      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "description": "Has a chance (50%) of charging the user’s move gauge by one when the user is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -900,5 +900,6 @@
         "Hellooo\nFeint Attack": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/019700_128.png"
 }

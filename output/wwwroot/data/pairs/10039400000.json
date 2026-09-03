@@ -3,13 +3,13 @@
   "trainerBaseId": "10003940",
   "monsterId": "20039400000",
   "monsterBaseId": "20070811",
-  "displayName": "Viola  (Holiday 2023) & Vivillon",
-  "trainerName": "Viola  (Holiday 2023)",
+  "displayName": "Viola (Holiday 2023) & Vivillon",
+  "trainerName": "Viola (Holiday 2023)",
   "monsterName": "Vivillon",
   "type": "Bug",
   "weakness": "Rock",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Struggle Bug",
       "type": "Bug",
-      "category": "Status",
+      "category": "Special",
       "power": "30",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Sp. Atk. by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Sp. Atk. by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Bug Zone. (A Bug Zone powers up Bug-type attacks.)",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nNever misses. Leaves the target paralyzed. Leaves the target confused. Lowers the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All opponents",
+      "description": "Activation Condition: When the field of play’s zone turns into a Bug Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Bug Zone.\n\nNever misses. Leaves the target paralyzed. Leaves the target confused. Lowers the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s Sp. Atk and critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Raises an ally’s Sp. Atk and critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Mystical Icy Snow Dance\nBug Beam",
       "type": "Bug",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18112509,
       "name": "Hit Status Cond Opp: Stat ↓2 9",
-      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against targets that are affected by a status condition: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (100%) of lowering one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful against targets that are affected by a status condition: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     },
     {
       "id": 13022202,
       "name": "Bug Zone: Team Attack Move DR 2",
-      "description": "Reduces attack move damage taken by allies when the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Reduces attack move damage taken by allies when the zone is a Bug Zone.",
       "childPassives": []
     },
     {
@@ -892,5 +892,6 @@
         "Mystical Icy Snow Dance\nBug Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/070811_128.png"
 }

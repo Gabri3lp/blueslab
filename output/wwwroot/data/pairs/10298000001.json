@@ -3,13 +3,13 @@
   "trainerBaseId": "10029800",
   "monsterId": "20298000001",
   "monsterBaseId": "20084001",
-  "displayName": "Trainer #10029800 & Monster #20084001",
-  "trainerName": "Trainer #10029800",
-  "monsterName": "Monster #20084001",
+  "displayName": "Jacq & Mudsdale",
+  "trainerName": "Jacq",
+  "monsterName": "Mudsdale",
   "type": "Ground",
   "weakness": "Water",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rock Tomb",
       "type": "Rock",
-      "category": "Status",
+      "category": "Physical",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 2 stat ranks. Raises the Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Super-Duper Splendid Research\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 18043209,
       "name": "Toughen Up 9",
-      "description": "Raises the user’s Defense by one stat rank when it is hit by an attack move.",
+      "description": "Has a chance (100%) of raising the user’s Defense by one stat rank when it is hit by an attack move.",
       "childPassives": []
     },
     {
       "id": 11012909,
       "name": "Triage Tank 9",
-      "description": "Restores the user’s HP when it is hit by an attack move.",
+      "description": "Has a chance (100%) of restoring the user’s HP when it is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -894,5 +894,7 @@
         "Super-Duper Splendid Research\nGround Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Mudsdale",
+  "pokemonIconUrl": "img/pokemon/084001_128.png"
 }

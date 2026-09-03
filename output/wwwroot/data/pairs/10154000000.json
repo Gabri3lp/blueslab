@@ -3,13 +3,13 @@
   "trainerBaseId": "10015400",
   "monsterId": "20154000000",
   "monsterBaseId": "20045001",
-  "displayName": "Trainer #10015400 & Hippowdon",
-  "trainerName": "Trainer #10015400",
+  "displayName": "Bertha & Hippowdon",
+  "trainerName": "Bertha",
   "monsterName": "Hippowdon",
   "type": "Ground",
   "weakness": "Grass",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Sand Tomb",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Applies [Name:ReferencedMessageTag ] to the opponents’ field of play. ([Name:ReferencedMessageTag ]: The sync pairs will take [Name:ReferencedMessageTag Idx=\"1\" ]-type damage whenever they take an action.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Applies Rock Damage Field to the opponents’ field of play. (Rock Damage Field: The sync pairs will take Rock-type damage whenever they take an action.)",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Causes a sandstorm.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. In addition, raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] during a sandstorm.",
+      "target": "All allies",
+      "description": "Raises the user’s Defense and Sp. Def by 1 stat rank. Raises the critical-hit rate of all allied sync pairs by 1 stat rank. In addition, raises the Defense and Sp. Def of all allied sync pairs by 1 stat rank during a sandstorm.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Team Effort\nEarthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases during a sandstorm.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 18099009,
       "name": "Sand Slinger 9",
-      "description": "Lowers the target’s Attack by one stat rank when the user’s attack move against it is successful during a sandstorm.",
+      "description": "Has a chance (100%) of lowering the target’s Attack by one stat rank when the user’s attack move against it is successful during a sandstorm.",
       "childPassives": []
     },
     {
@@ -892,5 +892,6 @@
         "Team Effort\nEarthquake": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/045001_128.png"
 }

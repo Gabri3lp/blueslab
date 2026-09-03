@@ -3,13 +3,13 @@
   "trainerBaseId": "10016200",
   "monsterId": "20162000002",
   "monsterBaseId": "20038900",
-  "displayName": "Trainer #10016200 & Torterra",
-  "trainerName": "Trainer #10016200",
+  "displayName": "Lucas & Torterra",
+  "trainerName": "Lucas",
   "monsterName": "Torterra",
   "type": "Ground",
   "weakness": "Ice",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Earthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s zone into a Ground Zone. (A Ground Zone powers up Ground-type attacks.)",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Ground-Splitting\nHeadlong Rush",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Activation Condition: When the field of play’s zone turns into a Ground Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Ground Zone.\n\nNever misses. Lowers the target’s Defense by 4 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises an ally’s Attack by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Unshakable Determination\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,41 +144,41 @@
     {
       "id": 99022201,
       "name": "Large Body of Scenery",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] when it uses [Name:MoveId Idx=\"19590\" ]. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19590\" ].",
+      "description": "Reduces the user’s sync move countdown by 1 when it uses Ground Wish. Increases the user’s Physical Moves ↑ Next effect by 2 ranks when it uses Ground Wish.",
       "childPassives": [
         {
           "id": 15014109,
           "name": "Use Ground Wish: Sync CD ↓ 9",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19590\" ]."
+          "description": "Has a chance (100%) of reducing the user’s sync move countdown by 1 when it uses Ground Wish."
         },
         {
           "id": 17079409,
           "name": "Use Ground Wish: Physical Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19590\" ]."
+          "description": "Has a chance (100%) of increasing the user’s Physical Moves ↑ Next effect by 2 ranks when it uses Ground Wish."
         }
       ]
     },
     {
       "id": 99022301,
       "name": "Unparalleled Power",
-      "description": "Powers up the user’s [Name:MoveId Idx=\"89\" ]. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s [Name:MoveId Idx=\"89\" ] is successful.",
+      "description": "Powers up the user’s Earthquake. Lowers the target’s Attack by 1 stat rank when the user’s Earthquake is successful.",
       "childPassives": [
         {
           "id": 13082909,
           "name": "Earthquake Power ↑ 9",
-          "description": "Powers up the user’s [Name:MoveId Idx=\"89\" ]."
+          "description": "Powers up the user’s Earthquake."
         },
         {
           "id": 18120201,
           "name": "Earthquake: Attack ↓ 1",
-          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s [Name:MoveId Idx=\"89\" ] is successful."
+          "description": "Lowers the target’s Attack by 1 stat rank when the user’s Earthquake is successful."
         }
       ]
     },
     {
       "id": 17079009,
       "name": "Ground Zone Hit: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the zone is a Ground Zone.",
       "childPassives": []
     }
   ],
@@ -918,5 +918,6 @@
         "Unshakable Determination\nGround Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/038900_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10036400",
   "monsterId": "20364000000",
   "monsterBaseId": "2109530000",
-  "displayName": "Teddy  (Hiker) & Monster #2109530000",
-  "trainerName": "Teddy  (Hiker)",
-  "monsterName": "Monster #2109530000",
+  "displayName": "Teddy (Hiker) & Rellor",
+  "trainerName": "Teddy (Hiker)",
+  "monsterName": "Rellor",
   "type": "Bug",
   "weakness": "Flying",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 3,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Defense of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Leech Life",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "91",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Shout from the Summit\nGolden Bug Impact",
       "type": "Bug",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     },
     {
       "id": 12021009,
       "name": "Propelling Strike 9",
-      "description": "Charges the user’s move gauge by one when its attack move is successful.",
+      "description": "Has a chance (100%) of charging the user’s move gauge by one when its attack move is successful.",
       "childPassives": []
     },
     {
@@ -904,5 +904,7 @@
         "Shout from the Summit\nGolden Bug Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Rellor",
+  "pokemonIconUrl": "img/pokemon/095300_128.png"
 }

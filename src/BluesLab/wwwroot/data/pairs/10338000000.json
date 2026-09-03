@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "2",
       "target": "An ally",
-      "description": "Applies to the opponents’ field of play. (: The sync pairs will take -type damage whenever they take an action.)",
+      "description": "Applies Rock Damage Field to the opponents’ field of play. (Rock Damage Field: The sync pairs will take Rock-type damage whenever they take an action.)",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "100",
       "gauge": "2",
       "target": "All opponents",
-      "description": "Activation Condition:\nWhen applies to the opponent’s field of play.\nDeactivation Condition:\nWhen the opponent’s field of play is no longer. Lowers the target’s by stat ranks. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an the first time this attack move is successful each battle. (An powers up -type attacks.)",
+      "description": "Activation Condition: When Rock Damage Field applies to the opponent’s field of play.\nDeactivation Condition: When the opponent’s field of play is no longer Rock Damage Field.\n\nLowers the target’s Defense by 2 stat ranks. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an EX Rock Zone the first time this attack move is successful each battle. (An EX Rock Zone powers up Rock-type attacks.)",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "An ally",
-      "description": "Reduces the sync move countdown of an ally by. Applies the Supereffective ↑ Next effect to an ally. Applies the Enduring effect to an ally.",
+      "description": "Reduces the sync move countdown of an ally by 1. Applies the Supereffective ↑ Next effect to an ally. Applies the Enduring effect to an ally.",
       "isSync": false
     },
     {
@@ -144,40 +144,40 @@
     {
       "id": 29030901,
       "name": "Paldea Rush",
-      "description": "Reduces the user’s sync move countdown by the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by the first time your team enters a battle each battle instead. The more allied sync pairs with you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Paldea theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
       "childPassives": []
     },
     {
       "id": 99033701,
       "name": "Great Photo Op!",
-      "description": "Raises the user’s by stat ranks the first time it applies to the opponent's field of play each battle. Raises the user’s by stat ranks the first time it applies to the opponent’s field of play each battle.",
+      "description": "Raises the user’s Attack by 6 stat ranks the first time it applies Rock Damage Field to the opponent's field of play each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time it applies Rock Damage Field to the opponent’s field of play each battle.",
       "childPassives": [
         {
           "id": 18124306,
           "name": "1st Time User Sets Rock DF: Attack ↑ 6",
-          "description": "Raises the user’s by stat ranks the first time it applies to the opponent's field of play each battle."
+          "description": "Raises the user’s Attack by 6 stat ranks the first time it applies Rock Damage Field to the opponent's field of play each battle."
         },
         {
           "id": 18124403,
           "name": "1st Time User Sets Rock DF: Crit Rate ↑ 3",
-          "description": "Raises the user’s by stat ranks the first time it applies to the opponent's field of play each battle."
+          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time it applies Rock Damage Field to the opponent's field of play each battle."
         }
       ]
     },
     {
       "id": 99033801,
       "name": "Keep It Going!",
-      "description": "Lowers one of the target’s following stats by stat ranks at random when the user’s attack move is successful while applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the to the user when its attack move is successful while applies to the opponent’s field of play.",
+      "description": "Lowers one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful while Rock Damage Field applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the Free Move Next effect to the user when its attack move is successful while Rock Damage Field applies to the opponent’s field of play.",
       "childPassives": [
         {
           "id": 18124509,
           "name": "Rock DF on Opp & Hit: Stat ↓2 9",
-          "description": "Lowers one of the target’s following stats by stat ranks at random when the user’s attack move is successful while applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
+          "description": "Has a chance (100%) of lowering one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful while Rock Damage Field applies to the opponent’s field of play: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
         },
         {
           "id": 17087909,
           "name": "Rock DF on Opp & Hit: Free Move Next 9",
-          "description": "Applies the to the user when its attack move is successful while applies to the opponent’s field of play."
+          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while Rock Damage Field applies to the opponent’s field of play."
         }
       ]
     },

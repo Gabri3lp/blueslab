@@ -3,13 +3,13 @@
   "trainerBaseId": "10700000",
   "monsterId": "28000020641",
   "monsterBaseId": "20048100",
-  "displayName": "Trainer #10700000 & Mesprit",
-  "trainerName": "Trainer #10700000",
+  "displayName": "Main Character & Mesprit",
+  "trainerName": "Main Character",
   "monsterName": "Mesprit",
   "type": "Psychic",
   "weakness": "Dark",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": false,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Confusion",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "18",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An ally",
       "description": "Applies the Physical Damage Reduction effect to the allied field of play.",
       "isSync": false
     },
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An ally",
       "description": "Applies the Special Damage Reduction effect to the allied field of play.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the Speed of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks. Raises the Speed of all allied sync pairs by 1 stat rank. Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Every Emotion\nPsychic Beam",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 28020601,
       "name": "Psychic Teamwork",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 10%. The more allied sync pairs with the Psychic theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 5% and reduces damage by 2%. The maximum power-up is 20%, and the maximum damage reduction is 14%.)",
       "childPassives": []
     },
     {
       "id": 17044609,
       "name": "Freevenge 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it is hit by an attack move.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when it is hit by an attack move.",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 11010701,
       "name": "S-Move: Team HP Recovery (M) 1",
-      "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after using the user’s sync move.",
+      "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP after using the user’s sync move.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Every Emotion\nPsychic Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/048100_128.png"
 }

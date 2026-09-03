@@ -3,13 +3,13 @@
   "trainerBaseId": "10030200",
   "monsterId": "20302000002",
   "monsterBaseId": "2009840000",
-  "displayName": "Trainer #10030200 & Great Tusk",
-  "trainerName": "Trainer #10030200",
+  "displayName": "Rika & Great Tusk",
+  "trainerName": "Rika",
   "monsterName": "Great Tusk",
   "type": "Ground",
   "weakness": "Water",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Headlong Rush",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "192",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Lowers the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Ancient Times\nEarth Power",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not raised.\n\nLowers the target’s Defense and Sp. Def by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Has a chance ([Digit:2digits Idx=\"2\" ]%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nLowers the target’s Defense and Sp. Def by 2 stat ranks. Has a chance (30%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Increases the [Name:ReferencedMessageTag Idx=\"2\" ] of an ally by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Increases the Physical Moves ↑ Next effect of an ally by 2 ranks. Increases the Special Moves ↑ Next effect of an ally by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rumbling\nGround Impact",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,23 +144,23 @@
     {
       "id": 25010501,
       "name": "Great Ancient Tusks",
-      "description": "Grants all of the following effects when the user uses [Name:MoveId Idx=\"19170\" ] or an ally turns the weather sunny: Reduces the user’s sync move countdown by [Digit:1digit ]. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects when the user uses Sunny Day or an ally turns the weather sunny: Reduces the user’s sync move countdown by 1. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
       "childPassives": []
     },
     {
       "id": 99044701,
       "name": "On the House!",
-      "description": "Grants all of the following effects the first time the user’s Trainer uses a move each battle: Turns the field of play’s zone into an [Name:ReferencedMessageTag ]. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Raises the user’s Attack and Sp. Atk by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects the first time the user’s Trainer uses a move each battle: Turns the field of play’s zone into a Ground Zone. (A Ground Zone powers up Ground-type attacks.) Raises the user’s Attack and Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "childPassives": [
         {
           "id": 19069101,
           "name": "1st T-Move: EX Ground Zone",
-          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Trainer uses a move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+          "description": "Turns the field of play’s zone into an the first time the user’s Trainer uses a move each battle. (An powers up -type attacks.)"
         },
         {
           "id": 18128903,
           "name": "1st T-Move: Attack ↑4 & Sp. Atk ↑4 & Crit Rate ↑3",
-          "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its Trainer uses a move each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time its Trainer uses a move each battle."
+          "description": "Raises the user’s Attack and Sp. Atk by 4 stat ranks the first time its Trainer uses a move each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time its Trainer uses a move each battle."
         }
       ]
     },
@@ -907,5 +907,6 @@
         "Rumbling\nGround Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/098400_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10015300",
   "monsterId": "20153000000",
   "monsterBaseId": "20036200",
-  "displayName": "Trainer #10015300 & Glalie",
-  "trainerName": "Trainer #10015300",
+  "displayName": "Glacia & Glalie",
+  "trainerName": "Glacia",
   "monsterName": "Glalie",
   "type": "Ice",
   "weakness": "Steel",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": true,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Powder Snow",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "16",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "1",
+      "target": "All opponents",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -96,7 +96,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "All allies",
       "description": "Applies the Gradual Healing effect to all allied sync pairs.",
       "isSync": false
     },
@@ -109,8 +109,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Makes opponents target the user for a short time. Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Makes opponents target the user for a short time. Raises the Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Ice Beam",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target frozen.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target frozen.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Glacial\nFreeze-Dry",
       "type": "Ice",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Glalie until the end of battle.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 18040904,
       "name": "Fortuitous 4",
-      "description": "Has a chance ([Digit:2digits ]%) of raising one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Has a chance (50%) of raising one of the user’s following stats by one stat rank at random when its attack move is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
       "childPassives": []
     }
   ],
@@ -1057,5 +1057,6 @@
         "Glacial\nFreeze-Dry": 30
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/036200_128.png"
 }

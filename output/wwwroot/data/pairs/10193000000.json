@@ -3,13 +3,13 @@
   "trainerBaseId": "10019300",
   "monsterId": "20193000000",
   "monsterBaseId": "20038200",
-  "displayName": "Trainer #10019300 & Kyogre",
-  "trainerName": "Trainer #10019300",
+  "displayName": "Archie & Kyogre",
+  "trainerName": "Archie",
   "monsterName": "Kyogre",
   "type": "Water",
   "weakness": "Grass",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Origin Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "189",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Thunder",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "124",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Never misses when the weather is rainy. Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Lowers the user’s Defense and Sp. Def by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s Sp. Atk by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the weather is rainy. In addition, raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the weather is rainy. Applies the Gradual Healing effect to the user when the weather is rainy.",
+      "description": "Raises the user’s accuracy by 1 stat rank. Raises the user’s critical-hit rate by 3 stat ranks. Lowers the user’s Defense and Sp. Def by 2 stat ranks. In addition, raises the user’s Sp. Atk by 2 stat ranks when the weather is rainy. In addition, raises the user’s accuracy by 1 stat rank when the weather is rainy. Applies the Gradual Healing effect to the user when the weather is rainy.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Aqua Planet\nOrigin Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28010301,
       "name": "Hoenn Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
@@ -932,5 +932,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/038200_128.png"
 }

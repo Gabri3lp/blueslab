@@ -3,13 +3,13 @@
   "trainerBaseId": "10014800",
   "monsterId": "20148000002",
   "monsterBaseId": "20009200",
-  "displayName": "Trainer #10014800 & Gastly",
-  "trainerName": "Trainer #10014800",
+  "displayName": "Morty & Gastly",
+  "trainerName": "Morty",
   "monsterName": "Gastly",
   "type": "Ghost",
   "weakness": "Dark",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Ominous Wind",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of raising the user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -109,7 +109,7 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
+      "target": "An ally",
       "description": "Removes all status conditions from an ally.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the Speed and critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the user’s evasiveness by 2 stat ranks. Raises the Speed and critical-hit rate of all allied sync pairs by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "See What Others Cannot\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,13 +150,13 @@
     {
       "id": 18095109,
       "name": "Group Slapdash 9",
-      "description": "Raises the Speed of all allied sync pairs by one stat rank when an opponent’s attack move targeting the user misses.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by one stat rank when an opponent’s attack move targeting the user misses.",
       "childPassives": []
     },
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
       "childPassives": []
     }
   ],
@@ -892,5 +892,6 @@
         "See What Others Cannot\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/009200_128.png"
 }

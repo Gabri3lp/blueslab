@@ -3,13 +3,13 @@
   "trainerBaseId": "10010611",
   "monsterId": "20106110000",
   "monsterBaseId": "20064212",
-  "displayName": "Sygna Suit Elesa  (Alt.) & Thundurus",
-  "trainerName": "Sygna Suit Elesa  (Alt.)",
+  "displayName": "Sygna Suit Elesa (Alt.) & Thundurus",
+  "trainerName": "Sygna Suit Elesa (Alt.)",
   "monsterName": "Thundurus",
   "type": "Electric",
   "weakness": "Ice",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Strike (Special)",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Wildbolt Storm",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "177",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Never misses when the weather is rainy. Has a chance (20%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Electric Terrain.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Thunder-Calling\nWildbolt Storm",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "180",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is raised.\nDeactivation Condition:\nWhen the user’s [Name:ReferencedMessageTag ] is not raised.\n\nNever misses when the weather is rainy. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] the first time this attack move is successful each battle. Leaves the target paralyzed. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s [Name:MoveId Idx=\"604\" ] is [Digit:1digit Idx=\"3\" ] or more when attacking with this move, reduces those MP by [Digit:1digit Idx=\"3\" ] and grants all of the following effects: Makes the weather rainy. Turns the field of play’s terrain into Electric Terrain.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses when the weather is rainy. Lowers the target’s Sp. Def by 2 stat ranks. Lowers the target’s Electric Type Rebuff by 1 rank the first time this attack move is successful each battle. Leaves the target paralyzed. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s Electric Terrain is 1 or more when attacking with this move, reduces those MP by 1 and grants all of the following effects: Makes the weather rainy. Turns the field of play’s terrain into Electric Terrain.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the sync move countdown of an ally by [Digit:1digit ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Reduces the sync move countdown of an ally by 1. Raises an ally’s Sp. Atk by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Different Impression\nElectric Beam",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -161,7 +161,7 @@
     {
       "id": 99025501,
       "name": "Dazzling Rainy Stage",
-      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field.",
       "childPassives": [
         {
           "id": 19020903,
@@ -171,14 +171,14 @@
         {
           "id": 19026603,
           "name": "Electric Terrain Extension 3",
-          "description": "Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field."
+          "description": "Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field."
         }
       ]
     },
     {
       "id": 17081709,
       "name": "Ally Sets WTZ: Team Special Boost ↑1 9",
-      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally activates a weather, terrain, or zone effect.",
       "childPassives": []
     }
   ],
@@ -1019,5 +1019,6 @@
         "Different Impression\nElectric Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/064212_128.png"
 }

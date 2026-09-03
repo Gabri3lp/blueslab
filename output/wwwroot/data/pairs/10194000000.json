@@ -3,13 +3,13 @@
   "trainerBaseId": "10019400",
   "monsterId": "20194000000",
   "monsterBaseId": "20048400",
-  "displayName": "Trainer #10019400 & Palkia",
-  "trainerName": "Trainer #10019400",
+  "displayName": "Cyrus & Palkia",
+  "trainerName": "Cyrus",
   "monsterName": "Palkia",
   "type": "Dragon",
   "weakness": "Fairy",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Spacial Rend",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "85",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Water Pulse",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "47",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (20%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"1\" ]% of its remaining HP.",
+      "description": "Raises the user’s Sp. Atk and Speed by 3 stat ranks. The user takes damage equal to 25% of its remaining HP.",
       "isSync": false
     },
     {
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Hydro Pump",
       "type": "Water",
-      "category": "Status",
+      "category": "Special",
       "power": "125",
       "accuracy": "80",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Emotional Void\nSpacial Rend",
       "type": "Dragon",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": true
@@ -976,5 +976,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/048400_128.png"
 }

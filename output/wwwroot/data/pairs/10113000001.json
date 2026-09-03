@@ -3,13 +3,13 @@
   "trainerBaseId": "10011300",
   "monsterId": "20113000001",
   "monsterBaseId": "20008100",
-  "displayName": "Trainer #10011300 & Magnemite",
-  "trainerName": "Trainer #10011300",
+  "displayName": "Jasmine & Magnemite",
+  "trainerName": "Jasmine",
   "monsterName": "Magnemite",
   "type": "Steel",
   "weakness": "Ground",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Shock",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "17",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Defense by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Lowers the target’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Gyro Ball",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "44",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target’s Speed is raised.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Defense, Sp. Def, and accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to the user.",
+      "target": "All allies",
+      "description": "Raises the Defense, Sp. Def, and accuracy of all allied sync pairs by 1 stat rank. Applies the Gradual Healing effect to the user.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Hard Cold Sharp Strong\nSteel Impact",
       "type": "Steel",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 11010601,
       "name": "S-Move: HP Recovery (M) 1",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its sync move.",
+      "description": "Restores the user’s HP by approximately 20% of its maximum HP after using its sync move.",
       "childPassives": []
     }
   ],
@@ -898,5 +898,6 @@
         "Hard Cold Sharp Strong\nSteel Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/008100_128.png"
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10013000",
   "monsterId": "20130000000",
   "monsterBaseId": "20071700",
-  "displayName": "Trainer #10013000 & Fennekin",
-  "trainerName": "Trainer #10013000",
+  "displayName": "Serena & Fennekin",
+  "trainerName": "Serena",
   "monsterName": "Fennekin",
   "type": "Fire",
   "weakness": "Ground",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Fire Spin",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "75",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Puts the target to sleep.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Removes all status conditions from the user. Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s accuracy by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Removes all status conditions from the user. Raises the user’s Sp. Atk by 2 stat ranks. Raises the user’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -118,12 +118,12 @@
       "slot": 4,
       "name": "Overheat",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "136",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Fire\nSync Beam",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18070204,
       "name": "Stat Leech 4",
-      "description": "Has a chance ([Digit:2digits ]%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Raises the user’s stat by the same amount.",
+      "description": "Has a chance (50%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it is successful: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Raises the user’s stat by the same amount.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 17041109,
       "name": "Go Viral 9",
-      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs.",
+      "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs.",
       "childPassives": []
     }
   ],
@@ -900,5 +900,6 @@
         "Mystical Fire\nof Positivity": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/071700_128.png"
 }

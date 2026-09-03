@@ -3,13 +3,13 @@
   "trainerBaseId": "10013100",
   "monsterId": "20131000000",
   "monsterBaseId": "20073200",
-  "displayName": "Trainer #10013100 & Heliolisk",
-  "trainerName": "Trainer #10013100",
+  "displayName": "Clemont & Heliolisk",
+  "trainerName": "Clemont",
   "monsterName": "Heliolisk",
   "type": "Electric",
   "weakness": "Fighting",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Electroweb",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "39",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Lowers the target’s Speed by 1 stat rank.",
       "isSync": false
     },
     {
@@ -92,12 +92,12 @@
       "slot": 2,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed and evasiveness by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Critical Hit Next effect to the user.",
+      "description": "Raises the user’s Speed and evasiveness by 1 stat rank. Applies the Critical Hit Next effect to the user.",
       "isSync": false
     },
     {
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Parabolic Charge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "46",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Light-Up-the-World\nThunderbolt",
       "type": "Electric",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Speed is lowered, the greater the power of this attack.",
       "isSync": true
@@ -988,5 +988,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/073200_128.png"
 }

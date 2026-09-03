@@ -3,8 +3,8 @@
   "trainerBaseId": "10029000",
   "monsterId": "20290000000",
   "monsterBaseId": "2007240041",
-  "displayName": "Trainer #10029000 & Decidueye",
-  "trainerName": "Trainer #10029000",
+  "displayName": "Rei & Decidueye",
+  "trainerName": "Rei",
   "monsterName": "Decidueye",
   "type": "Fighting",
   "weakness": "Flying",
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Triple Arrows",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Critical hits land more easily. Has a chance ([Digit:2digits ]%) of lowering the target’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Has a chance ([Digit:2digits Idx=\"2\" ]%) of making the target flinch.",
+      "gauge": "4",
+      "target": "An opponent",
+      "description": "Critical hits land more easily. Has a chance (50%) of lowering the target’s Defense by 1 stat rank. Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Charges the user’s move gauge by [Digit:1digit ].",
+      "description": "Charges the user’s move gauge by 3.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Triple Arrows Barrage",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"time\" P=\"times\" ].\nDeactivation Condition:\nWhen this move is used.\n\nExcept in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Makes the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
+      "gauge": "4",
+      "target": "All opponents",
+      "description": "Activation Condition: When your team’s sync pair uses a sync move 1 time.\nDeactivation Condition: When this move is used.\n\nExcept in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s Defense by 2 stat ranks. Makes the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to the user. Increases the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Speed by 6 stat ranks. Applies the Supereffective ↑ Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Space-Time Traveler\nTriple Arrows",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,13 +144,13 @@
     {
       "id": 99013701,
       "name": "Survey Corps Teachings",
-      "description": "Grants all of the following effects the first time the user enters a battle each battle: Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Grants all of the following effects the first time the user enters a battle each battle: Reduces the user’s sync move countdown by 1. Raises the user’s Attack by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "childPassives": []
     },
     {
       "id": 17066009,
       "name": "S-Move: Team Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs after using the user’s sync move.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to all allied sync pairs after using the user’s sync move.",
       "childPassives": []
     },
     {
@@ -984,5 +984,10 @@
         "Space-Time Traveler\nTriple Arrows": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/072400_128.png",
+  "superAwakeningPassive": {
+    "name": "Hisuian Survival Techniques",
+    "description": "Turns the field of play’s zone into a Fighting Zone the first time the user’s Pokémon uses a move each battle. (A Fighting Zone powers up Fighting-type attacks.) Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle. Applies the Enduring effect to the user if its HP is full when it enters a battle."
+  }
 }

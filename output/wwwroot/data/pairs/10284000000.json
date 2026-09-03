@@ -3,13 +3,13 @@
   "trainerBaseId": "10028400",
   "monsterId": "20284000000",
   "monsterBaseId": "20047000",
-  "displayName": "Trainer #10028400 & Leafeon",
-  "trainerName": "Trainer #10028400",
+  "displayName": "Adaman & Leafeon",
+  "trainerName": "Adaman",
   "monsterName": "Leafeon",
   "type": "Grass",
   "weakness": "Flying",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Leaf Blade",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "80",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Critical hits land more easily.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP. HP is restored by 60% instead when the weather is sunny, and 40% when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Razor-Sharp\nRazor Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "150",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nCritical hits land more easily. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. In addition, lowers the target’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when the weather is sunny.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nCritical hits land more easily. Lowers the target’s Defense by 1 stat rank. Lowers the target’s Grass Type Rebuff by 1 rank. In addition, lowers the target’s Defense by 1 stat rank when the weather is sunny.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Reduces the user’s sync move countdown by [Digit:1digit Idx=\"4\" ] when the weather is sunny.",
+      "description": "Raises the user’s Attack by 6 stat ranks. Raises the user’s Defense by 4 stat ranks. Reduces the user’s sync move countdown by 1 when the weather is sunny.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Accelerating Time\nRazor Leaf",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Attack is raised, the greater the power of this attack.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28011801,
       "name": "Sinnoh Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Sinnoh theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
       "childPassives": []
     },
     {
@@ -162,7 +162,7 @@
     {
       "id": 17043909,
       "name": "Critical Freebie 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it lands a critical hit.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when it lands a critical hit.",
       "childPassives": []
     }
   ],
@@ -926,5 +926,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/047000_128.png"
 }

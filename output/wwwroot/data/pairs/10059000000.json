@@ -3,13 +3,13 @@
   "trainerBaseId": "10005900",
   "monsterId": "20059000000",
   "monsterBaseId": "20007700",
-  "displayName": "Trainer #10005900 & Ponyta",
-  "trainerName": "Trainer #10005900",
+  "displayName": "Blaine & Ponyta",
+  "trainerName": "Blaine",
   "monsterName": "Ponyta",
   "type": "Fire",
   "weakness": "Rock",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Flame Wheel",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "42",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Removes the frozen condition from the user. Has a chance ([Digit:2digits ]%) of leaving the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Removes the frozen condition from the user. Has a chance (10%) of leaving the target burned.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Fire Spin",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises one of the user’s following stats by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] at random: Defense, Sp. Atk, Sp. Def, or Speed.",
+      "description": "Raises the user’s Attack by 3 stat ranks. Raises one of the user’s following stats by 2 stat ranks at random: Defense, Sp. Atk, Sp. Def, or Speed.",
       "isSync": false
     },
     {
@@ -121,8 +121,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Fire\nSync Impact",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -878,5 +878,6 @@
         "Quizmaster\nFlame Charge": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/007700_128.png"
 }

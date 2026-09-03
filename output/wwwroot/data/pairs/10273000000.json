@@ -3,13 +3,13 @@
   "trainerBaseId": "10027300",
   "monsterId": "20273000000",
   "monsterBaseId": "2001990031",
-  "displayName": "Trainer #10027300 & Slowking",
-  "trainerName": "Trainer #10027300",
+  "displayName": "Avery & Slowking",
+  "trainerName": "Avery",
   "monsterName": "Slowking",
   "type": "Psychic",
   "weakness": "Dark",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Eerie Spell",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the [Name:ReferencedMessageTag Idx=\"7\" ] of all allied sync pairs by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move and special sync move damage taken by all allied sync pairs by [Digit:1digit Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Galar Circle (Special) to the allied field of play. Galar Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Galar theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
       "isSync": false
     },
     {
@@ -108,9 +108,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any circles applied to the allied field of play.\n\nNever misses. Lowers the Defense, Sp. Def, and evasiveness of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Causes a hailstorm. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the opponent’s field of play. Applies the Stat Reduction Defense effect to the allied field of play. Returns lowered stats of all allied sync pairs to normal.",
+      "gauge": "2",
+      "target": "All opponents",
+      "description": "Activation Condition: When a circle is applied to the allied field of play.\nDeactivation Condition: When there are no longer any circles applied to the allied field of play.\n\nNever misses. Lowers the Defense, Sp. Def, and evasiveness of all opposing sync pairs by 3 stat ranks. Causes a hailstorm. Applies the No Stat Increases effect to the opponent’s field of play. Applies the Stat Reduction Defense effect to the allied field of play. Returns lowered stats of all allied sync pairs to normal.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Gradual Healing effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Sp. Atk by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks. Applies the Gradual Healing effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Elegant\nPsychic Beam",
       "type": "Psychic",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 17070609,
       "name": "Set Allied/Entire Field Effect: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it activates a field effect on either the entire field of play or the allied field of play.",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when it activates a field effect on either the entire field of play or the allied field of play.",
       "childPassives": []
     },
     {
@@ -991,5 +991,10 @@
         "Elegant\nPsychic Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/019900_128.png",
+  "superAwakeningPassive": {
+    "name": "Elegant Psychic Powers",
+    "description": "Powers up the sync moves of all allied sync pairs during a hailstorm. Turns the field of play’s terrain into Psychic Terrain the first time the user’s Pokémon uses a move each battle. Extends the duration of Psychic Terrain when the terrain turns into Psychic Terrain while the user is on the field."
+  }
 }

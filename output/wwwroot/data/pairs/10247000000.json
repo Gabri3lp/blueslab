@@ -3,13 +3,13 @@
   "trainerBaseId": "10024700",
   "monsterId": "20247000000",
   "monsterBaseId": "20000600",
-  "displayName": "Trainer #10024700 & Charizard",
-  "trainerName": "Trainer #10024700",
+  "displayName": "Leon & Charizard",
+  "trainerName": "Leon",
   "monsterName": "Charizard",
   "type": "Fire",
   "weakness": "Electric",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Hurricane",
       "type": "Flying",
-      "category": "Status",
+      "category": "Special",
       "power": "126",
       "accuracy": "70",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Never misses when the weather is rainy. Has a chance ([Digit:2digits ]%) of leaving the target confused.",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Never misses when the weather is rainy. Has a chance (30%) of leaving the target confused.",
       "isSync": false
     },
     {
@@ -92,11 +92,11 @@
       "slot": 2,
       "name": "Earthquake",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "100",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "All opponents",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Inferno",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "183",
       "accuracy": "50",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s Attack and Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to the user. Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Attack and Sp. Atk by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank. Applies the Free Move Next effect to the user. Lowers the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Champion Time\nFire Blast",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 28010101,
       "name": "Galar Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Galar theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Galar theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
@@ -156,13 +156,13 @@
     {
       "id": 13060402,
       "name": "MP Rekindle 2",
-      "description": "Has a chance ([Digit:2digits ]%) of restoring one MP for the user when its Pokémon uses a move.",
+      "description": "Has a chance (30%) of restoring one MP for the user when its Pokémon uses a move.",
       "childPassives": []
     },
     {
       "id": 17043504,
       "name": "Super Preparation 4",
-      "description": "Has a chance ([Digit:2digits ]%) of applying the Supereffective ↑ Next effect to the user when its move is successful.",
+      "description": "Has a chance (50%) of applying the Supereffective ↑ Next effect to the user when its move is successful.",
       "childPassives": []
     }
   ],
@@ -955,5 +955,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/000600_128.png"
 }

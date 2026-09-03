@@ -3,13 +3,13 @@
   "trainerBaseId": "10009100",
   "monsterId": "20091000002",
   "monsterBaseId": "20044201",
-  "displayName": "Trainer #10009100 & Monster #20044201",
-  "trainerName": "Trainer #10009100",
-  "monsterName": "Monster #20044201",
+  "displayName": "Cynthia & Spiritomb",
+  "trainerName": "Cynthia",
+  "monsterName": "Spiritomb",
   "type": "Ghost",
   "weakness": "Fairy",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Hex",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "This attack’s power is doubled when the target is affected by a status condition.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target burned.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Evil Spirit\nShadow Ball",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "90",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Reduces all of the MP for this move. The more MP reduced, the greater the power of this attack. Has a chance ([Digit:2digits ]%) of lowering the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Leaves the target flinching, confused, and trapped when the remaining MP are reduced by 108 from a single attack.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Reduces all of the MP for this move. The more MP reduced, the greater the power of this attack. Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank. Leaves the target flinching, confused, and trapped when the remaining MP are reduced by 108 from a single attack.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the [Name:ReferencedMessageTag ] to all allied sync pairs.",
+      "target": "All allies",
+      "description": "Reduces the user’s sync move countdown by 2. Raises the user’s Sp. Atk by 4 stat ranks. Applies the Supereffective ↑ Next effect to all allied sync pairs.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Five Score and Eight Spirits\nGhost Beam",
       "type": "Ghost",
-      "category": "Status",
+      "category": "Special",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is affected by a status condition.",
       "isSync": true
@@ -166,34 +166,34 @@
     {
       "id": 99024801,
       "name": "Bad-to-Worse Hex",
-      "description": "The power of the user’s [Name:MoveId Idx=\"506\" ] is doubled when the target is affected by a status condition. Restores 32 MP of the user’s buddy move when its [Name:MoveId Idx=\"506\" ] is successful.",
+      "description": "The power of the user’s Hex is doubled when the target is affected by a status condition. Restores 32 MP of the user’s buddy move when its Hex is successful.",
       "childPassives": [
         {
           "id": 13083301,
           "name": "Opp Status Cond: Hex Power ×2",
-          "description": "The power of the user’s [Name:MoveId Idx=\"506\" ] is doubled when the target is affected by a status condition."
+          "description": "The power of the user’s Hex is doubled when the target is affected by a status condition."
         },
         {
           "id": 13062401,
           "name": "Hex: B-Move MP Recovery (32)",
-          "description": "Restores 32 MP of the user’s buddy move when its [Name:MoveId Idx=\"506\" ] is successful."
+          "description": "Restores 32 MP of the user’s buddy move when its Hex is successful."
         }
       ]
     },
     {
       "id": 99024901,
       "name": "Gathered Souls",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move. Restores 50 MP of the user’s buddy move after using its sync move.",
+      "description": "Charges the user’s move gauge by 6 after using its sync move. Restores 50 MP of the user’s buddy move after using its sync move.",
       "childPassives": [
         {
           "id": 12020206,
           "name": "Rejuvenate 6",
-          "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move."
+          "description": "Charges the user’s move gauge by 6 after using a sync move."
         },
         {
           "id": 13062509,
           "name": "S-Move: B-Move MP Recovery (50) 9",
-          "description": "Restores 50 MP of the user’s buddy move after using its sync move."
+          "description": "Has a chance (100%) of restoring 50 MP of the user’s buddy move after using its sync move."
         }
       ]
     }
@@ -932,5 +932,7 @@
         "Five Score and Eight Spirits\nGhost Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Spiritomb",
+  "pokemonIconUrl": "img/pokemon/044201_128.png"
 }

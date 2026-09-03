@@ -3,18 +3,18 @@
   "trainerBaseId": "10002600",
   "monsterId": "20026000000",
   "monsterBaseId": "20024101",
-  "displayName": "Trainer #10002600 & Miltank",
-  "trainerName": "Trainer #10002600",
+  "displayName": "Whitney & Miltank",
+  "trainerName": "Whitney",
   "monsterName": "Miltank",
   "type": "Normal",
   "weakness": "Fighting",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
   "hasTera": false,
-  "hasSuperAwakening": false,
+  "hasSuperAwakening": true,
   "syncMoveName": "Supercute\nRolling Tackle",
   "iconUrl": "img/trainers/0026_00-0241_00.png",
   "stats": {
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Body Slam",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Stomp",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "53",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (30%) of making the target flinch.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. Raises the user’s Defense by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Restores the user’s HP by approximately 40% of its maximum HP. Raises the user’s Defense by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Supercute\nRolling Tackle",
       "type": "Normal",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 18040602,
       "name": "Mad Strength 2",
-      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Attack by one stat rank when its attack move is successful.",
+      "description": "Has a chance (30%) of raising the user’s Attack by one stat rank when its attack move is successful.",
       "childPassives": []
     }
   ],
@@ -882,5 +882,10 @@
         "Supercute\nRolling Tackle": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/024101_128.png",
+  "superAwakeningPassive": {
+    "name": "The Incredibly Pretty Girl",
+    "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Applies Johto Circle (Defensive) to the allied field of play the first time the user’s sync move is used each battle. Extends the duration of Johto Circle (Defensive) when Johto Circle (Defensive) is applied to the allied field of play."
+  }
 }

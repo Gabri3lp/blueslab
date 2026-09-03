@@ -3,7 +3,7 @@
 @if (IsOpen)
 {
     <div class="modal-backdrop fade show" @onclick="Close"></div>
-    <div class="modal d-block fade show" tabindex="-1" role="dialog">
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" @onkeydown="HandleKeyDown">
         <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document" @onclick:stopPropagation>
             <div class="modal-content bg-dark text-light border-secondary">
                 <div class="modal-header border-secondary">
@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-search"></i></span>
-                                <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search trainer or Pokémon..." @bind="SearchQuery" @bind:event="oninput" autofocus />
+                                <input @ref="SearchInputRef" type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search trainer or Pokémon..." @bind="SearchQuery" @bind:event="oninput" autofocus />
                                 @if (!string.IsNullOrEmpty(SearchQuery))
                                 {
                                     <button class="btn btn-outline-secondary" type="button" @onclick="() => SearchQuery = string.Empty">✕</button>
@@ -107,6 +107,10 @@
     [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
     [Parameter] public EventCallback<string> OnPairSelected { get; set; }
 
+    private ElementReference SearchInputRef;
+    private bool _shouldFocusSearch;
+    private bool _wasOpen;
+
     private List<PairManifestItem> AllPairs = new();
     private string SearchQuery = "";
     private string SelectedType = "";
@@ -121,6 +125,35 @@
     protected override async Task OnInitializedAsync()
     {
         AllPairs = await DataService.GetManifestAsync();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (IsOpen && !_wasOpen)
+        {
+            _shouldFocusSearch = true;
+        }
+        _wasOpen = IsOpen;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_shouldFocusSearch)
+        {
+            _shouldFocusSearch = false;
+            await Task.Delay(50);
+            try
+            {
+                if (IsOpen)
+                {
+                    await SearchInputRef.FocusAsync();
+                }
+            }
+            catch
+            {
+                // Ignore focus errors if element is detached
+            }
+        }
     }
 
     private List<PairManifestItem> FilteredPairs
@@ -166,5 +199,13 @@
     {
         IsOpen = false;
         await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape")
+        {
+            await Close();
+        }
     }
 }

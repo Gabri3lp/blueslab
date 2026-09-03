@@ -3,13 +3,13 @@
   "trainerBaseId": "10011500",
   "monsterId": "20115000000",
   "monsterBaseId": "20040500",
-  "displayName": "Trainer #10011500 & Luxray",
-  "trainerName": "Trainer #10011500",
+  "displayName": "Volkner & Luxray",
+  "trainerName": "Volkner",
   "monsterName": "Luxray",
   "type": "Electric",
   "weakness": "Ground",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Fang",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "47",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Turns the field of play’s terrain into Electric Terrain.",
       "isSync": false
     },
@@ -110,7 +110,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Applies the Critical Hit Next effect to the user. Raises the accuracy of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the terrain is Electric Terrain.",
+      "description": "Raises the user’s Attack by 1 stat rank. Applies the Critical Hit Next effect to the user. Raises the accuracy of all allied sync pairs by 1 stat rank when the terrain is Electric Terrain.",
       "isSync": false
     },
     {
@@ -118,11 +118,11 @@
       "slot": 4,
       "name": "Wild Charge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "125",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The user also takes 20% of the damage it dealt to the target.",
       "isSync": false
     },
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Star Shock\nThunder Fang",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is paralyzed.",
       "isSync": true
@@ -156,7 +156,7 @@
     {
       "id": 18040101,
       "name": "Terrify 1",
-      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Lowers the Attack of all opposing sync pairs by 1 stat rank when the user enters a battle.",
       "childPassives": []
     }
   ],
@@ -986,5 +986,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/040500_128.png"
 }

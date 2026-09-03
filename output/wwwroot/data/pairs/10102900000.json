@@ -3,13 +3,13 @@
   "trainerBaseId": "10010290",
   "monsterId": "20102900000",
   "monsterBaseId": "20064000",
-  "displayName": "Bianca  (Champion) & Virizion",
-  "trainerName": "Bianca  (Champion)",
+  "displayName": "Bianca (Champion) & Virizion",
+  "trainerName": "Bianca (Champion)",
   "monsterName": "Virizion",
   "type": "Fighting",
   "weakness": "Flying",
   "role": "Strike (Physical)",
-  "exRole": "Strike (Physical)",
+  "exRole": "Support",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Sacred Sword",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "90",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "Ignores the target’s raised stats.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Unova Circle (Defensive) to the allied field of play. Unova Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Unova theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "White Light\nSacred Sword",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen [Name:ReferencedMessageTag ] is applied to the allied field of play.\nDeactivation Condition:\nWhen [Name:ReferencedMessageTag ] is no longer applied to the allied field of play.\n\nNever misses. Ignores the target’s raised stats. Lowers the target’s Attack and Sp. Atk by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Activation Condition: When Unova Circle (Defensive) is applied to the allied field of play.\nDeactivation Condition: When Unova Circle (Defensive) is no longer applied to the allied field of play.\n\nNever misses. Ignores the target’s raised stats. Lowers the target’s Attack and Sp. Atk by 3 stat ranks. Lowers the target’s Fighting Type Rebuff by 2 ranks.",
       "isSync": false
     },
     {
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Reduces the user’s sync move countdown by 1. Raises the user’s Attack by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Steps to a New Path\nSacred Sword",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,25 +144,25 @@
     {
       "id": 28010401,
       "name": "Unova Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
       "childPassives": []
     },
     {
       "id": 99017001,
       "name": "The Will to Protect",
-      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle. Powers up the moves and sync moves of all allied sync pairs when [Name:ReferencedMessageTag ] applies to the allied field of play. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while [Name:ReferencedMessageTag ] applies to the allied field of play.",
+      "description": "Applies Unova Circle (Defensive) to the allied field of play the first time the user enters a battle each battle. Powers up the moves and sync moves of all allied sync pairs when Unova Circle (Defensive) applies to the allied field of play. Applies the Free Move Next effect to the user when its attack move is successful while Unova Circle (Defensive) applies to the allied field of play.",
       "childPassives": []
     },
     {
       "id": 99017101,
       "name": "Assistant’s Observations",
-      "description": "Raises the Speed and evasiveness of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "description": "Raises the Speed and evasiveness of all allied sync pairs by 1 stat rank when the user’s attack move is successful.",
       "childPassives": []
     },
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
       "childPassives": []
     }
   ],
@@ -928,5 +928,6 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/064000_128.png"
 }

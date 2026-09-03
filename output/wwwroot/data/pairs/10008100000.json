@@ -3,13 +3,13 @@
   "trainerBaseId": "10000810",
   "monsterId": "20008100000",
   "monsterBaseId": "20047001",
-  "displayName": "Sygna Suit Erika & Monster #20047001",
+  "displayName": "Sygna Suit Erika & Leafeon",
   "trainerName": "Sygna Suit Erika",
-  "monsterName": "Monster #20047001",
+  "monsterName": "Leafeon",
   "type": "Grass",
   "weakness": "Poison",
   "role": "Tech",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Solar Blade",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "3",
+      "target": "An opponent",
       "description": "The user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. The preparation period is skipped when the weather is sunny, and the user will attack right away.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Speed by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. In addition, raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the weather is sunny. In addition, raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the weather is sunny. Applies the Gradual Healing effect to the user when the weather is sunny.",
+      "description": "Raises the user’s Attack by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank. In addition, raises the user’s Attack by 2 stat ranks when the weather is sunny. In addition, raises the user’s critical-hit rate by 1 stat rank when the weather is sunny. Applies the Gradual Healing effect to the user when the weather is sunny.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Sunny Snooze\nLeaf Blade",
       "type": "Grass",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "Critical hits land more easily. This attack’s power increases when the weather is sunny.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 15011502,
       "name": "Solar Propulsion 2",
-      "description": "Has a chance ([Digit:2digits ]%) of reducing the user’s sync move countdown by one when its move is successful while the weather is sunny.",
+      "description": "Has a chance (30%) of reducing the user’s sync move countdown by one when its move is successful while the weather is sunny.",
       "childPassives": []
     },
     {
@@ -894,5 +894,7 @@
         "Sunny Snooze\nLeaf Blade": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Leafeon",
+  "pokemonIconUrl": "img/pokemon/047001_128.png"
 }

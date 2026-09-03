@@ -3,13 +3,13 @@
   "trainerBaseId": "10002100",
   "monsterId": "20021900000",
   "monsterBaseId": "20005900",
-  "displayName": "Trainer #10002100 & Arcanine",
-  "trainerName": "Trainer #10002100",
+  "displayName": "Blue & Arcanine",
+  "trainerName": "Blue",
   "monsterName": "Arcanine",
   "type": "Fire",
   "weakness": "Ground",
   "role": "Strike (Special)",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Swift",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "57",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Never misses.",
       "isSync": false
     },
@@ -97,7 +97,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s Sp. Atk by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Hyper Beam",
       "type": "Normal",
-      "category": "Status",
+      "category": "Special",
       "power": "223",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "4",
+      "target": "An opponent",
       "description": "No additional effect.",
       "isSync": false
     },
@@ -123,7 +123,7 @@
       "accuracy": "0",
       "gauge": "0",
       "target": "Self",
-      "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the user’s critical-hit rate by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Raises the user’s accuracy by 1 stat rank. Raises the user’s critical-hit rate by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Top Dog\nFire Beam",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 18040101,
       "name": "Terrify 1",
-      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "description": "Lowers the Attack of all opposing sync pairs by 1 stat rank when the user enters a battle.",
       "childPassives": []
     },
     {
@@ -900,5 +900,6 @@
         "Top Dog\nFire Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/005900_128.png"
 }

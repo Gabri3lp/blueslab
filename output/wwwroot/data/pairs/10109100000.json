@@ -9,7 +9,7 @@
   "type": "Electric",
   "weakness": "Ground",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Thunder Fang",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "47",
       "accuracy": "95",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Has a chance ([Digit:2digits ]%) of making the target flinch. Has a chance ([Digit:2digits ]%) of leaving the target paralyzed.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target paralyzed.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Unova Circle (Defensive) to the allied field of play. Unova Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Unova theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Descending Lightning\nWild Charge",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "160",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition:\nWhen there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nLowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it is paralyzed. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it is burned. Lowers the target’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the [Name:ReferencedMessageTag Idx=\"6\" ] to the user when the target is confused. Increases the user’s [Name:ReferencedMessageTag Idx=\"7\" ] by [Digit:1digit Idx=\"8\" ] [EN:Qty Ref=\"8\" S=\"rank\" P=\"ranks\" ] when the target is trapped.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nLowers the target’s Defense by 2 stat ranks when it is paralyzed. Lowers the target’s Sp. Def by 2 stat ranks when it is burned. Lowers the target’s Speed by 2 stat ranks when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the Free Move Next effect to the user when the target is confused. Increases the user’s Physical Moves ↑ Next effect by 1 rank when the target is trapped.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Critical Hit Next effect to an ally. Applies the Supereffective ↑ Next effect to an ally. Increases the [Name:ReferencedMessageTag ] of an ally by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "target": "An ally",
+      "description": "Applies the Critical Hit Next effect to an ally. Applies the Supereffective ↑ Next effect to an ally. Increases the Sync Move ↑ Next effect of an ally by 5 ranks. Raises an ally’s Ground Type Rebuff by 2 ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "The Best, Perfect\nElectric Impact",
       "type": "Electric",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,7 +144,7 @@
     {
       "id": 99019601,
       "name": "Outbound Train Announcement",
-      "description": "Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to all allied sync pairs when the user’s max move targeting an opponent that is affected by a status condition is successful. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
+      "description": "Applies the Free Move Next effect to all allied sync pairs when the user’s max move targeting an opponent that is affected by a status condition is successful. Increases the user’s Physical Moves ↑ Next effect by 2 ranks when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
       "childPassives": []
     },
     {
@@ -156,7 +156,7 @@
     {
       "id": 18103609,
       "name": "Honing Hit 9",
-      "description": "Grants all of the following effects when the user’s move is successful:\nRaises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].\nRaises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "description": "Has a chance (100%) of granting all of the following effects when the user’s move is successful: Raises the user’s Attack by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank.",
       "childPassives": []
     }
   ],
@@ -997,5 +997,10 @@
         "The Best, Perfect\nElectric Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/060400_128.png",
+  "superAwakeningPassive": {
+    "name": "Follow the Rules and Drive Safely",
+    "description": "Reduces the user’s sync move countdown by 2 the first time its Trainer uses a move each battle. Powers up the sync moves of all allied sync pairs when Unova Circle (Defensive) applies to the allied field of play. Extends the duration of Unova Circle (Defensive) when Unova Circle (Defensive) is applied to the allied field of play."
+  }
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10009900",
   "monsterId": "20099000005",
   "monsterBaseId": "20039200",
-  "displayName": "Trainer #10009900 & Infernape",
-  "trainerName": "Trainer #10009900",
+  "displayName": "Barry & Infernape",
+  "trainerName": "Barry",
   "monsterName": "Infernape",
   "type": "Fighting",
   "weakness": "Water",
   "role": "Field",
-  "exRole": "",
+  "exRole": "Sprint",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Close Combat",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "124",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "3",
+      "target": "An opponent",
+      "description": "Lowers the user’s Defense and Sp. Def by 1 stat rank.",
       "isSync": false
     },
     {
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "gauge": "2",
+      "target": "An ally",
+      "description": "Turns the field of play’s zone into a Fighting Zone. (A Fighting Zone powers up Fighting-type attacks.)",
       "isSync": false
     },
     {
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Flaming\nRock Smash",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "400",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the field of play’s zone turns into a [Name:ReferencedMessageTag ].\nDeactivation Condition:\nWhen the field of play’s zone is no longer a [Name:ReferencedMessageTag ].\n\nNever misses. Lowers the target’s [Name:ReferencedMessageTag Idx=\"3\" ] by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time this attack move is successful each battle.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the field of play’s zone turns into a Fighting Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Fighting Zone.\n\nNever misses. Lowers the target’s Defense by 4 stat ranks. Lowers the target’s Fighting Type Rebuff by 1 rank the first time this attack move is successful each battle.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Applies the Supereffective ↑ Next effect to an ally.",
+      "target": "An ally",
+      "description": "Raises an ally’s Attack by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks. Applies the Supereffective ↑ Next effect to an ally.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "There’s No End\nFighting Impact",
       "type": "Fighting",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,29 +144,29 @@
     {
       "id": 99033301,
       "name": "Who’s Got Time to Count?!",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19570\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19570\" ].",
+      "description": "Reduces the user’s sync move countdown by 1 when it uses Fighting Wish. Increases the user’s Physical Moves ↑ Next effect by 2 ranks when it uses Fighting Wish.",
       "childPassives": [
         {
           "id": 15014709,
           "name": "Use Fighting Wish: Sync CD ↓ 9",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19570\" ]."
+          "description": "Has a chance (100%) of reducing the user’s sync move countdown by 1 when it uses Fighting Wish."
         },
         {
           "id": 17087409,
           "name": "Use Fighting Wish: Physical Boost ↑2 9",
-          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19570\" ]."
+          "description": "Has a chance (100%) of increasing the user’s Physical Moves ↑ Next effect by 2 ranks when it uses Fighting Wish."
         }
       ]
     },
     {
       "id": 99033401,
       "name": "Headstrong and Reckless",
-      "description": "Powers up the user’s [Name:MoveId Idx=\"370\" ]. The user’s stats cannot be lowered. Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s [Name:MoveId Idx=\"370\" ] is successful.",
+      "description": "Powers up the user’s Close Combat. The user’s stats cannot be lowered. Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s Close Combat is successful.",
       "childPassives": [
         {
           "id": 13084105,
           "name": "Close Combat Power ↑ 5",
-          "description": "Powers up the user’s [Name:MoveId Idx=\"370\" ]."
+          "description": "Powers up the user’s Close Combat."
         },
         {
           "id": 18020901,
@@ -176,14 +176,14 @@
         {
           "id": 18123701,
           "name": "Close Combat: Attack ↓ & Sp. Atk ↓ 1",
-          "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s [Name:MoveId Idx=\"370\" ] is successful."
+          "description": "Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s Close Combat is successful."
         }
       ]
     },
     {
       "id": 17087509,
       "name": "Fighting Zone & Hit: Free Move Next 9",
-      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the zone is a Fighting Zone.",
       "childPassives": []
     }
   ],
@@ -921,5 +921,6 @@
         "There’s No End\nFighting Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/039200_128.png"
 }

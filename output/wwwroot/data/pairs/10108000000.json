@@ -3,13 +3,13 @@
   "trainerBaseId": "10010800",
   "monsterId": "20108000000",
   "monsterBaseId": "20053000",
-  "displayName": "Trainer #10010800 & Excadrill",
-  "trainerName": "Trainer #10010800",
+  "displayName": "Ingo & Excadrill",
+  "trainerName": "Ingo",
   "monsterName": "Excadrill",
   "type": "Ground",
   "weakness": "Water",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "Tech",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,12 +79,12 @@
       "slot": 1,
       "name": "Mud-Slap",
       "type": "Ground",
-      "category": "Status",
+      "category": "Special",
       "power": "13",
       "accuracy": "90",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Lowers the target’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "gauge": "1",
+      "target": "An opponent",
+      "description": "Lowers the target’s accuracy by 1 stat rank.",
       "isSync": false
     },
     {
@@ -96,8 +96,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Restores an ally’s HP by approximately [Digit:2digits ]% of its maximum HP.",
+      "target": "An ally",
+      "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
       "isSync": false
     },
     {
@@ -108,8 +108,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Causes a sandstorm.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Raises the critical-hit rate of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Applies the Free Move Next effect to all allied sync pairs during a sandstorm.",
+      "target": "All allies",
+      "description": "Raises the Attack of all allied sync pairs by 1 stat rank. Raises the critical-hit rate of all allied sync pairs by 2 stat ranks. Applies the Free Move Next effect to all allied sync pairs during a sandstorm.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "No Brakes\nDrill Run",
       "type": "Ground",
-      "category": "Status",
+      "category": "Physical",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -144,19 +144,19 @@
     {
       "id": 18093909,
       "name": "Sandy Pep Rally 9",
-      "description": "Raises the Speed of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move during a sandstorm.",
+      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 1 stat rank when the user’s Pokémon uses a move during a sandstorm.",
       "childPassives": []
     },
     {
       "id": 18094102,
       "name": "Ferocious Affliction 2",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time a status move used by the user’s Pokémon is successful each battle.",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 2 stat ranks the first time a status move used by the user’s Pokémon is successful each battle.",
       "childPassives": []
     },
     {
       "id": 23010401,
       "name": "Sedimentary",
-      "description": "Protects the user from damage from a sandstorm. The user’s Defense and Sp. Def increase 30% during a sandstorm.",
+      "description": "Protects the user from damage from a sandstorm. The user’s Defense and Sp. Def increase 10% during a sandstorm.",
       "childPassives": []
     }
   ],
@@ -978,5 +978,10 @@
       "statBonus": {},
       "powerBonus": {}
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/053000_128.png",
+  "superAwakeningPassive": {
+    "name": "Subway Boss in Black",
+    "description": "Reduces the user’s sync move countdown by 1 when its Pokémon uses a status move. Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Restores 1 MP for the user the first time its sync move is used each battle."
+  }
 }

@@ -3,13 +3,13 @@
   "trainerBaseId": "10011200",
   "monsterId": "20112000003",
   "monsterBaseId": "20025000",
-  "displayName": "Trainer #10011200 & Ho-Oh",
-  "trainerName": "Trainer #10011200",
+  "displayName": "Ethan & Ho-Oh",
+  "trainerName": "Ethan",
   "monsterName": "Ho-Oh",
   "type": "Fire",
   "weakness": "Rock",
   "role": "Sprint",
-  "exRole": "Strike (Physical)",
+  "exRole": "Field",
   "rarity": 5,
   "hasEx": true,
   "hasMega": false,
@@ -79,11 +79,11 @@
       "slot": 1,
       "name": "Fire Spin",
       "type": "Fire",
-      "category": "Status",
+      "category": "Special",
       "power": "38",
       "accuracy": "85",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An opponent",
       "description": "Leaves the target trapped.",
       "isSync": false
     },
@@ -95,8 +95,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "An ally",
       "description": "Makes the weather sunny.",
       "isSync": false
     },
@@ -105,12 +105,12 @@
       "slot": 3,
       "name": "Rainbow Flames\nSacred Fire",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "165",
       "accuracy": "100",
-      "gauge": "0",
-      "target": "Self",
-      "description": "Activation Condition:\nWhen the weather turns sunny.\nDeactivation Condition:\nWhen the weather condition is no longer sunny.\n\nRemoves the frozen condition from the user. Lowers the target’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ]. Leaves the target burned.",
+      "gauge": "2",
+      "target": "An opponent",
+      "description": "Activation Condition: When the weather turns sunny.\nDeactivation Condition: When the weather condition is no longer sunny.\n\nRemoves the frozen condition from the user. Lowers the target’s Defense and Sp. Def by 1 stat rank. Leaves the target burned.",
       "isSync": false
     },
     {
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Applies the Gradual Healing effect to all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"7\" ] [EN:Qty Ref=\"7\" S=\"rank\" P=\"ranks\" ]. Applies [Name:ReferencedMessageTag Idx=\"9\" ] to the allied field of play. [Name:ReferencedMessageTag Idx=\"9\" ] grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by [Digit:1digit ]%. Reduces attack move and sync move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by [Digit:1digit Idx=\"3\" ]% and reduces damage by [Digit:1digit Idx=\"4\" ]%. The maximum power-up is [Digit:2digits Idx=\"5\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"6\" ]%.)",
+      "target": "An ally",
+      "description": "Applies the Gradual Healing effect to all allied sync pairs. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Johto Circle (Defensive) to the allied field of play. Johto Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Johto theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Blazing Heart\nFire Impact",
       "type": "Fire",
-      "category": "Status",
+      "category": "Physical",
       "power": "200",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the weather is sunny.",
       "isSync": true
@@ -166,13 +166,13 @@
     {
       "id": 18093304,
       "name": "Ferocious Entry 4",
-      "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "description": "Raises the user’s Attack and Sp. Atk by 4 stat ranks when it enters a battle.",
       "childPassives": []
     },
     {
       "id": 15013409,
       "name": "Use Status P-Move: Sync CD ↓ 9",
-      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when its Pokémon uses a status move.",
+      "description": "Has a chance (100%) of reducing the user’s sync move countdown by 1 when its Pokémon uses a status move.",
       "childPassives": []
     }
   ],
@@ -916,5 +916,6 @@
         "Blazing Heart\nFire Impact": 25
       }
     }
-  ]
+  ],
+  "pokemonIconUrl": "img/pokemon/025000_128.png"
 }

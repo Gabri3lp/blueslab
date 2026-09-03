@@ -3,13 +3,13 @@
   "trainerBaseId": "10001700",
   "monsterId": "20017000001",
   "monsterBaseId": "20003601",
-  "displayName": "Trainer #10001700 & Monster #20003601",
-  "trainerName": "Trainer #10001700",
-  "monsterName": "Monster #20003601",
+  "displayName": "Leaf & Clefable",
+  "trainerName": "Leaf",
+  "monsterName": "Clefable",
   "type": "Fairy",
   "weakness": "Steel",
   "role": "Support",
-  "exRole": "Strike (Physical)",
+  "exRole": "",
   "rarity": 4,
   "hasEx": true,
   "hasMega": false,
@@ -82,8 +82,8 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "1",
+      "target": "An opponent",
       "description": "Uses one of several moves at random.",
       "isSync": false
     },
@@ -95,9 +95,9 @@
       "category": "Status",
       "power": "0",
       "accuracy": "0",
-      "gauge": "0",
+      "gauge": "2",
       "target": "Self",
-      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP. HP is restored by [Digit:2digits Idx=\"1\" ]% instead when the weather is sunny, and [Digit:2digits Idx=\"2\" ]% when the weather is rainy or during a hailstorm or a sandstorm.",
+      "description": "Restores the user’s HP by approximately 50% of its maximum HP. HP is restored by 60% instead when the weather is sunny, and 40% when the weather is rainy or during a hailstorm or a sandstorm.",
       "isSync": false
     },
     {
@@ -105,11 +105,11 @@
       "slot": 3,
       "name": "Disarming Voice",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "45",
       "accuracy": "0",
-      "gauge": "0",
-      "target": "Self",
+      "gauge": "2",
+      "target": "All opponents",
       "description": "Never misses.",
       "isSync": false
     },
@@ -122,8 +122,8 @@
       "power": "0",
       "accuracy": "0",
       "gauge": "0",
-      "target": "Self",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "target": "All allies",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 2 stat ranks.",
       "isSync": false
     },
     {
@@ -131,10 +131,10 @@
       "slot": 5,
       "name": "Rarely Seen\nFairy Beam",
       "type": "Fairy",
-      "category": "Status",
+      "category": "Special",
       "power": "250",
       "accuracy": "-",
-      "gauge": "-",
+      "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
       "isSync": true
@@ -150,7 +150,7 @@
     {
       "id": 12021501,
       "name": "Charging Infliction 1",
-      "description": "Charges the user’s move gauge by [Digit:1digit ] when its Pokémon uses a status move.",
+      "description": "Charges the user’s move gauge by 1 when its Pokémon uses a status move.",
       "childPassives": []
     },
     {
@@ -892,5 +892,7 @@
         "Rarely Seen\nFairy Beam": 25
       }
     }
-  ]
+  ],
+  "pokemonName": "Clefable",
+  "pokemonIconUrl": "img/pokemon/054200_128.png"
 }
