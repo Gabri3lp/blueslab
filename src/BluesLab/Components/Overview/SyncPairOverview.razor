@@ -334,8 +334,16 @@
                     <button class="btn btn-sm @(ActiveSection == "moves" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("moves")'>
-                        <i class="bi bi-lightning-fill me-1"></i> Moves (@allDisplayMoves.Count)
+                        <i class="bi bi-lightning-fill me-1"></i> Moves (@Pair.Moves.Count)
                     </button>
+                    @if (maxMovesList.Count > 0)
+                    {
+                        <button class="btn btn-sm @(ActiveSection == "max_moves" ? "btn-pink text-white fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
+                                style="font-size: 0.8rem;"
+                                @onclick='() => SetSection("max_moves")'>
+                            <i class="bi bi-clouds-fill me-1"></i> Max Moves (@maxMovesList.Count)
+                        </button>
+                    }
                     <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("passives")'>
@@ -348,7 +356,7 @@
                     </button>
                 </div>
 
-                @if (ActiveSection == "moves" && allDisplayMoves.Count > 0)
+                @if ((ActiveSection == "moves" || ActiveSection == "max_moves") && ((ActiveSection == "moves" && Pair.Moves.Count > 0) || (ActiveSection == "max_moves" && maxMovesList.Count > 0)))
                 {
                     <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light"
                             style="font-size: 0.75rem; height: 26px;"
@@ -366,7 +374,7 @@
                 int effectiveLvl = Ally.SuperAwakeningLevel > 0 ? (5 + Ally.SuperAwakeningLevel) : Ally.MoveLevel;
 
                 <div class="d-flex flex-column gap-1">
-                    @foreach (var move in allDisplayMoves)
+                    @foreach (var move in Pair.Moves)
                     {
                         var (scaledPwr, multPct) = GetEffectiveMovePower(move, effectiveLvl);
                         string moveType = GetEffectiveMoveType(move);
@@ -389,6 +397,79 @@
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-0.5">
                                         <span class="badge type-badge type-@moveType.ToLowerInvariant() py-0 px-1" style="font-size: 0.7rem;">@moveType</span>
+                                        <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
+                                        @if (!string.IsNullOrEmpty(moveTarget))
+                                        {
+                                            <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="text-end small" style="line-height: 1.25;">
+                                        @if (scaledPwr > 0)
+                                        {
+                                            <div>Power: <b class="text-warning">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
+                                        }
+                                        else
+                                        {
+                                            <div>Power: <b class="text-muted">-</b></div>
+                                        }
+                                        <div class="text-muted" style="font-size: 0.75rem;">Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
+                                    </div>
+
+                                    <button class="btn btn-sm btn-outline-secondary py-0 px-1 text-light" style="font-size: 0.75rem; height: 24px; width: 24px;" title="Toggle Description">
+                                        <i class="bi @(isExpanded ? "bi-chevron-up" : "bi-chevron-down")"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
+                            {
+                                <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
+                                    @move.Description
+                                </div>
+                            }
+                        </div>
+                    }
+
+                    @if (maxMovesList.Count > 0)
+                    {
+                        <div class="d-flex align-items-center justify-content-between p-2 rounded bg-pink bg-opacity-10 border border-pink mt-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge btn-pink text-white"><i class="bi bi-clouds-fill me-1"></i> Dynamax Available</span>
+                                <span class="text-light small">This sync pair can use <b>@maxMovesList.Count</b> Max Move@(maxMovesList.Count > 1 ? "s" : "")!</span>
+                            </div>
+                            <button class="btn btn-sm btn-pink py-0 px-2 text-white" style="font-size: 0.75rem;" @onclick='() => SetSection("max_moves")'>
+                                View Max Moves &rarr;
+                            </button>
+                        </div>
+                    }
+                </div>
+            }
+
+            <!-- Max Moves View -->
+            @if (ActiveSection == "max_moves")
+            {
+                int effectiveLvl = Math.Clamp(Ally.MoveLevel, 1, 5);
+
+                <div class="d-flex flex-column gap-1">
+                    @foreach (var move in maxMovesList)
+                    {
+                        var (scaledPwr, multPct) = GetEffectiveMovePower(move, effectiveLvl);
+                        string moveType = GetEffectiveMoveType(move);
+                        string moveTarget = GetEffectiveMoveTarget(move);
+                        bool isExpanded = !CollapsedMoveIds.Contains(move.Id);
+
+                        <div class="card move-card move-card-@moveType.ToLowerInvariant() px-3 py-2 shadow-sm border-pink">
+                            <div class="d-flex justify-content-between align-items-center cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
+                                <div>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <span class="fw-bold text-light" style="font-size: 0.95rem;">@move.Name</span>
+                                        <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">Max Move</span>
+                                    </div>
+                                    <div class="d-flex gap-1 align-items-center mt-0.5">
+                                        <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@moveType</span>
                                         <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
                                         @if (!string.IsNullOrEmpty(moveTarget))
                                         {

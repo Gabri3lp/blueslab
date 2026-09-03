@@ -320,11 +320,15 @@
             <div class="card-body">
                 <div class="d-flex flex-column gap-3">
                     @{
-                        var activeAttackerMoves = State.ActiveAttacker.Pair.Moves
+                        var allAttackerMoves = State.ActiveAttacker.Pair.Moves
                             .Concat(CalcService.GetMaxMoves(State.ActiveAttacker.Pair))
-                            .Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0);
+                            .Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0)
+                            .ToList();
+                        var normalAttackerMoves = allAttackerMoves.Where(m => !m.IsMax).ToList();
+                        var maxAttackerMoves = allAttackerMoves.Where(m => m.IsMax).ToList();
                     }
-                    @foreach (var move in activeAttackerMoves)
+
+                    @foreach (var move in normalAttackerMoves)
                     {
                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
 
@@ -338,10 +342,6 @@
                                         @if (move.IsSync)
                                         {
                                             <span class="badge bg-purple">Sync Move</span>
-                                        }
-                                        else if (move.IsMax)
-                                        {
-                                            <span class="badge btn-pink text-white">Max Move</span>
                                         }
                                         @if (teamResult.IsAoE)
                                         {
@@ -397,6 +397,86 @@
                                 }
                             </div>
                         </div>
+                    }
+
+                    @if (maxAttackerMoves.Count > 0)
+                    {
+                        <div class="d-flex align-items-center justify-content-between gap-2 mt-3 pt-2 border-top border-secondary border-opacity-50">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge btn-pink text-white px-2 py-1" style="font-size: 0.8rem;">
+                                    <i class="bi bi-clouds-fill me-1"></i> Max Moves (Dynamax)
+                                </span>
+                                <span class="text-muted small" style="font-size: 0.75rem;">(Unaffected by Next Boosts & AoE penalty)</span>
+                            </div>
+                            <span class="badge bg-secondary text-light" style="font-size: 0.7rem;">@maxAttackerMoves.Count Available</span>
+                        </div>
+
+                        @foreach (var move in maxAttackerMoves)
+                        {
+                            var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
+
+                            <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3 border-pink">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="fw-bold text-light fs-6">@move.Name</span>
+                                            <span class="badge btn-pink text-white">Max Move</span>
+                                        </div>
+                                        <div class="d-flex gap-1 align-items-center mt-1">
+                                            <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                            <span class="badge bg-secondary">@move.Category</span>
+                                            @if (teamResult.IsAoE)
+                                            {
+                                                <span class="badge bg-info text-dark">AoE / All Targets</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Triple Enemy Breakdown -->
+                                <div class="row g-2 mt-1">
+                                    <div class="col-md-4">
+                                        <div class="p-2 rounded border @(State.ActiveTargetIndex == 0 ? "border-warning bg-warning bg-opacity-10" : "border-secondary bg-black bg-opacity-25") text-center">
+                                            <div class="small text-muted fw-bold mb-1">Left Enemy</div>
+                                            <div class="fs-5 fw-bold text-warning">@teamResult.LeftDamage.AvgDamage.ToString("N0")</div>
+                                            <div class="small text-muted" style="font-size: 0.75rem;">
+                                                @teamResult.LeftDamage.MinDamage.ToString("N0") - @teamResult.LeftDamage.MaxDamage.ToString("N0")
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="p-2 rounded border @(State.ActiveTargetIndex == 1 ? "border-warning bg-warning bg-opacity-10" : "border-secondary bg-black bg-opacity-25") text-center">
+                                            <div class="small text-muted fw-bold mb-1">Center (Boss)</div>
+                                            <div class="fs-5 fw-bold text-warning">@teamResult.CenterDamage.AvgDamage.ToString("N0")</div>
+                                            <div class="small text-muted" style="font-size: 0.75rem;">
+                                                @teamResult.CenterDamage.MinDamage.ToString("N0") - @teamResult.CenterDamage.MaxDamage.ToString("N0")
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="p-2 rounded border @(State.ActiveTargetIndex == 2 ? "border-warning bg-warning bg-opacity-10" : "border-secondary bg-black bg-opacity-25") text-center">
+                                            <div class="small text-muted fw-bold mb-1">Right Enemy</div>
+                                            <div class="fs-5 fw-bold text-warning">@teamResult.RightDamage.AvgDamage.ToString("N0")</div>
+                                            <div class="small text-muted" style="font-size: 0.75rem;">
+                                                @teamResult.RightDamage.MinDamage.ToString("N0") - @teamResult.RightDamage.MaxDamage.ToString("N0")
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Breakdown Multiplier Pills for Active Target -->
+                                <div class="d-flex flex-wrap gap-1 mt-2">
+                                    @foreach (var pill in teamResult.ActiveTargetDamage.Breakdown)
+                                    {
+                                        <span class="badge" style="background-color: @pill.Color;">
+                                            @pill.Label: @pill.Value
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        }
                     }
                 </div>
             </div>
