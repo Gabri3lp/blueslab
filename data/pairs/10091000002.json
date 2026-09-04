@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "This attack’s power is doubled when the target is affected by a status condition.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 261,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6120,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Reduces all of the MP for this move. The more MP reduced, the greater the power of this attack. Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank. Leaves the target flinching, confused, and trapped when the remaining MP are reduced by 108 from a single attack.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 108,
+      "isTrainer": false
     },
     {
       "id": 10916,
       "slot": 4,
       "name": "Too Fun\nto End!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Reduces the user’s sync move countdown by 2. Raises the user’s Sp. Atk by 4 stat ranks. Applies the Supereffective ↑ Next effect to all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 117700,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is affected by a status condition.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

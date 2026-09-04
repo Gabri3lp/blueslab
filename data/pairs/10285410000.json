@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "Activation Condition: When there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition: Cannot be deactivated.\n\nThis attack’s power is doubled when the target is affected by a status condition. Lowers the target’s accuracy by 3 stat ranks. Applies the Special Move Break effect to the target.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 19002,
       "slot": 2,
       "name": "Super Potion",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "1",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 60% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6146,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition: When there is at least one Pokémon affected by a status condition on the opponent’s field of play.\nDeactivation Condition: Cannot be deactivated.\n\nThe power of this move is not lowered even if there are multiple targets. This attack’s power is doubled when the target is affected by a status condition. Applies the Supereffective ↑ Next effect to the user when its team does not have a sync buff. Increases the user’s Sync Move ↑ Next effect by 5 ranks when its team does not have a sync buff. Reduces the user’s sync move countdown by 2 when its team has a sync buff.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 12855,
       "slot": 4,
       "name": "Strength in\nNumbers!",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces an ally’s sync move countdown by 1. Raises an ally’s Sp. Atk by 6 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 200801,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (30%) of leaving the target poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 92,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target badly poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6061,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When there is at least one poisoned or badly poisoned Pokémon on the opponent’s field of play.\nDeactivation Condition: When there are no longer any poisoned or badly poisoned Pokémon on the opponent’s field of play.\n\nLeaves the target confused. Lowers the target’s accuracy by 1 stat rank. Applies the Move Gauge Acceleration effect to the allied field of play. Reduces the user’s sync move countdown by 1.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 11218,
       "slot": 4,
       "name": "Prove You\nGot Guts!",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the user’s Speed by 6 stat ranks. Raises the evasiveness of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 50802,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Speed is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

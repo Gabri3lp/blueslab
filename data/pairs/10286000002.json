@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Has a chance (10%) of leaving the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 261,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 241,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Makes the weather sunny.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 12861,
       "slot": 4,
       "name": "Fire It Up!",
-      "type": "Fire",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by one. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 121400,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is burned.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Lowers the user’s Defense and Sp. Def by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19570,
       "slot": 2,
       "name": "Fighting Wish",
-      "type": "Fighting",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Turns the field of play’s zone into a Fighting Zone. (A Fighting Zone powers up Fighting-type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6151,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the field of play’s zone turns into a Fighting Zone.\nDeactivation Condition: When the field of play’s zone is no longer a Fighting Zone.\n\nNever misses. Lowers the target’s Defense by 4 stat ranks. Lowers the target’s Fighting Type Rebuff by 1 rank the first time this attack move is successful each battle.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 10997,
       "slot": 4,
       "name": "I Believe\nin You!",
-      "type": "Fighting",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Raises an ally’s Attack by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks. Applies the Supereffective ↑ Next effect to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 122200,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19170,
       "slot": 2,
       "name": "Booster\nEnergy",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6084,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nNever misses. Lowers the target’s Sp. Def by 2 stat ranks. Lowers the target’s Ghost Type Rebuff by 1 rank the first time this attack move is successful each battle. The power of this move is not lowered even if there are multiple targets.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 12968,
       "slot": 4,
       "name": "Broadcastin’\nLive!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Supereffective ↑ Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 111100,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

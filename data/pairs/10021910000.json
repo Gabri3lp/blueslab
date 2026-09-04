@@ -85,7 +85,9 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets. If the user’s Pidgeot has Mega Evolved, also doubles this attack’s power. When the user’s team does not have a sync buff, also reduces the user’s sync move countdown by 3.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 182,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Applies the Damage Guard Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 403,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (30%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 10213,
       "slot": 4,
       "name": "I’ll Tell\nYou!",
-      "type": "Flying",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by one. Increases the user’s Special Moves ↑ Next effect by 5 ranks. If the user’s Pidgeot has Mega Evolved, also restores 1 MP of its Almighty Air Slash.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 64700,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Pidgeot until the end of battle. Applies the Enduring effect to the user the first time its sync move is used each battle.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

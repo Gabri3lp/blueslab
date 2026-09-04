@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Attacks the target two to five times in a row.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 241,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Makes the weather sunny.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6136,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nThe user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. The preparation period is skipped when the weather is sunny, and the user will attack right away. Never misses. Lowers the target’s Sp. Def and Speed by 2 stat ranks. The more the user’s Speed is raised, the more it increases its Special Moves ↑ Next effect (can be increased by up to 3 ranks maximum). Removes all of the user’s Speed increases.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 10165,
       "slot": 4,
       "name": "To the\nSkies!",
-      "type": "Grass",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by one. Raises the user’s Speed by 2 stat ranks. Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 120300,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the weather is sunny.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

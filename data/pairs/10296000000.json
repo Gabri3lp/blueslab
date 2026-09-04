@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Lowers the target’s Sp. Atk. by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6044,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Special Moves ↑ Next effect is rank 3 or higher.\nDeactivation Condition: When the user’s Special Moves ↑ Next effect is rank 2 or lower.\n\nLowers the target’s Sp. Def by 2 stat ranks. Has a chance (50%) of making the target flinch. Leaves the target paralyzed.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 12960,
       "slot": 4,
       "name": "On the\nRise!",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks. Increases the Special Moves ↑ Next effect of all allied sync pairs by 2 ranks. Applies the Enduring effect to all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 101800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

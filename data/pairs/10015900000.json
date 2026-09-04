@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Lowers the target’s Defense by 2 stat ranks. Has a chance (30%) of making the target flinch. The power and chance of applying additional effects of this move are not lowered even if there are multiple targets. Raises the user’s Defense by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Rock",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6173,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Defense is raised.\nDeactivation Condition: When the user’s Defense is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The more the user’s Defense is raised, the greater the power of this attack. The more the user’s Defense is raised, the more it reduces its sync move countdown (can be reduced by up to 3 maximum). The more the user’s Defense is raised, the more it increases its Physical Moves ↑ Next effect (can be increased by up to 3 ranks maximum). Removes all of the user’s Defense increases.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 10159,
       "slot": 4,
       "name": "Rock-Hard\nBond!",
-      "type": "Rock",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by one. Applies the Free Move Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 2 ranks. Increases the user’s Sync Move ↑ Next effect by 4 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 120100,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

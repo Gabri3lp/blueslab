@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (30%) of lowering the target’s Sp. Atk by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 640,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Turns the field of play’s terrain into Psychic Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6018,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition: When weather, terrain, or zone effects are activated.\nDeactivation Condition: When all weather, terrain, and zone effects are cleared.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The power of this move is not lowered even if there are multiple targets. Decreases the amount of move gauge slots needed to use this move by 2 when the terrain is Psychic Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 11601,
       "slot": 4,
       "name": "Cast the Line!",
-      "type": "Psychic",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Attack and Sp. Atk by 6 stat ranks. Applies the Supereffective ↑ Next effect to the user when the terrain is Psychic Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 51101,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

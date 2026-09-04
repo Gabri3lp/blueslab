@@ -85,20 +85,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Removes the frozen condition from the user. Has a chance (10%) of leaving the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 12435,
       "slot": 2,
       "name": "All the Fun!",
-      "type": "Rock",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Restores the user’s HP by approximately 20% of its maximum HP. Restores the HP of all allied sync pairs by approximately 20% of their maximum HP. Removes all status conditions and the flinching, confused, and trapped conditions from all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6144,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nApplies the Physical Move Break effect and Special Move Break effect to the target. Reduces the user’s sync move countdown by 3. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 12436,
       "slot": 4,
       "name": "Get\nExcited!",
-      "type": "Rock",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 6 stat ranks. Uses a maximum of 3 slots of the user’s move gauge. The more amount used, the more it raises the critical-hit rate of all allied sync pairs (can be raised by zero to three stat ranks maximum).",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 201301,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

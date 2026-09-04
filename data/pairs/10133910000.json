@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Removes the frozen condition from the user. Has a chance (50%) of leaving the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 105,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Restores the user’s HP by approximately 50% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6134,
@@ -111,20 +115,24 @@
       "gauge": "1",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s HP is at 50% or more.\nDeactivation Condition: When the user’s HP is less than 50%.\n\nNever misses. Removes the frozen condition from the user. Leaves the target burned. The power of this move is not lowered even if there are multiple targets. Makes the weather EX sunny if the remaining MP is 3 when this move is selected. Lowers the target’s Defense and Sp. Def by 3 stat ranks if the remaining MP is 2 when this move is selected. Applies the Enduring effect to all allied sync pairs if the remaining MP is 1 when this move is selected.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 11332,
       "slot": 4,
       "name": "Pure and\nStrong!",
-      "type": "Fire",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by two. Raises the user’s Defense and Sp. Def by 6 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 115000,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Applies the Damage Guard Next effect to the user the first time its sync move is used each battle.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

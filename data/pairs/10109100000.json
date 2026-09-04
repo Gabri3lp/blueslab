@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (10%) of making the target flinch. Has a chance (10%) of leaving the target paralyzed.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 8214,
       "slot": 2,
       "name": "Unova\nSolidarity",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Unova Circle (Defensive) to the allied field of play. Unova Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Unova theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6087,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nLowers the target’s Defense by 2 stat ranks when it is paralyzed. Lowers the target’s Sp. Def by 2 stat ranks when it is burned. Lowers the target’s Speed by 2 stat ranks when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the Free Move Next effect to the user when the target is confused. Increases the user’s Physical Moves ↑ Next effect by 1 rank when the target is trapped.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 11091,
       "slot": 4,
       "name": "Aim for\nVictory!",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the Critical Hit Next effect to an ally. Applies the Supereffective ↑ Next effect to an ally. Increases the Sync Move ↑ Next effect of an ally by 5 ranks. Raises an ally’s Ground Type Rebuff by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 112500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

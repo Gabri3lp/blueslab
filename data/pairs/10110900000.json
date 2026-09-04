@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Lowers the target’s Sp. Def and Speed by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 8201,
       "slot": 2,
       "name": "Kanto\nAnalysis",
-      "type": "Water",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Kanto Circle (Special) to the allied field of play. Kanto Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Kanto theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6175,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11103,
       "slot": 4,
       "name": "Endure and\nAttack!",
-      "type": "Water",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Applies the Damage Guard Next effect to the user. Increases the user’s Sync Move ↑ Next effect by 5 ranks. Applies the Enduring effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 120000,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Increases the user’s Special Moves ↑ Next effect by 2 ranks.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

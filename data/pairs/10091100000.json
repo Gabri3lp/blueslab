@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Fighting",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6002,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition: When the user is hit by an attack move twice.\nDeactivation Condition: When this move is used.\n\nNever misses. Applies the Move Gauge Acceleration effect to the allied field of play. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 2 ranks. Increases the Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 10919,
       "slot": 4,
       "name": "It Won’t\nEnd Here!",
-      "type": "Fighting",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks. These stats are raised by 6 stat ranks instead when the zone is a Fighting Zone.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 63400,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Lucario until the end of battle.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

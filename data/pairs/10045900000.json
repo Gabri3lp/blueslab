@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "All opponents",
       "description": "Lowers the target’s Defense by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19011,
       "slot": 2,
       "name": "X Attack All",
-      "type": "Bug",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 210,
@@ -111,20 +115,24 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "Except in certain circumstances, grants all of the following effects: This move’s power increases when successfully used in succession. If the user takes an action other than this move, its power returns to normal.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 10459,
       "slot": 4,
       "name": "No Stone\nUnturned!",
-      "type": "Bug",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the critical-hit rate of all allied sync pairs by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 86900,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

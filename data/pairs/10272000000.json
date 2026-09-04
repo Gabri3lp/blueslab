@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (30%) of leaving the target poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 398,
@@ -98,7 +100,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (30%) of leaving the target poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6066,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Physical Moves ↑ Next effect or Special Moves ↑ Next effect is increased.\nDeactivation Condition: When the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect are not increased.\n\nThis move’s category changes to Physical when the user’s Physical Moves ↑ Next effect rank is higher than its Special Moves ↑ Next effect rank. Conversely, this move’s category changes to Special when the user’s Special Moves ↑ Next effect rank is equal to or higher than its Physical Moves ↑ Next effect rank. The category for this move’s corresponding max move will not change from Special. Never misses. Leaves the target poisoned. In addition, grants the following two effects when this move’s category is Physical: Lowers the target’s Attack and Defense by 2 stat ranks. Restores the user’s HP. In addition, grants the following two effects when this move’s category is Special: Lowers the target’s Sp. Atk and Sp. Def by 2 stat ranks. Applies the Free Move Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 12720,
       "slot": 4,
       "name": "I’m Gettin’\nBetter!",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Attack and Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 107900,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

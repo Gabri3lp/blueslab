@@ -85,7 +85,9 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Has a chance (10%) of leaving the target frozen.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 93,
@@ -98,7 +100,9 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "Has a chance (10%) of leaving the target confused.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6012,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition: When your team’s sync move countdown is reduced by 3 while this move is deactivated. (The activation countdown is not reduced when the remaining MP for this move is zero.)\nDeactivation Condition: When this move is used.\n\nNever misses. Has a chance (10%) of leaving the target frozen. Raises the Defense and Sp. Def of all allied sync pairs by 1 stat rank. Applies the Free Move Next effect to all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 12469,
       "slot": 4,
       "name": "Triumphant\nTenacity!",
-      "type": "Psychic",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "4",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack, Sp. Atk, and critical-hit rate of all allied sync pairs by 2 stat ranks. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 95100,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

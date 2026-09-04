@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (20%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19002,
       "slot": 2,
       "name": "Super Potion",
-      "type": "Dragon",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "1",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 60% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6169,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition: When the user is not in a pinch.\nDeactivation Condition: When the user is in a pinch.\n\nIf the stats of any allied sync pairs are raised, the amount of increase is doubled. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 2 ranks. Turns the field of play’s zone into a Dragon Zone the first time this attack move is successful each battle. (A Dragon Zone powers up Dragon-type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11602,
       "slot": 4,
       "name": "Shining\nBig Catch!",
-      "type": "Dragon",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Turns the field of play’s zone into a Dragon Zone. (A Dragon Zone powers up Dragon-type attacks.) Reduces the sync move countdown of an ally by 1. Applies the Gradual Healing effect to an ally. Applies the Damage Guard Next effect to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 201502,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

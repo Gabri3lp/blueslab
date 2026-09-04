@@ -85,20 +85,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Lowers the user’s Sp. Atk by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19052,
       "slot": 2,
       "name": "X Speed +",
-      "type": "Fairy",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Speed by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6045,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Pokémon uses a move once.\nDeactivation Condition: When this move is used.\n\nNever misses. The more the currently targeted opponent’s Sp. Atk is lowered, the greater the power of this attack. The power of this move is not lowered even if there are multiple targets. The more the currently targeted opponent’s Sp. Atk is lowered, the more it increases the user’s Special Moves ↑ Next effect (can be increased by up to 3 ranks maximum).",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11191,
       "slot": 4,
       "name": "My Soul\nIs Shaking!",
-      "type": "Fairy",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "4",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Sp. Atk by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies the Free Move Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 1 rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 102000,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

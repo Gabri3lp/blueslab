@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (30%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19510,
       "slot": 2,
       "name": "Normal Wish",
-      "type": "Normal",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Turns the field of play’s zone into a Normal Zone. (A Normal Zone powers up Normal-type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6154,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "Self",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: Cannot be deactivated.\n\nApplies the Gradual Healing effect to the user. Applies the Damage Guard Next effect to the user. Applies the Take Next \"All\" Move effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 13110,
       "slot": 4,
       "name": "We’ll Help You!",
-      "type": "Normal",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Defense and Sp. Def of all allied sync pairs by 3 stat ranks. These stats are raised by 6 stat ranks instead when the zone is a Normal Zone.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 117000,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

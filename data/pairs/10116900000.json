@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user’s Sp. Atk is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s Sp. Def by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 18501,
       "slot": 2,
       "name": "Lum Berry",
-      "type": "Dragon",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Removes all status conditions from an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": true
     },
     {
       "id": 6222,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition:\nWhen the user uses a sync move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. Reduces the user’s sync move countdown by 2 the first time this attack move is successful each battle. Increases the user’s Special Moves ↑ Next effect by 10 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11166,
       "slot": 4,
       "name": "Glorious Control\nof Space!",
-      "type": "Dragon",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Applies the Supereffective ↑ Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 3 ranks. Applies the Enduring effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 124800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [
