@@ -10,8 +10,8 @@
 {
     <div class="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark text-light">
         <div class="spinner-border text-warning mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
-        <div class="fs-5 fw-bold">Loading Blues Lab...</div>
-        <div class="text-secondary small mt-1">Initializing PMEX Database</div>
+        <div class="fs-5 fw-bold">@(Loc.T("loading_blueslab", "Loading Blues Lab..."))</div>
+        <div class="text-secondary small mt-1">@(Loc.T("init_pmex_db", "Initializing PMEX Database"))</div>
     </div>
 }
 else
@@ -42,15 +42,15 @@ else
                 <div class="nav nav-pills gap-2" role="tablist">
                     <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
                             @onclick="() => ActiveTab = 0">
-                        <i class="bi bi-info-circle"></i> Overview
+                        <i class="bi bi-info-circle"></i> @(Loc.T("grid_overview", "Overview"))
                     </button>
                     <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
                             @onclick="() => ActiveTab = 1">
-                        <i class="bi bi-calculator"></i> Damage
+                        <i class="bi bi-calculator"></i> @(Loc.T("damage_calc", "Damage"))
                     </button>
                     <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
                             @onclick="() => { ActiveTab = 2; ExpandedRight = true; }">
-                        <i class="bi bi-people-fill"></i> 3v3 Team Battle
+                        <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
                     </button>
                 </div>
 
@@ -112,7 +112,9 @@ else
     protected override async Task OnInitializedAsync()
     {
         GridState.OnGridChanged += OnGridChangedHandler;
+        Loc.OnLanguageChanged += OnLanguageChangedHandler;
 
+        await Loc.InitializeAsync();
         RulesDoc = await DataService.GetDamageRulesAsync();
         var manifest = await DataService.GetManifestAsync();
 
@@ -141,6 +143,11 @@ else
     }
 
     private void OnGridChangedHandler()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void OnLanguageChangedHandler()
     {
         InvokeAsync(StateHasChanged);
     }
@@ -184,5 +191,6 @@ else
     public void Dispose()
     {
         GridState.OnGridChanged -= OnGridChangedHandler;
+        Loc.OnLanguageChanged -= OnLanguageChangedHandler;
     }
 }

@@ -11,38 +11,51 @@
             @if (CurrentPair != null)
             {
                 <button class="btn btn-outline-secondary d-flex align-items-center gap-2 text-light py-1 px-2 border-secondary" @onclick="OnOpenPairPicker">
-                    <img src="@CurrentPair.IconUrl" alt="@CurrentPair.DisplayName" width="28" height="28" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
-                    <span class="fw-bold small d-none d-sm-inline">@CurrentPair.DisplayName</span>
-                    <span class="badge type-badge type-@CurrentPair.Type.ToLowerInvariant()">@CurrentPair.Type</span>
+                    <img src="@CurrentPair.IconUrl" alt="@Loc.GetDisplayName(CurrentPair)" width="28" height="28" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
+                    <span class="fw-bold small d-none d-sm-inline">@Loc.GetDisplayName(CurrentPair)</span>
+                    <span class="badge type-badge type-@CurrentPair.Type.ToLowerInvariant()">@Loc.GetTypeName(CurrentPair.Type)</span>
                     <i class="bi bi-chevron-down small text-muted"></i>
                 </button>
             }
             else
             {
                 <button class="btn btn-warning btn-sm fw-bold" @onclick="OnOpenPairPicker">
-                    <i class="bi bi-person-plus"></i> Select Character
+                    <i class="bi bi-person-plus"></i> @Loc.T("select_sync_pair", "Select Character")
                 </button>
             }
         </div>
 
-        <!-- Right: Hard Cap Toggle, Reset Grid & Share Build -->
-        @if (CurrentPair != null)
-        {
-            <div class="d-flex align-items-center gap-2">
+        <!-- Right: Hard Cap Toggle, Reset Grid, Share Build & Language Selector -->
+        <div class="d-flex align-items-center gap-2">
+            @if (CurrentPair != null)
+            {
                 <div class="form-check form-switch d-flex align-items-center gap-1 mb-0 me-1">
                     <input class="form-check-input cursor-pointer" type="checkbox" id="headerHardCapSwitch" checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
                     <label class="form-check-label text-secondary small select-none" for="headerHardCapSwitch" style="font-size: 0.8rem;">Hard Cap</label>
                 </div>
 
-                <button class="btn btn-outline-danger btn-sm p-1 px-2" title="Reset Grid" @onclick="OnResetGrid">
+                <button class="btn btn-outline-danger btn-sm p-1 px-2" title="@Loc.T("reset_grid", "Reset Grid")" @onclick="OnResetGrid">
                     <i class="bi bi-arrow-counterclockwise"></i>
                 </button>
 
-                <button class="btn btn-outline-warning btn-sm p-1 px-2" title="Share Build" @onclick="OnShareClick">
+                <button class="btn btn-outline-warning btn-sm p-1 px-2" title="@Loc.T("share_sync", "Share Build")" @onclick="OnShareClick">
                     <i class="bi bi-share"></i>
                 </button>
+            }
+
+            <div class="d-flex align-items-center gap-1 border-start border-secondary ps-2 ms-1">
+                <i class="bi bi-globe2 text-warning small" title="@Loc.T("language", "Language")"></i>
+                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2 cursor-pointer shadow-none"
+                        style="font-size: 0.8rem; width: auto; height: 28px;"
+                        value="@Loc.CurrentLanguage"
+                        @onchange="OnLanguageSelected">
+                    @foreach (var (langCode, name) in LocalizationService.SupportedLanguages)
+                    {
+                        <option value="@langCode">@name</option>
+                    }
+                </select>
             </div>
-        }
+        </div>
     </div>
 </header>
 
@@ -74,5 +87,14 @@
     private async Task OnShareClick()
     {
         await OnOpenShareModal.InvokeAsync();
+    }
+
+    private async Task OnLanguageSelected(ChangeEventArgs e)
+    {
+        var lang = e.Value?.ToString();
+        if (!string.IsNullOrEmpty(lang))
+        {
+            await Loc.SetLanguageAsync(lang);
+        }
     }
 }

@@ -60,6 +60,15 @@ public class PairManifestItem
 
     [JsonPropertyName("gridTileCount")]
     public int GridTileCount { get; set; }
+
+    [JsonPropertyName("trainerBaseId")]
+    public string TrainerBaseId { get; set; } = string.Empty;
+
+    [JsonPropertyName("trainerKey")]
+    public string TrainerKey { get; set; } = string.Empty;
+
+    [JsonPropertyName("pokemonKey")]
+    public string PokemonKey { get; set; } = string.Empty;
 }
 
 public class SyncPairDetail
@@ -309,6 +318,9 @@ public class GridCellItem
 {
     [JsonPropertyName("cellId")]
     public long CellId { get; set; }
+
+    [JsonPropertyName("abilityId")]
+    public long AbilityId { get; set; }
 
     [JsonPropertyName("q")]
     public int Q { get; set; }

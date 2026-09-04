@@ -15,25 +15,25 @@
         <div class="card bg-dark border-secondary p-2 mb-2 shadow-sm">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
                 <div class="d-flex align-items-center gap-2">
-                    <img src="@Pair.IconUrl" alt="@Pair.DisplayName" width="44" height="44" class="rounded-circle border border-warning shadow-sm" onerror="this.src='img/trainers/unknown.png';" />
+                    <img src="@Pair.IconUrl" alt="@Loc.GetDisplayName(Pair)" width="44" height="44" class="rounded-circle border border-warning shadow-sm" onerror="this.src='img/trainers/unknown.png';" />
                     <div>
                         <div class="d-flex align-items-center flex-wrap gap-1">
-                            <span class="fw-bold text-light" style="font-size: 1rem;">@Pair.DisplayName</span>
+                            <span class="fw-bold text-light" style="font-size: 1rem;">@Loc.GetDisplayName(Pair)</span>
                             @if (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
                             {
                                 <span class="badge bg-warning text-dark py-0 px-1" style="font-size: 0.7rem;">(@Pair.Variations[Ally.FormIndex - 1].FormName)</span>
                             }
                         </div>
                         <div class="d-flex flex-wrap align-items-center gap-1 mt-0.5">
-                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant() py-0 px-1.5" style="font-size: 0.7rem;">@EffectivePairType</span>
-                            <span class="badge bg-secondary py-0 px-1.5" style="font-size: 0.7rem;">@Pair.Role</span>
+                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant() py-0 px-1.5" style="font-size: 0.7rem;">@Loc.GetTypeName(EffectivePairType)</span>
+                            <span class="badge bg-secondary py-0 px-1.5" style="font-size: 0.7rem;">@Loc.GetRoleName(Pair.Role)</span>
                             @if (!string.IsNullOrEmpty(Pair.ExRole))
                             {
-                                <span class="badge bg-indigo py-0 px-1.5" style="font-size: 0.7rem;">EX: @Pair.ExRole</span>
+                                <span class="badge bg-indigo py-0 px-1.5" style="font-size: 0.7rem;">@Loc.T("ex_role", "EX Role"): @Loc.GetRoleName(Pair.ExRole)</span>
                             }
                             @if (!string.IsNullOrEmpty(Pair.Weakness))
                             {
-                                <span class="badge bg-dark border border-danger text-danger py-0 px-1.5" style="font-size: 0.7rem;">Weakness: @Pair.Weakness</span>
+                                <span class="badge bg-dark border border-danger text-danger py-0 px-1.5" style="font-size: 0.7rem;">@Loc.T("weakness", "Weakness"): @Loc.GetTypeName(Pair.Weakness)</span>
                             }
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                 {
                     <div class="btn-group btn-group-sm">
                         <button class="btn @(Ally.FormIndex == 0 ? "btn-warning fw-bold" : "btn-outline-secondary") py-0 px-2" style="font-size: 0.78rem; height: 28px;" @onclick="() => SetForm(0)">
-                            Base Form
+                            @Loc.T("base_info", "Base Form")
                         </button>
                         @for (int i = 0; i < Pair.Variations.Count; i++)
                         {
@@ -61,7 +61,7 @@
                 <div class="d-flex flex-wrap align-items-center gap-1">
                     <!-- Move Level Selector (1-5) -->
                     <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 rounded border border-secondary" style="height: 28px;">
-                        <span class="small text-muted fw-bold" style="font-size: 0.72rem;">Move Lv:</span>
+                        <span class="small text-muted fw-bold" style="font-size: 0.72rem;">@Loc.T("level", "Move Lv"):</span>
                         <select class="form-select form-select-sm bg-dark text-light border-0 p-0" style="width: 46px; font-size: 0.8rem;" value="@Ally.MoveLevel" @onchange="OnMoveLevelSelect">
                             <option value="1">1/5</option>
                             <option value="2">2/5</option>
@@ -335,25 +335,25 @@
                     <button class="btn btn-sm @(ActiveSection == "moves" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("moves")'>
-                        <i class="bi bi-lightning-fill me-1"></i> Moves (@Pair.Moves.Count)
+                        <i class="bi bi-lightning-fill me-1"></i> @Loc.T("moves", "Moves") (@Pair.Moves.Count)
                     </button>
                     @if (maxMovesList.Count > 0)
                     {
                         <button class="btn btn-sm @(ActiveSection == "max_moves" ? "btn-pink text-white fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                                 style="font-size: 0.8rem;"
                                 @onclick='() => SetSection("max_moves")'>
-                            <i class="bi bi-clouds-fill me-1"></i> Max Moves (@maxMovesList.Count)
+                            <i class="bi bi-clouds-fill me-1"></i> @Loc.T("turn_max_move", "Max Moves") (@maxMovesList.Count)
                         </button>
                     }
                     <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("passives")'>
-                        <i class="bi bi-shield-check me-1"></i> Passives (@Pair.Passives.Count)
+                        <i class="bi bi-shield-check me-1"></i> @Loc.T("passives", "Passives") (@Pair.Passives.Count)
                     </button>
                     <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("grid")'>
-                        <i class="bi bi-grid-fill me-1"></i> Grid Skills (@activeGridPassives.Count)
+                        <i class="bi bi-grid-fill me-1"></i> @Loc.T("grid_date", "Grid Skills") (@activeGridPassives.Count)
                     </button>
                 </div>
 
@@ -364,7 +364,7 @@
                             @onclick="ToggleAllMoveDescs"
                             title="@(AllExpanded ? "Collapse all move descriptions" : "Expand all move descriptions")">
                         <i class="bi @(AllExpanded ? "bi-chevron-contract" : "bi-chevron-expand") me-1"></i>
-                        @(AllExpanded ? "Collapse All" : "Expand All")
+                        @(AllExpanded ? Loc.T("collapse_all", "Collapse All") : Loc.T("expand_all", "Expand All"))
                     </button>
                 }
             </div>
@@ -381,19 +381,21 @@
                         string moveType = GetEffectiveMoveType(move);
                         string moveTarget = GetEffectiveMoveTarget(move);
                         bool isExpanded = !CollapsedMoveIds.Contains(move.Id);
+                        string mName = Loc.GetMoveName(move.Id, move.Name);
+                        string mDesc = Loc.GetMoveDescription(move.Id, move.Description);
 
                         <div class="card move-card move-card-@moveType.ToLowerInvariant() px-3 py-2 shadow-sm">
                             <div class="d-flex justify-content-between align-items-center cursor-pointer" @onclick="() => ToggleMoveDesc(move.Id)">
                                 <div>
                                     <div class="d-flex align-items-center gap-2 flex-wrap">
-                                        <span class="fw-bold text-light" style="font-size: 0.95rem;">@move.Name</span>
+                                        <span class="fw-bold text-light" style="font-size: 0.95rem;">@mName</span>
                                         @if (move.IsSync)
                                         {
-                                            <span class="badge bg-purple py-0 px-1" style="font-size: 0.7rem;">Sync Move</span>
+                                            <span class="badge bg-purple py-0 px-1" style="font-size: 0.7rem;">@Loc.T("turn_sync_move", "Sync Move")</span>
                                         }
                                         else if (move.IsMax)
                                         {
-                                            <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">Max Move</span>
+                                            <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">@Loc.T("turn_max_move", "Max Move")</span>
                                         }
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-0.5 flex-wrap">
@@ -403,7 +405,7 @@
                                         }
                                         else
                                         {
-                                            <span class="badge type-badge type-@moveType.ToLowerInvariant() py-0 px-1" style="font-size: 0.7rem;">@moveType</span>
+                                            <span class="badge type-badge type-@moveType.ToLowerInvariant() py-0 px-1" style="font-size: 0.7rem;">@Loc.GetTypeName(moveType)</span>
                                             <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
                                         }
                                         @if (!string.IsNullOrEmpty(moveTarget))
@@ -418,7 +420,7 @@
                                         @if (scaledPwr > 0)
                                         {
                                             <div>
-                                                <span style="color: rgba(255, 255, 255, 0.75);">Power:</span>
+                                                <span style="color: rgba(255, 255, 255, 0.75);">@Loc.T("damage_result_power", "Power"):</span>
                                                 <b class="text-warning">@scaledPwr</b>
                                                 <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.72rem;">(@multPct%)</span>
                                             </div>
@@ -426,7 +428,7 @@
                                         else
                                         {
                                             <div>
-                                                <span style="color: rgba(255, 255, 255, 0.75);">Power:</span>
+                                                <span style="color: rgba(255, 255, 255, 0.75);">@Loc.T("damage_result_power", "Power"):</span>
                                                 <b style="color: rgba(255, 255, 255, 0.5);">-</b>
                                             </div>
                                         }
@@ -434,7 +436,7 @@
                                             Acc: <b class="text-light">@(string.IsNullOrEmpty(move.Accuracy) || move.Accuracy == "0" ? "-" : move.Accuracy)</b> | Gauge: <b class="text-light">@(string.IsNullOrEmpty(move.Gauge) || move.Gauge == "0" ? "-" : move.Gauge)</b>
                                             @if (move.MaxUses > 0)
                                             {
-                                                <span class="ms-1">| Uses: <b style="color: #38bdf8;">@move.MaxUses</b></span>
+                                                <span class="ms-1">| @Loc.T("damage_move_uses", "Uses"): <b style="color: #38bdf8;">@move.MaxUses</b></span>
                                             }
                                         </div>
                                     </div>
@@ -445,10 +447,10 @@
                                 </div>
                             </div>
 
-                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
+                            @if (isExpanded && !string.IsNullOrEmpty(mDesc))
                             {
                                 <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
-                                    <div>@move.Description</div>
+                                    <div>@mDesc</div>
                                 </div>
                             }
                         </div>
@@ -547,17 +549,22 @@
                     }
                     @foreach (var passive in activePassives)
                     {
+                        string pName = Loc.GetPassiveName(passive.Id, passive.Name);
+                        string pDesc = Loc.GetPassiveDescription(passive.Id, passive.Description);
+
                         <div class="card bg-dark bg-opacity-75 border border-secondary px-3 py-2 shadow-sm">
-                            <div class="fw-bold text-white" style="font-size: 0.95rem; letter-spacing: 0.2px;">@passive.Name</div>
-                            <div class="mt-1" style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@passive.Description</div>
+                            <div class="fw-bold text-white" style="font-size: 0.95rem; letter-spacing: 0.2px;">@pName</div>
+                            <div class="mt-1" style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@pDesc</div>
                             @if (passive.ChildPassives.Count > 0)
                             {
                                 <div class="mt-2 pt-1.5 border-top border-secondary border-opacity-50">
-                                    <span class="fw-bold text-uppercase" style="font-size: 0.74rem; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.6);">Combined Skills:</span>
+                                    <span class="fw-bold text-uppercase" style="font-size: 0.74rem; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.6);">@Loc.T("combined_skills", "Combined Skills"):</span>
                                     @foreach (var child in passive.ChildPassives)
                                     {
+                                        string cName = Loc.GetPassiveName(child.Id, child.Name);
+                                        string cDesc = Loc.GetPassiveDescription(child.Id, child.Description);
                                         <div class="ms-2 mt-1" style="font-size: 0.82rem; line-height: 1.35;">
-                                            <span class="text-info fw-semibold">• @child.Name:</span> <span style="color: rgba(255, 255, 255, 0.85);">@child.Description</span>
+                                            <span class="text-info fw-semibold">• @cName:</span> <span style="color: rgba(255, 255, 255, 0.85);">@cDesc</span>
                                         </div>
                                     }
                                 </div>
@@ -569,16 +576,19 @@
                     @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
                     {
                         bool isSa5Active = Ally.SuperAwakeningLevel >= 5;
+                        string saName = Loc.GetPassiveName(Pair.SuperAwakeningPassive.Id, Pair.SuperAwakeningPassive.Name);
+                        string saDesc = Loc.GetPassiveDescription(Pair.SuperAwakeningPassive.Id, Pair.SuperAwakeningPassive.Description);
+
                         <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-15" : "border-secondary bg-dark bg-opacity-75 opacity-75") px-3 py-2 shadow-sm">
                             <div class="d-flex justify-content-between align-items-center mb-1">
                                 <div class="fw-bold @(isSa5Active ? "text-danger" : "text-white")" style="font-size: 0.95rem;">
-                                    <i class="bi bi-star-fill text-warning me-1"></i> @Pair.SuperAwakeningPassive.Name
+                                    <i class="bi bi-star-fill text-warning me-1"></i> @saName
                                 </div>
                                 <span class="badge @(isSa5Active ? "bg-danger text-white" : "border border-secondary text-light") py-0.5 px-1.5" style="font-size: 0.72rem;">
                                     @(isSa5Active ? "SA 5 Active" : "SA 5 Required")
                                 </span>
                             </div>
-                            <div style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@Pair.SuperAwakeningPassive.Description</div>
+                            <div style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@saDesc</div>
                         </div>
                     }
                 </div>
@@ -598,11 +608,13 @@
                     {
                         @foreach (var gc in activeGridPassives)
                         {
+                            string gTitle = Loc.GetTileTitle(gc.AbilityId, gc.Title);
+                            string gDesc = Loc.GetTileDescription(gc.AbilityId, gc.Description);
                             <div class="card bg-dark bg-opacity-75 border border-secondary px-3 py-2 shadow-sm">
-                                <div class="fw-bold text-info" style="font-size: 0.9rem;">@gc.Title</div>
-                                @if (!string.IsNullOrEmpty(gc.Description))
+                                <div class="fw-bold text-info" style="font-size: 0.9rem;">@gTitle</div>
+                                @if (!string.IsNullOrEmpty(gDesc))
                                 {
-                                    <div class="mt-0.5" style="font-size: 0.83rem; line-height: 1.4; color: rgba(255, 255, 255, 0.85);">@gc.Description</div>
+                                    <div class="mt-0.5" style="font-size: 0.83rem; line-height: 1.4; color: rgba(255, 255, 255, 0.85);">@gDesc</div>
                                 }
                             </div>
                         }

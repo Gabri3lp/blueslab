@@ -8,8 +8,8 @@
             <div class="modal-content bg-dark text-light border-secondary">
                 <div class="modal-header border-secondary">
                     <h5 class="modal-title d-flex align-items-center gap-2">
-                        <i class="bi bi-people-fill text-warning"></i> Select Sync Pair
-                        <span class="badge bg-secondary">@FilteredPairs.Count pairs</span>
+                        <i class="bi bi-people-fill text-warning"></i> @Loc.T("select_sync_pair", "Select Sync Pair")
+                        <span class="badge bg-secondary">@FilteredPairs.Count @Loc.T("selected", "pairs")</span>
                     </h5>
                     <button type="button" class="btn-close btn-close-white" @onclick="Close"></button>
                 </div>
@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-search"></i></span>
-                                <input @ref="SearchInputRef" type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search trainer or Pokémon..." @bind="SearchQuery" @bind:event="oninput" autofocus />
+                                <input @ref="SearchInputRef" type="text" class="form-control bg-dark text-light border-secondary" placeholder="@Loc.T("filter_placeholder", "Search trainer or Pokémon...")" @bind="SearchQuery" @bind:event="oninput" autofocus />
                                 @if (!string.IsNullOrEmpty(SearchQuery))
                                 {
                                     <button class="btn btn-outline-secondary" type="button" @onclick="() => SearchQuery = string.Empty">✕</button>
@@ -28,28 +28,28 @@
                         </div>
                         <div class="col-md-3 col-6">
                             <select class="form-select bg-dark text-light border-secondary" @bind="SelectedType">
-                                <option value="">All Types</option>
+                                <option value="">@Loc.T("all_types", "All Types")</option>
                                 @foreach (var t in CombatantState.AllTypes)
                                 {
-                                    <option value="@t">@t</option>
+                                    <option value="@t">@Loc.GetTypeName(t)</option>
                                 }
                             </select>
                         </div>
                         <div class="col-md-3 col-6">
                             <select class="form-select bg-dark text-light border-secondary" @bind="SelectedRole">
-                                <option value="">All Roles</option>
-                                <option value="Strike">Strike</option>
-                                <option value="Tech">Tech</option>
-                                <option value="Support">Support</option>
-                                <option value="Sprint">Sprint</option>
-                                <option value="Field">Field</option>
-                                <option value="Multi">Multi</option>
+                                <option value="">@Loc.T("all_roles", "All Roles")</option>
+                                <option value="Strike">@Loc.GetRoleName("Strike")</option>
+                                <option value="Tech">@Loc.GetRoleName("Tech")</option>
+                                <option value="Support">@Loc.GetRoleName("Support")</option>
+                                <option value="Sprint">@Loc.GetRoleName("Sprint")</option>
+                                <option value="Field">@Loc.GetRoleName("Field")</option>
+                                <option value="Multi">@Loc.GetRoleName("Multi")</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
-                        <span class="text-muted small">Special:</span>
+                        <span class="text-muted small">@Loc.T("filter_special", "Special:"):</span>
                         <button class="btn btn-sm @(FilterMega ? "btn-warning" : "btn-outline-secondary")" @onclick="() => FilterMega = !FilterMega">Mega</button>
                         <button class="btn btn-sm @(FilterTera ? "btn-info" : "btn-outline-secondary")" @onclick="() => FilterTera = !FilterTera">Tera</button>
                         <button class="btn btn-sm @(FilterDMax ? "btn-pink" : "btn-outline-secondary")" @onclick="() => FilterDMax = !FilterDMax">Dynamax</button>
@@ -57,7 +57,7 @@
                         <button class="btn btn-sm @(FilterEx ? "btn-primary" : "btn-outline-secondary")" @onclick="() => FilterEx = !FilterEx">6★ EX</button>
                         @if (HasActiveFilters)
                         {
-                            <button class="btn btn-sm btn-outline-danger ms-auto" @onclick="ResetFilters">Reset Filters</button>
+                            <button class="btn btn-sm btn-outline-danger ms-auto" @onclick="ResetFilters">@Loc.T("filter_reset", "Reset Filters")</button>
                         }
                     </div>
 
@@ -65,15 +65,16 @@
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
                         @foreach (var pair in FilteredPairs)
                         {
+                            var dName = Loc.GetDisplayName(pair);
                             <div class="col">
                                 <div class="card h-100 bg-secondary bg-opacity-25 border-secondary pair-card p-2" @onclick="() => OnSelectPair(pair.TrainerId)">
                                     <div class="d-flex align-items-center gap-2">
-                                        <img src="@pair.IconUrl" alt="@pair.DisplayName" class="rounded-circle border border-warning" width="48" height="48" onerror="this.src='img/trainers/unknown.png';" />
+                                        <img src="@pair.IconUrl" alt="@dName" class="rounded-circle border border-warning" width="48" height="48" onerror="this.src='img/trainers/unknown.png';" />
                                         <div class="flex-grow-1 overflow-hidden">
-                                            <div class="fw-bold text-truncate text-light small" title="@pair.DisplayName">@pair.DisplayName</div>
+                                            <div class="fw-bold text-truncate text-light small" title="@dName">@dName</div>
                                             <div class="d-flex align-items-center gap-1 mt-1">
-                                                <span class="badge type-badge type-@pair.Type.ToLowerInvariant()">@pair.Type</span>
-                                                <span class="badge bg-dark border border-secondary text-secondary small">@pair.Role</span>
+                                                <span class="badge type-badge type-@pair.Type.ToLowerInvariant()">@Loc.GetTypeName(pair.Type)</span>
+                                                <span class="badge bg-dark border border-secondary text-secondary small">@Loc.GetRoleName(pair.Role)</span>
                                                 @if (pair.HasSuperAwakening)
                                                 {
                                                     <span class="badge bg-danger" title="Super Awakening">SA</span>
@@ -94,7 +95,7 @@
                     {
                         <div class="text-center py-5 text-muted">
                             <i class="bi bi-search fs-1 d-block mb-2"></i>
-                            No sync pairs match the current search or filters.
+                            @Loc.T("filter_not_found_desc", "No sync pairs match the current search or filters.")
                         </div>
                     }
                 </div>
@@ -165,8 +166,24 @@
             var query = SearchQuery.Trim().ToLowerInvariant();
             return AllPairs.Where(p =>
             {
-                if (!string.IsNullOrEmpty(query) && !p.DisplayName.ToLowerInvariant().Contains(query))
-                    return false;
+                if (!string.IsNullOrEmpty(query))
+                {
+                    bool matchEnglish = p.DisplayName.ToLowerInvariant().Contains(query) ||
+                                       p.TrainerName.ToLowerInvariant().Contains(query) ||
+                                       p.MonsterName.ToLowerInvariant().Contains(query);
+
+                    if (!matchEnglish)
+                    {
+                        var locDisplay = Loc.GetDisplayName(p).ToLowerInvariant();
+                        var locTrainer = Loc.GetTrainerName(p.TrainerId, p.TrainerKey, p.TrainerBaseId, p.TrainerName).ToLowerInvariant();
+                        var locPokemon = Loc.GetPokemonName(p.MonsterBaseId, p.PokemonKey, p.MonsterName).ToLowerInvariant();
+
+                        if (!locDisplay.Contains(query) && !locTrainer.Contains(query) && !locPokemon.Contains(query))
+                        {
+                            return false;
+                        }
+                    }
+                }
                 if (!string.IsNullOrEmpty(SelectedType) && !string.Equals(p.Type, SelectedType, StringComparison.OrdinalIgnoreCase))
                     return false;
                 if (!string.IsNullOrEmpty(SelectedRole) && !p.Role.StartsWith(SelectedRole, StringComparison.OrdinalIgnoreCase))

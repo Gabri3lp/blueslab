@@ -10,32 +10,32 @@
             <div class="modal-content bg-dark text-light border-secondary">
                 <div class="modal-header border-secondary">
                     <h5 class="modal-title d-flex align-items-center gap-2">
-                        <i class="bi bi-share-fill text-warning"></i> Share Sync Grid Build
+                        <i class="bi bi-share-fill text-warning"></i> @Loc.T("share_sync", "Share Sync Grid Build")
                     </h5>
                     <button type="button" class="btn-close btn-close-white" @onclick="Close"></button>
                 </div>
                 <div class="modal-body p-3">
-                    <p class="small text-secondary mb-3">Copy this link to share your active grid build with others.</p>
+                    <p class="small text-secondary mb-3">@Loc.T("share_desc", "Copy this link to share your active grid build with others.")</p>
                     
                     <div class="mb-3">
-                        <label class="form-label small text-secondary">Shareable Link</label>
+                        <label class="form-label small text-secondary">@Loc.T("shareable_link", "Shareable Link")</label>
                         <div class="input-group">
                             <input type="text" class="form-control bg-dark text-light border-secondary small" value="@ShareUrl" readonly />
                             <button class="btn btn-warning" @onclick="CopyUrl">
-                                <i class="bi bi-clipboard"></i> Copy
+                                <i class="bi bi-clipboard"></i> @Loc.T("copy", "Copy")
                             </button>
                         </div>
                         @if (Copied)
                         {
-                            <div class="text-success small mt-1">✓ Copied to clipboard!</div>
+                            <div class="text-success small mt-1">✓ @Loc.T("message_share_sync_success", "Copied to clipboard!")</div>
                         }
                     </div>
 
                     <div class="mb-2">
-                        <label class="form-label small text-secondary">Import Grid Code</label>
+                        <label class="form-label small text-secondary">@Loc.T("import_grid_code", "Import Grid Code")</label>
                         <div class="input-group">
-                            <input type="text" class="form-control bg-dark text-light border-secondary small" placeholder="Paste build code here..." @bind="ImportCode" />
-                            <button class="btn btn-outline-secondary" @onclick="ApplyImportCode">Import</button>
+                            <input type="text" class="form-control bg-dark text-light border-secondary small" placeholder="@Loc.T("paste_code_placeholder", "Paste build code here...")" @bind="ImportCode" />
+                            <button class="btn btn-outline-secondary" @onclick="ApplyImportCode">@Loc.T("import", "Import")</button>
                         </div>
                     </div>
                 </div>

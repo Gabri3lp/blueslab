@@ -13,15 +13,15 @@
         <div class="card bg-dark border-secondary p-3 mb-3">
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-2">
-                    <img src="@Ally.Pair.IconUrl" alt="@Ally.Pair.DisplayName" width="40" height="40" class="rounded-circle border border-warning" onerror="this.src=''img/trainers/unknown.png'';" />
+                    <img src="@Ally.Pair.IconUrl" alt="@Loc.GetDisplayName(Ally.Pair)" width="40" height="40" class="rounded-circle border border-warning" onerror="this.src='img/trainers/unknown.png';" />
                     <div>
-                        <div class="fw-bold text-light">@Ally.Pair.DisplayName</div>
+                        <div class="fw-bold text-light">@Loc.GetDisplayName(Ally.Pair)</div>
                         <div class="d-flex gap-1 align-items-center">
-                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant()">@EffectivePairType</span>
-                            <span class="badge bg-secondary">@Ally.Pair.Role</span>
+                            <span class="badge type-badge type-@EffectivePairType.ToLowerInvariant()">@Loc.GetTypeName(EffectivePairType)</span>
+                            <span class="badge bg-secondary">@Loc.GetRoleName(Ally.Pair.Role)</span>
                             @if (!string.IsNullOrEmpty(Ally.Pair.ExRole))
                             {
-                                <span class="badge bg-indigo">EX: @Ally.Pair.ExRole</span>
+                                <span class="badge bg-indigo">@Loc.T("ex_role", "EX"): @Loc.GetRoleName(Ally.Pair.ExRole)</span>
                             }
                         </div>
                     </div>
@@ -182,20 +182,21 @@
                 {
                     var result = CalcService.CalculateDamage(move, Ally, Enemy, Field, Rules, GridState.ActiveCells);
                     string moveType = GetEffectiveMoveType(move);
+                    string mName = Loc.GetMoveName(move.Id, move.Name);
                     <div class="card move-card move-card-@moveType.ToLowerInvariant() p-2 px-3 shadow-sm">
                         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                             <div>
                                 <div class="d-flex align-items-center gap-2">
-                                    <span class="fw-bold text-light fs-6">@move.Name</span>
+                                    <span class="fw-bold text-light fs-6">@mName</span>
                                     @if (move.IsSync)
                                     {
-                                        <span class="badge bg-purple" style="font-size: 0.7rem;">Sync Move</span>
+                                        <span class="badge bg-purple" style="font-size: 0.7rem;">@Loc.T("turn_sync_move", "Sync Move")</span>
                                     }
                                 </div>
                                 <div class="d-flex gap-1 align-items-center mt-1">
-                                    <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@moveType</span>
+                                    <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@Loc.GetTypeName(moveType)</span>
                                     <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
-                                    <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">Power: <b class="text-warning">@result.ScaledMovePower</b></span>
+                                    <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">@Loc.T("damage_result_power", "Power"): <b class="text-warning">@result.ScaledMovePower</b></span>
                                     @if (move.MaxUses > 0)
                                     {
                                         <span class="badge py-0 px-1" style="background-color: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); font-size: 0.7rem; font-weight: 600;">
@@ -232,7 +233,7 @@
                     <div class="d-flex align-items-center justify-content-between gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge btn-pink text-white px-2 py-1" style="font-size: 0.78rem;">
-                                <i class="bi bi-clouds-fill me-1"></i> Max Moves (Dynamax)
+                                <i class="bi bi-clouds-fill me-1"></i> @Loc.T("turn_max_move", "Max Moves") (Dynamax)
                             </span>
                             <span class="text-muted small" style="font-size: 0.75rem;">(Unaffected by Next Boosts & AoE multi-target penalty)</span>
                         </div>
@@ -243,17 +244,18 @@
                     {
                         var result = CalcService.CalculateDamage(move, Ally, Enemy, Field, Rules, GridState.ActiveCells);
                         string moveType = GetEffectiveMoveType(move);
+                        string mName = Loc.GetMoveName(move.Id, move.Name);
                         <div class="card move-card move-card-@moveType.ToLowerInvariant() p-2 px-3 shadow-sm border-pink">
                             <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                                 <div>
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="fw-bold text-light fs-6">@move.Name</span>
-                                        <span class="badge btn-pink text-white" style="font-size: 0.7rem;">Max Move</span>
+                                        <span class="fw-bold text-light fs-6">@mName</span>
+                                        <span class="badge btn-pink text-white" style="font-size: 0.7rem;">@Loc.T("turn_max_move", "Max Move")</span>
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-1">
-                                        <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@moveType</span>
+                                        <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@Loc.GetTypeName(moveType)</span>
                                         <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
-                                        <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">Power: <b class="text-warning">@result.ScaledMovePower</b></span>
+                                        <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">@Loc.T("damage_result_power", "Power"): <b class="text-warning">@result.ScaledMovePower</b></span>
                                         <span class="badge py-0 px-1" style="background-color: rgba(232, 67, 147, 0.2); color: #ff79b0; border: 1px solid rgba(232, 67, 147, 0.5); font-size: 0.7rem; font-weight: 600;">
                                             <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
                                         </span>

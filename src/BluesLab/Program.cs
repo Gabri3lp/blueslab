@@ -12,5 +12,6 @@ builder.Services.AddScoped<SyncPairDataService>();
 builder.Services.AddScoped<GridStateService>();
 builder.Services.AddScoped<DamageCalculatorService>();
 builder.Services.AddScoped<StageService>();
+builder.Services.AddScoped<LocalizationService>();
 
 await builder.Build().RunAsync();
