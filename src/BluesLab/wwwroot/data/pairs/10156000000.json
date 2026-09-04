@@ -154,19 +154,22 @@
     {
       "id": 15011703,
       "name": "MAX Countdown 3",
-      "description": "Reduces the user’s sync move countdown by 3 after using its max move.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18093809,
       "name": "Dashing Team 9",
-      "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+      "description": "Raises the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17010801,
       "name": "Unflappable",
       "description": "Prevents the user from flinching.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 15011703,
+          "name": "MAX Countdown 3",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18093809,
+          "name": "Dashing Team 9",
+          "description": "Raises the Speed of all allied sync pairs by one stat rank when the user’s attack move is successful.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17010801,
+          "name": "Unflappable",
+          "description": "Prevents the user from flinching.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

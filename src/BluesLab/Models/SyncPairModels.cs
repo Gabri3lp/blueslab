@@ -274,6 +274,9 @@ public class PassiveItem
     [JsonPropertyName("description")]
     public string Description { get; set; } = string.Empty;
 
+    [JsonPropertyName("slot")]
+    public int Slot { get; set; }
+
     [JsonPropertyName("childPassives")]
     public List<ChildPassiveItem> ChildPassives { get; set; } = new();
 }

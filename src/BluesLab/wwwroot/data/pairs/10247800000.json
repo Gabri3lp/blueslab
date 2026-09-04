@@ -154,19 +154,22 @@
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18102209,
       "name": "Unfortunate Strike 9",
-      "description": "Has a chance (100%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, has a chance (100%) of lowering one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, lowers one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18020901,
       "name": "Impervious",
       "description": "The user’s stats cannot be lowered.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99010501,
+          "name": "Piercing Blows",
+          "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18102209,
+          "name": "Unfortunate Strike 9",
+          "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, lowers one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18020901,
+          "name": "Impervious",
+          "description": "The user’s stats cannot be lowered.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

@@ -154,58 +154,63 @@
     {
       "id": 29010801,
       "name": "Splash Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Water theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29020801,
       "name": "Splash Judgment",
-      "description": "Raises the Water Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Water Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99038101,
       "name": "My Policy for Battle Is...",
-      "description": "Grants all of the following effects the first time the user enters a battle each battle: Applies Kanto Circle (Special) to the allied field of play. Raises the user’s Sp. Atk by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
+      "description": "Grants all of the following effects the first time the user enters a battle each battle: Applies [Name:ReferencedMessageTag Idx=\"4\" ] to the allied field of play. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 3,
       "childPassives": [
         {
           "id": 19063001,
           "name": "Debut: Kanto C (Spec) on Field",
-          "description": "Applies Kanto Circle (Special) to the allied field of play the first time the user enters a battle each battle."
+          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle."
         },
         {
           "id": 18120506,
           "name": "Debut: Sp. Atk ↑ 6",
-          "description": "Raises the user’s Sp. Atk by 6 stat ranks the first time it enters a battle each battle."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
         },
         {
           "id": 18126103,
           "name": "Debut: Crit Rate ↑ 3",
-          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time it enters a battle each battle."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
         }
       ]
     },
     {
       "id": 99038301,
       "name": "An All-Out Offensive!",
-      "description": "Reduces the user’s sync move countdown by 1 when it applies Kanto Circle (Special) to the allied field of play. Increases the user’s Special Moves ↑ Next effect by 1 rank when it applies Kanto Circle (Special) to the allied field of play.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] when it applies [Name:ReferencedMessageTag ] to the allied field of play. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when it applies [Name:ReferencedMessageTag ] to the allied field of play.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 15015101,
           "name": "User Sets Kanto C (Spec): Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by 1 when it applies Kanto Circle (Special) to the allied field of play."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when it applies [Name:ReferencedMessageTag ] to the allied field of play."
         },
         {
           "id": 17091909,
           "name": "User Sets Kanto C (Spec): Special Boost ↑1 9",
-          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 1 rank when it applies Kanto Circle (Special) to the allied field of play."
+          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when it applies [Name:ReferencedMessageTag ] to the allied field of play."
         }
       ]
     },
     {
       "id": 99038201,
       "name": "My Sweet Pokémon Are Ready!",
-      "description": "Restores 1 MP of the user’s buddy move after your team’s sync pair uses their sync move. Reduces the MP for the user’s Kanto Analysis by 1 and grants all of the following effects after your team’s sync pair uses their sync move: Applies Kanto Circle (Special) to the allied field of play. Increases the Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move. Reduces the MP for the user’s [Name:MoveId Idx=\"8201\" ] by [Digit:1digit ] and grants all of the following effects after your team’s sync pair uses their sync move: Applies [Name:ReferencedMessageTag Idx=\"4\" ] to the allied field of play. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 5,
       "childPassives": []
     }
   ],

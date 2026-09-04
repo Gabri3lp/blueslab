@@ -154,24 +154,27 @@
     {
       "id": 29011201,
       "name": "Pixie Myth",
-      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29021201,
       "name": "Pixie Judgment",
-      "description": "Raises the Fairy Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Fairy Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99044001,
       "name": "Opening Night on a Noble Silver Screen",
-      "description": "Reduces the user’s sync move countdown by 1 when it enters a battle. Raises the user’s Sp. Atk by 6 stat ranks and critical-hit rate by 3 stat ranks when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 18051501,
@@ -181,31 +184,33 @@
         {
           "id": 15015203,
           "name": "Entry: Sync CD ↓ 3",
-          "description": "Reduces the user’s sync move countdown by 3 when it enters a battle."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it enters a battle."
         }
       ]
     },
     {
       "id": 99044101,
       "name": "Ever-Shining Performance",
-      "description": "Reduces the MP for the user’s by and turns the field of play’s zone into a after your team’s sync pair uses their sync move. (A powers up -type attacks.) Extends the duration of the when the zone turns into a while the user is on the field.",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19680\" ] by [Digit:1digit Idx=\"2\" ] and turns the field of play’s zone into a [Name:ReferencedMessageTag ] after your team’s sync pair uses their sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 19069001,
           "name": "Team S-Move: “Fairy Wish” MP ↓ & Fairy Zone",
-          "description": "Reduces the MP for the user’s by and turns the field of play’s zone into a after your team’s sync pair uses their sync move. (A powers up -type attacks.)"
+          "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19680\" ] by [Digit:1digit Idx=\"2\" ] and turns the field of play’s zone into a [Name:ReferencedMessageTag ] after your team’s sync pair uses their sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 19023103,
           "name": "Fairy Zone Extension 3",
-          "description": "Extends the duration of the Fairy Zone when the zone turns into a Fairy Zone while the user is on the field."
+          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
         }
       ]
     },
     {
       "id": 17095709,
       "name": "Ally Sets Fairy Zone: Special Boost ↑2 9",
-      "description": "Increases the user’s Special Moves ↑ Next effect by 2 ranks when an ally turns the field of play’s zone into a Fairy Zone.",
+      "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when an ally turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+      "slot": 5,
       "childPassives": []
     }
   ],
@@ -221,7 +226,70 @@
         "spd": 1.1,
         "spe": 1.1
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 29011201,
+          "name": "Pixie Myth",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 29021201,
+          "name": "Pixie Judgment",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99044001,
+          "name": "Opening Night on a Noble Silver Screen",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 18045106,
+              "name": "Grand Entry 6",
+              "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 18051501,
+              "name": "P-Moves & S-Moves Crit",
+              "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+            },
+            {
+              "id": 15015203,
+              "name": "Entry: Sync CD ↓ 3",
+              "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it enters a battle."
+            }
+          ]
+        },
+        {
+          "id": 99044101,
+          "name": "Ever-Shining Performance",
+          "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19680\" ] by [Digit:1digit Idx=\"2\" ] and turns the field of play’s zone into a [Name:ReferencedMessageTag ] after your team’s sync pair uses their sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+          "slot": 4,
+          "childPassives": [
+            {
+              "id": 19069001,
+              "name": "Team S-Move: “Fairy Wish” MP ↓ & Fairy Zone",
+              "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19680\" ] by [Digit:1digit Idx=\"2\" ] and turns the field of play’s zone into a [Name:ReferencedMessageTag ] after your team’s sync pair uses their sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            },
+            {
+              "id": 19023103,
+              "name": "Fairy Zone Extension 3",
+              "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+            }
+          ]
+        },
+        {
+          "id": 17095709,
+          "name": "Ally Sets Fairy Zone: Special Boost ↑2 9",
+          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when an ally turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+          "slot": 5,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

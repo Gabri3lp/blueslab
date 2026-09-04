@@ -155,6 +155,7 @@
       "id": 99024701,
       "name": "Sealed Wicked Thoughts",
       "description": "Reduces damage taken by the user from super effective moves and super effective sync moves. When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and sync moves affected by this passive skill are not lowered even if there are multiple targets. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 13024105,
@@ -176,34 +177,36 @@
     {
       "id": 99024801,
       "name": "Bad-to-Worse Hex",
-      "description": "The power of the user’s Hex is doubled when the target is affected by a status condition. Restores 32 MP of the user’s buddy move when its Hex is successful.",
+      "description": "The power of the user’s [Name:MoveId Idx=\"506\" ] is doubled when the target is affected by a status condition. Restores 32 MP of the user’s buddy move when its [Name:MoveId Idx=\"506\" ] is successful.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 13083301,
           "name": "Opp Status Cond: Hex Power ×2",
-          "description": "The power of the user’s Hex is doubled when the target is affected by a status condition."
+          "description": "The power of the user’s [Name:MoveId Idx=\"506\" ] is doubled when the target is affected by a status condition."
         },
         {
           "id": 13062401,
           "name": "Hex: B-Move MP Recovery (32)",
-          "description": "Restores 32 MP of the user’s buddy move when its Hex is successful."
+          "description": "Restores 32 MP of the user’s buddy move when its [Name:MoveId Idx=\"506\" ] is successful."
         }
       ]
     },
     {
       "id": 99024901,
       "name": "Gathered Souls",
-      "description": "Charges the user’s move gauge by 6 after using its sync move. Restores 50 MP of the user’s buddy move after using its sync move.",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move. Restores 50 MP of the user’s buddy move after using its sync move.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 12020206,
           "name": "Rejuvenate 6",
-          "description": "Charges the user’s move gauge by 6 after using a sync move."
+          "description": "Charges the user’s move gauge by [Digit:1digit ] after using its sync move."
         },
         {
           "id": 13062509,
           "name": "S-Move: B-Move MP Recovery (50) 9",
-          "description": "Has a chance (100%) of restoring 50 MP of the user’s buddy move after using its sync move."
+          "description": "Restores 50 MP of the user’s buddy move after using its sync move."
         }
       ]
     }

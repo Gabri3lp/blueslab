@@ -154,23 +154,25 @@
     {
       "id": 25010501,
       "name": "Great Ancient Tusks",
-      "description": "Grants all of the following effects when the user uses Sunny Day or an ally turns the weather sunny: Reduces the user’s sync move countdown by 1. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
+      "description": "Grants all of the following effects when the user uses [Name:MoveId Idx=\"19170\" ] or an ally turns the weather sunny: Reduces the user’s sync move countdown by [Digit:1digit ]. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ].",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99044701,
       "name": "On the House!",
-      "description": "Grants all of the following effects the first time the user’s Trainer uses a move each battle: Turns the field of play’s zone into a Ground Zone. (A Ground Zone powers up Ground-type attacks.) Raises the user’s Attack and Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
+      "description": "Grants all of the following effects the first time the user’s Trainer uses a move each battle: Turns the field of play’s zone into an [Name:ReferencedMessageTag ]. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Raises the user’s Attack and Sp. Atk by [Digit:1digit Idx=\"4\" ] stat [EN:Qty Ref=\"4\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 2,
       "childPassives": [
         {
           "id": 19069101,
           "name": "1st T-Move: EX Ground Zone",
-          "description": "Turns the field of play’s zone into an the first time the user’s Trainer uses a move each battle. (An powers up -type attacks.)"
+          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Trainer uses a move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 18128903,
           "name": "1st T-Move: Attack ↑4 & Sp. Atk ↑4 & Crit Rate ↑3",
-          "description": "Raises the user’s Attack and Sp. Atk by 4 stat ranks the first time its Trainer uses a move each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time its Trainer uses a move each battle."
+          "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its Trainer uses a move each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time its Trainer uses a move each battle."
         }
       ]
     },
@@ -178,6 +180,7 @@
       "id": 18020901,
       "name": "Impervious",
       "description": "The user’s stats cannot be lowered.",
+      "slot": 3,
       "childPassives": []
     }
   ],

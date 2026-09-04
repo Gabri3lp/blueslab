@@ -154,25 +154,29 @@
     {
       "id": 28010501,
       "name": "Hoenn Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18095201,
       "name": "Downside Up",
       "description": "When the user’s stats would be lowered, raises the user’s stats by the same amount instead.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13015701,
       "name": "Good Form",
       "description": "The more the user’s stats are raised, the more it powers up the user’s moves.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 12020104,
       "name": "Move Gauge Refresh 4",
-      "description": "Has a chance (50%) of charging the user’s move gauge by one when its move is successful.",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -188,7 +192,36 @@
         "spd": 1.0,
         "spe": 1.4
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 28010501,
+          "name": "Hoenn Flag Bearer",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18095201,
+          "name": "Downside Up",
+          "description": "When the user’s stats would be lowered, raises the user’s stats by the same amount instead.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 13015701,
+          "name": "Good Form",
+          "description": "The more the user’s stats are raised, the more it powers up the user’s moves.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 12020104,
+          "name": "Move Gauge Refresh 4",
+          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+          "slot": 4,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

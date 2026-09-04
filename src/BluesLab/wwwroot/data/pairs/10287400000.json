@@ -154,7 +154,8 @@
     {
       "id": 28041001,
       "name": "Paldea’s Grand Mystery",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 28030901,
@@ -172,18 +173,21 @@
       "id": 99039901,
       "name": "Prepare for Battle",
       "description": "The user changes to Terastal Form the first time it enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 15015306,
       "name": "Debut: Sync CD ↓ & Sp. Atk ↑6",
-      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Raises the user’s Sp. Atk by 6 stat ranks the first time it enters a battle each battle.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time it enters a battle each battle. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 99040101,
       "name": "Terastal Shell",
-      "description": "Reduces the MP for the user’s Potion by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately 60% of its maximum HP. Increases the user’s Special Moves ↑ Next effect by 3 ranks.",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -202,14 +206,43 @@
       },
       "passives": [
         {
+          "id": 28041001,
+          "name": "Paldea’s Grand Mystery",
+          "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 28030901,
+              "name": "Passive #28030901",
+              "description": ""
+            },
+            {
+              "id": 13020805,
+              "name": "Healthy Benefits 5",
+              "description": "Reduces damage when the user is hit by an attack move or sync move when its HP is full."
+            }
+          ]
+        },
+        {
           "id": 33012001,
           "name": "1st S-Move: Stellar S-Tera",
-          "description": "The user Sync Terastallizes into Stellar type the first time its sync move is used each battle."
+          "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time its sync move is used each battle.",
+          "slot": 2,
+          "childPassives": []
         },
         {
           "id": 15015601,
           "name": "Terastal Energy Amplified",
-          "description": "Reduces the user’s sync move countdown by 2 when the user changes into Terastal Form. Raises the user’s Sp. Atk by 1 stat rank when the user changes into Terastal Form."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] when the user changes into Terastal Form. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user changes into Terastal Form.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99040101,
+          "name": "Terastal Shell",
+          "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0
@@ -228,14 +261,43 @@
       },
       "passives": [
         {
+          "id": 28041001,
+          "name": "Paldea’s Grand Mystery",
+          "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Reduces damage when the user is hit by an attack move or sync move when its HP is full.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 28030901,
+              "name": "Passive #28030901",
+              "description": ""
+            },
+            {
+              "id": 13020805,
+              "name": "Healthy Benefits 5",
+              "description": "Reduces damage when the user is hit by an attack move or sync move when its HP is full."
+            }
+          ]
+        },
+        {
           "id": 99040001,
           "name": "Shine Back to Zero",
-          "description": "Removes all weather conditions and terrains the first time the user enters a battle each battle."
+          "description": "Removes all weather conditions and terrains the first time the user enters a battle each battle.",
+          "slot": 2,
+          "childPassives": []
         },
         {
           "id": 15015501,
           "name": "Debut: Sync CD ↓3 & Normal Zone",
-          "description": "Reduces the user’s sync move countdown by 3 the first time it enters a battle each battle. Turns the field of play’s zone into a Normal Zone the first time the user enters a battle each battle. (A Normal Zone powers up Normal-type attacks.)"
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time it enters a battle each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99040101,
+          "name": "Terastal Shell",
+          "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 4050

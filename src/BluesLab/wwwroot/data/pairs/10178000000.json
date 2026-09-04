@@ -154,19 +154,22 @@
     {
       "id": 18103809,
       "name": "Team Limited Addition (Sp. Def) 9",
-      "description": "Has a chance (100%) of raising the Sp. Def of all allied sync pairs by 1 stat rank when the user uses a move with a limited number of uses.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user uses a move with a limited number of uses.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 23011502,
       "name": "Allied Field Effect Multiplier 2",
-      "description": "The user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed increase 20% when effects that apply only to the allied field of play are in effect.",
+      "description": "The user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed increase 20% when effects that apply only to the allied field of play are in effect.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 11012505,
       "name": "MAX Healer 5",
-      "description": "Restores the user’s HP by approximately 50% of its maximum HP after using its max move.",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its max move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18103809,
+          "name": "Team Limited Addition (Sp. Def) 9",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user uses a move with a limited number of uses.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 23011502,
+          "name": "Allied Field Effect Multiplier 2",
+          "description": "The user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed increase 20% when effects that apply only to the allied field of play are in effect.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 11012505,
+          "name": "MAX Healer 5",
+          "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP after using its max move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

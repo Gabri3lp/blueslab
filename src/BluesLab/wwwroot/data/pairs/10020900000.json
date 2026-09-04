@@ -154,7 +154,8 @@
     {
       "id": 28040601,
       "name": "Unova’s Gentle Hero",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 28030501,
@@ -164,24 +165,25 @@
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         }
       ]
     },
     {
       "id": 99036301,
       "name": "Sudden Whiteout",
-      "description": "Reduces the user’s sync move countdown by 1 the first time its Pokémon uses a status move each battle. Turns the field of play’s zone into an EX Ice Zone the first time the user’s Pokémon uses a status move each battle. (An EX Ice Zone powers up Ice-type attacks.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ] the first time its Pokémon uses a status move each battle. Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Pokémon uses a status move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s [Name:ReferencedMessageTag Idx=\"3\" ].",
+      "slot": 2,
       "childPassives": [
         {
           "id": 19061101,
           "name": "1st Use Status P-Move: EX Ice Zone",
-          "description": "Turns the field of play’s zone into an EX Ice Zone the first time the user’s Pokémon uses a status move each battle. (An EX Ice Zone powers up Ice-type attacks.)"
+          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user’s Pokémon uses a status move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 15012001,
           "name": "Afflicter’s Fervor 1",
-          "description": "Reduces the sync move countdown by 1 the first time the user’s Pokémon uses a status move each battle."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle."
         },
         {
           "id": 18051501,
@@ -191,36 +193,38 @@
         {
           "id": 99010501,
           "name": "Piercing Blows",
-          "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect."
+          "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect."
         }
       ]
     },
     {
       "id": 99036401,
       "name": "Ultracold Air",
-      "description": "The power of the user’s Ice Beam is doubled. Lowers the target’s Sp. Def by 3 stat ranks when the user’s attack move against it is successful. Increases the user’s Special Moves ↑ Next effect by 3 ranks when its attack move is successful.",
+      "description": "The power of the user’s [Name:MoveId Idx=\"58\" ] is doubled. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 13084601,
           "name": "Ice Beam Power ×2",
-          "description": "The power of the user’s Ice Beam is doubled."
+          "description": "The power of the user’s [Name:MoveId Idx=\"58\" ] is doubled."
         },
         {
           "id": 17089609,
           "name": "Hit: Special Boost ↑3 9",
-          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 3 ranks when its attack move is successful."
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful."
         },
         {
           "id": 18122109,
           "name": "Hit: Sp. Def ↓3 9",
-          "description": "Has a chance (100%) of lowering the target’s Sp. Def by 3 stat ranks when the user’s attack move against it is successful."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
         }
       ]
     },
     {
       "id": 17086209,
       "name": "Ally Hits Status Cond Opp: Sync Move Boost ↑2 9",
-      "description": "Has a chance (100%) of increasing an ally’s Sync Move ↑ Next effect by 2 ranks when its attack move is successful against an opponent that is affected by a status condition.",
+      "description": "Increases an ally’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against an opponent that is affected by a status condition.",
+      "slot": 4,
       "childPassives": []
     }
   ],

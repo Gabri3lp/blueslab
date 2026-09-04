@@ -154,35 +154,38 @@
     {
       "id": 99020901,
       "name": "Super Tough!",
-      "description": "Turns the field of play’s zone into a Steel Zone the first time the user enters a battle each battle. (A Steel Zone powers up Steel-type attacks.) Extends the duration of the Steel Zone when the zone turns into a Steel Zone while the user is on the field. Applies the Free Move Next effect to the user when its attack move is successful while the zone is a Steel Zone.",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "slot": 1,
       "childPassives": [
         {
           "id": 19023001,
           "name": "Steel Surroundings",
-          "description": "Turns the field of play’s zone into a Steel Zone the first time the user enters a battle each battle. (A Steel Zone powers up Steel-type attacks.)"
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 19027803,
           "name": "Steel Zone Extension 3",
-          "description": "Extends the duration of the Steel Zone when the zone turns into a Steel Zone while the user is on the field."
+          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
         },
         {
           "id": 17076309,
           "name": "Steel Zone Hit: Free Move Next 9",
-          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the zone is a Steel Zone."
+          "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ]."
         }
       ]
     },
     {
       "id": 17076109,
       "name": "Hit: Team “Berry” MP ↓ & Physical Boost ↑1 9",
-      "description": "Has a chance (100%) of reducing MP by 1 for the user’s moves that have the Berry effect tag and increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user’s attack move is successful.",
+      "description": "Reduces MP by [Digit:1digit Idx=\"1\" ] for the user’s moves that have the Berry effect tag and increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 19052101,
       "name": "1st “Berry” MP 0: Steel Zone",
-      "description": "Turns the field of play’s zone into a Steel Zone the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle. (A Steel Zone powers up Steel-type attacks.)",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -198,7 +201,45 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99020901,
+          "name": "Super Tough!",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 19023001,
+              "name": "Steel Surroundings",
+              "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            },
+            {
+              "id": 19027803,
+              "name": "Steel Zone Extension 3",
+              "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+            },
+            {
+              "id": 17076309,
+              "name": "Steel Zone Hit: Free Move Next 9",
+              "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ]."
+            }
+          ]
+        },
+        {
+          "id": 17076109,
+          "name": "Hit: Team “Berry” MP ↓ & Physical Boost ↑1 9",
+          "description": "Reduces MP by [Digit:1digit Idx=\"1\" ] for the user’s moves that have the Berry effect tag and increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 19052101,
+          "name": "1st “Berry” MP 0: Steel Zone",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

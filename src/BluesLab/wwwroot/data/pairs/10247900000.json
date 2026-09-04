@@ -154,31 +154,36 @@
     {
       "id": 29010401,
       "name": "Flame Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Fire theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29020401,
       "name": "Flame Judgment",
-      "description": "Raises the Fire Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Fire Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99020001,
       "name": "Champion Who Hears the Cheers",
       "description": "When the user’s sync move or max move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves or max moves affected by this passive skill is not lowered even if there are multiple targets. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: sync move or max moves.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 99020101,
       "name": "Champion Time!",
-      "description": "Reduces the user’s sync move countdown by 3 after using its max move. Increases the user’s Special Moves ↑ Next effect by 3 ranks after using its max move.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] after using its max move. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its max move.",
+      "slot": 4,
       "childPassives": []
     },
     {
       "id": 99020201,
       "name": "The Unbeatable Leon",
       "description": "The user’s moves never miss. Protects the user against critical hits.",
+      "slot": 5,
       "childPassives": []
     }
   ],
@@ -194,7 +199,43 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 29010401,
+          "name": "Flame Myth",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 29020401,
+          "name": "Flame Judgment",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99020001,
+          "name": "Champion Who Hears the Cheers",
+          "description": "When the user’s sync move or max move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves or max moves affected by this passive skill is not lowered even if there are multiple targets. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: sync move or max moves.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99020101,
+          "name": "Champion Time!",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] after using its max move. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after using its max move.",
+          "slot": 4,
+          "childPassives": []
+        },
+        {
+          "id": 99020201,
+          "name": "The Unbeatable Leon",
+          "description": "The user’s moves never miss. Protects the user against critical hits.",
+          "slot": 5,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

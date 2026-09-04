@@ -348,7 +348,7 @@
                     <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("passives")'>
-                        <i class="bi bi-shield-check me-1"></i> @Loc.T("passives", "Passives") (@Pair.Passives.Count)
+                        <i class="bi bi-shield-check me-1"></i> @Loc.T("passives", "Passives") (@(GetEffectivePassives().Count))
                     </button>
                     <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
@@ -551,10 +551,19 @@
                     {
                         string pName = Loc.GetPassiveName(passive.Id, passive.Name);
                         string pDesc = Loc.GetPassiveDescription(passive.Id, passive.Description);
+                        bool isSubstituted = Ally.FormIndex > 0 && Pair.Passives.All(bp => bp.Id != passive.Id);
 
-                        <div class="card bg-dark bg-opacity-75 border border-secondary px-3 py-2 shadow-sm">
-                            <div class="fw-bold text-white" style="font-size: 0.95rem; letter-spacing: 0.2px;">@pName</div>
-                            <div class="mt-1" style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@pDesc</div>
+                        <div class="card bg-dark bg-opacity-75 @(isSubstituted ? "border-warning border-opacity-75" : "border-secondary") px-3 py-2 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="fw-bold text-white" style="font-size: 0.95rem; letter-spacing: 0.2px;">@pName</div>
+                                @if (isSubstituted && Ally.FormIndex <= Pair.Variations.Count)
+                                {
+                                    <span class="badge bg-warning text-dark py-0.5 px-1.5 fw-semibold" style="font-size: 0.68rem;">
+                                        <i class="bi bi-arrow-repeat me-1"></i>@Pair.Variations[Ally.FormIndex - 1].FormName
+                                    </span>
+                                }
+                            </div>
+                            <div style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@pDesc</div>
                             @if (passive.ChildPassives.Count > 0)
                             {
                                 <div class="mt-2 pt-1.5 border-top border-secondary border-opacity-50">
@@ -747,35 +756,15 @@
     private List<PassiveItem> GetEffectivePassives()
     {
         if (Pair == null) return new List<PassiveItem>();
-        if (Ally.FormIndex == 0 || Ally.FormIndex > Pair.Variations.Count)
+        if (Ally.FormIndex > 0 && Pair.Variations != null && Ally.FormIndex <= Pair.Variations.Count)
         {
-            return Pair.Passives;
-        }
-
-        var variation = Pair.Variations[Ally.FormIndex - 1];
-        if (variation.Passives == null || variation.Passives.Count == 0)
-        {
-            return Pair.Passives;
-        }
-
-        var list = new List<PassiveItem>();
-        // Keep master passives and unique overarching passives from base form
-        foreach (var p in Pair.Passives)
-        {
-            if (p.Name.Contains("Mystery", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Curiosity", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Myth", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Pride", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Spirit", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Flagbearer", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Master", StringComparison.OrdinalIgnoreCase) ||
-                p.Name.Contains("Judgment", StringComparison.OrdinalIgnoreCase))
+            var variation = Pair.Variations[Ally.FormIndex - 1];
+            if (variation.Passives != null && variation.Passives.Count > 0)
             {
-                list.Add(p);
+                return variation.Passives;
             }
         }
-        list.AddRange(variation.Passives);
-        return list;
+        return Pair.Passives ?? new List<PassiveItem>();
     }
 
     private void SetForm(int idx)

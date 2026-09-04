@@ -154,7 +154,8 @@
     {
       "id": 28040901,
       "name": "Paldea’s Bold Curiosity",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 28030901,
@@ -171,18 +172,20 @@
     {
       "id": 33011901,
       "name": "1st S-Move: Grass S-Tera",
-      "description": "The user Sync Terastallizes into Grass type the first time its sync move is used each battle.",
+      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time its sync move is used each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99039301,
       "name": "Festival Time!",
-      "description": "Restores 1 MP of the user’s buddy move after your team’s sync pair uses their sync move. Reduces the MP for the user’s Grassy Terrain by 1 and grants all of the following effects after your team’s sync pair uses their sync move: Reduces the user’s sync move countdown by 3. Turns the field of play’s terrain into Grassy Terrain.",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move. Reduces the MP for the user’s [Name:MoveId Idx=\"580\" ] by [Digit:1digit ] and grants all of the following effects after your team’s sync pair uses their sync move: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ].",
+      "slot": 3,
       "childPassives": [
         {
           "id": 13061509,
           "name": "Team S-Move: Restore B-Move MP 9",
-          "description": "Has a chance (100%) of restoring 1 MP of the user’s buddy move after your team’s sync pair uses their sync move."
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move."
         },
         {
           "id": 19063503,
@@ -194,7 +197,8 @@
     {
       "id": 17092101,
       "name": "Ally Hits: User Phys Boost ↑1 & S-Move Boost ↑2",
-      "description": "Increases the user’s Physical Moves ↑ Next effect by 1 rank when an ally’s attack move is successful. Increases the user’s Sync Move ↑ Next effect by 2 ranks when an ally’s attack move is successful.",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -212,9 +216,54 @@
       },
       "passives": [
         {
+          "id": 28040901,
+          "name": "Paldea’s Bold Curiosity",
+          "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 28030901,
+              "name": "Passive #28030901",
+              "description": ""
+            },
+            {
+              "id": 18051501,
+              "name": "P-Moves & S-Moves Crit",
+              "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+            }
+          ]
+        },
+        {
           "id": 23012301,
           "name": "While S-Tera: 5 Stats ↑ 1",
-          "description": "The user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed increase 10% while it is Sync Terastallized."
+          "description": "The user’s Attack, Defense, Sp. Atk, Sp. Def, and Speed increase 10% while it is Sync Terastallized.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99039301,
+          "name": "Festival Time!",
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move. Reduces the MP for the user’s [Name:MoveId Idx=\"580\" ] by [Digit:1digit ] and grants all of the following effects after your team’s sync pair uses their sync move: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Turns the field of play’s terrain into [Name:ReferencedMessageTag Idx=\"1\" ].",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 13061509,
+              "name": "Team S-Move: Restore B-Move MP 9",
+              "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move."
+            },
+            {
+              "id": 19063503,
+              "name": "Passive #19063503",
+              "description": ""
+            }
+          ]
+        },
+        {
+          "id": 17092101,
+          "name": "Ally Hits: User Phys Boost ↑1 & S-Move Boost ↑2",
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful.",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 4051

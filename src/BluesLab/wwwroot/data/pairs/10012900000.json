@@ -154,58 +154,63 @@
     {
       "id": 29011101,
       "name": "Fist Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Fighting theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29021101,
       "name": "Fist Judgment",
-      "description": "Raises the Fighting Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Fighting Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99040701,
       "name": "Mega Evolution Successor",
-      "description": "Turns the field of play’s zone into an EX Fighting Zone the first time the user successfully attacks with its buddy move each battle. (An EX Fighting Zone powers up Fighting-type attacks.) Extends the duration of the Fighting Zone when the zone turns into a Fighting Zone while the user is on the field. Extends the duration of the following field effects when they are applied to the allied field of play: - Kalos Circle (Physical) - Kalos Circle (Special) - Kalos Circle (Defensive)",
+      "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user successfully attacks with its buddy move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"2\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"2\" ] while the user is on the field. Extends the duration of the following field effects when they are applied to the allied field of play:\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]",
+      "slot": 3,
       "childPassives": [
         {
           "id": 19064701,
           "name": "1st B-Move Hit: EX Fighting Zone",
-          "description": "Turns the field of play’s zone into an EX Fighting Zone the first time the user successfully attacks with its buddy move each battle. (An EX Fighting Zone powers up Fighting-type attacks.)"
+          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user successfully attacks with its buddy move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 19056503,
           "name": "Fighting Zone Extension 3",
-          "description": "Extends the duration of the Fighting Zone when the zone turns into a Fighting Zone while the user is on the field."
+          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
         },
         {
           "id": 19064803,
           "name": "Kalos C (3 Kinds) Extension 3",
-          "description": "Extends the duration of the following field effects when they are applied to the allied field of play: - Kalos Circle (Physical) - Kalos Circle (Special) - Kalos Circle (Defensive)"
+          "description": "Extends the duration of the following field effects when they are applied to the allied field of play:\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]"
         }
       ]
     },
     {
       "id": 99040801,
       "name": "Guiding Aura of Victory",
-      "description": "Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+      "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 18123509,
           "name": "Hit: Team Defense ↑2 & Sp. Def ↑2 9",
-          "description": "Has a chance (100%) of raising the Defense and Sp. Def of all allied sync pairs by 2 stat ranks when the user’s attack move is successful."
+          "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful."
         },
         {
           "id": 17044809,
           "name": "Combo Freebie 9",
-          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful."
+          "description": "Applies the Free Move Next effect to the user when its attack move is successful."
         }
       ]
     },
     {
       "id": 17089801,
       "name": "Entry: Team Physical & Special Boost 1",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank(s) when the user enters a battle.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 5,
       "childPassives": []
     }
   ],
@@ -221,7 +226,70 @@
         "spd": 1.1,
         "spe": 1.1
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 29011101,
+          "name": "Fist Myth",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 29021101,
+          "name": "Fist Judgment",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99040701,
+          "name": "Mega Evolution Successor",
+          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user successfully attacks with its buddy move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"2\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"2\" ] while the user is on the field. Extends the duration of the following field effects when they are applied to the allied field of play:\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 19064701,
+              "name": "1st B-Move Hit: EX Fighting Zone",
+              "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user successfully attacks with its buddy move each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            },
+            {
+              "id": 19056503,
+              "name": "Fighting Zone Extension 3",
+              "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+            },
+            {
+              "id": 19064803,
+              "name": "Kalos C (3 Kinds) Extension 3",
+              "description": "Extends the duration of the following field effects when they are applied to the allied field of play:\n- [Name:ReferencedMessageTag Idx=\"3\" ]\n- [Name:ReferencedMessageTag Idx=\"4\" ]\n- [Name:ReferencedMessageTag Idx=\"5\" ]"
+            }
+          ]
+        },
+        {
+          "id": 99040801,
+          "name": "Guiding Aura of Victory",
+          "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+          "slot": 4,
+          "childPassives": [
+            {
+              "id": 18123509,
+              "name": "Hit: Team Defense ↑2 & Sp. Def ↑2 9",
+              "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful."
+            },
+            {
+              "id": 17044809,
+              "name": "Combo Freebie 9",
+              "description": "Applies the Free Move Next effect to the user when its attack move is successful."
+            }
+          ]
+        },
+        {
+          "id": 17089801,
+          "name": "Entry: Team Physical & Special Boost 1",
+          "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+          "slot": 5,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

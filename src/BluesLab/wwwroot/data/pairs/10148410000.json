@@ -155,6 +155,7 @@
       "id": 99024301,
       "name": "Souls Swaying in the Dark",
       "description": "Raises the chance of inflicting status conditions with the additional effects of the user’s moves. When the user inflicts a status condition on an opponent with the additional effects of a move, inflicts the same status condition on all opposing sync pairs.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 22010103,
@@ -164,31 +165,33 @@
         {
           "id": 17045709,
           "name": "Viral Hit 9",
-          "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
+          "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, inflicts the same status condition on all opposing sync pairs."
         }
       ]
     },
     {
       "id": 99024401,
       "name": "The Mystic Seer Teacher’s Scary Stories",
-      "description": "Lowers one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the Free Move Next effect to the user when its attack move is successful against a burned opponent.",
+      "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful against a burned opponent.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 17080909,
           "name": "Hit Burned Opp: Free Move Next 9",
-          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful against a burned opponent."
+          "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful against a burned opponent."
         },
         {
           "id": 18120809,
           "name": "Hit Burned Opp: Stat ↓2 9",
-          "description": "Has a chance (100%) of lowering one of the target’s following stats by 2 stat ranks at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
+          "description": "Lowers one of the target’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user’s attack move is successful against a burned opponent: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness."
         }
       ]
     },
     {
       "id": 17080709,
       "name": "Ally Hits Burned Opp: Special Boost ↑1 9",
-      "description": "Has a chance (100%) of increasing an ally’s Special Moves ↑ Next effect by 1 rank when its attack move is successful against a burned opponent.",
+      "description": "Increases an ally’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against a burned opponent.",
+      "slot": 3,
       "childPassives": []
     }
   ],

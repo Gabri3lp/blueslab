@@ -154,19 +154,22 @@
     {
       "id": 99027301,
       "name": "High Risk, High Return",
-      "description": "Grants all of the following effects the first time the user’s sync move is used each battle: Applies the Damage Guard Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 6 ranks. The user takes damage equal to 60% of its remaining HP.",
+      "description": "Grants all of the following effects the first time the user’s sync move is used each battle: Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"3\" ]% of its remaining HP.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99027401,
       "name": "The Die Has Been Cast!",
-      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s Attack by one to six stat ranks at random. Raises the user’s Defense by one to six stat ranks at random. Raises the user’s Sp. Def by one to six stat ranks at random.",
+      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s [Name:ReferencedMessageTag ] by one to six stat ranks at random. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by one to six stat ranks at random. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by one to six stat ranks at random.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18051501,
       "name": "P-Moves & S-Moves Crit",
       "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.2
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99027301,
+          "name": "High Risk, High Return",
+          "description": "Grants all of the following effects the first time the user’s sync move is used each battle: Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to the user. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. The user takes damage equal to [Digit:2digits Idx=\"3\" ]% of its remaining HP.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 99027401,
+          "name": "The Die Has Been Cast!",
+          "description": "Grants all of the following effects when the user enters a battle: Raises the user’s [Name:ReferencedMessageTag ] by one to six stat ranks at random. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by one to six stat ranks at random. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by one to six stat ranks at random.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18051501,
+          "name": "P-Moves & S-Moves Crit",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

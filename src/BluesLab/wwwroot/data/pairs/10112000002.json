@@ -155,6 +155,7 @@
       "id": 99050301,
       "name": "Rampaging Storm",
       "description": "Powers up the sync moves of all allied sync pairs when the weather is rainy. Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Quickly charges the move gauge when the weather is rainy.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 19020903,
@@ -176,13 +177,15 @@
     {
       "id": 18130709,
       "name": "P-Move on Opp: Attack & Sp. Atk ↓ 9",
-      "description": "Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s Pokémon uses a move targeting that opponent.",
+      "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 22010201,
       "name": "Aggravation 1",
       "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -198,7 +201,45 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99050301,
+          "name": "Rampaging Storm",
+          "description": "Powers up the sync moves of all allied sync pairs when the weather is rainy. Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Quickly charges the move gauge when the weather is rainy.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 19020903,
+              "name": "Flood Alert 3",
+              "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field."
+            },
+            {
+              "id": 12010103,
+              "name": "Racing Rain 3",
+              "description": "Quickly charges the move gauge when the weather is rainy."
+            },
+            {
+              "id": 16019902,
+              "name": "Rainy: Team S-Moves ↑ 2",
+              "description": "Powers up the sync moves of all allied sync pairs when the weather is rainy."
+            }
+          ]
+        },
+        {
+          "id": 18130709,
+          "name": "P-Move on Opp: Attack & Sp. Atk ↓ 9",
+          "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 22010201,
+          "name": "Aggravation 1",
+          "description": "Raises the chance of inflicting the flinching, confused, or trapped condition with the additional effects of moves.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

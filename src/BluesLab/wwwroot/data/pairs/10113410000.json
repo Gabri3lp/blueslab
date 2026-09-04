@@ -155,18 +155,21 @@
       "id": 17040201,
       "name": "Endurance",
       "description": "Applies the Enduring effect to the user if its HP is full when it enters a battle.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18102609,
       "name": "Full-Bracing Command 9",
-      "description": "Has a chance (100%) of raising the user’s Defense and Sp. Def by 1 stat rank when its Trainer uses a move.",
+      "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its Trainer uses a move.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18102809,
       "name": "Team Critical Command 9",
-      "description": "Has a chance (100%) of raising the critical-hit rate of all allied sync pairs by 1 stat rank when the user’s Trainer uses a move.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Trainer uses a move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -186,12 +189,23 @@
         {
           "id": 17049901,
           "name": "Debut Regen",
-          "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time it enters a battle each battle."
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time it enters a battle each battle.",
+          "slot": 1,
+          "childPassives": []
         },
         {
           "id": 18102709,
           "name": "Full-Bracing Command+ 9",
-          "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its Trainer uses a move."
+          "description": "Raises the user’s Defense and Sp. Def by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when its Trainer uses a move.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18102809,
+          "name": "Team Critical Command 9",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Trainer uses a move.",
+          "slot": 3,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

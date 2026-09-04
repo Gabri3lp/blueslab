@@ -154,18 +154,20 @@
     {
       "id": 28012401,
       "name": "Paldea Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99021401,
       "name": "Hungry Pulse",
-      "description": "The user’s Attack increases 30% when the weather is sunny. Makes the weather sunny the first time the user enters a battle each battle. Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "description": "The user’s [Name:ReferencedMessageTag ] increases 30% when the weather is sunny. Makes the weather sunny the first time the user enters a battle each battle. Extends the duration of sunny weather when the weather turns sunny while the user is on the field.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 23011903,
           "name": "Sunny: Attack ↑ 3",
-          "description": "The user’s Attack increases 30% when the weather is sunny."
+          "description": "The user’s [Name:ReferencedMessageTag ] increases 30% when the weather is sunny."
         },
         {
           "id": 19020601,
@@ -182,17 +184,18 @@
     {
       "id": 99021501,
       "name": "My Very Own Treasure",
-      "description": "Increases the user’s Physical Moves ↑ Next effect by 2 ranks the first time its sync move is used each battle. Restores 1 MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle.",
+      "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle. Restores [Digit:1digit Idx=\"2\" ] MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 17074302,
           "name": "1st S-Move: Physical Boost 2",
-          "description": "Increases the user’s Physical Moves ↑ Next effect by 2 rank(s) the first time its sync move is used each battle."
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
         },
         {
           "id": 13061801,
           "name": "1st S-Move: Restore Status P-Move MP 1",
-          "description": "Restores 1 MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle."
+          "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon the first time the user’s sync move is used each battle."
         }
       ]
     },
@@ -200,6 +203,7 @@
       "id": 13082802,
       "name": "Sunny: Team P-Moves ↑ & S-Moves ↑ 2",
       "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny.",
+      "slot": 4,
       "childPassives": []
     }
   ],

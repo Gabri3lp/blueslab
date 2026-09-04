@@ -154,19 +154,22 @@
     {
       "id": 99014001,
       "name": "Amped and Vibed",
-      "description": "Turns the field of play’s zone into a Poison Zone the first time the user’s max move is used each battle. (A Poison Zone powers up Poison-type attacks.) Extends the duration of the Poison Zone when the zone turns into a Poison Zone while the user is on the field.",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s max move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 12010603,
       "name": "Turbo Charge 3",
-      "description": "Quickly charges the move gauge when the terrain is Electric Terrain.",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18111109,
       "name": "Hit Poisoned Opp: Attack ↓ & Hit Paralyzed Opp: Sp. Atk ↓ 9",
-      "description": "Has a chance (100%) of lowering the target’s Attack by 1 stat rank when the user’s attack move is successful against a poisoned or badly poisoned opponent. Has a chance (100%) of lowering the target’s Sp. Atk by 1 stat rank when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a poisoned or badly poisoned opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a paralyzed opponent.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99014001,
+          "name": "Amped and Vibed",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s max move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 12010603,
+          "name": "Turbo Charge 3",
+          "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18111109,
+          "name": "Hit Poisoned Opp: Attack ↓ & Hit Paralyzed Opp: Sp. Atk ↓ 9",
+          "description": "Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a poisoned or badly poisoned opponent. Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a paralyzed opponent.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

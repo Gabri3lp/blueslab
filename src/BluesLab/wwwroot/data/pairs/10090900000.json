@@ -154,31 +154,36 @@
     {
       "id": 29010101,
       "name": "Iron Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Steel theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29020101,
       "name": "Iron Judgment",
-      "description": "Raises the Steel Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Steel Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99018201,
       "name": "What I Learned from My Adventure",
-      "description": "Applies the Enduring effect to all allied sync pairs the first time the user enters a battle each battle. Applies the Free Move Next effect to the user when its attack move is successful. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user’s attack move is successful.",
+      "description": "Applies the Enduring effect to all allied sync pairs the first time the user enters a battle each battle. Applies the Free Move Next effect to the user when its attack move is successful. Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 99018301,
       "name": "Wandering Stone Enthusiast",
       "description": "Protects the user against critical hits. Protects the user from damage from a sandstorm. When the user’s stats would be lowered, raises the user’s stats by the same amount instead.",
+      "slot": 4,
       "childPassives": []
     },
     {
       "id": 11012909,
       "name": "Triage Tank 9",
-      "description": "Has a chance (100%) of restoring the user’s HP when it is hit by an attack move.",
+      "description": "Restores the user’s HP when it is hit by an attack move.",
+      "slot": 5,
       "childPassives": []
     }
   ],
@@ -196,9 +201,39 @@
       },
       "passives": [
         {
+          "id": 29010101,
+          "name": "Iron Myth",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 29020101,
+          "name": "Iron Judgment",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99018201,
+          "name": "What I Learned from My Adventure",
+          "description": "Applies the Enduring effect to all allied sync pairs the first time the user enters a battle each battle. Applies the Free Move Next effect to the user when its attack move is successful. Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99018301,
+          "name": "Wandering Stone Enthusiast",
+          "description": "Protects the user against critical hits. Protects the user from damage from a sandstorm. When the user’s stats would be lowered, raises the user’s stats by the same amount instead.",
+          "slot": 4,
+          "childPassives": []
+        },
+        {
           "id": 11011109,
           "name": "Team Triage Tank 9",
-          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move."
+          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move.",
+          "slot": 5,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

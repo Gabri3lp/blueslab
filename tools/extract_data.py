@@ -345,6 +345,7 @@ def main():
                     "id": pid,
                     "name": p_name,
                     "description": p_desc,
+                    "slot": i,
                     "childPassives": child_passives
                 })
 
@@ -360,13 +361,28 @@ def main():
                 "spe": v_entry.get("speScale", 100) / 100.0,
             }
             var_passives = []
-            for i in range(1, 6):
-                pid = safe_int(v_entry.get(f"passive{i}Id", 0))
-                if pid > 0:
+            for slot in range(1, 6):
+                var_pid = safe_int(v_entry.get(f"passive{slot}Id", 0))
+                base_pid = safe_int(t.get(f"passive{slot}Id", 0))
+                effective_pid = var_pid if var_pid > 0 else base_pid
+                if effective_pid > 0:
+                    child_passives = []
+                    psc = ps_children.get(str(effective_pid))
+                    if psc:
+                        for cid in psc.get("passiveSkillChildIds", []):
+                            cid_int = safe_int(cid)
+                            if cid_int > 0:
+                                child_passives.append({
+                                    "id": cid_int,
+                                    "name": get_passive_name(cid_int),
+                                    "description": get_passive_desc(cid_int)
+                                })
                     var_passives.append({
-                        "id": pid,
-                        "name": get_passive_name(pid),
-                        "description": get_passive_desc(pid)
+                        "id": effective_pid,
+                        "name": get_passive_name(effective_pid),
+                        "description": get_passive_desc(effective_pid),
+                        "slot": slot,
+                        "childPassives": child_passives
                     })
             variations.append({
                 "formId": form_num,

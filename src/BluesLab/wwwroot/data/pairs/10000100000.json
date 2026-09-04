@@ -154,25 +154,29 @@
     {
       "id": 28011201,
       "name": "Kanto Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Kanto theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99011301,
       "name": "Red’s Fighting Spirit",
-      "description": "Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field. Quickly charges the move gauge when the terrain is Electric Terrain. Restores the user’s HP whenever its Pokémon takes an action when the terrain is Electric Terrain.",
+      "description": "Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field. Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ]. Restores the user’s HP whenever its Pokémon takes an action when the terrain is Electric Terrain.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18051401,
       "name": "Clutch Critical",
       "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves, sync move, or max moves.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 15011703,
       "name": "MAX Countdown 3",
-      "description": "Reduces the user’s sync move countdown by 3 after using its max move.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -188,7 +192,36 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 28011201,
+          "name": "Kanto Flag Bearer",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 99011301,
+          "name": "Red’s Fighting Spirit",
+          "description": "Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field. Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ]. Restores the user’s HP whenever its Pokémon takes an action when the terrain is Electric Terrain.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18051401,
+          "name": "Clutch Critical",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves, sync move, or max moves.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 15011703,
+          "name": "MAX Countdown 3",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move.",
+          "slot": 4,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

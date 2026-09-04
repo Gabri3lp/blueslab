@@ -154,31 +154,36 @@
     {
       "id": 29010301,
       "name": "Earth Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Ground theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29020301,
       "name": "Earth Judgment",
-      "description": "Raises the Ground Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Ground Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99018701,
       "name": "Myth Archeologist",
-      "description": "Turns the field of play’s zone into a Ground Zone when the user causes a sandstorm. (A Ground Zone powers up Ground-type attacks.) Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Extends the duration of the Ground Zone when the zone turns into a Ground Zone while the user is on the field.",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user causes a sandstorm. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 99018801,
       "name": "Mutual Trust",
       "description": "The user’s moves never miss. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Protects the user from damage from a sandstorm.",
+      "slot": 4,
       "childPassives": []
     },
     {
       "id": 99018901,
       "name": "Unbending Pride",
-      "description": "Reduces the sync move countdown by 1 the first time the user’s Pokémon uses a status move each battle. Raises the user’s Attack by 6 stat ranks the first time its Pokémon uses a status move each battle.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle.",
+      "slot": 5,
       "childPassives": []
     }
   ],
@@ -194,7 +199,43 @@
         "spd": 1.1,
         "spe": 1.1
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 29010301,
+          "name": "Earth Myth",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 29020301,
+          "name": "Earth Judgment",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99018701,
+          "name": "Myth Archeologist",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user causes a sandstorm. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99018801,
+          "name": "Mutual Trust",
+          "description": "The user’s moves never miss. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Protects the user from damage from a sandstorm.",
+          "slot": 4,
+          "childPassives": []
+        },
+        {
+          "id": 99018901,
+          "name": "Unbending Pride",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle.",
+          "slot": 5,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

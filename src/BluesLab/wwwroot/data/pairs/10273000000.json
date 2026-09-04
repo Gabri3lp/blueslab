@@ -154,19 +154,22 @@
     {
       "id": 17070609,
       "name": "Set Allied/Entire Field Effect: Free Move Next 9",
-      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when it activates a field effect on either the entire field of play or the allied field of play.",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it activates a field effect on either the entire field of play or the allied field of play.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13022803,
       "name": "Hail: Physical DR 3",
       "description": "Reduces physical attack move damage taken by allies during a hailstorm.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17013901,
       "name": "Team Hail Immunity",
       "description": "Protects all allied sync pairs from damage from a hailstorm.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17070609,
+          "name": "Set Allied/Entire Field Effect: Free Move Next 9",
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user when it activates a field effect on either the entire field of play or the allied field of play.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13022803,
+          "name": "Hail: Physical DR 3",
+          "description": "Reduces physical attack move damage taken by allies during a hailstorm.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17013901,
+          "name": "Team Hail Immunity",
+          "description": "Protects all allied sync pairs from damage from a hailstorm.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

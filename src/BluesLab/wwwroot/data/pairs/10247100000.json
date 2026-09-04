@@ -154,19 +154,22 @@
     {
       "id": 18094504,
       "name": "Lucky Seven 4",
-      "description": "Has a chance (50%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by one stat rank when the user’s attack move against it is successful.",
+      "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by one stat rank when the user’s attack move against it is successful.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17044501,
       "name": "MAX Damage Guard",
       "description": "Applies the Damage Guard Next effect to the user after using its max move. (If hit by an attack while this effect is applied, the attack will inflict no damage on the user, while the damage of some attacks such as sync moves will be halved. The effect is removed after it is activated.)",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13012301,
       "name": "Ramming Speed",
       "description": "The more the user’s Speed is raised, the more it powers up the user’s moves.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18094504,
+          "name": "Lucky Seven 4",
+          "description": "Has a chance ([Digit:2digits ]%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, and evasiveness by one stat rank when the user’s attack move against it is successful.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 17044501,
+          "name": "MAX Damage Guard",
+          "description": "Applies the Damage Guard Next effect to the user after using its max move. (If hit by an attack while this effect is applied, the attack will inflict no damage on the user, while the damage of some attacks such as sync moves will be halved. The effect is removed after it is activated.)",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 13012301,
+          "name": "Ramming Speed",
+          "description": "The more the user’s Speed is raised, the more it powers up the user’s moves.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

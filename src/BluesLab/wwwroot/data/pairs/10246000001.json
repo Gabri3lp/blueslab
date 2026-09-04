@@ -154,30 +154,33 @@
     {
       "id": 99021001,
       "name": "Gentleman’s Combo",
-      "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle. Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle.",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 18045106,
           "name": "Grand Entry 6",
-          "description": "Raises the user’s Sp. Atk by 6 stat ranks when it enters a battle."
+          "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         }
       ]
     },
     {
       "id": 19053601,
       "name": "User Sets Rain: Galar C (Spec) on Field",
-      "description": "Applies Galar Circle (Special) to the allied field of play when the user makes the weather rainy.",
+      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play when the user makes the weather rainy.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17078009,
       "name": "Rainy Hit: Free Move Next 9",
-      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the weather is rainy.",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while the weather is rainy.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -193,7 +196,40 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99021001,
+          "name": "Gentleman’s Combo",
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 18045106,
+              "name": "Grand Entry 6",
+              "description": "Raises the user’s Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 18041903,
+              "name": "Sharp Entry 3",
+              "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            }
+          ]
+        },
+        {
+          "id": 19053601,
+          "name": "User Sets Rain: Galar C (Spec) on Field",
+          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play when the user makes the weather rainy.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17078009,
+          "name": "Rainy Hit: Free Move Next 9",
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while the weather is rainy.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

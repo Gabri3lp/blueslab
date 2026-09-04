@@ -154,19 +154,22 @@
     {
       "id": 18040102,
       "name": "Terrify 2",
-      "description": "Lowers the Attack of all opposing sync pairs by 2 stat ranks when the user enters a battle.",
+      "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18051102,
       "name": "Enfeeble 2",
-      "description": "Lowers the Defense of all opposing sync pairs by 2 stat ranks when the user enters a battle.",
+      "description": "Lowers the Defense of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18096101,
       "name": "Team Sharp Entry 1",
-      "description": "Raises the critical-hit rate of all allied sync pairs by 1 stat rank when the user enters a battle.",
+      "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18040102,
+          "name": "Terrify 2",
+          "description": "Lowers the Attack of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18051102,
+          "name": "Enfeeble 2",
+          "description": "Lowers the Defense of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18096101,
+          "name": "Team Sharp Entry 1",
+          "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

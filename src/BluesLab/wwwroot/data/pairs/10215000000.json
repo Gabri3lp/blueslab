@@ -154,19 +154,22 @@
     {
       "id": 12020409,
       "name": "Revenge Boost 9",
-      "description": "Has a chance (100%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "description": "Charges the user’s move gauge by one when it is hit by an attack move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13013605,
       "name": "HP Trade-Off 5",
       "description": "The smaller the user’s percentage of remaining HP, the more it powers up the user’s moves.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 15010801,
       "name": "Pressure Cooker 1",
-      "description": "Has a chance (20%) of reducing the user’s sync move countdown by one when it is in a pinch. This effect can activate only once per battle.",
+      "description": "Has a chance ([Digit:2digits ]%) of reducing the user’s sync move countdown by one when it is in a pinch. This effect can activate only once per battle.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.2,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 12020409,
+          "name": "Revenge Boost 9",
+          "description": "Charges the user’s move gauge by one when it is hit by an attack move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13013605,
+          "name": "HP Trade-Off 5",
+          "description": "The smaller the user’s percentage of remaining HP, the more it powers up the user’s moves.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 15010801,
+          "name": "Pressure Cooker 1",
+          "description": "Has a chance ([Digit:2digits ]%) of reducing the user’s sync move countdown by one when it is in a pinch. This effect can activate only once per battle.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

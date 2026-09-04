@@ -154,51 +154,54 @@
     {
       "id": 99040901,
       "name": "Turning On the Flash!",
-      "description": "Lowers the target’s Defense and Speed by 2 stat ranks when the user’s attack move against it is successful. Has a chance (30%) of making the target flinch when the user’s attack move against it is successful.",
+      "description": "Lowers the target’s Defense and Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful. Has a chance ([Digit:2digits Idx=\"1\" ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 18100509,
           "name": "Defense Destroyer 9",
-          "description": "Has a chance (100%) of lowering the target’s Defense by 2 stat ranks when the user’s attack move against it is successful."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
         },
         {
           "id": 18102909,
           "name": "Trip Twice 9",
-          "description": "Has a chance (100%) of lowering the target’s Speed by 2 stat ranks when the user’s attack move against it is successful."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
         },
         {
           "id": 17041302,
           "name": "Staggering 2",
-          "description": "Has a chance (30%) of making the target flinch when the user’s attack move against it is successful."
+          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
         }
       ]
     },
     {
       "id": 99041001,
       "name": "Raising the Shutter Speed!",
-      "description": "Reduces the user’s sync move countdown by 1 when the user applies a circle to the allied field of play. Extends the duration of Paldea Circle (Physical) when Paldea Circle (Physical) is applied to the allied field of play. Raises the Speed of all allied sync pairs by 2 stat ranks when the user applies a circle to the allied field of play.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when the user applies a circle to the allied field of play. Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play. Raises the [Name:ReferencedMessageTag Idx=\"2\" ] of all allied sync pairs by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 15015901,
           "name": "User Sets Circle: Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by 1 when it applies a circle to the allied field of play."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it applies a circle to the allied field of play."
         },
         {
           "id": 18127909,
           "name": "User Sets Circle: Team Speed ↑2 9",
-          "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 2 stat ranks when the user applies a circle to the allied field of play."
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user applies a circle to the allied field of play."
         },
         {
           "id": 19064903,
           "name": "Paldea C (Phys) Extension 3",
-          "description": "Extends the duration of Paldea Circle (Physical) when Paldea Circle (Physical) is applied to the allied field of play."
+          "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play."
         }
       ]
     },
     {
       "id": 13085303,
       "name": "1st Use S-Move: S-Moves ×4",
-      "description": "The power of the user’s sync move is multiplied by 4 the first time its sync move is used each battle.",
+      "description": "The power of the user’s sync move is quadrupled the first time its sync move is used each battle.",
+      "slot": 3,
       "childPassives": []
     }
   ],

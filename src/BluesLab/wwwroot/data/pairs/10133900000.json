@@ -154,25 +154,29 @@
     {
       "id": 28011001,
       "name": "Johto Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Johto theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99016201,
       "name": "Destructive Instinct",
       "description": "Causes a sandstorm when the user enters a battle. Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Powers up the user’s moves and sync move during a sandstorm.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99016301,
       "name": "Silver’s Rebellious Spirit",
       "description": "Powers up the moves of all allied sync pairs during a sandstorm. Protects all allied sync pairs from damage from a sandstorm.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 13015901,
       "name": "Fuel Economy 1",
-      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by 1.",
+      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by [Digit:1digit ].",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -188,7 +192,36 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 28011001,
+          "name": "Johto Pride",
+          "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 99016201,
+          "name": "Destructive Instinct",
+          "description": "Causes a sandstorm when the user enters a battle. Extends the duration of a sandstorm when a sandstorm is caused while the user is on the field. Powers up the user’s moves and sync move during a sandstorm.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99016301,
+          "name": "Silver’s Rebellious Spirit",
+          "description": "Powers up the moves of all allied sync pairs during a sandstorm. Protects all allied sync pairs from damage from a sandstorm.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 13015901,
+          "name": "Fuel Economy 1",
+          "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by [Digit:1digit ].",
+          "slot": 4,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

@@ -154,19 +154,22 @@
     {
       "id": 29011301,
       "name": "Toxic Myth",
-      "description": "Powers up the moves of all allied sync pairs by %. Reduces attack move damage taken by all allied sync pairs by %. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is %, and the maximum damage reduction is %.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29021301,
       "name": "Toxic Judgment",
-      "description": "Raises the Poison Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Poison Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99044401,
       "name": "Incapable of Holding Back",
-      "description": "Leaves all opposing sync pairs badly poisoned the first time the user enters a battle each battle. Raises the Attack and Sp. Atk of all allied sync pairs by 4 stat ranks when the user enters a battle.",
+      "description": "Leaves all opposing sync pairs badly poisoned the first time the user enters a battle each battle. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 17088301,
@@ -176,31 +179,33 @@
         {
           "id": 18096103,
           "name": "Team Sharp Entry 3",
-          "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks when the user enters a battle."
+          "description": "Raises the critical-hit rate of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle."
         }
       ]
     },
     {
       "id": 99044501,
       "name": "Inspiring All Who Watch",
-      "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a. Restores the HP of all allied sync pairs by approximately % of their maximum HP when the user is hit by a sync move while the zone is a.",
+      "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ]. Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP when the user is hit by a sync move while the zone is a [Name:ReferencedMessageTag ].",
+      "slot": 4,
       "childPassives": [
         {
           "id": 11016609,
           "name": "Poison Zone & Take Hit: Team HP Recovery 9",
-          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a."
+          "description": "Restores the HP of all allied sync pairs when the user is hit by an attack move while the zone is a [Name:ReferencedMessageTag ]."
         },
         {
           "id": 11016702,
           "name": "Poison Zone & Take S-Move Hit: Team HP Recovery 2",
-          "description": "Restores the HP of all allied sync pairs by approximately % of their maximum HP when the user is hit by a sync move while the zone is a."
+          "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits Idx=\"1\" ]% of their maximum HP when the user is hit by a sync move while the zone is a [Name:ReferencedMessageTag ]."
         }
       ]
     },
     {
       "id": 21011701,
       "name": "Poison Zone: Team Crit Immunity",
-      "description": "Protects all allied sync pairs against critical hits when the zone is a.",
+      "description": "Protects all allied sync pairs against critical hits when the zone is a [Name:ReferencedMessageTag ].",
+      "slot": 5,
       "childPassives": []
     }
   ],

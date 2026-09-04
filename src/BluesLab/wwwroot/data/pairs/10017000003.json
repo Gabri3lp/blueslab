@@ -154,35 +154,38 @@
     {
       "id": 99050201,
       "name": "Megapowerful Poison Stingers",
-      "description": "The power of the user’s Lunge is tripled. When an opponent’s stat is lowered by the additional effects of the user’s Lunge, it is lowered by three times the stat ranks. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets.",
+      "description": "The power of the user’s [Name:MoveId Idx=\"641\" ] is tripled. When an opponent’s stat is lowered by the additional effects of the user’s [Name:MoveId Idx=\"641\" ], it is lowered by three times the stat ranks. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 13086601,
           "name": "“Lunge” Power ×3",
-          "description": "The power of the user’s is tripled."
+          "description": "The power of the user’s [Name:MoveId Idx=\"641\" ] is tripled."
         },
         {
           "id": 18130501,
           "name": "“Lunge” Stat ↓×3",
-          "description": "When an opponent’s stat is lowered by the additional effects of the user’s Lunge, it is lowered by three times the stat ranks."
+          "description": "When an opponent’s stat is lowered by the additional effects of the user’s [Name:MoveId Idx=\"641\" ], it is lowered by three times the stat ranks."
         },
         {
           "id": 23011301,
           "name": "Expanded Sync",
-          "description": "When the user's sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets."
+          "description": "When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets."
         }
       ]
     },
     {
       "id": 18130606,
       "name": "1st S-Move: Team Speed ↑ 6",
-      "description": "Raises the Speed of all allied sync pairs by 6 stat ranks the first time the user’s sync move is used each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13086701,
       "name": "Ally Moves ↑ as Ally Speed ↑",
-      "description": "The more an ally’s is raised, the more it powers up its moves.",
+      "description": "The more an ally’s [Name:ReferencedMessageTag ] is raised, the more it powers up its moves.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -198,7 +201,45 @@
         "spd": 1.0,
         "spe": 1.2
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99050201,
+          "name": "Megapowerful Poison Stingers",
+          "description": "The power of the user’s [Name:MoveId Idx=\"641\" ] is tripled. When an opponent’s stat is lowered by the additional effects of the user’s [Name:MoveId Idx=\"641\" ], it is lowered by three times the stat ranks. When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 13086601,
+              "name": "“Lunge” Power ×3",
+              "description": "The power of the user’s [Name:MoveId Idx=\"641\" ] is tripled."
+            },
+            {
+              "id": 18130501,
+              "name": "“Lunge” Stat ↓×3",
+              "description": "When an opponent’s stat is lowered by the additional effects of the user’s [Name:MoveId Idx=\"641\" ], it is lowered by three times the stat ranks."
+            },
+            {
+              "id": 23011301,
+              "name": "Expanded Sync",
+              "description": "When the user’s sync move attacks an opponent, the target becomes all opposing sync pairs. The power of sync moves affected by this passive skill is not lowered even if there are multiple targets."
+            }
+          ]
+        },
+        {
+          "id": 18130606,
+          "name": "1st S-Move: Team Speed ↑ 6",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s sync move is used each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 13086701,
+          "name": "Ally Moves ↑ as Ally Speed ↑",
+          "description": "The more an ally’s [Name:ReferencedMessageTag ] is raised, the more it powers up its moves.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

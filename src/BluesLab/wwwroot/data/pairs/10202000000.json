@@ -154,19 +154,22 @@
     {
       "id": 17068901,
       "name": "Max Move Hit: Team Same-Type Rebuff ↓ 1",
-      "description": "Lowers the Type Rebuff of all opposing sync pairs by 1 rank(s) when the user’s max move targeting an opponent is successful. The Type Rebuff lowered is the same type as the max move used.",
+      "description": "Lowers the Type Rebuff of all opposing sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful. The Type Rebuff lowered is the same type as the max move used.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18113209,
       "name": "Phys Hit: Defense ↓2 9",
-      "description": "Has a chance (100%) of lowering the target’s Defense by 2 stat ranks when the user’s physical attack move against it is successful.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s physical attack move against it is successful.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18113309,
       "name": "Spec Hit: Sp. Def ↓2 9",
-      "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s special attack move against it is successful.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s special attack move against it is successful.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17068901,
+          "name": "Max Move Hit: Team Same-Type Rebuff ↓ 1",
+          "description": "Lowers the Type Rebuff of all opposing sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful. The Type Rebuff lowered is the same type as the max move used.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18113209,
+          "name": "Phys Hit: Defense ↓2 9",
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s physical attack move against it is successful.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18113309,
+          "name": "Spec Hit: Sp. Def ↓2 9",
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s special attack move against it is successful.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

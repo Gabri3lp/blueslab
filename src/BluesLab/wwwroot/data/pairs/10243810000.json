@@ -154,19 +154,22 @@
     {
       "id": 99012401,
       "name": "Pasio’s Ace",
-      "description": "Lowers the opponent’s Type Rebuff by 2 ranks after the user uses its max move. The Type Rebuff lowered is the same type as the max move used. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its Max Airstream. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its Max Knuckle.",
+      "description": "Lowers the opponent’s Type Rebuff by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] after the user uses its max move. The Type Rebuff lowered is the same type as the max move used. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7007\" ]. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7005\" ].",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13015902,
       "name": "Fuel Economy 2",
-      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by 2.",
+      "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by [Digit:1digit ].",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 16014805,
       "name": "Brawn Sync 5",
-      "description": "Powers up the user’s sync move when its Attack is raised.",
+      "description": "Powers up the user’s sync move when [Name:ReferencedMessageTag ] is raised.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -184,14 +187,25 @@
       },
       "passives": [
         {
+          "id": 99012401,
+          "name": "Pasio’s Ace",
+          "description": "Lowers the opponent’s Type Rebuff by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] after the user uses its max move. The Type Rebuff lowered is the same type as the max move used. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7007\" ]. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7005\" ].",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99010501,
           "name": "Piercing Blows",
-          "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect."
+          "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+          "slot": 2,
+          "childPassives": []
         },
         {
           "id": 15013009,
           "name": "“Quick Move”: Sync CD ↓2 9",
-          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses a move that has the quick move effect tag."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses a move that has the quick move effect tag.",
+          "slot": 3,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0
@@ -209,14 +223,25 @@
       },
       "passives": [
         {
-          "id": 13030101,
-          "name": "Piercing Gaze",
-          "description": "Moves never miss."
+          "id": 99012401,
+          "name": "Pasio’s Ace",
+          "description": "Lowers the opponent’s Type Rebuff by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] after the user uses its max move. The Type Rebuff lowered is the same type as the max move used. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7007\" ]. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7005\" ].",
+          "slot": 1,
+          "childPassives": []
         },
         {
-          "id": 11013609,
-          "name": "Hit: HP Recovery (M) 9",
-          "description": "Restores the user’s HP when its attack move is successful."
+          "id": 99010501,
+          "name": "Piercing Blows",
+          "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 15013009,
+          "name": "“Quick Move”: Sync CD ↓2 9",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses a move that has the quick move effect tag.",
+          "slot": 3,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0
@@ -232,7 +257,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99012401,
+          "name": "Pasio’s Ace",
+          "description": "Lowers the opponent’s Type Rebuff by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] after the user uses its max move. The Type Rebuff lowered is the same type as the max move used. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7007\" ]. Replaces some of the user’s passive skills and sync move with different passive skills and a sync move after using its [Name:MoveId Idx=\"7005\" ].",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13015902,
+          "name": "Fuel Economy 2",
+          "description": "Decreases the amount of move gauge slots the user’s Pokémon needs to use moves by [Digit:1digit ].",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 16014805,
+          "name": "Brawn Sync 5",
+          "description": "Powers up the user’s sync move when [Name:ReferencedMessageTag ] is raised.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

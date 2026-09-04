@@ -154,19 +154,22 @@
     {
       "id": 23011209,
       "name": "Stat Share 9",
-      "description": "When a status move used by the user’s Pokémon raises its stats only, has a chance (100%) of raising the same stats by the same amount for all allied sync pairs instead.",
+      "description": "When a status move used by the user’s Pokémon raises its stats only, raises the same stats by the same amount for all allied sync pairs instead.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17065409,
       "name": "Use Status P-Move: Team Physical Boost ↑1 9",
-      "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user’s Pokémon uses a status move.",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18109909,
       "name": "Use Status P-Move: Team Accuracy ↑2 9",
-      "description": "Has a chance (100%) of raising the accuracy of all allied sync pairs by 2 stat ranks when the user’s Pokémon uses a status move.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 23011209,
+          "name": "Stat Share 9",
+          "description": "When a status move used by the user’s Pokémon raises its stats only, raises the same stats by the same amount for all allied sync pairs instead.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 17065409,
+          "name": "Use Status P-Move: Team Physical Boost ↑1 9",
+          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18109909,
+          "name": "Use Status P-Move: Team Accuracy ↑2 9",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a status move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

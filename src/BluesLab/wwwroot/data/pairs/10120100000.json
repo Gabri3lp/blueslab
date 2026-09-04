@@ -154,25 +154,29 @@
     {
       "id": 28010701,
       "name": "Alola Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Alola theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Alola theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13015001,
       "name": "Healthy Superhit",
       "description": "Applies the Supereffective ↑ Next effect to the user if its HP is full when it enters a battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17043101,
       "name": "Entry Freebie",
       "description": "Applies the Free Move Next effect to the user when it enters a battle.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 23010701,
       "name": "Expand Reach",
       "description": "After using the user’s sync move, when a move used by its Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. After using the user’s sync move, when a move used by its Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves affected by this passive skill are not lowered even if there are multiple targets.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -190,19 +194,32 @@
       },
       "passives": [
         {
+          "id": 28010701,
+          "name": "Alola Spirit",
+          "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Alola theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 13010402,
           "name": "Superduper Effective 2",
-          "description": "Powers up moves that are super effective."
+          "description": "Powers up moves that are super effective.",
+          "slot": 2,
+          "childPassives": []
         },
         {
           "id": 12020104,
           "name": "Move Gauge Refresh 4",
-          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful."
+          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its move is successful.",
+          "slot": 3,
+          "childPassives": []
         },
         {
           "id": 23010801,
           "name": "Expand Reach",
-          "description": "After using the user’s sync move, when a move used by its Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. After using the user’s sync move, when a move used by its Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves affected by this passive skill are not lowered even if there are multiple targets."
+          "description": "After using the user’s sync move, when a move used by its Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. After using the user’s sync move, when a move used by its Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves affected by this passive skill are not lowered even if there are multiple targets.",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

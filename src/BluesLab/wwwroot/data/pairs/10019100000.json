@@ -154,19 +154,22 @@
     {
       "id": 17049301,
       "name": "Team Smart Start 1",
-      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank(s) when the user enters a battle.",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17044604,
       "name": "Freevenge 4",
-      "description": "Has a chance (50%) of applying the Free Move Next effect to the user when it is hit by an attack move.",
+      "description": "Has a chance ([Digit:2digits ]%) of applying the Free Move Next effect to the user when it is hit by an attack move.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 22010701,
       "name": "Unexpected Benefit ×2",
       "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves. When an opponent’s stat is lowered by the additional effects of the user’s moves, it is lowered by double the stat ranks.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -184,9 +187,25 @@
       },
       "passives": [
         {
+          "id": 17049301,
+          "name": "Team Smart Start 1",
+          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 17044609,
           "name": "Freevenge 9",
-          "description": "Applies the [Name:ReferencedMessageTag ] to the user when it is hit by an attack move."
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user when it is hit by an attack move.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 22010701,
+          "name": "Unexpected Benefit ×2",
+          "description": "Raises the chance of lowering stat values with the additional effects of the user’s moves. When an opponent’s stat is lowered by the additional effects of the user’s moves, it is lowered by double the stat ranks.",
+          "slot": 3,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

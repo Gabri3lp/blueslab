@@ -154,34 +154,36 @@
     {
       "id": 99024101,
       "name": "Hungry Buddy",
-      "description": "Reduces the user’s sync move countdown by 1 the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 15013301,
           "name": "1st “Berry” MP 0: Sync CD ↓ 1",
-          "description": "Reduces the user’s sync move countdown by 1 the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time the remaining MP for its moves that have the Berry effect tag is zero each battle."
         },
         {
           "id": 17080801,
           "name": "1st “Berry” MP 0: Team Physical Boost 1",
-          "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank(s) the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
+          "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time the remaining MP for the user’s moves that have the Berry effect tag is zero each battle."
         }
       ]
     },
     {
       "id": 99024201,
       "name": "Ms. Marnie’s Motorcycling Skills",
-      "description": "Has a chance (30%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance (30%) of restoring the user’s HP for each hit. Has a chance (30%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance (30%) of charging the user’s move gauge by one for each hit.",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit. Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 11012202,
           "name": "Restoring Strike 2",
-          "description": "Has a chance (30%) of restoring the user’s HP when its attack move hits. If the move has the multistrike effect tag, has a chance (30%) of restoring the user’s HP for each hit."
+          "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit."
         },
         {
           "id": 12021902,
           "name": "Recharging Strike 2",
-          "description": "Has a chance (30%) of charging the user’s move gauge by one when its attack move hits. If the move has the multistrike effect tag, has a chance (30%) of charging the user’s move gauge by one for each hit."
+          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit."
         }
       ]
     },
@@ -189,6 +191,7 @@
       "id": 18050901,
       "name": "Soften Up 1",
       "description": "Critical hits land more easily when the user attacks with a sync move.",
+      "slot": 3,
       "childPassives": []
     }
   ],

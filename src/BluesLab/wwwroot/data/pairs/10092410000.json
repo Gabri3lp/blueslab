@@ -154,30 +154,33 @@
     {
       "id": 99029201,
       "name": "People and Nature Together",
-      "description": "Applies Unova Circle (Special) to the allied field of play the first time the user enters a battle each battle. Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks when the user applies Unova Circle (Special) to the allied field of play.",
+      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle. Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user applies [Name:ReferencedMessageTag ] to the allied field of play.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 19057901,
           "name": "Debut: Unova C (Spec) on Field",
-          "description": "Applies Unova Circle (Special) to the allied field of play the first time the user enters a battle each battle."
+          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play the first time the user enters a battle each battle."
         },
         {
           "id": 18123409,
           "name": "User Sets Unova C (Spec): Team Defense & Sp. Def ↑2 9",
-          "description": "Has a chance (100%) of raising the Defense and Sp. Def of all allied sync pairs by 2 stat ranks when the user applies Unova Circle (Special) to the allied field of play."
+          "description": "Raises the Defense and Sp. Def of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user applies [Name:ReferencedMessageTag ] to the allied field of play."
         }
       ]
     },
     {
       "id": 21011001,
       "name": "Unova C (Spec): Team Crit Immunity",
-      "description": "Protects all allied sync pairs against critical hits when Unova Circle (Special) applies to the allied field of play.",
+      "description": "Protects all allied sync pairs against critical hits when [Name:ReferencedMessageTag ] applies to the allied field of play.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13062701,
       "name": "Use Unova Analysis: Restore B-Move MP 1",
-      "description": "Restores 1 MP of the user’s buddy move when it uses Unova Analysis.",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move when it uses [Name:MoveId Idx=\"8213\" ].",
+      "slot": 3,
       "childPassives": []
     }
   ],

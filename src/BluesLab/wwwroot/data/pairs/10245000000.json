@@ -155,12 +155,14 @@
       "id": 13014701,
       "name": "Mode Swing",
       "description": "When the user is in Full Belly Mode, powers up its Electric-type moves. When the user is in Hangry Mode, powers up its Dark-type moves.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 22010105,
       "name": "Hostile Environment 5",
       "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+      "slot": 2,
       "childPassives": []
     }
   ],
@@ -176,7 +178,22 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 13014701,
+          "name": "Mode Swing",
+          "description": "When the user is in Full Belly Mode, powers up its Electric-type moves. When the user is in Hangry Mode, powers up its Dark-type moves.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 22010105,
+          "name": "Hostile Environment 5",
+          "description": "Raises the chance of inflicting status conditions with the additional effects of moves.",
+          "slot": 2,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

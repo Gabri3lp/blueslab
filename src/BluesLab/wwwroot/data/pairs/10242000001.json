@@ -154,19 +154,22 @@
     {
       "id": 19025501,
       "name": "Debut: Ghost Zone",
-      "description": "Turns the field of play’s zone into a Ghost Zone the first time the user enters a battle each battle. (A Ghost Zone powers up Ghost-type attacks.)",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 12011403,
       "name": "Haunted Acceleration 3",
       "description": "Quickly charges the move gauge when the zone is a Ghost Zone.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17044701,
       "name": "MAX Regen",
       "description": "Applies the Gradual Healing effect to the user after using its max move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 19025501,
+          "name": "Debut: Ghost Zone",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 12011403,
+          "name": "Haunted Acceleration 3",
+          "description": "Quickly charges the move gauge when the zone is a Ghost Zone.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17044701,
+          "name": "MAX Regen",
+          "description": "Applies the Gradual Healing effect to the user after using its max move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

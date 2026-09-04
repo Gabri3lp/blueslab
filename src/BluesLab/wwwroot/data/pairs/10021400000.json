@@ -154,7 +154,8 @@
     {
       "id": 28041701,
       "name": "Kanto’s Wings of Mercy",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of the when the zone turns into a while the user is on the field.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"1\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"1\" ] while the user is on the field.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 28030101,
@@ -164,14 +165,15 @@
         {
           "id": 19027003,
           "name": "Flying Zone Extension 3",
-          "description": "Extends the duration of the Flying Zone when the zone turns into a Flying Zone while the user is on the field."
+          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
         }
       ]
     },
     {
       "id": 99047101,
       "name": "Caped Dragon Master’s Teachings",
-      "description": "Normal-type moves become Flying-type moves. Turns the field of play’s zone into a Flying Zone the first time the user enters a battle each battle. (A Flying Zone powers up Flying-type attacks.) Raises the user’s Attack by 6 stat ranks the first time it enters a battle each battle.",
+      "description": "Normal-type moves become [Name:ReferencedMessageTag Idx=\"1\" ]-type moves. Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 13050201,
@@ -181,25 +183,27 @@
         {
           "id": 19069901,
           "name": "Debut: EX Flying Zone",
-          "description": "Turns the field of play’s zone into an the first time the user enters a battle each battle. (An powers up -type attacks.)"
+          "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 18120406,
           "name": "Debut: Attack ↑ 6",
-          "description": "Raises the user’s Attack by 6 stat ranks the first time it enters a battle each battle."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
         }
       ]
     },
     {
       "id": 17096501,
       "name": "Debut: Endure and Restore",
-      "description": "Applies the to the user the first time it enters a battle each battle.",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time it enters a battle each battle.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 99047001,
       "name": "Let the Party Begin!",
-      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Raises the sync buff of the user’s team by ranks the first time its sync move is used each battle.",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 18051501,
@@ -209,7 +213,7 @@
         {
           "id": 17083101,
           "name": "1st S-Move: Sync Buff ↑ 1",
-          "description": "Raises the sync buff of the user’s team by 1 rank(s) the first time its sync move is used each battle."
+          "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
         }
       ]
     }
@@ -226,7 +230,74 @@
         "spd": 1.2,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 28041701,
+          "name": "Kanto’s Wings of Mercy",
+          "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"1\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"1\" ] while the user is on the field.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 28030101,
+              "name": "Passive #28030101",
+              "description": ""
+            },
+            {
+              "id": 19027003,
+              "name": "Flying Zone Extension 3",
+              "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+            }
+          ]
+        },
+        {
+          "id": 99047101,
+          "name": "Caped Dragon Master’s Teachings",
+          "description": "Normal-type moves become [Name:ReferencedMessageTag Idx=\"1\" ]-type moves. Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 13050201,
+              "name": "Flying Shift",
+              "description": "Normal-type moves become Flying-type moves."
+            },
+            {
+              "id": 19069901,
+              "name": "Debut: EX Flying Zone",
+              "description": "Turns the field of play’s zone into an [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. (An [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            },
+            {
+              "id": 18120406,
+              "name": "Debut: Attack ↑ 6",
+              "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
+            }
+          ]
+        },
+        {
+          "id": 17096501,
+          "name": "Debut: Endure and Restore",
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user the first time it enters a battle each battle.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99047001,
+          "name": "Let the Party Begin!",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+          "slot": 4,
+          "childPassives": [
+            {
+              "id": 18051501,
+              "name": "P-Moves & S-Moves Crit",
+              "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+            },
+            {
+              "id": 17083101,
+              "name": "1st S-Move: Sync Buff ↑ 1",
+              "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+            }
+          ]
+        }
+      ],
       "terastalMoveId": 0
     }
   ],
