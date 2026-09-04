@@ -36,7 +36,8 @@
                         {
                             int idx = i + 1;
                             var v = Ally.Pair.Variations[i];
-                            <button class="btn @(Ally.FormIndex == idx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => SetForm(idx)">@v.FormName</button>
+                            string formLabel = (v.FormId == 4 || v.FormName == "Form 4") ? "Dynamax" : v.FormName;
+                            <button class="btn @(Ally.FormIndex == idx ? "btn-warning" : "btn-outline-secondary")" @onclick="() => SetForm(idx)">@formLabel</button>
                         }
                     </div>
                 }
@@ -173,17 +174,24 @@
             </div>
 
             <div class="d-flex flex-column gap-2">
-                @{
-                    var normalMoves = ActiveMoves.Where(m => !m.IsMax).ToList();
-                    var maxMoves = ActiveMoves.Where(m => m.IsMax).ToList();
+                @if (CalcService.IsDynamaxActive(Ally.Pair, Ally.FormIndex))
+                {
+                    <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="badge btn-pink text-white px-2 py-1" style="font-size: 0.78rem;">
+                                <i class="bi bi-clouds-fill me-1"></i> @Loc.T("turn_max_move", "Max Moves") (Dynamax)
+                            </span>
+                            <span class="text-muted small" style="font-size: 0.75rem;">(Unaffected by Next Boosts &amp; AoE multi-target penalty)</span>
+                        </div>
+                    </div>
                 }
 
-                @foreach (var move in normalMoves)
+                @foreach (var move in ActiveMoves)
                 {
                     var result = CalcService.CalculateDamage(move, Ally, Enemy, Field, Rules, GridState.ActiveCells);
                     string moveType = GetEffectiveMoveType(move);
                     string mName = Loc.GetMoveName(move.Id, move.Name);
-                    <div class="card move-card move-card-@moveType.ToLowerInvariant() p-2 px-3 shadow-sm">
+                    <div class="card move-card move-card-@moveType.ToLowerInvariant() p-2 px-3 shadow-sm @(move.IsMax ? "border-pink" : "")">
                         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
                             <div>
                                 <div class="d-flex align-items-center gap-2">
@@ -192,12 +200,22 @@
                                     {
                                         <span class="badge bg-purple" style="font-size: 0.7rem;">@Loc.T("turn_sync_move", "Sync Move")</span>
                                     }
+                                    @if (move.IsMax)
+                                    {
+                                        <span class="badge btn-pink text-white" style="font-size: 0.7rem;">@Loc.T("turn_max_move", "Max Move")</span>
+                                    }
                                 </div>
                                 <div class="d-flex gap-1 align-items-center mt-1">
                                     <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@Loc.GetTypeName(moveType)</span>
                                     <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
                                     <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">@Loc.T("damage_result_power", "Power"): <b class="text-warning">@result.ScaledMovePower</b></span>
-                                    @if (move.MaxUses > 0)
+                                    @if (move.IsMax)
+                                    {
+                                        <span class="badge py-0 px-1" style="background-color: rgba(232, 67, 147, 0.2); color: #ff79b0; border: 1px solid rgba(232, 67, 147, 0.5); font-size: 0.7rem; font-weight: 600;">
+                                            <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
+                                        </span>
+                                    }
+                                    else if (move.MaxUses > 0)
                                     {
                                         <span class="badge py-0 px-1" style="background-color: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); font-size: 0.7rem; font-weight: 600;">
                                             <i class="bi bi-arrow-repeat me-0.5"></i>@move.MaxUses @(move.MaxUses == 1 ? "Use" : "Uses")
@@ -226,63 +244,6 @@
                             </div>
                         }
                     </div>
-                }
-
-                @if (maxMoves.Count > 0)
-                {
-                    <div class="d-flex align-items-center justify-content-between gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
-                        <div class="d-flex align-items-center gap-2">
-                            <span class="badge btn-pink text-white px-2 py-1" style="font-size: 0.78rem;">
-                                <i class="bi bi-clouds-fill me-1"></i> @Loc.T("turn_max_move", "Max Moves") (Dynamax)
-                            </span>
-                            <span class="text-muted small" style="font-size: 0.75rem;">(Unaffected by Next Boosts & AoE multi-target penalty)</span>
-                        </div>
-                        <span class="badge bg-secondary text-light" style="font-size: 0.7rem;">@maxMoves.Count Available</span>
-                    </div>
-
-                    @foreach (var move in maxMoves)
-                    {
-                        var result = CalcService.CalculateDamage(move, Ally, Enemy, Field, Rules, GridState.ActiveCells);
-                        string moveType = GetEffectiveMoveType(move);
-                        string mName = Loc.GetMoveName(move.Id, move.Name);
-                        <div class="card move-card move-card-@moveType.ToLowerInvariant() p-2 px-3 shadow-sm border-pink">
-                            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
-                                <div>
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="fw-bold text-light fs-6">@mName</span>
-                                        <span class="badge btn-pink text-white" style="font-size: 0.7rem;">@Loc.T("turn_max_move", "Max Move")</span>
-                                    </div>
-                                    <div class="d-flex gap-1 align-items-center mt-1">
-                                        <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@Loc.GetTypeName(moveType)</span>
-                                        <span class="badge bg-secondary" style="font-size: 0.7rem;">@move.Category</span>
-                                        <span class="badge bg-black bg-opacity-50 border border-secondary text-light" style="font-size: 0.7rem;">@Loc.T("damage_result_power", "Power"): <b class="text-warning">@result.ScaledMovePower</b></span>
-                                        <span class="badge py-0 px-1" style="background-color: rgba(232, 67, 147, 0.2); color: #ff79b0; border: 1px solid rgba(232, 67, 147, 0.5); font-size: 0.7rem; font-weight: 600;">
-                                            <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="text-end">
-                                    <div class="fs-4 fw-bolder text-warning lh-1">@result.AvgDamage.ToString("N0")</div>
-                                    <div class="text-secondary small" style="font-size: 0.75rem;">
-                                        Min: <b class="text-light">@result.MinDamage.ToString("N0")</b> &bull; Max: <b class="text-light">@result.MaxDamage.ToString("N0")</b>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @if (result.Breakdown.Count > 0)
-                            {
-                                <div class="d-flex flex-wrap gap-1 mt-2 pt-1 border-top border-secondary border-opacity-50">
-                                    @foreach (var pill in result.Breakdown)
-                                    {
-                                        <span class="badge" style="background-color: @pill.Color; font-size: 0.7rem;">
-                                            @pill.Label: @pill.Value
-                                        </span>
-                                    }
-                                </div>
-                            }
-                        </div>
-                    }
                 }
             </div>
         </div>
@@ -947,6 +908,7 @@
 
     private string GetEffectiveMoveType(MoveItem move)
     {
+        if (move.IsMax) return move.Type;
         if (Ally.FormIndex > 0 && Ally.Pair?.Variations != null && Ally.FormIndex <= Ally.Pair.Variations.Count)
         {
             var form = Ally.Pair.Variations[Ally.FormIndex - 1];
@@ -970,6 +932,12 @@
         get
         {
             if (Ally.Pair == null) return Enumerable.Empty<MoveItem>();
+
+            if (CalcService.IsDynamaxActive(Ally.Pair, Ally.FormIndex))
+            {
+                return CalcService.GetMaxMoves(Ally.Pair);
+            }
+
             var currentVariation = (Ally.FormIndex > 0 && Ally.FormIndex <= Ally.Pair.Variations.Count)
                 ? Ally.Pair.Variations[Ally.FormIndex - 1]
                 : null;
@@ -979,9 +947,8 @@
                 !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) &&
                 int.TryParse(m.Power, out int p) && p > 0 &&
                 (!m.IsTerastalMove || (activeTerastalMoveId > 0 && m.Id == activeTerastalMoveId)));
-            var maxMoves = CalcService.GetMaxMoves(Ally.Pair);
             var learned = GridState.GetLearnedMoves(Ally.Pair);
-            return regularMoves.Concat(maxMoves).Concat(learned);
+            return regularMoves.Concat(learned);
         }
     }
 

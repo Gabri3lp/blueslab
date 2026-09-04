@@ -2085,23 +2085,43 @@ public class DamageCalculatorService
     {
         if (pair == null) return false;
         if (pair.HasDynamax) return true;
+        if (pair.Variations != null && pair.Variations.Any(v => v.FormId == 4 || 
+                                                               v.FormName.Equals("Dynamax", StringComparison.OrdinalIgnoreCase) ||
+                                                               v.FormName.Equals("Form 4", StringComparison.OrdinalIgnoreCase)))
+            return true;
 
-        bool hasDMaxGrid = pair.Grid.Any(c =>
+        bool hasDMaxGrid = pair.Grid != null && pair.Grid.Any(c =>
         {
             string t = c.Title.Replace("\r", "").Replace("\n", " ");
             return c.ColorKind.Equals("max", StringComparison.OrdinalIgnoreCase) ||
                    t.Contains("G-Max", StringComparison.OrdinalIgnoreCase) ||
-                   t.Contains("Max Move", StringComparison.OrdinalIgnoreCase) ||
-                   (t.StartsWith("Max ", StringComparison.OrdinalIgnoreCase) && t.Contains(":") && !t.Contains("Maximum", StringComparison.OrdinalIgnoreCase));
+                   (t.Contains("Max Move", StringComparison.OrdinalIgnoreCase) && 
+                    !t.Contains("DR", StringComparison.OrdinalIgnoreCase) && 
+                    !t.Contains("Damage Reduction", StringComparison.OrdinalIgnoreCase)) ||
+                   (t.StartsWith("Max ", StringComparison.OrdinalIgnoreCase) && 
+                    t.Contains(":") && 
+                    !t.Contains("Maximum", StringComparison.OrdinalIgnoreCase) && 
+                    !t.Contains("Tera Blast", StringComparison.OrdinalIgnoreCase) && 
+                    !t.Contains("Sync", StringComparison.OrdinalIgnoreCase));
         });
         if (hasDMaxGrid) return true;
 
-        bool hasDMaxPassive = pair.Passives.Any(p =>
+        bool hasDMaxPassive = pair.Passives != null && pair.Passives.Any(p =>
             (p.Name.StartsWith("MAX ", StringComparison.OrdinalIgnoreCase) || p.Name.Contains("Max Moves", StringComparison.OrdinalIgnoreCase)) &&
             !p.Description.Contains("opponent's max move", StringComparison.OrdinalIgnoreCase) &&
             !p.Description.Contains("opposing sync pairs' max moves", StringComparison.OrdinalIgnoreCase)
         );
         return hasDMaxPassive;
+    }
+
+    public bool IsDynamaxActive(SyncPairDetail? pair, int formIndex)
+    {
+        if (pair == null || formIndex <= 0 || pair.Variations == null || formIndex > pair.Variations.Count)
+            return false;
+        var form = pair.Variations[formIndex - 1];
+        return form.FormId == 4 || 
+               form.FormName.Equals("Dynamax", StringComparison.OrdinalIgnoreCase) ||
+               form.FormName.Equals("Form 4", StringComparison.OrdinalIgnoreCase);
     }
 
     public List<MoveItem> GetMaxMoves(SyncPairDetail? pair)
