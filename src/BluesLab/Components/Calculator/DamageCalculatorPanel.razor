@@ -100,7 +100,7 @@
                     <i class="bi bi-clouds"></i> Field Effects
                 </h6>
                 <div class="d-flex gap-2 align-items-center">
-                    @if (!string.IsNullOrEmpty(Field.Zone) || !string.IsNullOrEmpty(Field.Terrain) || !string.IsNullOrEmpty(Field.Weather) || Field.TargetCount != 1)
+                    @if (!string.IsNullOrEmpty(Field.Zone) || !string.IsNullOrEmpty(Field.Terrain) || !string.IsNullOrEmpty(Field.Weather))
                     {
                         <button class="btn btn-outline-secondary btn-sm py-0 px-2 text-muted" style="font-size: 0.7rem;" @onclick="ResetFieldEffects">
                             Reset Field
@@ -155,15 +155,6 @@
                     </div>
                 </div>
 
-                <!-- Target Count -->
-                <div class="d-flex align-items-center gap-1">
-                    <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Targets:</span>
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 1 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 1; StateHasChanged(); }">1</button>
-                        <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 2 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 2; StateHasChanged(); }">2</button>
-                        <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 3 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 3; StateHasChanged(); }">3</button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -289,9 +280,19 @@
         <div class="d-flex flex-column gap-2">
             <!-- 4A. Target Card (On Top) -->
             <div class="card bg-dark border-secondary p-3 shadow-sm">
-                <h6 class="text-danger fw-bold mb-2 d-flex align-items-center gap-2">
-                    <i class="bi bi-crosshair"></i> Target
-                </h6>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h6 class="text-danger fw-bold mb-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-crosshair"></i> Target
+                    </h6>
+                    <div class="d-flex align-items-center gap-1">
+                        <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Opponents:</span>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 1 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 1; StateHasChanged(); }">1</button>
+                            <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 2 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 2; StateHasChanged(); }">2</button>
+                            <button class="btn btn-sm py-0 px-2 @(Field.TargetCount == 3 ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { Field.TargetCount = 3; StateHasChanged(); }">3</button>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Target Stat Stages Dropdowns -->
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-2">

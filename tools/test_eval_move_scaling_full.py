@@ -3,7 +3,7 @@ import json
 rules = json.loads(open("src/BluesLab/wwwroot/data/damage_rules.json", encoding="utf-8").read())
 move_scalings = rules.get("moveScaling", [])
 
-def eval_move_scaling_mock(rule, is_physical, move_type, ally_stages, enemy_stages, field_weather, field_terrain, field_zone, enemy_status, enemy_volatiles, enemy_rebuffs, ally_pmun, ally_smun, ally_syun, is_se):
+def eval_move_scaling_mock(rule, is_physical, move_type, ally_stages, enemy_stages, field_weather, field_terrain, field_zone, enemy_status, enemy_volatiles, enemy_rebuffs, ally_rebuffs, ally_pmun, ally_smun, ally_syun, is_se):
     who = rule.get("who", "user")
     stages = ally_stages if who == "user" else enemy_stages
     direction = rule.get("direction", "raised")
@@ -22,8 +22,9 @@ def eval_move_scaling_mock(rule, is_physical, move_type, ally_stages, enemy_stag
         s2 = stages.get("spd", 0)
         count += (max(0, s1) if is_raised else max(0, -s1)) + (max(0, s2) if is_raised else max(0, -s2))
     elif stat == "rebuff":
-        reb = enemy_rebuffs.get(move_type, 0)
-        count = max(0, -reb) if not is_raised else max(0, reb)
+        rebuffs = ally_rebuffs if who == "user" else enemy_rebuffs
+        reb = rebuffs.get(move_type, 0)
+        count = max(0, reb) if is_raised else max(0, -reb)
     elif stat == "boost_rank_pmun":
         count = ally_pmun
     elif stat == "boost_rank_smun":
@@ -52,6 +53,8 @@ def eval_move_scaling_mock(rule, is_physical, move_type, ally_stages, enemy_stag
         elif cond == "flinching": matched = enemy_volatiles.get("flinching", False)
         elif cond == "flinch_confuse_trap": matched = enemy_volatiles.get("confused", False) or enemy_volatiles.get("trapped", False) or enemy_volatiles.get("flinching", False)
         elif cond == "target_rebuff_lowered": matched = enemy_rebuffs.get(move_type, 0) < 0
+        elif cond in ["user_rebuff_raised", "user_rebuff"]: matched = ally_rebuffs.get(move_type, 0) > 0
+        elif cond == "user_rebuff_lowered": matched = ally_rebuffs.get(move_type, 0) < 0
         elif cond == "super_effective": matched = is_se
         elif "zone" in cond:
             zname = cond.replace("_zone", "").capitalize() + " Zone"
@@ -70,10 +73,14 @@ def eval_move_scaling_mock(rule, is_physical, move_type, ally_stages, enemy_stag
 print("Testing Arc Suit N (Almighty Obsidian Night Daze) with 42 debuffs:")
 arc_n_rule = {"who": "target", "stat": "all_stats", "direction": "lowered", "stepPer1000": 100, "capPer1000": 5200}
 enemy_all_minus_6 = {k: -6 for k in ["atk", "def", "spa", "spd", "spe", "acc", "eva"]}
-mult = eval_move_scaling_mock(arc_n_rule, False, "Dark", {}, enemy_all_minus_6, "", "", "", "", {}, {}, 0, 0, 0, False)
+mult = eval_move_scaling_mock(arc_n_rule, False, "Dark", {}, enemy_all_minus_6, "", "", "", "", {}, {}, {}, 0, 0, 0, False)
 print(f"  Arc Suit N max scaling: x{mult:.2f} (Expected: x5.20)")
+assert abs(mult - 5.20) < 1e-4, f"Arc Suit N scaling failed: {mult}"
 
-print("\nTesting Florian & Ogerpon (Lush Ivy Cudgel with Rebuff -3):")
+print("\nTesting Florian & Ogerpon (Lush Ivy Cudgel with User Grass Rebuff +3):")
 florian_rule = {"who": "user", "stat": "rebuff", "direction": "raised", "stepPer1000": 500}
-mult_f = eval_move_scaling_mock(florian_rule, True, "Grass", {}, {}, "", "", "", "", {}, {"Grass": -3}, 0, 0, 0, False)
-print(f"  Florian with Rebuff -3: x{mult_f:.2f} (Expected: x2.50)")
+mult_f = eval_move_scaling_mock(florian_rule, True, "Grass", {}, {}, "", "", "", "", {}, {}, {"Grass": 3}, 0, 0, 0, False)
+print(f"  Florian with User Grass Rebuff +3: x{mult_f:.2f} (Expected: x2.50)")
+assert abs(mult_f - 2.50) < 1e-4, f"Florian scaling failed: {mult_f}"
+
+print("\nAll move scaling mock tests passed!")

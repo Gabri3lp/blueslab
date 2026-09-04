@@ -1040,7 +1040,8 @@ public class DamageCalculatorService
                     "critical" => ally.IsCriticalMove,
                     "super_effective" or "super_efective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
                     "has_rebuff" or "rebuff_lowered" or "target_rebuff" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0),
-                    "user_rebuff" => ally.UserTypeRebuffs.Values.Any(v => v < 0),
+                    "user_rebuff" or "user_rebuff_raised" => ally.UserTypeRebuffs.Values.Any(v => v > 0),
+                    "user_rebuff_lowered" => ally.UserTypeRebuffs.Values.Any(v => v < 0),
                     "hp_full" => ally.HpPercent >= 100,
                     "hp_low" => ally.HpPercent <= 33 || ally.HpPercent <= 20,
                     "hp_reduced" => ally.HpPercent < 100,
@@ -1099,7 +1100,8 @@ public class DamageCalculatorService
             (ms.SyncPair == "*" ||
              string.Equals(ms.SyncPair, pairName, StringComparison.OrdinalIgnoreCase) ||
              ms.SyncPair.StartsWith(pairName, StringComparison.OrdinalIgnoreCase) ||
-             pairName.StartsWith(ms.SyncPair, StringComparison.OrdinalIgnoreCase)) &&
+             pairName.StartsWith(ms.SyncPair, StringComparison.OrdinalIgnoreCase) ||
+             (pairName.Contains(" & ") && ms.SyncPair.StartsWith(pairName.Substring(0, pairName.IndexOf(" & ") + 3), StringComparison.OrdinalIgnoreCase))) &&
             string.Equals(NormalizeMoveName(ms.MoveName), normMoveName, StringComparison.OrdinalIgnoreCase));
 
         if (rule == null)
@@ -1194,13 +1196,21 @@ public class DamageCalculatorService
                     }
                 }
 
-                // 7. Mega Evolved in description (doubles)
-                if (desc.Contains("Mega Evolved", StringComparison.OrdinalIgnoreCase) && desc.Contains("doubles", StringComparison.OrdinalIgnoreCase))
+                // 7. Mega Evolved in description (doubles or percentage like 50%)
+                if (desc.Contains("Mega Evolved", StringComparison.OrdinalIgnoreCase))
                 {
                     if (ally.FormIndex > 0)
                     {
-                        descMult *= 2.0;
-                        pills.Add(new MultiplierPill { Label = "Move Scaling (Mega)", Value = "×2.0", Color = "#fd79a8" });
+                        if (desc.Contains("doubles", StringComparison.OrdinalIgnoreCase) || desc.Contains("doubled", StringComparison.OrdinalIgnoreCase))
+                        {
+                            descMult *= 2.0;
+                            pills.Add(new MultiplierPill { Label = "Move Scaling (Mega)", Value = "×2.0", Color = "#fd79a8" });
+                        }
+                        else if (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) || desc.Contains("by 50%", StringComparison.OrdinalIgnoreCase))
+                        {
+                            descMult *= 1.5;
+                            pills.Add(new MultiplierPill { Label = "Move Scaling (Mega +50%)", Value = "×1.5", Color = "#fd79a8" });
+                        }
                     }
                 }
 
@@ -1547,9 +1557,14 @@ public class DamageCalculatorService
                 }
 
                 // 22. Rebuff on user
-                if (desc.Contains("more the user’s", StringComparison.OrdinalIgnoreCase) && desc.Contains("Type Rebuff is increased", StringComparison.OrdinalIgnoreCase))
+                if ((desc.Contains("more the user’s", StringComparison.OrdinalIgnoreCase) || desc.Contains("more the user's", StringComparison.OrdinalIgnoreCase)) &&
+                    desc.Contains("Type Rebuff is increased", StringComparison.OrdinalIgnoreCase))
                 {
-                    int reb = ally.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0);
+                    int reb = ally.UserTypeRebuffs.GetValueOrDefault(move.Type, 0);
+                    if (reb == 0)
+                    {
+                        reb = ally.UserTypeRebuffs.Values.FirstOrDefault(v => v > 0);
+                    }
                     if (reb > 0)
                     {
                         double m = 1.0 + reb * 0.50;
@@ -1685,8 +1700,12 @@ public class DamageCalculatorService
         }
         else if (rule.Stat == "rebuff")
         {
-            var rebuffs = rule.Who == "user" ? ally.EnemyTypeRebuffs : enemy.EnemyTypeRebuffs;
+            var rebuffs = rule.Who == "user" ? ally.UserTypeRebuffs : enemy.EnemyTypeRebuffs;
             int reb = rebuffs.GetValueOrDefault(move.Type, 0);
+            if (reb == 0 && rule.Who == "user")
+            {
+                reb = rebuffs.Values.FirstOrDefault(v => v > 0);
+            }
             count = isRaised ? Math.Max(0, reb) : Math.Max(0, -reb);
         }
         else if (rule.Stat == "hp")
@@ -1733,6 +1752,8 @@ public class DamageCalculatorService
                 "restrained" => enemy.VolatileStatus.GetValueOrDefault("restrained", false),
                 "flinch_confuse_trap" => enemy.VolatileStatus.GetValueOrDefault("confused", false) || enemy.VolatileStatus.GetValueOrDefault("trapped", false) || enemy.VolatileStatus.GetValueOrDefault("flinching", false),
                 "target_rebuff_lowered" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0),
+                "user_rebuff_raised" or "user_rebuff" => ally.UserTypeRebuffs.GetValueOrDefault(move.Type, 0) > 0 || ally.UserTypeRebuffs.Values.Any(v => v > 0),
+                "user_rebuff_lowered" => ally.UserTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || ally.UserTypeRebuffs.Values.Any(v => v < 0),
                 "super_effective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
                 "target_sync_buff" => enemy.SyncBoosts > 0 || enemy.HasSyncBuff,
                 "target_hp_half" => enemy.HpPercent <= 50,
@@ -1769,6 +1790,10 @@ public class DamageCalculatorService
         if (mult > 1.0)
         {
             string label = rule.Stat.StartsWith("cond:") ? rule.Stat.Substring(5) : rule.Stat;
+            if (rule.Stat == "rebuff")
+            {
+                label = rule.Who == "user" ? $"User Rebuff +{count}" : $"Target Rebuff -{count}";
+            }
             pills.Add(new MultiplierPill { Label = $"Move Scaling ({label})", Value = $"×{mult:0.###}", Color = "#fd79a8" });
         }
 
