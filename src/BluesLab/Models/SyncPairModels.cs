@@ -261,6 +261,9 @@ public class MoveItem
 
     [JsonIgnore]
     public bool IsTrainerMove => IsTrainer || string.Equals(Type, "Trainer", StringComparison.OrdinalIgnoreCase) || (Id >= 10000 && Id < 20000);
+
+    [JsonIgnore]
+    public bool IsTerastalMove => (Id >= 4040 && Id <= 4060) || Name.Contains("Tera Blast", StringComparison.OrdinalIgnoreCase) || Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase);
 }
 
 public class PassiveItem

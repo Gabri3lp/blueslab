@@ -328,6 +328,9 @@
                     .ToList();
                 var maxMovesList = CalcService.GetMaxMoves(Pair);
                 var allDisplayMoves = Pair.Moves.Concat(maxMovesList).ToList();
+                var currentVar = (Ally.FormIndex > 0 && Ally.FormIndex <= Pair.Variations.Count)
+                    ? Pair.Variations[Ally.FormIndex - 1]
+                    : null;
             }
 
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-2 pb-1 border-bottom border-secondary">
@@ -396,6 +399,14 @@
                                         else if (move.IsMax)
                                         {
                                             <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">@Loc.T("turn_max_move", "Max Move")</span>
+                                        }
+                                        else if (move.IsTerastalMove)
+                                        {
+                                            <span class="badge bg-info text-dark py-0 px-1" style="font-size: 0.7rem;">Terastal Move</span>
+                                            @if (currentVar == null || currentVar.TerastalMoveId != move.Id)
+                                            {
+                                                <span class="badge bg-secondary text-light py-0 px-1" style="font-size: 0.65rem;" title="Requires Sync Terastallization to use">Locked</span>
+                                            }
                                         }
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-0.5 flex-wrap">

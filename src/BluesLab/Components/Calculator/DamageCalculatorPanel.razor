@@ -970,7 +970,15 @@
         get
         {
             if (Ally.Pair == null) return Enumerable.Empty<MoveItem>();
-            var regularMoves = Ally.Pair.Moves.Where(m => !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0);
+            var currentVariation = (Ally.FormIndex > 0 && Ally.FormIndex <= Ally.Pair.Variations.Count)
+                ? Ally.Pair.Variations[Ally.FormIndex - 1]
+                : null;
+            int activeTerastalMoveId = currentVariation?.TerastalMoveId ?? 0;
+
+            var regularMoves = Ally.Pair.Moves.Where(m =>
+                !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) &&
+                int.TryParse(m.Power, out int p) && p > 0 &&
+                (!m.IsTerastalMove || (activeTerastalMoveId > 0 && m.Id == activeTerastalMoveId)));
             var maxMoves = CalcService.GetMaxMoves(Ally.Pair);
             var learned = GridState.GetLearnedMoves(Ally.Pair);
             return regularMoves.Concat(maxMoves).Concat(learned);
