@@ -133,69 +133,72 @@
             }
 
             <div class="mt-2 pt-2 border-top border-secondary border-opacity-50">
-                <div class="d-flex align-items-center justify-content-between gap-1 mb-1">
-                    <div class="d-flex align-items-center gap-1">
-                        @if (isSaActive)
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                    <!-- Compact 6-Pill Stats Grid -->
+                    <div class="row g-1 flex-grow-1 align-items-center" style="margin: 0; min-width: 270px;">
+                        @foreach (var s in statsKeys)
                         {
-                            <span class="badge bg-danger text-light py-0 px-1" style="font-size: 0.65rem;">SA +10% Active</span>
+                            int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                            int saBase = rawBase;
+                            if (isSaActive)
+                            {
+                                saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                                if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
+                                    if (saFlat.TryGetValue(s, out int fb))
+                                        saBase += fb;
+                                }
+                            }
+
+                            int potVal = pot.GetValueOrDefault(s, 0);
+                            int exVal = ex.GetValueOrDefault(s, 0);
+                            double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
+
+                            int gBonus = 0;
+                            foreach (var cell in Pair.Grid)
+                            {
+                                if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                    gBonus += sb;
+                            }
+
+                            int total = CalcService.CalcTotalStat(
+                                s,
+                                rawBase,
+                                0,
+                                potential: potVal,
+                                exBonus: exVal,
+                                formMult: formMult,
+                                hasSa: Pair.HasSuperAwakening,
+                                saLevel: Ally.SuperAwakeningLevel,
+                                role: Pair.Role,
+                                gridStat: gBonus
+                            );
+
+                            string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
+
+                            <div class="col" style="padding: 0 2px;">
+                                <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: pointer;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
+                                    <div class="text-uppercase text-secondary fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px; line-height: 1;">@s</div>
+                                    <div class="fw-bold text-warning" style="font-size: 1.05rem; line-height: 1.2;">@total</div>
+                                </div>
+                            </div>
                         }
                     </div>
-                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.72rem; height: 24px;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
-                        <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down") me-1"></i>
-                        @(ShowDetailedStats ? Loc.T("hide_breakdown", "Hide Breakdown") : Loc.T("detailed_breakdown", "Detailed Breakdown"))
-                    </button>
-                </div>
 
-                <!-- Compact 6-Pill Stats Grid -->
-                <div class="row row-cols-3 row-cols-sm-6 g-1">
-                    @foreach (var s in statsKeys)
-                    {
-                        int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
-                        int saBase = rawBase;
-                        if (isSaActive)
+                    <!-- Right Side: SA Badge & Detailed Breakdown Button -->
+                    <div class="d-flex align-items-center gap-1.5 ms-auto">
+                        @if (isSaActive)
                         {
-                            saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
-                            if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
-                            {
-                                var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
-                                if (saFlat.TryGetValue(s, out int fb))
-                                    saBase += fb;
-                            }
+                            <span class="badge bg-danger text-light py-1 px-1.5" style="font-size: 0.68rem; white-space: nowrap;">SA +10% Active</span>
                         }
-
-                        int potVal = pot.GetValueOrDefault(s, 0);
-                        int exVal = ex.GetValueOrDefault(s, 0);
-                        double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
-
-                        int gBonus = 0;
-                        foreach (var cell in Pair.Grid)
-                        {
-                            if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
-                                gBonus += sb;
-                        }
-
-                        int total = CalcService.CalcTotalStat(
-                            s,
-                            rawBase,
-                            0,
-                            potential: potVal,
-                            exBonus: exVal,
-                            formMult: formMult,
-                            hasSa: Pair.HasSuperAwakening,
-                            saLevel: Ally.SuperAwakeningLevel,
-                            role: Pair.Role,
-                            gridStat: gBonus
-                        );
-
-                        string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
-
-                        <div class="col">
-                            <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: pointer;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
-                                <div class="text-uppercase text-secondary fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px; line-height: 1;">@s</div>
-                                <div class="fw-bold text-warning" style="font-size: 1.05rem; line-height: 1.2;">@total</div>
-                            </div>
-                        </div>
-                    }
+                        <button class="btn btn-sm btn-outline-secondary py-1 px-2.5 text-light text-nowrap d-flex align-items-center gap-1"
+                                style="font-size: 0.75rem; height: 38px;"
+                                @onclick="() => ShowDetailedStats = !ShowDetailedStats">
+                            <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down")"></i>
+                            <span>@(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Detailed Breakdown Accordion Table -->
