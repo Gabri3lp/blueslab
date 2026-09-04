@@ -395,28 +395,54 @@
                                         {
                                             <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">Max Move</span>
                                         }
+                                        else if (move.IsTrainerMove)
+                                        {
+                                            <span class="badge py-0 px-1" style="background-color: #38bdf8; color: #021427; font-size: 0.7rem; font-weight: 700;"><i class="bi bi-person-fill me-0.5"></i>Trainer Move</span>
+                                        }
                                     </div>
-                                    <div class="d-flex gap-1 align-items-center mt-0.5">
+                                    <div class="d-flex gap-1 align-items-center mt-0.5 flex-wrap">
                                         <span class="badge type-badge type-@moveType.ToLowerInvariant() py-0 px-1" style="font-size: 0.7rem;">@moveType</span>
                                         <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
                                         @if (!string.IsNullOrEmpty(moveTarget))
                                         {
                                             <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
                                         }
+                                        @if (move.MaxUses > 0)
+                                        {
+                                            <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-50 py-0 px-1" style="font-size: 0.7rem;">
+                                                <i class="bi bi-arrow-repeat me-0.5"></i>@move.MaxUses @(move.MaxUses == 1 ? "Use" : "Uses")
+                                            </span>
+                                        }
                                     </div>
                                 </div>
 
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="text-end small" style="line-height: 1.25;">
-                                        @if (scaledPwr > 0)
+                                        @if (move.IsTrainerMove)
                                         {
-                                            <div>Power: <b class="text-warning">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
+                                            <div class="text-info fw-bold" style="font-size: 0.8rem;">
+                                                Uses: <b>@(move.MaxUses > 0 ? $"{move.MaxUses}/{move.MaxUses}" : "-")</b>
+                                            </div>
+                                            <div class="text-muted" style="font-size: 0.75rem;">Acc: <b>-</b> | Gauge: <b>-</b></div>
                                         }
                                         else
                                         {
-                                            <div>Power: <b class="text-muted">-</b></div>
+                                            @if (scaledPwr > 0)
+                                            {
+                                                <div>Power: <b class="text-warning">@scaledPwr</b> <span class="text-muted" style="font-size: 0.75rem;">(@multPct%)</span></div>
+                                            }
+                                            else
+                                            {
+                                                <div>Power: <b class="text-muted">-</b></div>
+                                            }
+                                            <div class="text-muted" style="font-size: 0.75rem;">
+                                                Acc: <b>@(move.Accuracy == "0" ? "-" : move.Accuracy)</b> | Gauge: <b>@(move.Gauge == "0" ? "-" : move.Gauge)</b>
+                                                @if (move.MaxUses > 0)
+                                                {
+                                                    <span> | Uses: <b class="text-info">@move.MaxUses</b></span>
+                                                }
+                                            </div>
                                         }
-                                        <div class="text-muted" style="font-size: 0.75rem;">Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
                                     </div>
 
                                     <button class="btn btn-sm btn-outline-secondary py-0 px-1 text-light" style="font-size: 0.75rem; height: 24px; width: 24px;" title="Toggle Description">
@@ -425,10 +451,19 @@
                                 </div>
                             </div>
 
-                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
+                            @if (isExpanded && (!string.IsNullOrEmpty(move.Description) || move.MaxUses > 0))
                             {
                                 <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
-                                    @move.Description
+                                    @if (move.MaxUses > 0)
+                                    {
+                                        <div class="d-inline-flex align-items-center gap-1 mb-1 px-2 py-0.5 rounded bg-info bg-opacity-15 border border-info border-opacity-50 text-info fw-bold" style="font-size: 0.75rem;">
+                                            <i class="bi bi-hourglass-split"></i> Max Uses: @move.MaxUses
+                                        </div>
+                                    }
+                                    @if (!string.IsNullOrEmpty(move.Description))
+                                    {
+                                        <div>@move.Description</div>
+                                    }
                                 </div>
                             }
                         </div>
@@ -469,13 +504,16 @@
                                         <span class="fw-bold text-light" style="font-size: 0.95rem;">@move.Name</span>
                                         <span class="badge btn-pink text-white py-0 px-1" style="font-size: 0.7rem;">Max Move</span>
                                     </div>
-                                    <div class="d-flex gap-1 align-items-center mt-0.5">
+                                    <div class="d-flex gap-1 align-items-center mt-0.5 flex-wrap">
                                         <span class="badge type-badge type-@moveType.ToLowerInvariant()" style="font-size: 0.7rem;">@moveType</span>
                                         <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
                                         @if (!string.IsNullOrEmpty(moveTarget))
                                         {
                                             <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
                                         }
+                                        <span class="badge btn-pink bg-opacity-25 text-white border border-pink border-opacity-50 py-0 px-1" style="font-size: 0.7rem;">
+                                            <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
+                                        </span>
                                     </div>
                                 </div>
 
@@ -489,7 +527,7 @@
                                         {
                                             <div>Power: <b class="text-muted">-</b></div>
                                         }
-                                        <div class="text-muted" style="font-size: 0.75rem;">Acc: <b>@move.Accuracy</b> | Gauge: <b>@move.Gauge</b></div>
+                                        <div class="text-muted" style="font-size: 0.75rem;">Acc: <b>-</b> | Gauge: <b>-</b> | Uses: <b class="text-pink">1</b></div>
                                     </div>
 
                                     <button class="btn btn-sm btn-outline-secondary py-0 px-1 text-light" style="font-size: 0.75rem; height: 24px; width: 24px;" title="Toggle Description">
@@ -498,10 +536,16 @@
                                 </div>
                             </div>
 
-                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
+                            @if (isExpanded && (!string.IsNullOrEmpty(move.Description) || move.MaxUses > 0))
                             {
                                 <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
-                                    @move.Description
+                                    <div class="d-inline-flex align-items-center gap-1 mb-1 px-2 py-0.5 rounded bg-pink bg-opacity-15 border border-pink border-opacity-50 text-pink fw-bold" style="font-size: 0.75rem;">
+                                        <i class="bi bi-hourglass-split"></i> Max Uses: 1 (Dynamax limit)
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(move.Description))
+                                    {
+                                        <div>@move.Description</div>
+                                    }
                                 </div>
                             }
                         </div>
@@ -648,6 +692,11 @@
 
     private string GetEffectiveMoveType(MoveItem move)
     {
+        if (move.IsTrainerMove)
+        {
+            return "Trainer";
+        }
+
         if (Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count)
         {
             var form = Pair.Variations[Ally.FormIndex - 1];

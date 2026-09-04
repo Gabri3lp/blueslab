@@ -85,7 +85,9 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "This attack’s power increases 30% when it is super effective.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 604,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Turns the field of play’s terrain into Electric Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6105,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition: When the field of play’s terrain turns into Electric Terrain.\nDeactivation Condition: When the field of play’s terrain is no longer Electric Terrain.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. This attack’s power increases 30% when it is super effective. The power of this move is not lowered even if there are multiple targets. Increases the user’s Sync Move ↑ Next effect by 10 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 12860,
       "slot": 4,
       "name": "Treasure Hunt\nTime!",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Sp. Atk by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. In addition, raises the user’s Speed by 6 stat ranks when the terrain is Electric Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 111400,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

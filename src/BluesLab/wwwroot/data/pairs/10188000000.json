@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (10%) of lowering the target’s Sp. Def by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 18501,
       "slot": 2,
       "name": "Lum Berry",
-      "type": "Psychic",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Removes all status conditions from an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": true
     },
     {
       "id": 6089,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses. Lowers the target’s Sp. Def by 2 stat ranks. Applies the Free Move Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 1 rank. If the remaining MP for the user’s Lum Berry is one or more when attacking with this move, reduces those MP by one and restores one MP of its buddy move.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11880,
       "slot": 4,
       "name": "Let Me\nShow You!",
-      "type": "Psychic",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Restores the user’s HP by approximately 50% of its maximum HP. Removes all status conditions from the user. Applies the Damage Guard Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 51103,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

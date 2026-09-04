@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "Has a chance (30%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19020,
       "slot": 2,
       "name": "X Defense",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Defense by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 201,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Causes a sandstorm.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 10070,
       "slot": 4,
       "name": "Over Here!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Makes opponents target the user for a short time. Applies the Gradual Healing effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 51401,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Defense is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

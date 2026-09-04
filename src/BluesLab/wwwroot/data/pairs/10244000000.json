@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "Has a chance (10%) of raising the user’s Attack by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Steel",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 782,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "This attack’s power increases 50% when the target has a sync buff.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 12440,
       "slot": 4,
       "name": "Hop to It!",
-      "type": "Steel",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack of all allied sync pairs by 2 stat ranks. Raises the Defense and critical-hit rate of all allied sync pairs by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 82500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target has a sync buff.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Attacks up to three times in a row. This attack’s power increases for each hit. (The second attack is twice as powerful as the first attack, and the third attack is three times as powerful as the first attack.) After using this move, the attack’s power returns to normal.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19052,
       "slot": 2,
       "name": "X Speed +",
-      "type": "Ice",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Speed by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6022,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s HP is full.\nDeactivation Condition: When the user’s HP is not full.\n\nAttacks up to three times in a row. This attack’s power increases for each hit. (The second attack is twice as powerful as the first attack, and the third attack is three times as powerful as the first attack.) Reduces the user’s sync move countdown by 1 for each hit. Raises the user’s critical-hit rate by 1 stat rank for each hit. After using this move, the attack’s power returns to normal.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11331,
       "slot": 4,
       "name": "I Won’t\nLeave You!",
-      "type": "Ice",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s Attack by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 95500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Speed is lowered, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

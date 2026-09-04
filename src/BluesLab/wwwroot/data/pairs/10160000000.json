@@ -85,7 +85,9 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 469,
@@ -98,7 +100,9 @@
       "gauge": "1",
       "target": "Self",
       "description": "The user takes up a defensive posture. Using this move again will make the user leave this defensive posture. No other actions can be taken when in this defensive posture. Nullifies moves that target all allies when hit by such a move while in this defensive posture, then the user leaves the defensive posture.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 141,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 11600,
       "slot": 4,
       "name": "Karpe Diem!",
-      "type": "Water",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Uses a maximum of 3 slots of the user’s move gauge. The more amount used, the more it raises the Attack and Defense of all allied sync pairs (can be raised by up to 4 stat ranks maximum). Applies the Gradual Healing effect to all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 50301,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

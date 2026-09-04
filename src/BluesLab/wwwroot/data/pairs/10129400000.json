@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (20%) of lowering the target’s Defense by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19011,
       "slot": 2,
       "name": "X Attack All",
-      "type": "Dark",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6014,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When there is at least one Pokémon with a lowered Dark Type Rebuff on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon with a lowered Dark Type Rebuff on the opponent’s field of play.\n\nNever misses. Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks. Except in certain circumstances, successful hits with this attack become critical hits. Applies the No Stat Increases effect to the opponent’s field of play.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11298,
       "slot": 4,
       "name": "Catch Me If\nYou Can!",
-      "type": "Dark",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the Stat Reduction Defense effect to the allied field of play. Raises the user’s evasiveness by 1 stat rank. Raises the user’s critical-hit rate by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 96800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s stats are raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

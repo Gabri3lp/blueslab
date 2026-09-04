@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "The user also takes approximately 33% of the damage it dealt to the target.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 446,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Applies Rock Damage Field to the opponents’ field of play. (Rock Damage Field: The sync pairs will take Rock-type damage whenever they take an action.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6152,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When Rock Damage Field applies to the opponent’s field of play.\nDeactivation Condition: When the opponent’s field of play is no longer Rock Damage Field.\n\nLowers the target’s Defense by 2 stat ranks. Makes the target flinch. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into an EX Rock Zone the first time this attack move is successful each battle. (An EX Rock Zone powers up Rock-type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 13380,
       "slot": 4,
       "name": "Gimme a Nice\nExpression!",
-      "type": "Rock",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces the sync move countdown of an ally by 1. Applies the Supereffective ↑ Next effect to an ally. Applies the Enduring effect to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 116800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

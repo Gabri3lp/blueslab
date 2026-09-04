@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 240,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Makes the weather rainy.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6016,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "All allies",
       "description": "Activation Condition: When weather, terrain, or zone effects are activated.\nDeactivation Condition: When all weather, terrain, and zone effects are cleared.\n\nApplies the Damage Guard Next effect to all allied sync pairs. Restores the HP of all allied sync pairs by approximately 20% of their maximum HP. HP is restored by 30% instead when the zone is a Fairy Zone. Returns lowered stats of all allied sync pairs to normal when the weather is rainy.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 10341,
       "slot": 4,
       "name": "Pretty as\na Painting!",
-      "type": "Fairy",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Applies the Critical-Hit Defense effect to the allied field of play. Raises the Sp. Atk of all allied sync pairs by 4 stat ranks. Applies the Gradual Healing effect to all allied sync pairs. In addition, raises the Sp. Atk of all allied sync pairs by 2 stat ranks when the weather is rainy.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 51802,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

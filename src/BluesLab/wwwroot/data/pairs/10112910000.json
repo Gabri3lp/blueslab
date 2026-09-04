@@ -85,20 +85,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition:\nWhen a circle is applied to the allied field of play.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Lowers the target’s Defense and Sp. Def by 2 stat ranks. Leaves the target paralyzed. Has a chance (30%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19180,
       "slot": 2,
       "name": "Max Revive",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "1",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 6200,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nNever misses. The power of this move is not lowered even if there are multiple targets. Turns the field of play’s terrain into Electric Terrain. Reduces the user’s sync move countdown by 1. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 11128,
       "slot": 4,
       "name": "Thundering\nGlory!",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Restores the user’s HP by approximately % of its maximum HP. Restores the HP of all allied sync pairs by approximately % of their maximum HP. Applies the Gradual Healing effect to all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 121700,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

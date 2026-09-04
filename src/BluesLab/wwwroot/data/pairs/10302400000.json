@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses. Lowers the target’s Sp. Def by 2 stat ranks. Increases the user’s Special Moves ↑ Next effect by one to four ranks at random. In addition, increases the user’s Special Moves ↑ Next effect by 1 rank when the target is poisoned or badly poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 182,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Applies the Damage Guard Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 92,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target badly poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 13024,
       "slot": 4,
       "name": "I Know\nI’m Pretty!",
-      "type": "Ground",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Turns the field of play’s zone into a Ground Zone. (A Ground Zone powers up Ground-type attacks.) Applies the Gradual Healing effect to the user. Increases the user’s Special Moves ↑ Next effect by three to five ranks at random.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 125200,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

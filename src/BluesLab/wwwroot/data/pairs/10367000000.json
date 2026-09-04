@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user’s Sp. Atk is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nLowers the target’s Sp. Def by 2 stat ranks. The power of this move is not lowered even if there are multiple targets. In addition, lowers the target’s Sp. Def by 2 stat ranks when Kalos Circle (Special) applies to the allied field of play.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 8216,
       "slot": 2,
       "name": "Kalos\nAnalysis",
-      "type": "Grass",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Kalos Circle (Special) to the allied field of play.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6217,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen a Kalos Circle is applied to the allied field of play.\nDeactivation Condition:\nWhen there are no longer any Kalos Circles applied to the allied field of play. The user gets ready to attack. Using this move again will cause the user to leave this posture, then attack. No other actions can be taken while ready to attack. The preparation period is skipped when the weather is sunny or if the user’s Meganium has Mega Evolved, and the user will attack right away. The power of this move is not lowered even if there are multiple targets. This attack’s power increases 50% when the Physical Damage Reduction effect applies to the allied field of play.\nThis attack’s power increases 50% when the Special Damage Reduction effect applies to the allied field of play.\n(This attack’s power is doubled if both the Physical Damage Reduction effect and Special Damage Reduction effect apply to the allied field of play.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 13670,
       "slot": 4,
       "name": "Believe in\nOur Team!",
-      "type": "Grass",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies Kalos Circle (Special) to the allied field of play.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 65300,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Meganium until the end of battle.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

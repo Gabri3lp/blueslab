@@ -277,6 +277,29 @@ def main():
                         m["target"] = tgt_name
                         changed = True
 
+                # Uses / Max Uses
+                uses = proto_mv.get("uses", 0)
+                if m.get("maxUses") != uses:
+                    m["maxUses"] = uses
+                    changed = True
+
+                # Trainer Move
+                is_trainer = (proto_mv.get("user") == "Trainer") or (proto_mv.get("type") == 0) or (10000 <= mid < 20000)
+                if m.get("isTrainer") != is_trainer:
+                    m["isTrainer"] = is_trainer
+                    changed = True
+
+                if is_trainer:
+                    if m.get("type") != "Trainer":
+                        m["type"] = "Trainer"
+                        changed = True
+                    if m.get("accuracy") != "-":
+                        m["accuracy"] = "-"
+                        changed = True
+                    if m.get("gauge") != "-":
+                        m["gauge"] = "-"
+                        changed = True
+
             orig_desc = m.get("description", "")
             resolved_desc = resolve_move_desc(mid, m.get("name", ""), orig_desc, poma_moves)
             if resolved_desc and resolved_desc != orig_desc:

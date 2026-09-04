@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19160,
       "slot": 2,
       "name": "Super\nEffective ↑",
-      "type": "Normal",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the Supereffective ↑ Next effect to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6013,
@@ -111,20 +115,24 @@
       "gauge": "1",
       "target": "All opponents",
       "description": "Activation Condition: When there is at least one Pokémon with a lowered Type Rebuff on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon with a lowered Type Rebuff on the opponent’s field of play.\n\nNever misses. Lowers the target’s Attack, Defense, and Speed by 2 stat ranks. Applies the No Evasion effect to the target. Applies the Restrain effect to the target.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 10906,
       "slot": 4,
       "name": "Mystery\nSolved!",
-      "type": "Normal",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Raises an ally’s Speed by 2 stat ranks. Increases the Physical Moves ↑ Next effect of an ally by 3 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 96600,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the target’s Defense is lowered, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Critical hits land more easily.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19640,
       "slot": 2,
       "name": "Ghost Wish",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Turns the field of play’s zone into a Ghost Zone. (A Ghost Zone powers up Ghost-type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6170,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: Cannot be deactivated.\n\nLowers the target’s Defense by 1 stat rank. Applies the Restrain effect to the target. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s Ghost Wish is 1 or more when attacking with this move, reduces those MP by 1 and grants all of the following effects: Turns the field of play’s zone into a Ghost Zone. (A Ghost Zone powers up Ghost-type attacks.) Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 11226,
       "slot": 4,
       "name": "Snipe ’Em!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces the sync move countdown of an ally by 1. Applies the Free Move Next effect to an ally. Increases the Physical Moves ↑ Next effect of an ally by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 124500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

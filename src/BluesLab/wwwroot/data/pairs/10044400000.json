@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target trapped.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19011,
       "slot": 2,
       "name": "X Attack All",
-      "type": "Ground",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6033,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "All opponents",
       "description": "Activation Condition: When there is at least one trapped Pokémon on the opponent’s field of play.\nDeactivation Condition: When there are no longer any trapped Pokémon on the opponent’s field of play.\n\nLowers the target’s Defense and Speed by 1 stat rank. Raises the Defense and Speed of all allied sync pairs by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 10449,
       "slot": 4,
       "name": "I See It All!",
-      "type": "Ground",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Applies the Move Gauge Acceleration effect to the allied field of play. Raises the user’s critical-hit rate by 3 stat ranks. Raises the accuracy of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 102400,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is trapped.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

@@ -85,7 +85,9 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Never misses when the weather is rainy. Has a chance (20%) of leaving the target paralyzed.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 604,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Turns the field of play’s terrain into Electric Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6124,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses when the weather is rainy. Lowers the target’s Sp. Def by 2 stat ranks. Lowers the target’s Electric Type Rebuff by 1 rank the first time this attack move is successful each battle. Leaves the target paralyzed. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s Electric Terrain is 1 or more when attacking with this move, reduces those MP by 1 and grants all of the following effects: Makes the weather rainy. Turns the field of play’s terrain into Electric Terrain.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 11062,
       "slot": 4,
       "name": "Surely,\nShirley!",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces the sync move countdown of an ally by 1. Raises an ally’s Sp. Atk by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 118500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

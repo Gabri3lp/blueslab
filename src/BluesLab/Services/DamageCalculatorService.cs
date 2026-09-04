@@ -1995,11 +1995,12 @@ public class DamageCalculatorService
                 Category = atkMove.Category,
                 Power = maxBasePower.ToString(),
                 Accuracy = "-",
-                Gauge = "0",
+                Gauge = "-",
                 Target = hitsAll ? "All opponents" : "An opponent",
                 Description = "Max move. Never misses. Cannot be reduced by multiple target damage reduction.",
                 IsSync = false,
-                IsMax = true
+                IsMax = true,
+                MaxUses = 1
             });
         }
 

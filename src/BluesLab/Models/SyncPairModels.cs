@@ -240,6 +240,18 @@ public class MoveItem
 
     [JsonPropertyName("isMax")]
     public bool IsMax { get; set; }
+
+    [JsonPropertyName("maxUses")]
+    public int MaxUses { get; set; }
+
+    [JsonPropertyName("uses")]
+    public int Uses { get => MaxUses; set => MaxUses = value; }
+
+    [JsonPropertyName("isTrainer")]
+    public bool IsTrainer { get; set; }
+
+    [JsonIgnore]
+    public bool IsTrainerMove => IsTrainer || string.Equals(Type, "Trainer", StringComparison.OrdinalIgnoreCase) || (Id >= 10000 && Id < 20000);
 }
 
 public class PassiveItem

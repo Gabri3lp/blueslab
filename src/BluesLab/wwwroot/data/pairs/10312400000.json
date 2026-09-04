@@ -85,7 +85,9 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (20%) of lowering the target’s Sp. Def by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 182,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Applies the Damage Guard Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 6210,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user’s Trainer uses any move 2 times.\nDeactivation Condition:\nCannot be deactivated.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. The more fainted Pokémon on your team, the greater the power of this attack. Lowers the target’s Defense by 3 stat ranks. The power of this move is not lowered even if there are multiple targets. Restores 1 MP for this move when you have two or more Pokémon on your team.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 13124,
       "slot": 4,
       "name": "I Pack Quite\na Punch!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by 2. Raises the user’s Attack and Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 126800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Attack is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

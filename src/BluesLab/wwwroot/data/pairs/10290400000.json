@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (10%) of leaving the target confused.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 182,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Applies the Damage Guard Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 6116,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. Raises the Speed of all allied sync pairs by 2 stat ranks. If the remaining MP for the user’s Go Faster! is 1 or more when attacking with this move, increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 12904,
       "slot": 4,
       "name": "Go Faster!",
-      "type": "Psychic",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Applies the Supereffective ↑ Next effect to the user. Applies the Free Move Next effect to the user. The more the user’s Speed is raised, the more it reduces its sync move countdown (can be reduced by up to 3 maximum). The more the user’s Speed is raised, the more it increases its Special Moves ↑ Next effect (can be increased by up to 3 ranks maximum).",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 117300,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

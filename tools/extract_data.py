@@ -285,18 +285,23 @@ def main():
             mid = safe_int(t.get(f"move{i}Id", 0))
             if mid > 0:
                 mv = moves_dict.get(str(mid), {})
+                is_trainer = (mv.get("user") == "Trainer") or (mv.get("type") == 0) or (10000 <= mid < 20000)
+                move_type = "Trainer" if is_trainer else TYPE_MAP.get(mv.get("type", t.get("type", 1)), type_name)
+                uses = safe_int(mv.get("uses", 0))
                 moves.append({
                     "id": mid,
                     "slot": i,
                     "name": get_move_name(mid),
-                    "type": TYPE_MAP.get(mv.get("type", t.get("type", 1)), type_name),
+                    "type": move_type,
                     "category": "Physical" if mv.get("category") == 1 else ("Special" if mv.get("category") == 2 else "Status"),
                     "power": str(mv.get("power", 0)),
-                    "accuracy": str(mv.get("accuracy", 100)),
-                    "gauge": str(mv.get("gauge", 0)),
+                    "accuracy": "-" if is_trainer else str(mv.get("accuracy", 100)),
+                    "gauge": "-" if is_trainer else str(mv.get("gaugeDrain", mv.get("gauge", 0))),
                     "target": "An opponent" if mv.get("target") == 1 else ("All opponents" if mv.get("target") == 2 else "Self"),
                     "description": get_move_desc(mid),
-                    "isSync": False
+                    "isSync": False,
+                    "maxUses": uses,
+                    "isTrainer": is_trainer
                 })
 
         sync_mid = safe_int(mon.get("syncMoveId", 0))

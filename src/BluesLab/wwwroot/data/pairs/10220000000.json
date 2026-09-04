@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (50%) of leaving the target badly poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6009,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Activation Condition: When there is at least one poisoned or badly poisoned Pokémon on the opponent’s field of play.\nDeactivation Condition: When there are no longer any poisoned or badly poisoned Pokémon on the opponent’s field of play.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. Has a chance (10%) of leaving the target badly poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 12200,
       "slot": 4,
       "name": "Here\nWe Go!",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the user’s Attack by 4 stat ranks. Raises the Speed of all allied sync pairs by 4 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 94200,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

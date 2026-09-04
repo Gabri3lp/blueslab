@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "No additional effect.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19660,
       "slot": 2,
       "name": "Dark Wish",
-      "type": "Dark",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Turns the field of play’s zone into a Dark Zone. (A Dark Zone powers up Dark-type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6195,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nIgnores the target’s raised stats. Lowers the target’s Defense and Speed by 2 stat ranks. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s Dark Wish is 1 or more when attacking with this move, reduces those MP by 1 and grants all of the following effects: Turns the field of play’s zone into a Dark Zone. Reduces the user’s sync move countdown by 2.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 10988,
       "slot": 4,
       "name": "We’ll Have\na Blast!",
-      "type": "Dark",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces the sync move countdown of an ally by 1. Applies the Supereffective ↑ Next effect to an ally. Applies the Damage Guard Next effect to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 126100,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

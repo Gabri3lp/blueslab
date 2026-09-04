@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Has a chance (30%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Steel",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6077,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "All opponents",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nNever misses. Lowers the target’s Defense and Sp. Def by 2 stat ranks. Raises the Defense and Sp. Def of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 10902,
       "slot": 4,
       "name": "We’re the\nStrongest!",
-      "type": "Steel",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Attack of all allied sync pairs by 6 stat ranks. Uses a maximum of three slots of the user’s move gauge. The more amount used, the more it raises the critical-hit rate of all allied sync pairs (can be raised by zero to three stat ranks maximum). Increases the Sync Move ↑ Next effect of all allied sync pairs by 3 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 64500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Metagross until the end of battle. Critical hits land more easily. Restores the HP of all allied sync pairs by approximately 20% of their maximum HP.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

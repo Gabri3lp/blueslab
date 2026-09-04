@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Returns the target’s raised stats to normal, raises the user’s same stats by the same amount, then attacks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 19083,
       "slot": 2,
       "name": "Dire Hit All +",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 325,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Never misses.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 10121,
       "slot": 4,
       "name": "Greater Heights!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s Speed and evasiveness by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 89900,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when none of the target’s stats are raised.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

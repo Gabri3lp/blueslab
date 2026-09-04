@@ -85,20 +85,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nRemoves the frozen condition from the user. Never misses. The more the user’s sync buff is raised, the greater the power of this attack. (The maximum increase is 10 ranks.) Lowers the target’s Attack and Defense by 2 stat ranks. Leaves the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19160,
       "slot": 2,
       "name": "Super\nEffective ↑",
-      "type": "Fire",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Applies the Supereffective ↑ Next effect to an ally.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6202,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated. Removes the frozen condition from the user. Never misses. The more the user’s sync buff is raised, the greater the power of this attack. (The maximum increase is 10 ranks.) Leaves the target burned. The power of this move is not lowered even if there are multiple targets. If the remaining MP for the user’s is one or more when attacking with this move, reduces those MP by one and grants all of the following effects: Makes the weather sunny. Applies the Supereffective ↑ Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 10027,
       "slot": 4,
       "name": "Erupting\nGlory!",
-      "type": "Fire",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by 2. Increases the user’s Physical Moves ↑ Next effect by 3 ranks. Increases the user’s Special Moves ↑ Next effect by 3 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 121600,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

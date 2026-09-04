@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Never misses when the weather is rainy. Has a chance (30%) of leaving the target paralyzed.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19170,
       "slot": 2,
       "name": "Booster\nEnergy",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6123,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Sp. Atk is raised.\nDeactivation Condition: When the user’s Sp. Atk is not raised.\n\nMakes the target flinch. Turns the field of play’s terrain into EX Electric Terrain the first time this attack move is successful each battle. Increases the Sync Move ↑ Next effect of all allied sync pairs by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 12966,
       "slot": 4,
       "name": "Shiny Li’l\nLightbulb!",
-      "type": "Electric",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces the sync move countdown of an ally by 1. Raises an ally’s Sp. Atk by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 113800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

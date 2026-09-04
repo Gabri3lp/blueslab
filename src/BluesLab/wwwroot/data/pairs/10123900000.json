@@ -85,7 +85,9 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 236,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Restores the user’s HP by approximately 50% of its maximum HP. HP is restored by 60% instead when the weather is sunny, and 40% when the weather is rainy or during a hailstorm or a sandstorm.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 6127,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user uses any move once.\nDeactivation Condition: When this move is used.\n\nIgnores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect. Lowers the target’s Sp. Def by 3 stat ranks. The more MP remaining for the user’s Moonlight when attacking with this move, the more it reduces its sync move countdown (can be reduced by up to 3 maximum).",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11237,
       "slot": 4,
       "name": "Moonlit\nGlory!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s Special Moves ↑ Next effect by 3 ranks. Applies Alola Circle (Special) to the allied field of play. Alola Circle (Special) grants all of the following effects: Powers up the special attack moves and special sync moves of all allied sync pairs by 10%. Reduces special attack move and special sync move damage taken by all allied sync pairs by 5%. The more sync pairs with the Alola theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 10% and reduces damage by 3%. The maximum power-up is 40%, and the maximum damage reduction is 14%.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 113900,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "The more the user’s Sp. Atk is raised, the greater the power of this attack. Ignores passive skills that would reduce the damage of this attack. Ignores passive skills that would protect the target against a critical hit.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

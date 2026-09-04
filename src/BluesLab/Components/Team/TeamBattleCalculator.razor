@@ -347,6 +347,12 @@
                                         {
                                             <span class="badge bg-info text-dark">AoE / All Targets</span>
                                         }
+                                        @if (move.MaxUses > 0)
+                                        {
+                                            <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-50">
+                                                <i class="bi bi-arrow-repeat me-0.5"></i>@move.MaxUses @(move.MaxUses == 1 ? "Use" : "Uses")
+                                            </span>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -429,6 +435,9 @@
                                             {
                                                 <span class="badge bg-info text-dark">AoE / All Targets</span>
                                             }
+                                            <span class="badge btn-pink bg-opacity-25 text-white border border-pink border-opacity-50">
+                                                <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

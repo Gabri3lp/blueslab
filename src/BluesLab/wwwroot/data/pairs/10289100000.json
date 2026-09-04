@@ -85,20 +85,24 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition: When the user uses any moves 1 time.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. Lowers the target’s Attack and Defense by 1 stat rank. The power of this move is not lowered even if there are multiple targets.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19170,
       "slot": 2,
       "name": "Booster\nEnergy",
-      "type": "Fairy",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 241,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An ally",
       "description": "Makes the weather sunny.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 12891,
       "slot": 4,
       "name": "Our Greatest\nBattle!",
-      "type": "Fairy",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Raises the user’s Attack by 6 stat ranks. Raises the user’s Speed by 4 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 105800,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

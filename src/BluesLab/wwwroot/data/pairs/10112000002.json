@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Has a chance (20%) of making the target flinch.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 43,
@@ -98,7 +100,9 @@
       "gauge": "1",
       "target": "All opponents",
       "description": "Lowers the target’s Defense by 1 stat rank.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6238,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All allies",
       "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nMakes the weather EX rainy. Reduces the user’s sync move countdown by 2. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 11127,
       "slot": 4,
       "name": "True Trust!",
-      "type": "Water",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Raises an ally’s Sp. Atk by 4 stat ranks. Raises an ally’s critical-hit rate by 3 stat ranks. Increases the Special Moves ↑ Next effect of an ally by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 66500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Gyarados until the end of battle.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

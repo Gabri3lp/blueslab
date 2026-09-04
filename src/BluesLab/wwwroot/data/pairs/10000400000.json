@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nNever misses. Applies the Physical Move Break effect to the target. This attack’s power is doubled when the user’s team does not have a sync buff. Lowers the target’s Defense by 6 stat ranks when the user’s team does not have a sync buff.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 182,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "Applies the Damage Guard Next effect to the user.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 6143,
@@ -111,20 +115,24 @@
       "gauge": "4",
       "target": "An opponent",
       "description": "Activation Condition: When the user’s Attack is raised.\nDeactivation Condition: When the user’s Attack is not raised.\n\nNever misses. The more the user’s Special Moves ↑ Next effect is increased, the greater the power of this attack. Removes all of the user’s Special Moves ↑ Next effect ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 10004,
       "slot": 4,
       "name": "Shine for\nVictory!",
-      "type": "Dragon",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Reduces the user’s sync move countdown by two. Applies the Supereffective ↑ Next effect to the user. Increases the user’s Physical Moves ↑ Next effect by 3 ranks. Increases the user’s Sync Move ↑ Next effect by 5 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 201501,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

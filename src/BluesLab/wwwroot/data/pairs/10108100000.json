@@ -85,7 +85,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target burned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 109,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Leaves the target confused.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6086,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "An opponent",
       "description": "Activation Condition: When there is at least one Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\nDeactivation Condition: When there are no longer any Pokémon affected by a status condition, flinching, confused, or trapped on the opponent’s field of play.\n\nThis attack’s power is doubled against targets that are affected by a status condition, flinching, confused, or trapped. Lowers the target’s Defense by 2 stat ranks when it is paralyzed. Lowers the target’s Sp. Def by 2 stat ranks when it is burned. Lowers the target’s Speed by 2 stat ranks when it is flinching. Restores the HP of all allied sync pairs when the target is poisoned or badly poisoned. Applies the Free Move Next effect to the user when the target is trapped. Increases the user’s Special Moves ↑ Next effect by 1 rank when the target is confused.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 11081,
       "slot": 4,
       "name": "The Train\nIs Leaving!",
-      "type": "Ghost",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Reduces the user’s sync move countdown by 2. Raises the Speed of all allied sync pairs by 4 stat ranks. Raises the evasiveness of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 112400,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "This attack’s power increases when the target is affected by a status condition.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

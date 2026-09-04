@@ -85,20 +85,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "The more damage dealt to the target, the more it restores the user’s HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 8226,
       "slot": 2,
       "name": "Paldea\nSolidarity",
-      "type": "Fighting",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Paldea Circle (Defensive) to the allied field of play. Paldea Circle (Defensive) grants all of the following effects: Powers up the moves and sync moves of all allied sync pairs by 5%. Reduces attack move and sync move damage taken by all allied sync pairs by 10%. The more sync pairs with the Paldea theme that are on the allied field of play, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 5% and reduces damage by 5%. The maximum power-up is 20%, and the maximum damage reduction is 25%.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6090,
@@ -111,20 +115,24 @@
       "gauge": "3",
       "target": "An opponent",
       "description": "Activation Condition: When the user is hit by an attack move 1 time.\nDeactivation Condition: Cannot be deactivated.\n\nNever misses. This attack’s power increases each time the user is hit by an attack move. (This attack powers up by 100% every time the user is hit. The maximum power-up is 600%.) Restores the user’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 13300,
       "slot": 4,
       "name": "I Won’t\nRun Away!",
-      "type": "Fighting",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks. Applies the Gradual Healing effect to all allied sync pairs. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 2 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 107600,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

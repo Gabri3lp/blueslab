@@ -85,7 +85,9 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nWhen the user’s Attack is not raised.\n\nNever misses. Except in certain circumstances, successful hits with this attack become critical hits. Lowers the target’s Defense and Sp. Def by 2 stat ranks. The power of this move is not lowered even if there are multiple targets. Charges the user’s move gauge by 1 for each hit.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6226,
@@ -98,7 +100,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nWhen this move is used.\n\nAttacks the target two to five times in a row. Never misses. Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 1 rank for each hit.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 6227,
@@ -111,20 +115,24 @@
       "gauge": "1",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen your team’s sync pair uses a sync move once.\nDeactivation Condition:\nWhen this move is used. Never misses. The more the user’s sync buff is raised, the greater the power of this attack. (The maximum increase is 10 ranks.) The power of this move is not lowered even if there are multiple targets. Turns the field of play’s zone into a the first time this attack move is successful each battle. (A powers up -type attacks.)",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 11305,
       "slot": 4,
       "name": "I’m Going\nto Win!",
-      "type": "Dark",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "Self",
       "description": "Increases the user’s Physical Moves ↑ Next effect and Special Moves ↑ Next effect by 3 ranks. If the user’s Greninja has Mega Evolved, also increases the user’s Sync Move ↑ Next effect by 10 ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 65500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Greninja until the end of battle.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

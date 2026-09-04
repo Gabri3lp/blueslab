@@ -85,7 +85,9 @@
       "gauge": "1",
       "target": "An opponent",
       "description": "Has a chance (30%) of leaving the target poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 623,
@@ -98,7 +100,9 @@
       "gauge": "2",
       "target": "Self",
       "description": "The user takes up a defensive posture. Using this move again will make the user leave this defensive posture. No other actions can be taken when in this defensive posture. Nullifies moves when hit while in this defensive posture, then the user leaves the defensive posture. If the move was a physical attack move, leaves the opponent that used it poisoned.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 469,
@@ -111,20 +115,24 @@
       "gauge": "1",
       "target": "Self",
       "description": "The user takes up a defensive posture. Using this move again will make the user leave this defensive posture. No other actions can be taken when in this defensive posture. Nullifies moves that target all allies when hit by such a move while in this defensive posture, then the user leaves the defensive posture.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": false
     },
     {
       "id": 13360,
       "slot": 4,
       "name": "Don’t Work\nToo Hard!",
-      "type": "Poison",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks. Raises the critical-hit rate of all allied sync pairs by 2 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 200802,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

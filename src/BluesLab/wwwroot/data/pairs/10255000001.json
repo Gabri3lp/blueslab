@@ -85,20 +85,24 @@
       "gauge": "1",
       "target": "All opponents",
       "description": "Has a chance (10%) of leaving the target frozen.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 19000,
       "slot": 2,
       "name": "Potion",
-      "type": "Ice",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Restores an ally’s HP by approximately 40% of its maximum HP.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6137,
@@ -111,20 +115,24 @@
       "gauge": "2",
       "target": "All opponents",
       "description": "Activation Condition: When the Special Damage Reduction effect is applied to the allied field of play.\nDeactivation Condition: When the Special Damage Reduction effect is no longer applied to the allied field of play.\n\nNever misses. Returns the raised stats of all opposing sync pairs to normal. Applies the No Stat Increases effect to the opponent’s field of play. Applies the Stat Reduction Defense effect to the allied field of play. Returns lowered stats of all allied sync pairs to normal. Applies the Supereffective ↑ Next effect to all allied sync pairs. Applies the Free Move Next effect to all allied sync pairs.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": false
     },
     {
       "id": 12559,
       "slot": 4,
       "name": "Lower the\nTemperature!",
-      "type": "Ice",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "All allies",
       "description": "Reduces the user’s sync move countdown by one. Raises the Defense and Sp. Def of all allied sync pairs by 4 stat ranks.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 120500,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "No additional effect.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [

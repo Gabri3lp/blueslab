@@ -85,20 +85,24 @@
       "gauge": "4",
       "target": "All opponents",
       "description": "Activation Condition:\nWhen the user’s Attack is raised.\nDeactivation Condition:\nCannot be deactivated.\n\nLowers the target’s Defense by 2 stat ranks. The power of this move is not lowered even if there are multiple targets.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 0,
+      "isTrainer": false
     },
     {
       "id": 8215,
       "slot": 2,
       "name": "Kalos\nPassion",
-      "type": "Water",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "2",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank. Applies Kalos Circle (Physical) to the allied field of play.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 2,
+      "isTrainer": true
     },
     {
       "id": 6219,
@@ -111,20 +115,24 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Activation Condition:\nWhen the user uses any move once.\nDeactivation Condition:\nCannot be deactivated.\n\nReduces the user’s sync move countdown by 2. Increases the user’s Physical Moves ↑ Next effect by 3 ranks. If the user’s Feraligatr has Mega Evolved, also increases this attack’s power by 50%.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 3,
+      "isTrainer": false
     },
     {
       "id": 13660,
       "slot": 4,
       "name": "With\nConfidence!",
-      "type": "Water",
+      "type": "Trainer",
       "category": "Status",
       "power": "0",
-      "accuracy": "0",
-      "gauge": "0",
+      "accuracy": "-",
+      "gauge": "-",
       "target": "An ally",
       "description": "Raises the user’s Attack by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Applies Kalos Circle (Physical) to the allied field of play.",
-      "isSync": false
+      "isSync": false,
+      "maxUses": 1,
+      "isTrainer": true
     },
     {
       "id": 65400,
@@ -137,7 +145,9 @@
       "gauge": "0",
       "target": "An opponent",
       "description": "Become Mega Feraligatr until the end of battle. The more the user’s Attack is raised, the greater the power of this attack.",
-      "isSync": true
+      "isSync": true,
+      "maxUses": 0,
+      "isTrainer": false
     }
   ],
   "passives": [
