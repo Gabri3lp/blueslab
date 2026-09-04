@@ -2,7 +2,7 @@
 
 <header class="navbar navbar-dark bg-dark border-bottom border-secondary px-3 py-2 shadow-sm">
     <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
-        <!-- Left: Brand & Pair Selector -->
+        <!-- Left: Brand, Pair Selector & Settings -->
         <div class="d-flex align-items-center gap-2 gap-md-3">
             <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-5">
                 <i class="bi bi-cpu-fill"></i> BLUES LAB
@@ -23,9 +23,22 @@
                     <i class="bi bi-person-plus"></i> @Loc.T("select_sync_pair", "Select Character")
                 </button>
             }
+
+            <div class="d-flex align-items-center gap-1 border-start border-secondary ps-2">
+                <i class="bi bi-globe2 text-warning small" title="@Loc.T("language", "Language")"></i>
+                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2 cursor-pointer shadow-none"
+                        style="font-size: 0.8rem; width: auto; height: 28px;"
+                        value="@Loc.CurrentLanguage"
+                        @onchange="OnLanguageSelected">
+                    @foreach (var (langCode, name) in LocalizationService.SupportedLanguages)
+                    {
+                        <option value="@langCode">@name</option>
+                    }
+                </select>
+            </div>
         </div>
 
-        <!-- Right: Hard Cap Toggle, Reset Grid, Share Build & Language Selector -->
+        <!-- Right: Hard Cap Toggle, Reset Grid & Share Build -->
         <div class="d-flex align-items-center gap-2">
             @if (CurrentPair != null)
             {
@@ -42,19 +55,6 @@
                     <i class="bi bi-share"></i>
                 </button>
             }
-
-            <div class="d-flex align-items-center gap-1 border-start border-secondary ps-2 ms-1">
-                <i class="bi bi-globe2 text-warning small" title="@Loc.T("language", "Language")"></i>
-                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2 cursor-pointer shadow-none"
-                        style="font-size: 0.8rem; width: auto; height: 28px;"
-                        value="@Loc.CurrentLanguage"
-                        @onchange="OnLanguageSelected">
-                    @foreach (var (langCode, name) in LocalizationService.SupportedLanguages)
-                    {
-                        <option value="@langCode">@name</option>
-                    }
-                </select>
-            </div>
         </div>
     </div>
 </header>

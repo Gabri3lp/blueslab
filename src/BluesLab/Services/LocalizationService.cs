@@ -44,7 +44,7 @@ public class LocalizationService
     private Dictionary<string, string> _strings = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, Dictionary<string, string>> _cache = new(StringComparer.OrdinalIgnoreCase);
 
-    public string CurrentLanguage { get; private set; } = "es";
+    public string CurrentLanguage { get; private set; } = "en";
     public bool IsLoaded { get; private set; }
 
     public event Action? OnLanguageChanged;
@@ -59,7 +59,7 @@ public class LocalizationService
     {
         if (IsLoaded) return;
 
-        string targetLang = "es";
+        string targetLang = "en";
         try
         {
             var saved = await _js.InvokeAsync<string?>("localStorage.getItem", StorageKey);
@@ -80,7 +80,7 @@ public class LocalizationService
     {
         if (!SupportedLanguages.ContainsKey(lang))
         {
-            lang = "es";
+            lang = "en";
         }
 
         if (lang == CurrentLanguage && IsLoaded)
