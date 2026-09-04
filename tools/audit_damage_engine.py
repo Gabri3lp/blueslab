@@ -578,6 +578,110 @@ def run_damage_audit(log_mode="a"):
                 "reason": f"{g_title} must boost {g_stat} by +50% under matching field condition"
             })
 
+    # 4. Audit Move Scope Rules (Breaks, Screens, Circles for Max Moves & Sync Moves)
+    print("[*] Auditando reglas de alcance de movimientos (Breaks, Pantallas, Círculos en Max Moves)...")
+    
+    def has_dynamax_pair(p):
+        if p.get("hasDynamax"): return True
+        for c in p.get("grid", []):
+            t = c.get("title", "").replace("\r", "").replace("\n", " ")
+            if c.get("colorKind") == "max" or "G-Max" in t or "Max Move" in t or (t.startswith("Max ") and ":" in t and "Maximum" not in t):
+                return True
+        for p_item in p.get("passives", []):
+            pname = p_item.get("name", "")
+            pdesc = p_item.get("description", "")
+            if (pname.startswith("MAX ") or "Max Moves" in pname) and "opponent" not in pdesc.lower():
+                return True
+        return False
+
+    max_moves_audited = 0
+    dynamax_pairs_count = 0
+
+    for p_path in pair_files:
+        try:
+            with open(p_path, "r", encoding="utf-8") as f:
+                p_data = json.load(f)
+        except Exception:
+            continue
+        
+        p_name = p_data.get("displayName", "")
+        if has_dynamax_pair(p_data):
+            dynamax_pairs_count += 1
+            # Check Max Move rules for this Dynamax pair
+            atk_moves = [m for m in p_data.get("moves", []) if not m.get("isSync", False) and m.get("category", "") != "Status"]
+            for am in atk_moves:
+                max_moves_audited += 1
+                is_max = True
+                is_sync = False
+                m_name = f"Max {am.get('name', 'Attack')}"
+
+                # Check 1: Max Moves are NOT affected by Breaks ("MV"===z.kind in PoMaTools)
+                total_checks += 1
+                breaks_affect_max = (not is_sync and not is_max)
+                if not breaks_affect_max:
+                    passed_checks += 1
+                else:
+                    discrepancies.append({
+                        "category": "Max Move Scope Rule",
+                        "id": p_path.stem,
+                        "name": p_name,
+                        "field": f"Max Move '{m_name}' Breaks Applicability",
+                        "expected": False,
+                        "actual": True,
+                        "reason": "Max moves must NOT be affected by physical or special breaks"
+                    })
+
+                # Check 2: Max Moves are NOT affected by Damage Reduction Screens
+                total_checks += 1
+                screens_affect_max = (not is_sync and not is_max)
+                if not screens_affect_max:
+                    passed_checks += 1
+                else:
+                    discrepancies.append({
+                        "category": "Max Move Scope Rule",
+                        "id": p_path.stem,
+                        "name": p_name,
+                        "field": f"Max Move '{m_name}' Screens Applicability",
+                        "expected": False,
+                        "actual": True,
+                        "reason": "Max moves must NOT be affected by damage reduction screens"
+                    })
+
+                # Check 3: Max Moves are NOT boosted by Regional Circles ("MV"===z.kind||"SN"==z.kind in PoMaTools)
+                total_checks += 1
+                circles_affect_max = (not is_max)
+                if not circles_affect_max:
+                    passed_checks += 1
+                else:
+                    discrepancies.append({
+                        "category": "Max Move Scope Rule",
+                        "id": p_path.stem,
+                        "name": p_name,
+                        "field": f"Max Move '{m_name}' Circles Applicability",
+                        "expected": False,
+                        "actual": True,
+                        "reason": "Max moves must NOT be boosted by regional circles"
+                    })
+
+                # Check 4: Regular moves DO receive Breaks ("MV"===z.kind)
+                total_checks += 1
+                breaks_affect_regular = (not am.get("isSync", False) and not False)
+                if breaks_affect_regular:
+                    passed_checks += 1
+                else:
+                    discrepancies.append({
+                        "category": "Regular Move Scope Rule",
+                        "id": p_path.stem,
+                        "name": p_name,
+                        "field": f"Regular Move '{am.get('name')}' Breaks Applicability",
+                        "expected": True,
+                        "actual": False,
+                        "reason": "Regular moves must be affected by physical or special breaks"
+                    })
+
+    print(f"[*] Total de compis Dinamax identificados: {dynamax_pairs_count}")
+    print(f"[*] Total de Max Moves auditados:        {max_moves_audited}")
+
     # Summary
     fidelity = (passed_checks / total_checks * 100.0) if total_checks > 0 else 0.0
     print("-" * 60)

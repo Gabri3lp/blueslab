@@ -843,8 +843,8 @@ public class DamageCalculatorService
                             mDesc.Contains("power is not reduced", StringComparison.OrdinalIgnoreCase) ||
                             mDesc.Contains("power is not lowered", StringComparison.OrdinalIgnoreCase);
 
-        // AoE penalty only applies to multi-target moves (and NOT to sync moves, and NOT if protected by move or passive)
-        if (field.TargetCount > 1 && isAoEMove && !move.IsSync && !isMoveNoDecay && !hasAoENoDecayPassive)
+        // AoE penalty only applies to multi-target moves (and NOT to sync moves, and NOT to max moves, and NOT if protected by move or passive)
+        if (field.TargetCount > 1 && isAoEMove && !move.IsSync && !move.IsMax && !isMoveNoDecay && !hasAoENoDecayPassive)
         {
             if (field.TargetCount == 3)
             {
@@ -874,57 +874,61 @@ public class DamageCalculatorService
             }
         }
 
-        // Circles
-        foreach (var region in CombatantState.CircleRegions)
+        // Circles (apply to regular moves and sync moves, NOT Max moves matching PoMaTools: "MV"===z.kind||"SN"==z.kind)
+        if (!move.IsMax)
         {
-            int allies = Math.Clamp(ally.CircleAllyCount.GetValueOrDefault(region, 1), 1, 3);
-            var active = ally.CircleActive.GetValueOrDefault(region);
-            if (active != null)
+            foreach (var region in CombatantState.CircleRegions)
             {
-                if (active.GetValueOrDefault("physical") && isPhysical)
+                int allies = Math.Clamp(ally.CircleAllyCount.GetValueOrDefault(region, 1), 1, 3);
+                var active = ally.CircleActive.GetValueOrDefault(region);
+                if (active != null)
                 {
-                    ne *= 110.0 + 10.0 * allies;
-                    he *= 100.0;
-                    pills.Add(new MultiplierPill { Label = $"{region} Circle (Phys)", Value = $"×{(110.0 + 10.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
+                    if (active.GetValueOrDefault("physical") && isPhysical)
+                    {
+                        ne *= 110.0 + 10.0 * allies;
+                        he *= 100.0;
+                        pills.Add(new MultiplierPill { Label = $"{region} Circle (Phys)", Value = $"×{(110.0 + 10.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
+                    }
+                    if (active.GetValueOrDefault("special") && !isPhysical)
+                    {
+                        ne *= 110.0 + 10.0 * allies;
+                        he *= 100.0;
+                        pills.Add(new MultiplierPill { Label = $"{region} Circle (Spec)", Value = $"×{(110.0 + 10.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
+                    }
+                    if (active.GetValueOrDefault("defensive"))
+                    {
+                        ne *= 105.0 + 5.0 * allies;
+                        he *= 100.0;
+                        pills.Add(new MultiplierPill { Label = $"{region} Circle (Def)", Value = $"×{(105.0 + 5.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
+                    }
                 }
-                if (active.GetValueOrDefault("special") && !isPhysical)
+            }
+
+            // Enemy Defensive Circles (reduces incoming attack & sync damage to enemy)
+            foreach (var region in CombatantState.CircleRegions)
+            {
+                int enemyAllies = Math.Clamp(enemy.CircleAllyCount.GetValueOrDefault(region, 1), 1, 3);
+                var enemyActive = enemy.CircleActive.GetValueOrDefault(region);
+                if (enemyActive != null && enemyActive.GetValueOrDefault("defensive"))
                 {
-                    ne *= 110.0 + 10.0 * allies;
+                    ne *= 100.0 - (10.0 + 3.0 * enemyAllies);
                     he *= 100.0;
-                    pills.Add(new MultiplierPill { Label = $"{region} Circle (Spec)", Value = $"×{(110.0 + 10.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
-                }
-                if (active.GetValueOrDefault("defensive"))
-                {
-                    ne *= 105.0 + 5.0 * allies;
-                    he *= 100.0;
-                    pills.Add(new MultiplierPill { Label = $"{region} Circle (Def)", Value = $"×{(105.0 + 5.0 * allies) / 100.0:0.##}", Color = "#00cec9" });
+                    pills.Add(new MultiplierPill { Label = $"{region} Circle (Enemy Def)", Value = $"×{(100.0 - (10.0 + 3.0 * enemyAllies)) / 100.0:0.##}", Color = "#6c5ce7" });
                 }
             }
         }
 
-        // Enemy Defensive Circles (reduces incoming attack & sync damage to enemy)
-        foreach (var region in CombatantState.CircleRegions)
-        {
-            int enemyAllies = Math.Clamp(enemy.CircleAllyCount.GetValueOrDefault(region, 1), 1, 3);
-            var enemyActive = enemy.CircleActive.GetValueOrDefault(region);
-            if (enemyActive != null && enemyActive.GetValueOrDefault("defensive"))
-            {
-                ne *= 100.0 - (10.0 + 3.0 * enemyAllies);
-                he *= 100.0;
-                pills.Add(new MultiplierPill { Label = $"{region} Circle (Enemy Def)", Value = $"×{(100.0 - (10.0 + 3.0 * enemyAllies)) / 100.0:0.##}", Color = "#6c5ce7" });
-            }
-        }
-
-        // Breaks on Target (only apply to regular moves, not Sync Moves: x1.5 damage)
-        if (!move.IsSync)
+        // Breaks on Target (only apply to regular moves, NOT Sync Moves and NOT Max Moves matching PoMaTools: "MV"===z.kind: x1.5 damage)
+        if (!move.IsSync && !move.IsMax)
         {
             if (isPhysical && enemy.PhysicalBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
             if (isSpecial && enemy.SpecialBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
         }
 
         // Damage Reductions on Target (Reflect / Light Screen on opponent reduces damage taken: x0.66 damage)
+        // Only apply to regular moves (NOT Sync Moves and NOT Max Moves)
         // Critical hits ignore damage reduction screens on the target
-        if (!ally.IsCriticalMove)
+        if (!ally.IsCriticalMove && !move.IsSync && !move.IsMax)
         {
             if (isPhysical && enemy.PhysicalDamageReduction)
             {
