@@ -554,12 +554,12 @@ public class DamageCalculatorService
         }
 
         int boostNextPercentage = 0;
-        if (!move.IsSync && !move.IsMax)
+        if (MoveScopeRules.AllowsMoveBoostNext(move))
         {
             if (isPhysical) boostNextPercentage += ally.PhysicalBoostNext * 40;
             if (isSpecial) boostNextPercentage += ally.SpecialBoostNext * 40;
         }
-        else if (move.IsSync)
+        else if (MoveScopeRules.AllowsSyncBoostNext(move))
         {
             // SYUN stacks provide +10% per stack to sync moves matching PoMaTools engine
             boostNextPercentage += ally.SyncMoveBoostNext * 10;
@@ -702,7 +702,7 @@ public class DamageCalculatorService
              pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true ||
              pair.Variations[ally.FormIndex - 1].TerastalMoveId > 0);
 
-        if (isTeraForm && !move.IsSync && !move.IsMax)
+        if (isTeraForm && MoveScopeRules.AllowsTeraBoost(move))
         {
             if (isStellarForm)
             {
@@ -844,7 +844,7 @@ public class DamageCalculatorService
                             mDesc.Contains("power is not lowered", StringComparison.OrdinalIgnoreCase);
 
         // AoE penalty only applies to multi-target moves (and NOT to sync moves, and NOT to max moves, and NOT if protected by move or passive)
-        if (field.TargetCount > 1 && isAoEMove && !move.IsSync && !move.IsMax && !isMoveNoDecay && !hasAoENoDecayPassive)
+        if (field.TargetCount > 1 && isAoEMove && MoveScopeRules.AllowsAoEPenalty(move) && !isMoveNoDecay && !hasAoENoDecayPassive)
         {
             if (field.TargetCount == 3)
             {
@@ -875,7 +875,7 @@ public class DamageCalculatorService
         }
 
         // Circles (apply to regular moves and sync moves, NOT Max moves matching PoMaTools: "MV"===z.kind||"SN"==z.kind)
-        if (!move.IsMax)
+        if (MoveScopeRules.AllowsCircles(move))
         {
             foreach (var region in CombatantState.CircleRegions)
             {
@@ -919,7 +919,7 @@ public class DamageCalculatorService
         }
 
         // Breaks on Target (only apply to regular moves, NOT Sync Moves and NOT Max Moves matching PoMaTools: "MV"===z.kind: x1.5 damage)
-        if (!move.IsSync && !move.IsMax)
+        if (MoveScopeRules.AllowsBreaks(move))
         {
             if (isPhysical && enemy.PhysicalBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Phys Break", Value = "×1.5", Color = "#e84393" }); }
             if (isSpecial && enemy.SpecialBreak) { ne *= 3.0; he *= 2.0; pills.Add(new MultiplierPill { Label = "Spec Break", Value = "×1.5", Color = "#e84393" }); }
@@ -928,7 +928,7 @@ public class DamageCalculatorService
         // Damage Reductions on Target (Reflect / Light Screen on opponent reduces damage taken: x0.66 damage)
         // Only apply to regular moves (NOT Sync Moves and NOT Max Moves)
         // Critical hits ignore damage reduction screens on the target
-        if (!ally.IsCriticalMove && !move.IsSync && !move.IsMax)
+        if (!ally.IsCriticalMove && MoveScopeRules.AllowsScreens(move))
         {
             if (isPhysical && enemy.PhysicalDamageReduction)
             {
@@ -1104,9 +1104,7 @@ public class DamageCalculatorService
             return subTotal;
         }
 
-        if (move.IsSync && string.Equals(dp.AppliesTo, "moves", StringComparison.OrdinalIgnoreCase)) return 0;
-        if (!move.IsSync && string.Equals(dp.AppliesTo, "sync_move", StringComparison.OrdinalIgnoreCase)) return 0;
-        if (move.IsMax && (string.Equals(dp.AppliesTo, "sync_move", StringComparison.OrdinalIgnoreCase) || string.Equals(dp.AppliesTo, "p_moves", StringComparison.OrdinalIgnoreCase))) return 0;
+        if (!MoveScopeRules.AllowsPassive(dp.AppliesTo, move)) return 0;
 
         if (!string.IsNullOrEmpty(dp.MoveName) && !MatchesMoveName(move.Name, dp.MoveName, move.IsSync))
         {

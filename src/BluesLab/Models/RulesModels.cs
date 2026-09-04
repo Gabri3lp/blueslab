@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using BluesLab.Services;
 
 namespace BluesLab.Models;
 
@@ -128,7 +129,7 @@ public class MasterPassiveRule
 
     public bool AppliesToMove(MoveItem move)
     {
-        if (move.IsMax) return false;
+        if (!MoveScopeRules.AllowsMasterPassives(move)) return false;
         bool isPhysical = string.Equals(move.Category, "Physical", StringComparison.OrdinalIgnoreCase);
         bool isSpecial = string.Equals(move.Category, "Special", StringComparison.OrdinalIgnoreCase);
         if (move.IsSync && !AppliesToSync) return false;

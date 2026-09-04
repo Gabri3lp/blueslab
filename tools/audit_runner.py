@@ -1,6 +1,7 @@
 import os
 import sys
 import argparse
+import subprocess
 from pathlib import Path
 
 # Configure UTF-8 stdout
@@ -17,7 +18,6 @@ def run_phase_1():
 
 def run_phase_2():
     print("\n>>> Ejecutando Fase 2: Auditoría de Descripciones y Localización (ES/EN/FR/JA/ZH)...")
-    # Check if audit_descriptions.py exists
     desc_script = Path(__file__).parent / "audit_descriptions.py"
     if desc_script.exists():
         import audit_descriptions
@@ -35,6 +35,16 @@ def run_phase_3():
     else:
         print("[INFO] La Fase 3 está programada para su implementación tras la Fase 2.")
         return None
+
+def run_phase_4():
+    print("\n>>> Ejecutando Fase 4: Pruebas Diferenciales PoMaTools JS Oracle (Runtime PMEX)...")
+    diff_test_script = ROOT_DIR / "tools" / "diff_test.js"
+    if diff_test_script.exists():
+        res = subprocess.run(["node", str(diff_test_script)], cwd=str(ROOT_DIR), capture_output=False)
+        return res.returncode == 0
+    else:
+        print("[ERROR] No se encontró tools/diff_test.js")
+        return False
 
 def view_log():
     if not LOG_FILE.exists():
@@ -56,19 +66,20 @@ def clear_log():
 
 def interactive_menu():
     while True:
-        print("\n" + "=" * 60)
-        print("              BLUESLAB AUDIT RUNNER v1.0")
-        print("=" * 60)
+        print("\n" + "=" * 65)
+        print("                 BLUESLAB AUDIT RUNNER v2.0")
+        print("=" * 65)
         print("  [1] Auditar Estadísticas e Información de Compis (Fase 1)")
         print("  [2] Auditar Descripciones y Textos Multi-idioma (Fase 2)")
         print("  [3] Auditar Potencias y Motor de Daño al 100% (Fase 3)")
-        print("  [4] Ejecutar Todas las Fases Disponibles")
-        print("  [5] Ver Registro de Discrepancias (diff_audit.log)")
-        print("  [6] Limpiar Registro de Discrepancias")
+        print("  [4] Pruebas Diferenciales PoMaTools JS Oracle (Fase 4)")
+        print("  [5] Ejecutar Todas las Fases Disponibles (Master Suite)")
+        print("  [6] Ver Registro de Discrepancias (diff_audit.log)")
+        print("  [7] Limpiar Registro de Discrepancias")
         print("  [0] Salir")
-        print("=" * 60)
+        print("=" * 65)
         
-        choice = input("Selecciona una opción [0-6]: ").strip()
+        choice = input("Selecciona una opción [0-7]: ").strip()
         
         if choice == "1":
             run_phase_1()
@@ -77,22 +88,25 @@ def interactive_menu():
         elif choice == "3":
             run_phase_3()
         elif choice == "4":
+            run_phase_4()
+        elif choice == "5":
             run_phase_1()
             run_phase_2()
             run_phase_3()
-        elif choice == "5":
-            view_log()
+            run_phase_4()
         elif choice == "6":
+            view_log()
+        elif choice == "7":
             clear_log()
         elif choice == "0":
             print("\nSaliendo de BluesLab Audit Runner. ¡Hasta pronto!")
             break
         else:
-            print("\n[!] Opción no válida. Por favor introduce un número entre 0 y 6.")
+            print("\n[!] Opción no válida. Por favor introduce un número entre 0 y 7.")
 
 def main():
     parser = argparse.ArgumentParser(description="BluesLab vs PoMaTools Fidelity Audit Runner")
-    parser.add_argument("--batch", type=int, choices=[1, 2, 3, 4], help="Ejecutar fase en modo no interactivo (1=Stats, 2=Textos, 3=Daño, 4=Todas)")
+    parser.add_argument("--batch", type=int, choices=[1, 2, 3, 4, 5], help="Ejecutar fase (1=Stats, 2=Textos, 3=Daño, 4=Todas con Diferencial, 5=Solo Diferencial JS)")
     parser.add_argument("--view-log", action="store_true", help="Mostrar contenido del archivo de log")
     parser.add_argument("--clear-log", action="store_true", help="Limpiar el archivo de log")
     args = parser.parse_args()
@@ -111,6 +125,9 @@ def main():
         run_phase_1()
         run_phase_2()
         run_phase_3()
+        run_phase_4()
+    elif args.batch == 5:
+        run_phase_4()
     else:
         interactive_menu()
 
