@@ -483,23 +483,6 @@
                             }
                         </div>
                     }
-
-                    @if (!isDynamaxActive && maxMovesList.Count > 0)
-                    {
-                        var dynamaxIdx = Pair.Variations.FindIndex(v => v.FormId == 4 || v.FormName.Equals("Dynamax", StringComparison.OrdinalIgnoreCase) || v.FormName.Equals("Form 4", StringComparison.OrdinalIgnoreCase)) + 1;
-                        if (dynamaxIdx > 0)
-                        {
-                            <div class="d-flex align-items-center justify-content-between p-2 rounded bg-pink bg-opacity-10 border border-pink mt-2">
-                                <div class="d-flex align-items-center gap-2">
-                                    <span class="badge btn-pink text-white"><i class="bi bi-clouds-fill me-1"></i> Dynamax Available</span>
-                                    <span class="text-light small">This sync pair can Dynamax! Switch to <b>Dynamax</b> form to view its Max Moves.</span>
-                                </div>
-                                <button class="btn btn-sm btn-pink py-0 px-2 text-white" style="font-size: 0.75rem;" @onclick="() => SetForm(dynamaxIdx)">
-                                    Switch to Dynamax &rarr;
-                                </button>
-                            </div>
-                        }
-                    }
                 </div>
             }
 
@@ -718,6 +701,20 @@
         {
             return "All opponents";
         }
+
+        if ((move.IsSync || move.IsMax) && Pair?.Passives != null)
+        {
+            bool hitsAll = Pair.Passives.Any(p =>
+                p.Name.Equals("Targets Maxed", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("P-Moves & Max Moves Expansion", StringComparison.OrdinalIgnoreCase) ||
+                p.Name.Contains("Champion Who Hears the Cheers", StringComparison.OrdinalIgnoreCase) ||
+                p.Description.Contains("sync move or max move attacks an opponent, the target becomes all opposing", StringComparison.OrdinalIgnoreCase) ||
+                p.Description.Contains("max move attacks an opponent, the target becomes all opposing", StringComparison.OrdinalIgnoreCase) ||
+                p.Description.Contains("max moves attacks an opponent, the target becomes all opposing", StringComparison.OrdinalIgnoreCase)
+            );
+            if (hitsAll) return "All opponents";
+        }
+
         return move.Target;
     }
 

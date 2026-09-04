@@ -2081,6 +2081,43 @@ public class DamageCalculatorService
         ["Fairy"] = "Max Starfall"
     };
 
+    public static readonly Dictionary<string, (int Id, string Desc)> KnownMaxMoves = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["G-Max Wildfire"] = (7047, "Applies Fire Damage Field to the opponents' field of play. (Fire Damage Field: The sync pairs will take Fire-type damage whenever they take an action.)"),
+        ["Max Airstream"] = (7008, "Raises the Speed of all allied sync pairs by 2 stat ranks."),
+        ["Max Quake"] = (7011, "Raises the Sp. Def of all allied sync pairs by 2 stat ranks."),
+        ["Max Flare"] = (7022, "Makes the weather sunny."),
+        ["Max Strike"] = (7003, "Lowers the Speed of all opposing sync pairs by 2 stat ranks."),
+        ["Max Geyser"] = (7024, "Makes the weather rainy."),
+        ["Max Knuckle"] = (7005, "Raises the Attack of all allied sync pairs by 2 stat ranks."),
+        ["Max Lightning"] = (7027, "Turns the field of play’s terrain into Electric Terrain."),
+        ["Max Overgrowth"] = (7025, "Turns the field of play’s terrain into Grassy Terrain."),
+        ["Max Mindstorm"] = (7030, "Turns the field of play’s terrain into Psychic Terrain."),
+        ["Max Rockfall"] = (7013, "Causes a sandstorm."),
+        ["Max Hailstorm"] = (7029, "Causes a hailstorm."),
+        ["Max Ooze"] = (7010, "Raises the Sp. Atk of all allied sync pairs by 2 stat ranks."),
+        ["Max Steelspike"] = (7019, "Raises the Defense of all allied sync pairs by 2 stat ranks."),
+        ["Max Wyrmwind"] = (7034, "Lowers the Attack of all opposing sync pairs by 2 stat ranks."),
+        ["Max Darkness"] = (7035, "Lowers the Sp. Def of all opposing sync pairs by 2 stat ranks."),
+        ["Max Starfall"] = (7038, "Turns the field of play’s terrain into Misty Terrain."),
+        ["Max Flutterby"] = (7016, "Lowers the Sp. Atk of all opposing sync pairs by 2 stat ranks."),
+        ["Max Phantasm"] = (7018, "Lowers the Defense of all opposing sync pairs by 2 stat ranks."),
+        ["G-Max Replenish"] = (7000, "Has a chance (50%) of restoring one MP for the user."),
+        ["G-Max Terror"] = (7001, "Applies the no evasion effect to all opposing sync pairs."),
+        ["G-Max Smite"] = (7040, "Leaves all opposing sync pairs confused."),
+        ["G-Max Rapid Flow"] = (7041, "Attacks with three consecutive hits."),
+        ["G-Max Volt Crash"] = (7042, "Leaves all opposing sync pairs paralyzed."),
+        ["G-Max Volcalith"] = (7043, "Applies Rock Damage Field to the opponents' field of play."),
+        ["G-Max Resonance"] = (7044, "Applies the Physical Damage Reduction and Special Damage Reduction effects to the allied field of play."),
+        ["G-Max Drum Solo"] = (7045, "Ignores passive skills that would reduce damage or protect the target."),
+        ["G-Max Fireball"] = (7050, "Makes the weather sunny."),
+        ["G-Max Malodor"] = (7048, "Leaves all opposing sync pairs poisoned."),
+        ["G-Max Steelsurge"] = (7049, "Applies Steel Damage Field to the opponents' field of play."),
+        ["G-Max Stun Shock"] = (7051, "Leaves all opposing sync pairs poisoned or paralyzed."),
+        ["G-Max Centiferno"] = (7052, "Leaves all opposing sync pairs trapped."),
+        ["G-Max Snooze"] = (7054, "Leaves all opposing sync pairs asleep.")
+    };
+
     public bool HasDynamax(SyncPairDetail? pair)
     {
         if (pair == null) return false;
@@ -2156,16 +2193,23 @@ public class DamageCalculatorService
             }
         }
 
-        bool hitsAll = pair.Passives.Any(p =>
+        bool hitsAll = pair.Passives != null && pair.Passives.Any(p =>
             p.Name.Equals("Targets Maxed", StringComparison.OrdinalIgnoreCase) ||
-            p.Name.Contains("P-Moves & Max Moves Expansion", StringComparison.OrdinalIgnoreCase)
+            p.Name.Contains("P-Moves & Max Moves Expansion", StringComparison.OrdinalIgnoreCase) ||
+            p.Name.Contains("Champion Who Hears the Cheers", StringComparison.OrdinalIgnoreCase) ||
+            p.Description.Contains("sync move or max move attacks an opponent, the target becomes all opposing", StringComparison.OrdinalIgnoreCase) ||
+            p.Description.Contains("max move attacks an opponent, the target becomes all opposing", StringComparison.OrdinalIgnoreCase) ||
+            p.Description.Contains("max moves attacks an opponent, the target becomes all opposing", StringComparison.OrdinalIgnoreCase)
         );
 
-        bool normalBecomesGround = pair.Passives.Any(p => p.Name.Contains("Giovanni’s Cunning") || p.Name.Contains("Giovanni's Cunning"));
+        bool normalBecomesGround = pair.Passives != null && pair.Passives.Any(p => p.Name.Contains("Giovanni’s Cunning") || p.Name.Contains("Giovanni's Cunning"));
+
+        bool isGigantamaxCharizard = (pair.MonsterName != null && pair.MonsterName.Contains("Charizard", StringComparison.OrdinalIgnoreCase)) &&
+            (pair.Variations != null && pair.Variations.Any(v => v.ActorId != null && v.ActorId.Contains("glizardon", StringComparison.OrdinalIgnoreCase)));
 
         var regularAtkMoves = pair.Moves.Where(m => !m.IsSync && !m.Category.Equals("Status", StringComparison.OrdinalIgnoreCase) && int.TryParse(m.Power, out int p) && p > 0).ToList();
 
-        int maxMoveId = 99000;
+        int maxMoveFallbackId = 99000;
         var seenNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var atkMove in regularAtkMoves)
@@ -2194,10 +2238,15 @@ public class DamageCalculatorService
                 }
             }
 
+            if (matchedName == null && isGigantamaxCharizard && string.Equals(moveType, "Fire", StringComparison.OrdinalIgnoreCase))
+            {
+                matchedName = "G-Max Wildfire";
+            }
+
             matchedName ??= TypeToDefaultMaxMove.TryGetValue(moveType, out var defName) ? defName : "Max Strike";
 
-            int basePwr = int.TryParse(atkMove.Power, out int bp) ? bp : 0;
-            int maxBasePower = (basePwr >= 150 || atkMove.Gauge == "4") ? 450 : 400;
+            // In Pokémon Masters EX, Max Strike has base power 450 (scaling to 540). All other standard Max Moves & G-Max moves have base power 400 (scaling to 480).
+            int maxBasePower = string.Equals(matchedName, "Max Strike", StringComparison.OrdinalIgnoreCase) ? 450 : 400;
 
             if (seenNames.Contains(matchedName))
             {
@@ -2211,9 +2260,17 @@ public class DamageCalculatorService
 
             seenNames.Add(matchedName);
 
+            int moveId = maxMoveFallbackId++;
+            string moveDesc = "Max move. Never misses. Cannot be reduced by multiple target damage reduction.";
+            if (KnownMaxMoves.TryGetValue(matchedName, out var known))
+            {
+                moveId = known.Id;
+                moveDesc = known.Desc;
+            }
+
             list.Add(new MoveItem
             {
-                Id = maxMoveId++,
+                Id = moveId,
                 Slot = 6 + list.Count,
                 Name = matchedName,
                 Type = moveType,
@@ -2222,7 +2279,7 @@ public class DamageCalculatorService
                 Accuracy = "-",
                 Gauge = "-",
                 Target = hitsAll ? "All opponents" : "An opponent",
-                Description = "Max move. Never misses. Cannot be reduced by multiple target damage reduction.",
+                Description = moveDesc,
                 IsSync = false,
                 IsMax = true,
                 MaxUses = 1
