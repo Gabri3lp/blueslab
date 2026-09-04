@@ -119,10 +119,8 @@
                     }
                 </div>
             </div>
-        </div>
 
-        <!-- Compressed Stats Bar with Tooltips & Detailed Dropdown -->
-        <div class="card bg-dark border-secondary p-2 mb-2 shadow-sm">
+            <!-- Stats Bar (Integrated into Top Box) -->
             @{
                 int lvl = int.TryParse(Ally.CharLevel, out int l) ? l : 180;
                 var pot = CalcService.CalcPotentialBonus(Pair.Rarity, Ally.StarLevel);
@@ -134,187 +132,183 @@
                 bool isSaActive = Pair.HasSuperAwakening && Ally.SuperAwakeningLevel >= 1;
             }
 
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-1 pb-1 border-bottom border-secondary border-opacity-50">
-                <div class="d-flex align-items-center gap-1">
-                    <i class="bi bi-bar-chart-fill text-info" style="font-size: 0.85rem;"></i>
-                    <span class="fw-bold text-light" style="font-size: 0.85rem;">Stats Summary (Lv. @Ally.CharLevel)</span>
-                    @if (isSaActive)
-                    {
-                        <span class="badge bg-danger text-light py-0 px-1" style="font-size: 0.65rem;">SA +10% Active</span>
-                    }
-                </div>
-                <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.72rem; height: 24px;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
-                    <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down") me-1"></i>
-                    @(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")
-                </button>
-            </div>
-
-            <!-- Compact 6-Pill Stats Grid -->
-            <div class="row row-cols-3 row-cols-sm-6 g-1">
-                @foreach (var s in statsKeys)
-                {
-                    int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
-                    int saBase = rawBase;
-                    if (isSaActive)
-                    {
-                        saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
-                        if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+            <div class="mt-2 pt-2 border-top border-secondary border-opacity-50">
+                <div class="d-flex align-items-center justify-content-between gap-1 mb-1">
+                    <div class="d-flex align-items-center gap-1">
+                        @if (isSaActive)
                         {
-                            var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
-                            if (saFlat.TryGetValue(s, out int fb))
-                                saBase += fb;
+                            <span class="badge bg-danger text-light py-0 px-1" style="font-size: 0.65rem;">SA +10% Active</span>
                         }
-                    }
+                    </div>
+                    <button class="btn btn-sm btn-outline-secondary py-0 px-2 text-light" style="font-size: 0.72rem; height: 24px;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
+                        <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down") me-1"></i>
+                        @(ShowDetailedStats ? Loc.T("hide_breakdown", "Hide Breakdown") : Loc.T("detailed_breakdown", "Detailed Breakdown"))
+                    </button>
+                </div>
 
-                    int potVal = pot.GetValueOrDefault(s, 0);
-                    int exVal = ex.GetValueOrDefault(s, 0);
-                    double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
-
-                    int gBonus = 0;
-                    foreach (var cell in Pair.Grid)
+                <!-- Compact 6-Pill Stats Grid -->
+                <div class="row row-cols-3 row-cols-sm-6 g-1">
+                    @foreach (var s in statsKeys)
                     {
-                        if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
-                            gBonus += sb;
-                    }
+                        int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                        int saBase = rawBase;
+                        if (isSaActive)
+                        {
+                            saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                            if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                            {
+                                var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
+                                if (saFlat.TryGetValue(s, out int fb))
+                                    saBase += fb;
+                            }
+                        }
 
-                    int total = CalcService.CalcTotalStat(
-                        s,
-                        rawBase,
-                        0,
-                        potential: potVal,
-                        exBonus: exVal,
-                        formMult: formMult,
-                        hasSa: Pair.HasSuperAwakening,
-                        saLevel: Ally.SuperAwakeningLevel,
-                        role: Pair.Role,
-                        gridStat: gBonus
-                    );
+                        int potVal = pot.GetValueOrDefault(s, 0);
+                        int exVal = ex.GetValueOrDefault(s, 0);
+                        double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
 
-                    int totalBonus = (potVal + exVal + gBonus);
-                    string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
+                        int gBonus = 0;
+                        foreach (var cell in Pair.Grid)
+                        {
+                            if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                gBonus += sb;
+                        }
 
-                    <div class="col">
-                        <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: help;">
-                            <div class="text-uppercase text-secondary fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px; line-height: 1;">@s</div>
-                            <div class="fw-bold text-warning" style="font-size: 1.05rem; line-height: 1.2;">@total</div>
-                            <div class="text-muted text-truncate" style="font-size: 0.65rem; line-height: 1;">
-                                Base @saBase@(totalBonus > 0 ? $" (+{totalBonus})" : "")
+                        int total = CalcService.CalcTotalStat(
+                            s,
+                            rawBase,
+                            0,
+                            potential: potVal,
+                            exBonus: exVal,
+                            formMult: formMult,
+                            hasSa: Pair.HasSuperAwakening,
+                            saLevel: Ally.SuperAwakeningLevel,
+                            role: Pair.Role,
+                            gridStat: gBonus
+                        );
+
+                        string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
+
+                        <div class="col">
+                            <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: pointer;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
+                                <div class="text-uppercase text-secondary fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px; line-height: 1;">@s</div>
+                                <div class="fw-bold text-warning" style="font-size: 1.05rem; line-height: 1.2;">@total</div>
                             </div>
                         </div>
+                    }
+                </div>
+
+                <!-- Detailed Breakdown Accordion Table -->
+                @if (ShowDetailedStats)
+                {
+                    <div class="table-responsive mt-2 pt-1 border-top border-secondary">
+                        <table class="table table-dark table-sm table-bordered text-center align-middle mb-0" style="font-size: 0.78rem;">
+                            <thead>
+                                <tr class="text-secondary small">
+                                    <th class="text-start">Category</th>
+                                    <th style="width: 15%;">HP</th>
+                                    <th style="width: 15%;">Attack</th>
+                                    <th style="width: 15%;">Defense</th>
+                                    <th style="width: 15%;">Sp. Atk</th>
+                                    <th style="width: 15%;">Sp. Def</th>
+                                    <th style="width: 15%;">Speed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-start text-muted">
+                                        Base Stat (Lv. @Ally.CharLevel)
+                                        @if (isSaActive)
+                                        {
+                                            <span class="badge bg-danger text-light ms-1 py-0 px-1" style="font-size: 0.6rem;">+10% SA</span>
+                                        }
+                                    </td>
+                                    @foreach (var s in statsKeys)
+                                    {
+                                        int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                                        int saBase = rawBase;
+                                        if (isSaActive)
+                                        {
+                                            saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
+                                            if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
+                                                if (saFlat.TryGetValue(s, out int fb))
+                                                    saBase += fb;
+                                            }
+                                        }
+                                        <td>@saBase</td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <td class="text-start text-muted">Potential + EX Role</td>
+                                    @foreach (var s in statsKeys)
+                                    {
+                                        int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
+                                        <td class="@(bonus > 0 ? "text-success" : "text-muted")">@(bonus > 0 ? $"+{bonus}" : "-")</td>
+                                    }
+                                </tr>
+                                @if (currentVariation != null)
+                                {
+                                    <tr>
+                                        <td class="text-start text-muted">Form Multiplier (@currentVariation.FormName)</td>
+                                        @foreach (var s in statsKeys)
+                                        {
+                                            double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
+                                            <td class="@(mult > 1.0 ? "text-warning" : "text-muted")">@(mult > 1.0 ? $"×{mult:0.#}" : "×1.0")</td>
+                                        }
+                                    </tr>
+                                }
+                                <tr>
+                                    <td class="text-start text-muted">Sync Grid Bonus</td>
+                                    @foreach (var s in statsKeys)
+                                    {
+                                        int gBonus = 0;
+                                        foreach (var cell in Pair.Grid)
+                                        {
+                                            if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                                gBonus += sb;
+                                        }
+                                        <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
+                                    }
+                                </tr>
+                                <tr class="table-active fw-bold">
+                                    <td class="text-start text-warning">Total Stat</td>
+                                    @foreach (var s in statsKeys)
+                                    {
+                                        int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
+                                        int potVal = pot.GetValueOrDefault(s, 0);
+                                        int exVal = ex.GetValueOrDefault(s, 0);
+                                        double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
+
+                                        int gBonus = 0;
+                                        foreach (var cell in Pair.Grid)
+                                        {
+                                            if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
+                                                gBonus += sb;
+                                        }
+
+                                        int total = CalcService.CalcTotalStat(
+                                            s,
+                                            rawBase,
+                                            0,
+                                            potential: potVal,
+                                            exBonus: exVal,
+                                            formMult: formMult,
+                                            hasSa: Pair.HasSuperAwakening,
+                                            saLevel: Ally.SuperAwakeningLevel,
+                                            role: Pair.Role,
+                                            gridStat: gBonus
+                                        );
+
+                                        <td class="text-warning">@total</td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 }
             </div>
-
-            <!-- Detailed Breakdown Accordion Table -->
-            @if (ShowDetailedStats)
-            {
-                <div class="table-responsive mt-2 pt-1 border-top border-secondary">
-                    <table class="table table-dark table-sm table-bordered text-center align-middle mb-0" style="font-size: 0.78rem;">
-                        <thead>
-                            <tr class="text-secondary small">
-                                <th class="text-start">Category</th>
-                                <th style="width: 15%;">HP</th>
-                                <th style="width: 15%;">Attack</th>
-                                <th style="width: 15%;">Defense</th>
-                                <th style="width: 15%;">Sp. Atk</th>
-                                <th style="width: 15%;">Sp. Def</th>
-                                <th style="width: 15%;">Speed</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-start text-muted">
-                                    Base Stat (Lv. @Ally.CharLevel)
-                                    @if (isSaActive)
-                                    {
-                                        <span class="badge bg-danger text-light ms-1 py-0 px-1" style="font-size: 0.6rem;">+10% SA</span>
-                                    }
-                                </td>
-                                @foreach (var s in statsKeys)
-                                {
-                                    int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
-                                    int saBase = rawBase;
-                                    if (isSaActive)
-                                    {
-                                        saBase = (int)Math.Ceiling(rawBase * 1.1) + (rawBase % 10 != 0 ? -1 : 0);
-                                        if (Pair.Role.Trim().StartsWith("Support", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            var saFlat = CalcService.GetSaSupportFlatBonus(Ally.SuperAwakeningLevel);
-                                            if (saFlat.TryGetValue(s, out int fb))
-                                                saBase += fb;
-                                        }
-                                    }
-                                    <td>@saBase</td>
-                                }
-                            </tr>
-                            <tr>
-                                <td class="text-start text-muted">Potential + EX Role</td>
-                                @foreach (var s in statsKeys)
-                                {
-                                    int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
-                                    <td class="@(bonus > 0 ? "text-success" : "text-muted")">@(bonus > 0 ? $"+{bonus}" : "-")</td>
-                                }
-                            </tr>
-                            @if (currentVariation != null)
-                            {
-                                <tr>
-                                    <td class="text-start text-muted">Form Multiplier (@currentVariation.FormName)</td>
-                                    @foreach (var s in statsKeys)
-                                    {
-                                        double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
-                                        <td class="@(mult > 1.0 ? "text-warning" : "text-muted")">@(mult > 1.0 ? $"×{mult:0.#}" : "×1.0")</td>
-                                    }
-                                </tr>
-                            }
-                            <tr>
-                                <td class="text-start text-muted">Sync Grid Bonus</td>
-                                @foreach (var s in statsKeys)
-                                {
-                                    int gBonus = 0;
-                                    foreach (var cell in Pair.Grid)
-                                    {
-                                        if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
-                                            gBonus += sb;
-                                    }
-                                    <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
-                                }
-                            </tr>
-                            <tr class="table-active fw-bold">
-                                <td class="text-start text-warning">Total Stat</td>
-                                @foreach (var s in statsKeys)
-                                {
-                                    int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
-                                    int potVal = pot.GetValueOrDefault(s, 0);
-                                    int exVal = ex.GetValueOrDefault(s, 0);
-                                    double formMult = currentVariation?.StatMultiplier.GetValueOrDefault(s, 1.0) ?? 1.0;
-
-                                    int gBonus = 0;
-                                    foreach (var cell in Pair.Grid)
-                                    {
-                                        if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
-                                            gBonus += sb;
-                                    }
-
-                                    int total = CalcService.CalcTotalStat(
-                                        s,
-                                        rawBase,
-                                        0,
-                                        potential: potVal,
-                                        exBonus: exVal,
-                                        formMult: formMult,
-                                        hasSa: Pair.HasSuperAwakening,
-                                        saLevel: Ally.SuperAwakeningLevel,
-                                        role: Pair.Role,
-                                        gridStat: gBonus
-                                    );
-
-                                    <td class="text-warning">@total</td>
-                                }
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            }
         </div>
 
         <!-- Section Switcher Tabs: Moves vs Passives -->
