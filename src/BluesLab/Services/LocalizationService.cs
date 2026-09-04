@@ -208,11 +208,37 @@ public class LocalizationService
             }
 
             // Normalization attempts
+            if (monsterBaseId.Length >= 10)
+            {
+                var norm10 = monsterBaseId[..^2] + "00";
+                if (_strings.TryGetValue($"pokemon_name_{norm10}", out var val10) && !string.IsNullOrWhiteSpace(val10))
+                    return CleanTags(val10);
+
+                var normForm10 = monsterBaseId[..6] + "1100";
+                if (_strings.TryGetValue($"pokemon_name_{normForm10}", out var valForm10) && !string.IsNullOrWhiteSpace(valForm10))
+                    return CleanTags(valForm10);
+
+                var normOld = "200" + monsterBaseId[3..8];
+                if (_strings.TryGetValue($"pokemon_name_{normOld}", out var valOld) && !string.IsNullOrWhiteSpace(valOld))
+                    return CleanTags(valOld);
+            }
+
             if (monsterBaseId.StartsWith("210") && monsterBaseId.Length >= 8)
             {
                 var norm = "200" + monsterBaseId[3..];
                 if (_strings.TryGetValue($"pokemon_name_{norm}", out var val) && !string.IsNullOrWhiteSpace(val))
                     return CleanTags(val);
+
+                if (monsterBaseId.Length >= 10)
+                {
+                    var norm210_10 = "200" + monsterBaseId[3..^2] + "00";
+                    if (_strings.TryGetValue($"pokemon_name_{norm210_10}", out var val210_10) && !string.IsNullOrWhiteSpace(val210_10))
+                        return CleanTags(val210_10);
+                }
+
+                var norm210_8 = "200" + monsterBaseId[3..6] + "00";
+                if (_strings.TryGetValue($"pokemon_name_{norm210_8}", out var val210_8) && !string.IsNullOrWhiteSpace(val210_8))
+                    return CleanTags(val210_8);
             }
 
             if (monsterBaseId.Length >= 8)
@@ -220,13 +246,14 @@ public class LocalizationService
                 var norm = monsterBaseId[..6] + "00";
                 if (_strings.TryGetValue($"pokemon_name_{norm}", out var val) && !string.IsNullOrWhiteSpace(val))
                     return CleanTags(val);
-            }
 
-            if (monsterBaseId.Length >= 10)
-            {
-                var norm = "200" + monsterBaseId[3..8];
-                if (_strings.TryGetValue($"pokemon_name_{norm}", out var val) && !string.IsNullOrWhiteSpace(val))
-                    return CleanTags(val);
+                var norm11 = monsterBaseId[..6] + "11";
+                if (_strings.TryGetValue($"pokemon_name_{norm11}", out var val11) && !string.IsNullOrWhiteSpace(val11))
+                    return CleanTags(val11);
+
+                var norm12 = monsterBaseId[..6] + "12";
+                if (_strings.TryGetValue($"pokemon_name_{norm12}", out var val12) && !string.IsNullOrWhiteSpace(val12))
+                    return CleanTags(val12);
             }
         }
 
