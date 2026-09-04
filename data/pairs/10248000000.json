@@ -154,19 +154,22 @@
     {
       "id": 99021201,
       "name": "Tough as Weeds",
-      "description": "Reduces the user’s sync move countdown by 1 after your team’s sync pair uses their max move. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 2 ranks after your team’s sync pair uses their max move.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after your team’s sync pair uses their max move. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their max move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13082702,
       "name": "Opp Speed ↓: Team P-Moves, S-Moves, Max Moves ↑ 2",
       "description": "Powers up the moves, sync moves, and max moves of all allied sync pairs when the target’s Speed is lowered.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18119109,
       "name": "Take Hit: Opp Speed ↓2 9",
-      "description": "Has a chance (100%) of lowering the Speed of an opponent that attacked the user by 2 stat ranks when the user is hit by an attack move.",
+      "description": "Lowers the [Name:ReferencedMessageTag ] of an opponent that attacked the user by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99021201,
+          "name": "Tough as Weeds",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after your team’s sync pair uses their max move. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their max move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13082702,
+          "name": "Opp Speed ↓: Team P-Moves, S-Moves, Max Moves ↑ 2",
+          "description": "Powers up the moves, sync moves, and max moves of all allied sync pairs when the target’s Speed is lowered.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18119109,
+          "name": "Take Hit: Opp Speed ↓2 9",
+          "description": "Lowers the [Name:ReferencedMessageTag ] of an opponent that attacked the user by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

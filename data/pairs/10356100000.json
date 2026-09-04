@@ -154,7 +154,8 @@
     {
       "id": 28040501,
       "name": "Cool Girl from Kitakami",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of Paldea Circle (Special) when Paldea Circle (Special) is applied to the allied field of play.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of [Name:ReferencedMessageTag Idx=\"1\" ] when [Name:ReferencedMessageTag Idx=\"1\" ] is applied to the allied field of play.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 28030901,
@@ -164,20 +165,22 @@
         {
           "id": 19061003,
           "name": "Paldea C (Spec) Extension 3",
-          "description": "Extends the duration of Paldea Circle (Special) when Paldea Circle (Special) is applied to the allied field of play."
+          "description": "Extends the duration of [Name:ReferencedMessageTag ] when [Name:ReferencedMessageTag ] is applied to the allied field of play."
         }
       ]
     },
     {
       "id": 99035801,
       "name": "C’mon, Let’s Finish This!",
-      "description": "Reduces the MP for the user’s Move Gauge Boost by 1 and grants all of the following effects after your team’s sync pair uses their sync move: Applies Paldea Circle (Special) to the allied field of play. Increases the user’s Special Moves ↑ Next effect by 3 ranks. Charges the user’s move gauge by 6.",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19100\" ] by [Digit:1digit Idx=\"4\" ] and grants all of the following effects after your team’s sync pair uses their sync move: Applies [Name:ReferencedMessageTag Idx=\"2\" ] to the allied field of play. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Charges the user’s move gauge by [Digit:1digit Idx=\"3\" ].",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99035901,
       "name": "That Crit Came Out of Nowhere!",
-      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Restores 1 MP of the user’s buddy move after your team’s sync pair uses their sync move.",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 18051501,
@@ -187,24 +190,25 @@
         {
           "id": 13061509,
           "name": "Team S-Move: Restore B-Move MP 9",
-          "description": "Has a chance (100%) of restoring 1 MP of the user’s buddy move after your team’s sync pair uses their sync move."
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after your team’s sync pair uses their sync move."
         }
       ]
     },
     {
       "id": 99036001,
       "name": "Didn’t Hit Your Head, Did You?",
-      "description": "Lowers the target’s Sp. Def by 2 stat ranks when the user’s attack move is successful against a confused opponent. Increases the user’s Sync Move ↑ Next effect by 2 ranks when its attack move is successful against a poisoned or badly poisoned opponent.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a confused opponent. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against a poisoned or badly poisoned opponent.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 18125909,
           "name": "Hit Confused Opp: Sp. Def ↓2 9",
-          "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s attack move is successful against a confused opponent."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against a confused opponent."
         },
         {
           "id": 17089509,
           "name": "Hit Poisoned Opp: S-Move Boost ↑2 9",
-          "description": "Has a chance (100%) of increasing the user’s Sync Move ↑ Next effect by 2 ranks when its attack move is successful against a poisoned or badly poisoned opponent."
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move is successful against a poisoned or badly poisoned opponent."
         }
       ]
     }

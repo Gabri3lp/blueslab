@@ -154,36 +154,40 @@
     {
       "id": 29030901,
       "name": "Paldea Rush",
-      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Paldea theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 33011401,
       "name": "Debut: Ghost S-Tera",
-      "description": "The user Sync Terastallizes into type the first time it enters a battle each battle.",
+      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time it enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99042301,
       "name": "Power of a Deeply Held Grudge",
-      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs. Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s attack move is successful against targets that are affected by a status condition.",
+      "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs. Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against targets that are affected by a status condition.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 17041109,
           "name": "Go Viral 9",
-          "description": "When the user’s status move is used and inflicted a status condition on an opponent, has a chance (100%) of inflicting the same status condition on all opposing sync pairs."
+          "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs."
         },
         {
           "id": 18128309,
           "name": "Hit Status Cond Opp: Attack ↓ & Sp. Atk ↓ 9",
-          "description": "Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s attack move is successful against targets that are affected by a status condition."
+          "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against targets that are affected by a status condition."
         }
       ]
     },
     {
       "id": 13024902,
       "name": "Ghost Zone: Team P-Moves & S-Moves DR 2",
-      "description": "Reduces damage when an ally is hit by an attack move or sync move while the zone is a.",
+      "description": "Reduces damage when an ally is hit by an attack move or sync move while the zone is a [Name:ReferencedMessageTag ].",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -201,9 +205,43 @@
       },
       "passives": [
         {
+          "id": 29030901,
+          "name": "Paldea Rush",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99042201,
           "name": "Do Your Thing, Technology!",
-          "description": "Doubles the current number of Physical Moves ↑ Next effect and Special Moves ↑ Next effect ranks of all allied sync pairs the first time the user’s sync move is used each battle."
+          "description": "Doubles the current number of Physical Moves ↑ Next effect and Special Moves ↑ Next effect ranks of all allied sync pairs the first time the user’s sync move is used each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99042301,
+          "name": "Power of a Deeply Held Grudge",
+          "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs. Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against targets that are affected by a status condition.",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 17041109,
+              "name": "Go Viral 9",
+              "description": "When the user’s status move is used and inflicted a status condition on an opponent, inflicts the same status condition on all opposing sync pairs."
+            },
+            {
+              "id": 18128309,
+              "name": "Hit Status Cond Opp: Attack ↓ & Sp. Atk ↓ 9",
+              "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful against targets that are affected by a status condition."
+            }
+          ]
+        },
+        {
+          "id": 13024902,
+          "name": "Ghost Zone: Team P-Moves & S-Moves DR 2",
+          "description": "Reduces damage when an ally is hit by an attack move or sync move while the zone is a [Name:ReferencedMessageTag ].",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 4056

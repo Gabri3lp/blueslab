@@ -154,30 +154,33 @@
     {
       "id": 99034801,
       "name": "The Purest Water",
-      "description": "Raises the Speed of all allied sync pairs by 2 stat ranks when an ally applies a circle to the allied field of play. Applies the Free Move Next effect to all allied sync pairs when an ally applies a circle to the allied field of play.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally applies a circle to the allied field of play. Applies the [Name:ReferencedMessageTag Idx=\"2\" ] to all allied sync pairs when an ally applies a circle to the allied field of play.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 17089209,
           "name": "Ally Sets Circle: Team Free Move Next 9",
-          "description": "Has a chance (100%) of applying the Free Move Next effect to all allied sync pairs when an ally applies a circle to the allied field of play."
+          "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs when an ally applies a circle to the allied field of play."
         },
         {
           "id": 18125109,
           "name": "Ally Sets Circle: Team Speed ↑2 9",
-          "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 2 stat ranks when an ally applies a circle to the allied field of play."
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally applies a circle to the allied field of play."
         }
       ]
     },
     {
       "id": 15014909,
       "name": "Use Unova Passion: Sync CD ↓ 9",
-      "description": "Has a chance (100%) of reducing the user’s sync move countdown by 1 when it uses Unova Passion.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"8212\" ].",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17014701,
       "name": "Circle: Team Condition Nullification",
       "description": "Prevents all allied sync pairs from being inflicted with status conditions, flinching, becoming confused, or becoming trapped when a circle applies to the allied field of play.",
+      "slot": 3,
       "childPassives": []
     }
   ],

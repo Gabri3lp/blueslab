@@ -154,19 +154,22 @@
     {
       "id": 99019501,
       "name": "Inbound Train Announcement",
-      "description": "Reduces the user’s sync move countdown by 2 when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s Special Moves ↑ Next effect by 2 ranks when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17049809,
       "name": "Team Brain Gain 9",
-      "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user’s move is successful.",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18117509,
       "name": "Move: Sp. Atk ↑2 & Crit Rate ↑1 9",
-      "description": "Has a chance (100%) of granting all of the following effects when the user’s move is successful: Raises the user’s Sp. Atk by 2 stat ranks. Raises the user’s critical-hit rate by 1 stat rank.",
+      "description": "Grants all of the following effects when the user’s move is successful: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99019501,
+          "name": "Inbound Train Announcement",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when its max move targeting an opponent that is affected by a status condition is successful. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its max move targeting an opponent that is flinching, confused, or trapped is successful.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 17049809,
+          "name": "Team Brain Gain 9",
+          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s move is successful.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18117509,
+          "name": "Move: Sp. Atk ↑2 & Crit Rate ↑1 9",
+          "description": "Grants all of the following effects when the user’s move is successful: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

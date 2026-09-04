@@ -155,18 +155,21 @@
       "id": 23011701,
       "name": "P-Moves & Max Moves Expansion",
       "description": "When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and max moves affected by this passive skill are not lowered even if there are multiple targets.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13014505,
       "name": "Hit the Gas 5",
       "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99012301,
       "name": "Rose’s Results",
-      "description": "Powers up the user’s Steel-type moves. The user’s moves never miss.",
+      "description": "Powers up the user’s [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 23011701,
+          "name": "P-Moves & Max Moves Expansion",
+          "description": "When a move used by the user’s Pokémon that targets itself or an ally is successful, the target becomes all allied sync pairs. When a move used by the user’s Pokémon that targets an opponent is successful, the target becomes all opposing sync pairs. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power and chance of applying additional effects of moves and max moves affected by this passive skill are not lowered even if there are multiple targets.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13014505,
+          "name": "Hit the Gas 5",
+          "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99012301,
+          "name": "Rose’s Results",
+          "description": "Powers up the user’s [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

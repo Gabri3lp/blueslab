@@ -154,19 +154,22 @@
     {
       "id": 18097109,
       "name": "Shock Factor 9",
-      "description": "Has a chance (100%) of lowering the target’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by one stat rank when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Lowers the target’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by one stat rank when the user’s attack move is successful against a paralyzed opponent.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17043101,
       "name": "Entry Freebie",
       "description": "Applies the Free Move Next effect to the user when it enters a battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17045709,
       "name": "Viral Hit 9",
-      "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, has a chance (100%) of inflicting the same status condition on all opposing sync pairs.",
+      "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, inflicts the same status condition on all opposing sync pairs.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18097109,
+          "name": "Shock Factor 9",
+          "description": "Lowers the target’s Attack, Defense, Sp. Atk, Sp. Def, and Speed by one stat rank when the user’s attack move is successful against a paralyzed opponent.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 17043101,
+          "name": "Entry Freebie",
+          "description": "Applies the Free Move Next effect to the user when it enters a battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17045709,
+          "name": "Viral Hit 9",
+          "description": "When the user inflicts a status condition on an opponent with the additional effects of a move, inflicts the same status condition on all opposing sync pairs.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

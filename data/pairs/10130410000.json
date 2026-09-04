@@ -154,7 +154,8 @@
     {
       "id": 28041601,
       "name": "Kalos’s Ruler of Shadows",
-      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of the when the zone turns into a while the user is on the field.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"1\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"1\" ] while the user is on the field.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 28030601,
@@ -164,24 +165,25 @@
         {
           "id": 19029203,
           "name": "Dark Zone Extension 3",
-          "description": "Extends the duration of the Dark Zone when the zone turns into a Dark Zone while the user is on the field."
+          "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
         }
       ]
     },
     {
       "id": 99046801,
       "name": "Majestic Ninja",
-      "description": "Reduces the user’s sync move countdown by 1 when it enters a battle. Raises the user’s Attack and Sp. Atk by 6 stat ranks when it enters a battle.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when it enters a battle. Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 15015203,
           "name": "Entry: Sync CD ↓ 3",
-          "description": "Reduces the user’s sync move countdown by 3 when it enters a battle."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it enters a battle."
         },
         {
           "id": 18093306,
           "name": "Ferocious Entry 6",
-          "description": "Raises the user’s Attack and Sp. Atk by 6 stat ranks when it enters a battle."
+          "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         }
       ]
     },
@@ -189,6 +191,7 @@
       "id": 99046901,
       "name": "Victorious Reflexes",
       "description": "Protects the user against critical hits. The user’s stats cannot be lowered. Prevents the user from being inflicted with status conditions, flinching, becoming confused, or becoming trapped.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 21010101,
@@ -210,7 +213,8 @@
     {
       "id": 99047001,
       "name": "Let the Party Begin!",
-      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Raises the sync buff of the user’s team by ranks the first time its sync move is used each battle.",
+      "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 18051501,
@@ -220,7 +224,7 @@
         {
           "id": 17083101,
           "name": "1st S-Move: Sync Buff ↑ 1",
-          "description": "Raises the sync buff of the user’s team by 1 rank(s) the first time its sync move is used each battle."
+          "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
         }
       ]
     }
@@ -237,7 +241,85 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 28041601,
+          "name": "Kalos’s Ruler of Shadows",
+          "description": "Powers up the moves and sync moves of all allied sync pairs by 20%. Reduces attack move and sync move damage taken by all allied sync pairs by 25%. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves and sync moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.) Extends the duration of the [Name:ReferencedMessageTag Idx=\"1\" ] when the zone turns into a [Name:ReferencedMessageTag Idx=\"1\" ] while the user is on the field.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 28030601,
+              "name": "Passive #28030601",
+              "description": ""
+            },
+            {
+              "id": 19029203,
+              "name": "Dark Zone Extension 3",
+              "description": "Extends the duration of the [Name:ReferencedMessageTag ] when the zone turns into a [Name:ReferencedMessageTag ] while the user is on the field."
+            }
+          ]
+        },
+        {
+          "id": 99046801,
+          "name": "Majestic Ninja",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] when it enters a battle. Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 15015203,
+              "name": "Entry: Sync CD ↓ 3",
+              "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it enters a battle."
+            },
+            {
+              "id": 18093306,
+              "name": "Ferocious Entry 6",
+              "description": "Raises the user’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            }
+          ]
+        },
+        {
+          "id": 99046901,
+          "name": "Victorious Reflexes",
+          "description": "Protects the user against critical hits. The user’s stats cannot be lowered. Prevents the user from being inflicted with status conditions, flinching, becoming confused, or becoming trapped.",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 21010101,
+              "name": "Vigilance",
+              "description": "Protects the user against critical hits."
+            },
+            {
+              "id": 18020901,
+              "name": "Impervious",
+              "description": "The user’s stats cannot be lowered."
+            },
+            {
+              "id": 17013501,
+              "name": "Condition Nullification",
+              "description": "Prevents the user from being inflicted with status conditions, flinching, becoming confused, or becoming trapped."
+            }
+          ]
+        },
+        {
+          "id": 99047001,
+          "name": "Let the Party Begin!",
+          "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move. Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+          "slot": 4,
+          "childPassives": [
+            {
+              "id": 18051501,
+              "name": "P-Moves & S-Moves Crit",
+              "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+            },
+            {
+              "id": 17083101,
+              "name": "1st S-Move: Sync Buff ↑ 1",
+              "description": "Raises the sync buff of the user’s team by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle."
+            }
+          ]
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

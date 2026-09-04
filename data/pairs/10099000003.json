@@ -154,29 +154,31 @@
     {
       "id": 99033301,
       "name": "Who’s Got Time to Count?!",
-      "description": "Reduces the user’s sync move countdown by 1 when it uses Fighting Wish. Increases the user’s Physical Moves ↑ Next effect by 2 ranks when it uses Fighting Wish.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19570\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19570\" ].",
+      "slot": 1,
       "childPassives": [
         {
           "id": 15014709,
           "name": "Use Fighting Wish: Sync CD ↓ 9",
-          "description": "Has a chance (100%) of reducing the user’s sync move countdown by 1 when it uses Fighting Wish."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] when it uses [Name:MoveId Idx=\"19570\" ]."
         },
         {
           "id": 17087409,
           "name": "Use Fighting Wish: Physical Boost ↑2 9",
-          "description": "Has a chance (100%) of increasing the user’s Physical Moves ↑ Next effect by 2 ranks when it uses Fighting Wish."
+          "description": "Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it uses [Name:MoveId Idx=\"19570\" ]."
         }
       ]
     },
     {
       "id": 99033401,
       "name": "Headstrong and Reckless",
-      "description": "Powers up the user’s Close Combat. The user’s stats cannot be lowered. Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s Close Combat is successful.",
+      "description": "Powers up the user’s [Name:MoveId Idx=\"370\" ]. The user’s stats cannot be lowered. Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s [Name:MoveId Idx=\"370\" ] is successful.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 13084105,
           "name": "Close Combat Power ↑ 5",
-          "description": "Powers up the user’s Close Combat."
+          "description": "Powers up the user’s [Name:MoveId Idx=\"370\" ]."
         },
         {
           "id": 18020901,
@@ -186,14 +188,15 @@
         {
           "id": 18123701,
           "name": "Close Combat: Attack ↓ & Sp. Atk ↓ 1",
-          "description": "Lowers the target’s Attack and Sp. Atk by 1 stat rank when the user’s Close Combat is successful."
+          "description": "Lowers the target’s Attack and Sp. Atk by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s [Name:MoveId Idx=\"370\" ] is successful."
         }
       ]
     },
     {
       "id": 17087509,
       "name": "Fighting Zone & Hit: Free Move Next 9",
-      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the zone is a Fighting Zone.",
+      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the zone is a [Name:ReferencedMessageTag ].",
+      "slot": 3,
       "childPassives": []
     }
   ],

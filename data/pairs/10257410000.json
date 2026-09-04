@@ -154,12 +154,13 @@
     {
       "id": 99020701,
       "name": "Stream Forward, Sandstorm!",
-      "description": "Causes a sandstorm when the user is hit by an attack move. Raises the evasiveness of all allied sync pairs by 2 stat ranks when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
+      "description": "Causes a sandstorm when the user is hit by an attack move. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 19052209,
           "name": "Take Hit: Sandstorm 9",
-          "description": "Has a chance (100%) of causing a sandstorm when the user is hit by an attack move."
+          "description": "Causes a sandstorm when the user is hit by an attack move."
         },
         {
           "id": 17014101,
@@ -169,20 +170,22 @@
         {
           "id": 18118809,
           "name": "Take Hit: Team Evasiveness ↑2 9",
-          "description": "Has a chance (100%) of raising the evasiveness of all allied sync pairs by 2 stat ranks when the user is hit by an attack move."
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
         }
       ]
     },
     {
       "id": 99020801,
       "name": "Take By Storm and Take a Selfie",
-      "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by 1 when an opponent’s attack move targeting the user misses.",
+      "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by [Digit:1digit ] when an opponent’s attack move targeting the user misses.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 11015009,
       "name": "Hit Paralyzed Opp: Team HP Recovery 9",
-      "description": "Has a chance (100%) of restoring the HP of all allied sync pairs when the user’s attack move is successful against a paralyzed opponent.",
+      "description": "Restores the HP of all allied sync pairs when the user’s attack move is successful against a paralyzed opponent.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -198,7 +201,45 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99020701,
+          "name": "Stream Forward, Sandstorm!",
+          "description": "Causes a sandstorm when the user is hit by an attack move. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move. Protects all allied sync pairs from damage from a sandstorm.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 19052209,
+              "name": "Take Hit: Sandstorm 9",
+              "description": "Causes a sandstorm when the user is hit by an attack move."
+            },
+            {
+              "id": 17014101,
+              "name": "Team Sandstorm Immunity",
+              "description": "Protects all allied sync pairs from damage from a sandstorm."
+            },
+            {
+              "id": 18118809,
+              "name": "Take Hit: Team Evasiveness ↑2 9",
+              "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
+            }
+          ]
+        },
+        {
+          "id": 99020801,
+          "name": "Take By Storm and Take a Selfie",
+          "description": "Restores the user’s HP when an opponent’s attack move targeting the user misses. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an opponent’s attack move targeting the user misses. Charges the user’s move gauge by [Digit:1digit ] when an opponent’s attack move targeting the user misses.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 11015009,
+          "name": "Hit Paralyzed Opp: Team HP Recovery 9",
+          "description": "Restores the HP of all allied sync pairs when the user’s attack move is successful against a paralyzed opponent.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

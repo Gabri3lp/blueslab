@@ -154,34 +154,37 @@
     {
       "id": 28012201,
       "name": "Paldea Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Paldea theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 33010701,
       "name": "Debut: Fighting S-Tera",
-      "description": "The user Sync Terastallizes into Fighting type the first time it enters a battle each battle.",
+      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time it enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99028701,
       "name": "Supersweet Syrupy Apple",
-      "description": "Lowers the target’s evasiveness by 1 stat rank when the user’s attack move against it is successful. Lowers the target’s Defense by 1 stat rank when the user’s attack move is successful while the weather is sunny. Lowers the target’s Sp. Def by 1 stat rank when the user’s attack move is successful while the zone is a Fighting Zone.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the weather is sunny. Lowers the target’s [Name:ReferencedMessageTag Idx=\"5\" ] by [Digit:1digit Idx=\"6\" ] stat [EN:Qty Ref=\"6\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the zone is a [Name:ReferencedMessageTag Idx=\"4\" ].",
+      "slot": 3,
       "childPassives": [
         {
           "id": 18049009,
           "name": "Hem In 9",
-          "description": "Has a chance (100%) of lowering the target’s evasiveness by one stat rank when the user’s attack move against it is successful."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
         },
         {
           "id": 18123209,
           "name": "Sunny Daze 9",
-          "description": "Has a chance (100%) of lowering the target’s Defense by 1 stat rank when the user’s attack move is successful while the weather is sunny."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the weather is sunny."
         },
         {
           "id": 18123309,
           "name": "Fighting Zone & Hit: Sp. Def ↓ 9",
-          "description": "Has a chance (100%) of lowering the target’s Sp. Def by 1 stat rank when the user’s attack move is successful while the zone is a Fighting Zone."
+          "description": "Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the zone is a [Name:ReferencedMessageTag ]."
         }
       ]
     },
@@ -189,6 +192,7 @@
       "id": 16014201,
       "name": "Power Play",
       "description": "The more the target’s stats are lowered, the more it powers up the user’s sync move.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -206,9 +210,59 @@
       },
       "passives": [
         {
+          "id": 28012201,
+          "name": "Paldea Flag Bearer",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99028601,
           "name": "Kitakami Sunlight",
-          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect."
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 19057701,
+              "name": "User Sets Sunny W: Fighting Zone",
+              "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when the user turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            },
+            {
+              "id": 17085009,
+              "name": "Ally Sets WTZ: Team Phys & Spec Boost ↑1 9",
+              "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect."
+            }
+          ]
+        },
+        {
+          "id": 99028701,
+          "name": "Supersweet Syrupy Apple",
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the weather is sunny. Lowers the target’s [Name:ReferencedMessageTag Idx=\"5\" ] by [Digit:1digit Idx=\"6\" ] stat [EN:Qty Ref=\"6\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the zone is a [Name:ReferencedMessageTag Idx=\"4\" ].",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 18049009,
+              "name": "Hem In 9",
+              "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it is successful."
+            },
+            {
+              "id": 18123209,
+              "name": "Sunny Daze 9",
+              "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the weather is sunny."
+            },
+            {
+              "id": 18123309,
+              "name": "Fighting Zone & Hit: Sp. Def ↓ 9",
+              "description": "Lowers the target’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful while the zone is a [Name:ReferencedMessageTag ]."
+            }
+          ]
+        },
+        {
+          "id": 16014201,
+          "name": "Power Play",
+          "description": "The more the target’s stats are lowered, the more it powers up the user’s sync move.",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 4041

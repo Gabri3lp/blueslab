@@ -154,30 +154,33 @@
     {
       "id": 99021101,
       "name": "Gentle Combo",
-      "description": "Raises the user’s Attack by 6 stat ranks when it enters a battle. Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle.",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 18045906,
           "name": "Fierce Entry 6",
-          "description": "Raises the user’s Attack by 6 stat ranks when it enters a battle."
+          "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         }
       ]
     },
     {
       "id": 19053701,
       "name": "User Sets Grassy Terrain: Galar C (Phys) on Field",
-      "description": "Applies Galar Circle (Physical) to the allied field of play when the user turns the field of play’s terrain into Grassy Terrain.",
+      "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s terrain into [Name:ReferencedMessageTag ].",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17078109,
       "name": "Grassy Terrain Hit: Free Move Next 9",
-      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the terrain is Grassy Terrain.",
+      "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the terrain is [Name:ReferencedMessageTag ].",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -193,7 +196,40 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99021101,
+          "name": "Gentle Combo",
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 18045906,
+              "name": "Fierce Entry 6",
+              "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 18041903,
+              "name": "Sharp Entry 3",
+              "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            }
+          ]
+        },
+        {
+          "id": 19053701,
+          "name": "User Sets Grassy Terrain: Galar C (Phys) on Field",
+          "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s terrain into [Name:ReferencedMessageTag ].",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17078109,
+          "name": "Grassy Terrain Hit: Free Move Next 9",
+          "description": "Applies the [Name:ReferencedMessageTag Idx=\"1\" ] to the user when its attack move is successful while the terrain is [Name:ReferencedMessageTag ].",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

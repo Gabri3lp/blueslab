@@ -154,19 +154,22 @@
     {
       "id": 18115104,
       "name": "Max Move: Team Attack ↑ & Team Sp. Atk ↑ 4",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 4 stat ranks after using the user’s max move.",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] after using the user’s max move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18115203,
       "name": "1st Use Status P-Move: Team Crit Rate ↑ 3",
-      "description": "Raises the critical-hit rate of all allied sync pairs by 3 stat ranks the first time the user’s Pokémon uses a status move each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17049609,
       "name": "Hot to the Touch 9",
-      "description": "Has a chance (100%) of leaving an opponent that attacked the user burned when the user is hit by an attack move.",
+      "description": "Leaves an opponent that attacked the user burned when the user is hit by an attack move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18115104,
+          "name": "Max Move: Team Attack ↑ & Team Sp. Atk ↑ 4",
+          "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] after using the user’s max move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18115203,
+          "name": "1st Use Status P-Move: Team Crit Rate ↑ 3",
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user’s Pokémon uses a status move each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17049609,
+          "name": "Hot to the Touch 9",
+          "description": "Leaves an opponent that attacked the user burned when the user is hit by an attack move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

@@ -154,25 +154,29 @@
     {
       "id": 28020401,
       "name": "Sinnoh Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Sinnoh theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Sinnoh theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99011601,
       "name": "Cynthia’s Aura",
-      "description": "Turns the field of play’s zone into a Fighting Zone the first time the user enters a battle each battle. Turns the field of play’s zone into a Fighting Zone after using the user’s sync move. (A Fighting Zone powers up Fighting-type attacks.)",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 11011003,
       "name": "Team Fist Bump 3",
-      "description": "Has a chance (40%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
+      "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 17049501,
       "name": "Initial Guard",
-      "description": "Applies the Damage Guard Next effect to the user when it enters a battle.",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when it enters a battle.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -188,7 +192,36 @@
         "spd": 1.2,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 28020401,
+          "name": "Sinnoh Flag Bearer",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Sinnoh theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 99011601,
+          "name": "Cynthia’s Aura",
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user enters a battle each battle. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s sync move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 11011003,
+          "name": "Team Fist Bump 3",
+          "description": "Has a chance ([Digit:2digits ]%) of restoring the HP of all allied sync pairs when the user’s attack move is successful.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 17049501,
+          "name": "Initial Guard",
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user when it enters a battle.",
+          "slot": 4,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

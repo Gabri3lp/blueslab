@@ -154,35 +154,38 @@
     {
       "id": 99021301,
       "name": "Fiery Combo",
-      "description": "Raises the user’s Attack by 4 stat ranks when it enters a battle. Raises the user’s accuracy by 2 stat ranks when it enters a battle. Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle.",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 18045904,
           "name": "Fierce Entry 4",
-          "description": "Raises the user’s Attack by 4 stat ranks when it enters a battle."
+          "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 18090102,
           "name": "Pinpoint Entry 2",
-          "description": "Raises the user’s accuracy by 2 stat ranks when it enters a battle."
+          "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         }
       ]
     },
     {
       "id": 19053801,
       "name": "User Sets Sunny W: Galar C (Def) on Field",
-      "description": "Applies Galar Circle (Defensive) to the allied field of play when the user turns the weather sunny.",
+      "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play when the user turns the weather sunny.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17078409,
       "name": "Sunny Hit: Free Move Next 9",
-      "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful while the weather is sunny.",
+      "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while the weather is sunny.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -198,7 +201,45 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99021301,
+          "name": "Fiery Combo",
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when it enters a battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 18045904,
+              "name": "Fierce Entry 4",
+              "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 18090102,
+              "name": "Pinpoint Entry 2",
+              "description": "Raises the user’s accuracy by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 18041903,
+              "name": "Sharp Entry 3",
+              "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            }
+          ]
+        },
+        {
+          "id": 19053801,
+          "name": "User Sets Sunny W: Galar C (Def) on Field",
+          "description": "Applies [Name:ReferencedMessageTag ] to the allied field of play when the user turns the weather sunny.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17078409,
+          "name": "Sunny Hit: Free Move Next 9",
+          "description": "Applies the [Name:ReferencedMessageTag ] to the user when its attack move is successful while the weather is sunny.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

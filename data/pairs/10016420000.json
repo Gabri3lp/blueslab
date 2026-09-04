@@ -154,46 +154,49 @@
     {
       "id": 99028301,
       "name": "Let’s Have Some Fun!",
-      "description": "Grants all of the following effects the first time the user’s Pokémon uses a status move each battle: Reduces the user’s sync move countdown by 2. Raises the user’s Sp. Atk by 4 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks.",
+      "description": "Grants all of the following effects the first time the user’s Pokémon uses a status move each battle: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"4\" ]. Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 1,
       "childPassives": [
         {
           "id": 18121904,
           "name": "1st Use Status P-Move: Sp. Atk ↑ 4",
-          "description": "Raises the user’s Sp. Atk by 4 stat ranks the first time its Pokémon uses a status move each battle."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle."
         },
         {
           "id": 18122003,
           "name": "1st Use Status P-Move: Crit Rate ↑ 3",
-          "description": "Raises the user’s critical-hit rate by 3 stat ranks the first time its Pokémon uses a status move each battle."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time its Pokémon uses a status move each battle."
         },
         {
           "id": 15012002,
           "name": "Afflicter’s Fervor 2",
-          "description": "Reduces the sync move countdown by 2 the first time the user’s Pokémon uses a status move each battle."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] the first time its Pokémon uses a status move each battle."
         }
       ]
     },
     {
       "id": 99028401,
       "name": "Let’s Vacay!",
-      "description": "Raises the user’s Speed by 6 stat ranks when its Pokémon uses a status move. Increases the user’s Special Moves ↑ Next effect by 2 ranks when its Pokémon uses a status move.",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move. Increases the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 18122609,
           "name": "Use Status P-Move: Speed ↑6 9",
-          "description": "Has a chance (100%) of raising the user’s Speed by 6 stat ranks when its Pokémon uses a status move."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move."
         },
         {
           "id": 17084309,
           "name": "Use Status P-Move: Special Boost ↑2 9",
-          "description": "Has a chance (100%) of increasing the user’s Special Moves ↑ Next effect by 2 ranks when its Pokémon uses a status move."
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its Pokémon uses a status move."
         }
       ]
     },
     {
       "id": 99028501,
       "name": "Perfect for a Day Out",
-      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field. Raises the Speed of all allied sync pairs by 1 stat rank when an ally’s attack move is successful while the weather is sunny. Increases an ally’s Special Moves ↑ Next effect by 1 rank when its attack move is successful while the weather is sunny.",
+      "description": "Extends the duration of sunny weather when the weather turns sunny while the user is on the field. Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful while the weather is sunny. Increases an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the weather is sunny.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 19020805,
@@ -203,12 +206,12 @@
         {
           "id": 18122709,
           "name": "Sunny Ally Hit: Team Speed ↑ 9",
-          "description": "Has a chance (100%) of raising the Speed of all allied sync pairs by 1 stat rank when an ally’s attack move is successful while the weather is sunny."
+          "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally’s attack move is successful while the weather is sunny."
         },
         {
           "id": 17084409,
           "name": "Sunny Ally Hit: Special Boost ↑1 9",
-          "description": "Has a chance (100%) of increasing an ally’s Special Moves ↑ Next effect by 1 rank when its attack move is successful while the weather is sunny."
+          "description": "Increases an ally’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ] when its attack move is successful while the weather is sunny."
         }
       ]
     }

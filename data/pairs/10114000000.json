@@ -155,18 +155,21 @@
       "id": 17010801,
       "name": "Unflappable",
       "description": "Prevents the user from flinching.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18041801,
       "name": "Speedy Entry 1",
-      "description": "Raises the user’s Speed by 1 stat rank when it enters a battle.",
+      "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18020301,
       "name": "Dauntless",
       "description": "Sp. Atk cannot be lowered.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.2
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17010801,
+          "name": "Unflappable",
+          "description": "Prevents the user from flinching.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18041801,
+          "name": "Speedy Entry 1",
+          "description": "Raises the user’s Speed by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18020301,
+          "name": "Dauntless",
+          "description": "Sp. Atk cannot be lowered.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

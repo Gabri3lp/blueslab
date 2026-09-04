@@ -154,29 +154,32 @@
     {
       "id": 28010301,
       "name": "Hoenn Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99022701,
       "name": "Blue Power Awakening",
-      "description": "Become Primal Kyogre until the end of battle the first time the user enters a battle each battle.",
+      "description": "Become Primal Kyogre until the end of battle the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99022901,
       "name": "Hoenn Blessing",
-      "description": "Charges the user’s move gauge by 1 when its attack move hits while the weather is rainy. Increases the user’s Sync Move ↑ Next effect by 1 rank when its attack move hits while the weather is rainy.",
+      "description": "Charges the user’s move gauge by [Digit:1digit ] when its attack move hits while the weather is rainy. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move hits while the weather is rainy.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 17079509,
           "name": "Rainy Strike: Sync Move Boost ↑1 9",
-          "description": "Has a chance (100%) of increasing the user’s Sync Move ↑ Next effect by 1 rank when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, has a chance (100%) of increasing the user’s Sync Move ↑ Next effect by 1 rank for each hit."
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit."
         },
         {
           "id": 12022409,
           "name": "Rainy Strike: MG ↑ 9",
-          "description": "Has a chance (100%) of charging the user’s move gauge by 1 when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, has a chance (100%) of charging the user’s move gauge by 1 for each hit."
+          "description": "Charges the user’s move gauge by [Digit:1digit ] when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, charges the user’s move gauge by [Digit:1digit ] for each hit."
         }
       ]
     },
@@ -184,6 +187,7 @@
       "id": 13030501,
       "name": "Sure Hit ｜ P-Moves & S-Moves Crit",
       "description": "The user’s moves never miss. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 13030101,
@@ -212,9 +216,54 @@
       },
       "passives": [
         {
+          "id": 28010301,
+          "name": "Hoenn Spirit",
+          "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99022801,
           "name": "Primordial Ocean of Myths",
-          "description": "Grants all of the following effects when the user’s Kyogre becomes Primal Kyogre: Reduces the user’s sync move countdown by [Digit:1digit ]. Makes the weather EX rainy. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]."
+          "description": "Grants all of the following effects when the user’s Kyogre becomes Primal Kyogre: Reduces the user’s sync move countdown by [Digit:1digit ]. Makes the weather EX rainy. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99022901,
+          "name": "Hoenn Blessing",
+          "description": "Charges the user’s move gauge by [Digit:1digit ] when its attack move hits while the weather is rainy. Increases the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its attack move hits while the weather is rainy.",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 17079509,
+              "name": "Rainy Strike: Sync Move Boost ↑1 9",
+              "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit."
+            },
+            {
+              "id": 12022409,
+              "name": "Rainy Strike: MG ↑ 9",
+              "description": "Charges the user’s move gauge by [Digit:1digit ] when its attack move hits while the weather is rainy. If the move has the Multistrike effect tag and the weather is rainy, charges the user’s move gauge by [Digit:1digit ] for each hit."
+            }
+          ]
+        },
+        {
+          "id": 13030501,
+          "name": "Sure Hit ｜ P-Moves & S-Moves Crit",
+          "description": "The user’s moves never miss. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+          "slot": 4,
+          "childPassives": [
+            {
+              "id": 13030101,
+              "name": "Piercing Gaze",
+              "description": "Moves never miss."
+            },
+            {
+              "id": 18051501,
+              "name": "P-Moves & S-Moves Crit",
+              "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+            }
+          ]
         }
       ],
       "terastalMoveId": 0

@@ -154,52 +154,57 @@
     {
       "id": 29010401,
       "name": "Flame Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Fire theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29020401,
       "name": "Flame Judgment",
-      "description": "Raises the Fire Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Fire Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99028001,
       "name": "Righteous Heart of Gold",
-      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by 2 stat ranks when the user is hit by an attack move. Raises one of the following stats of all allied sync pairs by 2 stat ranks at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move. Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "slot": 3,
       "childPassives": [
         {
           "id": 99017401,
           "name": "Touch at Your Own Peril",
-          "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by 2 stat ranks when the user is hit by an attack move."
+          "description": "Lowers the Attack and Sp. Atk of an opponent that attacked the user by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
         },
         {
           "id": 18122409,
           "name": "Take Hit: Team Same Stat ↑2 9",
-          "description": "Has a chance (100%) of raising one of the following stats of all allied sync pairs by 2 stat ranks at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)"
+          "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user is hit by an attack move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)"
         }
       ]
     },
     {
       "id": 99028101,
       "name": "Everlasting Rainbow",
-      "description": "Reduces the MP for the user’s Recover by one and fully restores its HP when its HP drops to half or below.",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"105\" ] by one and fully restores its HP when its HP drops to half or below.",
+      "slot": 4,
       "childPassives": []
     },
     {
       "id": 99028201,
       "name": "Seven-Colored Wings of Happiness",
-      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Has a chance (50%) of making the target flinch when the user’s attack move against it is successful.",
+      "description": "Applies the Free Move Next effect to the user when its attack move is successful. Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+      "slot": 5,
       "childPassives": [
         {
           "id": 17044809,
           "name": "Combo Freebie 9",
-          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful."
+          "description": "Applies the Free Move Next effect to the user when its attack move is successful."
         },
         {
           "id": 17041304,
           "name": "Staggering 4",
-          "description": "Has a chance (50%) of making the target flinch when the user’s attack move against it is successful."
+          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
         }
       ]
     }

@@ -154,19 +154,22 @@
     {
       "id": 28010201,
       "name": "Hoenn Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99022401,
       "name": "Red Power Awakening",
-      "description": "Become Primal Groudon until the end of battle the first time the user enters a battle each battle.",
+      "description": "Become Primal Groudon until the end of battle the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99022601,
       "name": "Hoenn Hype",
-      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the Ground-type moves and Ground-type sync moves of all allied sync pairs when the weather is sunny.",
+      "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 13082802,
@@ -176,7 +179,7 @@
         {
           "id": 13083102,
           "name": "Sunny: Team Ground P-Moves ↑ & S-Moves ↑ 2",
-          "description": "Powers up the Ground-type moves and Ground-type sync moves of all allied sync pairs when the weather is sunny."
+          "description": "Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny."
         }
       ]
     },
@@ -184,6 +187,7 @@
       "id": 13030501,
       "name": "Sure Hit ｜ P-Moves & S-Moves Crit",
       "description": "The user’s moves never miss. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 4,
       "childPassives": [
         {
           "id": 13030101,
@@ -212,9 +216,54 @@
       },
       "passives": [
         {
+          "id": 28010201,
+          "name": "Hoenn Pride",
+          "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Hoenn theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99022501,
           "name": "Desolate Land of Myths",
-          "description": "Grants all of the following effects when the user’s Groudon becomes Primal Groudon: Reduces the user’s sync move countdown by [Digit:1digit ]. Makes the weather EX sunny. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ]."
+          "description": "Grants all of the following effects when the user’s Groudon becomes Primal Groudon: Reduces the user’s sync move countdown by [Digit:1digit ]. Makes the weather EX sunny. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ].",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99022601,
+          "name": "Hoenn Hype",
+          "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny. Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny.",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 13082802,
+              "name": "Sunny: Team P-Moves ↑ & S-Moves ↑ 2",
+              "description": "Powers up the moves and sync moves of all allied sync pairs when the weather is sunny."
+            },
+            {
+              "id": 13083102,
+              "name": "Sunny: Team Ground P-Moves ↑ & S-Moves ↑ 2",
+              "description": "Powers up the [Name:ReferencedMessageTag ]-type moves and [Name:ReferencedMessageTag ]-type sync moves of all allied sync pairs when the weather is sunny."
+            }
+          ]
+        },
+        {
+          "id": 13030501,
+          "name": "Sure Hit ｜ P-Moves & S-Moves Crit",
+          "description": "The user’s moves never miss. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+          "slot": 4,
+          "childPassives": [
+            {
+              "id": 13030101,
+              "name": "Piercing Gaze",
+              "description": "Moves never miss."
+            },
+            {
+              "id": 18051501,
+              "name": "P-Moves & S-Moves Crit",
+              "description": "Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move."
+            }
+          ]
         }
       ],
       "terastalMoveId": 0

@@ -155,6 +155,7 @@
       "id": 99025401,
       "name": "Dynamax Runway",
       "description": "Powers up the user’s max move when the weather is rainy. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 16030109,
@@ -171,7 +172,8 @@
     {
       "id": 99025501,
       "name": "Dazzling Rainy Stage",
-      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field.",
+      "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 19020903,
@@ -181,14 +183,15 @@
         {
           "id": 19026603,
           "name": "Electric Terrain Extension 3",
-          "description": "Extends the duration of Electric Terrain when the terrain turns into Electric Terrain while the user is on the field."
+          "description": "Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field."
         }
       ]
     },
     {
       "id": 17081709,
       "name": "Ally Sets WTZ: Team Special Boost ↑1 9",
-      "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally activates a weather, terrain, or zone effect.",
+      "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -204,7 +207,51 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99025401,
+          "name": "Dynamax Runway",
+          "description": "Powers up the user’s max move when the weather is rainy. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 16030109,
+              "name": "Rainy: Max Moves ↑ 9",
+              "description": "Powers up the user’s max move when the weather is rainy."
+            },
+            {
+              "id": 23011401,
+              "name": "Targets Maxed",
+              "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets."
+            }
+          ]
+        },
+        {
+          "id": 99025501,
+          "name": "Dazzling Rainy Stage",
+          "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field. Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 19020903,
+              "name": "Flood Alert 3",
+              "description": "Extends the duration of rainy weather when the weather turns rainy while the user is on the field."
+            },
+            {
+              "id": 19026603,
+              "name": "Electric Terrain Extension 3",
+              "description": "Extends the duration of [Name:ReferencedMessageTag ] when the terrain turns into [Name:ReferencedMessageTag ] while the user is on the field."
+            }
+          ]
+        },
+        {
+          "id": 17081709,
+          "name": "Ally Sets WTZ: Team Special Boost ↑1 9",
+          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when an ally activates a weather, terrain, or zone effect.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

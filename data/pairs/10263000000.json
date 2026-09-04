@@ -154,19 +154,22 @@
     {
       "id": 18108102,
       "name": "Status P-Move on Poisoned Opp: Stat ↓×3",
-      "description": "When a poisoned or badly poisoned opponent’s stat is lowered by a status move used by the user’s Pokémon, it is lowered by 2 times the stat ranks.",
+      "description": "When a poisoned or badly poisoned opponent’s stat is lowered by a status move used by the user’s Pokémon, it is lowered by three times the stat ranks.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17064501,
       "name": "Max Move Hit: Team Poison Rebuff ↓ 1",
-      "description": "Lowers the Poison Type Rebuff of all opposing sync pairs by 1 rank(s) when the user’s max move targeting an opponent is successful.",
+      "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 17064601,
       "name": "Ally Poisons: Badly Poisoned",
       "description": "Except in certain circumstances, when an ally leaves an opponent poisoned, leaves it badly poisoned instead.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18108102,
+          "name": "Status P-Move on Poisoned Opp: Stat ↓×3",
+          "description": "When a poisoned or badly poisoned opponent’s stat is lowered by a status move used by the user’s Pokémon, it is lowered by three times the stat ranks.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 17064501,
+          "name": "Max Move Hit: Team Poison Rebuff ↓ 1",
+          "description": "Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s max move targeting an opponent is successful.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 17064601,
+          "name": "Ally Poisons: Badly Poisoned",
+          "description": "Except in certain circumstances, when an ally leaves an opponent poisoned, leaves it badly poisoned instead.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

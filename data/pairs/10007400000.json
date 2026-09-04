@@ -154,13 +154,15 @@
     {
       "id": 17042409,
       "name": "Criticonfuse 9",
-      "description": "Has a chance (100%) of leaving the target confused when the user’s move is a critical hit.",
+      "description": "Leaves the target confused when the user’s move is a critical hit.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18049309,
       "name": "Opportunistic 9",
-      "description": "Has a chance (100%) of lowering the target’s Defense by one stat rank when the user’s attack move is successful against a confused opponent.",
+      "description": "Lowers the target’s Defense by one stat rank when the user’s attack move is successful against a confused opponent.",
+      "slot": 2,
       "childPassives": []
     }
   ],
@@ -176,7 +178,22 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17042409,
+          "name": "Criticonfuse 9",
+          "description": "Leaves the target confused when the user’s move is a critical hit.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18049309,
+          "name": "Opportunistic 9",
+          "description": "Lowers the target’s Defense by one stat rank when the user’s attack move is successful against a confused opponent.",
+          "slot": 2,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

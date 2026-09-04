@@ -155,18 +155,21 @@
       "id": 17044701,
       "name": "MAX Regen",
       "description": "Applies the Gradual Healing effect to the user after using its max move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18095301,
       "name": "Team Alert Mind 1",
-      "description": "Raises the Defense of all allied sync pairs by 1 stat rank when the user’s HP drops to half or below.",
+      "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s HP drops to half or below.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18095404,
       "name": "Group Moral Support 4",
-      "description": "Has a chance (50%) of raising the Sp. Def of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the Sp. Def of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17044701,
+          "name": "MAX Regen",
+          "description": "Applies the Gradual Healing effect to the user after using its max move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18095301,
+          "name": "Team Alert Mind 1",
+          "description": "Raises the Defense of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s HP drops to half or below.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18095404,
+          "name": "Group Moral Support 4",
+          "description": "Has a chance ([Digit:2digits ]%) of raising the Sp. Def of all allied sync pairs by one stat rank when the user’s Trainer uses a move.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

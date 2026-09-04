@@ -154,13 +154,15 @@
     {
       "id": 33010101,
       "name": "Debut: Normal S-Tera",
-      "description": "The user Sync Terastallizes into type the first time it enters a battle each battle.",
+      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time it enters a battle each battle.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 17093609,
       "name": "Ally Sets Normal Zone: Team Special Boost ↑1 9",
-      "description": "Increases the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when an ally turns the field of play’s zone into a Normal Zone.",
+      "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when an ally turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+      "slot": 2,
       "childPassives": []
     }
   ],
@@ -180,7 +182,16 @@
         {
           "id": 99041501,
           "name": "Relaxing Naptime",
-          "description": "Puts the target to sleep when the user’s attack move is successful while the user is asleep. Status conditions cannot be inflicted on any allied sync pairs besides the user when the user is asleep."
+          "description": "Puts the target to sleep when the user’s attack move is successful while the user is asleep. Status conditions cannot be inflicted on any allied sync pairs besides the user when the user is asleep.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 17093609,
+          "name": "Ally Sets Normal Zone: Team Special Boost ↑1 9",
+          "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when an ally turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+          "slot": 2,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 4054

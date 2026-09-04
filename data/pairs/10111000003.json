@@ -154,29 +154,31 @@
     {
       "id": 99038501,
       "name": "The Caped Champion’s Spirit",
-      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s Attack by 6 stat ranks. Raises the user’s critical-hit rate by 3 stat ranks. Increases the user’s Physical Moves ↑ Next effect by 3 ranks.",
+      "description": "Grants all of the following effects when the user enters a battle: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 1,
       "childPassives": [
         {
           "id": 18045906,
           "name": "Fierce Entry 6",
-          "description": "Raises the user’s Attack by 6 stat ranks when it enters a battle."
+          "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 18041903,
           "name": "Sharp Entry 3",
-          "description": "Raises the user’s critical-hit rate by 3 stat ranks when it enters a battle."
+          "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
         },
         {
           "id": 17069803,
           "name": "Entry: Physical Boost 3",
-          "description": "Increases the user’s Physical Moves ↑ Next effect by 3 rank(s) when it enters a battle."
+          "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle."
         }
       ]
     },
     {
       "id": 99038601,
       "name": "Dragon’s Ascent",
-      "description": "Normal-type moves become Flying-type moves. The user’s moves never miss. Protects the user against critical hits.",
+      "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss. Protects the user against critical hits.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 13050201,
@@ -198,7 +200,8 @@
     {
       "id": 11010104,
       "name": "First Aid 4",
-      "description": "Restores the user’s HP by approximately 40% of its maximum HP the first time it is in a pinch each battle.",
+      "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -214,7 +217,61 @@
         "spd": 1.0,
         "spe": 1.2
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99038501,
+          "name": "The Caped Champion’s Spirit",
+          "description": "Grants all of the following effects when the user enters a battle: Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ]. Raises the user’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"3\" ] stat [EN:Qty Ref=\"3\" S=\"rank\" P=\"ranks\" ]. Increases the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ].",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 18045906,
+              "name": "Fierce Entry 6",
+              "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 18041903,
+              "name": "Sharp Entry 3",
+              "description": "Raises the user’s critical-hit rate by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            },
+            {
+              "id": 17069803,
+              "name": "Entry: Physical Boost 3",
+              "description": "Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when it enters a battle."
+            }
+          ]
+        },
+        {
+          "id": 99038601,
+          "name": "Dragon’s Ascent",
+          "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss. Protects the user against critical hits.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 13050201,
+              "name": "Flying Shift",
+              "description": "Normal-type moves become Flying-type moves."
+            },
+            {
+              "id": 13030101,
+              "name": "Piercing Gaze",
+              "description": "Moves never miss."
+            },
+            {
+              "id": 21010101,
+              "name": "Vigilance",
+              "description": "Protects the user against critical hits."
+            }
+          ]
+        },
+        {
+          "id": 11010104,
+          "name": "First Aid 4",
+          "description": "Restores the user’s HP by approximately [Digit:2digits ]% of its maximum HP the first time it is in a pinch each battle.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

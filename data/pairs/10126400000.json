@@ -155,18 +155,21 @@
       "id": 16012701,
       "name": "Sync Morph",
       "description": "Changes the user’s sync move type the first time its sync move is used each battle.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 12020405,
       "name": "Revenge Boost 5",
-      "description": "Has a chance (60%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when the user is hit by an attack move.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18092506,
       "name": "Solo Fanfare 6",
-      "description": "Raises the user’s Attack by 6 stat ranks the first time its sync move is used each battle.",
+      "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -184,9 +187,25 @@
       },
       "passives": [
         {
+          "id": 16012701,
+          "name": "Sync Morph",
+          "description": "Changes the user’s sync move type the first time its sync move is used each battle.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 12021005,
           "name": "Propelling Strike 5",
-          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move is successful."
+          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move is successful.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 18092506,
+          "name": "Solo Fanfare 6",
+          "description": "Raises the user’s Attack by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] the first time its sync move is used each battle.",
+          "slot": 3,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

@@ -154,19 +154,22 @@
     {
       "id": 18040502,
       "name": "Fast-Track 2",
-      "description": "Has a chance (30%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13010505,
       "name": "Power Flux 5",
       "description": "The fuller the move gauge when moves are selected, the more this powers up moves.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 16010305,
       "name": "Double Down 5",
       "description": "Powers up the user’s sync moves that are super effective.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.3
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18040502,
+          "name": "Fast-Track 2",
+          "description": "Has a chance ([Digit:2digits ]%) of raising the user’s Speed by one stat rank when its Pokémon uses a move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13010505,
+          "name": "Power Flux 5",
+          "description": "The fuller the move gauge when moves are selected, the more this powers up moves.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 16010305,
+          "name": "Double Down 5",
+          "description": "Powers up the user’s sync moves that are super effective.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

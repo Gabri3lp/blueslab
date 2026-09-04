@@ -154,19 +154,22 @@
     {
       "id": 17066501,
       "name": "Max Move: Team Free Move Next",
-      "description": "Applies the Free Move Next effect to all allied sync pairs after using the user’s max move.",
+      "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs after using the user’s max move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18109409,
       "name": "Use Status P-Move: Stat ↑ 9",
-      "description": "Has a chance (100%) of raising one of the user’s following stats by 1 stat rank at random when its Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Raises one of the user’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when its Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 12011602,
       "name": "Turbo Turf 2",
-      "description": "Quickly charges the move gauge when the terrain is Grassy Terrain.",
+      "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17066501,
+          "name": "Max Move: Team Free Move Next",
+          "description": "Applies the [Name:ReferencedMessageTag ] to all allied sync pairs after using the user’s max move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18109409,
+          "name": "Use Status P-Move: Stat ↑ 9",
+          "description": "Raises one of the user’s following stats by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when its Pokémon uses a status move: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 12011602,
+          "name": "Turbo Turf 2",
+          "description": "Quickly charges the move gauge when the terrain is [Name:ReferencedMessageTag ].",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

@@ -154,25 +154,29 @@
     {
       "id": 28011401,
       "name": "Kalos Pride",
-      "description": "Powers up the physical attack moves of all allied sync pairs by 20%. Reduces physical attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Kalos theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99012101,
       "name": "Calm Fighter Water Transformation",
-      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its Water-type moves.",
+      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 12021909,
       "name": "Recharging Strike 9",
-      "description": "Has a chance (100%) of charging the user’s move gauge by one when its attack move hits. If the move has the multistrike effect tag, has a chance (100%) of charging the user’s move gauge by one for each hit.",
+      "description": "Charges the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, charges the user’s move gauge by one for each hit.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 18020901,
       "name": "Impervious",
       "description": "The user’s stats cannot be lowered.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -190,19 +194,32 @@
       },
       "passives": [
         {
+          "id": 28011401,
+          "name": "Kalos Pride",
+          "description": "Powers up the physical attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces physical attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99012201,
           "name": "Stoic Dark Transformation",
-          "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves."
+          "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+          "slot": 2,
+          "childPassives": []
         },
         {
           "id": 11012202,
           "name": "Restoring Strike 2",
-          "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit."
+          "description": "Has a chance ([Digit:2digits ]%) of restoring the user’s HP when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of restoring the user’s HP for each hit.",
+          "slot": 3,
+          "childPassives": []
         },
         {
           "id": 17011701,
           "name": "Status Immunity",
-          "description": "Status conditions cannot be inflicted on the user."
+          "description": "Status conditions cannot be inflicted on the user.",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

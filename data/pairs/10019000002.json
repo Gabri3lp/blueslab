@@ -154,17 +154,18 @@
     {
       "id": 99050401,
       "name": "Soaring Crescent Moon",
-      "description": "Normal-type moves become Flying-type moves. Applies Physical Move Break to the allied field of play when the user turns the field of play’s zone into a Flying Zone. Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user turns the field of play’s zone into a Flying Zone.",
+      "description": "Normal-type moves become [Name:ReferencedMessageTag Idx=\"5\" ]-type moves. Applies [Name:ReferencedMessageTag Idx=\"4\" ] to the allied field of play when the user turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"3\" ]. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+      "slot": 1,
       "childPassives": [
         {
           "id": 19071101,
           "name": "User Sets Flying Zone: Hoenn C (Phys) on Field",
-          "description": "Applies to the allied field of play when the user turns the field of play’s zone into a."
+          "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ]."
         },
         {
           "id": 17098309,
           "name": "User Sets Flying Zone: Team Physical Boost ↑1 9",
-          "description": "Increases the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user turns the field of play’s zone into a Flying Zone."
+          "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ]."
         },
         {
           "id": 13050201,
@@ -176,13 +177,15 @@
     {
       "id": 18130802,
       "name": "Entry: Team Attack & Sp. Atk ↓ 2",
-      "description": "Lowers the Attack and Sp. Atk of all opposing sync pairs by 2 stat ranks when the user enters a battle.",
+      "description": "Lowers the Attack and Sp. Atk of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13030101,
       "name": "Piercing Gaze",
       "description": "Moves never miss.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -198,7 +201,45 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99050401,
+          "name": "Soaring Crescent Moon",
+          "description": "Normal-type moves become [Name:ReferencedMessageTag Idx=\"5\" ]-type moves. Applies [Name:ReferencedMessageTag Idx=\"4\" ] to the allied field of play when the user turns the field of play’s zone into a [Name:ReferencedMessageTag Idx=\"3\" ]. Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ].",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 19071101,
+              "name": "User Sets Flying Zone: Hoenn C (Phys) on Field",
+              "description": "Applies [Name:ReferencedMessageTag Idx=\"1\" ] to the allied field of play when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ]."
+            },
+            {
+              "id": 17098309,
+              "name": "User Sets Flying Zone: Team Physical Boost ↑1 9",
+              "description": "Increases the [Name:ReferencedMessageTag Idx=\"1\" ] of all allied sync pairs by [Digit:1digit Idx=\"2\" ] [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when the user turns the field of play’s zone into a [Name:ReferencedMessageTag ]."
+            },
+            {
+              "id": 13050201,
+              "name": "Flying Shift",
+              "description": "Normal-type moves become Flying-type moves."
+            }
+          ]
+        },
+        {
+          "id": 18130802,
+          "name": "Entry: Team Attack & Sp. Atk ↓ 2",
+          "description": "Lowers the Attack and Sp. Atk of all opposing sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user enters a battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 13030101,
+          "name": "Piercing Gaze",
+          "description": "Moves never miss.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

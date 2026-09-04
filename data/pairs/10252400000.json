@@ -154,41 +154,44 @@
     {
       "id": 99035401,
       "name": "Ideal Weather for Training",
-      "description": "The power of the user’s High Horsepower is doubled when the weather is sunny. Turns the field of play’s zone into a Ground Zone when an ally turns the weather sunny. (A Ground Zone powers up Ground-type attacks.)",
+      "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "slot": 1,
       "childPassives": [
         {
           "id": 13084401,
           "name": "Sunny: High Horsepower Power ×2",
-          "description": "The power of the user’s High Horsepower is doubled when the weather is sunny."
+          "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny."
         },
         {
           "id": 19060601,
           "name": "Ally Sets Sunny W: Ground Zone",
-          "description": "Turns the field of play’s zone into a Ground Zone when an ally turns the weather sunny. (A Ground Zone powers up Ground-type attacks.)"
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         }
       ]
     },
     {
       "id": 99035501,
       "name": "Veteran Trainer’s Ingenuity",
-      "description": "Restores 1 MP of the user’s buddy move the first time its sync move is used each battle. Restores 1 MP of the user’s buddy move after using its max move.",
+      "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle. Restores [Digit:1digit ] MP of the user’s buddy move after using its max move.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 13061101,
           "name": "1st S-Move: Restore B-Move MP 1",
-          "description": "Restores 1 MP of the user’s buddy move the first time its sync move is used each battle."
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle."
         },
         {
           "id": 16021001,
           "name": "Max Move: Restore B-Move MP 1",
-          "description": "Restores 1 MP of the user’s buddy move after using its max move."
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move after using its max move."
         }
       ]
     },
     {
       "id": 99035601,
       "name": "Hot Hoenn Sun",
-      "description": "Powers up the user’s sync move and max move when the weather is sunny. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Restores 2 MP for the status moves of the user’s Pokémon after using the user’s max move.",
+      "description": "Powers up the user’s sync move and max move when the weather is sunny. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 16030909,
@@ -203,7 +206,7 @@
         {
           "id": 16021102,
           "name": "Max Move: Restore Status P-Move MP 2",
-          "description": "Restores 2 MP for the status moves of the user’s Pokémon after using the user’s max move."
+          "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move."
         }
       ]
     }
@@ -220,7 +223,67 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99035401,
+          "name": "Ideal Weather for Training",
+          "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny. Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 13084401,
+              "name": "Sunny: High Horsepower Power ×2",
+              "description": "The power of the user’s [Name:MoveId Idx=\"629\" ] is doubled when the weather is sunny."
+            },
+            {
+              "id": 19060601,
+              "name": "Ally Sets Sunny W: Ground Zone",
+              "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] when an ally turns the weather sunny. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            }
+          ]
+        },
+        {
+          "id": 99035501,
+          "name": "Veteran Trainer’s Ingenuity",
+          "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle. Restores [Digit:1digit ] MP of the user’s buddy move after using its max move.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 13061101,
+              "name": "1st S-Move: Restore B-Move MP 1",
+              "description": "Restores [Digit:1digit ] MP of the user’s buddy move the first time its sync move is used each battle."
+            },
+            {
+              "id": 16021001,
+              "name": "Max Move: Restore B-Move MP 1",
+              "description": "Restores [Digit:1digit ] MP of the user’s buddy move after using its max move."
+            }
+          ]
+        },
+        {
+          "id": 99035601,
+          "name": "Hot Hoenn Sun",
+          "description": "Powers up the user’s sync move and max move when the weather is sunny. When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move.",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 16030909,
+              "name": "Sunny: S-Moves & Max Moves ↑ 9",
+              "description": "Powers up the user’s sync move and max move when the weather is sunny."
+            },
+            {
+              "id": 23011401,
+              "name": "Targets Maxed",
+              "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets."
+            },
+            {
+              "id": 16021102,
+              "name": "Max Move: Restore Status P-Move MP 2",
+              "description": "Restores [Digit:1digit ] MP for the status moves of the user’s Pokémon after using the user’s max move."
+            }
+          ]
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

@@ -154,25 +154,29 @@
     {
       "id": 28010401,
       "name": "Unova Flag Bearer",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99014401,
       "name": "Relic Nostalgia",
-      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes Relic Song in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user changes forms while it is on the field of play.",
+      "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes [Name:MoveId Idx=\"547\" ] in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user changes forms while it is on the field of play.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99014501,
       "name": "Psychic Performance",
-      "description": "Normal-type moves and sync moves become Psychic type. Raises the user’s Sp. Def by 1 stat rank when its move targeting an opponent is successful.",
+      "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 99014601,
       "name": "Entrancing Melody",
-      "description": "Lowers the target’s Psychic Type Rebuff by 1 rank the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s Fighting Type Rebuff by 1 rank the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -190,9 +194,32 @@
       },
       "passives": [
         {
+          "id": 28010401,
+          "name": "Unova Flag Bearer",
+          "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with the Unova theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"2\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 99014401,
+          "name": "Relic Nostalgia",
+          "description": "Switches between Aria Forme and Pirouette Forme when the user’s attack move or sync move which includes [Name:MoveId Idx=\"547\" ] in its name is successful. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user changes forms while it is on the field of play.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
           "id": 99014502,
           "name": "Fighting Performance",
-          "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful."
+          "description": "Normal-type moves and sync moves become [Name:ReferencedMessageTag ] type. Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] when its move targeting an opponent is successful.",
+          "slot": 3,
+          "childPassives": []
+        },
+        {
+          "id": 99014601,
+          "name": "Entrancing Melody",
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Aria Forme. Lowers the target’s [Name:ReferencedMessageTag Idx=\"2\" ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user uses a move targeting the opponent each battle when it is in Pirouette Forme.",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

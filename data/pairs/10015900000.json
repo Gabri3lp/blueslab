@@ -154,24 +154,27 @@
     {
       "id": 29010901,
       "name": "Stone Myth",
-      "description": "Powers up the moves of all allied sync pairs by 10%. Reduces attack move damage taken by all allied sync pairs by 20%. The more allied sync pairs with the Rock theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is 30%, and the maximum damage reduction is 26%.)",
+      "description": "Powers up the moves of all allied sync pairs by [Digit:2digits ]%. Reduces attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 10% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"3\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"4\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 29020901,
       "name": "Stone Judgment",
-      "description": "Raises the Rock Type Rebuff of all allied sync pairs by 1 rank the first time the user enters a battle each battle. Lowers the Rock Type Rebuff of all opposing sync pairs by 1 rank the first time the user enters a battle each battle.",
+      "description": "Raises the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle. Lowers the [Name:ReferencedMessageTag ] of all opposing sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time the user enters a battle each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99037901,
       "name": "10,000 Light-Years Too Early",
-      "description": "Raises the user’s Attack by 6 stat ranks the first time it enters a battle each battle. Applies the Enduring effect to the user if its HP is full when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle. Applies the Enduring effect to the user if its HP is full when it enters a battle. Except in certain circumstances, successful hits with the user’s following attacks become critical hits: Pokémon’s moves or sync move.",
+      "slot": 3,
       "childPassives": [
         {
           "id": 18120406,
           "name": "Debut: Attack ↑ 6",
-          "description": "Raises the user’s Attack by 6 stat ranks the first time it enters a battle each battle."
+          "description": "Raises the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] the first time it enters a battle each battle."
         },
         {
           "id": 17040201,
@@ -188,13 +191,15 @@
     {
       "id": 99038001,
       "name": "Rock-Solid Will and Bonds",
-      "description": "Reduces the MP for the user’s Potion by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately 50% of its maximum HP. Increases the user’s Physical Moves ↑ Next effect by 2 ranks.",
+      "description": "Reduces the MP for the user’s [Name:MoveId Idx=\"19000\" ] by one and grants all of the following effects when its HP drops to half or below: Restores the user’s HP by approximately [Digit:2digits Idx=\"2\" ]% of its maximum HP. Increases the user’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ].",
+      "slot": 4,
       "childPassives": []
     },
     {
       "id": 19051901,
       "name": "1st S-Move: Rock Zone",
-      "description": "Turns the field of play’s zone into a Rock Zone the first time the user’s sync move is used each battle. (A Rock Zone powers up Rock-type attacks.)",
+      "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] the first time the user’s sync move is used each battle. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)",
+      "slot": 5,
       "childPassives": []
     }
   ],

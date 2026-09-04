@@ -154,19 +154,22 @@
     {
       "id": 18044209,
       "name": "Punishing Strike 9",
-      "description": "Has a chance (100%) of lowering the target’s Defense by 1 stat rank when the user’s attack move against it hits. If the move has the multistrike effect tag, has a chance (100%) of lowering the target’s Defense by 1 stat rank for each hit.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it hits. If the move has the Multistrike effect tag, lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 12021904,
       "name": "Recharging Strike 4",
-      "description": "Has a chance (50%) of charging the user’s move gauge by one when its attack move hits. If the move has the multistrike effect tag, has a chance (50%) of charging the user’s move gauge by one for each hit.",
+      "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 16015101,
       "name": "Critical Sync",
       "description": "Except in certain circumstances, the user’s sync move lands as a critical hit.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 18044209,
+          "name": "Punishing Strike 9",
+          "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s attack move against it hits. If the move has the Multistrike effect tag, lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] for each hit.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 12021904,
+          "name": "Recharging Strike 4",
+          "description": "Has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one when its attack move hits. If the move has the Multistrike effect tag, has a chance ([Digit:2digits ]%) of charging the user’s move gauge by one for each hit.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 16015101,
+          "name": "Critical Sync",
+          "description": "Except in certain circumstances, the user’s sync move lands as a critical hit.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

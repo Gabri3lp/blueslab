@@ -154,30 +154,33 @@
     {
       "id": 33010501,
       "name": "Debut: Grass S-Tera",
-      "description": "The user Sync Terastallizes into Grass type the first time it enters a battle each battle.",
+      "description": "The user Sync Terastallizes into [Name:ReferencedMessageTag ] type the first time it enters a battle each battle.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99028901,
       "name": "Bolder Sister",
-      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by 1 stat rank when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+      "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+      "slot": 2,
       "childPassives": [
         {
           "id": 18110609,
           "name": "Hit: Team Attack ↑ & Sp. Atk ↑ 9",
-          "description": "Has a chance (100%) of raising the Attack and Sp. Atk of all allied sync pairs by 1 stat rank when the user’s attack move is successful."
+          "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful."
         },
         {
           "id": 17044809,
           "name": "Combo Freebie 9",
-          "description": "Has a chance (100%) of applying the Free Move Next effect to the user when its attack move is successful."
+          "description": "Applies the Free Move Next effect to the user when its attack move is successful."
         }
       ]
     },
     {
       "id": 11012209,
       "name": "Restoring Strike 9",
-      "description": "Has a chance (100%) of restoring the user’s HP when its attack move hits. If the move has the multistrike effect tag, has a chance (100%) of restoring the user’s HP for each hit.",
+      "description": "Restores the user’s HP when its attack move hits. If the move has the multistrike effect tag, restores the user’s HP for each hit.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -197,7 +200,45 @@
         {
           "id": 99028801,
           "name": "Kitakami Hospitality",
-          "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after your team’s sync pair uses their sync move. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move."
+          "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after your team’s sync pair uses their sync move. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move.",
+          "slot": 1,
+          "childPassives": [
+            {
+              "id": 11015502,
+              "name": "Team S-Move: Team HP Recovery 2",
+              "description": "Restores the HP of all allied sync pairs by approximately [Digit:2digits ]% of their maximum HP after your team’s sync pair uses their sync move."
+            },
+            {
+              "id": 17085109,
+              "name": "Team S-Move: Team Phys & Spec Boost ↑1 9",
+              "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] after your team’s sync pair uses their sync move."
+            }
+          ]
+        },
+        {
+          "id": 99028901,
+          "name": "Bolder Sister",
+          "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful. Applies the Free Move Next effect to the user when its attack move is successful.",
+          "slot": 2,
+          "childPassives": [
+            {
+              "id": 18110609,
+              "name": "Hit: Team Attack ↑ & Sp. Atk ↑ 9",
+              "description": "Raises the Attack and Sp. Atk of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] when the user’s attack move is successful."
+            },
+            {
+              "id": 17044809,
+              "name": "Combo Freebie 9",
+              "description": "Applies the Free Move Next effect to the user when its attack move is successful."
+            }
+          ]
+        },
+        {
+          "id": 11012209,
+          "name": "Restoring Strike 9",
+          "description": "Restores the user’s HP when its attack move hits. If the move has the multistrike effect tag, restores the user’s HP for each hit.",
+          "slot": 3,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 4042

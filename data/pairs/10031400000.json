@@ -154,19 +154,22 @@
     {
       "id": 14010401,
       "name": "2 P-Moves: Doom Desire",
-      "description": "Every two times the user’s Pokémon uses a move, deals additional damage to the opponent targeted by the second move. (Type: Steel, Category: Special) This additional damage is not affected by some status changes.",
+      "description": "Every two times the user’s Pokémon uses a move, deals additional damage to the opponent targeted by the second move. (Type: [Name:ReferencedMessageTag ], Category: [Name:ReferencedMessageTag Idx=\"1\" ]) This additional damage is not affected by some status changes.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18107901,
       "name": "Use Doom Desire: Team Same Stat ↑2",
-      "description": "Raises one of the following stats of all allied sync pairs by 2 stat ranks at random when the user uses 2 P-Moves: Doom Desire: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "description": "Raises one of the following stats of all allied sync pairs by [Digit:1digit ] stat [EN:Qty S=\"rank\" P=\"ranks\" ] at random when the user uses [Name:PassiveSkillId Idx=\"14010401\" ]: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. (The same stat is raised for all allied sync pairs.)",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 18108009,
       "name": "P-Move on Opp: Sp. Def ↓2 9",
-      "description": "Has a chance (100%) of lowering the target’s Sp. Def by 2 stat ranks when the user’s Pokémon uses a move targeting that opponent.",
+      "description": "Lowers the target’s [Name:ReferencedMessageTag ] by [Digit:1digit Idx=\"1\" ] stat [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user’s Pokémon uses a move targeting that opponent.",
+      "slot": 3,
       "childPassives": []
     }
   ],

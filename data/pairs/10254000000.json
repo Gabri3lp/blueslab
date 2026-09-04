@@ -154,19 +154,22 @@
     {
       "id": 17049604,
       "name": "Hot to the Touch 4",
-      "description": "Has a chance (50%) of leaving an opponent that attacked the user burned when the user is hit by an attack move.",
+      "description": "Has a chance ([Digit:2digits ]%) of leaving an opponent that attacked the user burned when the user is hit by an attack move.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 18041309,
       "name": "Posthaste 9",
-      "description": "Has a chance (100%) of raising the user’s Speed by two stat ranks when it is hit by an attack move.",
+      "description": "Raises the user’s Speed by two stat ranks when it is hit by an attack move.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13013201,
       "name": "Hunter’s Instinct",
       "description": "The more the target’s Speed is lowered, the more it powers up the user’s moves.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 17049604,
+          "name": "Hot to the Touch 4",
+          "description": "Has a chance ([Digit:2digits ]%) of leaving an opponent that attacked the user burned when the user is hit by an attack move.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 18041309,
+          "name": "Posthaste 9",
+          "description": "Raises the user’s Speed by two stat ranks when it is hit by an attack move.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 13013201,
+          "name": "Hunter’s Instinct",
+          "description": "The more the target’s Speed is lowered, the more it powers up the user’s moves.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

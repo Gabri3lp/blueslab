@@ -154,30 +154,33 @@
     {
       "id": 99023201,
       "name": "The Competitive Heir",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit ] [EN:Qty S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move.",
+      "slot": 1,
       "childPassives": [
         {
           "id": 17079609,
           "name": "Take Hit: Team Physical Boost ↑1 9",
-          "description": "Has a chance (100%) of increasing the Physical Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move."
+          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
         },
         {
           "id": 17079709,
           "name": "Take Hit: Team Special Boost ↑1 9",
-          "description": "Has a chance (100%) of increasing the Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by an attack move."
+          "description": "Increases the [Name:ReferencedMessageTag ] of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by an attack move."
         }
       ]
     },
     {
       "id": 99023301,
       "name": "Well-Baked Strategy",
-      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user is hit by Fire-type attack moves or Fire-type sync moves.",
+      "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by [Digit:1digit Idx=\"1\" ] [EN:Qty Ref=\"1\" S=\"rank\" P=\"ranks\" ] when the user is hit by [Name:ReferencedMessageTag ]-type attack moves or [Name:ReferencedMessageTag ]-type sync moves.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 24012101,
       "name": "Group Fire Guard",
       "description": "Reduces the damage all allied sync pairs take when attacked by Fire-type moves.",
+      "slot": 3,
       "childPassives": []
     }
   ],

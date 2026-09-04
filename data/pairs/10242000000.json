@@ -154,19 +154,22 @@
     {
       "id": 99010501,
       "name": "Piercing Blows",
-      "description": "Grants all of the following effects when the user is attacking: Ignores the target’s passive skills that would reduce the damage of attacks. Ignores the target’s passive skills that would protect the target against a critical hit. Ignores the target’s Enduring effect.",
+      "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 13017403,
       "name": "Chase Down 3",
       "description": "Powers up the user’s moves when the target’s Speed is lowered.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 23011401,
       "name": "Targets Maxed",
       "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99010501,
+          "name": "Piercing Blows",
+          "description": "Grants all of the following effects when the user is attacking:\nIgnores the target’s passive skills that would reduce the damage of attacks.\nIgnores the target’s passive skills that would protect the target against a critical hit.\nIgnores the target’s Enduring effect.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 13017403,
+          "name": "Chase Down 3",
+          "description": "Powers up the user’s moves when the target’s Speed is lowered.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 23011401,
+          "name": "Targets Maxed",
+          "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

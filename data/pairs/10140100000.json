@@ -154,19 +154,22 @@
     {
       "id": 99011001,
       "name": "Giovanni’s Cunning",
-      "description": "Normal-type moves become Ground-type moves. The user’s moves never miss.",
+      "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 16014605,
       "name": "MAX Double Down 5",
       "description": "Powers up the user’s max moves that are super effective.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13014505,
       "name": "Hit the Gas 5",
       "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves.",
+      "slot": 3,
       "childPassives": []
     }
   ],
@@ -182,7 +185,29 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 99011001,
+          "name": "Giovanni’s Cunning",
+          "description": "Normal-type moves become [Name:ReferencedMessageTag ]-type moves. The user’s moves never miss.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 16014605,
+          "name": "MAX Double Down 5",
+          "description": "Powers up the user’s max moves that are super effective.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 13014505,
+          "name": "Hit the Gas 5",
+          "description": "Increases the amount of move gauge slots needed to use attack moves by one and powers up moves.",
+          "slot": 3,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],

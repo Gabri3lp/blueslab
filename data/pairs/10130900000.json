@@ -154,25 +154,29 @@
     {
       "id": 28011501,
       "name": "Kalos Spirit",
-      "description": "Powers up the special attack moves of all allied sync pairs by 20%. Reduces special attack move damage taken by all allied sync pairs by 25%. The more allied sync pairs with the Kalos theme you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by 15% and reduces damage by 3%. The maximum power-up is 50%, and the maximum damage reduction is 31%.)",
+      "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99011901,
       "name": "Dashing Dark Transformation",
-      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its Dark-type moves.",
+      "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 13030201,
       "name": "No Quarter",
       "description": "Maximizes the number of times the user hits with a move that has the multistrike effect tag when that move is successful.",
+      "slot": 3,
       "childPassives": []
     },
     {
       "id": 18102209,
       "name": "Unfortunate Strike 9",
-      "description": "Has a chance (100%) of lowering one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, has a chance (100%) of lowering one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "description": "Lowers one of the target’s following stats by one stat rank at random when the user’s attack move against it hits: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness. If the move has the multistrike effect tag, lowers one of the target’s following stats by one stat rank at random for each hit: Attack, Defense, Sp. Atk, Sp. Def, Speed, accuracy, or evasiveness.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -190,19 +194,32 @@
       },
       "passives": [
         {
+          "id": 28011501,
+          "name": "Kalos Spirit",
+          "description": "Powers up the special attack moves of all allied sync pairs by [Digit:2digits ]%. Reduces special attack move damage taken by all allied sync pairs by [Digit:2digits Idx=\"1\" ]%. The more allied sync pairs with [Name:ReferencedMessageTag Idx=\"2\" ] you have on your team, the higher these percentages are. (Each additional sync pair powers up moves by [Digit:2digits Idx=\"3\" ]% and reduces damage by 3%. The maximum power-up is [Digit:2digits Idx=\"4\" ]%, and the maximum damage reduction is [Digit:2digits Idx=\"5\" ]%.)",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
           "id": 99012001,
           "name": "Wondrous Water Transformation",
-          "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves."
+          "description": "Replaces some of the user’s passive skills and sync move with different passive skills and a sync move just before using its [Name:ReferencedMessageTag ]-type moves.",
+          "slot": 2,
+          "childPassives": []
         },
         {
           "id": 17041302,
           "name": "Staggering 2",
-          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful."
+          "description": "Has a chance ([Digit:2digits ]%) of making the target flinch when the user’s attack move against it is successful.",
+          "slot": 3,
+          "childPassives": []
         },
         {
           "id": 18049109,
           "name": "Discombobulate 9",
-          "description": "Lowers the target’s accuracy by one stat rank when the user’s attack move against it is successful."
+          "description": "Lowers the target’s accuracy by one stat rank when the user’s attack move against it is successful.",
+          "slot": 4,
+          "childPassives": []
         }
       ],
       "terastalMoveId": 0

@@ -154,34 +154,37 @@
     {
       "id": 29030801,
       "name": "Galar Rush",
-      "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by 1 the first time your team enters a battle each battle instead. The more allied sync pairs with the Galar theme you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+      "slot": 1,
       "childPassives": []
     },
     {
       "id": 99039401,
       "name": "Hometown Cheers",
-      "description": "Raises the user’s Attack by 4 stat ranks the first time it turns the field of play’s zone into an EX Dark Zone each battle. Raises the user’s critical-hit rate by 3 stat ranks the first time it turns the field of play’s zone into an EX Dark Zone each battle.",
+      "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it turns the field of play’s zone into an [Name:ReferencedMessageTag ] each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] the first time it turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"3\" ] each battle.",
+      "slot": 2,
       "childPassives": []
     },
     {
       "id": 99039501,
       "name": "Returning Cheers with a Smile",
-      "description": "Grants all of the following effects after the user uses its max move: Reduces the user’s sync move countdown by 1. Turns the field of play’s zone into a Dark Zone. (A Dark Zone powers up Dark-type attacks.) Restores 1 MP of the user’s Super Effective ↑.",
+      "description": "Grants all of the following effects after the user uses its max move: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Restores [Digit:1digit Idx=\"2\" ] MP of the user’s [Name:MoveId Idx=\"19160\" ].",
+      "slot": 3,
       "childPassives": [
         {
           "id": 15011701,
           "name": "MAX Countdown 1",
-          "description": "Reduces the user’s sync move countdown by 1 after using its max move."
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move."
         },
         {
           "id": 19063601,
           "name": "Max Move: Dark Zone",
-          "description": "Turns the field of play’s zone into a Dark Zone after using the user’s max move. (A Dark Zone powers up Dark-type attacks.)"
+          "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s max move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
         },
         {
           "id": 16021501,
           "name": "Max Move: Restore “Super Effective ↑” MP 1",
-          "description": "Restores 1 MP of the user’s Super Effective ↑ after using its max move."
+          "description": "Restores [Digit:1digit ] MP of the user’s [Name:MoveId Idx=\"19160\" ] after using its max move."
         }
       ]
     },
@@ -189,6 +192,7 @@
       "id": 23011401,
       "name": "Targets Maxed",
       "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets.",
+      "slot": 4,
       "childPassives": []
     }
   ],
@@ -204,7 +208,52 @@
         "spd": 1.0,
         "spe": 1.0
       },
-      "passives": [],
+      "passives": [
+        {
+          "id": 29030801,
+          "name": "Galar Rush",
+          "description": "Reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time it enters a battle each battle. When used in a co-op battle, reduces the user’s sync move countdown by [Digit:1digit Idx=\"1\" ] the first time your team enters a battle each battle instead. The more allied sync pairs with [Name:ReferencedMessageTag ] you have on your team, the greater the reduction is. (Each additional sync pair increases the reduction by one, and the maximum reduction is three.) The effects do not stack if you have more than one sync pair on your team with passive skills of the same name.",
+          "slot": 1,
+          "childPassives": []
+        },
+        {
+          "id": 99039401,
+          "name": "Hometown Cheers",
+          "description": "Raises the user’s [Name:ReferencedMessageTag Idx=\"1\" ] by [Digit:1digit Idx=\"2\" ] stat [EN:Qty Ref=\"2\" S=\"rank\" P=\"ranks\" ] the first time it turns the field of play’s zone into an [Name:ReferencedMessageTag ] each battle. Raises the user’s [Name:ReferencedMessageTag Idx=\"4\" ] by [Digit:1digit Idx=\"5\" ] stat [EN:Qty Ref=\"5\" S=\"rank\" P=\"ranks\" ] the first time it turns the field of play’s zone into an [Name:ReferencedMessageTag Idx=\"3\" ] each battle.",
+          "slot": 2,
+          "childPassives": []
+        },
+        {
+          "id": 99039501,
+          "name": "Returning Cheers with a Smile",
+          "description": "Grants all of the following effects after the user uses its max move: Reduces the user’s sync move countdown by [Digit:1digit Idx=\"2\" ]. Turns the field of play’s zone into a [Name:ReferencedMessageTag ]. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.) Restores [Digit:1digit Idx=\"2\" ] MP of the user’s [Name:MoveId Idx=\"19160\" ].",
+          "slot": 3,
+          "childPassives": [
+            {
+              "id": 15011701,
+              "name": "MAX Countdown 1",
+              "description": "Reduces the user’s sync move countdown by [Digit:1digit ] after using its max move."
+            },
+            {
+              "id": 19063601,
+              "name": "Max Move: Dark Zone",
+              "description": "Turns the field of play’s zone into a [Name:ReferencedMessageTag ] after using the user’s max move. (A [Name:ReferencedMessageTag ] powers up [Name:ReferencedMessageTag Idx=\"1\" ]-type attacks.)"
+            },
+            {
+              "id": 16021501,
+              "name": "Max Move: Restore “Super Effective ↑” MP 1",
+              "description": "Restores [Digit:1digit ] MP of the user’s [Name:MoveId Idx=\"19160\" ] after using its max move."
+            }
+          ]
+        },
+        {
+          "id": 23011401,
+          "name": "Targets Maxed",
+          "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets.",
+          "slot": 4,
+          "childPassives": []
+        }
+      ],
       "terastalMoveId": 0
     }
   ],
