@@ -192,11 +192,11 @@
                         {
                             <span class="badge bg-danger text-light py-1 px-1.5" style="font-size: 0.68rem; white-space: nowrap;">SA +10% Active</span>
                         }
-                        <button class="btn btn-sm btn-outline-secondary py-1 px-2.5 text-light text-nowrap d-flex align-items-center gap-1"
-                                style="font-size: 0.75rem; height: 38px;"
+                        <button class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center text-light"
+                                style="height: 38px; width: 38px; min-width: 38px;"
+                                title="@(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")"
                                 @onclick="() => ShowDetailedStats = !ShowDetailedStats">
-                            <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down")"></i>
-                            <span>@(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")</span>
+                            <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down")" style="font-size: 0.95rem;"></i>
                         </button>
                     </div>
                 </div>
