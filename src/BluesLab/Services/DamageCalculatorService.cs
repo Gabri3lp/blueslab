@@ -1306,13 +1306,22 @@ public class DamageCalculatorService
                 double descMult = 1.0;
                 string desc = NormalizeMoveName(move.Description);
 
-                // 1. Dual Screens / Damage Reductions in move descriptions
-                if (desc.Contains("Physical Damage Reduction effect and Special Damage Reduction effect apply to the allied field", StringComparison.OrdinalIgnoreCase))
+                // 1. Dual Screens / Damage Reductions in move descriptions (e.g. Urbain & Meganium Four-Fleur Solar Beam)
+                bool hasDualScreenText = desc.Contains("Physical Damage Reduction effect", StringComparison.OrdinalIgnoreCase) &&
+                                         desc.Contains("Special Damage Reduction effect", StringComparison.OrdinalIgnoreCase) &&
+                                         desc.Contains("allied field", StringComparison.OrdinalIgnoreCase);
+
+                if (hasDualScreenText)
                 {
                     if (ally.PhysicalDamageReduction && ally.SpecialDamageReduction)
                     {
                         descMult *= 2.0;
                         pills.Add(new MultiplierPill { Label = "Move Scaling (Dual Screens)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    else if (ally.PhysicalDamageReduction || ally.SpecialDamageReduction)
+                    {
+                        descMult *= 1.5;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Screen)", Value = "×1.5", Color = "#fd79a8" });
                     }
                 }
                 else if (desc.Contains("Physical Damage Reduction effect applies to the allied field", StringComparison.OrdinalIgnoreCase) && desc.Contains("increases 50%", StringComparison.OrdinalIgnoreCase))
@@ -1391,21 +1400,22 @@ public class DamageCalculatorService
                     }
                 }
 
-                // 7. Mega Evolved in description (doubles or percentage like 50%)
-                if (desc.Contains("Mega Evolved", StringComparison.OrdinalIgnoreCase))
+                // 7. Mega Evolved increases move power (e.g. Arc Suit Blue Sacred Hurricane, Harmony Rushing Rapids Aqua Jet)
+                string normDescQuotes = desc.Replace("’", "'");
+                bool megaDoublesPower = normDescQuotes.Contains("Mega Evolved, also doubles", StringComparison.OrdinalIgnoreCase);
+                bool megaBoosts50 = normDescQuotes.Contains("Mega Evolved, also increases this attack's power by 50%", StringComparison.OrdinalIgnoreCase);
+
+                if (ally.FormIndex > 0)
                 {
-                    if (ally.FormIndex > 0)
+                    if (megaDoublesPower)
                     {
-                        if (desc.Contains("doubles", StringComparison.OrdinalIgnoreCase) || desc.Contains("doubled", StringComparison.OrdinalIgnoreCase))
-                        {
-                            descMult *= 2.0;
-                            pills.Add(new MultiplierPill { Label = "Move Scaling (Mega)", Value = "×2.0", Color = "#fd79a8" });
-                        }
-                        else if (desc.Contains("50%", StringComparison.OrdinalIgnoreCase) || desc.Contains("by 50%", StringComparison.OrdinalIgnoreCase))
-                        {
-                            descMult *= 1.5;
-                            pills.Add(new MultiplierPill { Label = "Move Scaling (Mega +50%)", Value = "×1.5", Color = "#fd79a8" });
-                        }
+                        descMult *= 2.0;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Mega)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                    else if (megaBoosts50)
+                    {
+                        descMult *= 1.5;
+                        pills.Add(new MultiplierPill { Label = "Move Scaling (Mega +50%)", Value = "×1.5", Color = "#fd79a8" });
                     }
                 }
 

@@ -682,6 +682,46 @@ def run_damage_audit(log_mode="a"):
     print(f"[*] Total de compis Dinamax identificados: {dynamax_pairs_count}")
     print(f"[*] Total de Max Moves auditados:        {max_moves_audited}")
 
+    # 5. Audit Move Scaling under Mega Evolution (Urbain & Meganium, Arc Suit Blue, Harmony)
+    print("[*] Auditando escalado de movimientos bajo Megaevolución (Meganium, Pidgeot, Feraligatr)...")
+    
+    def eval_mega_scaling(desc, is_mega):
+        norm = desc.replace("’", "'")
+        doubles = "mega evolved, also doubles" in norm.lower()
+        p50 = "mega evolved, also increases this attack's power by 50%" in norm.lower()
+        if is_mega:
+            if doubles: return 2.0
+            if p50: return 1.5
+        return 1.0
+
+    mega_move_tests = [
+        ("10367000000", "Urbain & Meganium", "Four-Fleur Solar Beam", 
+         "The preparation period is skipped when the weather is sunny or if the user's Meganium has Mega Evolved, and the user will attack right away. The power of this move is not lowered even if there are multiple targets. This attack's power increases 50% when the Physical Damage Reduction effect applies to the allied field of play. This attack's power increases 50% when the Special Damage Reduction effect applies to the allied field of play. (This attack's power is doubled if both the Physical Damage Reduction effect and Special Damage Reduction effect apply to the allied field of play.)",
+         True, 1.0, "Urbain & Meganium Four-Fleur Solar Beam must NOT scale by 2x when Mega Evolved (it only skips preparation)"),
+        ("10021800000", "Arc Suit Blue & Pidgeot", "Sacred Hurricane",
+         "Never misses. Leaves the target confused. The power of this move is not lowered even if there are multiple targets. If the user's Pidgeot has Mega Evolved, also doubles this attack's power. When the user's team does not have a sync buff, also reduces the user's sync move countdown by 3.",
+         True, 2.0, "Arc Suit Blue Sacred Hurricane must double attack power (2.0x) when Mega Evolved"),
+        ("10243400000", "Harmony & Feraligatr", "Rushing Rapids Aqua Jet",
+         "Reduces the user's sync move countdown by 2. Increases the user's Physical Moves ↑ Next effect by 3 ranks. If the user's Feraligatr has Mega Evolved, also increases this attack's power by 50%.",
+         True, 1.5, "Harmony Rushing Rapids Aqua Jet must increase attack power by +50% (1.5x) when Mega Evolved")
+    ]
+
+    for p_id, p_name, m_name, m_desc, is_mega, exp_mult, reason in mega_move_tests:
+        total_checks += 1
+        calc_mult = eval_mega_scaling(m_desc, is_mega)
+        if abs(calc_mult - exp_mult) < 0.001:
+            passed_checks += 1
+        else:
+            discrepancies.append({
+                "category": "Mega Move Scaling Rule",
+                "id": p_id,
+                "name": p_name,
+                "field": f"Move '{m_name}' Mega Scaling (isMega={is_mega})",
+                "expected": exp_mult,
+                "actual": calc_mult,
+                "reason": reason
+            })
+
     # Summary
     fidelity = (passed_checks / total_checks * 100.0) if total_checks > 0 else 0.0
     print("-" * 60)
