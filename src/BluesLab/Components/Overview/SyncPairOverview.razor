@@ -162,6 +162,10 @@
                                     gBonus += sb;
                             }
 
+                            double inBattleMult = Field != null
+                                ? CalcService.GetInBattleStatMultiplier(s, Ally, Field, GridState.ActiveCells)
+                                : 1.0;
+
                             int total = CalcService.CalcTotalStat(
                                 s,
                                 rawBase,
@@ -169,13 +173,14 @@
                                 potential: potVal,
                                 exBonus: exVal,
                                 formMult: formMult,
+                                inBattleStatMult: inBattleMult,
                                 hasSa: Pair.HasSuperAwakening,
                                 saLevel: Ally.SuperAwakeningLevel,
                                 role: Pair.Role,
                                 gridStat: gBonus
                             );
 
-                            string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#} => Total: {total}";
+                            string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#}{(inBattleMult != 1.0 ? $" | Battle: x{inBattleMult:0.##}" : "")} => Total: {total}";
 
                             <div class="col" style="padding: 0 2px;">
                                 <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: pointer;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
@@ -291,6 +296,10 @@
                                                 gBonus += sb;
                                         }
 
+                                        double inBattleMult = Field != null
+                                            ? CalcService.GetInBattleStatMultiplier(s, Ally, Field, GridState.ActiveCells)
+                                            : 1.0;
+
                                         int total = CalcService.CalcTotalStat(
                                             s,
                                             rawBase,
@@ -298,6 +307,7 @@
                                             potential: potVal,
                                             exBonus: exVal,
                                             formMult: formMult,
+                                            inBattleStatMult: inBattleMult,
                                             hasSa: Pair.HasSuperAwakening,
                                             saLevel: Ally.SuperAwakeningLevel,
                                             role: Pair.Role,
@@ -645,6 +655,7 @@
 @code {
     [Parameter] public SyncPairDetail? Pair { get; set; }
     [Parameter] public CombatantState Ally { get; set; } = new();
+    [Parameter] public FieldState? Field { get; set; }
     [Parameter] public int MoveLevel { get; set; } = 5;
     [Parameter] public EventCallback<int> MoveLevelChanged { get; set; }
 

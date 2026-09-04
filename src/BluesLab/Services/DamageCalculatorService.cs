@@ -196,7 +196,8 @@ public class DamageCalculatorService
         bool ignoreBurnPenalty = false,
         int mitigation = 0,
         bool critOffense = false,
-        bool critDefense = false)
+        bool critDefense = false,
+        double inBattleStatMult = 1.0)
     {
         int baseVal = jsonStat;
         if (hasSa && saLevel >= 1)
@@ -242,16 +243,203 @@ public class DamageCalculatorService
             variation *= 0.8;
         }
 
-        int calculated = (int)Math.Floor(beforeStage * variation);
+        int calculated = (int)Math.Floor(beforeStage * variation * inBattleStatMult);
 
         // When critical offense, attacker ignores negative stat stages
         if (critOffense)
         {
-            int basePlusGrid = beforeStage;
+            int basePlusGrid = (int)Math.Floor(beforeStage * inBattleStatMult);
             return Math.Max(calculated, basePlusGrid);
         }
 
         return Math.Max(1, calculated);
+    }
+
+    public double GetInBattleStatMultiplier(
+        string stat,
+        CombatantState combatant,
+        FieldState field,
+        HashSet<long>? activeGridCells = null,
+        List<MultiplierPill>? pills = null)
+    {
+        double mult = 1.0;
+        var pair = combatant.Pair;
+        if (pair == null) return mult;
+
+        string s = stat.ToLowerInvariant().Trim();
+        var passives = pair.Passives ?? new List<PassiveItem>();
+        if (combatant.FormIndex > 0 && pair.Variations != null && combatant.FormIndex <= pair.Variations.Count && pair.Variations[combatant.FormIndex - 1].Passives != null)
+        {
+            passives = pair.Variations[combatant.FormIndex - 1].Passives;
+        }
+
+        bool hasWeather = !string.IsNullOrWhiteSpace(field.Weather) && !field.Weather.Equals("None", StringComparison.OrdinalIgnoreCase);
+        bool hasTerrain = !string.IsNullOrWhiteSpace(field.Terrain) && !field.Terrain.Equals("None", StringComparison.OrdinalIgnoreCase);
+        bool hasZone = !string.IsNullOrWhiteSpace(field.Zone) && !field.Zone.Equals("None", StringComparison.OrdinalIgnoreCase);
+        bool hasField = hasWeather || hasTerrain || hasZone;
+
+        foreach (var ps in passives)
+        {
+            long pid = ps.Id;
+            string pname = ps.Name ?? string.Empty;
+
+            // Weather Buff (23011101): +30% to Atk, Def, SpA, SpD, Spe when weather conditions are in effect
+            if (pid == 23011101 || pname.Equals("Weather Buff", StringComparison.OrdinalIgnoreCase) || pname.Contains("Clima Favorable", StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasWeather && (s == "atk" || s == "def" || s == "spa" || s == "spd" || s == "spe"))
+                {
+                    mult *= 1.30;
+                    pills?.Add(new MultiplierPill { Label = "Weather Buff", Value = "×1.3", Color = "#e67e22" });
+                }
+            }
+
+            // Sedimentary (23010401): +30% to Def, SpD in Sandstorm
+            if (pid == 23010401 || pname.Equals("Sedimentary", StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasWeather && field.Weather.Equals("Sandstorm", StringComparison.OrdinalIgnoreCase) && (s == "def" || s == "spd"))
+                {
+                    mult *= 1.30;
+                    pills?.Add(new MultiplierPill { Label = "Sedimentary", Value = "×1.3", Color = "#d35400" });
+                }
+            }
+
+            // Hail and Hearty (23011001): +30% to Def, SpD in Hail
+            if (pid == 23011001 || pname.Equals("Hail and Hearty", StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasWeather && field.Weather.Equals("Hail", StringComparison.OrdinalIgnoreCase) && (s == "def" || s == "spd"))
+                {
+                    mult *= 1.30;
+                    pills?.Add(new MultiplierPill { Label = "Hail and Hearty", Value = "×1.3", Color = "#74b9ff" });
+                }
+            }
+
+            // Healthy Strength 5 (23010505): +50% to Atk when HP >= 50%
+            if (pid == 23010505 || pname.Equals("Healthy Strength 5", StringComparison.OrdinalIgnoreCase) || pname.Contains("Healthy Strength"))
+            {
+                if (s == "atk")
+                {
+                    mult *= 1.50;
+                    pills?.Add(new MultiplierPill { Label = "Healthy Strength", Value = "×1.5", Color = "#e74c3c" });
+                }
+            }
+
+            // Fortify 3 (23010903): +30% to Def, SpD when HP <= 50%
+            if (pid == 23010903 || pname.Contains("Fortify", StringComparison.OrdinalIgnoreCase))
+            {
+                if (combatant.HpPercent <= 50 && (s == "def" || s == "spd"))
+                {
+                    mult *= 1.30;
+                    pills?.Add(new MultiplierPill { Label = "Fortify", Value = "×1.3", Color = "#1abc9c" });
+                }
+            }
+
+            // Allied Field Effect Multiplier 2 (23011502): +20% to all 5 stats
+            if (pid == 23011502 || pname.Contains("Allied Field Effect Multiplier", StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasField && (s == "atk" || s == "def" || s == "spa" || s == "spd" || s == "spe"))
+                {
+                    mult *= 1.20;
+                    pills?.Add(new MultiplierPill { Label = "Allied Field Boost", Value = "×1.2", Color = "#16a085" });
+                }
+            }
+
+            // Rules of the Enchanted Land (99016701): +20% Def, SpD
+            if (pid == 99016701 || pname.Contains("Rules of the Enchanted Land", StringComparison.OrdinalIgnoreCase))
+            {
+                if (hasField && (s == "def" || s == "spd"))
+                {
+                    mult *= 1.20;
+                    pills?.Add(new MultiplierPill { Label = "Enchanted Land", Value = "×1.2", Color = "#9b59b6" });
+                }
+            }
+
+            // Becalming Beauty (99027801): +50% Def, SpD when with status
+            if (pid == 99027801 || pname.Contains("Becalming Beauty", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!string.IsNullOrEmpty(combatant.StatusCondition) && (s == "def" || s == "spd"))
+                {
+                    mult *= 1.50;
+                    pills?.Add(new MultiplierPill { Label = "Becalming Beauty", Value = "×1.5", Color = "#00cec9" });
+                }
+            }
+
+            // Mind over Matter 4 (23011604): +40% SpA
+            if (pid == 23011604 || pname.Contains("Mind over Matter", StringComparison.OrdinalIgnoreCase))
+            {
+                if (s == "spa")
+                {
+                    mult *= 1.40;
+                    pills?.Add(new MultiplierPill { Label = "Mind over Matter", Value = "×1.4", Color = "#e84393" });
+                }
+            }
+
+            // Soul-Clad Rage (99044601): +50% to all 5 stats
+            if (pid == 99044601 || pname.Contains("Soul-Clad Rage", StringComparison.OrdinalIgnoreCase))
+            {
+                if (s == "atk" || s == "def" || s == "spa" || s == "spd" || s == "spe")
+                {
+                    mult *= 1.50;
+                    pills?.Add(new MultiplierPill { Label = "Soul-Clad Rage", Value = "×1.5", Color = "#6c5ce7" });
+                }
+            }
+
+            // While S-Tera: 5 Stats ↑ 1 (23012301): +10% to all 5 stats
+            if (pid == 23012301 || pname.Contains("While S-Tera", StringComparison.OrdinalIgnoreCase))
+            {
+                bool isTera = combatant.FormIndex > 0 && pair.Variations != null && combatant.FormIndex <= pair.Variations.Count &&
+                              (pair.Variations[combatant.FormIndex - 1].FormName.Contains("Tera", StringComparison.OrdinalIgnoreCase) ||
+                               string.Equals(pair.Variations[combatant.FormIndex - 1].Type, "Stellar", StringComparison.OrdinalIgnoreCase));
+                if (isTera && (s == "atk" || s == "def" || s == "spa" || s == "spd" || s == "spe"))
+                {
+                    mult *= 1.10;
+                    pills?.Add(new MultiplierPill { Label = "S-Tera 5 Stats", Value = "×1.1", Color = "#fdcb6e" });
+                }
+            }
+        }
+
+        // Active Grid Cells
+        if (activeGridCells != null && pair.Grid != null)
+        {
+            foreach (var cellId in activeGridCells)
+            {
+                var cell = pair.Grid.FirstOrDefault(c => c.CellId == cellId);
+                if (cell == null) continue;
+                long abId = cell.AbilityId;
+                string cTitle = cell.Title ?? string.Empty;
+
+                // Sand Screen (2301010100000): +50% SpD in Sandstorm
+                if (abId == 2301010100000 || cTitle.Contains("Sand Screen", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (s == "spd" && hasWeather && field.Weather.Equals("Sandstorm", StringComparison.OrdinalIgnoreCase))
+                    {
+                        mult *= 1.50;
+                        pills?.Add(new MultiplierPill { Label = "Grid: Sand Screen", Value = "×1.5", Color = "#d35400" });
+                    }
+                }
+
+                // Ice Shell (2301020100000): +50% Def in Hail
+                if (abId == 2301020100000 || cTitle.Contains("Ice Shell", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (s == "def" && hasWeather && field.Weather.Equals("Hail", StringComparison.OrdinalIgnoreCase))
+                    {
+                        mult *= 1.50;
+                        pills?.Add(new MultiplierPill { Label = "Grid: Ice Shell", Value = "×1.5", Color = "#74b9ff" });
+                    }
+                }
+
+                // Weird Shield (2301030100000): +50% SpD in Psychic Terrain
+                if (abId == 2301030100000 || cTitle.Contains("Weird Shield", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (s == "spd" && hasTerrain && field.Terrain.Equals("Psychic Terrain", StringComparison.OrdinalIgnoreCase))
+                    {
+                        mult *= 1.50;
+                        pills?.Add(new MultiplierPill { Label = "Grid: Weird Shield", Value = "×1.5", Color = "#9b59b6" });
+                    }
+                }
+            }
+        }
+
+        return mult;
     }
 
     public TeamMoveDamageResult CalculateTeamDamage(
@@ -424,6 +612,8 @@ public class DamageCalculatorService
                               move.Id == 263 ||
                               (pair.Passives != null && pair.Passives.Any(p => p.Id == 99015901 || p.Name.Contains("Fiery Dance") || p.Name.Contains("Danza Ardiente")));
 
+        double inBattleAtkMult = GetInBattleStatMultiplier(atkStatKey, ally, field, activeGridCells, pills);
+
         int attackerStat = CalcTotalStat(
             atkStatKey,
             jsonAtkStat,
@@ -431,6 +621,7 @@ public class DamageCalculatorService
             potential: potBonus.GetValueOrDefault(atkStatKey, 0),
             exBonus: exAtkBonus,
             formMult: formStatMult,
+            inBattleStatMult: inBattleAtkMult,
             hasSa: pair.HasSuperAwakening,
             saLevel: ally.SuperAwakeningLevel,
             role: pair.Role,
@@ -441,16 +632,18 @@ public class DamageCalculatorService
             critOffense: ally.IsCriticalMove
         );
 
-        pills.Add(new MultiplierPill { Label = "Atk Stat", Value = $"{attackerStat}", Color = "#3498db" });
+        pills.Add(new MultiplierPill { Label = isPhysical ? "Atk Stat" : "Sp. Atk Stat", Value = $"{attackerStat}", Color = "#3498db" });
 
         // 3. Defender Stat (Defense)
         string defStatKey = isPhysical ? "def" : "spd";
         int jsonDefStat = enemy.ManualStats.GetValueOrDefault(defStatKey, 95);
+        double inBattleDefMult = GetInBattleStatMultiplier(defStatKey, enemy, field);
         int defenderStat = CalcTotalStat(
             defStatKey,
             jsonDefStat,
             enemy.Stages.GetValueOrDefault(defStatKey, 0),
             mitigation: enemy.Mitigations.GetValueOrDefault(defStatKey, 0),
+            inBattleStatMult: inBattleDefMult,
             critDefense: ally.IsCriticalMove
         );
 
