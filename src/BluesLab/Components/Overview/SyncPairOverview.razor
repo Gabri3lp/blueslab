@@ -407,49 +407,33 @@
                                         {
                                             <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
                                         }
-                                        @if (move.MaxUses > 0)
-                                        {
-                                            <span class="badge py-0 px-1.5" style="background-color: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); font-size: 0.7rem; font-weight: 600;">
-                                                <i class="bi bi-arrow-repeat me-0.5"></i>@move.MaxUses @(move.MaxUses == 1 ? "Use" : "Uses")
-                                            </span>
-                                        }
                                     </div>
                                 </div>
 
                                 <div class="d-flex align-items-center gap-3">
                                     <div class="text-end small" style="line-height: 1.3;">
-                                        @if (move.IsTrainerMove)
+                                        @if (scaledPwr > 0)
                                         {
-                                            <div class="fw-bold" style="font-size: 0.82rem; color: #38bdf8;">
-                                                <i class="bi bi-hourglass-split me-0.5"></i>Uses: <b>@(move.MaxUses > 0 ? $"{move.MaxUses}/{move.MaxUses}" : "-")</b>
+                                            <div>
+                                                <span style="color: rgba(255, 255, 255, 0.75);">Power:</span>
+                                                <b class="text-warning">@scaledPwr</b>
+                                                <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.72rem;">(@multPct%)</span>
                                             </div>
-                                            <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.75);">Acc: <b class="text-light">-</b> | Gauge: <b class="text-light">-</b></div>
                                         }
                                         else
                                         {
-                                            @if (scaledPwr > 0)
-                                            {
-                                                <div>
-                                                    <span style="color: rgba(255, 255, 255, 0.75);">Power:</span>
-                                                    <b class="text-warning">@scaledPwr</b>
-                                                    <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.72rem;">(@multPct%)</span>
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div>
-                                                    <span style="color: rgba(255, 255, 255, 0.75);">Power:</span>
-                                                    <b style="color: rgba(255, 255, 255, 0.5);">-</b>
-                                                </div>
-                                            }
-                                            <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.75);">
-                                                Acc: <b class="text-light">@(move.Accuracy == "0" ? "-" : move.Accuracy)</b> | Gauge: <b class="text-light">@(move.Gauge == "0" ? "-" : move.Gauge)</b>
-                                                @if (move.MaxUses > 0)
-                                                {
-                                                    <span class="ms-1">| Uses: <b style="color: #38bdf8;">@move.MaxUses</b></span>
-                                                }
+                                            <div>
+                                                <span style="color: rgba(255, 255, 255, 0.75);">Power:</span>
+                                                <b style="color: rgba(255, 255, 255, 0.5);">-</b>
                                             </div>
                                         }
+                                        <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.75);">
+                                            Acc: <b class="text-light">@(string.IsNullOrEmpty(move.Accuracy) || move.Accuracy == "0" ? "-" : move.Accuracy)</b> | Gauge: <b class="text-light">@(string.IsNullOrEmpty(move.Gauge) || move.Gauge == "0" ? "-" : move.Gauge)</b>
+                                            @if (move.MaxUses > 0)
+                                            {
+                                                <span class="ms-1">| Uses: <b style="color: #38bdf8;">@move.MaxUses/@move.MaxUses</b></span>
+                                            }
+                                        </div>
                                     </div>
 
                                     <button class="btn btn-sm btn-outline-secondary py-0 px-1 text-light" style="font-size: 0.75rem; height: 24px; width: 24px;" title="Toggle Description">
@@ -458,19 +442,10 @@
                                 </div>
                             </div>
 
-                            @if (isExpanded && (!string.IsNullOrEmpty(move.Description) || move.MaxUses > 0))
+                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
                             {
                                 <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
-                                    @if (move.MaxUses > 0)
-                                    {
-                                        <div class="d-inline-flex align-items-center gap-1 mb-1 px-2 py-0.5 rounded" style="background-color: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 0.75rem; font-weight: 700;">
-                                            <i class="bi bi-hourglass-split"></i> Max Uses: @move.MaxUses
-                                        </div>
-                                    }
-                                    @if (!string.IsNullOrEmpty(move.Description))
-                                    {
-                                        <div>@move.Description</div>
-                                    }
+                                    <div>@move.Description</div>
                                 </div>
                             }
                         </div>
@@ -518,9 +493,6 @@
                                         {
                                             <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
                                         }
-                                        <span class="badge py-0 px-1.5" style="background-color: rgba(232, 67, 147, 0.2); color: #ff79b0; border: 1px solid rgba(232, 67, 147, 0.5); font-size: 0.7rem; font-weight: 600;">
-                                            <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
-                                        </span>
                                     </div>
                                 </div>
 
@@ -542,7 +514,7 @@
                                             </div>
                                         }
                                         <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.75);">
-                                            Acc: <b class="text-light">-</b> | Gauge: <b class="text-light">-</b> | Uses: <b style="color: #ff79b0;">1</b>
+                                            Acc: <b class="text-light">-</b> | Gauge: <b class="text-light">-</b> | Uses: <b style="color: #ff79b0;">1/1</b>
                                         </div>
                                     </div>
 
@@ -552,16 +524,10 @@
                                 </div>
                             </div>
 
-                            @if (isExpanded && (!string.IsNullOrEmpty(move.Description) || move.MaxUses > 0))
+                            @if (isExpanded && !string.IsNullOrEmpty(move.Description))
                             {
                                 <div class="text-light small mt-1 pt-1 border-top border-secondary border-opacity-50" style="font-size: 0.82rem; line-height: 1.35; color: rgba(255, 255, 255, 0.9) !important;">
-                                    <div class="d-inline-flex align-items-center gap-1 mb-1 px-2 py-0.5 rounded" style="background-color: rgba(232, 67, 147, 0.2); border: 1px solid rgba(232, 67, 147, 0.5); color: #ff79b0; font-size: 0.75rem; font-weight: 700;">
-                                        <i class="bi bi-hourglass-split"></i> Max Uses: 1 (Dynamax limit)
-                                    </div>
-                                    @if (!string.IsNullOrEmpty(move.Description))
-                                    {
-                                        <div>@move.Description</div>
-                                    }
+                                    <div>@move.Description</div>
                                 </div>
                             }
                         </div>
