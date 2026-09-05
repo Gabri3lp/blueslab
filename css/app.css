@@ -12,8 +12,37 @@
 body {
     background-color: var(--bg-main) !important;
     color: #e2e8f0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography & Contrast enhancements */
+.text-muted {
+    color: #94a3b8 !important; /* Slate 400 - high-contrast readable muted text */
+}
+
+.text-secondary {
+    color: #cbd5e1 !important; /* Slate 300 */
+}
+
+/* Ensure all select options and input controls have clear, visible text across all browsers */
+select option {
+    background-color: #1e2632 !important;
+    color: #f8fafc !important;
+}
+
+select.form-select,
+input.form-control {
+    color: #f8fafc !important;
+}
+
+select.form-select:focus,
+input.form-control:focus {
+    color: #ffffff !important;
+    background-color: #1e2632 !important;
+    border-color: #f1c40f !important;
 }
 
 /* Custom Scrollbars */
