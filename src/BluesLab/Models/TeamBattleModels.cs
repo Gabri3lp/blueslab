@@ -62,37 +62,121 @@ public class TeamBattleState
             var enemy = CombatantState.CreateEnemy();
             Enemies.Add(enemy);
         }
+
+        // Initialize Team Circles
+        foreach (var r in CombatantState.CircleRegions)
+        {
+            TeamCircles[r] = new Dictionary<string, bool>
+            {
+                ["physical"] = false,
+                ["special"] = false,
+                ["defensive"] = false
+            };
+            TeamCircleAllyCounts[r] = 1;
+        }
+    }
+
+    public Dictionary<string, Dictionary<string, bool>> TeamCircles { get; set; } = new();
+    public Dictionary<string, int> TeamCircleAllyCounts { get; set; } = new();
+
+    public void ToggleCircle(string region, string circleType)
+    {
+        if (!TeamCircles.ContainsKey(region))
+        {
+            TeamCircles[region] = new Dictionary<string, bool> { ["physical"] = false, ["special"] = false, ["defensive"] = false };
+        }
+        TeamCircles[region][circleType] = !TeamCircles[region].GetValueOrDefault(circleType, false);
+        UpdateCircleAllyCount(region);
+    }
+
+    public bool IsCircleActive(string region, string circleType)
+    {
+        return TeamCircles.TryGetValue(region, out var dict) && dict.GetValueOrDefault(circleType, false);
+    }
+
+    public int GetActiveCirclesCount()
+    {
+        return TeamCircles.Values.Sum(d => d.Values.Count(v => v));
+    }
+
+    public void ClearAllCircles()
+    {
+        foreach (var r in CombatantState.CircleRegions)
+        {
+            if (TeamCircles.ContainsKey(r))
+            {
+                TeamCircles[r]["physical"] = false;
+                TeamCircles[r]["special"] = false;
+                TeamCircles[r]["defensive"] = false;
+            }
+        }
+    }
+
+    public void UpdateCircleAllyCounts()
+    {
+        foreach (var r in CombatantState.CircleRegions)
+        {
+            UpdateCircleAllyCount(r);
+        }
+    }
+
+    public void UpdateCircleAllyCount(string region)
+    {
+        int count = Allies.Count(a => a.Pair != null && MatchesTheme(a.Pair, region));
+        TeamCircleAllyCounts[region] = Math.Clamp(count > 0 ? count : 1, 1, 3);
     }
 
     public CombatantState ActiveAttacker => Allies[Math.Clamp(ActiveAttackerIndex, 0, 2)];
     public HashSet<long> ActiveAttackerGrid => AllyActiveGrids[Math.Clamp(ActiveAttackerIndex, 0, 2)];
     public CombatantState ActiveTarget => Enemies[Math.Clamp(ActiveTargetIndex, 0, 2)];
 
-    /// <summary>
-    /// Calculates the number of allies (other than the attacker itself) that share the same region or theme for Master Passives.
-    /// </summary>
-    public int GetMasterPassiveAllyCount(string passiveName)
+    public static readonly Dictionary<string, string[]> RegionTrainers = new(StringComparer.OrdinalIgnoreCase)
     {
-        if (ActiveAttacker.Pair == null) return 0;
+        ["Kanto"] = new[] { "Red", "Blue", "Leaf", "Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Janine", "Sabrina", "Blaine", "Giovanni", "Lorelei", "Bruno", "Agatha", "Lance", "Bill", "Daisy", "Chase", "Elaine", "Oak" },
+        ["Johto"] = new[] { "Ethan", "Lyra", "Kris", "Silver", "Falkner", "Bugsy", "Whitney", "Morty", "Chuck", "Jasmine", "Pryce", "Clair", "Will", "Karen", "Eusine" },
+        ["Hoenn"] = new[] { "Brendan", "May", "Roxanne", "Brawly", "Wattson", "Flannery", "Norman", "Winona", "Tate", "Liza", "Wallace", "Juan", "Sidney", "Phoebe", "Glacia", "Drake", "Steven", "Zinnia", "Wally", "Archie", "Maxie", "Lisia", "Matt", "Courtney", "Shelly", "Tabitha", "Greta" },
+        ["Sinnoh"] = new[] { "Lucas", "Dawn", "Barry", "Roark", "Gardenia", "Maylene", "Crasher Wake", "Fantina", "Byron", "Candice", "Volkner", "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "Cyrus", "Mars", "Jupiter", "Saturn", "Riley", "Cheryl", "Mira", "Marley", "Buck", "Palmer", "Thorton", "Dahlia", "Darach", "Argenta", "Akari", "Rei", "Volo", "Irida", "Adaman", "Sabi" },
+        ["Unova"] = new[] { "Hilbert", "Hilda", "Nate", "Rosa", "Cheren", "Bianca", "Cilan", "Chili", "Cress", "Lenora", "Burgh", "Elesa", "Clay", "Skyla", "Brycen", "Iris", "Drayden", "Roxie", "Marlon", "Shauntal", "Marshal", "Grimsley", "Caitlin", "Alder", "N", "Ghetsis", "Colress", "Hugh", "Emmet", "Ingo", "Bellelba" },
+        ["Kalos"] = new[] { "Calem", "Serena", "Shauna", "Tierno", "Trevor", "Viola", "Grant", "Korrina", "Ramos", "Clemont", "Valerie", "Olympia", "Wulfric", "Malva", "Siebold", "Wikstrom", "Drasna", "Diantha", "Lysandre", "Sycamore", "Emma", "Evelyn" },
+        ["Alola"] = new[] { "Elio", "Selene", "Hau", "Gladion", "Lillie", "Ilima", "Lana", "Kiawe", "Mallow", "Sophocles", "Acerola", "Mina", "Hala", "Olivia", "Nanu", "Hapu", "Kahili", "Molayne", "Guzma", "Plumeria", "Kukui", "Burnet", "Lusamine", "Faba", "Ryuki" },
+        ["Galar"] = new[] { "Victor", "Gloria", "Hop", "Bede", "Marnie", "Milo", "Nessa", "Kabu", "Bea", "Allister", "Opal", "Gordie", "Melony", "Piers", "Raihan", "Klara", "Avery", "Mustard", "Peony", "Leon", "Sonia", "Oleana", "Rose", "Ball Guy" },
+        ["Paldea"] = new[] { "Florian", "Juliana", "Nemona", "Arven", "Penny", "Katy", "Brassius", "Iono", "Kofu", "Larry", "Ryme", "Tulip", "Grusha", "Rika", "Poppy", "Hassel", "Geeta", "Clavell", "Jacq", "Dendra", "Miriam", "Raifort", "Saguaro", "Salvatore", "Tyme", "Atticus", "Mela", "Lacey" },
+        ["Pasio"] = new[] { "Lear", "Rachel", "Sawyer", "Paulo", "Tina", "Bellis", "Main Character" }
+    };
+
+    public static bool MatchesTheme(SyncPairDetail pair, string theme)
+    {
+        if (string.IsNullOrEmpty(theme)) return false;
+
+        // 1. Type check (for Arc Suit Myths and Type Master Passives)
+        if (string.Equals(pair.Type, theme, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        // 2. Region check (for Regional Pride, Spirit, Flag Bearer)
+        if (RegionTrainers.TryGetValue(theme, out var names))
+        {
+            string tName = pair.TrainerName ?? string.Empty;
+            string dName = pair.DisplayName ?? string.Empty;
+            return names.Any(n => tName.Contains(n, StringComparison.OrdinalIgnoreCase) || dName.Contains(n, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Calculates the number of allies (other than the owner itself) that share the same region or theme for Master Passives.
+    /// </summary>
+    public int GetMasterPassiveAllyCount(string theme, int ownerIndex = -1)
+    {
         int count = 0;
+        int targetOwner = ownerIndex >= 0 ? ownerIndex : ActiveAttackerIndex;
         for (int i = 0; i < 3; i++)
         {
-            if (i == ActiveAttackerIndex) continue;
+            if (i == targetOwner) continue;
             var other = Allies[i];
             if (other.Pair == null) continue;
 
-            string dName = other.Pair.DisplayName;
-            // Check if other pair matches region / theme of passive
-            if (passiveName.Contains("Kanto", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Red", StringComparison.OrdinalIgnoreCase) || dName.Contains("Blue", StringComparison.OrdinalIgnoreCase) || dName.Contains("Leaf", StringComparison.OrdinalIgnoreCase) || dName.Contains("Brock", StringComparison.OrdinalIgnoreCase) || dName.Contains("Misty", StringComparison.OrdinalIgnoreCase) || dName.Contains("Erika", StringComparison.OrdinalIgnoreCase) || dName.Contains("Sabrina", StringComparison.OrdinalIgnoreCase) || dName.Contains("Giovanni", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Johto", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Ethan", StringComparison.OrdinalIgnoreCase) || dName.Contains("Lyra", StringComparison.OrdinalIgnoreCase) || dName.Contains("Kris", StringComparison.OrdinalIgnoreCase) || dName.Contains("Silver", StringComparison.OrdinalIgnoreCase) || dName.Contains("Morty", StringComparison.OrdinalIgnoreCase) || dName.Contains("Whitney", StringComparison.OrdinalIgnoreCase) || dName.Contains("Clair", StringComparison.OrdinalIgnoreCase) || dName.Contains("Lance", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Hoenn", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Brendan", StringComparison.OrdinalIgnoreCase) || dName.Contains("May", StringComparison.OrdinalIgnoreCase) || dName.Contains("Steven", StringComparison.OrdinalIgnoreCase) || dName.Contains("Zinnia", StringComparison.OrdinalIgnoreCase) || dName.Contains("Wally", StringComparison.OrdinalIgnoreCase) || dName.Contains("Archie", StringComparison.OrdinalIgnoreCase) || dName.Contains("Maxie", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Sinnoh", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Lucas", StringComparison.OrdinalIgnoreCase) || dName.Contains("Dawn", StringComparison.OrdinalIgnoreCase) || dName.Contains("Cynthia", StringComparison.OrdinalIgnoreCase) || dName.Contains("Barry", StringComparison.OrdinalIgnoreCase) || dName.Contains("Volkner", StringComparison.OrdinalIgnoreCase) || dName.Contains("Cyrus", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Unova", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Hilbert", StringComparison.OrdinalIgnoreCase) || dName.Contains("Hilda", StringComparison.OrdinalIgnoreCase) || dName.Contains("Nate", StringComparison.OrdinalIgnoreCase) || dName.Contains("Rosa", StringComparison.OrdinalIgnoreCase) || dName.Contains("N", StringComparison.OrdinalIgnoreCase) || dName.Contains("Iris", StringComparison.OrdinalIgnoreCase) || dName.Contains("Elesa", StringComparison.OrdinalIgnoreCase) || dName.Contains("Skyla", StringComparison.OrdinalIgnoreCase) || dName.Contains("Ghetsis", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Kalos", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Calem", StringComparison.OrdinalIgnoreCase) || dName.Contains("Serena", StringComparison.OrdinalIgnoreCase) || dName.Contains("Diantha", StringComparison.OrdinalIgnoreCase) || dName.Contains("Korrina", StringComparison.OrdinalIgnoreCase) || dName.Contains("Lysandre", StringComparison.OrdinalIgnoreCase) || dName.Contains("Sycamore", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Alola", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Elio", StringComparison.OrdinalIgnoreCase) || dName.Contains("Selene", StringComparison.OrdinalIgnoreCase) || dName.Contains("Lillie", StringComparison.OrdinalIgnoreCase) || dName.Contains("Gladion", StringComparison.OrdinalIgnoreCase) || dName.Contains("Lusamine", StringComparison.OrdinalIgnoreCase) || dName.Contains("Hau", StringComparison.OrdinalIgnoreCase) || dName.Contains("Acerola", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Galar", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Victor", StringComparison.OrdinalIgnoreCase) || dName.Contains("Gloria", StringComparison.OrdinalIgnoreCase) || dName.Contains("Marnie", StringComparison.OrdinalIgnoreCase) || dName.Contains("Hop", StringComparison.OrdinalIgnoreCase) || dName.Contains("Bede", StringComparison.OrdinalIgnoreCase) || dName.Contains("Leon", StringComparison.OrdinalIgnoreCase) || dName.Contains("Raihan", StringComparison.OrdinalIgnoreCase) || dName.Contains("Piers", StringComparison.OrdinalIgnoreCase) || dName.Contains("Nessa", StringComparison.OrdinalIgnoreCase) || dName.Contains("Bea", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (passiveName.Contains("Paldea", StringComparison.OrdinalIgnoreCase) && (dName.Contains("Florian", StringComparison.OrdinalIgnoreCase) || dName.Contains("Juliana", StringComparison.OrdinalIgnoreCase) || dName.Contains("Nemona", StringComparison.OrdinalIgnoreCase) || dName.Contains("Arven", StringComparison.OrdinalIgnoreCase) || dName.Contains("Penny", StringComparison.OrdinalIgnoreCase) || dName.Contains("Geeta", StringComparison.OrdinalIgnoreCase) || dName.Contains("Iono", StringComparison.OrdinalIgnoreCase) || dName.Contains("Grusha", StringComparison.OrdinalIgnoreCase))) count++;
-            else if (other.Pair.Type == ActiveAttacker.Pair.Type) count++;
+            if (MatchesTheme(other.Pair, theme)) count++;
         }
         return Math.Clamp(count, 0, 2);
     }

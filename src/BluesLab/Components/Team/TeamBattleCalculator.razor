@@ -141,6 +141,96 @@
                     </select>
                 </div>
             </div>
+
+            <!-- Regional Battle Circles (Team-wide) -->
+            <div class="pt-2 border-top border-secondary border-opacity-50 mt-2">
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="d-flex align-items-center gap-2">
+                        <button class="btn btn-outline-info btn-sm py-0 px-2" style="font-size: 0.75rem;" @onclick="() => _showCirclesPanel = !_showCirclesPanel">
+                            <i class="bi bi-record-circle me-1"></i> Battle Circles @(State.GetActiveCirclesCount() > 0 ? $"({State.GetActiveCirclesCount()})" : "")
+                        </button>
+                        @if (State.GetActiveCirclesCount() > 0)
+                        {
+                            <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.7rem;" @onclick="() => { State.ClearAllCircles(); StateHasChanged(); }">
+                                Clear Circles
+                            </button>
+                        }
+                    </div>
+
+                    <!-- Active Circles Badges -->
+                    <div class="d-flex flex-wrap gap-1 align-items-center">
+                        @foreach (var r in CombatantState.CircleRegions)
+                        {
+                            int allies = State.TeamCircleAllyCounts.GetValueOrDefault(r, 1);
+                            if (State.IsCircleActive(r, "physical"))
+                            {
+                                <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
+                                    @r Phys (+@(10 + 10 * allies)%)
+                                    <i class="bi bi-x-circle-fill opacity-75 ms-1" style="cursor: pointer;" title="Remove" @onclick='() => State.ToggleCircle(r, "physical")'></i>
+                                </span>
+                            }
+                            if (State.IsCircleActive(r, "special"))
+                            {
+                                <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
+                                    @r Spec (+@(10 + 10 * allies)%)
+                                    <i class="bi bi-x-circle-fill opacity-75 ms-1" style="cursor: pointer;" title="Remove" @onclick='() => State.ToggleCircle(r, "special")'></i>
+                                </span>
+                            }
+                            if (State.IsCircleActive(r, "defensive"))
+                            {
+                                <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
+                                    @r Def (+@(5 + 5 * allies)%)
+                                    <i class="bi bi-x-circle-fill opacity-75 ms-1" style="cursor: pointer;" title="Remove" @onclick='() => State.ToggleCircle(r, "defensive")'></i>
+                                </span>
+                            }
+                        }
+                    </div>
+                </div>
+
+                @if (_showCirclesPanel || State.GetActiveCirclesCount() > 0)
+                {
+                    <div class="mt-2 pt-2 border-top border-secondary border-opacity-50 bg-black bg-opacity-25 p-2 rounded">
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <span class="small text-warning fw-bold text-uppercase" style="font-size: 0.75rem;">Circle Region:</span>
+                            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" style="width: 120px; font-size: 0.75rem;" @bind="_selectedCircleRegion" @bind:after="StateHasChanged">
+                                @foreach (var r in CombatantState.CircleRegions)
+                                {
+                                    <option value="@r">@r</option>
+                                }
+                            </select>
+
+                            <div class="d-flex flex-wrap align-items-center gap-1">
+                                <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "physical") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                        @onclick='() => State.ToggleCircle(_selectedCircleRegion, "physical")'>
+                                    Physical Circle
+                                </button>
+                                <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "special") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                        @onclick='() => State.ToggleCircle(_selectedCircleRegion, "special")'>
+                                    Special Circle
+                                </button>
+                                <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "defensive") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                        @onclick='() => State.ToggleCircle(_selectedCircleRegion, "defensive")'>
+                                    Defensive Circle
+                                </button>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-1 ms-auto">
+                                <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">Allies:</span>
+                                <div class="btn-group btn-group-sm">
+                                    @for (int a = 1; a <= 3; a++)
+                                    {
+                                        int count = a;
+                                        <button class="btn btn-sm py-0 px-2 @(State.TeamCircleAllyCounts.GetValueOrDefault(_selectedCircleRegion, 1) == count ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                                @onclick="() => { State.TeamCircleAllyCounts[_selectedCircleRegion] = count; StateHasChanged(); }">
+                                            @count
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 
@@ -825,6 +915,8 @@
 
     private bool _showPairPicker = false;
     private int _pickingSlot = 0;
+    private bool _showCirclesPanel = false;
+    private string _selectedCircleRegion = "Kanto";
 
     protected override async Task OnInitializedAsync()
     {
@@ -929,6 +1021,8 @@
 
             // By default, activate full grid for optimal calculation
             State.SetFullGridForAlly(slot);
+
+            State.UpdateCircleAllyCounts();
 
             StateHasChanged();
         }
