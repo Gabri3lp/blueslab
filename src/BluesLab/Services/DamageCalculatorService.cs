@@ -1031,6 +1031,7 @@ public class DamageCalculatorService
         double total = 0.0;
         int attackerIndex = team.Allies.IndexOf(activeAttacker);
         if (attackerIndex < 0) attackerIndex = team.ActiveAttackerIndex;
+        var appliedPassives = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         for (int i = 0; i < team.Allies.Count; i++)
         {
@@ -1040,12 +1041,14 @@ public class DamageCalculatorService
             var mps = MasterPassiveRule.ExtractMasterPassives(ally.Pair, rules);
             foreach (var mp in mps)
             {
+                if (appliedPassives.Contains(mp.PassiveName)) continue;
                 if (mp.AppliesToMove(move))
                 {
                     int matchingAllies = team.GetMasterPassiveAllyCount(mp.Theme, ownerIndex: i);
                     double boost = mp.PowerUpForAdditionalAllies(matchingAllies);
                     if (boost > 0)
                     {
+                        appliedPassives.Add(mp.PassiveName);
                         total += boost;
                         string label = (i == attackerIndex)
                             ? $"Master: {mp.PassiveName}"

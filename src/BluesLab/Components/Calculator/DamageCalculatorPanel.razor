@@ -91,6 +91,35 @@
                         </div>
                     }
                 </div>
+
+                <!-- Master Passives Active on this Pair -->
+                @if (CalcService.GetMasterPassivesForPair(Ally.Pair, Rules).Count > 0)
+                {
+                    <div class="d-flex flex-wrap align-items-center gap-3 w-100 pt-2 mt-2 border-top border-secondary border-opacity-50">
+                        @foreach (var mp in CalcService.GetMasterPassivesForPair(Ally.Pair, Rules))
+                        {
+                            int allies = Ally.MasterPassiveAllyCount.GetValueOrDefault(mp.PassiveName, 0);
+                            int pct = (int)Math.Round(mp.PowerUpForAdditionalAllies(allies) * 100);
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-1 px-2 shadow-sm" style="font-size: 0.75rem;" title="@mp.PassiveName: +@pct% to all allies (@allies other @mp.Theme allies)">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <b>@mp.PassiveName (+@pct%)</b>
+                                </span>
+                                <span class="small text-secondary fw-bold" style="font-size: 0.75rem;">+@mp.Theme Allies:</span>
+                                <div class="btn-group btn-group-sm">
+                                    @for (int a = 0; a <= 2; a++)
+                                    {
+                                        int count = a;
+                                        <button class="btn btn-sm py-0 px-2 @(allies == count ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                                                @onclick="() => { Ally.MasterPassiveAllyCount[mp.PassiveName] = count; StateHasChanged(); }">
+                                            @count
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
             </div>
         </div>
 

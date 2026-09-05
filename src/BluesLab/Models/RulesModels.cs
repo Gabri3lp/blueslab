@@ -159,7 +159,9 @@ public class MasterPassiveRule
 
         if (rules != null && rules.MasterPassives.Count > 0)
         {
-            list.AddRange(rules.MasterPassives.Where(m => string.Equals(m.SyncPair, pair.DisplayName, StringComparison.OrdinalIgnoreCase)));
+            list.AddRange(rules.MasterPassives.Where(m =>
+                string.Equals(m.SyncPair, pair.DisplayName, StringComparison.OrdinalIgnoreCase) ||
+                (!string.IsNullOrEmpty(pair.DisplayName) && m.SyncPair.StartsWith(pair.DisplayName, StringComparison.OrdinalIgnoreCase))));
         }
 
         foreach (var p in pair.Passives)
@@ -170,6 +172,8 @@ public class MasterPassiveRule
             if (list.Any(x => string.Equals(x.PassiveName, name, StringComparison.OrdinalIgnoreCase)))
                 continue;
 
+            // 1. Regional Pride, Spirit, Flag Bearer / Flagbearer
+            bool matchedStandard = false;
             foreach (var r in MasterRegions)
             {
                 if (name.Equals($"{r} Pride", StringComparison.OrdinalIgnoreCase))
@@ -185,6 +189,8 @@ public class MasterPassiveRule
                         PerAdditionalAllyPct = 15,
                         MaxPowerUpPct = 50
                     });
+                    matchedStandard = true;
+                    break;
                 }
                 else if (name.Equals($"{r} Spirit", StringComparison.OrdinalIgnoreCase))
                 {
@@ -199,8 +205,11 @@ public class MasterPassiveRule
                         PerAdditionalAllyPct = 15,
                         MaxPowerUpPct = 50
                     });
+                    matchedStandard = true;
+                    break;
                 }
-                else if (name.Equals($"{r} Flag Bearer", StringComparison.OrdinalIgnoreCase))
+                else if (name.Equals($"{r} Flag Bearer", StringComparison.OrdinalIgnoreCase) ||
+                         name.Equals($"{r} Flagbearer", StringComparison.OrdinalIgnoreCase))
                 {
                     list.Add(new MasterPassiveRule
                     {
@@ -213,9 +222,14 @@ public class MasterPassiveRule
                         PerAdditionalAllyPct = 10,
                         MaxPowerUpPct = 30
                     });
+                    matchedStandard = true;
+                    break;
                 }
             }
+            if (matchedStandard) continue;
 
+            // 2. Type Teamwork
+            bool matchedTeamwork = false;
             foreach (var t in MasterTypes)
             {
                 if (name.Equals($"{t} Teamwork", StringComparison.OrdinalIgnoreCase))
@@ -231,9 +245,13 @@ public class MasterPassiveRule
                         PerAdditionalAllyPct = 5,
                         MaxPowerUpPct = 20
                     });
+                    matchedTeamwork = true;
+                    break;
                 }
             }
+            if (matchedTeamwork) continue;
 
+            // 3. Arc Suit Myth
             if (name.EndsWith(" Myth", StringComparison.OrdinalIgnoreCase))
             {
                 list.Add(new MasterPassiveRule
@@ -246,6 +264,54 @@ public class MasterPassiveRule
                     BasePowerUpPct = 10,
                     PerAdditionalAllyPct = 10,
                     MaxPowerUpPct = 30
+                });
+                continue;
+            }
+
+            // 4. EX Master Passives (Pokéfestival Maestro EX / Master Fair EX)
+            // Child passive IDs 28030101 to 28031001 define the regional EX Master Passives.
+            string? exRegion = null;
+            if (p.ChildPassives != null)
+            {
+                foreach (var cp in p.ChildPassives)
+                {
+                    if (cp.Id >= 28030101 && cp.Id <= 28031001)
+                    {
+                        int regIdx = (int)((cp.Id - 28030001) / 100);
+                        if (regIdx >= 1 && regIdx <= MasterRegions.Length)
+                        {
+                            exRegion = MasterRegions[regIdx - 1];
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (string.IsNullOrEmpty(exRegion))
+            {
+                string desc = p.Description ?? string.Empty;
+                if ((p.Id >= 28040000 && p.Id < 28050000) ||
+                    (desc.Contains("all allied sync pairs", StringComparison.OrdinalIgnoreCase) &&
+                     desc.Contains("20%", StringComparison.OrdinalIgnoreCase) &&
+                     desc.Contains("15%", StringComparison.OrdinalIgnoreCase) &&
+                     desc.Contains("50%", StringComparison.OrdinalIgnoreCase)))
+                {
+                    exRegion = MasterRegions.FirstOrDefault(r => TeamBattleState.MatchesTheme(pair, r)) ?? "Kanto";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(exRegion))
+            {
+                list.Add(new MasterPassiveRule
+                {
+                    SyncPair = pair.DisplayName,
+                    PassiveName = name,
+                    Theme = exRegion,
+                    Category = "any",
+                    AppliesToSync = true,
+                    BasePowerUpPct = 20,
+                    PerAdditionalAllyPct = 15,
+                    MaxPowerUpPct = 50
                 });
             }
         }
