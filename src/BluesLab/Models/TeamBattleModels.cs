@@ -13,6 +13,15 @@ public class TeamBattleState
     public int ActiveTargetIndex { get; set; } = 1; // Default to Center (Boss)
     public int EnemySyncBuffs { get; set; } = 0;
 
+    // Allied Team Side Effects
+    public bool AlliedPhysicalDamageReduction { get; set; }
+    public bool AlliedSpecialDamageReduction { get; set; }
+
+    // Enemy Opponents Side Effects
+    public bool EnemyPhysicalDamageReduction { get; set; }
+    public bool EnemySpecialDamageReduction { get; set; }
+    public string EnemyDamageField { get; set; } = string.Empty;
+
     public FieldState Field { get; set; } = new();
 
     public string SelectedLeagueId { get; set; } = "circuit_1";

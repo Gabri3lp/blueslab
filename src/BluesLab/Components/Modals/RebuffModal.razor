@@ -1,0 +1,127 @@
+@using BluesLab.Models
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <!-- Modal Header -->
+                <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-shield-slash text-danger fs-5"></i>
+                        <h6 class="modal-title fw-bold text-light mb-0">@(string.IsNullOrEmpty(Title) ? "Type Rebuffs (-3 to +3)" : Title)</h6>
+                        @{
+                            int activeCount = Rebuffs?.Count(kv => kv.Value != 0) ?? 0;
+                        }
+                        @if (activeCount > 0)
+                        {
+                            <span class="badge bg-danger text-white">@activeCount Active</span>
+                        }
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        @if (activeCount > 0)
+                        {
+                            <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" @onclick="ClearAll">
+                                <i class="bi bi-trash3 me-1"></i>Clear All
+                            </button>
+                        }
+                        <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="Close"></button>
+                    </div>
+                </div>
+
+                <!-- Modal Body: 19 Types with -3 to +3 Selector -->
+                <div class="modal-body p-3" style="max-height: 70vh;">
+                    <div class="row row-cols-1 row-cols-md-2 g-2">
+                        @foreach (var t in CombatantState.AllTypes)
+                        {
+                            string typeName = t;
+                            int curVal = Rebuffs != null ? Rebuffs.GetValueOrDefault(typeName, 0) : 0;
+                            bool isActive = curVal != 0;
+
+                            <div class="col">
+                                <div class="p-2 rounded bg-black bg-opacity-30 border @(isActive ? (curVal > 0 ? "border-danger" : "border-primary") : "border-secondary border-opacity-50") d-flex align-items-center justify-content-between gap-2">
+                                    <!-- Type Icon & Name -->
+                                    <div class="d-flex align-items-center gap-2 overflow-hidden">
+                                        <img src="@CombatantState.GetTypeIcon(typeName)" alt="@typeName" width="22" height="22" />
+                                        <span class="fw-bold text-truncate" style="font-size: 0.85rem;">@typeName</span>
+                                        @if (isActive)
+                                        {
+                                            <span class="badge @(curVal > 0 ? "bg-danger" : "bg-primary") py-0 px-1" style="font-size: 0.7rem;">
+                                                @(curVal > 0 ? $"+{curVal}" : curVal.ToString())
+                                            </span>
+                                        }
+                                    </div>
+
+                                    <!-- -3 to +3 Buttons -->
+                                    <div class="btn-group btn-group-sm flex-shrink-0" role="group">
+                                        @for (int r = -3; r <= 3; r++)
+                                        {
+                                            int val = r;
+                                            bool isSelected = curVal == val;
+                                            string btnClass = isSelected
+                                                ? (val < 0 ? "btn-primary fw-bold" : (val > 0 ? "btn-danger fw-bold" : "btn-secondary text-light fw-bold"))
+                                                : "btn-outline-secondary text-light";
+
+                                            <button type="button"
+                                                    class="btn btn-sm py-0 px-1 @btnClass"
+                                                    style="width: 26px; font-size: 0.72rem; height: 26px;"
+                                                    @onclick="() => SetRebuff(typeName, val)">
+                                                @(val > 0 ? $"+{val}" : val.ToString())
+                                            </button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-between align-items-center">
+                    <span class="small text-muted" style="font-size: 0.75rem;">
+                        Negative rebuffs increase damage taken (e.g. -3 = ×1.6). Positive rebuffs reduce damage taken.
+                    </span>
+                    <button type="button" class="btn btn-primary btn-sm fw-bold px-3" @onclick="Close">
+                        <i class="bi bi-check-lg me-1"></i>Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string Title { get; set; } = "Type Rebuffs (-3 to +3)";
+    [Parameter] public Dictionary<string, int>? Rebuffs { get; set; }
+    [Parameter] public EventCallback OnChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task SetRebuff(string type, int value)
+    {
+        if (Rebuffs != null)
+        {
+            Rebuffs[type] = value;
+            await OnChanged.InvokeAsync();
+        }
+    }
+
+    private async Task ClearAll()
+    {
+        if (Rebuffs != null)
+        {
+            foreach (var t in CombatantState.AllTypes)
+            {
+                Rebuffs[t] = 0;
+            }
+            await OnChanged.InvokeAsync();
+        }
+    }
+}

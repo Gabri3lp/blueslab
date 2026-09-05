@@ -464,17 +464,85 @@ public class DamageCalculatorService
         attacker.CircleActive = team.TeamCircles;
         attacker.CircleAllyCount = team.TeamCircleAllyCounts;
 
-        // Apply enemy team sync buffs
+        // Sync shared allied screens
+        foreach (var ally in team.Allies)
+        {
+            ally.PhysicalDamageReduction = team.AlliedPhysicalDamageReduction;
+            ally.SpecialDamageReduction = team.AlliedSpecialDamageReduction;
+        }
+
+        // Apply enemy team sync buffs, screens, and damage fields
         foreach (var enemy in team.Enemies)
         {
             enemy.SyncBoosts = team.EnemySyncBuffs;
+            enemy.PhysicalDamageReduction = team.EnemyPhysicalDamageReduction;
+            enemy.SpecialDamageReduction = team.EnemySpecialDamageReduction;
+            enemy.DamageField = team.EnemyDamageField;
         }
 
         bool isAoE = IsMoveAoE(move, attacker);
 
-        var leftRes = CalculateDamage(move, attacker, team.Enemies[0], team.Field, rules, activeGrid, team: team);
-        var centerRes = CalculateDamage(move, attacker, team.Enemies[1], team.Field, rules, activeGrid, team: team);
-        var rightRes = CalculateDamage(move, attacker, team.Enemies[2], team.Field, rules, activeGrid, team: team);
+        // Check if AoE move ignores multi-target penalty (e.g. Sync, Max, or No-Decay passive/move)
+        string mDesc = move.Description ?? string.Empty;
+        bool isMoveNoDecay = mDesc.Contains("not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("not lowered when there are multiple opponents", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("not reduced when there are multiple opponents", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not lowered when there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("is not reduced when there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("damage is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("damage is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this attack is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this attack is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this move is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power of this move is not lowered", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power is not reduced", StringComparison.OrdinalIgnoreCase) ||
+                            mDesc.Contains("power is not lowered", StringComparison.OrdinalIgnoreCase);
+
+        bool hasAoENoDecayPassive = false;
+        var pair = attacker.Pair;
+        if (pair != null)
+        {
+            var passives = pair.Passives ?? new List<PassiveItem>();
+            if (attacker.FormIndex > 0 && pair.Variations != null && attacker.FormIndex <= pair.Variations.Count && pair.Variations[attacker.FormIndex - 1].Passives != null)
+            {
+                passives = pair.Variations[attacker.FormIndex - 1].Passives;
+            }
+            foreach (var ps in passives)
+            {
+                string pDesc = ps.Description ?? string.Empty;
+                string pName = ps.Name ?? string.Empty;
+                if (pName.Contains("Extend Range", StringComparison.OrdinalIgnoreCase) ||
+                    pName.Contains("Expand Reach", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("targets all opponents instead", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("not lowered even if there are multiple targets", StringComparison.OrdinalIgnoreCase) ||
+                    pDesc.Contains("not reduced even if there are multiple targets", StringComparison.OrdinalIgnoreCase))
+                {
+                    hasAoENoDecayPassive = true;
+                    break;
+                }
+            }
+        }
+
+        bool ignoresAoEPenalty = !MoveScopeRules.AllowsAoEPenalty(move) || isMoveNoDecay || hasAoENoDecayPassive;
+        int autoTargetCount = (isAoE && !ignoresAoEPenalty) ? 3 : 1;
+
+        var teamField = new FieldState
+        {
+            Weather = team.Field.Weather,
+            WeatherEx = team.Field.WeatherEx,
+            Terrain = team.Field.Terrain,
+            TerrainEx = team.Field.TerrainEx,
+            Zone = team.Field.Zone,
+            ZoneEx = team.Field.ZoneEx,
+            TargetCount = autoTargetCount
+        };
+
+        var leftRes = CalculateDamage(move, attacker, team.Enemies[0], teamField, rules, activeGrid, team: team);
+        var centerRes = CalculateDamage(move, attacker, team.Enemies[1], teamField, rules, activeGrid, team: team);
+        var rightRes = CalculateDamage(move, attacker, team.Enemies[2], teamField, rules, activeGrid, team: team);
 
         return new TeamMoveDamageResult
         {

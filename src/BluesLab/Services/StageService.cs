@@ -39,6 +39,10 @@ public class StageService
     public void ApplyFightToEnemies(TeamBattleState state, StageFight fight)
     {
         state.SelectedFightId = fight.FightId;
+        state.EnemySyncBuffs = 0;
+        state.EnemyPhysicalDamageReduction = false;
+        state.EnemySpecialDamageReduction = false;
+        state.EnemyDamageField = string.Empty;
         state.ActiveFight = fight;
         for (int i = 0; i < 3 && i < fight.Opponents.Count; i++)
         {
