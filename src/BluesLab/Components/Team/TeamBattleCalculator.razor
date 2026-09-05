@@ -21,7 +21,7 @@
         <div class="card-body p-3">
             <!-- Stage Selection -->
             <div class="row g-2 align-items-center mb-2">
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <label class="form-label small text-muted mb-1"><i class="bi bi-diagram-3-fill text-warning me-1"></i> Circuit / Tier:</label>
                     <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedLeagueId" @onchange="OnLeagueChanged">
                         @foreach (var l in _leagues)
@@ -31,7 +31,7 @@
                     </select>
                 </div>
 
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <label class="form-label small text-muted mb-1"><i class="bi bi-swords text-danger me-1"></i> Battle:</label>
                     <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedFightId" @onchange="OnFightChanged">
                         @{
@@ -45,12 +45,6 @@
                             }
                         }
                     </select>
-                </div>
-
-                <div class="col-md-2 d-flex align-items-end">
-                    <button class="btn btn-sm btn-outline-info w-100" @onclick="LoadSelectedStage">
-                        <i class="bi bi-cloud-arrow-down-fill me-1"></i> Apply Stage
-                    </button>
                 </div>
             </div>
 
@@ -576,15 +570,12 @@
                                             </div>
                                         </div>
 
-                                        <!-- Configure Grid Button (Places Grid at top of Left Column) -->
-                                        <div class="d-flex justify-content-between align-items-center pt-1 border-top border-secondary border-opacity-50">
-                                            <span class="text-muted" style="font-size: 0.7rem;">
-                                                <i class="bi bi-grid-3x3 me-1"></i><b class="text-warning">@State.AllyActiveGrids[slotIndex].Count</b> tiles active
-                                            </span>
+                                        <!-- Grid Button (Places Grid at top of Left Column) -->
+                                        <div class="d-flex justify-content-end align-items-center pt-1 border-top border-secondary border-opacity-50">
                                             <button class="btn btn-sm py-0 px-2 @(isGridOpenForThis ? "btn-warning text-dark fw-bold" : "btn-outline-warning")"
                                                     style="font-size: 0.72rem; height: 22px;"
                                                     @onclick="() => ToggleConfigureGrid(slotIndex)">
-                                                <i class="bi bi-diagram-3 me-1"></i>@(isGridOpenForThis ? "Close Grid" : "Configure Grid")
+                                                <i class="bi bi-diagram-3 me-1"></i>@(isGridOpenForThis ? "Close Grid" : "Grid")
                                             </button>
                                         </div>
                                     }
@@ -675,27 +666,21 @@
                                 <div class="card h-100 @(isTarget ? "border-danger bg-danger bg-opacity-10 shadow-sm" : "border-secondary bg-dark") p-2">
                                     <!-- Enemy Header -->
                                     <div class="d-flex justify-content-between align-items-center mb-1">
-                                        <span class="badge @(isTarget ? "bg-danger" : "bg-secondary")" style="font-size: 0.7rem;">@slotLabel</span>
-                                        <div class="d-flex align-items-center gap-1">
-                                            <button class="btn btn-sm py-0 px-1 btn-outline-secondary text-light d-inline-flex align-items-center gap-1"
-                                                    style="font-size: 0.68rem; height: 22px;"
-                                                    title="Apply this enemy's configuration to others"
-                                                    @onclick="() => OpenApplyToAllFromEnemy(targetIndex)">
-                                                <i class="bi bi-check2-all"></i> Apply
-                                            </button>
+                                        <button type="button"
+                                                class="badge @(isTarget ? "bg-danger text-white border-0 shadow-sm" : "bg-secondary text-light border-0") cursor-pointer py-1 px-2 d-inline-flex align-items-center gap-1"
+                                                style="font-size: 0.72rem;"
+                                                title="@(isTarget ? "Active Target" : "Click to set as target")"
+                                                @onclick="() => State.ActiveTargetIndex = targetIndex">
                                             @if (isTarget)
                                             {
-                                                <span class="badge bg-danger text-white fw-bold d-inline-flex align-items-center gap-1" style="font-size: 0.72rem; height: 22px; padding: 0 8px;">
-                                                    <i class="bi bi-crosshair"></i> Targeted
-                                                </span>
+                                                <i class="bi bi-crosshair"></i>
                                             }
-                                            else
-                                            {
-                                                <button class="btn btn-sm py-0 px-2 btn-outline-secondary text-light" style="font-size: 0.72rem; height: 22px;" @onclick="() => State.ActiveTargetIndex = targetIndex">
-                                                    Target
-                                                </button>
-                                            }
-                                        </div>
+                                            <span>@slotLabel</span>
+                                        </button>
+                                        @if (isTarget)
+                                        {
+                                            <i class="bi bi-crosshair text-danger fs-6" title="Target"></i>
+                                        }
                                     </div>
 
                                     <!-- Visual Header -->
@@ -897,7 +882,6 @@
                                     Damage Outputs: @State.ActiveAttacker.Pair.DisplayName
                                 </span>
                             </div>
-                            <span class="badge bg-purple">Slot @(State.ActiveAttackerIndex + 1) Active</span>
                         </div>
 
                         <div class="card-body p-2 p-md-3">
@@ -980,14 +964,6 @@
                                                             {
                                                                 <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">AoE Hit</span>
                                                             }
-                                                            else if (isTargetedEnemy)
-                                                            {
-                                                                <span class="badge bg-danger text-white py-0" style="font-size: 0.65rem;"><i class="bi bi-crosshair me-0.5"></i>Target</span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="badge bg-dark border border-secondary text-secondary py-0" style="font-size: 0.62rem;" title="Single-target move only hits the targeted opponent">Not Targeted</span>
-                                                            }
                                                         </div>
 
                                                         <!-- Damage & HP Damage Percentage Dealt -->
@@ -1010,11 +986,21 @@
                                                             }
                                                         </div>
 
-                                                        <!-- Health Bar Visualizer Descending from 100% -->
-                                                        <div class="progress mt-1" style="height: 6px; background-color: rgba(255,255,255,0.15); border-radius: 3px;">
-                                                            <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success")) @(!teamResult.IsAoE && !isTargetedEnemy ? "opacity-50" : "")"
+                                                        <!-- Health Bar: Blue for remaining HP, Red for damage dealt -->
+                                                        <div class="progress mt-1" style="height: 7px; background-color: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                                                            @{
+                                                                double remHp = Math.Clamp(dmg.RemainingHpPercent, 0.0, 100.0);
+                                                                double dealtHp = Math.Clamp(100.0 - remHp, 0.0, 100.0);
+                                                                string barOpacity = (!teamResult.IsAoE && !isTargetedEnemy) ? "opacity-40" : "";
+                                                            }
+                                                            <div class="progress-bar bg-primary @barOpacity"
                                                                  role="progressbar"
-                                                                 style="width: @Math.Min(100, Math.Max(0, dmg.RemainingHpPercent))%;"></div>
+                                                                 style="width: @(remHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                 title="Remaining HP: @remHp.ToString("0.0")%"></div>
+                                                            <div class="progress-bar bg-danger @barOpacity"
+                                                                 role="progressbar"
+                                                                 style="width: @(dealtHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                 title="Damage Dealt: @dmg.AvgHpPercent.ToString("0.0")%"></div>
                                                         </div>
 
                                                         @if (dmg.IsOHKO || dmg.RemainingHpPercent <= 0)
@@ -1135,14 +1121,6 @@
                                                                 {
                                                                     <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">AoE Hit</span>
                                                                 }
-                                                                else if (isTargetedEnemy)
-                                                                {
-                                                                    <span class="badge bg-danger text-white py-0" style="font-size: 0.65rem;"><i class="bi bi-crosshair me-0.5"></i>Target</span>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <span class="badge bg-dark border border-secondary text-secondary py-0" style="font-size: 0.62rem;" title="Single-target move only hits the targeted opponent">Not Targeted</span>
-                                                                }
                                                             </div>
 
                                                             <!-- Damage & HP Damage Percentage Dealt -->
@@ -1165,11 +1143,21 @@
                                                                 }
                                                             </div>
 
-                                                            <!-- Health Bar Visualizer Descending from 100% -->
-                                                            <div class="progress mt-1" style="height: 6px; background-color: rgba(255,255,255,0.15); border-radius: 3px;">
-                                                                <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success")) @(!teamResult.IsAoE && !isTargetedEnemy ? "opacity-50" : "")"
+                                                            <!-- Health Bar: Blue for remaining HP, Red for damage dealt -->
+                                                            <div class="progress mt-1" style="height: 7px; background-color: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                                                                @{
+                                                                    double remHp = Math.Clamp(dmg.RemainingHpPercent, 0.0, 100.0);
+                                                                    double dealtHp = Math.Clamp(100.0 - remHp, 0.0, 100.0);
+                                                                    string barOpacity = (!teamResult.IsAoE && !isTargetedEnemy) ? "opacity-40" : "";
+                                                                }
+                                                                <div class="progress-bar bg-primary @barOpacity"
                                                                      role="progressbar"
-                                                                     style="width: @Math.Min(100, Math.Max(0, dmg.RemainingHpPercent))%;"></div>
+                                                                     style="width: @(remHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                     title="Remaining HP: @remHp.ToString("0.0")%"></div>
+                                                                <div class="progress-bar bg-danger @barOpacity"
+                                                                     role="progressbar"
+                                                                     style="width: @(dealtHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                     title="Damage Dealt: @dmg.AvgHpPercent.ToString("0.0")%"></div>
                                                             </div>
 
                                                             @if (dmg.IsOHKO || dmg.RemainingHpPercent <= 0)
