@@ -386,7 +386,8 @@
                                                 {
                                                     int matching = State.GetMasterPassiveAllyCount(mp.Theme, ownerIndex: slotIndex);
                                                     int pct = (int)Math.Round(mp.PowerUpForAdditionalAllies(matching) * 100);
-                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mp.PassiveName: +@pct% to team (@matching other @mp.Theme allies)">
+                                                    int totalTheme = matching + 1;
+                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mp.PassiveName: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other ally)">
                                                         <i class="bi bi-star-fill text-warning"></i>
                                                         <span>@mp.PassiveName (+@pct%)</span>
                                                     </span>

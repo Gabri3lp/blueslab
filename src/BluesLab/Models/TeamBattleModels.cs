@@ -128,33 +128,104 @@ public class TeamBattleState
 
     public static readonly Dictionary<string, string[]> RegionTrainers = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["Kanto"] = new[] { "Red", "Blue", "Leaf", "Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Janine", "Sabrina", "Blaine", "Giovanni", "Lorelei", "Bruno", "Agatha", "Lance", "Bill", "Daisy", "Chase", "Elaine", "Oak", "Jessie", "James", "Ash" },
-        ["Johto"] = new[] { "Ethan", "Lyra", "Kris", "Silver", "Falkner", "Bugsy", "Whitney", "Morty", "Chuck", "Jasmine", "Pryce", "Clair", "Will", "Karen", "Eusine" },
-        ["Hoenn"] = new[] { "Brendan", "May", "Roxanne", "Brawly", "Wattson", "Flannery", "Norman", "Winona", "Tate", "Liza", "Wallace", "Juan", "Sidney", "Phoebe", "Glacia", "Drake", "Steven", "Zinnia", "Wally", "Archie", "Maxie", "Lisia", "Matt", "Courtney", "Shelly", "Tabitha", "Greta", "Lucy" },
-        ["Sinnoh"] = new[] { "Lucas", "Dawn", "Barry", "Roark", "Gardenia", "Maylene", "Crasher Wake", "Fantina", "Byron", "Candice", "Volkner", "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "Cyrus", "Mars", "Jupiter", "Saturn", "Riley", "Cheryl", "Mira", "Marley", "Buck", "Palmer", "Thorton", "Dahlia", "Darach", "Argenta", "Akari", "Rei", "Volo", "Irida", "Adaman", "Sabi", "Arezu", "Mai" },
-        ["Unova"] = new[] { "Hilbert", "Hilda", "Nate", "Rosa", "Cheren", "Bianca", "Cilan", "Chili", "Cress", "Lenora", "Burgh", "Elesa", "Clay", "Skyla", "Brycen", "Iris", "Drayden", "Roxie", "Marlon", "Shauntal", "Marshal", "Grimsley", "Caitlin", "Alder", "N", "Ghetsis", "Colress", "Hugh", "Emmet", "Ingo", "Bellelba" },
-        ["Kalos"] = new[] { "Calem", "Serena", "Shauna", "Tierno", "Trevor", "Viola", "Grant", "Korrina", "Ramos", "Clemont", "Valerie", "Olympia", "Wulfric", "Malva", "Siebold", "Wikstrom", "Drasna", "Diantha", "Lysandre", "Sycamore", "Emma", "Evelyn", "Nita", "Dana", "Morgan", "Harmony", "Urbain", "Blossom", "Kali" },
-        ["Alola"] = new[] { "Elio", "Selene", "Hau", "Gladion", "Lillie", "Ilima", "Lana", "Kiawe", "Mallow", "Sophocles", "Acerola", "Mina", "Hala", "Olivia", "Nanu", "Hapu", "Kahili", "Molayne", "Guzma", "Plumeria", "Kukui", "Burnet", "Lusamine", "Faba", "Ryuki" },
+        ["Kanto"] = new[] { "Red", "Blue", "Leaf", "Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Janine", "Sabrina", "Blaine", "Giovanni", "Lorelei", "Bruno", "Agatha", "Lance", "Bill", "Daisy", "Chase", "Elaine", "Oak", "Professor Oak", "Jessie", "James", "Ash" },
+        ["Johto"] = new[] { "Ethan", "Lyra", "Kris", "Silver", "Falkner", "Bugsy", "Whitney", "Morty", "Chuck", "Jasmine", "Pryce", "Clair", "Will", "Karen", "Eusine", "Archer", "Ariana", "Petrel", "Proton" },
+        ["Hoenn"] = new[] { "Brendan", "May", "Roxanne", "Brawly", "Wattson", "Flannery", "Norman", "Winona", "Tate", "Liza", "Wallace", "Juan", "Sidney", "Phoebe", "Glacia", "Drake", "Steven", "Zinnia", "Wally", "Archie", "Maxie", "Lisia", "Matt", "Courtney", "Shelly", "Tabitha", "Greta", "Lucy", "Anabel", "Noland", "Brandon" },
+        ["Sinnoh"] = new[] { "Lucas", "Dawn", "Barry", "Roark", "Gardenia", "Maylene", "Crasher Wake", "Fantina", "Byron", "Candice", "Volkner", "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "Cyrus", "Mars", "Jupiter", "Saturn", "Riley", "Cheryl", "Mira", "Marley", "Buck", "Palmer", "Thorton", "Dahlia", "Darach", "Argenta", "Akari", "Rei", "Volo", "Irida", "Adaman", "Sabi", "Arezu", "Mai", "Looker" },
+        ["Unova"] = new[] { "Hilbert", "Hilda", "Nate", "Rosa", "Cheren", "Bianca", "Cilan", "Chili", "Cress", "Lenora", "Burgh", "Elesa", "Clay", "Skyla", "Brycen", "Iris", "Drayden", "Roxie", "Marlon", "Shauntal", "Marshal", "Grimsley", "Caitlin", "Alder", "N", "Ghetsis", "Colress", "Hugh", "Emmet", "Ingo", "Bellelba", "Benga", "Brycen-Man" },
+        ["Kalos"] = new[] { "Calem", "Serena", "Shauna", "Tierno", "Trevor", "Viola", "Grant", "Korrina", "Ramos", "Clemont", "Valerie", "Olympia", "Wulfric", "Malva", "Siebold", "Wikstrom", "Drasna", "Diantha", "Lysandre", "Sycamore", "Professor Sycamore", "Emma", "Evelyn", "Nita", "Dana", "Morgan", "Harmony", "Urbain", "Blossom", "Kali", "Katherine", "Linnea", "Helena", "Sina", "Dexio" },
+        ["Alola"] = new[] { "Elio", "Selene", "Hau", "Gladion", "Lillie", "Ilima", "Lana", "Kiawe", "Mallow", "Sophocles", "Acerola", "Mina", "Hala", "Olivia", "Nanu", "Hapu", "Kahili", "Molayne", "Guzma", "Plumeria", "Kukui", "Burnet", "Lusamine", "Faba", "Ryuki", "The Masked Royal", "Samson Oak", "Naomi" },
         ["Galar"] = new[] { "Victor", "Gloria", "Hop", "Bede", "Marnie", "Milo", "Nessa", "Kabu", "Bea", "Allister", "Opal", "Gordie", "Melony", "Piers", "Raihan", "Klara", "Avery", "Mustard", "Peony", "Leon", "Sonia", "Oleana", "Rose", "Ball Guy", "Eve", "Petey" },
-        ["Paldea"] = new[] { "Florian", "Juliana", "Nemona", "Arven", "Penny", "Katy", "Brassius", "Iono", "Kofu", "Larry", "Ryme", "Tulip", "Grusha", "Rika", "Poppy", "Hassel", "Geeta", "Clavell", "Jacq", "Dendra", "Miriam", "Raifort", "Saguaro", "Salvatore", "Tyme", "Atticus", "Mela", "Lacey", "Carmine", "Kieran", "Drayton", "Crispin", "Amarys", "Briar", "Teddy" },
+        ["Paldea"] = new[] { "Florian", "Juliana", "Nemona", "Arven", "Penny", "Katy", "Brassius", "Iono", "Kofu", "Larry", "Ryme", "Tulip", "Grusha", "Rika", "Poppy", "Hassel", "Geeta", "Clavell", "Jacq", "Dendra", "Miriam", "Raifort", "Saguaro", "Salvatore", "Tyme", "Atticus", "Mela", "Lacey", "Carmine", "Kieran", "Drayton", "Crispin", "Amarys", "Briar", "Teddy", "Eri", "Giacomo", "Ortega", "Clive", "Perrin" },
         ["Pasio"] = new[] { "Lear", "Rachel", "Sawyer", "Paulo", "Tina", "Bellis", "Main Character" }
     };
 
-    public static bool MatchesTheme(SyncPairDetail pair, string theme)
+    private static readonly Dictionary<string, string> TrainerBaseToRegion = new(StringComparer.OrdinalIgnoreCase);
+
+    private static readonly string[] TrainerPrefixes = new[]
     {
-        if (string.IsNullOrEmpty(theme)) return false;
+        "Sygna Suit (Ultimate)",
+        "Sygna Suit",
+        "Arc Suit",
+        "Champion",
+        "Classic",
+        "Special Costume",
+        "Holiday",
+        "Palentine's",
+        "Summer",
+        "Fall",
+        "Spring",
+        "New Year's",
+        "Anniversary",
+        "Mix",
+        "Professor"
+    };
+
+    static TeamBattleState()
+    {
+        foreach (var kvp in RegionTrainers)
+        {
+            foreach (var trainer in kvp.Value)
+            {
+                TrainerBaseToRegion[trainer] = kvp.Key;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Accurately resolves the official region of any Sync Pair in Pokémon Masters EX by extracting
+    /// the base trainer name (stripping variant prefixes and costume parentheses).
+    /// </summary>
+    public static string? GetPairRegion(SyncPairDetail? pair)
+    {
+        if (pair == null) return null;
+
+        string name = pair.TrainerName ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            string d = pair.DisplayName ?? string.Empty;
+            int amp = d.IndexOf('&');
+            name = amp > 0 ? d.Substring(0, amp).Trim() : d.Trim();
+        }
+
+        int paren = name.IndexOf('(');
+        if (paren >= 0)
+        {
+            name = name.Substring(0, paren).Trim();
+        }
+
+        bool stripped = true;
+        while (stripped)
+        {
+            stripped = false;
+            foreach (var pref in TrainerPrefixes)
+            {
+                if (name.StartsWith(pref, StringComparison.OrdinalIgnoreCase))
+                {
+                    name = name.Substring(pref.Length).Trim();
+                    stripped = true;
+                }
+            }
+        }
+
+        if (TrainerBaseToRegion.TryGetValue(name, out var reg))
+            return reg;
+
+        return null;
+    }
+
+    public static bool MatchesTheme(SyncPairDetail? pair, string theme)
+    {
+        if (pair == null || string.IsNullOrWhiteSpace(theme)) return false;
 
         // 1. Type check (for Arc Suit Myths and Type Master Passives)
         if (string.Equals(pair.Type, theme, StringComparison.OrdinalIgnoreCase))
             return true;
 
-        // 2. Region check (for Regional Pride, Spirit, Flag Bearer)
-        if (RegionTrainers.TryGetValue(theme, out var names))
-        {
-            string tName = pair.TrainerName ?? string.Empty;
-            string dName = pair.DisplayName ?? string.Empty;
-            return names.Any(n => tName.Contains(n, StringComparison.OrdinalIgnoreCase) || dName.Contains(n, StringComparison.OrdinalIgnoreCase));
-        }
+        // 2. Exact Region check (for Regional Pride, Spirit, Flag Bearer)
+        string? pairRegion = GetPairRegion(pair);
+        if (!string.IsNullOrEmpty(pairRegion) && string.Equals(pairRegion, theme, StringComparison.OrdinalIgnoreCase))
+            return true;
 
         return false;
     }
