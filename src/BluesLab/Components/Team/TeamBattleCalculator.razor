@@ -394,7 +394,7 @@
                                 {
                                     <div class="@(ally.Pair.HasSuperAwakening ? "col-6" : "col-12") mt-1">
                                         <label class="text-muted" style="font-size: 0.72rem;">EX Role:</label>
-                                        <button class="btn btn-sm w-100 py-0 @(ally.HasExRole ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-muted")" @onclick="() => ally.HasExRole = !ally.HasExRole" style="font-size: 0.75rem; height: 26px;">
+                                        <button class="btn btn-sm w-100 py-0 @(ally.HasExRole ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" @onclick="() => ally.HasExRole = !ally.HasExRole" style="font-size: 0.75rem; height: 26px;">
                                             @(ally.HasExRole ? "EX Role ON" : "EX Role OFF")
                                         </button>
                                     </div>
@@ -466,8 +466,8 @@
                                         </select>
                                     </div>
 
-                                    <button class="btn btn-sm py-0 px-1 @(ally.IsCriticalMove ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-muted")" style="font-size: 0.72rem;" @onclick="() => ally.IsCriticalMove = !ally.IsCriticalMove">Crit</button>
-                                    <button class="btn btn-sm py-0 px-1 @(ally.SuperEffectiveNext ? "btn-danger text-white fw-bold" : "btn-outline-secondary text-muted")" style="font-size: 0.72rem;" @onclick="() => ally.SuperEffectiveNext = !ally.SuperEffectiveNext">SE Next</button>
+                                    <button class="btn btn-sm py-0 px-1 @(ally.IsCriticalMove ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem;" @onclick="() => ally.IsCriticalMove = !ally.IsCriticalMove">Crit</button>
+                                    <button class="btn btn-sm py-0 px-1 @(ally.SuperEffectiveNext ? "btn-danger text-white fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem;" @onclick="() => ally.SuperEffectiveNext = !ally.SuperEffectiveNext">SE Next</button>
                                 </div>
                             </div>
 
@@ -830,7 +830,7 @@
                                     <div class="col-md-4">
                                         <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : "border-secondary bg-black bg-opacity-25") text-center">
                                             <div class="d-flex justify-content-between align-items-center mb-1">
-                                                <span class="small text-muted fw-bold text-truncate" style="font-size: 0.75rem;">@oppName</span>
+                                                <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
                                                 @if (teamResult.IsAoE)
                                                 {
                                                     <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">AoE Hit</span>
@@ -841,21 +841,21 @@
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge bg-secondary text-muted py-0" style="font-size: 0.65rem;" title="Single-target move only attacks the targeted enemy. Value shown is hypothetical.">Hypothetical</span>
+                                                    <span class="badge bg-dark border border-secondary text-secondary py-0" style="font-size: 0.65rem;" title="Single-target move only attacks the targeted enemy. Value shown is hypothetical.">Hypothetical</span>
                                                 }
                                             </div>
 
-                                            <!-- Damage & Inverse HP Percentage Display -->
+                                            <!-- Damage & HP Damage Percentage Dealt -->
                                             <div class="d-flex align-items-baseline justify-content-center gap-1">
                                                 <span class="fs-5 fw-bold text-warning">@dmg.AvgDamage.ToString("N0")</span>
-                                                <span class="fw-bold @(dmg.RemainingHpPercent <= 0 ? "text-danger" : (dmg.RemainingHpPercent <= 25 ? "text-danger" : (dmg.RemainingHpPercent <= 50 ? "text-warning" : "text-success")))" style="font-size: 0.95rem;">
-                                                    (@dmg.RemainingHpPercent.ToString("0.0")% HP)
+                                                <span class="fw-bold @(dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info"))" style="font-size: 0.95rem;">
+                                                    (@dmg.AvgHpPercent.ToString("0.0")%)
                                                 </span>
                                             </div>
 
-                                            <!-- Min - Max Remaining Range -->
-                                            <div class="small text-muted" style="font-size: 0.72rem;">
-                                                Leaves @dmg.MinRemainingHpPercent.ToString("0.0")% - @dmg.MaxRemainingHpPercent.ToString("0.0")% HP (-@dmg.AvgHpPercent.ToString("0.0")%)
+                                            <!-- Min - Max Damage Range & Remaining HP -->
+                                            <div class="small text-secondary" style="font-size: 0.72rem;">
+                                                @dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP
                                             </div>
 
                                             <!-- Health Bar Visualizer Descending from 100% -->
@@ -869,7 +869,7 @@
                                             {
                                                 <div class="mt-1">
                                                     <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
-                                                        <i class="bi bi-skull-fill me-1"></i>0.0% HP (OHKO)
+                                                        <i class="bi bi-skull-fill me-1"></i>OHKO
                                                     </span>
                                                 </div>
                                             }
@@ -946,7 +946,7 @@
                                         <div class="col-md-4">
                                             <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : "border-secondary bg-black bg-opacity-25") text-center">
                                                 <div class="d-flex justify-content-between align-items-center mb-1">
-                                                    <span class="small text-muted fw-bold text-truncate" style="font-size: 0.75rem;">@oppName</span>
+                                                    <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
                                                     @if (teamResult.IsAoE)
                                                     {
                                                         <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">AoE Hit</span>
@@ -957,21 +957,21 @@
                                                     }
                                                     else
                                                     {
-                                                        <span class="badge bg-secondary text-muted py-0" style="font-size: 0.65rem;">Hypothetical</span>
+                                                        <span class="badge bg-dark border border-secondary text-secondary py-0" style="font-size: 0.65rem;">Hypothetical</span>
                                                     }
                                                 </div>
 
-                                                <!-- Damage & Inverse HP Percentage Display -->
+                                                <!-- Damage & HP Damage Percentage Dealt -->
                                                 <div class="d-flex align-items-baseline justify-content-center gap-1">
                                                     <span class="fs-5 fw-bold text-warning">@dmg.AvgDamage.ToString("N0")</span>
-                                                    <span class="fw-bold @(dmg.RemainingHpPercent <= 0 ? "text-danger" : (dmg.RemainingHpPercent <= 25 ? "text-danger" : (dmg.RemainingHpPercent <= 50 ? "text-warning" : "text-success")))" style="font-size: 0.95rem;">
-                                                        (@dmg.RemainingHpPercent.ToString("0.0")% HP)
+                                                    <span class="fw-bold @(dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info"))" style="font-size: 0.95rem;">
+                                                        (@dmg.AvgHpPercent.ToString("0.0")%)
                                                     </span>
                                                 </div>
 
-                                                <!-- Min - Max Remaining Range -->
-                                                <div class="small text-muted" style="font-size: 0.72rem;">
-                                                    Leaves @dmg.MinRemainingHpPercent.ToString("0.0")% - @dmg.MaxRemainingHpPercent.ToString("0.0")% HP (-@dmg.AvgHpPercent.ToString("0.0")%)
+                                                <!-- Min - Max Damage Range & Remaining HP -->
+                                                <div class="small text-secondary" style="font-size: 0.72rem;">
+                                                    @dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP
                                                 </div>
 
                                                 <!-- Health Bar Visualizer Descending from 100% -->
@@ -985,7 +985,7 @@
                                                 {
                                                     <div class="mt-1">
                                                         <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
-                                                            <i class="bi bi-skull-fill me-1"></i>0.0% HP (OHKO)
+                                                            <i class="bi bi-skull-fill me-1"></i>OHKO
                                                         </span>
                                                     </div>
                                                 }

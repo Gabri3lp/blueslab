@@ -470,9 +470,7 @@ public class DamageCalculatorService
             enemy.SyncBoosts = team.EnemySyncBuffs;
         }
 
-        bool isAoE = (team.Field.TargetCount > 1) ||
-                     (move.IsSync && (attacker.Pair?.Role?.Contains("Strike", StringComparison.OrdinalIgnoreCase) == true || (attacker.HasExRole && attacker.Pair?.ExRole?.Contains("Strike", StringComparison.OrdinalIgnoreCase) == true))) ||
-                     (move.Target?.Contains("all", StringComparison.OrdinalIgnoreCase) == true);
+        bool isAoE = IsMoveAoE(move, attacker);
 
         var leftRes = CalculateDamage(move, attacker, team.Enemies[0], team.Field, rules, activeGrid, team: team);
         var centerRes = CalculateDamage(move, attacker, team.Enemies[1], team.Field, rules, activeGrid, team: team);
@@ -487,6 +485,63 @@ public class DamageCalculatorService
             RightDamage = rightRes,
             ActiveTargetIndex = team.ActiveTargetIndex
         };
+    }
+
+    public bool IsMoveAoE(MoveItem move, CombatantState attacker)
+    {
+        if (move.IsSync)
+        {
+            // Sync moves hit all opponents only if:
+            // 1. Pair's base role is Strike and 6★ EX is unlocked/active
+            bool isBaseStrikeEx = (attacker.StarLevel.Contains("EX") || attacker.Pair?.HasEx == true) &&
+                                  (attacker.Pair?.Role?.Contains("Strike", StringComparison.OrdinalIgnoreCase) == true);
+            // 2. Pair's EX Role is Strike and EX role is unlocked
+            bool isExRoleStrike = attacker.HasExRole &&
+                                  (attacker.Pair?.ExRole?.Contains("Strike", StringComparison.OrdinalIgnoreCase) == true);
+            // 3. Move target explicitly specifies all opponents
+            bool isExplicitAll = move.Target?.Contains("all opponent", StringComparison.OrdinalIgnoreCase) == true;
+
+            return isBaseStrikeEx || isExRoleStrike || isExplicitAll;
+        }
+
+        if (move.IsMax)
+        {
+            return move.Target?.Contains("all opponent", StringComparison.OrdinalIgnoreCase) == true;
+        }
+
+        // Regular moves: check explicit target
+        if (move.Target?.Contains("all opponent", StringComparison.OrdinalIgnoreCase) == true)
+        {
+            return true;
+        }
+
+        // Check if passive grants Extend Range / Expand Reach to single-target moves
+        if (move.Target?.Contains("opponent", StringComparison.OrdinalIgnoreCase) == true)
+        {
+            var pair = attacker.Pair;
+            if (pair != null)
+            {
+                var passives = pair.Passives ?? new List<PassiveItem>();
+                if (attacker.FormIndex > 0 && pair.Variations != null && attacker.FormIndex <= pair.Variations.Count && pair.Variations[attacker.FormIndex - 1].Passives != null)
+                {
+                    passives = pair.Variations[attacker.FormIndex - 1].Passives;
+                }
+
+                foreach (var ps in passives)
+                {
+                    string pDesc = ps.Description ?? string.Empty;
+                    string pName = ps.Name ?? string.Empty;
+                    if (pName.Contains("Extend Range", StringComparison.OrdinalIgnoreCase) ||
+                        pName.Contains("Expand Reach", StringComparison.OrdinalIgnoreCase) ||
+                        pDesc.Contains("targets all opponents instead", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     public DamageResult CalculateDamage(
