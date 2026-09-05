@@ -1,0 +1,548 @@
+@using BluesLab.Models
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <!-- Modal Header -->
+                <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check2-all text-danger fs-5"></i>
+                        <div>
+                            <h6 class="modal-title fw-bold text-light mb-0">Apply Configuration to Enemies</h6>
+                            <small class="text-muted" style="font-size: 0.72rem;">Configure settings and apply them to any or all opponents</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body p-3" style="max-height: 75vh;">
+                    <!-- Top Bar: Target Enemies & Copy Source -->
+                    <div class="row g-2 mb-3 p-2 rounded bg-black bg-opacity-30 border border-secondary">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label text-warning fw-bold mb-1 d-flex align-items-center justify-content-between" style="font-size: 0.75rem;">
+                                <span><i class="bi bi-people me-1"></i>Target Enemies to Apply:</span>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="SelectAllTargets">All</button>
+                                    <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="DeselectAllTargets">None</button>
+                                </div>
+                            </label>
+                            <div class="d-flex flex-wrap gap-2">
+                                <label class="form-check form-check-inline cursor-pointer mb-0">
+                                    <input class="form-check-input" type="checkbox" @bind="_targetLeft" />
+                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">Left Enemy</span>
+                                </label>
+                                <label class="form-check form-check-inline cursor-pointer mb-0">
+                                    <input class="form-check-input" type="checkbox" @bind="_targetCenter" />
+                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">Center (Boss)</span>
+                                </label>
+                                <label class="form-check form-check-inline cursor-pointer mb-0">
+                                    <input class="form-check-input" type="checkbox" @bind="_targetRight" />
+                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">Right Enemy</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 border-start border-secondary">
+                            <label class="form-label text-info fw-bold mb-1" style="font-size: 0.75rem;">
+                                <i class="bi bi-box-arrow-in-down me-1"></i>Load / Copy values from:
+                            </label>
+                            <div class="d-flex flex-wrap gap-1">
+                                @for (int i = 0; i < 3 && i < Enemies.Count; i++)
+                                {
+                                    int idx = i;
+                                    string slotLabel = idx switch { 0 => "Left", 1 => "Center", _ => "Right" };
+                                    string name = string.IsNullOrEmpty(Enemies[idx].CustomTrainerName) ? slotLabel : Enemies[idx].CustomTrainerName;
+                                    <button class="btn btn-sm btn-outline-info py-0 px-2" style="font-size: 0.7rem; height: 24px;" @onclick="() => LoadFromEnemy(idx)">
+                                        @name
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 1: Debuffs / Stat Stages -->
+                    <div class="card bg-dark border-secondary mb-2">
+                        <div class="card-header py-1 px-2 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="chkApplyDebuffs" @bind="_applyDebuffs" />
+                                <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyDebuffs" style="font-size: 0.78rem;">
+                                    <i class="bi bi-graph-down-arrow text-danger me-1"></i>Stat Debuffs / Stages (-6 to +6)
+                                </label>
+                            </div>
+                            <div class="btn-group btn-group-sm" style="display: @(_applyDebuffs ? "inline-flex" : "none");">
+                                <button class="btn btn-outline-danger py-0 px-1" style="font-size: 0.65rem;" @onclick="() => SetAllDebuffs(-6)">All -6</button>
+                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => SetAllDebuffs(0)">Reset 0</button>
+                            </div>
+                        </div>
+                        <div class="card-body p-2" style="opacity: @(_applyDebuffs ? "1" : "0.4"); pointer-events: @(_applyDebuffs ? "auto" : "none");">
+                            <div class="row row-cols-5 g-1">
+                                @foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+                                {
+                                    int val = _stages.GetValueOrDefault(stat, -6);
+                                    <div class="col">
+                                        <div class="p-1 rounded bg-black bg-opacity-25 border border-secondary text-center">
+                                            <span class="d-block text-light fw-bold text-uppercase mb-1" style="font-size: 0.68rem;">@stat</span>
+                                            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace"
+                                                    style="font-size: 0.75rem; height: 24px;"
+                                                    value="@val"
+                                                    @onchange="(ev) => { if (int.TryParse(ev.Value?.ToString(), out int s)) _stages[stat] = s; }">
+                                                @for (int s = 6; s >= -6; s--)
+                                                {
+                                                    <option value="@s">@(s > 0 ? $"+{s}" : s.ToString())</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: Mitigations -->
+                    <div class="card bg-dark border-secondary mb-2">
+                        <div class="card-header py-1 px-2 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="chkApplyMitigations" @bind="_applyMitigations" />
+                                <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyMitigations" style="font-size: 0.78rem;">
+                                    <i class="bi bi-shield-shaded text-secondary me-1"></i>Debuff Mitigations (0-9)
+                                </label>
+                            </div>
+                            <div class="btn-group btn-group-sm" style="display: @(_applyMitigations ? "inline-flex" : "none");">
+                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => { _mitDef = 5; _mitSpd = 5; }">Default 5</button>
+                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => { _mitDef = 0; _mitSpd = 0; }">None 0</button>
+                            </div>
+                        </div>
+                        <div class="card-body p-2" style="opacity: @(_applyMitigations ? "1" : "0.4"); pointer-events: @(_applyMitigations ? "auto" : "none");">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center justify-content-between p-1 rounded bg-black bg-opacity-25 border border-secondary px-2">
+                                        <span class="text-secondary fw-bold" style="font-size: 0.75rem;">Def Mitigation:</span>
+                                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace"
+                                                style="width: 50px; font-size: 0.75rem; height: 24px;"
+                                                value="@_mitDef"
+                                                @onchange="(ev) => { if (int.TryParse(ev.Value?.ToString(), out int v)) _mitDef = v; }">
+                                            @for (int m = 0; m <= 9; m++)
+                                            {
+                                                <option value="@m">@m</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center justify-content-between p-1 rounded bg-black bg-opacity-25 border border-secondary px-2">
+                                        <span class="text-secondary fw-bold" style="font-size: 0.75rem;">SpD Mitigation:</span>
+                                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace"
+                                                style="width: 50px; font-size: 0.75rem; height: 24px;"
+                                                value="@_mitSpd"
+                                                @onchange="(ev) => { if (int.TryParse(ev.Value?.ToString(), out int v)) _mitSpd = v; }">
+                                            @for (int m = 0; m <= 9; m++)
+                                            {
+                                                <option value="@m">@m</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Status Condition & Interference -->
+                    <div class="card bg-dark border-secondary mb-2">
+                        <div class="card-header py-1 px-2 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="chkApplyStatus" @bind="_applyStatus" />
+                                <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyStatus" style="font-size: 0.78rem;">
+                                    <i class="bi bi-activity text-warning me-1"></i>Status Condition & Interference
+                                </label>
+                            </div>
+                            <button class="btn btn-outline-secondary btn-sm py-0 px-1" style="font-size: 0.65rem; display: @(_applyStatus ? "inline-block" : "none");" @onclick="ClearStatusAndInterference">
+                                Clear All
+                            </button>
+                        </div>
+                        <div class="card-body p-2" style="opacity: @(_applyStatus ? "1" : "0.4"); pointer-events: @(_applyStatus ? "auto" : "none");">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">Primary Status:</label>
+                                    <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2" style="font-size: 0.75rem; height: 26px;" @bind="_statusCondition">
+                                        <option value="">None</option>
+                                        <option value="burned">Burned 🔥</option>
+                                        <option value="paralyzed">Paralyzed ⚡</option>
+                                        <option value="poisoned">Poisoned ☠️</option>
+                                        <option value="badly poisoned">Badly Poisoned 🟣</option>
+                                        <option value="asleep">Asleep 💤</option>
+                                        <option value="frozen">Frozen ❄️</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <label class="text-muted mb-0 d-block" style="font-size: 0.68rem;">Interference & Breaks:</label>
+                                    <div class="d-flex flex-wrap gap-1">
+                                        <button class="btn btn-sm py-0 px-2 @(_confused ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.7rem; height: 24px;" @onclick="() => _confused = !_confused">
+                                            <img src="img/battle/SCTP_001.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Confused
+                                        </button>
+                                        <button class="btn btn-sm py-0 px-2 @(_trapped ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.7rem; height: 24px;" @onclick="() => _trapped = !_trapped">
+                                            <img src="img/battle/SCTP_004.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Trapped
+                                        </button>
+                                        <button class="btn btn-sm py-0 px-2 @(_flinching ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.7rem; height: 24px;" @onclick="() => _flinching = !_flinching">
+                                            <img src="img/battle/SCTP_002.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Flinch
+                                        </button>
+                                        <button class="btn btn-sm py-0 px-2 @(_physicalBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.7rem; height: 24px;" @onclick="() => _physicalBreak = !_physicalBreak">
+                                            <img src="img/battle/break_phys.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Phys Break
+                                        </button>
+                                        <button class="btn btn-sm py-0 px-2 @(_specialBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.7rem; height: 24px;" @onclick="() => _specialBreak = !_specialBreak">
+                                            <img src="img/battle/break_spec.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Spec Break
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 4: Type Rebuffs -->
+                    <div class="card bg-dark border-secondary mb-2">
+                        <div class="card-header py-1 px-2 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="chkApplyRebuffs" @bind="_applyRebuffs" />
+                                <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyRebuffs" style="font-size: 0.78rem;">
+                                    <i class="bi bi-shield-slash text-danger me-1"></i>Type Rebuffs (-3 to +3)
+                                </label>
+                            </div>
+                            <button class="btn btn-outline-secondary btn-sm py-0 px-1" style="font-size: 0.65rem; display: @(_applyRebuffs ? "inline-block" : "none");" @onclick="ClearAllRebuffs">
+                                Clear Rebuffs
+                            </button>
+                        </div>
+                        <div class="card-body p-2" style="opacity: @(_applyRebuffs ? "1" : "0.4"); pointer-events: @(_applyRebuffs ? "auto" : "none");">
+                            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2" style="width: 140px; font-size: 0.75rem; height: 26px;" @bind="_selectedRebuffType">
+                                    @foreach (var t in CombatantState.AllTypes)
+                                    {
+                                        <option value="@t">@t</option>
+                                    }
+                                </select>
+                                <div class="btn-group btn-group-sm">
+                                    @for (int r = -3; r <= 3; r++)
+                                    {
+                                        int val = r;
+                                        int cur = _rebuffs.GetValueOrDefault(_selectedRebuffType, 0);
+                                        bool isSelected = cur == val;
+                                        string btnClass = isSelected
+                                            ? (val < 0 ? "btn-primary fw-bold" : (val > 0 ? "btn-danger fw-bold" : "btn-secondary text-light fw-bold"))
+                                            : "btn-outline-secondary text-light";
+
+                                        <button type="button" class="btn btn-sm py-0 px-1 @btnClass" style="width: 26px; font-size: 0.72rem; height: 26px;" @onclick="() => _rebuffs[_selectedRebuffType] = val">
+                                            @(val > 0 ? $"+{val}" : val.ToString())
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Active Rebuff Chips -->
+                            @if (_rebuffs.Any(kv => kv.Value != 0))
+                            {
+                                <div class="d-flex flex-wrap gap-1 align-items-center pt-1 border-top border-secondary border-opacity-50">
+                                    <span class="text-muted small me-1" style="font-size: 0.7rem;">Active:</span>
+                                    @foreach (var (t, val) in _rebuffs.Where(kv => kv.Value != 0))
+                                    {
+                                        string tName = t;
+                                        int rVal = val;
+                                        <span class="badge type-badge type-@tName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm py-0 px-1" style="font-size: 0.7rem;">
+                                            <img src="@CombatantState.GetTypeIcon(tName)" alt="" width="12" height="12" />
+                                            <span>@tName</span>
+                                            <b class="text-warning">@(rVal > 0 ? $"+{rVal}" : rVal.ToString())</b>
+                                            <i class="bi bi-x ms-1 cursor-pointer" title="Remove" @onclick="() => _rebuffs[tName] = 0"></i>
+                                        </span>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="text-muted" style="font-size: 0.7rem;">No active type rebuffs (all 0)</div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Category 5: Weakness -->
+                    <div class="card bg-dark border-secondary mb-2">
+                        <div class="card-header py-1 px-2 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="chkApplyWeakness" @bind="_applyWeakness" />
+                                <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyWeakness" style="font-size: 0.78rem;">
+                                    <i class="bi bi-bullseye text-danger me-1"></i>Weakness Type
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-body p-2" style="opacity: @(_applyWeakness ? "1" : "0.4"); pointer-events: @(_applyWeakness ? "auto" : "none");">
+                            <div class="d-flex align-items-center gap-2">
+                                <label class="text-muted mb-0" style="font-size: 0.75rem;">Set Weakness:</label>
+                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2" style="width: 160px; font-size: 0.75rem; height: 26px;" @bind="_weakness">
+                                    @foreach (var t in CombatantState.AllTypes)
+                                    {
+                                        <option value="@t">@t</option>
+                                    }
+                                </select>
+                                <span class="badge type-badge type-@_weakness.ToLowerInvariant() py-1 px-2" style="font-size: 0.75rem;">
+                                    <img src="@CombatantState.GetTypeIcon(_weakness)" alt="" width="14" height="14" class="me-1" />@_weakness
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Base Defensive Stats (Optional) -->
+                    <div class="card bg-dark border-secondary mb-1">
+                        <div class="card-header py-1 px-2 bg-black bg-opacity-25 d-flex justify-content-between align-items-center">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="chkApplyStats" @bind="_applyStats" />
+                                <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyStats" style="font-size: 0.78rem;">
+                                    <i class="bi bi-shield me-1"></i>Base Defensive Stats (HP, Def, Sp. Def)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-body p-2" style="opacity: @(_applyStats ? "1" : "0.4"); pointer-events: @(_applyStats ? "auto" : "none");">
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">Max HP:</label>
+                                    <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.75rem; height: 24px;" @bind="_hp" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">Defense:</label>
+                                    <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.75rem; height: 24px;" @bind="_def" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">Sp. Def:</label>
+                                    <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.75rem; height: 24px;" @bind="_spd" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-between align-items-center">
+                    <span class="text-muted" style="font-size: 0.75rem;">
+                        Targeting @GetSelectedTargetsCount() opponent(s)
+                    </span>
+                    <div class="d-flex align-items-center gap-2">
+                        <button type="button" class="btn btn-secondary btn-sm px-3" @onclick="Close">Cancel</button>
+                        <button type="button" class="btn btn-danger btn-sm fw-bold px-3 d-inline-flex align-items-center gap-1" @onclick="Apply">
+                            <i class="bi bi-check2-all"></i>Apply to Selected Opponents
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public List<CombatantState> Enemies { get; set; } = new();
+    [Parameter] public int InitialSourceIndex { get; set; } = 1;
+    [Parameter] public EventCallback OnApplied { get; set; }
+
+    private bool _wasOpen = false;
+
+    // Targets
+    private bool _targetLeft = true;
+    private bool _targetCenter = true;
+    private bool _targetRight = true;
+
+    // Categories to apply
+    private bool _applyDebuffs = true;
+    private bool _applyMitigations = true;
+    private bool _applyStatus = true;
+    private bool _applyRebuffs = false;
+    private bool _applyWeakness = false;
+    private bool _applyStats = false;
+
+    // Local form values
+    private Dictionary<string, int> _stages = new();
+    private int _mitDef = 5;
+    private int _mitSpd = 5;
+    private string _statusCondition = string.Empty;
+    private bool _confused = false;
+    private bool _trapped = false;
+    private bool _flinching = false;
+    private bool _physicalBreak = false;
+    private bool _specialBreak = false;
+    private Dictionary<string, int> _rebuffs = new();
+    private string _selectedRebuffType = "Fire";
+    private string _weakness = "Fire";
+    private int _hp = 2000;
+    private int _def = 100;
+    private int _spd = 100;
+
+    protected override void OnParametersSet()
+    {
+        if (IsOpen && !_wasOpen)
+        {
+            _wasOpen = true;
+            // Initialize from InitialSourceIndex or Center
+            int srcIdx = Math.Clamp(InitialSourceIndex, 0, Math.Max(0, Enemies.Count - 1));
+            LoadFromEnemy(srcIdx);
+        }
+        else if (!IsOpen)
+        {
+            _wasOpen = false;
+        }
+    }
+
+    private void SelectAllTargets()
+    {
+        _targetLeft = true;
+        _targetCenter = true;
+        _targetRight = true;
+    }
+
+    private void DeselectAllTargets()
+    {
+        _targetLeft = false;
+        _targetCenter = false;
+        _targetRight = false;
+    }
+
+    private int GetSelectedTargetsCount()
+    {
+        int count = 0;
+        if (_targetLeft) count++;
+        if (_targetCenter) count++;
+        if (_targetRight) count++;
+        return count;
+    }
+
+    private void LoadFromEnemy(int index)
+    {
+        if (index < 0 || index >= Enemies.Count) return;
+        var enemy = Enemies[index];
+
+        _stages = new Dictionary<string, int>();
+        foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+        {
+            _stages[stat] = enemy.Stages.GetValueOrDefault(stat, -6);
+        }
+
+        _mitDef = enemy.Mitigations.GetValueOrDefault("def", 5);
+        _mitSpd = enemy.Mitigations.GetValueOrDefault("spd", 5);
+
+        _statusCondition = enemy.StatusCondition ?? string.Empty;
+        _confused = enemy.VolatileStatus.GetValueOrDefault("confused", false);
+        _trapped = enemy.VolatileStatus.GetValueOrDefault("trapped", false);
+        _flinching = enemy.VolatileStatus.GetValueOrDefault("flinching", false);
+        _physicalBreak = enemy.PhysicalBreak;
+        _specialBreak = enemy.SpecialBreak;
+
+        _rebuffs = new Dictionary<string, int>();
+        foreach (var t in CombatantState.AllTypes)
+        {
+            _rebuffs[t] = enemy.EnemyTypeRebuffs.GetValueOrDefault(t, 0);
+        }
+
+        if (!string.IsNullOrEmpty(enemy.Weakness))
+        {
+            _weakness = enemy.Weakness;
+            _selectedRebuffType = enemy.Weakness;
+        }
+
+        _hp = enemy.ManualStats.GetValueOrDefault("hp", 2000);
+        _def = enemy.ManualStats.GetValueOrDefault("def", 100);
+        _spd = enemy.ManualStats.GetValueOrDefault("spd", 100);
+    }
+
+    private void SetAllDebuffs(int stage)
+    {
+        foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+        {
+            _stages[stat] = stage;
+        }
+    }
+
+    private void ClearStatusAndInterference()
+    {
+        _statusCondition = string.Empty;
+        _confused = false;
+        _trapped = false;
+        _flinching = false;
+        _physicalBreak = false;
+        _specialBreak = false;
+    }
+
+    private void ClearAllRebuffs()
+    {
+        foreach (var t in CombatantState.AllTypes)
+        {
+            _rebuffs[t] = 0;
+        }
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task Apply()
+    {
+        for (int i = 0; i < 3 && i < Enemies.Count; i++)
+        {
+            bool isSelected = i switch { 0 => _targetLeft, 1 => _targetCenter, _ => _targetRight };
+            if (!isSelected) continue;
+
+            var enemy = Enemies[i];
+
+            if (_applyDebuffs)
+            {
+                foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+                {
+                    enemy.Stages[stat] = _stages.GetValueOrDefault(stat, -6);
+                }
+            }
+
+            if (_applyMitigations)
+            {
+                enemy.Mitigations["def"] = _mitDef;
+                enemy.Mitigations["spd"] = _mitSpd;
+            }
+
+            if (_applyStatus)
+            {
+                enemy.StatusCondition = _statusCondition;
+                enemy.VolatileStatus["confused"] = _confused;
+                enemy.VolatileStatus["trapped"] = _trapped;
+                enemy.VolatileStatus["flinching"] = _flinching;
+                enemy.PhysicalBreak = _physicalBreak;
+                enemy.SpecialBreak = _specialBreak;
+            }
+
+            if (_applyRebuffs)
+            {
+                foreach (var t in CombatantState.AllTypes)
+                {
+                    enemy.EnemyTypeRebuffs[t] = _rebuffs.GetValueOrDefault(t, 0);
+                }
+            }
+
+            if (_applyWeakness && !string.IsNullOrEmpty(_weakness))
+            {
+                enemy.Weakness = _weakness;
+            }
+
+            if (_applyStats)
+            {
+                enemy.ManualStats["hp"] = _hp;
+                enemy.ManualStats["def"] = _def;
+                enemy.ManualStats["spd"] = _spd;
+            }
+        }
+
+        await OnApplied.InvokeAsync();
+        await Close();
+    }
+}
