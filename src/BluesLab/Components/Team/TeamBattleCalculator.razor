@@ -14,7 +14,7 @@
             <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-trophy-fill text-warning fs-5"></i>
                 <span class="fw-bold text-light fs-5">3v3 Team Battle Simulator</span>
-                <span class="badge bg-danger">Pasio Gym Battle No. 3</span>
+                <span class="badge bg-danger">@(_leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId)?.Name ?? (State.ActiveFight?.Title ?? "Pasio Gym Battle"))</span>
             </div>
             <div class="d-flex align-items-center gap-3 flex-wrap">
                 <!-- Shared Sync Buffs -->
@@ -105,14 +105,18 @@
                 <div class="col-12 col-md-4">
                     <label class="form-label small text-muted mb-1">Weather:</label>
                     <div class="input-group input-group-sm">
-                        <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Weather" @bind:after="StateHasChanged">
+                        <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Weather" @bind:after="() => { if (string.IsNullOrEmpty(State.Field.Weather)) State.Field.WeatherEx = false; StateHasChanged(); }">
                             <option value="">None (Normal)</option>
                             <option value="Sunny">Sunny ☀️</option>
                             <option value="Rainy">Rainy 🌧️</option>
                             <option value="Sandstorm">Sandstorm 🏜️</option>
                             <option value="Hail">Hail ❄️</option>
                         </select>
-                        <button class="btn py-0 px-2 @(State.Field.WeatherEx ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { State.Field.WeatherEx = !State.Field.WeatherEx; StateHasChanged(); }">EX</button>
+                        <button class="btn py-0 px-2 @(State.Field.WeatherEx && !string.IsNullOrEmpty(State.Field.Weather) ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                style="font-size: 0.75rem;"
+                                disabled="@string.IsNullOrEmpty(State.Field.Weather)"
+                                title="@(string.IsNullOrEmpty(State.Field.Weather) ? "Select a Weather first to enable EX" : "Toggle Weather EX")"
+                                @onclick="() => { State.Field.WeatherEx = !State.Field.WeatherEx; StateHasChanged(); }">EX</button>
                     </div>
                 </div>
 
@@ -120,13 +124,17 @@
                 <div class="col-12 col-md-4">
                     <label class="form-label small text-muted mb-1">Terrain:</label>
                     <div class="input-group input-group-sm">
-                        <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Terrain" @bind:after="StateHasChanged">
+                        <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Terrain" @bind:after="() => { if (string.IsNullOrEmpty(State.Field.Terrain)) State.Field.TerrainEx = false; StateHasChanged(); }">
                             <option value="">None</option>
                             <option value="Electric Terrain">Electric Terrain ⚡</option>
                             <option value="Grassy Terrain">Grassy Terrain 🌿</option>
                             <option value="Psychic Terrain">Psychic Terrain 🔮</option>
                         </select>
-                        <button class="btn py-0 px-2 @(State.Field.TerrainEx ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { State.Field.TerrainEx = !State.Field.TerrainEx; StateHasChanged(); }">EX</button>
+                        <button class="btn py-0 px-2 @(State.Field.TerrainEx && !string.IsNullOrEmpty(State.Field.Terrain) ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                style="font-size: 0.75rem;"
+                                disabled="@string.IsNullOrEmpty(State.Field.Terrain)"
+                                title="@(string.IsNullOrEmpty(State.Field.Terrain) ? "Select a Terrain first to enable EX" : "Toggle Terrain EX")"
+                                @onclick="() => { State.Field.TerrainEx = !State.Field.TerrainEx; StateHasChanged(); }">EX</button>
                     </div>
                 </div>
 
@@ -134,14 +142,18 @@
                 <div class="col-12 col-md-4">
                     <label class="form-label small text-muted mb-1">Zone:</label>
                     <div class="input-group input-group-sm">
-                        <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Zone" @bind:after="StateHasChanged">
+                        <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Zone" @bind:after="() => { if (string.IsNullOrEmpty(State.Field.Zone)) State.Field.ZoneEx = false; StateHasChanged(); }">
                             <option value="">None</option>
                             @foreach (var z in CombatantState.ValidZoneTypes)
                             {
                                 <option value="@($"{z} Zone")">@($"{z} Zone")</option>
                             }
                         </select>
-                        <button class="btn py-0 px-2 @(State.Field.ZoneEx ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;" @onclick="() => { State.Field.ZoneEx = !State.Field.ZoneEx; StateHasChanged(); }">EX</button>
+                        <button class="btn py-0 px-2 @(State.Field.ZoneEx && !string.IsNullOrEmpty(State.Field.Zone) ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                style="font-size: 0.75rem;"
+                                disabled="@string.IsNullOrEmpty(State.Field.Zone)"
+                                title="@(string.IsNullOrEmpty(State.Field.Zone) ? "Select a Zone first to enable EX" : "Toggle Zone EX")"
+                                @onclick="() => { State.Field.ZoneEx = !State.Field.ZoneEx; StateHasChanged(); }">EX</button>
                     </div>
                 </div>
             </div>
@@ -393,7 +405,7 @@
                                                     int matching = State.GetMasterPassiveAllyCount(mp.Theme, ownerIndex: slotIndex);
                                                     int pct = (int)Math.Round(mp.PowerUpForAdditionalAllies(matching) * 100);
                                                     int totalTheme = matching + 1;
-                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mp.PassiveName: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other ally)">
+                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mp.PassiveName: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other @(matching == 1 ? "ally" : "allies"))">
                                                         <i class="bi bi-star-fill text-warning"></i>
                                                         <span>@mp.PassiveName (+@pct%)</span>
                                                     </span>
@@ -778,9 +790,12 @@
                                     <div class="mt-1 pt-1 border-top border-secondary border-opacity-50 small">
                                         <div class="d-flex flex-wrap align-items-center gap-1 mb-1">
                                             <span class="text-danger fw-bold" style="font-size: 0.68rem;"><i class="bi bi-shield-slash"></i> Rebuff:</span>
+                                            @{
+                                                int rebuffCount = enemy.EnemyTypeRebuffs.Count(kv => kv.Value != 0);
+                                            }
                                             <button class="btn btn-sm btn-outline-danger py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.68rem; height: 22px;"
                                                     @onclick="() => OpenRebuffModal(targetIndex)">
-                                                <i class="bi bi-plus-circle"></i> Add Rebuff @(enemy.EnemyTypeRebuffs.Count(kv => kv.Value != 0) > 0 ? $"({enemy.EnemyTypeRebuffs.Count(kv => kv.Value != 0)})" : "")
+                                                <i class="bi bi-@(rebuffCount > 0 ? "pencil" : "plus-circle")"></i> @(rebuffCount > 0 ? $"Rebuffs ({rebuffCount})" : "Add Rebuff")
                                             </button>
                                             @if (enemy.EnemyTypeRebuffs.Any(kv => kv.Value != 0))
                                             {
@@ -845,11 +860,23 @@
                                 @foreach (var move in normalAttackerMoves)
                                 {
                                     var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
+                                    string cleanMoveName = move.Name.Replace("\r", "").Trim();
+                                    var nameParts = cleanMoveName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
                                     <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3">
                                         <div class="d-flex justify-content-between align-items-start mb-2">
                                             <div>
-                                                <div class="fw-bold text-light fs-6">@move.Name</div>
+                                                @if (nameParts.Length > 1)
+                                                {
+                                                    <div class="fw-bold text-light fs-6 lh-sm">
+                                                        <span>@nameParts[0]</span>
+                                                        <span class="text-warning text-opacity-75 d-block small" style="font-size: 0.78rem; font-weight: 500;">@string.Join(" ", nameParts.Skip(1))</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="fw-bold text-light fs-6">@cleanMoveName</div>
+                                                }
                                                 <div class="d-flex gap-1 align-items-center mt-1 flex-wrap">
                                                     <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
                                                     <span class="badge bg-secondary">@move.Category</span>
@@ -892,7 +919,7 @@
                                                 string oppName = string.IsNullOrEmpty(opp.CustomTrainerName) ? slotTitle : $"{opp.CustomTrainerName}";
 
                                                 <div class="col-md-4">
-                                                    <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : "border-secondary bg-black bg-opacity-25") text-center">
+                                                    <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : (teamResult.IsAoE ? "border-secondary bg-black bg-opacity-25" : "border-secondary bg-black bg-opacity-10 opacity-50")) text-center">
                                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                                             <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
                                                             @if (teamResult.IsAoE)
@@ -903,24 +930,35 @@
                                                             {
                                                                 <span class="badge bg-danger text-white py-0" style="font-size: 0.65rem;"><i class="bi bi-crosshair me-0.5"></i>Target</span>
                                                             }
+                                                            else
+                                                            {
+                                                                <span class="badge bg-dark border border-secondary text-secondary py-0" style="font-size: 0.62rem;" title="Single-target move only hits the targeted opponent">Not Targeted</span>
+                                                            }
                                                         </div>
 
                                                         <!-- Damage & HP Damage Percentage Dealt -->
                                                         <div class="d-flex align-items-baseline justify-content-center gap-1">
-                                                            <span class="fs-5 fw-bold text-warning">@dmg.AvgDamage.ToString("N0")</span>
-                                                            <span class="fw-bold @(dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info"))" style="font-size: 0.95rem;">
+                                                            <span class="fs-5 fw-bold @(isTargetedEnemy || teamResult.IsAoE ? "text-warning" : "text-secondary")">@dmg.AvgDamage.ToString("N0")</span>
+                                                            <span class="fw-bold @(isTargetedEnemy || teamResult.IsAoE ? (dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info")) : "text-muted")" style="font-size: 0.95rem;">
                                                                 (@dmg.AvgHpPercent.ToString("0.0")%)
                                                             </span>
                                                         </div>
 
                                                         <!-- Min - Max Damage Range & Remaining HP -->
                                                         <div class="small text-secondary" style="font-size: 0.72rem;">
-                                                            @dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP
+                                                            @if (!teamResult.IsAoE && !isTargetedEnemy)
+                                                            {
+                                                                <span class="text-muted">(If targeted: @dmg.AvgHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP)</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP</span>
+                                                            }
                                                         </div>
 
                                                         <!-- Health Bar Visualizer Descending from 100% -->
                                                         <div class="progress mt-1" style="height: 6px; background-color: rgba(255,255,255,0.15); border-radius: 3px;">
-                                                            <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success"))"
+                                                            <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success")) @(!teamResult.IsAoE && !isTargetedEnemy ? "opacity-50" : "")"
                                                                  role="progressbar"
                                                                  style="width: @Math.Min(100, Math.Max(0, dmg.RemainingHpPercent))%;"></div>
                                                         </div>
@@ -947,6 +985,23 @@
                                                 </span>
                                             }
                                         </div>
+
+                                        <!-- Stage Gimmick / Rules Warning (Purely Informational) -->
+                                        @{
+                                            var stageWarnings = GetStageGimmickWarnings(move, State.Enemies[State.ActiveTargetIndex]);
+                                        }
+                                        @if (stageWarnings.Count > 0)
+                                        {
+                                            <div class="mt-2 p-1 px-2 rounded bg-danger bg-opacity-25 border border-danger border-opacity-75 d-flex align-items-center gap-2" style="font-size: 0.72rem;">
+                                                <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0"></i>
+                                                <div class="d-flex flex-column gap-0.5">
+                                                    @foreach (var w in stageWarnings)
+                                                    {
+                                                        <span class="text-warning fw-bold">⚠️ Stage Rule: <span class="text-light fw-normal">@w</span></span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
                                 }
 
@@ -965,12 +1020,24 @@
                                     @foreach (var move in maxAttackerMoves)
                                     {
                                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
+                                        string cleanMaxName = move.Name.Replace("\r", "").Trim();
+                                        var maxNameParts = cleanMaxName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
                                         <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3 border-pink">
                                             <div class="d-flex justify-content-between align-items-start mb-2">
                                                 <div>
                                                     <div class="d-flex align-items-center gap-2">
-                                                        <span class="fw-bold text-light fs-6">@move.Name</span>
+                                                        @if (maxNameParts.Length > 1)
+                                                        {
+                                                            <div class="fw-bold text-light fs-6 lh-sm">
+                                                                <span>@maxNameParts[0]</span>
+                                                                <span class="text-pink text-opacity-75 d-block small" style="font-size: 0.78rem; font-weight: 500;">@string.Join(" ", maxNameParts.Skip(1))</span>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="fw-bold text-light fs-6">@cleanMaxName</span>
+                                                        }
                                                         <span class="badge btn-pink text-white">Max Move</span>
                                                     </div>
                                                     <div class="d-flex gap-1 align-items-center mt-1">
@@ -979,6 +1046,10 @@
                                                         @if (teamResult.IsAoE)
                                                         {
                                                             <span class="badge bg-info text-dark">AoE / All Targets</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge bg-dark border border-secondary text-secondary">Single Target</span>
                                                         }
                                                         <span class="badge" style="background-color: rgba(232, 67, 147, 0.2); color: #ff79b0; border: 1px solid rgba(232, 67, 147, 0.5); font-weight: 600;">
                                                             <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
@@ -1004,7 +1075,7 @@
                                                     string oppName = string.IsNullOrEmpty(opp.CustomTrainerName) ? slotTitle : $"{opp.CustomTrainerName}";
 
                                                     <div class="col-md-4">
-                                                        <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : "border-secondary bg-black bg-opacity-25") text-center">
+                                                        <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : (teamResult.IsAoE ? "border-secondary bg-black bg-opacity-25" : "border-secondary bg-black bg-opacity-10 opacity-50")) text-center">
                                                             <div class="d-flex justify-content-between align-items-center mb-1">
                                                                 <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
                                                                 @if (teamResult.IsAoE)
@@ -1015,24 +1086,35 @@
                                                                 {
                                                                     <span class="badge bg-danger text-white py-0" style="font-size: 0.65rem;"><i class="bi bi-crosshair me-0.5"></i>Target</span>
                                                                 }
+                                                                else
+                                                                {
+                                                                    <span class="badge bg-dark border border-secondary text-secondary py-0" style="font-size: 0.62rem;" title="Single-target move only hits the targeted opponent">Not Targeted</span>
+                                                                }
                                                             </div>
 
                                                             <!-- Damage & HP Damage Percentage Dealt -->
                                                             <div class="d-flex align-items-baseline justify-content-center gap-1">
-                                                                <span class="fs-5 fw-bold text-warning">@dmg.AvgDamage.ToString("N0")</span>
-                                                                <span class="fw-bold @(dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info"))" style="font-size: 0.95rem;">
+                                                                <span class="fs-5 fw-bold @(isTargetedEnemy || teamResult.IsAoE ? "text-warning" : "text-secondary")">@dmg.AvgDamage.ToString("N0")</span>
+                                                                <span class="fw-bold @(isTargetedEnemy || teamResult.IsAoE ? (dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info")) : "text-muted")" style="font-size: 0.95rem;">
                                                                     (@dmg.AvgHpPercent.ToString("0.0")%)
                                                                 </span>
                                                             </div>
 
                                                             <!-- Min - Max Damage Range & Remaining HP -->
                                                             <div class="small text-secondary" style="font-size: 0.72rem;">
-                                                                @dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP
+                                                                @if (!teamResult.IsAoE && !isTargetedEnemy)
+                                                                {
+                                                                    <span class="text-muted">(If targeted: @dmg.AvgHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP)</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP</span>
+                                                                }
                                                             </div>
 
                                                             <!-- Health Bar Visualizer Descending from 100% -->
                                                             <div class="progress mt-1" style="height: 6px; background-color: rgba(255,255,255,0.15); border-radius: 3px;">
-                                                                <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success"))"
+                                                                <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success")) @(!teamResult.IsAoE && !isTargetedEnemy ? "opacity-50" : "")"
                                                                      role="progressbar"
                                                                      style="width: @Math.Min(100, Math.Max(0, dmg.RemainingHpPercent))%;"></div>
                                                             </div>
@@ -1059,6 +1141,23 @@
                                                     </span>
                                                 }
                                             </div>
+
+                                            <!-- Stage Gimmick / Rules Warning (Purely Informational) -->
+                                            @{
+                                                var stageWarnings = GetStageGimmickWarnings(move, State.Enemies[State.ActiveTargetIndex]);
+                                            }
+                                            @if (stageWarnings.Count > 0)
+                                            {
+                                                <div class="mt-2 p-1 px-2 rounded bg-danger bg-opacity-25 border border-danger border-opacity-75 d-flex align-items-center gap-2" style="font-size: 0.72rem;">
+                                                    <i class="bi bi-exclamation-triangle-fill text-warning flex-shrink-0"></i>
+                                                    <div class="d-flex flex-column gap-0.5">
+                                                        @foreach (var w in stageWarnings)
+                                                        {
+                                                            <span class="text-warning fw-bold">⚠️ Stage Rule: <span class="text-light fw-normal">@w</span></span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
                                         </div>
                                     }
                                 }
@@ -1338,5 +1437,37 @@
             State.Enemies[target].ManualStats["spd"] = val;
             StateHasChanged();
         }
+    }
+
+    private List<string> GetStageGimmickWarnings(MoveItem move, CombatantState opp)
+    {
+        var warnings = new List<string>();
+        if (State.ActiveFight?.Rules == null || State.ActiveFight.Rules.Count == 0) return warnings;
+
+        foreach (var rule in State.ActiveFight.Rules)
+        {
+            if (rule.Contains("status condition or interference", StringComparison.OrdinalIgnoreCase))
+            {
+                bool hasStatus = !string.IsNullOrEmpty(opp.StatusCondition);
+                bool hasInterference = opp.VolatileStatus.GetValueOrDefault("confused", false) ||
+                                       opp.VolatileStatus.GetValueOrDefault("trapped", false) ||
+                                       opp.VolatileStatus.GetValueOrDefault("flinching", false);
+                if (!hasStatus && !hasInterference)
+                {
+                    warnings.Add("Target is unaffected by status or interference! Deals 0 damage in this stage until afflicted.");
+                }
+            }
+
+            if (rule.Contains("not supereffective", StringComparison.OrdinalIgnoreCase) ||
+                rule.Contains("not super effective", StringComparison.OrdinalIgnoreCase))
+            {
+                bool isSE = !string.IsNullOrEmpty(opp.Weakness) && string.Equals(move.Type, opp.Weakness, StringComparison.OrdinalIgnoreCase);
+                if (!isSE)
+                {
+                    warnings.Add("Move is not super effective! Deals 0 damage in this stage.");
+                }
+            }
+        }
+        return warnings;
     }
 }

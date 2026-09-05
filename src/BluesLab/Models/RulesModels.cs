@@ -159,9 +159,17 @@ public class MasterPassiveRule
 
         if (rules != null && rules.MasterPassives.Count > 0)
         {
-            list.AddRange(rules.MasterPassives.Where(m =>
+            var matchedRules = rules.MasterPassives.Where(m =>
                 string.Equals(m.SyncPair, pair.DisplayName, StringComparison.OrdinalIgnoreCase) ||
-                (!string.IsNullOrEmpty(pair.DisplayName) && m.SyncPair.StartsWith(pair.DisplayName, StringComparison.OrdinalIgnoreCase))));
+                (!string.IsNullOrEmpty(pair.DisplayName) && m.SyncPair.StartsWith(pair.DisplayName, StringComparison.OrdinalIgnoreCase)));
+
+            foreach (var m in matchedRules)
+            {
+                if (!list.Any(x => string.Equals(x.PassiveName, m.PassiveName, StringComparison.OrdinalIgnoreCase)))
+                {
+                    list.Add(m);
+                }
+            }
         }
 
         foreach (var p in pair.Passives)
