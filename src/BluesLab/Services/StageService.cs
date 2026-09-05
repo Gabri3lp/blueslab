@@ -67,6 +67,11 @@ public class StageService
             {
                 enemy.EnemyTypeRebuffs[k] = 0;
             }
+            enemy.Mitigations["def"] = 5;
+            enemy.Mitigations["spd"] = 5;
+            enemy.Mitigations["atk"] = 5;
+            enemy.Mitigations["spa"] = 5;
+            enemy.Mitigations["spe"] = 5;
             enemy.StatusCondition = string.Empty;
             enemy.VolatileStatus["confused"] = false;
             enemy.VolatileStatus["trapped"] = false;

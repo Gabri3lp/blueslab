@@ -659,7 +659,7 @@ public class DamageCalculatorService
             defStatKey,
             jsonDefStat,
             enemy.Stages.GetValueOrDefault(defStatKey, 0),
-            mitigation: enemy.Mitigations.GetValueOrDefault(defStatKey, 0),
+            mitigation: enemy.Mitigations.GetValueOrDefault(defStatKey, 5),
             inBattleStatMult: inBattleDefMult,
             critDefense: ally.IsCriticalMove
         );
