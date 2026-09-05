@@ -16,7 +16,7 @@
                 <div class="modal-body p-3">
                     <!-- Search and filters -->
                     <div class="row g-2 mb-3">
-                        <div class="col-md-6">
+                        <div class="col-lg-4 col-md-6">
                             <div class="input-group">
                                 <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-search"></i></span>
                                 <input @ref="SearchInputRef" type="text" class="form-control bg-dark text-light border-secondary" placeholder="@Loc.T("filter_placeholder", "Search trainer or Pokémon...")" @bind="SearchQuery" @bind:event="oninput" autofocus />
@@ -26,7 +26,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="col-md-3 col-6">
+                        <div class="col-lg-2 col-md-3 col-6">
                             <select class="form-select bg-dark text-light border-secondary" @bind="SelectedType">
                                 <option value="">@Loc.T("all_types", "All Types")</option>
                                 @foreach (var t in CombatantState.AllTypes)
@@ -35,7 +35,7 @@
                                 }
                             </select>
                         </div>
-                        <div class="col-md-3 col-6">
+                        <div class="col-lg-2 col-md-3 col-6">
                             <select class="form-select bg-dark text-light border-secondary" @bind="SelectedRole">
                                 <option value="">@Loc.T("all_roles", "All Roles")</option>
                                 <option value="Strike">@Loc.GetRoleName("Strike")</option>
@@ -45,6 +45,19 @@
                                 <option value="Field">@Loc.GetRoleName("Field")</option>
                                 <option value="Multi">@Loc.GetRoleName("Multi")</option>
                             </select>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-text bg-secondary border-secondary text-light" title="@Loc.T("sort_by", "Sort By")"><i class="bi bi-arrow-down-up"></i></span>
+                                <select class="form-select bg-dark text-light border-secondary" @bind="SelectedSort">
+                                    <option value="release_desc">📅 @Loc.T("sort_release_desc", "Release Date: Newest")</option>
+                                    <option value="release_asc">📅 @Loc.T("sort_release_asc", "Release Date: Oldest")</option>
+                                    <option value="name_asc">🔤 @Loc.T("sort_name_asc", "Name: A to Z")</option>
+                                    <option value="name_desc">🔤 @Loc.T("sort_name_desc", "Name: Z to A")</option>
+                                    <option value="rarity_desc">⭐ @Loc.T("sort_rarity_desc", "Rarity: High to Low")</option>
+                                    <option value="rarity_asc">⭐ @Loc.T("sort_rarity_asc", "Rarity: Low to High")</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -72,7 +85,7 @@
                                         <img src="@pair.IconUrl" alt="@dName" class="rounded-circle border border-warning" width="48" height="48" onerror="this.src='img/trainers/unknown.png';" />
                                         <div class="flex-grow-1 overflow-hidden">
                                             <div class="fw-bold text-truncate text-light small" title="@dName">@dName</div>
-                                            <div class="d-flex align-items-center gap-1 mt-1">
+                                            <div class="d-flex align-items-center gap-1 mt-1 flex-wrap">
                                                 <span class="badge type-badge type-@pair.Type.ToLowerInvariant()">@Loc.GetTypeName(pair.Type)</span>
                                                 <span class="badge bg-dark border border-secondary text-secondary small">@Loc.GetRoleName(pair.Role)</span>
                                                 @if (pair.HasSuperAwakening)
@@ -82,6 +95,12 @@
                                                 @if (pair.HasMega)
                                                 {
                                                     <span class="badge bg-warning text-dark" title="Mega Evolution">M</span>
+                                                }
+                                                @if (!string.IsNullOrEmpty(pair.ReleaseDate))
+                                                {
+                                                    <span class="badge bg-dark border border-secondary text-muted ms-auto small" style="font-size: 0.68rem;" title="@Loc.T("release_date", "Release Date"): @pair.ReleaseDate">
+                                                        <i class="bi bi-calendar3 me-1"></i>@pair.ReleaseDate
+                                                    </span>
                                                 }
                                             </div>
                                         </div>
@@ -117,13 +136,14 @@
     private string SearchQuery = "";
     private string SelectedType = "";
     private string SelectedRole = "";
+    private string SelectedSort = "release_desc";
     private bool FilterMega;
     private bool FilterTera;
     private bool FilterDMax;
     private bool FilterSA;
     private bool FilterEx;
 
-    private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterDMax || FilterSA || FilterEx;
+    private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterDMax || FilterSA || FilterEx || SelectedSort != "release_desc";
 
     protected override async Task OnInitializedAsync()
     {
@@ -164,7 +184,7 @@
         get
         {
             var query = SearchQuery.Trim().ToLowerInvariant();
-            return AllPairs.Where(p =>
+            var pairs = AllPairs.Where(p =>
             {
                 if (!string.IsNullOrEmpty(query))
                 {
@@ -194,6 +214,16 @@
                 if (FilterSA && !p.HasSuperAwakening) return false;
                 if (FilterEx && !p.HasEx) return false;
                 return true;
+            });
+
+            return (SelectedSort switch
+            {
+                "release_asc" => pairs.OrderBy(p => p.ReleaseTimestamp).ThenBy(p => p.DisplayName),
+                "name_asc" => pairs.OrderBy(p => Loc.GetDisplayName(p)).ThenByDescending(p => p.ReleaseTimestamp),
+                "name_desc" => pairs.OrderByDescending(p => Loc.GetDisplayName(p)).ThenByDescending(p => p.ReleaseTimestamp),
+                "rarity_desc" => pairs.OrderByDescending(p => p.Rarity).ThenByDescending(p => p.ReleaseTimestamp).ThenBy(p => p.DisplayName),
+                "rarity_asc" => pairs.OrderBy(p => p.Rarity).ThenByDescending(p => p.ReleaseTimestamp).ThenBy(p => p.DisplayName),
+                _ => pairs.OrderByDescending(p => p.ReleaseTimestamp).ThenBy(p => p.DisplayName)
             }).ToList();
         }
     }
@@ -203,6 +233,7 @@
         SearchQuery = "";
         SelectedType = "";
         SelectedRole = "";
+        SelectedSort = "release_desc";
         FilterMega = false;
         FilterTera = false;
         FilterDMax = false;

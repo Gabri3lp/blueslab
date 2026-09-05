@@ -69,6 +69,12 @@ public class PairManifestItem
 
     [JsonPropertyName("pokemonKey")]
     public string PokemonKey { get; set; } = string.Empty;
+
+    [JsonPropertyName("releaseDate")]
+    public string ReleaseDate { get; set; } = string.Empty;
+
+    [JsonPropertyName("releaseTimestamp")]
+    public long ReleaseTimestamp { get; set; }
 }
 
 public class SyncPairDetail
@@ -135,6 +141,12 @@ public class SyncPairDetail
 
     [JsonPropertyName("pokemonIconUrl")]
     public string PokemonIconUrl { get; set; } = string.Empty;
+
+    [JsonPropertyName("releaseDate")]
+    public string ReleaseDate { get; set; } = string.Empty;
+
+    [JsonPropertyName("releaseTimestamp")]
+    public long ReleaseTimestamp { get; set; }
 
     [JsonPropertyName("stats")]
     public PairStats Stats { get; set; } = new();
