@@ -228,10 +228,9 @@
                         <!-- Allied Team Field Effects: Sync Buffs, Screens & Battle Circles -->
                         <div class="d-flex flex-wrap align-items-center gap-2">
                             <!-- Ally Sync Buff (Icon only, no shield) -->
-                            <div class="d-flex align-items-center gap-1 bg-dark px-2 rounded border border-secondary" style="height: 24px;" title="Ally Sync Buffs">
+                            <div class="d-flex align-items-center gap-1 bg-dark px-2 rounded border border-secondary" style="height: 24px; overflow: hidden;" title="Ally Sync Buffs">
                                 <img src="img/sync_icon.png" alt="Sync" style="width: 16px; height: 16px; object-fit: contain;" />
-                                <input type="number" min="0" max="9" class="form-control form-control-sm bg-dark text-light border-0 text-center py-0 px-1 font-monospace"
-                                       style="width: 32px; font-size: 0.75rem; height: 20px;"
+                                <input type="number" min="0" max="9" class="sync-buff-input"
                                        @bind="State.AllySyncBuffs" @bind:after="StateHasChanged" />
                                 <span class="small text-warning fw-bold" style="font-size: 0.72rem;">×@(1.0 + State.AllySyncBuffs * 0.5)</span>
                             </div>
@@ -610,10 +609,9 @@
                         <!-- Enemy Shared Screens, Damage Field & Sync Buff -->
                         <div class="d-flex flex-wrap align-items-center gap-2">
                             <!-- Enemy Sync Buff (Icon only, no shield) -->
-                            <div class="d-flex align-items-center gap-1 bg-dark px-2 rounded border border-secondary" style="height: 24px;" title="Enemy Sync Buffs">
+                            <div class="d-flex align-items-center gap-1 bg-dark px-2 rounded border border-secondary" style="height: 24px; overflow: hidden;" title="Enemy Sync Buffs">
                                 <img src="img/sync_icon.png" alt="Sync" style="width: 16px; height: 16px; object-fit: contain; filter: hue-rotate(180deg) saturate(2);" />
-                                <input type="number" min="0" max="9" class="form-control form-control-sm bg-dark text-light border-0 text-center py-0 px-1 font-monospace"
-                                       style="width: 32px; font-size: 0.75rem; height: 20px;"
+                                <input type="number" min="0" max="9" class="sync-buff-input"
                                        @bind="State.EnemySyncBuffs" @bind:after="StateHasChanged" />
                                 <span class="small text-danger fw-bold" style="font-size: 0.72rem;">×@(1.0 + State.EnemySyncBuffs * 0.5)</span>
                             </div>

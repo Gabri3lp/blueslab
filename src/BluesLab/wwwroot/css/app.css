@@ -197,3 +197,34 @@ input.form-control:focus {
 .move-card-stellar { background: linear-gradient(135deg, rgba(64, 196, 255, 0.25) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(64, 196, 255, 0.5) !important; }
 .move-card-trainer { background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(56, 189, 248, 0.5) !important; }
 .move-card-trainer:hover { border-color: rgba(56, 189, 248, 0.8) !important; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25); }
+
+/* Compact Sync Buff Input in Side Headers */
+.sync-buff-input {
+    width: 20px !important;
+    height: 18px !important;
+    min-height: unset !important;
+    max-height: 18px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: #f8fafc !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    font-family: var(--bs-font-monospace), monospace !important;
+    -moz-appearance: textfield !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+.sync-buff-input:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 3px !important;
+}
+.sync-buff-input::-webkit-outer-spin-button,
+.sync-buff-input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
