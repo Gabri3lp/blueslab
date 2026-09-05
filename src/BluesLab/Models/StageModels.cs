@@ -22,6 +22,18 @@ public class StageFight
     [JsonPropertyName("title")]
     public string Title { get; set; } = string.Empty;
 
+    [JsonPropertyName("leader")]
+    public string Leader { get; set; } = string.Empty;
+
+    [JsonPropertyName("stageType")]
+    public string StageType { get; set; } = string.Empty;
+
+    [JsonPropertyName("theme")]
+    public string Theme { get; set; } = string.Empty;
+
+    [JsonPropertyName("rules")]
+    public List<string> Rules { get; set; } = new();
+
     [JsonPropertyName("opponents")]
     public List<StageOpponent> Opponents { get; set; } = new();
 }

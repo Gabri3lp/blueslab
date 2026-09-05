@@ -977,7 +977,8 @@ public class DamageCalculatorService
             StatRatio = (double)attackerStat / (defenderStat * 2.0),
             BattleMultiplier = (ne / attackerStat) / (he / (defenderStat * 2.0)),
             Rolls = rolls,
-            Breakdown = pills
+            Breakdown = pills,
+            TargetMaxHp = enemy.ManualStats.GetValueOrDefault("hp", 0)
         };
     }
 

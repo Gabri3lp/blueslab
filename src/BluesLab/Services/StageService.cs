@@ -39,11 +39,16 @@ public class StageService
     public void ApplyFightToEnemies(TeamBattleState state, StageFight fight)
     {
         state.SelectedFightId = fight.FightId;
+        state.ActiveFight = fight;
         for (int i = 0; i < 3 && i < fight.Opponents.Count; i++)
         {
             var opp = fight.Opponents[i];
             int slot = Math.Clamp(opp.SlotIndex, 0, 2);
             var enemy = state.Enemies[slot];
+
+            enemy.CustomTrainerName = opp.TrainerName;
+            enemy.CustomPokemonName = opp.PokemonName;
+            enemy.CustomIconUrl = opp.IconUrl;
 
             enemy.ManualStats["hp"] = opp.Hp;
             enemy.ManualStats["atk"] = opp.Atk;

@@ -47,6 +47,9 @@ public class CombatantState
     }
 
     public SyncPairDetail? Pair { get; set; }
+    public string CustomTrainerName { get; set; } = string.Empty;
+    public string CustomPokemonName { get; set; } = string.Empty;
+    public string CustomIconUrl { get; set; } = string.Empty;
     public int FormIndex { get; set; }
     public string CharLevel { get; set; } = "180";
     public string StarLevel { get; set; } = "5★ EX";
@@ -202,6 +205,12 @@ public class DamageResult
     public int AvgDamage => Rolls.Count > 0 ? (int)Math.Round(Rolls.Average()) : 0;
     public int MaxDamage => Rolls.Count > 0 ? Rolls.Last() : 0;
     public List<MultiplierPill> Breakdown { get; set; } = new();
+
+    public int TargetMaxHp { get; set; }
+    public double AvgHpPercent => TargetMaxHp > 0 ? (double)AvgDamage / TargetMaxHp * 100.0 : 0.0;
+    public double MinHpPercent => TargetMaxHp > 0 ? (double)MinDamage / TargetMaxHp * 100.0 : 0.0;
+    public double MaxHpPercent => TargetMaxHp > 0 ? (double)MaxDamage / TargetMaxHp * 100.0 : 0.0;
+    public bool IsOHKO => TargetMaxHp > 0 && AvgDamage >= TargetMaxHp;
 }
 
 public class MultiplierPill
