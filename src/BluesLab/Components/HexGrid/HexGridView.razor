@@ -60,8 +60,13 @@
                 </div>
             </div>
 
-            <!-- Right: Special Orbs badges in toolbar (if any used) or spacing placeholder -->
-            <div style="min-width: 130px;" class="d-none d-md-flex justify-content-end align-items-center gap-2">
+            <!-- Right: Hard Cap switch & Special Orbs badges -->
+            <div style="min-width: 130px;" class="d-flex justify-content-end align-items-center gap-2">
+                <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="Toggle Hard Cap (enforces tile adjacency)">
+                    <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="hexViewHardCapSwitch"
+                           checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
+                    <label class="form-check-label text-secondary small select-none cursor-pointer d-none d-sm-inline" for="hexViewHardCapSwitch" style="font-size: 0.72rem;">Hard Cap</label>
+                </div>
                 @if (GridState.HasSpecialOrbs(Pair))
                 {
                     var specialOrbs = GridState.GetSpecialOrbsUsed(Pair, CurrentActiveCells);

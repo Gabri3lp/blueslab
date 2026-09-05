@@ -168,6 +168,12 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
+                            <div class="form-check form-switch me-1 d-flex align-items-center gap-1 mb-0" title="Toggle Hard Cap (adjacency restriction)">
+                                <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="teamInlineHardCap"
+                                       checked="@GridState.HardCap"
+                                       @onchange="(e) => { GridState.HardCap = (bool)(e.Value ?? true); StateHasChanged(); }" />
+                                <label class="form-check-label text-secondary small select-none cursor-pointer" for="teamInlineHardCap" style="font-size: 0.75rem;">Hard Cap</label>
+                            </div>
                             <button class="btn btn-outline-secondary btn-sm py-0 px-2" style="font-size: 0.75rem; height: 26px;"
                                     @onclick="() => { GridState.ResetGrid(State.ActiveAttacker.Pair, State.ActiveAttacker.MoveLevel, State.AllyActiveGrids[State.ActiveAttackerIndex]); StateHasChanged(); }"
                                     title="Reset grid to free center cells">
@@ -813,7 +819,7 @@
         <div class="col-12 col-xl-6">
             @if (State.ActiveAttacker.Pair != null)
             {
-                <div class="sticky-top" style="top: 0.5rem; max-height: calc(100vh - 40px); overflow-y: auto;">
+                <div>
                     <div class="card bg-dark border-secondary shadow-sm mb-3">
                         <div class="card-header bg-secondary bg-opacity-25 border-secondary d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
                             <div class="d-flex align-items-center gap-2">

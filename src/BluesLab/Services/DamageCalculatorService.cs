@@ -661,11 +661,29 @@ public class DamageCalculatorService
         {
             if (activeGridCells.Contains(cell.CellId))
             {
+                bool matchedPower = false;
                 foreach (var (pbMove, pbVal) in cell.PowerBonus)
                 {
                     if (MatchesMoveName(move.Name, pbMove, move.IsSync))
                     {
                         gridPower += pbVal;
+                        matchedPower = true;
+                    }
+                }
+
+                // Fallback title parsing for move power tiles: e.g. "Icicle Crash: Power +3"
+                if (!matchedPower && !string.IsNullOrEmpty(cell.Title) && cell.Title.Contains("Power +"))
+                {
+                    string t = cell.Title;
+                    int colonIdx = t.IndexOf(':');
+                    string targetMove = colonIdx > 0 ? t.Substring(0, colonIdx).Trim() : t.Trim();
+                    int pIdx = t.IndexOf("Power +");
+                    if (pIdx >= 0 && int.TryParse(t.Substring(pIdx + 7).Trim(), out int fallbackVal))
+                    {
+                        if (MatchesMoveName(move.Name, targetMove, move.IsSync))
+                        {
+                            gridPower += fallbackVal;
+                        }
                     }
                 }
             }
@@ -742,9 +760,25 @@ public class DamageCalculatorService
         int gridAtkStat = 0;
         foreach (var cell in pair.Grid)
         {
-            if (activeGridCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(atkStatKey, out int sb))
+            if (activeGridCells.Contains(cell.CellId))
             {
-                gridAtkStat += sb;
+                if (cell.StatBonus.TryGetValue(atkStatKey, out int sb))
+                {
+                    gridAtkStat += sb;
+                }
+                else if (!string.IsNullOrEmpty(cell.Title))
+                {
+                    string t = cell.Title.ToLowerInvariant();
+                    string statName = isPhysical ? "attack" : "sp. atk";
+                    if (t.StartsWith(statName) && t.Contains("+"))
+                    {
+                        int plusIdx = t.IndexOf('+');
+                        if (int.TryParse(t.Substring(plusIdx + 1).Trim(), out int fbStat))
+                        {
+                            gridAtkStat += fbStat;
+                        }
+                    }
+                }
             }
         }
 
@@ -1367,10 +1401,183 @@ public class DamageCalculatorService
                         pills.Add(new MultiplierPill { Label = $"Grid: {rule.Name}", Value = $"+{v * 100:0.#}%", Color = "#16a085" });
                     }
                 }
+                else
+                {
+                    double v = EvalDynamicGridPassive(cell, move, ally, enemy, field, out string? pillLabel);
+                    if (v > 0)
+                    {
+                        total += v;
+                        pills.Add(new MultiplierPill { Label = $"Grid: {pillLabel ?? cleanTitle}", Value = $"+{v * 100:0.#}%", Color = "#16a085" });
+                    }
+                }
             }
         }
 
         return total;
+    }
+
+    private double EvalDynamicGridPassive(
+        GridCellItem cell,
+        MoveItem move,
+        CombatantState ally,
+        CombatantState enemy,
+        FieldState field,
+        out string? pillLabel)
+    {
+        pillLabel = null;
+        string title = cell.Title ?? string.Empty;
+        string desc = cell.Description ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(title)) return 0;
+
+        string clean = title.Contains(":") ? title.Substring(title.LastIndexOf(":") + 1).Trim() : title.Trim();
+        pillLabel = clean;
+
+        // 1. Zone Boosts: e.g. "Ice Zone: Moves ↑ 3", "Ice Zone: S-Moves ↑ 9", "Dragon Zone: P-Moves ↑ & S-Moves ↑ 3"
+        var zoneMatch = System.Text.RegularExpressions.Regex.Match(title, @"([A-Za-z]+)\s+Zone:\s*(P-Moves|Moves|S-Moves|P-Moves\s*&\s*S-Moves|Team\s*Moves|Team\s*S-Moves)\s*[^\d]*(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (zoneMatch.Success)
+        {
+            string zType = zoneMatch.Groups[1].Value;
+            string scope = zoneMatch.Groups[2].Value.ToLowerInvariant();
+            int val = int.TryParse(zoneMatch.Groups[3].Value, out int pv) ? pv : 0;
+
+            bool isZoneActive = !string.IsNullOrWhiteSpace(field.Zone) && field.Zone.StartsWith(zType, StringComparison.OrdinalIgnoreCase);
+            if (isZoneActive && val > 0)
+            {
+                if (scope.Contains("s-moves") && !scope.Contains("p-moves") && !scope.Contains("&"))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else if (scope.Contains("p-moves") && scope.Contains("s-moves"))
+                {
+                    return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
+        // Zone description fallback
+        var zoneDescMatch = System.Text.RegularExpressions.Regex.Match(desc, @"Powers up the (user’s|user's)?\s*(moves|sync move|moves and sync move)\s*when the zone is an?\s*([A-Za-z]+)\s*Zone", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (zoneDescMatch.Success)
+        {
+            string scope = zoneDescMatch.Groups[2].Value.ToLowerInvariant();
+            string zType = zoneDescMatch.Groups[3].Value;
+            bool isZoneActive = !string.IsNullOrWhiteSpace(field.Zone) && field.Zone.StartsWith(zType, StringComparison.OrdinalIgnoreCase);
+            if (isZoneActive)
+            {
+                int val = 3;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+
+                if (scope.Contains("sync") && !scope.Contains("and"))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else if (scope.Contains("and"))
+                {
+                    return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
+        // 2. Weather Boosts: e.g. "Rainy: Moves ↑ 3", "Hail: S-Moves ↑ 5", "Solar Flare 5"
+        var weatherMatch = System.Text.RegularExpressions.Regex.Match(title, @"(Rainy|Rain|Sunny|Sun|Hail|Sandstorm):\s*(Moves|S-Moves)\s*[^\d]*(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (weatherMatch.Success)
+        {
+            string wType = weatherMatch.Groups[1].Value;
+            string scope = weatherMatch.Groups[2].Value.ToLowerInvariant();
+            int val = int.TryParse(weatherMatch.Groups[3].Value, out int pv) ? pv : 0;
+
+            bool isWeatherActive = !string.IsNullOrWhiteSpace(field.Weather) && field.Weather.Contains(wType.Replace("y", ""), StringComparison.OrdinalIgnoreCase);
+            if (isWeatherActive && val > 0)
+            {
+                if (scope.Contains("s-moves"))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
+        // 3. Terrain Boosts: e.g. "Electric Terrain: Moves ↑ 3", "Psychic Terrain: S-Moves ↑ 5"
+        var terrainMatch = System.Text.RegularExpressions.Regex.Match(title, @"([A-Za-z]+)\s+Terrain:\s*(Moves|S-Moves)\s*[^\d]*(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (terrainMatch.Success)
+        {
+            string tType = terrainMatch.Groups[1].Value;
+            string scope = terrainMatch.Groups[2].Value.ToLowerInvariant();
+            int val = int.TryParse(terrainMatch.Groups[3].Value, out int pv) ? pv : 0;
+
+            bool isTerrainActive = !string.IsNullOrWhiteSpace(field.Terrain) && field.Terrain.StartsWith(tType, StringComparison.OrdinalIgnoreCase);
+            if (isTerrainActive && val > 0)
+            {
+                if (scope.Contains("s-moves"))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
+        // 4. Circle Boosts: e.g. "Circle: S-Moves ↑ 5" or "Circle: Moves ↑ 3"
+        var circleMatch = System.Text.RegularExpressions.Regex.Match(title, @"Circle:\s*(Moves|S-Moves)\s*[^\d]*(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (circleMatch.Success || desc.Contains("when a circle applies to the allied field of play", StringComparison.OrdinalIgnoreCase))
+        {
+            bool hasCircle = ally.CircleActive != null && ally.CircleActive.Values.Any(d => d.Values.Any(v => v));
+            if (hasCircle)
+            {
+                int val = 3;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+
+                if (title.Contains("S-Moves", StringComparison.OrdinalIgnoreCase) || desc.Contains("sync move", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
+        // 5. Critical Strike
+        if (title.StartsWith("Critical Strike", StringComparison.OrdinalIgnoreCase))
+        {
+            if (ally.IsCriticalMove)
+            {
+                int val = 2;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+                return val * 0.10;
+            }
+        }
+
+        // 6. Super Powered
+        if (title.StartsWith("Super Powered", StringComparison.OrdinalIgnoreCase))
+        {
+            bool isSuperEffective = (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(enemy.Weakness, move.Type, StringComparison.OrdinalIgnoreCase)) || ally.SuperEffectiveNext;
+            if (isSuperEffective)
+            {
+                int val = 3;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+                return val * 0.10;
+            }
+        }
+
+        return 0;
     }
 
     private double EvalSingleDamagePassive(
