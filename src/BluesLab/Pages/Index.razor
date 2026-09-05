@@ -16,77 +16,116 @@
 }
 else
 {
-    <div class="d-flex flex-column flex-lg-row vh-100 overflow-hidden bg-dark text-light">
-        <!-- Left Side: Brand, Pair Selector & Hex Grid View -->
-        <div class="hex-grid-pane @(ExpandedRight ? "col-lg-5" : "col-lg-6") d-flex flex-column border-end border-secondary bg-black bg-opacity-25 overflow-hidden">
-            <!-- HeaderNav (Left pane: Brand, Pair Selector, Hard Cap, Reset & Share) -->
-            <HeaderNav CurrentPair="ActivePair"
-                       MoveLevel="MoveLevel"
-                       OnOpenPairPicker="() => ShowPairPicker = true"
-                       OnOpenShareModal="() => ShowShareModal = true" />
+    @if (ActiveTab == 2)
+    {
+        <!-- Fullscreen 3v3 Team Battle Mode -->
+        <div class="d-flex flex-column vh-100 overflow-hidden bg-dark text-light">
+            <!-- Fullscreen Top Bar with Brand, Tab Switcher and Sync Indicator -->
+            <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary bg-dark shadow-sm flex-wrap gap-2">
+                <div class="d-flex align-items-center gap-3">
+                    <span class="fw-bold text-warning fs-5">
+                        <i class="bi bi-hexagon-half me-1"></i> Blues Lab
+                    </span>
+                    <div class="nav nav-pills gap-2" role="tablist">
+                        <button class="nav-link text-light border border-secondary" @onclick="() => ActiveTab = 0">
+                            <i class="bi bi-info-circle"></i> @(Loc.T("grid_overview", "Overview"))
+                        </button>
+                        <button class="nav-link text-light border border-secondary" @onclick="() => ActiveTab = 1">
+                            <i class="bi bi-calculator"></i> @(Loc.T("damage_calc", "Damage"))
+                        </button>
+                        <button class="nav-link active bg-warning text-dark fw-bold" @onclick="() => ActiveTab = 2">
+                            <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
+                        </button>
+                    </div>
+                </div>
 
-            <!-- Hex Grid View (contains seamless Grid Controls toolbar + SVG Canvas) -->
-            <div class="flex-grow-1 overflow-hidden d-flex flex-column">
-                <HexGridView Pair="ActivePair"
-                             MoveLevel="MoveLevel"
-                             MoveLevelChanged="OnMoveLevelChanged"
-                             OnCenterClick="() => ShowPairPicker = true"
-                             OnOpenShareModal="() => ShowShareModal = true" />
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-secondary text-light">
+                        <i class="bi bi-link-45deg me-1 text-warning"></i>Slot 1 synced with Solo
+                    </span>
+                    <button class="btn btn-sm btn-outline-info" @onclick="() => { SyncSoloToTeam(); StateHasChanged(); }">
+                        <i class="bi bi-arrow-repeat me-1"></i>Re-sync
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fullscreen Team Battle Simulator Body -->
+            <div class="flex-grow-1 overflow-auto">
+                <TeamBattleCalculator SharedState="TeamState" />
             </div>
         </div>
+    }
+    else
+    {
+        <!-- Split View Mode (Overview / Damage Calculator with Hex Grid) -->
+        <div class="d-flex flex-column flex-lg-row vh-100 overflow-hidden bg-dark text-light">
+            <!-- Left Side: Brand, Pair Selector & Hex Grid View -->
+            <div class="hex-grid-pane @(ExpandedRight ? "col-lg-5" : "col-lg-6") d-flex flex-column border-end border-secondary bg-black bg-opacity-25 overflow-hidden">
+                <!-- HeaderNav (Left pane: Brand, Pair Selector, Hard Cap, Reset & Share) -->
+                <HeaderNav CurrentPair="ActivePair"
+                           MoveLevel="MoveLevel"
+                           OnOpenPairPicker="() => ShowPairPicker = true"
+                           OnOpenShareModal="() => ShowShareModal = true" />
 
-        <!-- Right Side: Overview & Calculator Tabs (No Header above it!) -->
-        <div class="right-panel-pane @(ExpandedRight ? "col-lg-7" : "col-lg-6") d-flex flex-column overflow-hidden">
-            <!-- Tab Switcher & Collapse Toggle -->
-            <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary bg-dark shadow-sm">
-                <div class="nav nav-pills gap-2" role="tablist">
-                    <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                            @onclick="() => ActiveTab = 0">
-                        <i class="bi bi-info-circle"></i> @(Loc.T("grid_overview", "Overview"))
-                    </button>
-                    <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                            @onclick="() => ActiveTab = 1">
-                        <i class="bi bi-calculator"></i> @(Loc.T("damage_calc", "Damage"))
-                    </button>
-                    <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                            @onclick="() => { ActiveTab = 2; ExpandedRight = true; }">
-                        <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
+                <!-- Hex Grid View (contains seamless Grid Controls toolbar + SVG Canvas) -->
+                <div class="flex-grow-1 overflow-hidden d-flex flex-column">
+                    <HexGridView Pair="ActivePair"
+                                 MoveLevel="MoveLevel"
+                                 MoveLevelChanged="OnMoveLevelChanged"
+                                 OnCenterClick="() => ShowPairPicker = true"
+                                 OnOpenShareModal="() => ShowShareModal = true" />
+                </div>
+            </div>
+
+            <!-- Right Side: Overview & Calculator Tabs (No Header above it!) -->
+            <div class="right-panel-pane @(ExpandedRight ? "col-lg-7" : "col-lg-6") d-flex flex-column overflow-hidden">
+                <!-- Tab Switcher & Collapse Toggle -->
+                <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary bg-dark shadow-sm">
+                    <div class="nav nav-pills gap-2" role="tablist">
+                        <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                                @onclick="() => ActiveTab = 0">
+                            <i class="bi bi-info-circle"></i> @(Loc.T("grid_overview", "Overview"))
+                        </button>
+                        <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                                @onclick="() => ActiveTab = 1">
+                            <i class="bi bi-calculator"></i> @(Loc.T("damage_calc", "Damage"))
+                        </button>
+                        <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
+                                @onclick="() => { SyncSoloToTeam(); ActiveTab = 2; }">
+                            <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
+                        </button>
+                    </div>
+
+                    <button class="btn btn-outline-secondary btn-sm"
+                            title="@(ExpandedRight ? "Shrink Panel" : "Expand Panel")"
+                            @onclick="() => ExpandedRight = !ExpandedRight">
+                        <i class="bi @(ExpandedRight ? "bi-chevron-right" : "bi-arrows-angle-expand")"></i>
                     </button>
                 </div>
 
-                <button class="btn btn-outline-secondary btn-sm"
-                        title="@(ExpandedRight ? "Shrink Panel" : "Expand Panel")"
-                        @onclick="() => ExpandedRight = !ExpandedRight">
-                    <i class="bi @(ExpandedRight ? "bi-chevron-right" : "bi-arrows-angle-expand")"></i>
-                </button>
-            </div>
-
-            <!-- Tab Body Content -->
-            <div class="flex-grow-1 overflow-auto p-2">
-                @if (ActiveTab == 0)
-                {
-                    <SyncPairOverview Pair="ActivePair"
-                                      Ally="AllyState"
-                                      Field="BattleField"
-                                      MoveLevel="MoveLevel"
-                                      MoveLevelChanged="OnMoveLevelChanged" />
-                }
-                else if (ActiveTab == 1)
-                {
-                    <DamageCalculatorPanel Ally="AllyState"
-                                           Enemy="EnemyState"
-                                           Field="BattleField"
-                                           Rules="RulesDoc"
-                                           MoveLevel="MoveLevel"
-                                           MoveLevelChanged="OnMoveLevelChanged" />
-                }
-                else
-                {
-                    <TeamBattleCalculator />
-                }
+                <!-- Tab Body Content -->
+                <div class="flex-grow-1 overflow-auto p-2">
+                    @if (ActiveTab == 0)
+                    {
+                        <SyncPairOverview Pair="ActivePair"
+                                          Ally="AllyState"
+                                          Field="BattleField"
+                                          MoveLevel="MoveLevel"
+                                          MoveLevelChanged="OnMoveLevelChanged" />
+                    }
+                    else if (ActiveTab == 1)
+                    {
+                        <DamageCalculatorPanel Ally="AllyState"
+                                               Enemy="EnemyState"
+                                               Field="BattleField"
+                                               Rules="RulesDoc"
+                                               MoveLevel="MoveLevel"
+                                               MoveLevelChanged="OnMoveLevelChanged" />
+                    }
+                </div>
             </div>
         </div>
-    </div>
+    }
 
     <!-- Modals -->
     <PairPickerModal @bind-IsOpen="ShowPairPicker"
@@ -103,6 +142,7 @@ else
     private CombatantState EnemyState = CombatantState.CreateEnemy();
     private FieldState BattleField = new();
     private DamageRulesDocument RulesDoc = new();
+    private TeamBattleState TeamState = new();
 
     private int MoveLevel = 5;
     private int ActiveTab = 0; // Default to Overview
@@ -145,6 +185,7 @@ else
 
     private void OnGridChangedHandler()
     {
+        SyncSoloToTeam();
         InvokeAsync(StateHasChanged);
     }
 
@@ -163,6 +204,7 @@ else
             AllyState.MoveLevel = Math.Min(MoveLevel, 5);
             AllyState.SuperAwakeningLevel = MoveLevel > 5 ? (MoveLevel - 5) : 0;
             GridState.ResetGrid(pair, MoveLevel);
+            SyncSoloToTeam();
             StateHasChanged();
         }
     }
@@ -186,7 +228,32 @@ else
             GridState.PruneDisconnected(ActivePair.Grid);
         }
         GridState.NotifyChanged();
+        SyncSoloToTeam();
         StateHasChanged();
+    }
+
+    private void SyncSoloToTeam()
+    {
+        if (TeamState.Allies.Count > 0)
+        {
+            TeamState.Allies[0] = AllyState;
+            // Sync any active circles configured on solo ally
+            foreach (var (r, circles) in AllyState.CircleActive)
+            {
+                if (!TeamState.TeamCircles.ContainsKey(r))
+                    TeamState.TeamCircles[r] = new Dictionary<string, bool>();
+                foreach (var (cType, isActive) in circles)
+                {
+                    if (isActive) TeamState.TeamCircles[r][cType] = true;
+                }
+            }
+        }
+        if (TeamState.AllyActiveGrids.Count > 0)
+        {
+            TeamState.AllyActiveGrids[0] = GridState.ActiveCells;
+        }
+        TeamState.Field = BattleField;
+        TeamState.UpdateCircleAllyCounts();
     }
 
     public void Dispose()

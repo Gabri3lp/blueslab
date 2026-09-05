@@ -58,10 +58,10 @@ public class StageService
             enemy.ManualStats["spe"] = opp.Spe;
             enemy.Weakness = opp.Weakness;
 
-            // Reset stages to 0
+            // Default enemy debuffs to -6 (crit 0)
             foreach (var k in enemy.Stages.Keys.ToList())
             {
-                enemy.Stages[k] = 0;
+                enemy.Stages[k] = k == "crit" ? 0 : -6;
             }
             foreach (var k in enemy.EnemyTypeRebuffs.Keys.ToList())
             {

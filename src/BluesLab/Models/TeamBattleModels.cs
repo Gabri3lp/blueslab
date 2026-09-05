@@ -120,10 +120,20 @@ public class TeamBattleState
         }
     }
 
+    public int GetMatchingRegionAllies(string region)
+    {
+        return Allies.Count(a => a.Pair != null && MatchesTheme(a.Pair, region));
+    }
+
+    public int GetCircleBuffLevel(string region)
+    {
+        int count = GetMatchingRegionAllies(region);
+        return Math.Clamp(count > 0 ? count : 1, 1, 3);
+    }
+
     public void UpdateCircleAllyCount(string region)
     {
-        int count = Allies.Count(a => a.Pair != null && MatchesTheme(a.Pair, region));
-        TeamCircleAllyCounts[region] = Math.Clamp(count > 0 ? count : 1, 1, 3);
+        TeamCircleAllyCounts[region] = GetCircleBuffLevel(region);
     }
 
     public CombatantState ActiveAttacker => Allies[Math.Clamp(ActiveAttackerIndex, 0, 2)];

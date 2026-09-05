@@ -1,0 +1,267 @@
+@using BluesLab.Models
+
+@if (IsOpen && Pair != null)
+{
+    <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,0.8); z-index: 1060;" @onclick="Close">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <!-- Modal Header -->
+                <div class="modal-header border-secondary py-2 bg-black bg-opacity-25">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="@Pair.IconUrl" alt="@Pair.DisplayName" class="rounded-circle border border-warning" style="width: 36px; height: 36px; object-fit: cover;" onerror="this.src='img/trainers/unknown.png';" />
+                        <div>
+                            <h6 class="modal-title fw-bold text-warning mb-0">@Pair.DisplayName - Sync Grid</h6>
+                            <span class="small text-muted" style="font-size: 0.72rem;">Configure active sync grid skills &amp; power boosts</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" @onclick="Close" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body p-3">
+                    <!-- Energy & Orbs & Presets Bar -->
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 p-2 rounded bg-black bg-opacity-30 border border-secondary mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            @{
+                                int usedEnergy = Pair.Grid.Where(c => ActiveCells.Contains(c.CellId)).Sum(c => c.EnergyCost);
+                                int remainingEnergy = 60 - usedEnergy;
+                                int totalOrbs = Pair.Grid.Where(c => ActiveCells.Contains(c.CellId)).Sum(c => c.OrbCost);
+                            }
+                            <span class="fw-bold @(remainingEnergy < 0 ? "text-danger" : "text-warning") d-flex align-items-center gap-1" style="font-size: 0.85rem;">
+                                ⚡ Energy: <b>@usedEnergy</b>/60 (@(remainingEnergy >= 0 ? $"{remainingEnergy} left" : $"{Math.Abs(remainingEnergy)} over"))
+                            </span>
+                            <span class="text-secondary opacity-50">|</span>
+                            <span class="fw-bold text-info d-flex align-items-center gap-1" style="font-size: 0.85rem;">
+                                🔮 Orbs: <b>@totalOrbs</b>
+                            </span>
+                            <span class="text-secondary opacity-50">|</span>
+                            <span class="small text-muted" style="font-size: 0.8rem;">
+                                Active: <b class="text-warning">@ActiveCells.Count</b>/@Pair.Grid.Count
+                            </span>
+                        </div>
+
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-info py-0 px-2" style="font-size: 0.75rem;" @onclick="SetFullGrid">
+                                <i class="bi bi-check-all me-1"></i>Full Grid
+                            </button>
+                            <button class="btn btn-outline-warning py-0 px-2" style="font-size: 0.75rem;" @onclick="SetCenterFreeGrid">
+                                <i class="bi bi-bullseye me-1"></i>Free Center
+                            </button>
+                            <button class="btn btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" @onclick="ClearGrid">
+                                <i class="bi bi-trash me-1"></i>Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search Filter & Category Tabs -->
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                        <div class="input-group input-group-sm" style="max-width: 260px;">
+                            <span class="input-group-text bg-dark text-muted border-secondary"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control bg-dark text-light border-secondary" placeholder="Search skill or move..." @bind="_searchFilter" @bind:event="oninput" />
+                            @if (!string.IsNullOrEmpty(_searchFilter))
+                            {
+                                <button class="btn btn-outline-secondary" @onclick="() => _searchFilter = string.Empty"><i class="bi bi-x"></i></button>
+                            }
+                        </div>
+
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn @(_activeCategory == 0 ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" @onclick="() => _activeCategory = 0">
+                                Passives (@GetPassivesCount())
+                            </button>
+                            <button class="btn @(_activeCategory == 1 ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" @onclick="() => _activeCategory = 1">
+                                Moves (@GetMovesCount())
+                            </button>
+                            <button class="btn @(_activeCategory == 2 ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" @onclick="() => _activeCategory = 2">
+                                Stats (@GetStatsCount())
+                            </button>
+                            <button class="btn @(_activeCategory == -1 ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" @onclick="() => _activeCategory = -1">
+                                All (@Pair.Grid.Count)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Grid Cells List -->
+                    <div class="row row-cols-1 row-cols-md-2 g-2" style="max-height: 52vh; overflow-y: auto;">
+                        @foreach (var cell in FilteredCells)
+                        {
+                            bool isActive = ActiveCells.Contains(cell.CellId);
+                            bool isPassive = !string.IsNullOrEmpty(cell.Title) && cell.PowerBonus.Count == 0 && cell.StatBonus.Count == 0 && !cell.Title.StartsWith("HP +") && !cell.Title.StartsWith("Attack +") && !cell.Title.StartsWith("Defense +") && !cell.Title.StartsWith("Sp. Atk +") && !cell.Title.StartsWith("Sp. Def +") && !cell.Title.StartsWith("Speed +");
+
+                            <div class="col">
+                                <div class="card h-100 p-2 cursor-pointer transition-all @(isActive ? "border-warning bg-warning bg-opacity-10 shadow-sm" : "border-secondary bg-black bg-opacity-25 opacity-75")"
+                                     style="cursor: pointer; user-select: none;"
+                                     @onclick="() => ToggleCell(cell)">
+                                    <div class="d-flex align-items-start justify-content-between gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <input type="checkbox" class="form-check-input mt-0" checked="@isActive" @onchange="() => ToggleCell(cell)" @onclick:stopPropagation="true" />
+                                            <div>
+                                                <div class="fw-bold text-light small d-flex align-items-center gap-1">
+                                                    @cell.Title
+                                                </div>
+                                                @if (!string.IsNullOrEmpty(cell.Description))
+                                                {
+                                                    <div class="text-muted small" style="font-size: 0.72rem; line-height: 1.2;">
+                                                        @cell.Description
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-column align-items-end gap-1 flex-shrink-0">
+                                            <div class="d-flex gap-1">
+                                                @if (cell.EnergyCost > 0)
+                                                {
+                                                    <span class="badge bg-warning text-dark fw-bold" style="font-size: 0.68rem;">⚡ @cell.EnergyCost</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary opacity-75" style="font-size: 0.68rem;">Free</span>
+                                                }
+                                                @if (cell.MoveLevel > 1)
+                                                {
+                                                    <span class="badge bg-dark border border-secondary text-info" style="font-size: 0.68rem;">@cell.MoveLevel/5</span>
+                                                }
+                                            </div>
+                                            @if (cell.PowerBonus.Count > 0)
+                                            {
+                                                @foreach (var (mName, pwr) in cell.PowerBonus)
+                                                {
+                                                    <span class="badge bg-danger text-light" style="font-size: 0.65rem;">@mName +@pwr</span>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-secondary py-2 justify-content-between bg-black bg-opacity-25">
+                    <span class="small text-muted" style="font-size: 0.75rem;">
+                        <i class="bi bi-info-circle me-1"></i>Active skills automatically boost team &amp; move damage in real-time.
+                    </span>
+                    <button type="button" class="btn btn-warning btn-sm fw-bold px-4" @onclick="Close">
+                        Done
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public SyncPairDetail? Pair { get; set; }
+    [Parameter] public HashSet<long> ActiveCells { get; set; } = new();
+    [Parameter] public int MoveLevel { get; set; } = 5;
+    [Parameter] public EventCallback OnGridChanged { get; set; }
+
+    private string _searchFilter = string.Empty;
+    private int _activeCategory = 0; // 0 = Passives, 1 = Moves, 2 = Stats, -1 = All
+
+    private IEnumerable<GridCellItem> FilteredCells
+    {
+        get
+        {
+            if (Pair?.Grid == null) return Enumerable.Empty<GridCellItem>();
+
+            var list = Pair.Grid.AsEnumerable();
+
+            if (!string.IsNullOrEmpty(_searchFilter))
+            {
+                list = list.Where(c => (c.Title?.Contains(_searchFilter, StringComparison.OrdinalIgnoreCase) == true) ||
+                                       (c.Description?.Contains(_searchFilter, StringComparison.OrdinalIgnoreCase) == true));
+            }
+
+            if (_activeCategory == 0) // Passives
+            {
+                list = list.Where(c => IsPassiveCell(c));
+            }
+            else if (_activeCategory == 1) // Moves
+            {
+                list = list.Where(c => c.PowerBonus.Count > 0 || c.Title.Contains("Sync Move", StringComparison.OrdinalIgnoreCase));
+            }
+            else if (_activeCategory == 2) // Stats
+            {
+                list = list.Where(c => IsStatCell(c));
+            }
+
+            return list.OrderByDescending(c => ActiveCells.Contains(c.CellId))
+                       .ThenBy(c => c.MoveLevel)
+                       .ThenByDescending(c => c.EnergyCost);
+        }
+    }
+
+    private bool IsPassiveCell(GridCellItem cell)
+    {
+        if (cell.PowerBonus.Count > 0) return false;
+        if (IsStatCell(cell)) return false;
+        return !string.IsNullOrEmpty(cell.Title);
+    }
+
+    private bool IsStatCell(GridCellItem cell)
+    {
+        if (cell.StatBonus.Count > 0) return true;
+        string t = cell.Title ?? string.Empty;
+        return t.StartsWith("HP +") || t.StartsWith("Attack +") || t.StartsWith("Defense +") ||
+               t.StartsWith("Sp. Atk +") || t.StartsWith("Sp. Def +") || t.StartsWith("Speed +");
+    }
+
+    private int GetPassivesCount() => Pair?.Grid.Count(IsPassiveCell) ?? 0;
+    private int GetMovesCount() => Pair?.Grid.Count(c => c.PowerBonus.Count > 0 || c.Title.Contains("Sync Move", StringComparison.OrdinalIgnoreCase)) ?? 0;
+    private int GetStatsCount() => Pair?.Grid.Count(IsStatCell) ?? 0;
+
+    private async Task ToggleCell(GridCellItem cell)
+    {
+        if (ActiveCells.Contains(cell.CellId))
+        {
+            ActiveCells.Remove(cell.CellId);
+        }
+        else
+        {
+            ActiveCells.Add(cell.CellId);
+        }
+        await OnGridChanged.InvokeAsync();
+    }
+
+    private async Task SetFullGrid()
+    {
+        if (Pair?.Grid == null) return;
+        ActiveCells.Clear();
+        foreach (var c in Pair.Grid)
+        {
+            ActiveCells.Add(c.CellId);
+        }
+        await OnGridChanged.InvokeAsync();
+    }
+
+    private async Task SetCenterFreeGrid()
+    {
+        if (Pair?.Grid == null) return;
+        ActiveCells.Clear();
+        foreach (var c in Pair.Grid)
+        {
+            if (c.EnergyCost == 0)
+            {
+                ActiveCells.Add(c.CellId);
+            }
+        }
+        await OnGridChanged.InvokeAsync();
+    }
+
+    private async Task ClearGrid()
+    {
+        ActiveCells.Clear();
+        await OnGridChanged.InvokeAsync();
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+        await OnGridChanged.InvokeAsync();
+    }
+}
