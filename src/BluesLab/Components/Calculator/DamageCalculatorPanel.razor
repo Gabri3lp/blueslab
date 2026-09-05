@@ -161,16 +161,24 @@
 
         <!-- Damage Output Vertical List -->
         <div class="mb-3">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-                <h6 class="text-warning fw-bold text-uppercase mb-0 d-flex align-items-center gap-2">
-                    <i class="bi bi-lightning-charge-fill"></i> Damage
-                </h6>
-                @if (GridState.ActiveCells.Count > 0)
-                {
-                    <span class="badge bg-secondary text-info" style="font-size: 0.75rem;">
-                        @GridState.ActiveCells.Count Grid Tiles Active
-                    </span>
-                }
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <div class="d-flex align-items-center gap-3">
+                    <h6 class="text-warning fw-bold text-uppercase mb-0 d-flex align-items-center gap-2">
+                        <i class="bi bi-lightning-charge-fill"></i> Damage
+                    </h6>
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-0.5 rounded border border-secondary" style="font-size: 0.75rem;">
+                        <span class="text-light fw-bold">Move Up Next:</span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center"
+                                style="width: 52px; font-size: 0.75rem; height: 24px;"
+                                value="@MoveUpNextValue"
+                                @onchange="OnMoveUpNextSelect">
+                            @for (int b = 0; b <= 10; b++)
+                            {
+                                <option value="@b">@b</option>
+                            }
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="d-flex flex-column gap-2">
@@ -994,6 +1002,18 @@
         if (int.TryParse(e.Value?.ToString(), out int val))
         {
             Enemy.Stages[stat] = val;
+            StateHasChanged();
+        }
+    }
+
+    private int MoveUpNextValue => Math.Max(Ally.PhysicalBoostNext, Ally.SpecialBoostNext);
+
+    private void OnMoveUpNextSelect(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            Ally.PhysicalBoostNext = val;
+            Ally.SpecialBoostNext = val;
             StateHasChanged();
         }
     }
