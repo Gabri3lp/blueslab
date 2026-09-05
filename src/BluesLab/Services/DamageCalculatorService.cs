@@ -999,12 +999,18 @@ public class DamageCalculatorService
         };
     }
 
+    public List<MasterPassiveRule> GetMasterPassivesForPair(SyncPairDetail? pair, DamageRulesDocument? rules = null)
+    {
+        return MasterPassiveRule.ExtractMasterPassives(pair, rules);
+    }
+
     private double EvalMasterPassives(MoveItem move, CombatantState ally, DamageRulesDocument rules)
     {
         double total = 0.0;
         if (ally.Pair == null) return total;
 
-        foreach (var mp in rules.MasterPassives.Where(m => string.Equals(m.SyncPair, ally.Pair.DisplayName, StringComparison.OrdinalIgnoreCase)))
+        var mps = MasterPassiveRule.ExtractMasterPassives(ally.Pair, rules);
+        foreach (var mp in mps)
         {
             if (mp.AppliesToMove(move))
             {
@@ -1031,7 +1037,8 @@ public class DamageCalculatorService
             var ally = team.Allies[i];
             if (ally.Pair == null) continue;
 
-            foreach (var mp in rules.MasterPassives.Where(m => string.Equals(m.SyncPair, ally.Pair.DisplayName, StringComparison.OrdinalIgnoreCase)))
+            var mps = MasterPassiveRule.ExtractMasterPassives(ally.Pair, rules);
+            foreach (var mp in mps)
             {
                 if (mp.AppliesToMove(move))
                 {

@@ -210,6 +210,9 @@ public class DamageResult
     public double AvgHpPercent => TargetMaxHp > 0 ? (double)AvgDamage / TargetMaxHp * 100.0 : 0.0;
     public double MinHpPercent => TargetMaxHp > 0 ? (double)MinDamage / TargetMaxHp * 100.0 : 0.0;
     public double MaxHpPercent => TargetMaxHp > 0 ? (double)MaxDamage / TargetMaxHp * 100.0 : 0.0;
+    public double RemainingHpPercent => Math.Max(0.0, 100.0 - AvgHpPercent);
+    public double MinRemainingHpPercent => Math.Max(0.0, 100.0 - MaxHpPercent);
+    public double MaxRemainingHpPercent => Math.Max(0.0, 100.0 - MinHpPercent);
     public bool IsOHKO => TargetMaxHp > 0 && AvgDamage >= TargetMaxHp;
 }
 

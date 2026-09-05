@@ -19,29 +19,6 @@ public class TeamBattleState
     public string SelectedFightId { get; set; } = "circuit_1_falkner";
     public StageFight? ActiveFight { get; set; }
 
-    public void SetFullGridForAlly(int slot)
-    {
-        if (slot < 0 || slot >= Allies.Count) return;
-        var ally = Allies[slot];
-        if (ally.Pair?.Grid == null) return;
-        AllyActiveGrids[slot].Clear();
-        foreach (var cell in ally.Pair.Grid)
-        {
-            if (cell.PowerBonus.Count > 0 || cell.StatBonus.Count > 0 || !string.IsNullOrEmpty(cell.Title))
-            {
-                AllyActiveGrids[slot].Add(cell.CellId);
-            }
-        }
-    }
-
-    public void ClearGridForAlly(int slot)
-    {
-        if (slot >= 0 && slot < AllyActiveGrids.Count)
-        {
-            AllyActiveGrids[slot].Clear();
-        }
-    }
-
     public TeamBattleState()
     {
         // 3 Allies

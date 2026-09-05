@@ -23,31 +23,37 @@ public class GridStateService
 
     public void NotifyChanged() => OnGridChanged?.Invoke();
 
-    public void ResetGrid(SyncPairDetail? pair, int moveLevel)
+    public void ResetGrid(SyncPairDetail? pair, int moveLevel, HashSet<long>? activeCells = null)
     {
-        ActiveCells.Clear();
-        ActiveLearnMoveOrder.Clear();
+        var target = activeCells ?? ActiveCells;
+        target.Clear();
+        if (activeCells == null)
+        {
+            ActiveLearnMoveOrder.Clear();
+        }
         if (pair != null && HardCap)
         {
-            ActivateFreeCenterCells(pair, moveLevel);
+            ActivateFreeCenterCells(pair, moveLevel, target);
         }
         NotifyChanged();
     }
 
-    public int GetRemainingEnergy(SyncPairDetail? pair)
+    public int GetRemainingEnergy(SyncPairDetail? pair, HashSet<long>? activeCells = null)
     {
         if (pair == null) return MaxEnergy;
+        var target = activeCells ?? ActiveCells;
         int used = pair.Grid
-            .Where(c => ActiveCells.Contains(c.CellId))
+            .Where(c => target.Contains(c.CellId))
             .Sum(c => c.EnergyCost);
         return MaxEnergy - used;
     }
 
-    public int GetTotalOrbs(SyncPairDetail? pair)
+    public int GetTotalOrbs(SyncPairDetail? pair, HashSet<long>? activeCells = null)
     {
         if (pair == null) return 0;
+        var target = activeCells ?? ActiveCells;
         return pair.Grid
-            .Where(c => ActiveCells.Contains(c.CellId))
+            .Where(c => target.Contains(c.CellId))
             .Sum(c => c.OrbCost);
     }
 
@@ -56,14 +62,15 @@ public class GridStateService
         return pair != null && pair.Grid.Any(c => c.Custom != null && c.Custom.Any(x => x > 0));
     }
 
-    public int[] GetSpecialOrbsUsed(SyncPairDetail? pair)
+    public int[] GetSpecialOrbsUsed(SyncPairDetail? pair, HashSet<long>? activeCells = null)
     {
         var totals = new int[5];
         if (pair == null) return totals;
+        var target = activeCells ?? ActiveCells;
 
         foreach (var cell in pair.Grid)
         {
-            if (ActiveCells.Contains(cell.CellId) && cell.Custom != null)
+            if (target.Contains(cell.CellId) && cell.Custom != null)
             {
                 for (int i = 0; i < Math.Min(5, cell.Custom.Count); i++)
                 {
@@ -84,8 +91,9 @@ public class GridStateService
         return false;
     }
 
-    public bool IsAdjacentToActiveOrCenter(GridCellItem cell, List<GridCellItem> allCells)
+    public bool IsAdjacentToActiveOrCenter(GridCellItem cell, List<GridCellItem> allCells, HashSet<long>? activeCells = null)
     {
+        var target = activeCells ?? ActiveCells;
         foreach (var d in HexDirections)
         {
             int nq = cell.Q + d[0];
@@ -95,26 +103,28 @@ public class GridStateService
 
             foreach (var other in allCells)
             {
-                if (other.Q == nq && other.R == nr && other.S == ns && ActiveCells.Contains(other.CellId))
+                if (other.Q == nq && other.R == nr && other.S == ns && target.Contains(other.CellId))
                     return true;
             }
         }
         return false;
     }
 
-    public void ActivateFreeCenterCells(SyncPairDetail pair, int moveLevel)
+    public void ActivateFreeCenterCells(SyncPairDetail pair, int moveLevel, HashSet<long>? activeCells = null)
     {
+        var target = activeCells ?? ActiveCells;
         foreach (var cell in pair.Grid)
         {
             if (cell.EnergyCost == 0 && cell.MoveLevel <= Math.Clamp(moveLevel, 1, 5) && IsAdjacentToCenter(cell))
             {
-                ActiveCells.Add(cell.CellId);
+                target.Add(cell.CellId);
             }
         }
     }
 
-    public void PruneDisconnected(List<GridCellItem> allCells)
+    public void PruneDisconnected(List<GridCellItem> allCells, HashSet<long>? activeCells = null)
     {
+        var target = activeCells ?? ActiveCells;
         var cellMap = allCells.ToDictionary(c => $"{c.Q},{c.R},{c.S}");
         var connected = new HashSet<long>();
         var queue = new Queue<(int Q, int R, int S)>();
@@ -133,7 +143,7 @@ public class GridStateService
                 if (visited.Contains(key)) continue;
                 visited.Add(key);
 
-                if (cellMap.TryGetValue(key, out var neighbor) && ActiveCells.Contains(neighbor.CellId))
+                if (cellMap.TryGetValue(key, out var neighbor) && target.Contains(neighbor.CellId))
                 {
                     connected.Add(neighbor.CellId);
                     queue.Enqueue((nq, nr, ns));
@@ -141,28 +151,32 @@ public class GridStateService
             }
         }
 
-        ActiveCells.IntersectWith(connected);
-        ActiveLearnMoveOrder.RemoveAll(id => !ActiveCells.Contains(id));
+        target.IntersectWith(connected);
+        if (activeCells == null)
+        {
+            ActiveLearnMoveOrder.RemoveAll(id => !ActiveCells.Contains(id));
+        }
     }
 
-    public void ToggleCell(SyncPairDetail pair, GridCellItem cell, int moveLevel)
+    public void ToggleCell(SyncPairDetail pair, GridCellItem cell, int moveLevel, HashSet<long>? activeCells = null)
     {
-        if (ActiveCells.Contains(cell.CellId))
+        var target = activeCells ?? ActiveCells;
+        if (target.Contains(cell.CellId))
         {
-            ActiveCells.Remove(cell.CellId);
-            ActiveLearnMoveOrder.Remove(cell.CellId);
+            target.Remove(cell.CellId);
+            if (activeCells == null) ActiveLearnMoveOrder.Remove(cell.CellId);
             if (HardCap)
             {
-                PruneDisconnected(pair.Grid);
+                PruneDisconnected(pair.Grid, target);
             }
         }
         else
         {
             if (cell.MoveLevel > Math.Clamp(moveLevel, 1, 5)) return;
-            if (HardCap && !IsAdjacentToActiveOrCenter(cell, pair.Grid)) return;
+            if (HardCap && !IsAdjacentToActiveOrCenter(cell, pair.Grid, target)) return;
 
-            ActiveCells.Add(cell.CellId);
-            if (cell.ColorKind == "learn" || cell.Title.StartsWith("Learn ", StringComparison.OrdinalIgnoreCase))
+            target.Add(cell.CellId);
+            if (activeCells == null && (cell.ColorKind == "learn" || cell.Title.StartsWith("Learn ", StringComparison.OrdinalIgnoreCase)))
             {
                 if (!ActiveLearnMoveOrder.Contains(cell.CellId))
                 {

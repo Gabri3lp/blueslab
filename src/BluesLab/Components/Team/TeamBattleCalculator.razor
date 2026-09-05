@@ -302,10 +302,31 @@
                                         }
                                     </div>
                                 </div>
-                                <button class="btn btn-sm btn-outline-warning py-1 px-2" title="Change Sync Pair" @onclick="() => OpenPairPicker(slotIndex)">
-                                    <i class="bi bi-arrow-repeat"></i>
-                                </button>
+                                <div class="d-flex gap-1 align-items-center">
+                                    <button class="btn btn-sm btn-outline-warning py-1 px-2" title="Change Sync Pair" @onclick="() => OpenPairPicker(slotIndex)">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger py-1 px-2" title="Remove Sync Pair" @onclick="() => RemoveAllyPair(slotIndex)">
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                </div>
                             </div>
+
+                            <!-- Master Passives Active on this Pair -->
+                            @if (CalcService.GetMasterPassivesForPair(ally.Pair, _rules).Count > 0)
+                            {
+                                <div class="d-flex flex-wrap gap-1 mb-2">
+                                    @foreach (var mp in CalcService.GetMasterPassivesForPair(ally.Pair, _rules))
+                                    {
+                                        int matchingAllies = State.GetMasterPassiveAllyCount(mp.Theme, ownerIndex: slotIndex);
+                                        int pct = (int)Math.Round(mp.PowerUpForAdditionalAllies(matchingAllies) * 100);
+                                        <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-1 px-2 shadow-sm" style="font-size: 0.7rem;" title="@mp.PassiveName: +@pct% to all allies (@matchingAllies other @mp.Theme allies)">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <b>@mp.PassiveName (+@pct%)</b>
+                                        </span>
+                                    }
+                                </div>
+                            }
 
                             <!-- Forms Tab (Base, Mega, Dynamax, Tera) -->
                             @if (ally.Pair.Variations.Count > 0 || ally.Pair.HasMega || ally.Pair.HasTera)
@@ -450,18 +471,14 @@
                                 </div>
                             </div>
 
-                            <!-- Grid Quick Preset & Counter -->
+                            <!-- Grid Configuration Button -->
                             <div class="d-flex justify-content-between align-items-center pt-1 border-top border-secondary border-opacity-50 small">
                                 <span class="text-muted" style="font-size: 0.72rem;">
-                                    <i class="bi bi-grid-3x3 me-1"></i>Grid: <b class="text-warning">@State.AllyActiveGrids[slotIndex].Count</b> cells
+                                    <i class="bi bi-grid-3x3 me-1"></i>Grid: <b class="text-warning">@State.AllyActiveGrids[slotIndex].Count</b> tiles active
                                 </span>
-                                <div class="btn-group btn-group-sm">
-                                    <button class="btn btn-outline-warning py-0 px-2" style="font-size: 0.7rem;" @onclick="() => OpenGridModal(slotIndex)" title="Configure Grid Skills">
-                                        <i class="bi bi-gear-fill me-1"></i>Edit Grid
-                                    </button>
-                                    <button class="btn btn-outline-info py-0 px-2" style="font-size: 0.7rem;" @onclick="() => State.SetFullGridForAlly(slotIndex)">Full</button>
-                                    <button class="btn btn-outline-secondary py-0 px-2" style="font-size: 0.7rem;" @onclick="() => State.ClearGridForAlly(slotIndex)">Clear</button>
-                                </div>
+                                <button class="btn btn-outline-warning btn-sm py-0 px-2" style="font-size: 0.75rem;" @onclick="() => OpenGridModal(slotIndex)" title="Configure Hexagonal Sync Grid">
+                                    <i class="bi bi-diagram-3 me-1"></i>Configure Grid
+                                </button>
                             </div>
                         }
                     </div>
@@ -828,31 +845,31 @@
                                                 }
                                             </div>
 
-                                            <!-- Damage & HP Percentage Display -->
+                                            <!-- Damage & Inverse HP Percentage Display -->
                                             <div class="d-flex align-items-baseline justify-content-center gap-1">
                                                 <span class="fs-5 fw-bold text-warning">@dmg.AvgDamage.ToString("N0")</span>
-                                                <span class="fw-bold @(dmg.IsOHKO ? "text-danger" : "text-info")" style="font-size: 0.95rem;">
-                                                    (@dmg.AvgHpPercent.ToString("0.0")%)
+                                                <span class="fw-bold @(dmg.RemainingHpPercent <= 0 ? "text-danger" : (dmg.RemainingHpPercent <= 25 ? "text-danger" : (dmg.RemainingHpPercent <= 50 ? "text-warning" : "text-success")))" style="font-size: 0.95rem;">
+                                                    (@dmg.RemainingHpPercent.ToString("0.0")% HP)
                                                 </span>
                                             </div>
 
-                                            <!-- Min - Max Range -->
+                                            <!-- Min - Max Remaining Range -->
                                             <div class="small text-muted" style="font-size: 0.72rem;">
-                                                @dmg.MinDamage.ToString("N0") (@dmg.MinHpPercent.ToString("0.0")%) - @dmg.MaxDamage.ToString("N0") (@dmg.MaxHpPercent.ToString("0.0")%)
+                                                Leaves @dmg.MinRemainingHpPercent.ToString("0.0")% - @dmg.MaxRemainingHpPercent.ToString("0.0")% HP (-@dmg.AvgHpPercent.ToString("0.0")%)
                                             </div>
 
-                                            <!-- Health Bar Visualizer -->
+                                            <!-- Health Bar Visualizer Descending from 100% -->
                                             <div class="progress mt-1" style="height: 6px; background-color: rgba(255,255,255,0.15); border-radius: 3px;">
-                                                <div class="progress-bar @(dmg.AvgHpPercent >= 100 ? "bg-danger" : (dmg.AvgHpPercent >= 50 ? "bg-warning" : "bg-success"))"
+                                                <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success"))"
                                                      role="progressbar"
-                                                     style="width: @Math.Min(100, Math.Max(0, dmg.AvgHpPercent))%;"></div>
+                                                     style="width: @Math.Min(100, Math.Max(0, dmg.RemainingHpPercent))%;"></div>
                                             </div>
 
-                                            @if (dmg.IsOHKO)
+                                            @if (dmg.IsOHKO || dmg.RemainingHpPercent <= 0)
                                             {
                                                 <div class="mt-1">
                                                     <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
-                                                        <i class="bi bi-skull-fill me-1"></i>100%+ OHKO
+                                                        <i class="bi bi-skull-fill me-1"></i>0.0% HP (OHKO)
                                                     </span>
                                                 </div>
                                             }
@@ -944,28 +961,31 @@
                                                     }
                                                 </div>
 
+                                                <!-- Damage & Inverse HP Percentage Display -->
                                                 <div class="d-flex align-items-baseline justify-content-center gap-1">
                                                     <span class="fs-5 fw-bold text-warning">@dmg.AvgDamage.ToString("N0")</span>
-                                                    <span class="fw-bold @(dmg.IsOHKO ? "text-danger" : "text-info")" style="font-size: 0.95rem;">
-                                                        (@dmg.AvgHpPercent.ToString("0.0")%)
+                                                    <span class="fw-bold @(dmg.RemainingHpPercent <= 0 ? "text-danger" : (dmg.RemainingHpPercent <= 25 ? "text-danger" : (dmg.RemainingHpPercent <= 50 ? "text-warning" : "text-success")))" style="font-size: 0.95rem;">
+                                                        (@dmg.RemainingHpPercent.ToString("0.0")% HP)
                                                     </span>
                                                 </div>
 
+                                                <!-- Min - Max Remaining Range -->
                                                 <div class="small text-muted" style="font-size: 0.72rem;">
-                                                    @dmg.MinDamage.ToString("N0") (@dmg.MinHpPercent.ToString("0.0")%) - @dmg.MaxDamage.ToString("N0") (@dmg.MaxHpPercent.ToString("0.0")%)
+                                                    Leaves @dmg.MinRemainingHpPercent.ToString("0.0")% - @dmg.MaxRemainingHpPercent.ToString("0.0")% HP (-@dmg.AvgHpPercent.ToString("0.0")%)
                                                 </div>
 
+                                                <!-- Health Bar Visualizer Descending from 100% -->
                                                 <div class="progress mt-1" style="height: 6px; background-color: rgba(255,255,255,0.15); border-radius: 3px;">
-                                                    <div class="progress-bar @(dmg.AvgHpPercent >= 100 ? "bg-danger" : (dmg.AvgHpPercent >= 50 ? "bg-warning" : "bg-success"))"
+                                                    <div class="progress-bar @(dmg.RemainingHpPercent <= 25 ? "bg-danger" : (dmg.RemainingHpPercent <= 50 ? "bg-warning" : "bg-success"))"
                                                          role="progressbar"
-                                                         style="width: @Math.Min(100, Math.Max(0, dmg.AvgHpPercent))%;"></div>
+                                                         style="width: @Math.Min(100, Math.Max(0, dmg.RemainingHpPercent))%;"></div>
                                                 </div>
 
-                                                @if (dmg.IsOHKO)
+                                                @if (dmg.IsOHKO || dmg.RemainingHpPercent <= 0)
                                                 {
                                                     <div class="mt-1">
                                                         <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
-                                                            <i class="bi bi-skull-fill me-1"></i>100%+ OHKO
+                                                            <i class="bi bi-skull-fill me-1"></i>0.0% HP (OHKO)
                                                         </span>
                                                     </div>
                                                 }
@@ -1002,6 +1022,7 @@
                        Pair="State.Allies[_gridModalSlot].Pair"
                        ActiveCells="State.AllyActiveGrids[_gridModalSlot]"
                        MoveLevel="State.Allies[_gridModalSlot].MoveLevel"
+                       MoveLevelChanged="(newLevel) => { State.Allies[_gridModalSlot].MoveLevel = Math.Min(newLevel, 5); State.Allies[_gridModalSlot].SuperAwakeningLevel = newLevel > 5 ? newLevel - 5 : 0; StateHasChanged(); }"
                        OnGridChanged="StateHasChanged" />
     }
 </div>
@@ -1148,6 +1169,20 @@
         State.ActiveAttackerIndex = slot;
     }
 
+    private void RemoveAllyPair(int slot)
+    {
+        if (slot < 0 || slot >= State.Allies.Count) return;
+        State.Allies[slot] = new CombatantState();
+        State.AllyActiveGrids[slot].Clear();
+        if (State.ActiveAttackerIndex == slot)
+        {
+            int nextAttacker = State.Allies.FindIndex(a => a.Pair != null);
+            State.ActiveAttackerIndex = nextAttacker >= 0 ? nextAttacker : 0;
+        }
+        State.UpdateCircleAllyCounts();
+        StateHasChanged();
+    }
+
     private async Task LoadAllyPair(int slot, string trainerId)
     {
         var detail = await DataService.GetPairDetailAsync(trainerId);
@@ -1170,8 +1205,8 @@
                 ally.Stages[s] = s == "crit" ? 3 : 6;
             }
 
-            // By default, activate full grid for optimal calculation
-            State.SetFullGridForAlly(slot);
+            // Initialize grid with standard free center cells (same as solo calculator)
+            GridState.ResetGrid(detail, ally.MoveLevel, State.AllyActiveGrids[slot]);
 
             State.UpdateCircleAllyCounts();
 

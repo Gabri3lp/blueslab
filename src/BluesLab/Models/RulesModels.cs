@@ -108,7 +108,7 @@ public class MasterPassiveRule
     public string Category { get; set; } = "any";
 
     [JsonPropertyName("appliesToSync")]
-    public bool AppliesToSync { get; set; }
+    public bool AppliesToSync { get; set; } = true;
 
     [JsonPropertyName("basePowerUpPct")]
     public int BasePowerUpPct { get; set; } = 10;
@@ -139,6 +139,118 @@ public class MasterPassiveRule
             "special" => isSpecial,
             _ => true
         };
+    }
+
+    private static readonly string[] MasterRegions = new[]
+    {
+        "Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Paldea", "Pasio"
+    };
+
+    private static readonly string[] MasterTypes = new[]
+    {
+        "Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison",
+        "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"
+    };
+
+    public static List<MasterPassiveRule> ExtractMasterPassives(SyncPairDetail? pair, DamageRulesDocument? rules = null)
+    {
+        var list = new List<MasterPassiveRule>();
+        if (pair == null) return list;
+
+        if (rules != null && rules.MasterPassives.Count > 0)
+        {
+            list.AddRange(rules.MasterPassives.Where(m => string.Equals(m.SyncPair, pair.DisplayName, StringComparison.OrdinalIgnoreCase)));
+        }
+
+        foreach (var p in pair.Passives)
+        {
+            string name = p.Name?.Trim() ?? string.Empty;
+            if (string.IsNullOrEmpty(name)) continue;
+
+            if (list.Any(x => string.Equals(x.PassiveName, name, StringComparison.OrdinalIgnoreCase)))
+                continue;
+
+            foreach (var r in MasterRegions)
+            {
+                if (name.Equals($"{r} Pride", StringComparison.OrdinalIgnoreCase))
+                {
+                    list.Add(new MasterPassiveRule
+                    {
+                        SyncPair = pair.DisplayName,
+                        PassiveName = name,
+                        Theme = r,
+                        Category = "physical",
+                        AppliesToSync = true,
+                        BasePowerUpPct = 20,
+                        PerAdditionalAllyPct = 15,
+                        MaxPowerUpPct = 50
+                    });
+                }
+                else if (name.Equals($"{r} Spirit", StringComparison.OrdinalIgnoreCase))
+                {
+                    list.Add(new MasterPassiveRule
+                    {
+                        SyncPair = pair.DisplayName,
+                        PassiveName = name,
+                        Theme = r,
+                        Category = "special",
+                        AppliesToSync = true,
+                        BasePowerUpPct = 20,
+                        PerAdditionalAllyPct = 15,
+                        MaxPowerUpPct = 50
+                    });
+                }
+                else if (name.Equals($"{r} Flag Bearer", StringComparison.OrdinalIgnoreCase))
+                {
+                    list.Add(new MasterPassiveRule
+                    {
+                        SyncPair = pair.DisplayName,
+                        PassiveName = name,
+                        Theme = r,
+                        Category = "any",
+                        AppliesToSync = true,
+                        BasePowerUpPct = 10,
+                        PerAdditionalAllyPct = 10,
+                        MaxPowerUpPct = 30
+                    });
+                }
+            }
+
+            foreach (var t in MasterTypes)
+            {
+                if (name.Equals($"{t} Teamwork", StringComparison.OrdinalIgnoreCase))
+                {
+                    list.Add(new MasterPassiveRule
+                    {
+                        SyncPair = pair.DisplayName,
+                        PassiveName = name,
+                        Theme = t,
+                        Category = "any",
+                        AppliesToSync = true,
+                        BasePowerUpPct = 10,
+                        PerAdditionalAllyPct = 5,
+                        MaxPowerUpPct = 20
+                    });
+                }
+            }
+
+            if (name.EndsWith(" Myth", StringComparison.OrdinalIgnoreCase))
+            {
+                list.Add(new MasterPassiveRule
+                {
+                    SyncPair = pair.DisplayName,
+                    PassiveName = name,
+                    Theme = pair.Type,
+                    Category = "any",
+                    AppliesToSync = true,
+                    BasePowerUpPct = 10,
+                    PerAdditionalAllyPct = 10,
+                    MaxPowerUpPct = 30
+                });
+            }
+        }
+
+        return list;
     }
 }
 
