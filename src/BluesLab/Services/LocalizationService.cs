@@ -161,6 +161,19 @@ public class LocalizationService
         return string.IsNullOrEmpty(fallback) ? key : fallback;
     }
 
+    public string Format(string key, string fallback, params object[] args)
+    {
+        var template = T(key, fallback);
+        try
+        {
+            return string.Format(template, args);
+        }
+        catch
+        {
+            return template;
+        }
+    }
+
     public string GetTrainerName(string trainerId, string trainerKey = "", string? trainerBaseId = null, string fallback = "")
     {
         if (!string.IsNullOrEmpty(trainerKey) && _strings.TryGetValue($"trainer_name_{trainerKey}", out var byKey) && !string.IsNullOrWhiteSpace(byKey))
@@ -284,8 +297,9 @@ public class LocalizationService
 
     public string GetMoveName(int moveId, string fallback = "")
     {
-        if (moveId <= 0) return fallback;
-        return T($"move_name_{moveId}", fallback);
+        if (moveId <= 0) return CleanTitle(fallback);
+        var name = T($"move_name_{moveId}", fallback);
+        return CleanTitle(name);
     }
 
     public string GetMoveDescription(int moveId, string fallback = "")
@@ -346,11 +360,21 @@ public class LocalizationService
         return englishRole;
     }
 
+    public static string CleanTitle(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return text ?? "";
+        var res = text.Replace("\r", "").Replace("\n", " ").Trim();
+        while (res.Contains("  ")) res = res.Replace("  ", " ");
+        return res;
+    }
+
     private static string CleanTags(string input)
     {
         if (string.IsNullOrEmpty(input)) return "";
-        // Clean out raw formatting tags like [Digit:1digit ], [Name:Type ], etc. if they remain
-        var cleaned = Regex.Replace(input, @"\[[^\]]+\]", "").Trim();
+        // Replace LineBreak tags with a space before stripping other tags
+        var withSpaces = Regex.Replace(input, @"\[Name:LineBreak\s*\]", " ");
+        // Clean out remaining raw formatting tags like [Digit:1digit ], [Name:Type ], etc.
+        var cleaned = Regex.Replace(withSpaces, @"\[[^\]]+\]", "").Trim();
         return cleaned;
     }
 }

@@ -319,21 +319,21 @@
                                 if (State.IsCircleActive(r, "physical"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
-                                        @r @Loc.T("turn_stat", "Phys") (+@(10 + 10 * allies)%)
+                                        @r @Loc.T("circle_phys", "Phys") (+@(10 + 10 * allies)%)
                                         <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "physical")'></i>
                                     </span>
                                 }
                                 if (State.IsCircleActive(r, "special"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
-                                        @r @Loc.T("damage_calc", "Spec") (+@(10 + 10 * allies)%)
+                                        @r @Loc.T("circle_spec", "Spec") (+@(10 + 10 * allies)%)
                                         <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "special")'></i>
                                     </span>
                                 }
                                 if (State.IsCircleActive(r, "defensive"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
-                                        @r @Loc.T("stat_def", "Def") (+@(5 + 5 * allies)%)
+                                        @r @Loc.T("circle_def", "Def") (+@(5 + 5 * allies)%)
                                         <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "defensive")'></i>
                                     </span>
                                 }
@@ -371,15 +371,15 @@
                                     <div class="d-flex flex-wrap align-items-center gap-1">
                                         <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "physical") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
                                                 @onclick='() => State.ToggleCircle(_selectedCircleRegion, "physical")'>
-                                            @Loc.T("turn_stat", "Phys") (Buff @autoBuffLvl)
+                                            @Loc.T("circle_physical", "Physical") (@Loc.T("circle_buff", "Buff") @autoBuffLvl)
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "special") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
                                                 @onclick='() => State.ToggleCircle(_selectedCircleRegion, "special")'>
-                                            @Loc.T("damage_calc", "Spec") (Buff @autoBuffLvl)
+                                            @Loc.T("circle_special", "Special") (@Loc.T("circle_buff", "Buff") @autoBuffLvl)
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "defensive") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
                                                 @onclick='() => State.ToggleCircle(_selectedCircleRegion, "defensive")'>
-                                            @Loc.T("stat_def", "Def") (Buff @autoBuffLvl)
+                                            @Loc.T("circle_defensive", "Defensive") (@Loc.T("circle_buff", "Buff") @autoBuffLvl)
                                         </button>
                                     </div>
 
@@ -674,8 +674,8 @@
                             <!-- Enemy Damage Field -->
                             <div class="d-flex align-items-center gap-1">
                                 <span class="text-danger fw-bold" style="font-size: 0.72rem;"><i class="bi bi-crosshair"></i> @Loc.T("damage_field", "Damage Field:")</span>
-                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" style="width: 135px; font-size: 0.72rem; height: 24px;" @bind="State.EnemyDamageField" @bind:after="StateHasChanged">
-                                    <option value="">@Loc.T("weather_none", "None")</option>
+                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" style="min-width: 145px; width: auto; font-size: 0.72rem; height: 24px;" @bind="State.EnemyDamageField" @bind:after="StateHasChanged">
+                                    <option value="">@Loc.T("damage_field_0", "None")</option>
                                     @foreach (var t in CombatantState.AllTypes)
                                     {
                                         <option value="@t">@Loc.GetTypeName(t)</option>
@@ -738,7 +738,7 @@
                                             <div class="fw-bold text-light text-truncate" style="font-size: 0.78rem;" title="@displayTrainer">@displayTrainer</div>
                                             <div class="text-muted text-truncate" style="font-size: 0.7rem;">@displayPokemon</div>
                                         </div>
-                                        <span class="badge type-badge type-@enemy.Weakness.ToLowerInvariant() py-0" style="font-size: 0.68rem;">@Loc.T("weakness", "Weak"): @Loc.GetTypeName(enemy.Weakness)</span>
+                                        <span class="badge type-badge type-@enemy.Weakness.ToLowerInvariant() py-0" style="font-size: 0.68rem;">@Loc.T("weak", "Weak"): @Loc.GetTypeName(enemy.Weakness)</span>
                                     </div>
 
                                     <!-- Enemy Stats Summary (Weakness, HP, Def, SpD) -->
@@ -943,24 +943,13 @@
                                 @foreach (var move in normalAttackerMoves)
                                 {
                                     var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
-                                    string cleanMoveName = Loc.GetMoveName(move.Id, move.Name).Replace("\r", "").Trim();
-                                    var nameParts = cleanMoveName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                                    string cleanMoveName = LocalizationService.CleanTitle(Loc.GetMoveName(move.Id, move.Name));
                                     string effMoveType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
                                     <div class="card move-card move-card-@effMoveType.ToLowerInvariant() p-3">
                                         <div class="d-flex justify-content-between align-items-start mb-2">
                                             <div>
-                                                @if (nameParts.Length > 1)
-                                                {
-                                                    <div class="fw-bold text-light fs-6 lh-sm">
-                                                        <span>@nameParts[0]</span>
-                                                        <span class="text-warning text-opacity-75 d-block small" style="font-size: 0.78rem; font-weight: 500;">@string.Join(" ", nameParts.Skip(1))</span>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="fw-bold text-light fs-6">@cleanMoveName</div>
-                                                }
+                                                <div class="fw-bold text-light fs-6">@cleanMoveName</div>
                                                 <div class="d-flex gap-1 align-items-center mt-1 flex-wrap">
                                                     <span class="badge type-badge type-@effMoveType.ToLowerInvariant()">@Loc.GetTypeName(effMoveType)</span>
                                                     <span class="badge bg-secondary">@Loc.T(move.Category.ToLowerInvariant(), move.Category)</span>
@@ -1024,11 +1013,11 @@
                                                         <div class="small text-secondary" style="font-size: 0.72rem;">
                                                             @if (!teamResult.IsAoE && !isTargetedEnemy)
                                                             {
-                                                                <span class="text-muted">(@Loc.T("target", "If targeted"): @dmg.AvgHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP"))</span>
+                                                                <span class="text-muted">@Loc.Format("if_targeted", "(If targeted: {0}% • Leaves {1}% HP)", dmg.AvgHpPercent.ToString("0.0"), dmg.RemainingHpPercent.ToString("0.0"))</span>
                                                             }
                                                             else
                                                             {
-                                                                <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP")</span>
+                                                                <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; @Loc.Format("leaves_hp", "Leaves {0}% HP", dmg.RemainingHpPercent.ToString("0.0"))</span>
                                                             }
                                                         </div>
 
@@ -1105,25 +1094,14 @@
                                     @foreach (var move in maxAttackerMoves)
                                     {
                                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
-                                        string cleanMaxName = Loc.GetMoveName(move.Id, move.Name).Replace("\r", "").Trim();
-                                        var maxNameParts = cleanMaxName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                                        string cleanMaxName = LocalizationService.CleanTitle(Loc.GetMoveName(move.Id, move.Name));
                                         string effMaxType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
                                         <div class="card move-card move-card-@effMaxType.ToLowerInvariant() p-3 border-pink">
                                             <div class="d-flex justify-content-between align-items-start mb-2">
                                                 <div>
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        @if (maxNameParts.Length > 1)
-                                                        {
-                                                            <div class="fw-bold text-light fs-6 lh-sm">
-                                                                <span>@maxNameParts[0]</span>
-                                                                <span class="text-pink text-opacity-75 d-block small" style="font-size: 0.78rem; font-weight: 500;">@string.Join(" ", maxNameParts.Skip(1))</span>
-                                                            </div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span class="fw-bold text-light fs-6">@cleanMaxName</span>
-                                                        }
+                                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                        <span class="fw-bold text-light fs-6">@cleanMaxName</span>
                                                         <span class="badge btn-pink text-white">@Loc.T("turn_max_move", "Max Move")</span>
                                                     </div>
                                                     <div class="d-flex gap-1 align-items-center mt-1">
@@ -1182,11 +1160,11 @@
                                                             <div class="small text-secondary" style="font-size: 0.72rem;">
                                                                 @if (!teamResult.IsAoE && !isTargetedEnemy)
                                                                 {
-                                                                    <span class="text-muted">(@Loc.T("target", "If targeted"): @dmg.AvgHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP"))</span>
+                                                                    <span class="text-muted">@Loc.Format("if_targeted", "(If targeted: {0}% • Leaves {1}% HP)", dmg.AvgHpPercent.ToString("0.0"), dmg.RemainingHpPercent.ToString("0.0"))</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP")</span>
+                                                                    <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; @Loc.Format("leaves_hp", "Leaves {0}% HP", dmg.RemainingHpPercent.ToString("0.0"))</span>
                                                                 }
                                                             </div>
 
