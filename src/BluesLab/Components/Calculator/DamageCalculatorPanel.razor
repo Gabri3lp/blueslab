@@ -840,23 +840,7 @@
 
     private string GetEffectiveMoveType(MoveItem move)
     {
-        if (move.IsMax) return move.Type;
-        if (Ally.FormIndex > 0 && Ally.Pair?.Variations != null && Ally.FormIndex <= Ally.Pair.Variations.Count)
-        {
-            var form = Ally.Pair.Variations[Ally.FormIndex - 1];
-            if (form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) || string.Equals(form.Type, "Stellar", StringComparison.OrdinalIgnoreCase))
-            {
-                if (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase) || move.IsSync)
-                {
-                    return "Stellar";
-                }
-            }
-            else if (!string.IsNullOrEmpty(form.Type))
-            {
-                return form.Type;
-            }
-        }
-        return move.Type;
+        return CalcService.GetEffectiveMoveType(Ally.Pair, move, Ally.FormIndex);
     }
 
     private IEnumerable<MoveItem> ActiveMoves

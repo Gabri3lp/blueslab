@@ -612,6 +612,101 @@ public class DamageCalculatorService
         return false;
     }
 
+    public string GetEffectiveMoveType(SyncPairDetail? pair, MoveItem move, int formIndex = 0)
+    {
+        if (move == null) return "Normal";
+        if (move.IsTrainer) return move.Type;
+
+        // 1. Terapagos Stellar Form check
+        if (pair != null && formIndex > 0 && pair.Variations != null && formIndex <= pair.Variations.Count)
+        {
+            var variation = pair.Variations[formIndex - 1];
+            if (string.Equals(variation.Type, "Stellar", StringComparison.OrdinalIgnoreCase) ||
+                (variation.FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true))
+            {
+                if (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) ||
+                    move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase) ||
+                    move.IsSync)
+                {
+                    return "Stellar";
+                }
+            }
+        }
+
+        // 2. Only Normal-type moves are shifted by Shift passives
+        if (!string.Equals(move.Type, "Normal", StringComparison.OrdinalIgnoreCase))
+        {
+            return move.Type;
+        }
+
+        if (pair == null) return move.Type;
+
+        // 3. Resolve active passives (base passives, current form variation passives, and super awakening)
+        var passives = new List<PassiveItem>(pair.Passives ?? Enumerable.Empty<PassiveItem>());
+        if (formIndex > 0 && pair.Variations != null && formIndex <= pair.Variations.Count && pair.Variations[formIndex - 1].Passives != null)
+        {
+            passives.AddRange(pair.Variations[formIndex - 1].Passives);
+        }
+        if (pair.SuperAwakeningPassive != null)
+        {
+            passives.Add(pair.SuperAwakeningPassive);
+        }
+
+        // 4. Check for Shift passives
+        foreach (var p in passives)
+        {
+            string name = p.Name ?? string.Empty;
+            string desc = p.Description ?? string.Empty;
+
+            // Specific named passives
+            if (name.Contains("The Caped Dragon Master", StringComparison.OrdinalIgnoreCase)) return "Dragon";
+            if (name.Contains("The Wandering Champion", StringComparison.OrdinalIgnoreCase)) return "Bug";
+            if (name.Contains("Giovanni's Cunning", StringComparison.OrdinalIgnoreCase) || name.Contains("Giovanni’s Cunning", StringComparison.OrdinalIgnoreCase)) return "Ground";
+            if (name.Contains("Dragon's Ascent", StringComparison.OrdinalIgnoreCase) || name.Contains("Dragon’s Ascent", StringComparison.OrdinalIgnoreCase)) return "Flying";
+            if (name.Contains("Caped Dragon Master's Teachings", StringComparison.OrdinalIgnoreCase) || name.Contains("Caped Dragon Master’s Teachings", StringComparison.OrdinalIgnoreCase)) return "Flying";
+            if (name.Contains("Soaring Crescent Moon", StringComparison.OrdinalIgnoreCase)) return "Flying";
+            if (name.Contains("Soul-Eating Space", StringComparison.OrdinalIgnoreCase)) return "Poison";
+            if (name.Contains("Future-Honed Strike", StringComparison.OrdinalIgnoreCase)) return "Psychic";
+            if (name.Contains("Change It Up!", StringComparison.OrdinalIgnoreCase)) return "Fairy";
+            if (name.Contains("Piqued Curiosity", StringComparison.OrdinalIgnoreCase)) return "Fairy";
+            if (name.Contains("Psychic Performance", StringComparison.OrdinalIgnoreCase)) return "Psychic";
+            if (name.Contains("Fighting Performance", StringComparison.OrdinalIgnoreCase)) return "Fighting";
+
+            // Standard "[Type] Shift" passives (e.g. "Dragon Shift", "Water Shift", "Fairy Shift")
+            if (name.EndsWith("Shift", StringComparison.OrdinalIgnoreCase))
+            {
+                string prefix = name.Substring(0, name.Length - 5).Trim();
+                foreach (var t in CombatantState.AllTypes)
+                {
+                    if (string.Equals(prefix, t, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return t;
+                    }
+                }
+            }
+
+            // Generic description check: "Normal-type moves become..."
+            if (desc.Contains("Normal-type move", StringComparison.OrdinalIgnoreCase) &&
+                desc.Contains("become", StringComparison.OrdinalIgnoreCase))
+            {
+                foreach (var t in CombatantState.AllTypes)
+                {
+                    if (desc.Contains($"{t}-type", StringComparison.OrdinalIgnoreCase) ||
+                        desc.Contains($"{t} type", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return t;
+                    }
+                }
+                if (!string.IsNullOrEmpty(pair.Type) && !pair.Type.Equals("Normal", StringComparison.OrdinalIgnoreCase))
+                {
+                    return pair.Type;
+                }
+            }
+        }
+
+        return move.Type;
+    }
+
     public DamageResult CalculateDamage(
         MoveItem move,
         CombatantState ally,
@@ -625,20 +720,39 @@ public class DamageCalculatorService
         var pair = ally.Pair;
         if (pair == null) return new DamageResult { MoveName = move.Name };
 
+        // Resolve effective move type (applies Shift passives and Stellar form)
+        string effectiveMoveType = GetEffectiveMoveType(pair, move, ally.FormIndex);
+        if (!string.Equals(move.Type, effectiveMoveType, StringComparison.OrdinalIgnoreCase))
+        {
+            move = new MoveItem
+            {
+                Id = move.Id,
+                Slot = move.Slot,
+                Name = move.Name,
+                Type = effectiveMoveType,
+                Category = move.Category,
+                Power = move.Power,
+                Accuracy = move.Accuracy,
+                Gauge = move.Gauge,
+                Target = move.Target,
+                Description = move.Description,
+                IsSync = move.IsSync,
+                IsMax = move.IsMax,
+                MaxUses = move.MaxUses,
+                IsTrainer = move.IsTrainer
+            };
+        }
+
         bool isPhysical = string.Equals(move.Category, "Physical", StringComparison.OrdinalIgnoreCase);
         bool isSpecial = string.Equals(move.Category, "Special", StringComparison.OrdinalIgnoreCase);
 
         // 1. Move Base Power & SA
         int rawPower = int.TryParse(move.Power, out int parsedPwr) ? parsedPwr : 0;
         
-        string effectiveMoveType = move.Type;
-        bool isStellarForm = ally.FormIndex > 0 && ally.FormIndex <= pair.Variations.Count &&
-            (string.Equals(pair.Variations[ally.FormIndex - 1].Type, "Stellar", StringComparison.OrdinalIgnoreCase) ||
-             (pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true));
+        bool isStellarForm = string.Equals(effectiveMoveType, "Stellar", StringComparison.OrdinalIgnoreCase);
 
         if (isStellarForm)
         {
-            effectiveMoveType = "Stellar";
             // Terapagos Stellar Form doubles the base power of Tera Starstorm and Kaleidoscopic Tera Starstorm
             if (!move.IsSync && (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase)))
             {

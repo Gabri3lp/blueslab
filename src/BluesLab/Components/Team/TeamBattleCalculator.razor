@@ -900,8 +900,9 @@
                                     var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
                                     string cleanMoveName = move.Name.Replace("\r", "").Trim();
                                     var nameParts = cleanMoveName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                                    string effMoveType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
-                                    <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3">
+                                    <div class="card move-card move-card-@effMoveType.ToLowerInvariant() p-3">
                                         <div class="d-flex justify-content-between align-items-start mb-2">
                                             <div>
                                                 @if (nameParts.Length > 1)
@@ -916,7 +917,7 @@
                                                     <div class="fw-bold text-light fs-6">@cleanMoveName</div>
                                                 }
                                                 <div class="d-flex gap-1 align-items-center mt-1 flex-wrap">
-                                                    <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                                    <span class="badge type-badge type-@effMoveType.ToLowerInvariant()">@effMoveType</span>
                                                     <span class="badge bg-secondary">@move.Category</span>
                                                     @if (move.IsSync)
                                                     {
@@ -1061,8 +1062,9 @@
                                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
                                         string cleanMaxName = move.Name.Replace("\r", "").Trim();
                                         var maxNameParts = cleanMaxName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                                        string effMaxType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
-                                        <div class="card move-card move-card-@move.Type.ToLowerInvariant() p-3 border-pink">
+                                        <div class="card move-card move-card-@effMaxType.ToLowerInvariant() p-3 border-pink">
                                             <div class="d-flex justify-content-between align-items-start mb-2">
                                                 <div>
                                                     <div class="d-flex align-items-center gap-2">
@@ -1080,7 +1082,7 @@
                                                         <span class="badge btn-pink text-white">Max Move</span>
                                                     </div>
                                                     <div class="d-flex gap-1 align-items-center mt-1">
-                                                        <span class="badge type-badge type-@move.Type.ToLowerInvariant()">@move.Type</span>
+                                                        <span class="badge type-badge type-@effMaxType.ToLowerInvariant()">@effMaxType</span>
                                                         <span class="badge bg-secondary">@move.Category</span>
                                                         @if (teamResult.IsAoE)
                                                         {
@@ -1526,6 +1528,8 @@
         var warnings = new List<string>();
         if (State.ActiveFight?.Rules == null || State.ActiveFight.Rules.Count == 0) return warnings;
 
+        string effType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
+
         foreach (var rule in State.ActiveFight.Rules)
         {
             if (rule.Contains("status condition or interference", StringComparison.OrdinalIgnoreCase))
@@ -1543,7 +1547,7 @@
             if (rule.Contains("not supereffective", StringComparison.OrdinalIgnoreCase) ||
                 rule.Contains("not super effective", StringComparison.OrdinalIgnoreCase))
             {
-                bool isSE = !string.IsNullOrEmpty(opp.Weakness) && string.Equals(move.Type, opp.Weakness, StringComparison.OrdinalIgnoreCase);
+                bool isSE = !string.IsNullOrEmpty(opp.Weakness) && string.Equals(effType, opp.Weakness, StringComparison.OrdinalIgnoreCase);
                 if (!isSE)
                 {
                     warnings.Add("Move is not super effective! Deals 0 damage in this stage.");
