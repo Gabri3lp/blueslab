@@ -1,0 +1,252 @@
+@using BluesLab.Models
+@using BluesLab.Services
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@inject TeamConfigurationService TeamConfigSvc
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <!-- Header -->
+                <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title d-flex align-items-center gap-2 fs-6">
+                        <i class="bi bi-folder2-open text-warning"></i> @Loc.T("saved_teams", "My Teams")
+                        <span class="badge bg-secondary">@_savedTeams.Count</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="Close"></button>
+                </div>
+
+                <div class="modal-body p-3">
+                    <!-- Save Current Team Form -->
+                    <div class="card bg-black bg-opacity-25 border-secondary mb-3">
+                        <div class="card-header py-1.5 px-3 bg-secondary bg-opacity-20 border-secondary d-flex justify-content-between align-items-center">
+                            <span class="small fw-bold text-warning d-flex align-items-center gap-1">
+                                <i class="bi bi-save2"></i> @Loc.T("save_current_team", "Save Current Team")
+                            </span>
+                            @if (!string.IsNullOrEmpty(_statusMessage))
+                            {
+                                <span class="badge bg-success small animate__animated animate__fadeIn">
+                                    <i class="bi bi-check-circle me-1"></i>@_statusMessage
+                                </span>
+                            }
+                        </div>
+                        <div class="card-body p-2">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-12 col-md-6">
+                                    <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary"
+                                           placeholder="@Loc.T("my_team_name_placeholder", "Enter team name (e.g. Mono Fire vs Falkner)")"
+                                           @bind="_newTeamName" />
+                                </div>
+                                <div class="col-12 col-md-6 d-flex gap-2">
+                                    <button class="btn btn-warning btn-sm fw-bold flex-grow-1" @onclick="SaveAsNewTeam" disabled="@string.IsNullOrWhiteSpace(_newTeamName)">
+                                        <i class="bi bi-plus-circle me-1"></i>@Loc.T("my_team_create_new", "Save as New")
+                                    </button>
+                                    @if (_selectedTeamForOverwrite != null)
+                                    {
+                                        <button class="btn btn-outline-warning btn-sm" @onclick="OverwriteSelectedTeam" title="@Loc.T("my_team_overwrite", "Overwrite")">
+                                            @Loc.T("my_team_overwrite", "Overwrite")
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saved Teams List -->
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small text-muted fw-bold text-uppercase">
+                            @Loc.T("saved_teams_desc", "Saved Configurations") (@_savedTeams.Count)
+                        </span>
+                    </div>
+
+                    @if (_savedTeams.Count == 0)
+                    {
+                        <div class="text-center py-4 text-muted">
+                            <i class="bi bi-inbox fs-2 d-block mb-2 text-secondary"></i>
+                            <p class="small mb-0">@Loc.T("no_saved_teams", "No saved teams found yet. Save your current team to see it here!")</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex flex-column gap-2">
+                            @foreach (var team in _savedTeams)
+                            {
+                                var isSelectedForOverwrite = _selectedTeamForOverwrite?.Id == team.Id;
+                                <div class="card bg-dark border-secondary p-2 @(isSelectedForOverwrite ? "border-warning bg-opacity-75" : "")">
+                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                        <!-- Team Info & Avatars -->
+                                        <div class="d-flex align-items-center gap-2 overflow-hidden">
+                                            <div class="d-flex align-items-center">
+                                                @for (int i = 0; i < team.PairIconUrls.Count; i++)
+                                                {
+                                                    string icon = team.PairIconUrls[i];
+                                                    <img src="@icon" alt=""
+                                                         class="rounded-circle border border-warning"
+                                                         style="width: 32px; height: 32px; object-fit: cover; margin-left: @(i > 0 ? "-10px" : "0"); z-index: @(10 - i);"
+                                                         onerror="this.src='img/trainers/unknown.png';" />
+                                                }
+                                            </div>
+
+                                            <div>
+                                                <div class="fw-bold text-light text-truncate" style="font-size: 0.88rem;">@team.Name</div>
+                                                <div class="d-flex align-items-center gap-2 text-muted small" style="font-size: 0.72rem;">
+                                                    <span><i class="bi bi-calendar3 me-1"></i>@team.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</span>
+                                                    <span>&bull;</span>
+                                                    <span class="badge bg-secondary py-0">@team.StageTitle</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Action Buttons -->
+                                        <div class="d-flex align-items-center gap-1">
+                                            <button class="btn btn-sm btn-primary py-0 px-2 fw-bold" style="height: 26px; font-size: 0.75rem;"
+                                                    @onclick="() => LoadTeam(team)"
+                                                    title="@Loc.T("my_team_load", "Load Team")">
+                                                <i class="bi bi-play-fill me-0.5"></i>@Loc.T("my_team_load", "Load")
+                                            </button>
+
+                                            <button class="btn btn-sm btn-outline-info py-0 px-2" style="height: 26px; font-size: 0.75rem;"
+                                                    @onclick="() => CompareTeam(team)"
+                                                    title="@Loc.T("compare", "Compare against Current")">
+                                                <i class="bi bi-speedometer2 me-0.5"></i>@Loc.T("compare", "Compare")
+                                            </button>
+
+                                            <button class="btn btn-sm btn-outline-warning py-0 px-2" style="height: 26px; font-size: 0.75rem;"
+                                                    @onclick="() => ShareSavedTeam(team)"
+                                                    title="@Loc.T("share_team", "Share Team")">
+                                                <i class="bi bi-share"></i>
+                                            </button>
+
+                                            <button class="btn btn-sm btn-outline-secondary py-0 px-1" style="height: 26px; font-size: 0.72rem;"
+                                                    @onclick="() => SelectForOverwrite(team)"
+                                                    title="@Loc.T("my_team_overwrite", "Select to overwrite")">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+
+                                            <button class="btn btn-sm btn-outline-danger py-0 px-1" style="height: 26px; font-size: 0.72rem;"
+                                                    @onclick="() => DeleteTeam(team.Id)"
+                                                    title="@Loc.T("my_team_delete", "Delete")">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40">
+                    <button type="button" class="btn btn-secondary btn-sm px-3" @onclick="Close">
+                        @Loc.T("done", "Done")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public TeamBattleState? State { get; set; }
+    [Parameter] public EventCallback<TeamConfigDto> OnLoadRequested { get; set; }
+    [Parameter] public EventCallback<TeamConfigDto> OnCompareRequested { get; set; }
+    [Parameter] public EventCallback<TeamConfigDto> OnShareRequested { get; set; }
+
+    private List<TeamSavedItemDto> _savedTeams = new();
+    private string _newTeamName = string.Empty;
+    private TeamSavedItemDto? _selectedTeamForOverwrite;
+    private string _statusMessage = string.Empty;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsOpen)
+        {
+            await RefreshList();
+            if (string.IsNullOrWhiteSpace(_newTeamName) && State?.ActiveAttacker.Pair != null)
+            {
+                _newTeamName = $"{State.ActiveAttacker.Pair.DisplayName} Team";
+            }
+        }
+    }
+
+    private async Task RefreshList()
+    {
+        _savedTeams = await TeamConfigSvc.GetSavedTeamsAsync();
+    }
+
+    private async Task SaveAsNewTeam()
+    {
+        if (State == null || string.IsNullOrWhiteSpace(_newTeamName)) return;
+
+        await TeamConfigSvc.SaveTeamAsync(_newTeamName.Trim(), State);
+        _statusMessage = Loc.T("team_saved_success", "Team saved successfully!");
+        _newTeamName = string.Empty;
+        await RefreshList();
+        _ = ClearStatusAfterDelay();
+    }
+
+    private async Task OverwriteSelectedTeam()
+    {
+        if (State == null || _selectedTeamForOverwrite == null) return;
+
+        string targetName = !string.IsNullOrWhiteSpace(_newTeamName) ? _newTeamName.Trim() : _selectedTeamForOverwrite.Name;
+        await TeamConfigSvc.SaveTeamAsync(targetName, State, overwriteId: _selectedTeamForOverwrite.Id);
+        _statusMessage = Loc.T("message_overwrite_team_success", "Team updated successfully!");
+        _selectedTeamForOverwrite = null;
+        await RefreshList();
+        _ = ClearStatusAfterDelay();
+    }
+
+    private void SelectForOverwrite(TeamSavedItemDto item)
+    {
+        _selectedTeamForOverwrite = item;
+        _newTeamName = item.Name;
+    }
+
+    private async Task DeleteTeam(string id)
+    {
+        await TeamConfigSvc.DeleteTeamAsync(id);
+        _statusMessage = Loc.T("team_deleted_success", "Team deleted successfully!");
+        if (_selectedTeamForOverwrite?.Id == id) _selectedTeamForOverwrite = null;
+        await RefreshList();
+        _ = ClearStatusAfterDelay();
+    }
+
+    private async Task LoadTeam(TeamSavedItemDto item)
+    {
+        await OnLoadRequested.InvokeAsync(item.Config);
+        await Close();
+    }
+
+    private async Task CompareTeam(TeamSavedItemDto item)
+    {
+        await OnCompareRequested.InvokeAsync(item.Config);
+        await Close();
+    }
+
+    private async Task ShareSavedTeam(TeamSavedItemDto item)
+    {
+        await OnShareRequested.InvokeAsync(item.Config);
+        await Close();
+    }
+
+    private async Task ClearStatusAfterDelay()
+    {
+        await Task.Delay(3000);
+        _statusMessage = string.Empty;
+        StateHasChanged();
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        _statusMessage = string.Empty;
+        _selectedTeamForOverwrite = null;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

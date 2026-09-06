@@ -1,0 +1,193 @@
+@using BluesLab.Models
+@using BluesLab.Services
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@inject TeamConfigurationService TeamConfigSvc
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title d-flex align-items-center gap-2 fs-6">
+                        <i class="bi bi-share-fill text-warning"></i> @Loc.T("share_team", "Share Team Configuration")
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" @onclick="Close"></button>
+                </div>
+                <div class="modal-body p-3">
+                    <p class="small text-muted mb-3">
+                        @Loc.T("share_team_desc", "Share your full 3v3 team configuration with a direct link or code.")
+                    </p>
+
+                    <!-- Share Link -->
+                    <div class="mb-3">
+                        <label class="form-label small text-warning fw-bold mb-1">
+                            <i class="bi bi-link-45deg me-1"></i>@Loc.T("shareable_link", "Shareable Link")
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-black bg-opacity-40 text-light border-secondary small" value="@ShareUrl" readonly />
+                            <button class="btn btn-warning fw-bold px-3" @onclick="CopyUrl">
+                                <i class="bi bi-clipboard me-1"></i> @Loc.T("copy", "Copy")
+                            </button>
+                        </div>
+                        @if (_copiedUrl)
+                        {
+                            <div class="text-success small mt-1 animate__animated animate__fadeIn">
+                                <i class="bi bi-check-circle-fill me-1"></i>@Loc.T("message_share_team_success", "Team link copied to clipboard!")
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Team Code Import / Export -->
+                    <div class="mb-3 p-2 rounded bg-black bg-opacity-25 border border-secondary">
+                        <label class="form-label small text-info fw-bold mb-1">
+                            <i class="bi bi-code-slash me-1"></i>@Loc.T("team_code", "Team Code")
+                        </label>
+                        <div class="input-group mb-2">
+                            <input type="text" class="form-control bg-dark text-light border-secondary small"
+                                   placeholder="@Loc.T("paste_team_code_placeholder", "Paste team code here...")"
+                                   @bind="_importCode" />
+                            <button class="btn btn-outline-info" @onclick="ApplyImportCode">
+                                <i class="bi bi-box-arrow-in-down me-1"></i>@Loc.T("import", "Import")
+                            </button>
+                        </div>
+                        @if (!string.IsNullOrEmpty(_importError))
+                        {
+                            <div class="text-danger small mt-1">
+                                <i class="bi bi-exclamation-triangle-fill me-1"></i>@_importError
+                            </div>
+                        }
+                    </div>
+
+                    <!-- JSON File Export / Import -->
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 pt-2 border-top border-secondary">
+                        <span class="small text-muted">@Loc.T("my_team_save_mode", "Backup & File Format")</span>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1" @onclick="ExportJsonFile">
+                                <i class="bi bi-download"></i> @Loc.T("export_json", "Export JSON")
+                            </button>
+                            <label class="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-1 mb-0 cursor-pointer">
+                                <i class="bi bi-upload"></i> @Loc.T("import_json", "Import JSON")
+                                <InputFile OnChange="ImportJsonFile" style="display: none;" accept=".json" />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40">
+                    <button type="button" class="btn btn-secondary btn-sm px-3" @onclick="Close">
+                        @Loc.T("done", "Done")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public TeamBattleState? State { get; set; }
+    [Parameter] public EventCallback<TeamConfigDto> OnConfigImported { get; set; }
+
+    private bool _copiedUrl = false;
+    private string _importCode = string.Empty;
+    private string _importError = string.Empty;
+
+    private string ShareUrl
+    {
+        get
+        {
+            if (State == null) return Navigation.BaseUri;
+            return TeamConfigSvc.GenerateShareUrl(Navigation.BaseUri, State);
+        }
+    }
+
+    private async Task CopyUrl()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", ShareUrl);
+            _copiedUrl = true;
+            await Task.Delay(2500);
+            _copiedUrl = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Clipboard error: {ex.Message}");
+        }
+    }
+
+    private async Task ApplyImportCode()
+    {
+        _importError = string.Empty;
+        if (string.IsNullOrWhiteSpace(_importCode)) return;
+
+        var token = _importCode.Trim();
+        // If user pasted a full URL, extract ?team=
+        if (token.Contains("team="))
+        {
+            int idx = token.IndexOf("team=") + 5;
+            token = token.Substring(idx);
+            int amp = token.IndexOf('&');
+            if (amp >= 0) token = token.Substring(0, amp);
+        }
+
+        var dto = TeamConfigSvc.ImportFromToken(token);
+        if (dto != null)
+        {
+            await OnConfigImported.InvokeAsync(dto);
+            await Close();
+        }
+        else
+        {
+            _importError = Loc.T("message_invalid_link", "Failed to read code. It may be damaged or incomplete.");
+        }
+    }
+
+    private async Task ExportJsonFile()
+    {
+        if (State == null) return;
+        var dto = TeamConfigSvc.ExportToDto(State);
+        var json = System.Text.Json.JsonSerializer.Serialize(dto, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+        var filename = $"blueslab-team-{DateTime.UtcNow:yyyyMMdd-HHmmss}.json";
+
+        var bytes = System.Text.Encoding.UTF8.GetBytes(json);
+        var b64 = Convert.ToBase64String(bytes);
+        await JS.InvokeVoidAsync("eval", $"let a = document.createElement('a'); a.download = '{filename}'; a.href = 'data:application/json;base64,{b64}'; a.click();");
+    }
+
+    private async Task ImportJsonFile(InputFileChangeEventArgs e)
+    {
+        _importError = string.Empty;
+        try
+        {
+            using var stream = e.File.OpenReadStream(maxAllowedSize: 2_000_000);
+            using var reader = new StreamReader(stream);
+            var json = await reader.ReadToEndAsync();
+            var dto = System.Text.Json.JsonSerializer.Deserialize<TeamConfigDto>(json);
+            if (dto != null)
+            {
+                await OnConfigImported.InvokeAsync(dto);
+                await Close();
+            }
+            else
+            {
+                _importError = Loc.T("message_invalid_link", "Failed to parse JSON file.");
+            }
+        }
+        catch (Exception ex)
+        {
+            _importError = ex.Message;
+        }
+    }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        _importError = string.Empty;
+        _importCode = string.Empty;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+}

@@ -11,10 +11,10 @@
                 <!-- Modal Header: Sync Pair Info & Actions -->
                 <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex align-items-center justify-content-between flex-wrap gap-2">
                     <div class="d-flex align-items-center gap-2">
-                        <img src="@Pair.IconUrl" alt="@Pair.DisplayName" class="rounded-circle border border-warning" style="width: 36px; height: 36px; object-fit: cover;" onerror="this.src='img/trainers/unknown.png';" />
+                        <img src="@Pair.IconUrl" alt="@Loc.GetDisplayName(Pair)" class="rounded-circle border border-warning" style="width: 36px; height: 36px; object-fit: cover;" onerror="this.src='img/trainers/unknown.png';" />
                         <div>
-                            <h6 class="modal-title fw-bold text-warning mb-0">@Pair.DisplayName - Sync Grid</h6>
-                            <span class="small text-muted" style="font-size: 0.72rem;">@Pair.Role | @Pair.Type</span>
+                            <h6 class="modal-title fw-bold text-warning mb-0">@Loc.GetDisplayName(Pair) - @Loc.T("grid", "Sync Grid")</h6>
+                            <span class="small text-muted" style="font-size: 0.72rem;">@Loc.GetRoleName(Pair.Role) | @Loc.GetTypeName(Pair.Type)</span>
                         </div>
                     </div>
 
@@ -23,17 +23,17 @@
                         <div class="form-check form-switch mb-0 me-2" title="Limit energy to 60 and enforce cell adjacency">
                             <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="teamHardCapToggle"
                                    checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
-                            <label class="form-check-label small text-secondary cursor-pointer" for="teamHardCapToggle">Hard Cap</label>
+                            <label class="form-check-label small text-secondary cursor-pointer" for="teamHardCapToggle">@Loc.T("hard_cap", "Hard Cap")</label>
                         </div>
 
                         <!-- Reset Grid Button -->
-                        <button class="btn btn-outline-secondary btn-sm" @onclick="OnResetGrid" title="Reset to free center cells">
-                            <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
+                        <button class="btn btn-outline-secondary btn-sm" @onclick="OnResetGrid" title="@Loc.T("reset_grid", "Reset Grid")">
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>@Loc.T("reset", "Reset")
                         </button>
 
                         <!-- Done / Close Button -->
                         <button type="button" class="btn btn-primary btn-sm fw-bold px-3" @onclick="Close">
-                            <i class="bi bi-check-lg me-1"></i>Done
+                            <i class="bi bi-check-lg me-1"></i>@Loc.T("done", "Done")
                         </button>
                     </div>
                 </div>

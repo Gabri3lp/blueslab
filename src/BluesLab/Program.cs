@@ -13,5 +13,6 @@ builder.Services.AddScoped<GridStateService>();
 builder.Services.AddScoped<DamageCalculatorService>();
 builder.Services.AddScoped<StageService>();
 builder.Services.AddScoped<LocalizationService>();
+builder.Services.AddScoped<TeamConfigurationService>();
 
 await builder.Build().RunAsync();

@@ -2,6 +2,7 @@
 @inject SyncPairDataService DataService
 @inject GridStateService GridState
 @inject NavigationManager Navigation
+@inject TeamConfigurationService TeamConfigSvc
 @implements IDisposable
 
 <PageTitle>Blues Lab - Sync Grid & Damage Calculator</PageTitle>
@@ -20,7 +21,7 @@ else
     {
         <!-- Fullscreen 3v3 Team Battle Mode -->
         <div class="d-flex flex-column vh-100 overflow-hidden bg-dark text-light">
-            <!-- Fullscreen Top Bar with Brand, Tab Switcher and Sync Indicator -->
+            <!-- Fullscreen Top Bar with Brand, Tab Switcher and Language Selector -->
             <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary bg-dark shadow-sm flex-wrap gap-2">
                 <div class="d-flex align-items-center gap-3">
                     <span class="fw-bold text-warning fs-5">
@@ -37,6 +38,20 @@ else
                             <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
                         </button>
                     </div>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="d-flex align-items-center gap-1">
+                    <i class="bi bi-globe2 text-warning small" title="@Loc.T("language", "Language")"></i>
+                    <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2 cursor-pointer shadow-none"
+                            style="font-size: 0.8rem; width: auto; height: 28px;"
+                            value="@Loc.CurrentLanguage"
+                            @onchange="OnLanguageSelected">
+                        @foreach (var (langCode, name) in LocalizationService.SupportedLanguages)
+                        {
+                            <option value="@langCode">@name</option>
+                        }
+                    </select>
                 </div>
             </div>
 
@@ -171,7 +186,25 @@ else
             GridState.ImportBuildToken(ActivePair.Grid, qBuild.ToString());
         }
 
+        if (query.TryGetValue("team", out var qTeam) && !string.IsNullOrEmpty(qTeam))
+        {
+            var config = TeamConfigSvc.DeserializeToken(qTeam.ToString());
+            if (config != null)
+            {
+                await TeamConfigSvc.ApplyConfigAsync(TeamState, config);
+                ActiveTab = 2;
+            }
+        }
+
         IsLoading = false;
+    }
+
+    private async Task OnLanguageSelected(ChangeEventArgs e)
+    {
+        if (e.Value is string lang)
+        {
+            await Loc.SetLanguageAsync(lang);
+        }
     }
 
     private void OnGridChangedHandler()

@@ -6,6 +6,8 @@
 @inject DamageCalculatorService CalcService
 @inject StageService StageSvc
 @inject GridStateService GridState
+@inject TeamConfigurationService TeamConfigSvc
+@implements IDisposable
 
 <div class="team-calculator-container p-2 p-md-3">
     <!-- Top Stage & Battle Conditions Bar (Compact Full Width) -->
@@ -13,8 +15,49 @@
         <div class="card-header bg-secondary bg-opacity-25 border-secondary d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
             <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-trophy-fill text-warning fs-5"></i>
-                <span class="fw-bold text-light fs-5">3v3 Team Battle Simulator</span>
+                <span class="fw-bold text-light fs-5">@Loc.T("team_battle_simulator", "3v3 Team Battle Simulator")</span>
                 <span class="badge bg-danger">@(_leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId)?.Name ?? (State.ActiveFight?.Title ?? "Pasio Gym Battle"))</span>
+            </div>
+
+            <!-- Team Actions: My Teams, Save, Share, Compare, Reset -->
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <button class="btn btn-sm btn-outline-info d-inline-flex align-items-center gap-1"
+                        @onclick="() => _showSavedTeamsModal = true"
+                        title="@Loc.T("saved_teams", "My Teams")">
+                    <i class="bi bi-folder2-open"></i>
+                    <span>@Loc.T("saved_teams", "My Teams")</span>
+                    @if (_savedTeamsCount > 0)
+                    {
+                        <span class="badge bg-info text-dark py-0 px-1" style="font-size: 0.68rem;">@_savedTeamsCount</span>
+                    }
+                </button>
+
+                <button class="btn btn-sm btn-outline-warning d-inline-flex align-items-center gap-1"
+                        @onclick="() => _showSavedTeamsModal = true"
+                        title="@Loc.T("save_team", "Save Team")">
+                    <i class="bi bi-save2"></i>
+                    <span>@Loc.T("save_team", "Save Team")</span>
+                </button>
+
+                <button class="btn btn-sm btn-warning text-dark fw-bold d-inline-flex align-items-center gap-1"
+                        @onclick="() => _showShareModal = true"
+                        title="@Loc.T("share_team", "Share Team")">
+                    <i class="bi bi-share-fill"></i>
+                    <span>@Loc.T("share_team", "Share Team")</span>
+                </button>
+
+                <button class="btn btn-sm btn-outline-light d-inline-flex align-items-center gap-1"
+                        @onclick="OpenCompare"
+                        title="@Loc.T("compare", "Compare Configurations")">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>@Loc.T("compare", "Compare")</span>
+                </button>
+
+                <button class="btn btn-sm btn-outline-danger py-1 px-2"
+                        @onclick="ResetTeam"
+                        title="@Loc.T("reset_team", "Reset Team")">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
             </div>
         </div>
 
@@ -22,7 +65,7 @@
             <!-- Stage Selection -->
             <div class="row g-2 align-items-center mb-2">
                 <div class="col-md-6">
-                    <label class="form-label small text-muted mb-1"><i class="bi bi-diagram-3-fill text-warning me-1"></i> Circuit / Tier:</label>
+                    <label class="form-label small text-muted mb-1"><i class="bi bi-diagram-3-fill text-warning me-1"></i> @Loc.T("circuit_tier", "Circuit / Tier:")</label>
                     <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedLeagueId" @onchange="OnLeagueChanged">
                         @foreach (var l in _leagues)
                         {
@@ -32,7 +75,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label small text-muted mb-1"><i class="bi bi-swords text-danger me-1"></i> Battle:</label>
+                    <label class="form-label small text-muted mb-1"><i class="bi bi-swords text-danger me-1"></i> @Loc.T("battle", "Battle:")</label>
                     <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedFightId" @onchange="OnFightChanged">
                         @{
                             var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
@@ -53,11 +96,11 @@
             {
                 <div class="p-2 mb-2 rounded bg-black bg-opacity-30 border border-secondary border-opacity-75 small">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
-                        <span class="badge bg-warning text-dark fw-bold">Leader: @State.ActiveFight.Leader</span>
-                        <span class="badge type-badge type-@State.ActiveFight.StageType.ToLowerInvariant()">@State.ActiveFight.StageType</span>
+                        <span class="badge bg-warning text-dark fw-bold">@Loc.T("leader", "Leader:"): @State.ActiveFight.Leader</span>
+                        <span class="badge type-badge type-@State.ActiveFight.StageType.ToLowerInvariant()">@Loc.GetTypeName(State.ActiveFight.StageType)</span>
                         @if (!string.IsNullOrEmpty(State.ActiveFight.Theme) && !State.ActiveFight.Theme.Equals("No rules", StringComparison.OrdinalIgnoreCase))
                         {
-                            <span class="badge bg-secondary"><i class="bi bi-info-circle me-1"></i>Theme: @State.ActiveFight.Theme</span>
+                            <span class="badge bg-secondary"><i class="bi bi-info-circle me-1"></i>@Loc.T("theme", "Theme:"): @State.ActiveFight.Theme</span>
                         }
                     </div>
                     @if (State.ActiveFight.Rules.Count > 0)
@@ -79,14 +122,14 @@
             <div class="row g-2 pt-2 border-top border-secondary align-items-center">
                 <!-- Weather -->
                 <div class="col-12 col-md-4">
-                    <label class="form-label small text-muted mb-1">Weather:</label>
+                    <label class="form-label small text-muted mb-1">@Loc.T("weather", "Weather:")</label>
                     <div class="input-group input-group-sm">
                         <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Weather" @bind:after="() => { if (string.IsNullOrEmpty(State.Field.Weather)) State.Field.WeatherEx = false; StateHasChanged(); }">
-                            <option value="">None (Normal)</option>
-                            <option value="Sunny">Sunny ☀️</option>
-                            <option value="Rainy">Rainy 🌧️</option>
-                            <option value="Sandstorm">Sandstorm 🏜️</option>
-                            <option value="Hail">Hail ❄️</option>
+                            <option value="">@Loc.T("weather_none", "None (Normal)")</option>
+                            <option value="Sunny">@Loc.T("weather_sunny", "Sunny ☀️")</option>
+                            <option value="Rainy">@Loc.T("weather_rainy", "Rainy 🌧️")</option>
+                            <option value="Sandstorm">@Loc.T("weather_sandstorm", "Sandstorm 🏜️")</option>
+                            <option value="Hail">@Loc.T("weather_hail", "Hail ❄️")</option>
                         </select>
                         <button class="btn py-0 px-2 @(State.Field.WeatherEx && !string.IsNullOrEmpty(State.Field.Weather) ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
                                 style="font-size: 0.75rem;"
@@ -98,13 +141,13 @@
 
                 <!-- Terrain -->
                 <div class="col-12 col-md-4">
-                    <label class="form-label small text-muted mb-1">Terrain:</label>
+                    <label class="form-label small text-muted mb-1">@Loc.T("terrain", "Terrain:")</label>
                     <div class="input-group input-group-sm">
                         <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Terrain" @bind:after="() => { if (string.IsNullOrEmpty(State.Field.Terrain)) State.Field.TerrainEx = false; StateHasChanged(); }">
-                            <option value="">None</option>
-                            <option value="Electric Terrain">Electric Terrain ⚡</option>
-                            <option value="Grassy Terrain">Grassy Terrain 🌿</option>
-                            <option value="Psychic Terrain">Psychic Terrain 🔮</option>
+                            <option value="">@Loc.T("terrain_none", "None")</option>
+                            <option value="Electric Terrain">@Loc.T("terrain_electric", "Electric Terrain ⚡")</option>
+                            <option value="Grassy Terrain">@Loc.T("terrain_grassy", "Grassy Terrain 🌿")</option>
+                            <option value="Psychic Terrain">@Loc.T("terrain_psychic", "Psychic Terrain 🔮")</option>
                         </select>
                         <button class="btn py-0 px-2 @(State.Field.TerrainEx && !string.IsNullOrEmpty(State.Field.Terrain) ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
                                 style="font-size: 0.75rem;"
@@ -116,13 +159,13 @@
 
                 <!-- Zone -->
                 <div class="col-12 col-md-4">
-                    <label class="form-label small text-muted mb-1">Zone:</label>
+                    <label class="form-label small text-muted mb-1">@Loc.T("zone", "Zone:")</label>
                     <div class="input-group input-group-sm">
                         <select class="form-select bg-dark text-light border-secondary py-0" style="font-size: 0.75rem;" @bind="State.Field.Zone" @bind:after="() => { if (string.IsNullOrEmpty(State.Field.Zone)) State.Field.ZoneEx = false; StateHasChanged(); }">
-                            <option value="">None</option>
+                            <option value="">@Loc.T("zone_none", "None")</option>
                             @foreach (var z in CombatantState.ValidZoneTypes)
                             {
-                                <option value="@($"{z} Zone")">@($"{z} Zone")</option>
+                                <option value="@($"{z} Zone")">@Loc.GetTypeName(z) @Loc.T("zone", "Zone")</option>
                             }
                         </select>
                         <button class="btn py-0 px-2 @(State.Field.ZoneEx && !string.IsNullOrEmpty(State.Field.Zone) ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
@@ -149,9 +192,9 @@
                             <i class="bi bi-diagram-3-fill text-warning fs-5"></i>
                             <div>
                                 <span class="fw-bold text-light fs-6">
-                                    Sync Grid: @State.ActiveAttacker.Pair.DisplayName
+                                    @Loc.T("grid", "Sync Grid"): @Loc.GetDisplayName(State.ActiveAttacker.Pair)
                                 </span>
-                                <span class="badge bg-primary ms-2" style="font-size: 0.72rem;">Slot @(State.ActiveAttackerIndex + 1) Active</span>
+                                <span class="badge bg-primary ms-2" style="font-size: 0.72rem;">@string.Format(Loc.T("slot_active", "Slot {0} Active"), State.ActiveAttackerIndex + 1)</span>
                             </div>
                         </div>
 
@@ -166,9 +209,9 @@
                                     {
                                         <button class="btn btn-sm py-0 px-2 @(State.ActiveAttackerIndex == slot ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
                                                 style="font-size: 0.72rem; height: 26px;"
-                                                title="Configure Slot @(slot + 1): @ally.Pair.DisplayName"
+                                                title="@string.Format(Loc.T("slot", "Slot {0}"), slot + 1): @Loc.GetDisplayName(ally.Pair)"
                                                 @onclick="() => State.ActiveAttackerIndex = slot">
-                                            Slot @(slot + 1)
+                                            @string.Format(Loc.T("slot", "Slot {0}"), slot + 1)
                                         </button>
                                     }
                                 }
@@ -178,22 +221,22 @@
                                 <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="teamInlineHardCap"
                                        checked="@GridState.HardCap"
                                        @onchange="(e) => { GridState.HardCap = (bool)(e.Value ?? true); StateHasChanged(); }" />
-                                <label class="form-check-label text-secondary small select-none cursor-pointer" for="teamInlineHardCap" style="font-size: 0.75rem;">Hard Cap</label>
+                                <label class="form-check-label text-secondary small select-none cursor-pointer" for="teamInlineHardCap" style="font-size: 0.75rem;">@Loc.T("hard_cap", "Hard Cap")</label>
                             </div>
                             <button class="btn btn-outline-secondary btn-sm py-0 px-2" style="font-size: 0.75rem; height: 26px;"
                                     @onclick="() => { GridState.ResetGrid(State.ActiveAttacker.Pair, State.ActiveAttacker.MoveLevel, State.AllyActiveGrids[State.ActiveAttackerIndex]); StateHasChanged(); }"
-                                    title="Reset grid to free center cells">
-                                <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
+                                    title="@Loc.T("reset_grid", "Reset Grid")">
+                                <i class="bi bi-arrow-counterclockwise me-1"></i>@Loc.T("reset", "Reset")
                             </button>
                             <button class="btn btn-outline-warning btn-sm py-0 px-2" style="font-size: 0.75rem; height: 26px;"
                                     @onclick="() => OpenGridModal(State.ActiveAttackerIndex)"
                                     title="Open Fullscreen Grid Modal">
-                                <i class="bi bi-arrows-fullscreen me-1"></i>Expand
+                                <i class="bi bi-arrows-fullscreen me-1"></i>@Loc.T("expand", "Expand")
                             </button>
                             <button class="btn btn-outline-danger btn-sm py-0 px-2" style="font-size: 0.75rem; height: 26px;"
                                     @onclick="() => _showInlineGrid = false"
                                     title="Close Sync Grid and return to Ally Side">
-                                <i class="bi bi-x-lg me-1"></i>Close Grid
+                                <i class="bi bi-x-lg me-1"></i>@Loc.T("close_grid", "Close Grid")
                             </button>
                         </div>
                     </div>
@@ -215,7 +258,7 @@
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <div>
                             <h6 class="text-success fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-people-fill"></i> Ally Side
+                                <i class="bi bi-people-fill"></i> @Loc.T("ally_side", "Ally Side")
                             </h6>
                         </div>
 
@@ -231,20 +274,20 @@
 
                             <!-- Allied Screens -->
                             <div class="d-flex align-items-center gap-1">
-                                <span class="text-info fw-bold me-1" style="font-size: 0.72rem;"><i class="bi bi-shield"></i> Screens:</span>
+                                <span class="text-info fw-bold me-1" style="font-size: 0.72rem;"><i class="bi bi-shield"></i> @Loc.T("screens", "Screens:")</span>
                                 <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.AlliedPhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
-                                        title="Physical Damage Reduction (Reflect)"
+                                        title="@Loc.T("screen_reflect", "Reflect")"
                                         @onclick="() => State.AlliedPhysicalDamageReduction = !State.AlliedPhysicalDamageReduction">
                                     <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>Reflect</span>
+                                    <span>@Loc.T("screen_reflect", "Reflect")</span>
                                 </button>
                                 <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.AlliedSpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
-                                        title="Special Damage Reduction (Light Screen)"
+                                        title="@Loc.T("screen_light_screen", "Light Screen")"
                                         @onclick="() => State.AlliedSpecialDamageReduction = !State.AlliedSpecialDamageReduction">
                                     <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>Light Screen</span>
+                                    <span>@Loc.T("screen_light_screen", "Light Screen")</span>
                                 </button>
                             </div>
 
@@ -254,12 +297,12 @@
                             }
                             <div class="d-flex align-items-center gap-1">
                                 <button class="btn btn-outline-info btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.72rem; height: 24px;" @onclick="() => _showCirclesPanel = !_showCirclesPanel">
-                                    <i class="bi bi-record-circle"></i> Circles @(State.GetActiveCirclesCount() > 0 ? $"({State.GetActiveCirclesCount()})" : "")
+                                    <i class="bi bi-record-circle"></i> @Loc.T("circles", "Circles") @(State.GetActiveCirclesCount() > 0 ? $"({State.GetActiveCirclesCount()})" : "")
                                 </button>
                                 @if (State.GetActiveCirclesCount() > 0)
                                 {
                                     <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.7rem; height: 24px;" @onclick="() => { State.ClearAllCircles(); StateHasChanged(); }">
-                                        Clear
+                                        @Loc.T("clear", "Clear")
                                     </button>
                                 }
                             </div>
@@ -276,22 +319,22 @@
                                 if (State.IsCircleActive(r, "physical"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
-                                        @r Phys (Buff @allies: +@(10 + 10 * allies)%)
-                                        <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="Remove" @onclick='() => State.ToggleCircle(r, "physical")'></i>
+                                        @r @Loc.T("turn_stat", "Phys") (+@(10 + 10 * allies)%)
+                                        <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "physical")'></i>
                                     </span>
                                 }
                                 if (State.IsCircleActive(r, "special"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
-                                        @r Spec (Buff @allies: +@(10 + 10 * allies)%)
-                                        <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="Remove" @onclick='() => State.ToggleCircle(r, "special")'></i>
+                                        @r @Loc.T("damage_calc", "Spec") (+@(10 + 10 * allies)%)
+                                        <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "special")'></i>
                                     </span>
                                 }
                                 if (State.IsCircleActive(r, "defensive"))
                                 {
                                     <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
-                                        @r Def (Buff @allies: +@(5 + 5 * allies)%)
-                                        <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="Remove" @onclick='() => State.ToggleCircle(r, "defensive")'></i>
+                                        @r @Loc.T("stat_def", "Def") (+@(5 + 5 * allies)%)
+                                        <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "defensive")'></i>
                                     </span>
                                 }
                             }
@@ -317,7 +360,7 @@
                                 int matchingAllies = State.GetMatchingRegionAllies(_selectedCircleRegion);
                                 int autoBuffLvl = State.GetCircleBuffLevel(_selectedCircleRegion);
                                 <div class="d-flex flex-wrap align-items-center gap-2">
-                                    <span class="small text-warning fw-bold text-uppercase" style="font-size: 0.72rem;">Region:</span>
+                                    <span class="small text-warning fw-bold text-uppercase" style="font-size: 0.72rem;">@Loc.T("themes", "Region"):</span>
                                     <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" style="width: 110px; font-size: 0.72rem; height: 24px;" @bind="_selectedCircleRegion" @bind:after="StateHasChanged">
                                         @foreach (var r in teamRegions)
                                         {
@@ -328,15 +371,15 @@
                                     <div class="d-flex flex-wrap align-items-center gap-1">
                                         <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "physical") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
                                                 @onclick='() => State.ToggleCircle(_selectedCircleRegion, "physical")'>
-                                            Physical (Buff @autoBuffLvl)
+                                            @Loc.T("turn_stat", "Phys") (Buff @autoBuffLvl)
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "special") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
                                                 @onclick='() => State.ToggleCircle(_selectedCircleRegion, "special")'>
-                                            Special (Buff @autoBuffLvl)
+                                            @Loc.T("damage_calc", "Spec") (Buff @autoBuffLvl)
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "defensive") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
                                                 @onclick='() => State.ToggleCircle(_selectedCircleRegion, "defensive")'>
-                                            Defensive (Buff @autoBuffLvl)
+                                            @Loc.T("stat_def", "Def") (Buff @autoBuffLvl)
                                         </button>
                                     </div>
 
@@ -364,14 +407,14 @@
                                     <!-- Slot Header -->
                                     <div class="d-flex justify-content-between align-items-center mb-1">
                                         <div class="d-flex align-items-center gap-1">
-                                            <span class="badge @(isAttacker ? "bg-primary" : "bg-secondary")" style="font-size: 0.7rem;">Slot @(slotIndex + 1)</span>
+                                            <span class="badge @(isAttacker ? "bg-primary" : "bg-secondary")" style="font-size: 0.7rem;">@string.Format(Loc.T("slot", "Slot {0}"), slotIndex + 1)</span>
                                             @if (isAttacker)
                                             {
-                                                <span class="badge bg-warning text-dark" style="font-size: 0.68rem;"><i class="bi bi-lightning-fill"></i> Attacking</span>
+                                                <span class="badge bg-warning text-dark" style="font-size: 0.68rem;"><i class="bi bi-lightning-fill"></i> @Loc.T("attacking", "Attacking")</span>
                                             }
                                         </div>
                                         <button class="btn btn-sm py-0 px-2 @(isAttacker ? "btn-primary fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 22px;" @onclick="() => SetActiveAttacker(slotIndex)">
-                                            @(isAttacker ? "Selected" : "Select")
+                                            @(isAttacker ? Loc.T("selected", "Selected") : Loc.T("select", "Select"))
                                         </button>
                                     </div>
 
@@ -382,30 +425,30 @@
                                             <button class="btn btn-outline-warning w-100 py-3 d-flex flex-column align-items-center gap-1 border-dashed"
                                                     @onclick="() => OpenPairPicker(slotIndex)">
                                                 <i class="bi bi-person-plus-fill fs-4 text-warning"></i>
-                                                <span class="small fw-bold">Choose Pair</span>
+                                                <span class="small fw-bold">@Loc.T("choose_pair", "Choose Pair")</span>
                                             </button>
                                         </div>
                                     }
                                     else
                                     {
                                         <div class="d-flex gap-2 align-items-center mb-2 p-1 rounded bg-black bg-opacity-30 border border-secondary border-opacity-50">
-                                            <img src="@ally.Pair.IconUrl" alt="@ally.Pair.DisplayName" class="rounded-circle border border-warning" style="width: 38px; height: 38px; object-fit: cover;" onerror="this.src='img/trainers/unknown.png';" />
+                                            <img src="@ally.Pair.IconUrl" alt="@Loc.GetDisplayName(ally.Pair)" class="rounded-circle border border-warning" style="width: 38px; height: 38px; object-fit: cover;" onerror="this.src='img/trainers/unknown.png';" />
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <div class="fw-bold text-light text-truncate" style="font-size: 0.78rem;" title="@ally.Pair.DisplayName">@ally.Pair.DisplayName</div>
+                                                <div class="fw-bold text-light text-truncate" style="font-size: 0.78rem;" title="@Loc.GetDisplayName(ally.Pair)">@Loc.GetDisplayName(ally.Pair)</div>
                                                 <div class="d-flex gap-1 align-items-center flex-wrap" style="font-size: 0.68rem;">
-                                                    <span class="badge type-badge type-@ally.Pair.Type.ToLowerInvariant() py-0">@ally.Pair.Type</span>
-                                                    <span class="badge bg-secondary py-0">@ally.Pair.Role</span>
+                                                    <span class="badge type-badge type-@ally.Pair.Type.ToLowerInvariant() py-0">@Loc.GetTypeName(ally.Pair.Type)</span>
+                                                    <span class="badge bg-secondary py-0">@Loc.GetRoleName(ally.Pair.Role)</span>
                                                     @if (!string.IsNullOrEmpty(ally.Pair.ExRole) && ally.HasExRole)
                                                     {
-                                                        <span class="badge bg-indigo py-0">EX: @ally.Pair.ExRole</span>
+                                                        <span class="badge bg-indigo py-0">EX: @Loc.GetRoleName(ally.Pair.ExRole)</span>
                                                     }
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-1 align-items-center">
-                                                <button class="btn btn-sm btn-outline-warning p-1" style="height: 24px; width: 24px; font-size: 0.7rem; line-height: 1;" title="Change Pair" @onclick="() => OpenPairPicker(slotIndex)">
+                                                <button class="btn btn-sm btn-outline-warning p-1" style="height: 24px; width: 24px; font-size: 0.7rem; line-height: 1;" title="@Loc.T("change_pair", "Change Pair")" @onclick="() => OpenPairPicker(slotIndex)">
                                                     <i class="bi bi-arrow-repeat"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-danger p-1" style="height: 24px; width: 24px; font-size: 0.7rem; line-height: 1;" title="Remove Pair" @onclick="() => RemoveAllyPair(slotIndex)">
+                                                <button class="btn btn-sm btn-outline-danger p-1" style="height: 24px; width: 24px; font-size: 0.7rem; line-height: 1;" title="@Loc.T("remove_pair", "Remove Pair")" @onclick="() => RemoveAllyPair(slotIndex)">
                                                     <i class="bi bi-trash3"></i>
                                                 </button>
                                             </div>
@@ -420,9 +463,11 @@
                                                     int matching = State.GetMasterPassiveAllyCount(mp.Theme, ownerIndex: slotIndex);
                                                     int pct = (int)Math.Round(mp.PowerUpForAdditionalAllies(matching) * 100);
                                                     int totalTheme = matching + 1;
-                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mp.PassiveName: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other @(matching == 1 ? "ally" : "allies"))">
+                                                    int mpId = ally.Pair.Passives.FirstOrDefault(p => p.Name.Contains(mp.PassiveName, StringComparison.OrdinalIgnoreCase))?.Id ?? 0;
+                                                    string mpTitle = Loc.GetPassiveName(mpId, mp.PassiveName);
+                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mpTitle: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other @(matching == 1 ? "ally" : "allies"))">
                                                         <i class="bi bi-star-fill text-warning"></i>
-                                                        <span>@mp.PassiveName (+@pct%)</span>
+                                                        <span>@mpTitle (+@pct%)</span>
                                                     </span>
                                                 }
                                             </div>
@@ -432,7 +477,7 @@
                                         @if (ally.Pair.Variations.Count > 0 || ally.Pair.HasMega || ally.Pair.HasTera)
                                         {
                                             <div class="btn-group btn-group-sm w-100 mb-1">
-                                                <button class="btn btn-sm py-0 @(ally.FormIndex == 0 ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.7rem; height: 20px;" @onclick="() => SetAllyForm(slotIndex, 0)">Base</button>
+                                                <button class="btn btn-sm py-0 @(ally.FormIndex == 0 ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.7rem; height: 20px;" @onclick="() => SetAllyForm(slotIndex, 0)">@Loc.T("base", "Base")</button>
                                                 @for (int vIdx = 0; vIdx < ally.Pair.Variations.Count; vIdx++)
                                                 {
                                                     int fIdx = vIdx + 1;
@@ -446,7 +491,7 @@
                                         <!-- Quick Level & Star Controls -->
                                         <div class="row g-1 mb-1 small">
                                             <div class="col-4">
-                                                <label class="text-muted mb-0" style="font-size: 0.68rem;">Move Lv:</label>
+                                                <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("level", "Move Lv:")</label>
                                                 <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.MoveLevel">
                                                     @for (int m = 1; m <= 5; m++)
                                                     {
@@ -455,7 +500,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-4">
-                                                <label class="text-muted mb-0" style="font-size: 0.68rem;">Stars:</label>
+                                                <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("stars", "Stars:")</label>
                                                 <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.StarLevel">
                                                     <option value="3★">3★</option>
                                                     <option value="4★">4★</option>
@@ -468,7 +513,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-4">
-                                                <label class="text-muted mb-0" style="font-size: 0.68rem;">Level:</label>
+                                                <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("char_level", "Level:")</label>
                                                 <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.CharLevel">
                                                     <option value="120">120</option>
                                                     <option value="130">130</option>
@@ -481,7 +526,7 @@
                                             @if (ally.Pair.HasSuperAwakening)
                                             {
                                                 <div class="col-6">
-                                                    <label class="text-danger mb-0" style="font-size: 0.68rem;">Super Awakening:</label>
+                                                    <label class="text-danger mb-0" style="font-size: 0.68rem;">@Loc.T("super_awakening", "Super Awakening:")</label>
                                                     <select class="form-select form-select-sm bg-dark text-light border-danger py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.SuperAwakeningLevel">
                                                         @for (int sa = 0; sa <= 5; sa++)
                                                         {
@@ -493,9 +538,9 @@
                                             @if (ally.Pair.HasEx && !string.IsNullOrEmpty(ally.Pair.ExRole))
                                             {
                                                 <div class="@(ally.Pair.HasSuperAwakening ? "col-6" : "col-12")">
-                                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">EX Role:</label>
+                                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("ex_role", "EX Role:")</label>
                                                     <button class="btn btn-sm w-100 py-0 @(ally.HasExRole ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" @onclick="() => ally.HasExRole = !ally.HasExRole" style="font-size: 0.7rem; height: 22px;">
-                                                        @(ally.HasExRole ? "EX Role ON" : "EX Role OFF")
+                                                        @(ally.HasExRole ? Loc.T("ex_role_on", "EX Role ON") : Loc.T("ex_role_off", "EX Role OFF"))
                                                     </button>
                                                 </div>
                                             }
@@ -504,7 +549,7 @@
                                         <!-- Lucky Skill -->
                                         <div class="mb-1">
                                             <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.LuckySkillName">
-                                                <option value="">Lucky Skill: (None)</option>
+                                                <option value="">@Loc.T("lucky_skill", "Lucky Skill: (None)")</option>
                                                 @foreach (var ls in _rules.LuckySkills.Where(s => s.IsAvailableFor(ally.Pair.Role, ally.Pair.DisplayName)))
                                                 {
                                                     <option value="@ls.Name">@ls.Name</option>
@@ -565,8 +610,8 @@
                                                         @for (int b = 0; b <= 10; b++) { <option value="@b">@b</option> }
                                                     </select>
                                                 </div>
-                                                <button class="btn btn-sm py-0 px-1 @(ally.IsCriticalMove ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.68rem; height: 22px;" @onclick="() => ally.IsCriticalMove = !ally.IsCriticalMove">Crit</button>
-                                                <button class="btn btn-sm py-0 px-1 @(ally.SuperEffectiveNext ? "btn-danger text-white fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.68rem; height: 22px;" @onclick="() => ally.SuperEffectiveNext = !ally.SuperEffectiveNext">SE Next</button>
+                                                <button class="btn btn-sm py-0 px-1 @(ally.IsCriticalMove ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.68rem; height: 22px;" @onclick="() => ally.IsCriticalMove = !ally.IsCriticalMove">@Loc.T("crit", "Crit")</button>
+                                                <button class="btn btn-sm py-0 px-1 @(ally.SuperEffectiveNext ? "btn-danger text-white fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.68rem; height: 22px;" @onclick="() => ally.SuperEffectiveNext = !ally.SuperEffectiveNext">@Loc.T("se_next", "SE Next")</button>
                                             </div>
                                         </div>
 
@@ -575,7 +620,7 @@
                                             <button class="btn btn-sm py-0 px-2 @(isGridOpenForThis ? "btn-warning text-dark fw-bold" : "btn-outline-warning")"
                                                     style="font-size: 0.72rem; height: 22px;"
                                                     @onclick="() => ToggleConfigureGrid(slotIndex)">
-                                                <i class="bi bi-diagram-3 me-1"></i>@(isGridOpenForThis ? "Close Grid" : "Grid")
+                                                <i class="bi bi-diagram-3 me-1"></i>@(isGridOpenForThis ? Loc.T("close_grid", "Close Grid") : Loc.T("grid", "Grid"))
                                             </button>
                                         </div>
                                     }
@@ -593,14 +638,14 @@
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
                         <div>
                             <h6 class="text-danger fw-bold mb-0 d-flex align-items-center gap-2">
-                                <i class="bi bi-shield-shaded"></i> Enemy Side
+                                <i class="bi bi-shield-shaded"></i> @Loc.T("enemy_side", "Enemy Side")
                             </h6>
                         </div>
 
                         <!-- Enemy Shared Screens, Damage Field & Sync Buff -->
                         <div class="d-flex flex-wrap align-items-center gap-2">
                             <!-- Enemy Sync Buff (Icon only, no shield) -->
-                            <div class="d-flex align-items-center gap-1 bg-dark px-2 rounded border border-secondary" style="height: 24px; overflow: hidden;" title="Enemy Sync Buffs">
+                            <div class="d-flex align-items-center gap-1 bg-dark px-2 rounded border border-secondary" style="height: 24px; overflow: hidden;" title="@Loc.T("turn_sync_buff", "Enemy Sync Buffs")">
                                 <img src="img/sync_icon.png" alt="Sync" style="width: 16px; height: 16px; object-fit: contain; filter: hue-rotate(180deg) saturate(2);" />
                                 <input type="number" min="0" max="9" class="sync-buff-input"
                                        @bind="State.EnemySyncBuffs" @bind:after="StateHasChanged" />
@@ -609,31 +654,31 @@
 
                             <!-- Enemy Screens -->
                             <div class="d-flex align-items-center gap-1">
-                                <span class="text-danger fw-bold me-1" style="font-size: 0.72rem;"><i class="bi bi-shield"></i> Screens:</span>
+                                <span class="text-danger fw-bold me-1" style="font-size: 0.72rem;"><i class="bi bi-shield"></i> @Loc.T("screens", "Screens:")</span>
                                 <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.EnemyPhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
-                                        title="Physical Damage Reduction (Reflect) for all enemies"
+                                        title="@Loc.T("screen_reflect", "Physical Damage Reduction (Reflect) for all enemies")"
                                         @onclick="() => State.EnemyPhysicalDamageReduction = !State.EnemyPhysicalDamageReduction">
                                     <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>Reflect</span>
+                                    <span>@Loc.T("screen_reflect", "Reflect")</span>
                                 </button>
                                 <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.EnemySpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
-                                        title="Special Damage Reduction (Light Screen) for all enemies"
+                                        title="@Loc.T("screen_light_screen", "Special Damage Reduction (Light Screen) for all enemies")"
                                         @onclick="() => State.EnemySpecialDamageReduction = !State.EnemySpecialDamageReduction">
                                     <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>Light Screen</span>
+                                    <span>@Loc.T("screen_light_screen", "Light Screen")</span>
                                 </button>
                             </div>
 
                             <!-- Enemy Damage Field -->
                             <div class="d-flex align-items-center gap-1">
-                                <span class="text-danger fw-bold" style="font-size: 0.72rem;"><i class="bi bi-crosshair"></i> Damage Field:</span>
+                                <span class="text-danger fw-bold" style="font-size: 0.72rem;"><i class="bi bi-crosshair"></i> @Loc.T("damage_field", "Damage Field:")</span>
                                 <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" style="width: 135px; font-size: 0.72rem; height: 24px;" @bind="State.EnemyDamageField" @bind:after="StateHasChanged">
-                                    <option value="">None</option>
+                                    <option value="">@Loc.T("weather_none", "None")</option>
                                     @foreach (var t in CombatantState.AllTypes)
                                     {
-                                        <option value="@t">@t Field</option>
+                                        <option value="@t">@Loc.GetTypeName(t)</option>
                                     }
                                 </select>
                             </div>
@@ -641,10 +686,10 @@
                             <!-- Apply to All Button -->
                             <button class="btn btn-sm btn-outline-danger py-0 px-2 d-inline-flex align-items-center gap-1 fw-bold"
                                     style="font-size: 0.72rem; height: 24px;"
-                                    title="Configure and apply settings to opponents"
+                                    title="@Loc.T("apply_settings_all_enemies", "Configure and apply settings to opponents")"
                                     @onclick="OpenApplyToAllModal">
                                 <i class="bi bi-check2-all"></i>
-                                <span>Apply to All</span>
+                                <span>@Loc.T("apply_to_all", "Apply to All")</span>
                             </button>
                         </div>
                     </div>
@@ -658,7 +703,7 @@
                             int targetIndex = i;
                             var enemy = State.Enemies[targetIndex];
                             bool isTarget = State.ActiveTargetIndex == targetIndex;
-                            string slotLabel = targetIndex switch { 0 => "Left Enemy", 1 => "Center (Boss)", _ => "Right Enemy" };
+                            string slotLabel = targetIndex switch { 0 => Loc.T("enemy_left", "Left Enemy"), 1 => Loc.T("enemy_center", "Center (Boss)"), _ => Loc.T("enemy_right", "Right Enemy") };
                             string displayTrainer = string.IsNullOrEmpty(enemy.CustomTrainerName) ? slotLabel : enemy.CustomTrainerName;
                             string displayPokemon = string.IsNullOrEmpty(enemy.CustomPokemonName) ? "" : enemy.CustomPokemonName;
 
@@ -669,7 +714,7 @@
                                         <button type="button"
                                                 class="badge @(isTarget ? "bg-danger text-white border-0 shadow-sm" : "bg-secondary text-light border-0") cursor-pointer py-1 px-2 d-inline-flex align-items-center gap-1"
                                                 style="font-size: 0.72rem;"
-                                                title="@(isTarget ? "Active Target" : "Click to set as target")"
+                                                title="@(isTarget ? Loc.T("slot_active", "Active Target") : Loc.T("target", "Click to set as target"))"
                                                 @onclick="() => State.ActiveTargetIndex = targetIndex">
                                             @if (isTarget)
                                             {
@@ -679,7 +724,7 @@
                                         </button>
                                         @if (isTarget)
                                         {
-                                            <i class="bi bi-crosshair text-danger fs-6" title="Target"></i>
+                                            <i class="bi bi-crosshair text-danger fs-6" title="@Loc.T("target", "Target")"></i>
                                         }
                                     </div>
 
@@ -693,30 +738,30 @@
                                             <div class="fw-bold text-light text-truncate" style="font-size: 0.78rem;" title="@displayTrainer">@displayTrainer</div>
                                             <div class="text-muted text-truncate" style="font-size: 0.7rem;">@displayPokemon</div>
                                         </div>
-                                        <span class="badge type-badge type-@enemy.Weakness.ToLowerInvariant() py-0" style="font-size: 0.68rem;">Weak: @enemy.Weakness</span>
+                                        <span class="badge type-badge type-@enemy.Weakness.ToLowerInvariant() py-0" style="font-size: 0.68rem;">@Loc.T("weakness", "Weak"): @Loc.GetTypeName(enemy.Weakness)</span>
                                     </div>
 
                                     <!-- Enemy Stats Summary (Weakness, HP, Def, SpD) -->
                                     <div class="row g-1 mb-1 small">
                                         <div class="col-6">
-                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">Weakness:</label>
+                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("weakness", "Weakness"):</label>
                                             <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="enemy.Weakness">
                                                 @foreach (var t in CombatantState.AllTypes)
                                                 {
-                                                    <option value="@t">@t</option>
+                                                    <option value="@t">@Loc.GetTypeName(t)</option>
                                                 }
                                             </select>
                                         </div>
                                         <div class="col-6">
-                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">Max HP:</label>
+                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("hp", "Max HP"):</label>
                                             <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" value="@enemy.ManualStats.GetValueOrDefault("hp", 2000)" @onchange="@(ev => OnEnemyHp(targetIndex, ev))" />
                                         </div>
                                         <div class="col-6">
-                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">Defense:</label>
+                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("defense", "Defense"):</label>
                                             <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" value="@enemy.ManualStats.GetValueOrDefault("def", 100)" @onchange="@(ev => OnEnemyDef(targetIndex, ev))" />
                                         </div>
                                         <div class="col-6">
-                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">Sp. Def:</label>
+                                            <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("sp_def", "Sp. Def"):</label>
                                             <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" value="@enemy.ManualStats.GetValueOrDefault("spd", 100)" @onchange="@(ev => OnEnemySpd(targetIndex, ev))" />
                                         </div>
                                     </div>
@@ -725,7 +770,7 @@
                                     <div class="row g-1 mb-1 small">
                                         <div class="col-6">
                                             <div class="d-flex align-items-center justify-content-between p-1 rounded bg-black bg-opacity-25 border border-secondary">
-                                                <span class="text-secondary fw-bold" style="font-size: 0.68rem;" title="Physical Def debuff mitigation (0-9)">Def Mit:</span>
+                                                <span class="text-secondary fw-bold" style="font-size: 0.68rem;" title="Physical Def debuff mitigation (0-9)">@Loc.T("def_mit", "Def Mit:")</span>
                                                 <select class="form-select form-select-sm bg-dark text-light border-0 py-0 px-1 text-center font-monospace"
                                                         style="width: 30px; font-size: 0.7rem; height: 20px; font-weight: 600; background-image: none !important; -webkit-appearance: none; -moz-appearance: none; appearance: none;"
                                                         value="@enemy.Mitigations.GetValueOrDefault("def", 5)"
@@ -739,7 +784,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="d-flex align-items-center justify-content-between p-1 rounded bg-black bg-opacity-25 border border-secondary">
-                                                <span class="text-secondary fw-bold" style="font-size: 0.68rem;" title="Special SpD debuff mitigation (0-9)">SpD Mit:</span>
+                                                <span class="text-secondary fw-bold" style="font-size: 0.68rem;" title="Special SpD debuff mitigation (0-9)">@Loc.T("spd_mit", "SpD Mit:")</span>
                                                 <select class="form-select form-select-sm bg-dark text-light border-0 py-0 px-1 text-center font-monospace"
                                                         style="width: 30px; font-size: 0.7rem; height: 20px; font-weight: 600; background-image: none !important; -webkit-appearance: none; -moz-appearance: none; appearance: none;"
                                                         value="@enemy.Mitigations.GetValueOrDefault("spd", 5)"
@@ -756,10 +801,10 @@
                                     <!-- Debuffs / Stages (-6 to +6) -->
                                     <div class="bg-black bg-opacity-25 p-1 rounded border border-secondary mb-1 small">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <span class="text-light fw-bold" style="font-size: 0.68rem;">Debuffs:</span>
+                                            <span class="text-light fw-bold" style="font-size: 0.68rem;">@Loc.T("turn_stat", "Debuffs"):</span>
                                             <div class="btn-group btn-group-sm">
-                                                <button class="btn btn-outline-danger py-0 px-1" style="font-size: 0.62rem; height: 18px;" @onclick="() => SetAllEnemyDebuffs(targetIndex, -6)">All -6</button>
-                                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.62rem; height: 18px;" @onclick="() => SetAllEnemyDebuffs(targetIndex, 0)">Reset 0</button>
+                                                <button class="btn btn-outline-danger py-0 px-1" style="font-size: 0.62rem; height: 18px;" @onclick="() => SetAllEnemyDebuffs(targetIndex, -6)">@Loc.T("set_all_debuffs_6", "All -6")</button>
+                                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.62rem; height: 18px;" @onclick="() => SetAllEnemyDebuffs(targetIndex, 0)">@Loc.T("reset_grid", "Reset 0")</button>
                                             </div>
                                         </div>
                                         <div class="row row-cols-3 g-1">
@@ -788,7 +833,7 @@
                                     <div class="bg-black bg-opacity-25 p-1 rounded border border-secondary mb-1 small">
                                         <div class="d-flex align-items-center gap-1 mb-1">
                                             <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="enemy.StatusCondition">
-                                                <option value="">Status: None</option>
+                                                <option value="">Status: @Loc.T("weather_none", "None")</option>
                                                 <option value="burned">Burned 🔥</option>
                                                 <option value="paralyzed">Paralyzed ⚡</option>
                                                 <option value="poisoned">Poisoned ☠️</option>
@@ -799,27 +844,27 @@
                                         </div>
                                         <div class="d-flex flex-wrap align-items-center gap-1">
                                             <button class="btn btn-sm py-0 px-1 @(enemy.VolatileStatus.GetValueOrDefault("confused", false) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
-                                                    style="font-size: 0.68rem; height: 20px;" title="Confused"
+                                                    style="font-size: 0.68rem; height: 20px;" title="@Loc.T("confused", "Confused")"
                                                     @onclick='() => enemy.VolatileStatus["confused"] = !enemy.VolatileStatus.GetValueOrDefault("confused", false)'>
                                                 <img src="img/battle/SCTP_001.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" />
                                             </button>
                                             <button class="btn btn-sm py-0 px-1 @(enemy.VolatileStatus.GetValueOrDefault("trapped", false) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
-                                                    style="font-size: 0.68rem; height: 20px;" title="Trapped"
+                                                    style="font-size: 0.68rem; height: 20px;" title="@Loc.T("trapped", "Trapped")"
                                                     @onclick='() => enemy.VolatileStatus["trapped"] = !enemy.VolatileStatus.GetValueOrDefault("trapped", false)'>
                                                 <img src="img/battle/SCTP_004.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" />
                                             </button>
                                             <button class="btn btn-sm py-0 px-1 @(enemy.VolatileStatus.GetValueOrDefault("flinching", false) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
-                                                    style="font-size: 0.68rem; height: 20px;" title="Flinching"
+                                                    style="font-size: 0.68rem; height: 20px;" title="@Loc.T("flinch", "Flinching")"
                                                     @onclick='() => enemy.VolatileStatus["flinching"] = !enemy.VolatileStatus.GetValueOrDefault("flinching", false)'>
                                                 <img src="img/battle/SCTP_002.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" />
                                             </button>
                                             <button class="btn btn-sm py-0 px-1 @(enemy.PhysicalBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")"
-                                                    style="font-size: 0.68rem; height: 20px;" title="Phys Break"
+                                                    style="font-size: 0.68rem; height: 20px;" title="@Loc.T("phys_break", "Phys Break")"
                                                     @onclick="() => enemy.PhysicalBreak = !enemy.PhysicalBreak">
                                                 <img src="img/battle/break_phys.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" />
                                             </button>
                                             <button class="btn btn-sm py-0 px-1 @(enemy.SpecialBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")"
-                                                    style="font-size: 0.68rem; height: 20px;" title="Spec Break"
+                                                    style="font-size: 0.68rem; height: 20px;" title="@Loc.T("spec_break", "Spec Break")"
                                                     @onclick="() => enemy.SpecialBreak = !enemy.SpecialBreak">
                                                 <img src="img/battle/break_spec.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" />
                                             </button>
@@ -834,12 +879,12 @@
                                             }
                                             <button class="btn btn-sm btn-outline-danger py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.68rem; height: 22px;"
                                                     @onclick="() => OpenRebuffModal(targetIndex)">
-                                                <i class="bi bi-shield-slash"></i> Rebuff@(rebuffCount > 0 ? $" ({rebuffCount})" : "")
+                                                <i class="bi bi-shield-slash"></i> @Loc.T("rebuffs", "Rebuff")@(rebuffCount > 0 ? $" ({rebuffCount})" : "")
                                             </button>
                                             @if (enemy.EnemyTypeRebuffs.Any(kv => kv.Value != 0))
                                             {
                                                 <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.62rem; height: 22px;" @onclick="() => ClearEnemyRebuffs(targetIndex)">
-                                                    Clear
+                                                    @Loc.T("clear", "Clear")
                                                 </button>
                                             }
                                         </div>
@@ -852,10 +897,10 @@
                                                 {
                                                     string tName = t;
                                                     int rVal = val;
-                                                    <span class="badge type-badge type-@tName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm py-0 px-1" style="font-size: 0.68rem;" title="@tName Rebuff @rVal">
+                                                    <span class="badge type-badge type-@tName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm py-0 px-1" style="font-size: 0.68rem;" title="@Loc.GetTypeName(tName) Rebuff @rVal">
                                                         <img src="@CombatantState.GetTypeIcon(tName)" alt="" width="12" height="12" />
                                                         <b class="text-warning">@(rVal > 0 ? $"+{rVal}" : rVal.ToString())</b>
-                                                        <i class="bi bi-x ms-1 cursor-pointer" title="Remove" @onclick="() => enemy.EnemyTypeRebuffs[tName] = 0"></i>
+                                                        <i class="bi bi-x ms-1 cursor-pointer" title="@Loc.T("clear", "Remove")" @onclick="() => enemy.EnemyTypeRebuffs[tName] = 0"></i>
                                                     </span>
                                                 }
                                             </div>
@@ -879,7 +924,7 @@
                             <div class="d-flex align-items-center gap-2">
                                 <i class="bi bi-graph-up text-warning fs-5"></i>
                                 <span class="fw-bold text-light fs-6">
-                                    Damage Outputs: @State.ActiveAttacker.Pair.DisplayName
+                                    @Loc.T("damage_calculations", "Damage Outputs"): @Loc.GetDisplayName(State.ActiveAttacker.Pair)
                                 </span>
                             </div>
                         </div>
@@ -898,7 +943,7 @@
                                 @foreach (var move in normalAttackerMoves)
                                 {
                                     var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
-                                    string cleanMoveName = move.Name.Replace("\r", "").Trim();
+                                    string cleanMoveName = Loc.GetMoveName(move.Id, move.Name).Replace("\r", "").Trim();
                                     var nameParts = cleanMoveName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
                                     string effMoveType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
@@ -917,24 +962,24 @@
                                                     <div class="fw-bold text-light fs-6">@cleanMoveName</div>
                                                 }
                                                 <div class="d-flex gap-1 align-items-center mt-1 flex-wrap">
-                                                    <span class="badge type-badge type-@effMoveType.ToLowerInvariant()">@effMoveType</span>
-                                                    <span class="badge bg-secondary">@move.Category</span>
+                                                    <span class="badge type-badge type-@effMoveType.ToLowerInvariant()">@Loc.GetTypeName(effMoveType)</span>
+                                                    <span class="badge bg-secondary">@Loc.T(move.Category.ToLowerInvariant(), move.Category)</span>
                                                     @if (move.IsSync)
                                                     {
-                                                        <span class="badge bg-purple">Sync Move</span>
+                                                        <span class="badge bg-purple">@Loc.T("turn_sync_move", "Sync Move")</span>
                                                     }
                                                     @if (teamResult.IsAoE)
                                                     {
-                                                        <span class="badge bg-info text-dark"><i class="bi bi-broadcast me-1"></i>AoE (All Targets)</span>
+                                                        <span class="badge bg-info text-dark"><i class="bi bi-broadcast me-1"></i>@Loc.T("aoe_all_targets", "AoE (All Targets)")</span>
                                                     }
                                                     else
                                                     {
-                                                        <span class="badge bg-dark border border-secondary text-secondary">Single Target</span>
+                                                        <span class="badge bg-dark border border-secondary text-secondary">@Loc.T("single_target", "Single Target")</span>
                                                     }
                                                     @if (move.MaxUses > 0)
                                                     {
                                                         <span class="badge" style="background-color: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); font-weight: 600;">
-                                                            <i class="bi bi-arrow-repeat me-0.5"></i>@move.MaxUses @(move.MaxUses == 1 ? "Use" : "Uses")
+                                                            <i class="bi bi-arrow-repeat me-0.5"></i>@move.MaxUses @(move.MaxUses == 1 ? Loc.T("use", "Use") : Loc.T("uses", "Uses"))
                                                         </span>
                                                     }
                                                 </div>
@@ -954,7 +999,7 @@
                                                 };
                                                 var opp = State.Enemies[slot];
                                                 bool isTargetedEnemy = State.ActiveTargetIndex == slot;
-                                                string slotTitle = slot switch { 0 => "Left Enemy", 1 => "Center (Boss)", _ => "Right Enemy" };
+                                                string slotTitle = slot switch { 0 => Loc.T("enemy_left", "Left Enemy"), 1 => Loc.T("enemy_center", "Center (Boss)"), _ => Loc.T("enemy_right", "Right Enemy") };
                                                 string oppName = string.IsNullOrEmpty(opp.CustomTrainerName) ? slotTitle : $"{opp.CustomTrainerName}";
 
                                                 <div class="col-md-4">
@@ -963,7 +1008,7 @@
                                                             <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
                                                             @if (teamResult.IsAoE)
                                                             {
-                                                                <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">AoE Hit</span>
+                                                                <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">@Loc.T("aoe_hit", "AoE Hit")</span>
                                                             }
                                                         </div>
 
@@ -979,11 +1024,11 @@
                                                         <div class="small text-secondary" style="font-size: 0.72rem;">
                                                             @if (!teamResult.IsAoE && !isTargetedEnemy)
                                                             {
-                                                                <span class="text-muted">(If targeted: @dmg.AvgHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP)</span>
+                                                                <span class="text-muted">(@Loc.T("target", "If targeted"): @dmg.AvgHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP"))</span>
                                                             }
                                                             else
                                                             {
-                                                                <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP</span>
+                                                                <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP")</span>
                                                             }
                                                         </div>
 
@@ -1008,7 +1053,7 @@
                                                         {
                                                             <div class="mt-1">
                                                                 <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
-                                                                    <i class="bi bi-skull-fill me-1"></i>OHKO
+                                                                    <i class="bi bi-skull-fill me-1"></i>@Loc.T("ohko", "OHKO")
                                                                 </span>
                                                             </div>
                                                         }
@@ -1038,7 +1083,7 @@
                                                 <div class="d-flex flex-column gap-0.5">
                                                     @foreach (var w in stageWarnings)
                                                     {
-                                                        <span class="text-warning fw-bold">⚠️ Stage Rule: <span class="text-light fw-normal">@w</span></span>
+                                                        <span class="text-warning fw-bold">⚠️ @Loc.T("stage_rule", "Stage Rule:"): <span class="text-light fw-normal">@w</span></span>
                                                     }
                                                 </div>
                                             </div>
@@ -1051,16 +1096,16 @@
                                     <div class="d-flex align-items-center justify-content-between gap-2 mt-3 pt-2 border-top border-secondary border-opacity-50">
                                         <div class="d-flex align-items-center gap-2">
                                             <span class="badge btn-pink text-white px-2 py-1" style="font-size: 0.8rem;">
-                                                <i class="bi bi-clouds-fill me-1"></i> Max Moves (Dynamax)
+                                                <i class="bi bi-clouds-fill me-1"></i> @Loc.T("turn_max_move", "Max Moves (Dynamax)")
                                             </span>
                                         </div>
-                                        <span class="badge bg-secondary text-light" style="font-size: 0.7rem;">@maxAttackerMoves.Count Available</span>
+                                        <span class="badge bg-secondary text-light" style="font-size: 0.7rem;">@maxAttackerMoves.Count @Loc.T("turn_power", "Available")</span>
                                     </div>
 
                                     @foreach (var move in maxAttackerMoves)
                                     {
                                         var teamResult = CalcService.CalculateTeamDamage(move, State, _rules);
-                                        string cleanMaxName = move.Name.Replace("\r", "").Trim();
+                                        string cleanMaxName = Loc.GetMoveName(move.Id, move.Name).Replace("\r", "").Trim();
                                         var maxNameParts = cleanMaxName.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
                                         string effMaxType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
@@ -1079,21 +1124,21 @@
                                                         {
                                                             <span class="fw-bold text-light fs-6">@cleanMaxName</span>
                                                         }
-                                                        <span class="badge btn-pink text-white">Max Move</span>
+                                                        <span class="badge btn-pink text-white">@Loc.T("turn_max_move", "Max Move")</span>
                                                     </div>
                                                     <div class="d-flex gap-1 align-items-center mt-1">
-                                                        <span class="badge type-badge type-@effMaxType.ToLowerInvariant()">@effMaxType</span>
-                                                        <span class="badge bg-secondary">@move.Category</span>
+                                                        <span class="badge type-badge type-@effMaxType.ToLowerInvariant()">@Loc.GetTypeName(effMaxType)</span>
+                                                        <span class="badge bg-secondary">@Loc.T(move.Category.ToLowerInvariant(), move.Category)</span>
                                                         @if (teamResult.IsAoE)
                                                         {
-                                                            <span class="badge bg-info text-dark">AoE / All Targets</span>
+                                                            <span class="badge bg-info text-dark">@Loc.T("aoe_all_targets", "AoE / All Targets")</span>
                                                         }
                                                         else
                                                         {
-                                                            <span class="badge bg-dark border border-secondary text-secondary">Single Target</span>
+                                                            <span class="badge bg-dark border border-secondary text-secondary">@Loc.T("single_target", "Single Target")</span>
                                                         }
                                                         <span class="badge" style="background-color: rgba(232, 67, 147, 0.2); color: #ff79b0; border: 1px solid rgba(232, 67, 147, 0.5); font-weight: 600;">
-                                                            <i class="bi bi-arrow-repeat me-0.5"></i>1 Use
+                                                            <i class="bi bi-arrow-repeat me-0.5"></i>1 @Loc.T("turn_power", "Use")
                                                         </span>
                                                     </div>
                                                 </div>
@@ -1112,7 +1157,7 @@
                                                     };
                                                     var opp = State.Enemies[slot];
                                                     bool isTargetedEnemy = State.ActiveTargetIndex == slot;
-                                                    string slotTitle = slot switch { 0 => "Left Enemy", 1 => "Center (Boss)", _ => "Right Enemy" };
+                                                    string slotTitle = slot switch { 0 => Loc.T("enemy_left", "Left Enemy"), 1 => Loc.T("enemy_center", "Center (Boss)"), _ => Loc.T("enemy_right", "Right Enemy") };
                                                     string oppName = string.IsNullOrEmpty(opp.CustomTrainerName) ? slotTitle : $"{opp.CustomTrainerName}";
 
                                                     <div class="col-md-4">
@@ -1121,7 +1166,7 @@
                                                                 <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
                                                                 @if (teamResult.IsAoE)
                                                                 {
-                                                                    <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">AoE Hit</span>
+                                                                    <span class="badge bg-info text-dark py-0" style="font-size: 0.65rem;">@Loc.T("aoe_hit", "AoE Hit")</span>
                                                                 }
                                                             </div>
 
@@ -1137,11 +1182,11 @@
                                                             <div class="small text-secondary" style="font-size: 0.72rem;">
                                                                 @if (!teamResult.IsAoE && !isTargetedEnemy)
                                                                 {
-                                                                    <span class="text-muted">(If targeted: @dmg.AvgHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP)</span>
+                                                                    <span class="text-muted">(@Loc.T("target", "If targeted"): @dmg.AvgHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP"))</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; Leaves @dmg.RemainingHpPercent.ToString("0.0")% HP</span>
+                                                                    <span>@dmg.MinHpPercent.ToString("0.0")% - @dmg.MaxHpPercent.ToString("0.0")% &bull; @Loc.T("leaves_hp", $"Leaves {dmg.RemainingHpPercent.ToString("0.0")}% HP")</span>
                                                                 }
                                                             </div>
 
@@ -1166,7 +1211,7 @@
                                                             {
                                                                 <div class="mt-1">
                                                                     <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
-                                                                        <i class="bi bi-skull-fill me-1"></i>OHKO
+                                                                        <i class="bi bi-skull-fill me-1"></i>@Loc.T("ohko", "OHKO")
                                                                     </span>
                                                                 </div>
                                                             }
@@ -1196,7 +1241,7 @@
                                                     <div class="d-flex flex-column gap-0.5">
                                                         @foreach (var w in stageWarnings)
                                                         {
-                                                            <span class="text-warning fw-bold">⚠️ Stage Rule: <span class="text-light fw-normal">@w</span></span>
+                                                            <span class="text-warning fw-bold">⚠️ @Loc.T("stage_rule", "Stage Rule:"): <span class="text-light fw-normal">@w</span></span>
                                                         }
                                                     </div>
                                                 </div>
@@ -1244,6 +1289,27 @@
                                InitialSourceIndex="_applyToAllSourceIndex"
                                OnApplied="StateHasChanged" />
     }
+
+    <!-- Share Team Modal -->
+    <ShareTeamModal @bind-IsOpen="_showShareModal"
+                    TeamState="State"
+                    OnImported="OnConfigImportedHandler" />
+
+    <!-- Saved Teams Modal -->
+    <SavedTeamsModal @bind-IsOpen="_showSavedTeamsModal"
+                     TeamState="State"
+                     OnTeamLoaded="OnConfigImportedHandler"
+                     OnCompareRequested="OnCompareRequestedHandler"
+                     OnShareRequested="OnShareRequestedHandler" />
+
+    <!-- Compare Teams Modal -->
+    @if (_showCompareModal && _compareTargetConfig != null)
+    {
+        <CompareTeamsModal @bind-IsOpen="_showCompareModal"
+                           CurrentState="State"
+                           TargetConfig="_compareTargetConfig"
+                           Rules="_rules" />
+    }
 </div>
 
 @code {
@@ -1271,6 +1337,12 @@
 
     private bool _showApplyToAllModal = false;
     private int _applyToAllSourceIndex = 1;
+
+    private bool _showShareModal = false;
+    private bool _showSavedTeamsModal = false;
+    private bool _showCompareModal = false;
+    private TeamConfigDto? _compareTargetConfig;
+    private int _savedTeamsCount = 0;
 
     private void OpenApplyToAllModal()
     {
@@ -1342,6 +1414,8 @@
 
     protected override async Task OnInitializedAsync()
     {
+        Loc.OnLanguageChanged += OnLanguageChangedHandler;
+
         _leagues = await StageSvc.GetLeaguesAsync();
         _allManifest = await DataService.GetManifestAsync();
         _rules = await DataService.GetDamageRulesAsync();
@@ -1363,6 +1437,8 @@
         {
             await LoadAllyPair(0, _allManifest[0].TrainerId);
         }
+
+        await RefreshSavedTeamsCount();
     }
 
     private void OpenPairPicker(int slot)
@@ -1555,5 +1631,79 @@
             }
         }
         return warnings;
+    }
+
+    private async Task RefreshSavedTeamsCount()
+    {
+        var list = await TeamConfigSvc.GetSavedTeamsAsync();
+        _savedTeamsCount = list.Count;
+        StateHasChanged();
+    }
+
+    private async Task OnConfigImportedHandler(TeamConfigDto config)
+    {
+        await TeamConfigSvc.ApplyConfigAsync(State, config);
+        await RefreshSavedTeamsCount();
+        StateHasChanged();
+    }
+
+    private void OnCompareRequestedHandler(TeamConfigDto target)
+    {
+        _compareTargetConfig = target;
+        _showSavedTeamsModal = false;
+        _showCompareModal = true;
+        StateHasChanged();
+    }
+
+    private void OnShareRequestedHandler(TeamConfigDto target)
+    {
+        _showSavedTeamsModal = false;
+        _showShareModal = true;
+        StateHasChanged();
+    }
+
+    private void OpenCompare()
+    {
+        if (_compareTargetConfig != null)
+        {
+            _showCompareModal = true;
+        }
+        else
+        {
+            _showSavedTeamsModal = true;
+        }
+    }
+
+    private async Task ResetTeam()
+    {
+        State.Allies[0] = new CombatantState();
+        State.Allies[1] = new CombatantState();
+        State.Allies[2] = new CombatantState();
+        State.AllyActiveGrids[0].Clear();
+        State.AllyActiveGrids[1].Clear();
+        State.AllyActiveGrids[2].Clear();
+        State.ClearAllCircles();
+        State.EnemySyncBuffs = 0;
+        State.EnemyPhysicalDamageReduction = false;
+        State.EnemySpecialDamageReduction = false;
+        State.EnemyDamageField = "";
+        State.Field = new FieldState();
+
+        if (_allManifest.Count > 0)
+        {
+            await LoadAllyPair(0, _allManifest[0].TrainerId);
+        }
+        LoadSelectedStage();
+        StateHasChanged();
+    }
+
+    private void OnLanguageChangedHandler()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Loc.OnLanguageChanged -= OnLanguageChangedHandler;
     }
 }

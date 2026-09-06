@@ -11,8 +11,8 @@
                     <div class="d-flex align-items-center gap-2">
                         <i class="bi bi-check2-all text-danger fs-5"></i>
                         <div>
-                            <h6 class="modal-title fw-bold text-light mb-0">Apply Configuration to Enemies</h6>
-                            <small class="text-muted" style="font-size: 0.72rem;">Configure settings and apply them to any or all opponents</small>
+                            <h6 class="modal-title fw-bold text-light mb-0">@Loc.T("apply_settings_all_enemies", "Apply Configuration to Enemies")</h6>
+                            <small class="text-muted" style="font-size: 0.72rem;">@Loc.T("apply_to_all", "Configure settings and apply them to any or all opponents")</small>
                         </div>
                     </div>
                     <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="Close"></button>
@@ -24,31 +24,31 @@
                     <div class="row g-2 mb-3 p-2 rounded bg-black bg-opacity-30 border border-secondary">
                         <div class="col-12 col-md-6">
                             <label class="form-label text-warning fw-bold mb-1 d-flex align-items-center justify-content-between" style="font-size: 0.75rem;">
-                                <span><i class="bi bi-people me-1"></i>Target Enemies to Apply:</span>
+                                <span><i class="bi bi-people me-1"></i>@Loc.T("target", "Target Enemies to Apply:")</span>
                                 <div class="btn-group btn-group-sm">
-                                    <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="SelectAllTargets">All</button>
-                                    <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="DeselectAllTargets">None</button>
+                                    <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="SelectAllTargets">@Loc.T("all", "All")</button>
+                                    <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="DeselectAllTargets">@Loc.T("none", "None")</button>
                                 </div>
                             </label>
                             <div class="d-flex flex-wrap gap-2">
                                 <label class="form-check form-check-inline cursor-pointer mb-0">
                                     <input class="form-check-input" type="checkbox" @bind="_targetLeft" />
-                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">Left Enemy</span>
+                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">@Loc.T("enemy_left", "Left Enemy")</span>
                                 </label>
                                 <label class="form-check form-check-inline cursor-pointer mb-0">
                                     <input class="form-check-input" type="checkbox" @bind="_targetCenter" />
-                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">Center (Boss)</span>
+                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">@Loc.T("enemy_center", "Center (Boss)")</span>
                                 </label>
                                 <label class="form-check form-check-inline cursor-pointer mb-0">
                                     <input class="form-check-input" type="checkbox" @bind="_targetRight" />
-                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">Right Enemy</span>
+                                    <span class="form-check-label text-light" style="font-size: 0.75rem;">@Loc.T("enemy_right", "Right Enemy")</span>
                                 </label>
                             </div>
                         </div>
 
                         <div class="col-12 col-md-6 border-start border-secondary">
                             <label class="form-label text-info fw-bold mb-1" style="font-size: 0.75rem;">
-                                <i class="bi bi-box-arrow-in-down me-1"></i>Load / Copy values from:
+                                <i class="bi bi-box-arrow-in-down me-1"></i>@Loc.T("my_team_load", "Load / Copy values from:")
                             </label>
                             <div class="d-flex flex-wrap gap-1">
                                 @for (int i = 0; i < 3 && i < Enemies.Count; i++)
@@ -327,12 +327,12 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-between align-items-center">
                     <span class="text-muted" style="font-size: 0.75rem;">
-                        Targeting @GetSelectedTargetsCount() opponent(s)
+                        @Loc.T("target", "Targeting") @GetSelectedTargetsCount() @Loc.T("enemy_side", "opponent(s)")
                     </span>
                     <div class="d-flex align-items-center gap-2">
-                        <button type="button" class="btn btn-secondary btn-sm px-3" @onclick="Close">Cancel</button>
+                        <button type="button" class="btn btn-secondary btn-sm px-3" @onclick="Close">@Loc.T("cancel", "Cancel")</button>
                         <button type="button" class="btn btn-danger btn-sm fw-bold px-3 d-inline-flex align-items-center gap-1" @onclick="Apply">
-                            <i class="bi bi-check2-all"></i>Apply to Selected Opponents
+                            <i class="bi bi-check2-all"></i>@Loc.T("apply_to_all", "Apply to Selected Opponents")
                         </button>
                     </div>
                 </div>
