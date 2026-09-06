@@ -1292,24 +1292,21 @@
 
     <!-- Share Team Modal -->
     <ShareTeamModal @bind-IsOpen="_showShareModal"
-                    TeamState="State"
-                    OnImported="OnConfigImportedHandler" />
+                    State="State"
+                    OnConfigImported="OnConfigImportedHandler" />
 
     <!-- Saved Teams Modal -->
     <SavedTeamsModal @bind-IsOpen="_showSavedTeamsModal"
-                     TeamState="State"
-                     OnTeamLoaded="OnConfigImportedHandler"
+                     State="State"
+                     OnLoadRequested="OnConfigImportedHandler"
                      OnCompareRequested="OnCompareRequestedHandler"
                      OnShareRequested="OnShareRequestedHandler" />
 
     <!-- Compare Teams Modal -->
-    @if (_showCompareModal && _compareTargetConfig != null)
-    {
-        <CompareTeamsModal @bind-IsOpen="_showCompareModal"
-                           CurrentState="State"
-                           TargetConfig="_compareTargetConfig"
-                           Rules="_rules" />
-    }
+    <CompareTeamsModal @bind-IsOpen="_showCompareModal"
+                       State="State"
+                       InitialTargetConfig="_compareTargetConfig"
+                       Rules="_rules" />
 </div>
 
 @code {
@@ -1664,14 +1661,7 @@
 
     private void OpenCompare()
     {
-        if (_compareTargetConfig != null)
-        {
-            _showCompareModal = true;
-        }
-        else
-        {
-            _showSavedTeamsModal = true;
-        }
+        _showCompareModal = true;
     }
 
     private async Task ResetTeam()

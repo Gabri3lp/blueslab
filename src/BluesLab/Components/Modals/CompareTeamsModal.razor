@@ -7,9 +7,8 @@
 
 @if (IsOpen)
 {
-    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
-    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
-        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document" @onclick:stopPropagation="true">
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.85); z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable" role="document" @onclick:stopPropagation>
             <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
                 <!-- Header -->
                 <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-between align-items-center">
@@ -60,11 +59,19 @@
                             <div class="small text-muted">Calculating damage difference...</div>
                         </div>
                     }
+                    else if (_savedTeams.Count == 0)
+                    {
+                        <div class="text-center py-5 text-muted">
+                            <i class="bi bi-inbox fs-2 d-block mb-2 text-secondary"></i>
+                            <p class="small mb-1 text-light">@Loc.T("no_saved_teams", "No saved teams found yet.")</p>
+                            <p class="small text-muted mb-0">@Loc.T("compare_desc", "Save at least one team using the 'Save Team' button to compare damage!")</p>
+                        </div>
+                    }
                     else if (_summary == null || _summary.MoveResults.Count == 0)
                     {
                         <div class="text-center py-5 text-muted">
                             <i class="bi bi-arrow-left-right fs-2 d-block mb-2 text-secondary"></i>
-                            <p class="small mb-0">Select a saved team above to compare damage difference.</p>
+                            <p class="small mb-0">@Loc.T("my_team_select", "Select a saved team above to compare damage difference.")</p>
                         </div>
                     }
                     else
@@ -142,7 +149,9 @@
     [Parameter] public bool IsOpen { get; set; }
     [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
     [Parameter] public TeamBattleState? State { get; set; }
+    [Parameter] public TeamBattleState? CurrentState { get => State; set => State = value; }
     [Parameter] public TeamConfigDto? InitialTargetConfig { get; set; }
+    [Parameter] public TeamConfigDto? TargetConfig { get => InitialTargetConfig; set => InitialTargetConfig = value; }
     [Parameter] public DamageRulesDocument? Rules { get; set; }
 
     private List<TeamSavedItemDto> _savedTeams = new();
