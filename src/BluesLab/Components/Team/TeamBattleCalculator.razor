@@ -275,19 +275,17 @@
                             <!-- Allied Screens -->
                             <div class="d-flex align-items-center gap-1">
                                 <span class="text-info fw-bold me-1" style="font-size: 0.72rem;"><i class="bi bi-shield"></i> @Loc.T("screens", "Screens:")</span>
-                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.AlliedPhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(State.AlliedPhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
                                         title="@Loc.T("screen_reflect", "Reflect")"
                                         @onclick="() => State.AlliedPhysicalDamageReduction = !State.AlliedPhysicalDamageReduction">
                                     <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>@Loc.T("screen_reflect", "Reflect")</span>
                                 </button>
-                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.AlliedSpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(State.AlliedSpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
                                         title="@Loc.T("screen_light_screen", "Light Screen")"
                                         @onclick="() => State.AlliedSpecialDamageReduction = !State.AlliedSpecialDamageReduction">
                                     <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>@Loc.T("screen_light_screen", "Light Screen")</span>
                                 </button>
                             </div>
 
@@ -300,18 +298,17 @@
                                     <i class="bi bi-megaphone-fill"></i>
                                     <span>@Loc.T("cheer", "Cheer (+50%)")</span>
                                 </button>
-                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.AlliedMoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(State.AlliedMoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
                                         title="@Loc.T("move_gauge_accel", "Move Gauge Acceleration")"
                                         @onclick="() => State.AlliedMoveGaugeAccel = !State.AlliedMoveGaugeAccel">
-                                    <i class="bi bi-lightning-charge-fill"></i>
-                                    <span>@Loc.T("move_gauge_accel", "Gauge Accel")</span>
+                                    <img src="img/battle/FILD_001.png" alt="MGA" style="height: 14px; width: 14px; object-fit: contain;" />
                                 </button>
                             </div>
 
                             <!-- Team Gear Button -->
                             <button class="btn btn-outline-warning btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.72rem; height: 24px;" @onclick="() => _showTeamGearModal = true">
-                                <i class="bi bi-backpack2"></i> @Loc.T("gears", "Gear"): @GetTeamGearPresetLabel()
+                                <i class="bi bi-backpack2"></i> @Loc.T("gears", "Gear")
                             </button>
 
                             <!-- Battle Circles Modal Button -->
@@ -438,9 +435,10 @@
                                                     int totalTheme = matching + 1;
                                                     int mpId = ally.Pair.Passives.FirstOrDefault(p => p.Name.Contains(mp.PassiveName, StringComparison.OrdinalIgnoreCase))?.Id ?? 0;
                                                     string mpTitle = Loc.GetPassiveName(mpId, mp.PassiveName);
-                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem;" title="@mpTitle: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other @(matching == 1 ? "ally" : "allies"))">
-                                                        <i class="bi bi-star-fill text-warning"></i>
-                                                        <span>@mpTitle (+@pct%)</span>
+                                                    <span class="badge bg-purple text-light d-inline-flex align-items-center gap-1 py-0 px-1" style="font-size: 0.65rem; max-width: 100%;" title="@mpTitle: +@pct% to team (@totalTheme @mp.Theme pair@(totalTheme > 1 ? "s" : "") on team: 1 base + @matching other @(matching == 1 ? "ally" : "allies"))">
+                                                        <i class="bi bi-star-fill text-warning flex-shrink-0"></i>
+                                                        <span class="text-truncate">@mpTitle</span>
+                                                        <span class="flex-shrink-0">(+@pct%)</span>
                                                     </span>
                                                 }
                                             </div>
@@ -560,24 +558,24 @@
                                         <!-- Next Boosts (PM, SM, SY, Crit, SE Next) -->
                                         <div class="bg-black bg-opacity-25 p-1 rounded border border-secondary mb-1">
                                             <div class="d-flex flex-wrap align-items-center gap-1">
-                                                <div class="d-flex align-items-center gap-1 bg-dark px-1 rounded border border-secondary" style="font-size: 0.68rem; height: 22px;">
-                                                    <span class="text-light fw-bold">PM:</span>
+                                                <div class="d-flex align-items-center gap-1 bg-dark px-1 rounded border border-secondary" style="font-size: 0.68rem; height: 22px;" title="Physical Moves ↑ Next (PMUN)">
+                                                    <img src="img/battle/CATE_001.png" alt="PM" style="height: 14px; width: 14px; object-fit: contain;" />
                                                     <select class="form-select form-select-sm bg-dark text-light border-0 py-0 px-0 text-center font-monospace"
                                                             style="width: 24px; font-size: 0.7rem; height: 20px; font-weight: 600; background-image: none !important; -webkit-appearance: none; -moz-appearance: none; appearance: none;"
                                                             @bind="ally.PhysicalBoostNext">
                                                         @for (int b = 0; b <= 10; b++) { <option value="@b">@b</option> }
                                                     </select>
                                                 </div>
-                                                <div class="d-flex align-items-center gap-1 bg-dark px-1 rounded border border-secondary" style="font-size: 0.68rem; height: 22px;">
-                                                    <span class="text-light fw-bold">SM:</span>
+                                                <div class="d-flex align-items-center gap-1 bg-dark px-1 rounded border border-secondary" style="font-size: 0.68rem; height: 22px;" title="Special Moves ↑ Next (SMUN)">
+                                                    <img src="img/battle/CATE_002.png" alt="SM" style="height: 14px; width: 14px; object-fit: contain;" />
                                                     <select class="form-select form-select-sm bg-dark text-light border-0 py-0 px-0 text-center font-monospace"
                                                             style="width: 24px; font-size: 0.7rem; height: 20px; font-weight: 600; background-image: none !important; -webkit-appearance: none; -moz-appearance: none; appearance: none;"
                                                             @bind="ally.SpecialBoostNext">
                                                         @for (int b = 0; b <= 10; b++) { <option value="@b">@b</option> }
                                                     </select>
                                                 </div>
-                                                <div class="d-flex align-items-center gap-1 bg-dark px-1 rounded border border-secondary" style="font-size: 0.68rem; height: 22px;">
-                                                    <span class="text-light fw-bold">SY:</span>
+                                                <div class="d-flex align-items-center gap-1 bg-dark px-1 rounded border border-secondary" style="font-size: 0.68rem; height: 22px;" title="Sync Move ↑ Next (SYUN)">
+                                                    <img src="img/battle/sync.png" alt="SY" style="height: 14px; width: 14px; object-fit: contain;" />
                                                     <select class="form-select form-select-sm bg-dark text-light border-0 py-0 px-0 text-center font-monospace"
                                                             style="width: 24px; font-size: 0.7rem; height: 20px; font-weight: 600; background-image: none !important; -webkit-appearance: none; -moz-appearance: none; appearance: none;"
                                                             @bind="ally.SyncMoveBoostNext">
@@ -629,26 +627,23 @@
                             <!-- Enemy Screens -->
                             <div class="d-flex align-items-center gap-1">
                                 <span class="text-danger fw-bold me-1" style="font-size: 0.72rem;"><i class="bi bi-shield"></i> @Loc.T("screens", "Screens:")</span>
-                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.EnemyPhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(State.EnemyPhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
                                         title="@Loc.T("screen_reflect", "Physical Damage Reduction (Reflect) for all enemies")"
                                         @onclick="() => State.EnemyPhysicalDamageReduction = !State.EnemyPhysicalDamageReduction">
                                     <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>@Loc.T("screen_reflect", "Reflect")</span>
                                 </button>
-                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.EnemySpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(State.EnemySpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
                                         title="@Loc.T("screen_light_screen", "Special Damage Reduction (Light Screen) for all enemies")"
                                         @onclick="() => State.EnemySpecialDamageReduction = !State.EnemySpecialDamageReduction">
                                     <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 14px; width: 14px; object-fit: contain;" />
-                                    <span>@Loc.T("screen_light_screen", "Light Screen")</span>
                                 </button>
-                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.EnemyMoveGaugeAccel ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(State.EnemyMoveGaugeAccel ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                         style="font-size: 0.72rem; height: 24px;"
                                         title="@Loc.T("move_gauge_accel", "Move Gauge Acceleration")"
                                         @onclick="() => State.EnemyMoveGaugeAccel = !State.EnemyMoveGaugeAccel">
-                                    <i class="bi bi-speedometer2"></i>
-                                    <span>@Loc.T("gauge_accel_short", "Gauge Accel")</span>
+                                    <img src="img/battle/FILD_001.png" alt="MGA" style="height: 14px; width: 14px; object-fit: contain;" />
                                 </button>
                             </div>
 
@@ -1334,6 +1329,7 @@
     <CircleModal @bind-IsOpen="_showCircleModal"
                  ActiveCircles="State.TeamCircles"
                  CircleAllyCounts="State.TeamCircleAllyCounts"
+                 EnabledRegions="GetEnabledTeamRegions()"
                  OnChanged="StateHasChanged" />
 
     <!-- Team Gear Modal -->
@@ -1363,6 +1359,13 @@
     private int _pickingSlot = 0;
     private bool _showCircleModal = false;
     private bool _showTeamGearModal = false;
+
+    private HashSet<string> GetEnabledTeamRegions()
+    {
+        return CombatantState.CircleRegions
+            .Where(r => State.GetMatchingRegionAllies(r) > 0)
+            .ToHashSet(StringComparer.OrdinalIgnoreCase);
+    }
 
     private string GetTeamGearPresetLabel()
     {

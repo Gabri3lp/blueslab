@@ -1,4 +1,4 @@
-﻿@using BluesLab.Models
+@using BluesLab.Models
 
 @if (IsOpen)
 {
@@ -35,45 +35,56 @@
                     <div class="row row-cols-1 row-cols-md-2 g-2">
                         @foreach (var region in CombatantState.CircleRegions)
                         {
-                            bool hasPhys = IsCircleActive(region, "physical");
-                            bool hasSpec = IsCircleActive(region, "special");
-                            bool hasDef = IsCircleActive(region, "defensive");
+                            bool isEnabled = EnabledRegions == null || EnabledRegions.Contains(region);
+                            bool hasPhys = isEnabled && IsCircleActive(region, "physical");
+                            bool hasSpec = isEnabled && IsCircleActive(region, "special");
+                            bool hasDef = isEnabled && IsCircleActive(region, "defensive");
                             bool isAnyActive = hasPhys || hasSpec || hasDef;
                             int allyCount = GetAllyCount(region);
 
                             <div class="col">
-                                <div class="p-2 rounded bg-black bg-opacity-30 border @(isAnyActive ? "border-info shadow-sm" : "border-secondary border-opacity-50") d-flex flex-column gap-2">
+                                <div class="p-2 rounded bg-black bg-opacity-30 border @(!isEnabled ? "border-secondary border-opacity-30 opacity-50" : (isAnyActive ? "border-info shadow-sm" : "border-secondary border-opacity-50")) d-flex flex-column gap-2">
                                     <!-- Region Header & Ally Count Selector -->
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="d-flex align-items-center gap-2">
-                                            <i class="bi bi-geo-alt-fill text-secondary" style="font-size: 0.85rem;"></i>
-                                            <span class="fw-bold text-light" style="font-size: 0.88rem;">@region</span>
+                                            <i class="bi bi-geo-alt-fill @(isEnabled ? "text-secondary" : "text-muted")" style="font-size: 0.85rem;"></i>
+                                            <span class="fw-bold @(isEnabled ? "text-light" : "text-secondary")" style="font-size: 0.88rem;">@region</span>
                                         </div>
 
-                                        <!-- Ally Count (Buff Level) 1, 2, 3 -->
-                                        <div class="d-flex align-items-center gap-1">
-                                            <span class="text-secondary small me-1" style="font-size: 0.7rem;">@Loc.T("team", "Allies"):</span>
-                                            <div class="btn-group btn-group-sm" role="group">
-                                                @for (int count = 1; count <= 3; count++)
-                                                {
-                                                    int c = count;
-                                                    bool isSel = allyCount == c;
-                                                    <button type="button"
-                                                            class="btn btn-sm py-0 px-1 @(isSel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
-                                                            style="width: 22px; font-size: 0.7rem; height: 22px;"
-                                                            @onclick="() => SetAllyCount(region, c)">
-                                                        @c
-                                                    </button>
-                                                }
+                                        @if (!isEnabled)
+                                        {
+                                            <span class="badge bg-secondary bg-opacity-25 text-secondary border border-secondary border-opacity-25" style="font-size: 0.68rem;">
+                                                <i class="bi bi-slash-circle me-1"></i>@Loc.T("no_allies", "No allies")
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <!-- Ally Count (Buff Level) 1, 2, 3 -->
+                                            <div class="d-flex align-items-center gap-1">
+                                                <span class="text-secondary small me-1" style="font-size: 0.7rem;">@Loc.T("team", "Allies"):</span>
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    @for (int count = 1; count <= 3; count++)
+                                                    {
+                                                        int c = count;
+                                                        bool isSel = allyCount == c;
+                                                        <button type="button"
+                                                                class="btn btn-sm py-0 px-1 @(isSel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                                                style="width: 22px; font-size: 0.7rem; height: 22px;"
+                                                                @onclick="() => SetAllyCount(region, c)">
+                                                            @c
+                                                        </button>
+                                                    }
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                     </div>
 
                                     <!-- Circle Types: Physical, Special, Defensive -->
                                     <div class="d-flex align-items-center gap-1">
                                         <!-- Physical Circle -->
                                         <button type="button"
-                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(hasPhys ? "btn-danger fw-bold" : "btn-outline-secondary text-light")"
+                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(!isEnabled ? "btn-outline-secondary opacity-40 pe-none" : (hasPhys ? "btn-danger fw-bold" : "btn-outline-secondary text-light"))"
+                                                disabled="@(!isEnabled)"
                                                 style="font-size: 0.75rem;"
                                                 @onclick='() => ToggleCircle(region, "physical")'>
                                             <i class="bi bi-shield-shaded" style="font-size: 0.75rem;"></i>
@@ -82,7 +93,8 @@
 
                                         <!-- Special Circle -->
                                         <button type="button"
-                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(hasSpec ? "btn-primary fw-bold" : "btn-outline-secondary text-light")"
+                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(!isEnabled ? "btn-outline-secondary opacity-40 pe-none" : (hasSpec ? "btn-primary fw-bold" : "btn-outline-secondary text-light"))"
+                                                disabled="@(!isEnabled)"
                                                 style="font-size: 0.75rem;"
                                                 @onclick='() => ToggleCircle(region, "special")'>
                                             <i class="bi bi-stars" style="font-size: 0.75rem;"></i>
@@ -91,7 +103,8 @@
 
                                         <!-- Defensive Circle -->
                                         <button type="button"
-                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(hasDef ? "btn-success fw-bold" : "btn-outline-secondary text-light")"
+                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(!isEnabled ? "btn-outline-secondary opacity-40 pe-none" : (hasDef ? "btn-success fw-bold" : "btn-outline-secondary text-light"))"
+                                                disabled="@(!isEnabled)"
                                                 style="font-size: 0.75rem;"
                                                 @onclick='() => ToggleCircle(region, "defensive")'>
                                             <i class="bi bi-shield-fill-check" style="font-size: 0.75rem;"></i>
@@ -123,6 +136,7 @@
     [Parameter] public Dictionary<string, Dictionary<string, bool>>? ActiveCircles { get => Circles; set => Circles = value; }
     [Parameter] public Dictionary<string, int>? AllyCounts { get; set; }
     [Parameter] public Dictionary<string, int>? CircleAllyCounts { get => AllyCounts; set => AllyCounts = value; }
+    [Parameter] public HashSet<string>? EnabledRegions { get; set; }
     [Parameter] public EventCallback OnChanged { get; set; }
 
     private async Task Close()
@@ -157,6 +171,8 @@
 
     private async Task ToggleCircle(string region, string circleType)
     {
+        if (EnabledRegions != null && !EnabledRegions.Contains(region)) return;
+
         if (Circles != null)
         {
             if (!Circles.ContainsKey(region))
@@ -175,6 +191,8 @@
 
     private async Task SetAllyCount(string region, int count)
     {
+        if (EnabledRegions != null && !EnabledRegions.Contains(region)) return;
+
         if (AllyCounts != null)
         {
             AllyCounts[region] = Math.Clamp(count, 1, 3);

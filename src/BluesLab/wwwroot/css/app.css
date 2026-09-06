@@ -244,11 +244,17 @@ input.form-control:focus {
     z-index: 1070;
     min-width: 250px;
     max-width: 320px;
+    padding: 8px 10px;
     pointer-events: none;
     background-color: #1a222d !important;
     border: 1px solid #4a5568 !important;
     border-radius: 8px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.8);
+    color: #f8fafc !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    text-align: left;
 }
 .damage-roll-hover-wrapper .damage-roll-popover::after {
     content: '';
@@ -263,6 +269,57 @@ input.form-control:focus {
 .damage-roll-hover-wrapper:hover .damage-roll-popover {
     display: block;
     animation: fadeIn 0.15s ease-in-out;
+}
+
+.damage-roll-popover .damage-roll-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #38bdf8 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+}
+
+.damage-roll-popover .damage-roll-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7rem;
+    color: #f8fafc !important;
+}
+
+.damage-roll-popover .damage-roll-table td,
+.damage-roll-popover .damage-roll-table th {
+    padding: 2px 4px;
+    color: #f8fafc !important;
+}
+
+.damage-roll-popover .damage-roll-table .roll-label {
+    color: #94a3b8 !important;
+    text-align: left;
+}
+
+.damage-roll-popover .damage-roll-table .roll-dmg {
+    color: #f59e0b !important;
+    font-weight: 700;
+    font-family: var(--bs-font-monospace), monospace !important;
+    text-align: right;
+}
+
+.damage-roll-popover .damage-roll-table .roll-pct {
+    color: #38bdf8 !important;
+    font-family: var(--bs-font-monospace), monospace !important;
+    text-align: right;
+}
+
+.damage-roll-popover table.table {
+    color: #f8fafc !important;
+    margin-bottom: 0 !important;
+}
+
+.damage-roll-popover table.table th,
+.damage-roll-popover table.table td {
+    color: #f8fafc !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 @keyframes fadeIn {

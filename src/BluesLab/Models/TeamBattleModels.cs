@@ -172,6 +172,12 @@ public class TeamBattleState
         foreach (var r in CombatantState.CircleRegions)
         {
             UpdateCircleAllyCount(r);
+            if (GetMatchingRegionAllies(r) == 0 && TeamCircles.TryGetValue(r, out var dict))
+            {
+                dict["physical"] = false;
+                dict["special"] = false;
+                dict["defensive"] = false;
+            }
         }
     }
 
@@ -206,6 +212,7 @@ public class TeamBattleState
         ["Alola"] = new[] { "Elio", "Selene", "Hau", "Gladion", "Lillie", "Ilima", "Lana", "Kiawe", "Mallow", "Sophocles", "Acerola", "Mina", "Hala", "Olivia", "Nanu", "Hapu", "Kahili", "Molayne", "Guzma", "Plumeria", "Kukui", "Burnet", "Lusamine", "Faba", "Ryuki", "The Masked Royal", "Samson Oak", "Naomi" },
         ["Galar"] = new[] { "Victor", "Gloria", "Hop", "Bede", "Marnie", "Milo", "Nessa", "Kabu", "Bea", "Allister", "Opal", "Gordie", "Melony", "Piers", "Raihan", "Klara", "Avery", "Mustard", "Peony", "Leon", "Sonia", "Oleana", "Rose", "Ball Guy", "Eve", "Petey" },
         ["Paldea"] = new[] { "Florian", "Juliana", "Nemona", "Arven", "Penny", "Katy", "Brassius", "Iono", "Kofu", "Larry", "Ryme", "Tulip", "Grusha", "Rika", "Poppy", "Hassel", "Geeta", "Clavell", "Jacq", "Dendra", "Miriam", "Raifort", "Saguaro", "Salvatore", "Tyme", "Atticus", "Mela", "Lacey", "Carmine", "Kieran", "Drayton", "Crispin", "Amarys", "Briar", "Teddy", "Eri", "Giacomo", "Ortega", "Clive", "Perrin" },
+        ["Hisui"] = new[] { "Akari", "Rei", "Volo", "Irida", "Adaman", "Sabi", "Arezu", "Mai", "Cyllene", "Kamado", "Beni", "Zisu", "Laventon", "Ingo (Special Costume)" },
         ["Pasio"] = new[] { "Lear", "Rachel", "Sawyer", "Paulo", "Tina", "Bellis", "Main Character" }
     };
 

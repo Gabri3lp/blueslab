@@ -541,23 +541,20 @@
 
                     <div class="d-flex align-items-center gap-1">
                         <span class="small text-danger fw-bold me-1" style="font-size: 0.75rem;"><i class="bi bi-shield"></i> Target Screens:</span>
-                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.PhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(Enemy.PhysicalDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem; height: 26px;"
                                 title="Physical Damage Reduction (Reflect)"
                                 @onclick="() => { Enemy.PhysicalDamageReduction = !Enemy.PhysicalDamageReduction; StateHasChanged(); }">
                             <img src="img/battle/STAT_002R.png" alt="Phys" style="height: 18px; width: 18px; object-fit: contain;" />
-                            <span>Phys Dmg Red</span>
                         </button>
-                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.SpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(Enemy.SpecialDamageReduction ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")" style="font-size: 0.75rem; height: 26px;"
                                 title="Special Damage Reduction (Light Screen)"
                                 @onclick="() => { Enemy.SpecialDamageReduction = !Enemy.SpecialDamageReduction; StateHasChanged(); }">
                             <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 18px; width: 18px; object-fit: contain;" />
-                            <span>Spec Dmg Red</span>
                         </button>
-                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(Enemy.MoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem; height: 26px;"
+                        <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center justify-content-center @(Enemy.MoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem; height: 26px;"
                                 title="@Loc.T("move_gauge_accel", "Move Gauge Acceleration")"
                                 @onclick="() => { Enemy.MoveGaugeAccel = !Enemy.MoveGaugeAccel; StateHasChanged(); }">
-                            <i class="bi bi-lightning-charge-fill"></i>
-                            <span>@Loc.T("move_gauge_accel", "Gauge Accel")</span>
+                            <img src="img/battle/FILD_001.png" alt="MGA" style="height: 18px; width: 18px; object-fit: contain;" />
                         </button>
                     </div>
                 </div>
@@ -571,7 +568,7 @@
                     </h6>
                     <div class="d-flex align-items-center gap-1">
                         <button class="btn btn-outline-warning btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.75rem; height: 26px;" @onclick="() => _showGearModal = true">
-                            <i class="bi bi-backpack2"></i> @Loc.T("gears", "Gear"): @GetGearPresetLabel()
+                            <i class="bi bi-backpack2"></i> @Loc.T("gears", "Gear")
                         </button>
                         <button class="btn btn-outline-info btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.75rem; height: 26px;" @onclick="() => _showCircleModal = true">
                             <i class="bi bi-circle-square"></i> @Loc.T("regional_circles", "Circles") @(GetActiveCirclesCount() > 0 ? $"({GetActiveCirclesCount()})" : "")
@@ -607,9 +604,9 @@
                 <!-- Next Boosts (PMUN, SMUN, SYUN, Crit Hit, SE Next & Breaks) -->
                 <div class="d-flex flex-wrap align-items-center gap-2 mt-2 pt-2 border-top border-secondary border-opacity-50">
                     <!-- PMUN Dropdown -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
-                        <span class="text-light fw-bold">PMUN:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-1 py-1 rounded border border-secondary" style="font-size: 0.75rem; height: 26px;" title="Physical Moves ↑ Next (PMUN)">
+                        <img src="img/battle/CATE_001.png" alt="PMUN" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace" style="width: 44px; font-size: 0.75rem; height: 22px;"
                                 value="@Ally.PhysicalBoostNext"
                                 @onchange="OnPmunSelect">
                             @for (int b = 0; b <= 10; b++)
@@ -620,9 +617,9 @@
                     </div>
 
                     <!-- SMUN Dropdown -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
-                        <span class="text-light fw-bold">SMUN:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-1 py-1 rounded border border-secondary" style="font-size: 0.75rem; height: 26px;" title="Special Moves ↑ Next (SMUN)">
+                        <img src="img/battle/CATE_002.png" alt="SMUN" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace" style="width: 44px; font-size: 0.75rem; height: 22px;"
                                 value="@Ally.SpecialBoostNext"
                                 @onchange="OnSmunSelect">
                             @for (int b = 0; b <= 10; b++)
@@ -633,9 +630,9 @@
                     </div>
 
                     <!-- SYUN (Sync Move Up Next) Dropdown -->
-                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-2 py-1 rounded border border-secondary" style="font-size: 0.75rem;">
-                        <span class="text-light fw-bold">SYUN:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="width: 52px; font-size: 0.75rem; height: 24px;"
+                    <div class="d-flex align-items-center gap-1 bg-secondary bg-opacity-25 px-1 py-1 rounded border border-secondary" style="font-size: 0.75rem; height: 26px;" title="Sync Move ↑ Next (SYUN)">
+                        <img src="img/battle/sync.png" alt="SYUN" style="height: 18px; width: 18px; object-fit: contain;" />
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace" style="width: 44px; font-size: 0.75rem; height: 22px;"
                                 value="@Ally.SyncMoveBoostNext"
                                 @onchange="OnSyunSelect">
                             @for (int b = 0; b <= 10; b++)
@@ -653,9 +650,10 @@
                             @onclick="() => { Ally.Cheer = !Ally.Cheer; StateHasChanged(); }">
                         <i class="bi bi-megaphone-fill"></i> @Loc.T("cheer", "Cheer (+50%)")
                     </button>
-                    <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center gap-1 @(Ally.MoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
+                    <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center justify-content-center @(Ally.MoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem; height: 26px;"
+                            title="@Loc.T("move_gauge_accel", "Move Gauge Acceleration")"
                             @onclick="() => { Ally.MoveGaugeAccel = !Ally.MoveGaugeAccel; StateHasChanged(); }">
-                        <i class="bi bi-lightning-charge-fill"></i> @Loc.T("move_gauge_accel", "Gauge Accel")
+                        <img src="img/battle/FILD_001.png" alt="MGA" style="height: 18px; width: 18px; object-fit: contain;" />
                     </button>
                     <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center gap-1 @(Ally.ThemeSkillsActive ? "btn-success fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
                             @onclick="() => { Ally.ThemeSkillsActive = !Ally.ThemeSkillsActive; StateHasChanged(); }">
