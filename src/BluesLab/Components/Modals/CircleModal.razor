@@ -1,0 +1,201 @@
+﻿@using BluesLab.Models
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <!-- Modal Header -->
+                <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-circle-square text-info fs-5"></i>
+                        <h6 class="modal-title fw-bold text-light mb-0">@(string.IsNullOrEmpty(Title) ? Loc.T("regional_circles", "Regional Circles") : Title)</h6>
+                        @{
+                            int activeCount = GetActiveCirclesCount();
+                        }
+                        @if (activeCount > 0)
+                        {
+                            <span class="badge bg-info text-dark fw-bold">@activeCount @Loc.T("selected", "Active")</span>
+                        }
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        @if (activeCount > 0)
+                        {
+                            <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 0.75rem;" @onclick="ClearAll">
+                                <i class="bi bi-trash3 me-1"></i>@Loc.T("clear_all", "Clear All")
+                            </button>
+                        }
+                        <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="Close"></button>
+                    </div>
+                </div>
+
+                <!-- Modal Body: 10 Regions with Physical / Special / Defensive and Ally Count -->
+                <div class="modal-body p-3" style="max-height: 70vh;">
+                    <div class="row row-cols-1 row-cols-md-2 g-2">
+                        @foreach (var region in CombatantState.CircleRegions)
+                        {
+                            bool hasPhys = IsCircleActive(region, "physical");
+                            bool hasSpec = IsCircleActive(region, "special");
+                            bool hasDef = IsCircleActive(region, "defensive");
+                            bool isAnyActive = hasPhys || hasSpec || hasDef;
+                            int allyCount = GetAllyCount(region);
+
+                            <div class="col">
+                                <div class="p-2 rounded bg-black bg-opacity-30 border @(isAnyActive ? "border-info shadow-sm" : "border-secondary border-opacity-50") d-flex flex-column gap-2">
+                                    <!-- Region Header & Ally Count Selector -->
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-geo-alt-fill text-secondary" style="font-size: 0.85rem;"></i>
+                                            <span class="fw-bold text-light" style="font-size: 0.88rem;">@region</span>
+                                        </div>
+
+                                        <!-- Ally Count (Buff Level) 1, 2, 3 -->
+                                        <div class="d-flex align-items-center gap-1">
+                                            <span class="text-secondary small me-1" style="font-size: 0.7rem;">@Loc.T("team", "Allies"):</span>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                @for (int count = 1; count <= 3; count++)
+                                                {
+                                                    int c = count;
+                                                    bool isSel = allyCount == c;
+                                                    <button type="button"
+                                                            class="btn btn-sm py-0 px-1 @(isSel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                                            style="width: 22px; font-size: 0.7rem; height: 22px;"
+                                                            @onclick="() => SetAllyCount(region, c)">
+                                                        @c
+                                                    </button>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Circle Types: Physical, Special, Defensive -->
+                                    <div class="d-flex align-items-center gap-1">
+                                        <!-- Physical Circle -->
+                                        <button type="button"
+                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(hasPhys ? "btn-danger fw-bold" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.75rem;"
+                                                @onclick='() => ToggleCircle(region, "physical")'>
+                                            <i class="bi bi-shield-shaded" style="font-size: 0.75rem;"></i>
+                                            <span>@Loc.T("circle_phys", "Phys")</span>
+                                        </button>
+
+                                        <!-- Special Circle -->
+                                        <button type="button"
+                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(hasSpec ? "btn-primary fw-bold" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.75rem;"
+                                                @onclick='() => ToggleCircle(region, "special")'>
+                                            <i class="bi bi-stars" style="font-size: 0.75rem;"></i>
+                                            <span>@Loc.T("circle_spec", "Spec")</span>
+                                        </button>
+
+                                        <!-- Defensive Circle -->
+                                        <button type="button"
+                                                class="btn btn-sm flex-fill py-1 px-1 d-flex align-items-center justify-content-center gap-1 @(hasDef ? "btn-success fw-bold" : "btn-outline-secondary text-light")"
+                                                style="font-size: 0.75rem;"
+                                                @onclick='() => ToggleCircle(region, "defensive")'>
+                                            <i class="bi bi-shield-fill-check" style="font-size: 0.75rem;"></i>
+                                            <span>@Loc.T("circle_def", "Def")</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-end align-items-center">
+                    <button type="button" class="btn btn-primary btn-sm fw-bold px-3" @onclick="Close">
+                        <i class="bi bi-check-lg me-1"></i>@Loc.T("done", "Done")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string Title { get; set; } = "Regional Circles";
+    [Parameter] public Dictionary<string, Dictionary<string, bool>>? Circles { get; set; }
+    [Parameter] public Dictionary<string, Dictionary<string, bool>>? ActiveCircles { get => Circles; set => Circles = value; }
+    [Parameter] public Dictionary<string, int>? AllyCounts { get; set; }
+    [Parameter] public Dictionary<string, int>? CircleAllyCounts { get => AllyCounts; set => AllyCounts = value; }
+    [Parameter] public EventCallback OnChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private bool IsCircleActive(string region, string circleType)
+    {
+        if (Circles != null && Circles.TryGetValue(region, out var dict))
+        {
+            return dict.GetValueOrDefault(circleType, false);
+        }
+        return false;
+    }
+
+    private int GetAllyCount(string region)
+    {
+        if (AllyCounts != null && AllyCounts.TryGetValue(region, out int count))
+        {
+            return Math.Clamp(count, 1, 3);
+        }
+        return 1;
+    }
+
+    private int GetActiveCirclesCount()
+    {
+        if (Circles == null) return 0;
+        return Circles.Values.Sum(d => d.Values.Count(v => v));
+    }
+
+    private async Task ToggleCircle(string region, string circleType)
+    {
+        if (Circles != null)
+        {
+            if (!Circles.ContainsKey(region))
+            {
+                Circles[region] = new Dictionary<string, bool>
+                {
+                    ["physical"] = false,
+                    ["special"] = false,
+                    ["defensive"] = false
+                };
+            }
+            Circles[region][circleType] = !Circles[region].GetValueOrDefault(circleType, false);
+            await OnChanged.InvokeAsync();
+        }
+    }
+
+    private async Task SetAllyCount(string region, int count)
+    {
+        if (AllyCounts != null)
+        {
+            AllyCounts[region] = Math.Clamp(count, 1, 3);
+            await OnChanged.InvokeAsync();
+        }
+    }
+
+    private async Task ClearAll()
+    {
+        if (Circles != null)
+        {
+            foreach (var r in CombatantState.CircleRegions)
+            {
+                if (Circles.ContainsKey(r))
+                {
+                    Circles[r]["physical"] = false;
+                    Circles[r]["special"] = false;
+                    Circles[r]["defensive"] = false;
+                }
+            }
+            await OnChanged.InvokeAsync();
+        }
+    }
+}

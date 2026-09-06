@@ -16,10 +16,13 @@ public class TeamBattleState
     // Allied Team Side Effects
     public bool AlliedPhysicalDamageReduction { get; set; }
     public bool AlliedSpecialDamageReduction { get; set; }
+    public bool AlliedMoveGaugeAccel { get; set; }
+    public bool Cheer { get; set; }
 
     // Enemy Opponents Side Effects
     public bool EnemyPhysicalDamageReduction { get; set; }
     public bool EnemySpecialDamageReduction { get; set; }
+    public bool EnemyMoveGaugeAccel { get; set; }
     public string EnemyDamageField { get; set; } = string.Empty;
 
     public FieldState Field { get; set; } = new();
@@ -27,6 +30,70 @@ public class TeamBattleState
     public string SelectedLeagueId { get; set; } = "circuit_1";
     public string SelectedFightId { get; set; } = "circuit_1_falkner";
     public StageFight? ActiveFight { get; set; }
+
+    public string TeamGearPreset { get; set; } = "4star";
+    public Dictionary<string, int> TeamGear { get; set; } = new();
+    public int TeamGearMoveBoost { get; set; }
+    public int TeamGearSyncBoost { get; set; }
+
+    public void ApplyTeamGearPreset(string preset)
+    {
+        TeamGearPreset = preset;
+        switch (preset.ToLowerInvariant())
+        {
+            case "none":
+                foreach (var s in CombatantState.StatLabels) TeamGear[s] = 0;
+                TeamGearMoveBoost = 0;
+                TeamGearSyncBoost = 0;
+                break;
+            case "3star":
+                TeamGear["hp"] = 70;
+                TeamGear["atk"] = 50;
+                TeamGear["def"] = 20;
+                TeamGear["spa"] = 50;
+                TeamGear["spd"] = 20;
+                TeamGear["spe"] = 20;
+                TeamGearMoveBoost = 0;
+                TeamGearSyncBoost = 0;
+                break;
+            case "4star":
+                TeamGear["hp"] = 100;
+                TeamGear["atk"] = 80;
+                TeamGear["def"] = 40;
+                TeamGear["spa"] = 80;
+                TeamGear["spd"] = 40;
+                TeamGear["spe"] = 40;
+                TeamGearMoveBoost = 0;
+                TeamGearSyncBoost = 0;
+                break;
+            case "skill":
+                if (TeamGear.Values.All(v => v == 0))
+                {
+                    TeamGear["hp"] = 100;
+                    TeamGear["atk"] = 80;
+                    TeamGear["def"] = 40;
+                    TeamGear["spa"] = 80;
+                    TeamGear["spd"] = 40;
+                    TeamGear["spe"] = 40;
+                }
+                break;
+        }
+        SyncTeamGearToAllies();
+    }
+
+    public void SyncTeamGearToAllies()
+    {
+        foreach (var ally in Allies)
+        {
+            ally.GearPreset = TeamGearPreset;
+            foreach (var s in CombatantState.StatLabels)
+            {
+                ally.Gear[s] = TeamGear.GetValueOrDefault(s, 0);
+            }
+            ally.GearMoveBoost = TeamGearMoveBoost;
+            ally.GearSyncBoost = TeamGearSyncBoost;
+        }
+    }
 
     public TeamBattleState()
     {
@@ -60,6 +127,8 @@ public class TeamBattleState
             };
             TeamCircleAllyCounts[r] = 1;
         }
+
+        ApplyTeamGearPreset("4star");
     }
 
     public Dictionary<string, Dictionary<string, bool>> TeamCircles { get; set; } = new();

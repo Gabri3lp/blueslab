@@ -228,3 +228,62 @@ input.form-control:focus {
     -webkit-appearance: none !important;
     margin: 0 !important;
 }
+
+/* Damage Roll Hover Popover */
+.damage-roll-hover-wrapper {
+    cursor: help;
+    position: relative;
+    display: inline-block;
+}
+.damage-roll-hover-wrapper .damage-roll-popover {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1070;
+    min-width: 250px;
+    max-width: 320px;
+    pointer-events: none;
+    background-color: #1a222d !important;
+    border: 1px solid #4a5568 !important;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.7);
+}
+.damage-roll-hover-wrapper .damage-roll-popover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1a222d transparent transparent transparent;
+}
+.damage-roll-hover-wrapper:hover .damage-roll-popover {
+    display: block;
+    animation: fadeIn 0.15s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, 4px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* Collapsible Modifier Details */
+.damage-breakdown-details summary {
+    user-select: none;
+    transition: all 0.2s ease;
+}
+.damage-breakdown-details summary::-webkit-details-marker {
+    display: none;
+}
+.damage-breakdown-details summary::marker {
+    display: none;
+}
+.damage-breakdown-details .details-chevron {
+    transition: transform 0.2s ease;
+}
+.damage-breakdown-details[open] .details-chevron {
+    transform: rotate(180deg);
+}

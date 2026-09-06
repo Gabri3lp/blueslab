@@ -291,13 +291,33 @@
                                 </button>
                             </div>
 
-                            <!-- Battle Circles Button -->
-                            @{
-                                var teamRegions = GetTeamCircleRegions();
-                            }
+                            <!-- Cheer & Move Gauge Accel -->
                             <div class="d-flex align-items-center gap-1">
-                                <button class="btn btn-outline-info btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.72rem; height: 24px;" @onclick="() => _showCirclesPanel = !_showCirclesPanel">
-                                    <i class="bi bi-record-circle"></i> @Loc.T("circles", "Circles") @(State.GetActiveCirclesCount() > 0 ? $"({State.GetActiveCirclesCount()})" : "")
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.Cheer ? "btn-danger fw-bold" : "btn-outline-secondary text-light")"
+                                        style="font-size: 0.72rem; height: 24px;"
+                                        title="@Loc.T("cheer", "Cheer (+50% Move & Sync Power)")"
+                                        @onclick="() => State.Cheer = !State.Cheer">
+                                    <i class="bi bi-megaphone-fill"></i>
+                                    <span>@Loc.T("cheer", "Cheer (+50%)")</span>
+                                </button>
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.AlliedMoveGaugeAccel ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                        style="font-size: 0.72rem; height: 24px;"
+                                        title="@Loc.T("move_gauge_accel", "Move Gauge Acceleration")"
+                                        @onclick="() => State.AlliedMoveGaugeAccel = !State.AlliedMoveGaugeAccel">
+                                    <i class="bi bi-lightning-charge-fill"></i>
+                                    <span>@Loc.T("move_gauge_accel", "Gauge Accel")</span>
+                                </button>
+                            </div>
+
+                            <!-- Team Gear Button -->
+                            <button class="btn btn-outline-warning btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.72rem; height: 24px;" @onclick="() => _showTeamGearModal = true">
+                                <i class="bi bi-backpack2"></i> @Loc.T("gears", "Gear"): @GetTeamGearPresetLabel()
+                            </button>
+
+                            <!-- Battle Circles Modal Button -->
+                            <div class="d-flex align-items-center gap-1">
+                                <button class="btn btn-outline-info btn-sm py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.72rem; height: 24px;" @onclick="() => _showCircleModal = true">
+                                    <i class="bi bi-circle-square"></i> @Loc.T("regional_circles", "Circles") @(State.GetActiveCirclesCount() > 0 ? $"({State.GetActiveCirclesCount()})" : "")
                                 </button>
                                 @if (State.GetActiveCirclesCount() > 0)
                                 {
@@ -313,80 +333,33 @@
                     @if (State.GetActiveCirclesCount() > 0)
                     {
                         <div class="d-flex flex-wrap gap-1 align-items-center mt-2 pt-2 border-top border-secondary border-opacity-50">
-                            @foreach (var r in teamRegions)
+                            <span class="small text-info fw-bold d-flex align-items-center gap-1" style="font-size: 0.72rem;">
+                                <i class="bi bi-circle-square"></i> @Loc.T("regional_circles", "Circles"):
+                            </span>
+                            @foreach (var r in CombatantState.CircleRegions)
                             {
                                 int allies = State.GetCircleBuffLevel(r);
                                 if (State.IsCircleActive(r, "physical"))
                                 {
-                                    <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
+                                    <span class="badge bg-danger text-light d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
                                         @r @Loc.T("circle_phys", "Phys") (+@(10 + 10 * allies)%)
                                         <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "physical")'></i>
                                     </span>
                                 }
                                 if (State.IsCircleActive(r, "special"))
                                 {
-                                    <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
+                                    <span class="badge bg-primary text-light d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
                                         @r @Loc.T("circle_spec", "Spec") (+@(10 + 10 * allies)%)
                                         <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "special")'></i>
                                     </span>
                                 }
                                 if (State.IsCircleActive(r, "defensive"))
                                 {
-                                    <span class="badge bg-info text-dark d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
+                                    <span class="badge bg-success text-light d-inline-flex align-items-center gap-1 shadow-sm" style="font-size: 0.72rem;">
                                         @r @Loc.T("circle_def", "Def") (+@(5 + 5 * allies)%)
                                         <i class="bi bi-x-circle-fill opacity-75 ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick='() => State.ToggleCircle(r, "defensive")'></i>
                                     </span>
                                 }
-                            }
-                        </div>
-                    }
-
-                    <!-- Expandable Circles Selector Panel -->
-                    @if (_showCirclesPanel)
-                    {
-                        <div class="mt-2 pt-2 border-top border-secondary border-opacity-50 bg-black bg-opacity-25 p-2 rounded">
-                            @if (teamRegions.Count == 0)
-                            {
-                                <div class="text-muted small py-1">
-                                    <i class="bi bi-info-circle me-1"></i>No eligible regions on team to place Circles. Add sync pairs from Kanto, Johto, Hoenn, etc.
-                                </div>
-                            }
-                            else
-                            {
-                                if (!teamRegions.Contains(_selectedCircleRegion))
-                                {
-                                    _selectedCircleRegion = teamRegions[0];
-                                }
-                                int matchingAllies = State.GetMatchingRegionAllies(_selectedCircleRegion);
-                                int autoBuffLvl = State.GetCircleBuffLevel(_selectedCircleRegion);
-                                <div class="d-flex flex-wrap align-items-center gap-2">
-                                    <span class="small text-warning fw-bold text-uppercase" style="font-size: 0.72rem;">@Loc.T("themes", "Region"):</span>
-                                    <select class="form-select form-select-sm bg-dark text-light border-secondary py-0" style="width: 110px; font-size: 0.72rem; height: 24px;" @bind="_selectedCircleRegion" @bind:after="StateHasChanged">
-                                        @foreach (var r in teamRegions)
-                                        {
-                                            <option value="@r">@r</option>
-                                        }
-                                    </select>
-
-                                    <div class="d-flex flex-wrap align-items-center gap-1">
-                                        <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "physical") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
-                                                @onclick='() => State.ToggleCircle(_selectedCircleRegion, "physical")'>
-                                            @Loc.T("circle_physical", "Physical") (@Loc.T("circle_buff", "Buff") @autoBuffLvl)
-                                        </button>
-                                        <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "special") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
-                                                @onclick='() => State.ToggleCircle(_selectedCircleRegion, "special")'>
-                                            @Loc.T("circle_special", "Special") (@Loc.T("circle_buff", "Buff") @autoBuffLvl)
-                                        </button>
-                                        <button class="btn btn-sm py-0 px-2 @(State.IsCircleActive(_selectedCircleRegion, "defensive") ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.72rem; height: 24px;"
-                                                @onclick='() => State.ToggleCircle(_selectedCircleRegion, "defensive")'>
-                                            @Loc.T("circle_defensive", "Defensive") (@Loc.T("circle_buff", "Buff") @autoBuffLvl)
-                                        </button>
-                                    </div>
-
-                                    <span class="badge bg-secondary text-light py-1 px-2 ms-auto" style="font-size: 0.7rem;">
-                                        Auto: <b>@matchingAllies</b> @(_selectedCircleRegion) &rarr; <b class="text-warning">Buff @autoBuffLvl</b>
-                                    </span>
-                                </div>
                             }
                         </div>
                     }
@@ -559,10 +532,11 @@
 
                                         <!-- Stat Stages Dropdowns (-6 to +6) -->
                                         <div class="bg-black bg-opacity-25 p-1 rounded border border-secondary mb-1">
-                                            <div class="row row-cols-3 g-1">
-                                                @foreach (var stat in new[] { "atk", "def", "spa", "spd", "spe", "crit" })
+                                            <div class="row row-cols-4 g-1">
+                                                @foreach (var stat in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva", "crit" })
                                                 {
-                                                    int val = ally.Stages.GetValueOrDefault(stat, stat == "crit" ? 3 : 6);
+                                                    int defaultVal = stat == "crit" ? 3 : ((stat == "acc" || stat == "eva") ? 0 : 6);
+                                                    int val = ally.Stages.GetValueOrDefault(stat, defaultVal);
                                                     int maxStage = stat == "crit" ? 3 : 6;
                                                     int minStage = stat == "crit" ? 0 : -6;
                                                     <div class="col">
@@ -668,6 +642,13 @@
                                         @onclick="() => State.EnemySpecialDamageReduction = !State.EnemySpecialDamageReduction">
                                     <img src="img/battle/STAT_008R.png" alt="Spec" style="height: 14px; width: 14px; object-fit: contain;" />
                                     <span>@Loc.T("screen_light_screen", "Light Screen")</span>
+                                </button>
+                                <button class="btn btn-sm py-0 px-2 d-inline-flex align-items-center gap-1 @(State.EnemyMoveGaugeAccel ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                        style="font-size: 0.72rem; height: 24px;"
+                                        title="@Loc.T("move_gauge_accel", "Move Gauge Acceleration")"
+                                        @onclick="() => State.EnemyMoveGaugeAccel = !State.EnemyMoveGaugeAccel">
+                                    <i class="bi bi-speedometer2"></i>
+                                    <span>@Loc.T("gauge_accel_short", "Gauge Accel")</span>
                                 </button>
                             </div>
 
@@ -807,10 +788,11 @@
                                                 <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.62rem; height: 18px;" @onclick="() => SetAllEnemyDebuffs(targetIndex, 0)">@Loc.T("reset_grid", "Reset 0")</button>
                                             </div>
                                         </div>
-                                        <div class="row row-cols-3 g-1">
-                                            @foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+                                        <div class="row row-cols-4 g-1">
+                                            @foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa", "acc", "eva" })
                                             {
-                                                int val = enemy.Stages.GetValueOrDefault(stat, -6);
+                                                int defaultVal = (stat == "acc" || stat == "eva") ? 0 : -6;
+                                                int val = enemy.Stages.GetValueOrDefault(stat, defaultVal);
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-between p-0 px-1 rounded bg-dark border border-secondary" style="height: 22px;">
                                                         <span class="text-light fw-bold text-uppercase flex-shrink-0" style="font-size: 0.65rem; min-width: 22px;">@stat</span>
@@ -1002,11 +984,30 @@
                                                         </div>
 
                                                         <!-- Damage & HP Damage Percentage Dealt -->
-                                                        <div class="d-flex align-items-baseline justify-content-center gap-1">
-                                                            <span class="fs-5 fw-bold @(isTargetedEnemy || teamResult.IsAoE ? "text-warning" : "text-secondary")">@dmg.AvgDamage.ToString("N0")</span>
-                                                            <span class="fw-bold @(isTargetedEnemy || teamResult.IsAoE ? (dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info")) : "text-muted")" style="font-size: 0.95rem;">
-                                                                (@dmg.AvgHpPercent.ToString("0.0")%)
-                                                            </span>
+                                                        <div class="damage-roll-hover-wrapper d-inline-block">
+                                                            <div class="d-flex align-items-baseline justify-content-center gap-1 cursor-pointer">
+                                                                <span class="fs-5 fw-bold @(isTargetedEnemy || teamResult.IsAoE ? "text-warning" : "text-secondary")">@dmg.AvgDamage.ToString("N0")</span>
+                                                                <span class="fw-bold @(isTargetedEnemy || teamResult.IsAoE ? (dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info")) : "text-muted")" style="font-size: 0.95rem;">
+                                                                    (@dmg.AvgHpPercent.ToString("0.0")%)
+                                                                </span>
+                                                            </div>
+                                                            <div class="damage-roll-popover">
+                                                                <div class="damage-roll-title">
+                                                                    <i class="bi bi-dice-5-fill text-warning me-1"></i>@Loc.T("damage_rolls", "Damage Rolls") @(dmg.IsCritical ? "(Crit)" : "")
+                                                                </div>
+                                                                <table class="damage-roll-table">
+                                                                    <tbody>
+                                                                        @foreach (var roll in dmg.GetDetailedRolls(opp.ManualStats.GetValueOrDefault("hp", 2000)))
+                                                                        {
+                                                                            <tr>
+                                                                                <td class="roll-label">Roll @roll.RollIndex (@(roll.MultiplierFactor.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))x)</td>
+                                                                                <td class="roll-dmg">@roll.Damage.ToString("N0")</td>
+                                                                                <td class="roll-pct">@roll.HpPercent.ToString("0.0")%</td>
+                                                                            </tr>
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
                                                         </div>
 
                                                         <!-- Min - Max Damage Range & Remaining HP -->
@@ -1052,14 +1053,26 @@
                                         </div>
 
                                         <!-- Breakdown Multiplier Pills for Active Target -->
-                                        <div class="d-flex flex-wrap gap-1 mt-2">
-                                            @foreach (var pill in teamResult.ActiveTargetDamage.Breakdown)
-                                            {
-                                                <span class="badge" style="background-color: @pill.Color; font-size: 0.7rem;">
-                                                    @pill.Label: @pill.Value
-                                                </span>
-                                            }
-                                        </div>
+                                        @if (teamResult.ActiveTargetDamage.Breakdown.Count > 0)
+                                        {
+                                            <details class="damage-breakdown-details mt-2">
+                                                <summary>
+                                                    <span class="d-inline-flex align-items-center gap-1">
+                                                        <i class="bi bi-funnel-fill text-info" style="font-size: 0.75rem;"></i>
+                                                        <span>@Loc.T("damage_modifiers", "Damage Modifiers") (@teamResult.ActiveTargetDamage.Breakdown.Count)</span>
+                                                    </span>
+                                                    <i class="bi bi-chevron-down details-chevron"></i>
+                                                </summary>
+                                                <div class="d-flex flex-wrap gap-1 mt-1">
+                                                    @foreach (var pill in teamResult.ActiveTargetDamage.Breakdown)
+                                                    {
+                                                        <span class="badge" style="background-color: @pill.Color; font-size: 0.7rem;">
+                                                            @pill.Label: @pill.Value
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </details>
+                                        }
 
                                         <!-- Stage Gimmick / Rules Warning (Purely Informational) -->
                                         @{
@@ -1149,11 +1162,30 @@
                                                             </div>
 
                                                             <!-- Damage & HP Damage Percentage Dealt -->
-                                                            <div class="d-flex align-items-baseline justify-content-center gap-1">
-                                                                <span class="fs-5 fw-bold @(isTargetedEnemy || teamResult.IsAoE ? "text-warning" : "text-secondary")">@dmg.AvgDamage.ToString("N0")</span>
-                                                                <span class="fw-bold @(isTargetedEnemy || teamResult.IsAoE ? (dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info")) : "text-muted")" style="font-size: 0.95rem;">
-                                                                    (@dmg.AvgHpPercent.ToString("0.0")%)
-                                                                </span>
+                                                            <div class="damage-roll-hover-wrapper d-inline-block">
+                                                                <div class="d-flex align-items-baseline justify-content-center gap-1 cursor-pointer">
+                                                                    <span class="fs-5 fw-bold @(isTargetedEnemy || teamResult.IsAoE ? "text-warning" : "text-secondary")">@dmg.AvgDamage.ToString("N0")</span>
+                                                                    <span class="fw-bold @(isTargetedEnemy || teamResult.IsAoE ? (dmg.AvgHpPercent >= 100 ? "text-danger" : (dmg.AvgHpPercent >= 50 ? "text-warning" : "text-info")) : "text-muted")" style="font-size: 0.95rem;">
+                                                                        (@dmg.AvgHpPercent.ToString("0.0")%)
+                                                                    </span>
+                                                                </div>
+                                                                <div class="damage-roll-popover">
+                                                                    <div class="damage-roll-title">
+                                                                        <i class="bi bi-dice-5-fill text-warning me-1"></i>@Loc.T("damage_rolls", "Damage Rolls") @(dmg.IsCritical ? "(Crit)" : "")
+                                                                    </div>
+                                                                    <table class="damage-roll-table">
+                                                                        <tbody>
+                                                                            @foreach (var roll in dmg.GetDetailedRolls(opp.ManualStats.GetValueOrDefault("hp", 2000)))
+                                                                            {
+                                                                                <tr>
+                                                                                    <td class="roll-label">Roll @roll.RollIndex (@(roll.MultiplierFactor.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture))x)</td>
+                                                                                    <td class="roll-dmg">@roll.Damage.ToString("N0")</td>
+                                                                                    <td class="roll-pct">@roll.HpPercent.ToString("0.0")%</td>
+                                                                                </tr>
+                                                                            }
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
 
                                                             <!-- Min - Max Damage Range & Remaining HP -->
@@ -1199,14 +1231,26 @@
                                             </div>
 
                                             <!-- Breakdown Multiplier Pills for Active Target -->
-                                            <div class="d-flex flex-wrap gap-1 mt-2">
-                                                @foreach (var pill in teamResult.ActiveTargetDamage.Breakdown)
-                                                {
-                                                    <span class="badge" style="background-color: @pill.Color; font-size: 0.7rem;">
-                                                        @pill.Label: @pill.Value
-                                                    </span>
-                                                }
-                                            </div>
+                                            @if (teamResult.ActiveTargetDamage.Breakdown.Count > 0)
+                                            {
+                                                <details class="damage-breakdown-details mt-2">
+                                                    <summary>
+                                                        <span class="d-inline-flex align-items-center gap-1">
+                                                            <i class="bi bi-funnel-fill text-info" style="font-size: 0.75rem;"></i>
+                                                            <span>@Loc.T("damage_modifiers", "Damage Modifiers") (@teamResult.ActiveTargetDamage.Breakdown.Count)</span>
+                                                        </span>
+                                                        <i class="bi bi-chevron-down details-chevron"></i>
+                                                    </summary>
+                                                    <div class="d-flex flex-wrap gap-1 mt-1">
+                                                        @foreach (var pill in teamResult.ActiveTargetDamage.Breakdown)
+                                                        {
+                                                            <span class="badge" style="background-color: @pill.Color; font-size: 0.7rem;">
+                                                                @pill.Label: @pill.Value
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                </details>
+                                            }
 
                                             <!-- Stage Gimmick / Rules Warning (Purely Informational) -->
                                             @{
@@ -1285,6 +1329,25 @@
                        State="State"
                        InitialTargetConfig="_compareTargetConfig"
                        Rules="_rules" />
+
+    <!-- Regional Circle Modal -->
+    <CircleModal @bind-IsOpen="_showCircleModal"
+                 ActiveCircles="State.TeamCircles"
+                 CircleAllyCounts="State.TeamCircleAllyCounts"
+                 OnChanged="StateHasChanged" />
+
+    <!-- Team Gear Modal -->
+    <GearModal @bind-IsOpen="_showTeamGearModal"
+               Preset="State.TeamGearPreset"
+               PresetChanged="(p) => { State.ApplyTeamGearPreset(p); StateHasChanged(); }"
+               GearStats="State.TeamGear"
+               MoveBoost="State.TeamGearMoveBoost"
+               MoveBoostChanged="(v) => { State.TeamGearMoveBoost = v; State.SyncTeamGearToAllies(); StateHasChanged(); }"
+               SyncBoost="State.TeamGearSyncBoost"
+               SyncBoostChanged="(v) => { State.TeamGearSyncBoost = v; State.SyncTeamGearToAllies(); StateHasChanged(); }"
+               ShowApplyToAll="true"
+               OnApplyToAllRequested="() => { State.SyncTeamGearToAllies(); StateHasChanged(); }"
+               OnChanged="() => { State.SyncTeamGearToAllies(); StateHasChanged(); }" />
 </div>
 
 @code {
@@ -1298,8 +1361,20 @@
 
     private bool _showPairPicker = false;
     private int _pickingSlot = 0;
-    private bool _showCirclesPanel = false;
-    private string _selectedCircleRegion = "Kanto";
+    private bool _showCircleModal = false;
+    private bool _showTeamGearModal = false;
+
+    private string GetTeamGearPresetLabel()
+    {
+        return State.TeamGearPreset switch
+        {
+            "none" => Loc.T("gear_preset_none", "None"),
+            "3star" => Loc.T("gear_preset_3star", "3★ Lv 15"),
+            "4star" => Loc.T("gear_preset_4star", "4★ Lv 15"),
+            "skill" => Loc.T("gear_preset_skill", "Skill / Custom"),
+            _ => Loc.T("gear_preset_none", "None")
+        };
+    }
 
     private bool _showGridModal = false;
     private int _gridModalSlot = 0;
@@ -1373,7 +1448,7 @@
     {
         if (targetIndex >= 0 && targetIndex < State.Enemies.Count)
         {
-            foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+            foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa", "acc", "eva" })
             {
                 State.Enemies[targetIndex].Stages[stat] = stage;
             }
@@ -1511,7 +1586,7 @@
             // Default stat stages
             foreach (var s in CombatantState.StageLabels)
             {
-                ally.Stages[s] = s == "crit" ? 3 : 6;
+                ally.Stages[s] = s == "crit" ? 3 : ((s == "acc" || s == "eva") ? 0 : 6);
             }
 
             // Initialize grid with standard free center cells (same as solo calculator)

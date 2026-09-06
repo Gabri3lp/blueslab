@@ -66,6 +66,8 @@ public class CombatantState
     public bool MoveGaugeAccel { get; set; }
     public bool HasSyncBuff { get; set; }
     public bool PrevMoveFailed { get; set; }
+    public bool Cheer { get; set; }
+    public bool ThemeSkillsActive { get; set; } = true;
 
     public bool IsCriticalMove { get; set; } = true;
     public int PhysicalBoostNext { get; set; }
@@ -77,7 +79,55 @@ public class CombatantState
     public bool SpecialDamageReduction { get; set; }
     public int SyncMoveBoostNext { get; set; }
 
+    public string GearPreset { get; set; } = "4star";
     public Dictionary<string, int> Gear { get; set; } = new();
+    public int GearMoveBoost { get; set; }
+    public int GearSyncBoost { get; set; }
+
+    public void ApplyGearPreset(string preset)
+    {
+        GearPreset = preset;
+        switch (preset.ToLowerInvariant())
+        {
+            case "none":
+                foreach (var s in StatLabels) Gear[s] = 0;
+                GearMoveBoost = 0;
+                GearSyncBoost = 0;
+                break;
+            case "3star":
+                Gear["hp"] = 70;
+                Gear["atk"] = 50;
+                Gear["def"] = 20;
+                Gear["spa"] = 50;
+                Gear["spd"] = 20;
+                Gear["spe"] = 20;
+                GearMoveBoost = 0;
+                GearSyncBoost = 0;
+                break;
+            case "4star":
+                Gear["hp"] = 100;
+                Gear["atk"] = 80;
+                Gear["def"] = 40;
+                Gear["spa"] = 80;
+                Gear["spd"] = 40;
+                Gear["spe"] = 40;
+                GearMoveBoost = 0;
+                GearSyncBoost = 0;
+                break;
+            case "skill":
+                if (Gear.Values.All(v => v == 0))
+                {
+                    Gear["hp"] = 100;
+                    Gear["atk"] = 80;
+                    Gear["def"] = 40;
+                    Gear["spa"] = 80;
+                    Gear["spd"] = 40;
+                    Gear["spe"] = 40;
+                }
+                break;
+        }
+    }
+
     public Dictionary<string, Dictionary<string, bool>> CircleActive { get; set; } = new();
     public Dictionary<string, int> CircleAllyCount { get; set; } = new();
     public Dictionary<string, int> MasterPassiveAllyCount { get; set; } = new();
@@ -102,10 +152,9 @@ public class CombatantState
         };
 
         foreach (var s in StageLabels)
-            ally.Stages[s] = s == "crit" ? 3 : 6;
+            ally.Stages[s] = s == "crit" ? 3 : (s == "acc" || s == "eva" ? 0 : 6);
 
-        foreach (var s in StatLabels)
-            ally.Gear[s] = 100;
+        ally.ApplyGearPreset("4star");
 
         foreach (var r in CircleRegions)
         {
@@ -160,7 +209,7 @@ public class CombatantState
         };
 
         foreach (var s in StageLabels)
-            enemy.Stages[s] = s == "crit" ? 0 : -6;
+            enemy.Stages[s] = s == "crit" ? 0 : (s == "acc" || s == "eva" ? 0 : -6);
 
         foreach (var t in AllTypes)
         {
@@ -189,6 +238,18 @@ public class FieldState
     public string Weather { get; set; } = string.Empty;
     public bool WeatherEx { get; set; }
     public int TargetCount { get; set; } = 3;
+    public bool MoveGaugeAccel { get; set; }
+    public bool Cheer { get; set; }
+}
+
+public class DamageRollItem
+{
+    public int RollNumber { get; set; }
+    public int RollIndex { get => RollNumber; set => RollNumber = value; }
+    public double Multiplier { get; set; }
+    public double MultiplierFactor { get => Multiplier; set => Multiplier = value; }
+    public int Damage { get; set; }
+    public double HpPercent { get; set; }
 }
 
 public class DamageResult
@@ -200,6 +261,7 @@ public class DamageResult
     public int DefenderStat { get; set; }
     public double StatRatio { get; set; }
     public double BattleMultiplier { get; set; }
+    public bool IsCritical { get; set; }
     public List<int> Rolls { get; set; } = new();
     public int MinDamage => Rolls.Count > 0 ? Rolls.First() : 0;
     public int AvgDamage => Rolls.Count > 0 ? (int)Math.Round(Rolls.Average()) : 0;
@@ -214,6 +276,31 @@ public class DamageResult
     public double MinRemainingHpPercent => Math.Max(0.0, 100.0 - MaxHpPercent);
     public double MaxRemainingHpPercent => Math.Max(0.0, 100.0 - MinHpPercent);
     public bool IsOHKO => TargetMaxHp > 0 && AvgDamage >= TargetMaxHp;
+
+    public List<DamageRollItem> GetDetailedRolls(int targetHp = 0)
+    {
+        var list = new List<DamageRollItem>();
+        if (Rolls == null || Rolls.Count == 0) return list;
+        int hp = targetHp > 0 ? targetHp : TargetMaxHp;
+
+        for (int i = 0; i < Rolls.Count; i++)
+        {
+            int rollNum = i + 1;
+            double factor = IsCritical
+                ? (1.35 + (i * 0.015)) // 135% to 150%
+                : (0.90 + (i * 0.01));  // 90% to 100%
+            int dmg = Rolls[i];
+            double hpPct = hp > 0 ? (double)dmg / hp * 100.0 : 0.0;
+            list.Add(new DamageRollItem
+            {
+                RollNumber = rollNum,
+                Multiplier = factor,
+                Damage = dmg,
+                HpPercent = hpPct
+            });
+        }
+        return list;
+    }
 }
 
 public class MultiplierPill

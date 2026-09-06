@@ -1,0 +1,190 @@
+﻿@using BluesLab.Models
+
+@if (IsOpen)
+{
+    <div class="modal-backdrop fade show" style="z-index: 1060;" @onclick="Close"></div>
+    <div class="modal d-block fade show" tabindex="-1" role="dialog" style="z-index: 1065;" @onclick="Close">
+        <div class="modal-dialog modal-md modal-dialog-centered" role="document" @onclick:stopPropagation="true">
+            <div class="modal-content bg-dark text-light border border-secondary shadow-lg">
+                <!-- Modal Header -->
+                <div class="modal-header border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-backpack2 text-warning fs-5"></i>
+                        <h6 class="modal-title fw-bold text-light mb-0">@Loc.T("gears", "Gear Configuration")</h6>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" aria-label="Close" @onclick="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body p-3">
+                    <!-- Presets Selector -->
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small fw-bold mb-1">@Loc.T("preset", "Preset"):</label>
+                        <div class="btn-group w-100" role="group">
+                            <button type="button"
+                                    class="btn btn-sm @(CurrentPreset == "none" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("none")'>
+                                @Loc.T("gear_preset_none", "None")
+                            </button>
+                            <button type="button"
+                                    class="btn btn-sm @(CurrentPreset == "3star" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("3star")'>
+                                @Loc.T("gear_preset_3star", "3★ (Lv. 15)")
+                            </button>
+                            <button type="button"
+                                    class="btn btn-sm @(CurrentPreset == "4star" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("4star")'>
+                                @Loc.T("gear_preset_4star", "4★ (Lv. 15)")
+                            </button>
+                            <button type="button"
+                                    class="btn btn-sm @(CurrentPreset == "skill" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("skill")'>
+                                @Loc.T("gear_preset_skill", "Skill / Custom")
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Flat Stats Grid -->
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small fw-bold mb-1">@Loc.T("stats", "Flat Stats Bonus"):</label>
+                        <div class="row row-cols-3 g-2">
+                            @foreach (var stat in CombatantState.StatLabels)
+                            {
+                                int val = GearStats != null ? GearStats.GetValueOrDefault(stat, 0) : 0;
+                                <div class="col">
+                                    <div class="p-1 px-2 rounded bg-black bg-opacity-30 border border-secondary border-opacity-60 d-flex align-items-center justify-content-between gap-1">
+                                        <span class="text-uppercase small fw-bold text-secondary" style="font-size: 0.72rem;">@stat</span>
+                                        <input type="number"
+                                               class="form-control form-control-sm bg-dark text-light border-secondary text-center py-0 px-1"
+                                               style="width: 55px; height: 26px; font-size: 0.8rem;"
+                                               min="0"
+                                               max="999"
+                                               value="@val"
+                                               @onchange="(e) => OnStatChange(stat, e)" />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Skill Gear Power Boosts -->
+                    <div class="p-2 rounded bg-black bg-opacity-30 border border-secondary border-opacity-60 mb-2">
+                        <div class="d-flex align-items-center gap-1 mb-2">
+                            <i class="bi bi-lightning-charge-fill text-warning"></i>
+                            <span class="small fw-bold text-light">@Loc.T("gear_preset_skill", "Skill Gear Additional Powerups")</span>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label class="small text-secondary mb-1" style="font-size: 0.72rem;">@Loc.T("gear_move_boost", "Move Power Boost") (%):</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="number"
+                                           class="form-control bg-dark text-light border-secondary text-center"
+                                           min="0"
+                                           max="100"
+                                           value="@MoveBoost"
+                                           @onchange="OnMoveBoostInput" />
+                                    <span class="input-group-text bg-secondary bg-opacity-25 text-light border-secondary">%</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="small text-secondary mb-1" style="font-size: 0.72rem;">@Loc.T("gear_sync_boost", "Sync Power Boost") (%):</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="number"
+                                           class="form-control bg-dark text-light border-secondary text-center"
+                                           min="0"
+                                           max="100"
+                                           value="@SyncBoost"
+                                           @onchange="OnSyncBoostInput" />
+                                    <span class="input-group-text bg-secondary bg-opacity-25 text-light border-secondary">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (ShowApplyToAll)
+                    {
+                        <div class="mt-2 text-end">
+                            <button type="button" class="btn btn-sm btn-outline-info" @onclick="ApplyToAllAllies">
+                                <i class="bi bi-people-fill me-1"></i>@Loc.T("apply_to_all_allies", "Apply to All Allies")
+                            </button>
+                        </div>
+                    }
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer border-secondary py-2 px-3 bg-black bg-opacity-40 d-flex justify-content-end align-items-center">
+                    <button type="button" class="btn btn-primary btn-sm fw-bold px-3" @onclick="Close">
+                        <i class="bi bi-check-lg me-1"></i>@Loc.T("done", "Done")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsOpen { get; set; }
+    [Parameter] public EventCallback<bool> IsOpenChanged { get; set; }
+    [Parameter] public string CurrentPreset { get; set; } = "4star";
+    [Parameter] public string Preset { get => CurrentPreset; set => CurrentPreset = value; }
+    [Parameter] public EventCallback<string> CurrentPresetChanged { get; set; }
+    [Parameter] public EventCallback<string> PresetChanged { get => CurrentPresetChanged; set => CurrentPresetChanged = value; }
+    [Parameter] public Dictionary<string, int>? GearStats { get; set; }
+    [Parameter] public int MoveBoost { get; set; }
+    [Parameter] public EventCallback<int> MoveBoostChanged { get; set; }
+    [Parameter] public int SyncBoost { get; set; }
+    [Parameter] public EventCallback<int> SyncBoostChanged { get; set; }
+    [Parameter] public bool ShowApplyToAll { get; set; }
+    [Parameter] public EventCallback OnApplyToAll { get; set; }
+    [Parameter] public EventCallback OnApplyToAllRequested { get => OnApplyToAll; set => OnApplyToAll = value; }
+    [Parameter] public EventCallback OnChanged { get; set; }
+
+    private async Task Close()
+    {
+        IsOpen = false;
+        await IsOpenChanged.InvokeAsync(false);
+    }
+
+    private async Task SelectPreset(string preset)
+    {
+        CurrentPreset = preset;
+        await CurrentPresetChanged.InvokeAsync(preset);
+        await OnChanged.InvokeAsync();
+    }
+
+    private async Task OnStatChange(string stat, ChangeEventArgs e)
+    {
+        if (GearStats != null && int.TryParse(e.Value?.ToString(), out int val))
+        {
+            GearStats[stat] = Math.Clamp(val, 0, 999);
+            CurrentPreset = "skill";
+            await CurrentPresetChanged.InvokeAsync("skill");
+            await OnChanged.InvokeAsync();
+        }
+    }
+
+    private async Task OnMoveBoostInput(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            MoveBoost = Math.Clamp(val, 0, 100);
+            await MoveBoostChanged.InvokeAsync(MoveBoost);
+            await OnChanged.InvokeAsync();
+        }
+    }
+
+    private async Task OnSyncBoostInput(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            SyncBoost = Math.Clamp(val, 0, 100);
+            await SyncBoostChanged.InvokeAsync(SyncBoost);
+            await OnChanged.InvokeAsync();
+        }
+    }
+
+    private async Task ApplyToAllAllies()
+    {
+        await OnApplyToAll.InvokeAsync();
+    }
+}

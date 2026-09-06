@@ -79,10 +79,11 @@
                             </div>
                         </div>
                         <div class="card-body p-2" style="opacity: @(_applyDebuffs ? "1" : "0.4"); pointer-events: @(_applyDebuffs ? "auto" : "none");">
-                            <div class="row row-cols-5 g-1">
-                                @foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+                            <div class="row row-cols-2 row-cols-sm-4 row-cols-lg-7 g-1">
+                                @foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa", "acc", "eva" })
                                 {
-                                    int val = _stages.GetValueOrDefault(stat, -6);
+                                    int defaultVal = (stat == "acc" || stat == "eva") ? 0 : -6;
+                                    int val = _stages.GetValueOrDefault(stat, defaultVal);
                                     <div class="col">
                                         <div class="p-1 rounded bg-black bg-opacity-25 border border-secondary text-center">
                                             <span class="d-block text-light fw-bold text-uppercase mb-1" style="font-size: 0.68rem;">@stat</span>
@@ -424,9 +425,10 @@
         var enemy = Enemies[index];
 
         _stages = new Dictionary<string, int>();
-        foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+        foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa", "acc", "eva" })
         {
-            _stages[stat] = enemy.Stages.GetValueOrDefault(stat, -6);
+            int defaultVal = (stat == "acc" || stat == "eva") ? 0 : -6;
+            _stages[stat] = enemy.Stages.GetValueOrDefault(stat, defaultVal);
         }
 
         _mitDef = enemy.Mitigations.GetValueOrDefault("def", 5);
@@ -458,7 +460,7 @@
 
     private void SetAllDebuffs(int stage)
     {
-        foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+        foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa", "acc", "eva" })
         {
             _stages[stat] = stage;
         }
@@ -499,9 +501,10 @@
 
             if (_applyDebuffs)
             {
-                foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa" })
+                foreach (var stat in new[] { "def", "spd", "spe", "atk", "spa", "acc", "eva" })
                 {
-                    enemy.Stages[stat] = _stages.GetValueOrDefault(stat, -6);
+                    int defaultVal = (stat == "acc" || stat == "eva") ? 0 : -6;
+                    enemy.Stages[stat] = _stages.GetValueOrDefault(stat, defaultVal);
                 }
             }
 

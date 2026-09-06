@@ -192,6 +192,7 @@ public class DamageCalculatorService
         string role = "",
         int gear = 0,
         int gridStat = 0,
+        int themeBonus = 0,
         bool isBurned = false,
         bool ignoreBurnPenalty = false,
         int mitigation = 0,
@@ -211,7 +212,7 @@ public class DamageCalculatorService
                 baseVal += fb;
         }
 
-        int rawBase = baseVal + potential + exBonus;
+        int rawBase = baseVal + potential + exBonus + themeBonus;
         int afterMult;
         if (Math.Abs(formMult - 1.0) < 0.0001)
         {
@@ -253,6 +254,66 @@ public class DamageCalculatorService
         }
 
         return Math.Max(1, calculated);
+    }
+
+    public int GetThemeSkillBonus(
+        string stat,
+        CombatantState ally,
+        TeamBattleState? team,
+        List<MultiplierPill>? pills = null)
+    {
+        if (ally.Pair == null) return 0;
+        string s = stat.ToLowerInvariant().Trim();
+        if (s != "atk" && s != "spa" && s != "hp") return 0;
+
+        bool isAtkOrSpA = s == "atk" || s == "spa";
+        bool isHp = s == "hp";
+        string role = ally.Pair.Role ?? string.Empty;
+        bool isStrike = role.StartsWith("Strike", StringComparison.OrdinalIgnoreCase);
+        bool isSupport = role.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
+
+        int bonus = 0;
+        bool typeActive = false;
+        bool regionActive = false;
+
+        if (team != null)
+        {
+            int matchingType = team.Allies.Count(a => a.Pair != null && string.Equals(a.Pair.Type, ally.Pair.Type, StringComparison.OrdinalIgnoreCase));
+            typeActive = matchingType >= 2;
+
+            string? myRegion = TeamBattleState.GetPairRegion(ally.Pair);
+            if (!string.IsNullOrEmpty(myRegion))
+            {
+                int matchingRegion = team.Allies.Count(a => a.Pair != null && string.Equals(TeamBattleState.GetPairRegion(a.Pair), myRegion, StringComparison.OrdinalIgnoreCase));
+                regionActive = matchingRegion >= 2;
+            }
+        }
+        else
+        {
+            if (ally.ThemeSkillsActive)
+            {
+                typeActive = true;
+                regionActive = true;
+            }
+        }
+
+        if (typeActive)
+        {
+            if (isAtkOrSpA) bonus += isStrike ? 60 : 30;
+            if (isHp) bonus += isSupport ? 60 : 30;
+        }
+        if (regionActive)
+        {
+            if (isAtkOrSpA) bonus += isStrike ? 16 : 12;
+            if (isHp) bonus += isSupport ? 32 : 24;
+        }
+
+        if (bonus > 0 && pills != null && isAtkOrSpA)
+        {
+            pills.Add(new MultiplierPill { Label = "Theme Skills", Value = $"+{bonus} {stat.ToUpper()}", Color = "#16a085" });
+        }
+
+        return bonus;
     }
 
     public double GetInBattleStatMultiplier(
@@ -453,10 +514,20 @@ public class DamageCalculatorService
         // Set shared sync boosts
         attacker.SyncBoosts = team.AllySyncBuffs;
 
-        // Sync shared MoveGaugeAccel
-        if (team.Allies.Any(a => a.MoveGaugeAccel))
+        // Sync shared MoveGaugeAccel & Cheer
+        attacker.MoveGaugeAccel = team.AlliedMoveGaugeAccel || team.Allies.Any(a => a.MoveGaugeAccel);
+        attacker.Cheer = team.Cheer;
+
+        // Sync Team Gear if configured
+        if (team.TeamGear != null && team.TeamGear.Count > 0)
         {
-            attacker.MoveGaugeAccel = true;
+            attacker.GearPreset = team.TeamGearPreset;
+            foreach (var kv in team.TeamGear)
+            {
+                attacker.Gear[kv.Key] = kv.Value;
+            }
+            attacker.GearMoveBoost = team.TeamGearMoveBoost;
+            attacker.GearSyncBoost = team.TeamGearSyncBoost;
         }
 
         // Sync shared Circles
@@ -464,19 +535,22 @@ public class DamageCalculatorService
         attacker.CircleActive = team.TeamCircles;
         attacker.CircleAllyCount = team.TeamCircleAllyCounts;
 
-        // Sync shared allied screens
+        // Sync shared allied screens, cheer & move gauge accel
         foreach (var ally in team.Allies)
         {
             ally.PhysicalDamageReduction = team.AlliedPhysicalDamageReduction;
             ally.SpecialDamageReduction = team.AlliedSpecialDamageReduction;
+            ally.Cheer = team.Cheer;
+            ally.MoveGaugeAccel = team.AlliedMoveGaugeAccel;
         }
 
-        // Apply enemy team sync buffs, screens, and damage fields
+        // Apply enemy team sync buffs, screens, move gauge accel, and damage fields
         foreach (var enemy in team.Enemies)
         {
             enemy.SyncBoosts = team.EnemySyncBuffs;
             enemy.PhysicalDamageReduction = team.EnemyPhysicalDamageReduction;
             enemy.SpecialDamageReduction = team.EnemySpecialDamageReduction;
+            enemy.MoveGaugeAccel = team.EnemyMoveGaugeAccel;
             enemy.DamageField = team.EnemyDamageField;
         }
 
@@ -837,7 +911,19 @@ public class DamageCalculatorService
             boostNextPercentage += ally.SyncMoveBoostNext * 10;
         }
 
-        int totalPowerupPercent = 100 + passivePercentage + masterPercentage + boostNextPercentage;
+        int cheerPercentage = ally.Cheer ? 50 : 0;
+        if (cheerPercentage > 0)
+        {
+            pills.Add(new MultiplierPill { Label = "Cheer", Value = "+50%", Color = "#e84393" });
+        }
+
+        int gearBoostPercentage = move.IsSync ? ally.GearSyncBoost : ally.GearMoveBoost;
+        if (gearBoostPercentage > 0)
+        {
+            pills.Add(new MultiplierPill { Label = move.IsSync ? "Gear Sync Boost" : "Gear Move Boost", Value = $"+{gearBoostPercentage}%", Color = "#e67e22" });
+        }
+
+        int totalPowerupPercent = 100 + passivePercentage + masterPercentage + boostNextPercentage + cheerPercentage + gearBoostPercentage;
 
         // Innate Move Scaling (move_scaling.json, base 1000)
         int innateModifier1000 = (int)Math.Round(EvalMoveScaling(move, ally, enemy, field, rules, pills) * 1000);
@@ -902,6 +988,8 @@ public class DamageCalculatorService
 
         double inBattleAtkMult = GetInBattleStatMultiplier(atkStatKey, ally, field, activeGridCells, pills);
 
+        int themeBonus = GetThemeSkillBonus(atkStatKey, ally, team, pills);
+
         int attackerStat = CalcTotalStat(
             atkStatKey,
             jsonAtkStat,
@@ -915,6 +1003,7 @@ public class DamageCalculatorService
             role: pair.Role,
             gear: ally.Gear.GetValueOrDefault(atkStatKey, 0),
             gridStat: gridAtkStat,
+            themeBonus: themeBonus,
             isBurned: ally.StatusCondition == "burned",
             ignoreBurnPenalty: hasBurnUseless,
             critOffense: ally.IsCriticalMove
@@ -1264,6 +1353,7 @@ public class DamageCalculatorService
             DefenderStat = defenderStat,
             StatRatio = (double)attackerStat / (defenderStat * 2.0),
             BattleMultiplier = (ne / attackerStat) / (he / (defenderStat * 2.0)),
+            IsCritical = ally.IsCriticalMove,
             Rolls = rolls,
             Breakdown = pills,
             TargetMaxHp = enemy.ManualStats.GetValueOrDefault("hp", 0)
