@@ -16,7 +16,7 @@
             <div class="d-flex align-items-center gap-2">
                 <i class="bi bi-trophy-fill text-warning fs-5"></i>
                 <span class="fw-bold text-light fs-5">@Loc.T("team_battle_simulator", "3v3 Team Battle Simulator")</span>
-                <span class="badge bg-danger">@(_leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId)?.Name ?? (State.ActiveFight?.Title ?? "Pasio Gym Battle"))</span>
+                <span class="badge bg-danger">@(State.ActiveFight != null ? State.ActiveFight.Title : (_leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId)?.Name ?? "Pasio Battle"))</span>
             </div>
 
             <!-- Team Actions: My Teams, Save, Share, Compare, Reset -->
@@ -62,36 +62,107 @@
         </div>
 
         <div class="card-body p-3">
-            <!-- Stage Selection -->
-            <div class="row g-2 align-items-center mb-2">
-                <div class="col-md-6">
-                    <label class="form-label small text-muted mb-1"><i class="bi bi-diagram-3-fill text-warning me-1"></i> @Loc.T("circuit_tier", "Circuit / Tier:")</label>
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedLeagueId" @onchange="OnLeagueChanged">
-                        @foreach (var l in _leagues)
-                        {
-                            <option value="@l.LeagueId">@l.Name</option>
-                        }
-                    </select>
-                </div>
+            <!-- Stage Category Tabs & Selection -->
+            <div class="d-flex align-items-center gap-2 mb-2 pb-2 border-bottom border-secondary border-opacity-50">
+                <button type="button" class="btn btn-sm @(_stageCategory == "gym" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                        @onclick='() => SetStageCategory("gym")'>
+                    <i class="bi bi-shield-shaded me-1"></i>Pasio Gym
+                </button>
+                <button type="button" class="btn btn-sm @(_stageCategory == "tower" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                        @onclick='() => SetStageCategory("tower")'>
+                    <i class="bi bi-building me-1"></i>Type Towers
+                </button>
+                <button type="button" class="btn btn-sm @(_stageCategory == "ultimate" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                        @onclick='() => SetStageCategory("ultimate")'>
+                    <i class="bi bi-lightning-charge-fill me-1"></i>Ultimate Battles
+                </button>
+            </div>
 
-                <div class="col-md-6">
-                    <label class="form-label small text-muted mb-1"><i class="bi bi-swords text-danger me-1"></i> @Loc.T("battle", "Battle:")</label>
-                    <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedFightId" @onchange="OnFightChanged">
-                        @{
-                            var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
-                            if (currentLeague != null)
+            @if (_stageCategory == "gym")
+            {
+                <div class="row g-2 align-items-center mb-2">
+                    <div class="col-md-6">
+                        <label class="form-label small text-muted mb-1"><i class="bi bi-diagram-3-fill text-warning me-1"></i> @Loc.T("circuit_tier", "Circuit / Tier:")</label>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedLeagueId" @onchange="OnLeagueChanged">
+                            @foreach (var l in _leagues)
                             {
-                                @foreach (var f in currentLeague.Fights)
+                                <option value="@l.LeagueId">@l.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label small text-muted mb-1"><i class="bi bi-swords text-danger me-1"></i> @Loc.T("battle", "Battle:")</label>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedFightId" @onchange="OnFightChanged">
+                            @{
+                                var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
+                                if (currentLeague != null)
+                                {
+                                    @foreach (var f in currentLeague.Fights)
+                                    {
+                                        <option value="@f.FightId">@f.Title</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            }
+            else if (_stageCategory == "tower")
+            {
+                <div class="row g-2 align-items-center mb-2">
+                    <div class="col-md-6">
+                        <label class="form-label small text-muted mb-1"><i class="bi bi-fire text-warning me-1"></i> Type Tower:</label>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@_selectedTowerType" @onchange="OnTowerTypeChanged">
+                            @foreach (var t in _towerStages)
+                            {
+                                <option value="@t.Type">@Loc.GetTypeName(t.Type) Tower</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label small text-muted mb-1"><i class="bi bi-layer-forward text-info me-1"></i> Floor:</label>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@_selectedTowerFloor" @onchange="OnTowerFloorChanged">
+                            @{
+                                var towerObj = _towerStages.FirstOrDefault(t => t.Type.Equals(_selectedTowerType, StringComparison.OrdinalIgnoreCase));
+                                if (towerObj != null)
+                                {
+                                    @foreach (var fl in towerObj.Floors)
+                                    {
+                                        <option value="@fl.Floor">@fl.FloorName - @fl.Fight.Title</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            }
+            else if (_stageCategory == "ultimate")
+            {
+                <div class="row g-2 align-items-center mb-2">
+                    <div class="col-12">
+                        <label class="form-label small text-muted mb-1"><i class="bi bi-lightning-charge text-danger me-1"></i> Ultimate Battle Stage:</label>
+                        @if (_ultimateStages.Count > 0)
+                        {
+                            <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@State.SelectedFightId" @onchange="OnUltimateStageChanged">
+                                @foreach (var f in _ultimateStages)
                                 {
                                     <option value="@f.FightId">@f.Title</option>
                                 }
-                            }
+                            </select>
                         }
-                    </select>
+                        else
+                        {
+                            <div class="p-2 rounded bg-black bg-opacity-25 border border-secondary border-opacity-50 text-muted small">
+                                <i class="bi bi-info-circle me-1"></i> No Ultimate Battles added yet. Stages will appear here once configured in <code>ultimate_stages.json</code>.
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
 
-            <!-- Active Gym Stage Rules & Themes Card -->
+            <!-- Active Stage Rules & Themes Card -->
             @if (State.ActiveFight != null)
             {
                 <div class="p-2 mb-2 rounded bg-black bg-opacity-30 border border-secondary border-opacity-75 small">
@@ -1352,8 +1423,14 @@
     private TeamBattleState State => SharedState ?? _localState;
 
     private List<StageLeague> _leagues = new();
+    private List<TowerStageType> _towerStages = new();
+    private List<StageFight> _ultimateStages = new();
     private List<PairManifestItem> _allManifest = new();
     private DamageRulesDocument _rules = new();
+
+    private string _stageCategory = "gym"; // "gym", "tower", "ultimate"
+    private string _selectedTowerType = "Normal";
+    private int _selectedTowerFloor = 32;
 
     private bool _showPairPicker = false;
     private int _pickingSlot = 0;
@@ -1470,6 +1547,8 @@
         Loc.OnLanguageChanged += OnLanguageChangedHandler;
 
         _leagues = await StageSvc.GetLeaguesAsync();
+        _towerStages = await StageSvc.GetTowerStagesAsync();
+        _ultimateStages = await StageSvc.GetUltimateStagesAsync();
         _allManifest = await DataService.GetManifestAsync();
         _rules = await DataService.GetDamageRulesAsync();
 
@@ -1492,6 +1571,77 @@
         }
 
         await RefreshSavedTeamsCount();
+    }
+
+    private void SetStageCategory(string category)
+    {
+        _stageCategory = category;
+        if (category == "gym")
+        {
+            var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId) ?? _leagues.FirstOrDefault();
+            if (currentLeague != null)
+            {
+                State.SelectedLeagueId = currentLeague.LeagueId;
+                var fight = currentLeague.Fights.FirstOrDefault(f => f.FightId == State.SelectedFightId) ?? currentLeague.Fights.FirstOrDefault();
+                if (fight != null)
+                {
+                    State.SelectedFightId = fight.FightId;
+                    StageSvc.ApplyFightToEnemies(State, fight);
+                }
+            }
+        }
+        else if (category == "tower")
+        {
+            ApplyCurrentTowerStage();
+        }
+        else if (category == "ultimate")
+        {
+            if (_ultimateStages.Count > 0)
+            {
+                var fight = _ultimateStages.FirstOrDefault(f => f.FightId == State.SelectedFightId) ?? _ultimateStages[0];
+                State.SelectedFightId = fight.FightId;
+                StageSvc.ApplyFightToEnemies(State, fight);
+            }
+        }
+        StateHasChanged();
+    }
+
+    private void OnTowerTypeChanged(ChangeEventArgs e)
+    {
+        _selectedTowerType = e.Value?.ToString() ?? "Normal";
+        ApplyCurrentTowerStage();
+    }
+
+    private void OnTowerFloorChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int floorNum))
+        {
+            _selectedTowerFloor = floorNum;
+            ApplyCurrentTowerStage();
+        }
+    }
+
+    private void ApplyCurrentTowerStage()
+    {
+        var towerObj = _towerStages.FirstOrDefault(t => t.Type.Equals(_selectedTowerType, StringComparison.OrdinalIgnoreCase)) ?? _towerStages.FirstOrDefault();
+        if (towerObj != null && towerObj.Floors.Count > 0)
+        {
+            var floorObj = towerObj.Floors.FirstOrDefault(fl => fl.Floor == _selectedTowerFloor) ?? towerObj.Floors[0];
+            _selectedTowerType = towerObj.Type;
+            _selectedTowerFloor = floorObj.Floor;
+            State.SelectedFightId = floorObj.Fight.FightId;
+            StageSvc.ApplyFightToEnemies(State, floorObj.Fight);
+        }
+    }
+
+    private void OnUltimateStageChanged(ChangeEventArgs e)
+    {
+        State.SelectedFightId = e.Value?.ToString() ?? "";
+        var fight = _ultimateStages.FirstOrDefault(f => f.FightId == State.SelectedFightId);
+        if (fight != null)
+        {
+            StageSvc.ApplyFightToEnemies(State, fight);
+        }
     }
 
     private void OpenPairPicker(int slot)

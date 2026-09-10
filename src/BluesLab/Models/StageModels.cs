@@ -76,3 +76,24 @@ public class StageOpponent
     [JsonPropertyName("spe")]
     public int Spe { get; set; } = 300;
 }
+
+public class TowerStageType
+{
+    [JsonPropertyName("type")]
+    public string Type { get; set; } = string.Empty;
+
+    [JsonPropertyName("floors")]
+    public List<TowerFloor> Floors { get; set; } = new();
+}
+
+public class TowerFloor
+{
+    [JsonPropertyName("floor")]
+    public int Floor { get; set; }
+
+    [JsonPropertyName("floorName")]
+    public string FloorName { get; set; } = string.Empty;
+
+    [JsonPropertyName("fight")]
+    public StageFight Fight { get; set; } = new();
+}

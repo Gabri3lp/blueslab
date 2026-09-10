@@ -13,20 +13,63 @@ public class StageService
         _http = http;
     }
 
+    private List<TowerStageType>? _towerStages;
+    private List<StageFight>? _ultimateStages;
+
     public async Task<List<StageLeague>> GetLeaguesAsync()
     {
         if (_leagues == null)
         {
             try
             {
-                _leagues = await _http.GetFromJsonAsync<List<StageLeague>>("data/stages_manifest.json") ?? new();
+                _leagues = await _http.GetFromJsonAsync<List<StageLeague>>($"data/gym_stages.json?v={DateTime.UtcNow.Ticks}") ?? new();
             }
             catch
             {
-                _leagues = new();
+                // Fallback to stages_manifest.json if gym_stages.json not found
+                try
+                {
+                    _leagues = await _http.GetFromJsonAsync<List<StageLeague>>($"data/stages_manifest.json?v={DateTime.UtcNow.Ticks}") ?? new();
+                }
+                catch
+                {
+                    _leagues = new();
+                }
             }
         }
         return _leagues;
+    }
+
+    public async Task<List<TowerStageType>> GetTowerStagesAsync()
+    {
+        if (_towerStages == null)
+        {
+            try
+            {
+                _towerStages = await _http.GetFromJsonAsync<List<TowerStageType>>($"data/tower_stages.json?v={DateTime.UtcNow.Ticks}") ?? new();
+            }
+            catch
+            {
+                _towerStages = new();
+            }
+        }
+        return _towerStages;
+    }
+
+    public async Task<List<StageFight>> GetUltimateStagesAsync()
+    {
+        if (_ultimateStages == null)
+        {
+            try
+            {
+                _ultimateStages = await _http.GetFromJsonAsync<List<StageFight>>($"data/ultimate_stages.json?v={DateTime.UtcNow.Ticks}") ?? new();
+            }
+            catch
+            {
+                _ultimateStages = new();
+            }
+        }
+        return _ultimateStages;
     }
 
     public async Task<StageFight?> GetFightAsync(string leagueId, string fightId)
