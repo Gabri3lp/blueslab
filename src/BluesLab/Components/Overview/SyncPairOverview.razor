@@ -167,6 +167,10 @@
                                 ? CalcService.GetInBattleStatMultiplier(s, Ally, Field, GridState.ActiveCells)
                                 : 1.0;
 
+                            int themeBonus = Ally.ThemeSkillsActive
+                                ? CalcService.GetThemeSkillBonus(s, Ally, team: null, moveType: Pair.Type)
+                                : 0;
+
                             int total = CalcService.CalcTotalStat(
                                 s,
                                 rawBase,
@@ -178,10 +182,11 @@
                                 hasSa: Pair.HasSuperAwakening,
                                 saLevel: Ally.SuperAwakeningLevel,
                                 role: Pair.Role,
-                                gridStat: gBonus
+                                gridStat: gBonus,
+                                themeBonus: themeBonus
                             );
 
-                            string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus} | Form: x{formMult:0.#}{(inBattleMult != 1.0 ? $" | Battle: x{inBattleMult:0.##}" : "")} => Total: {total}";
+                            string tooltip = $"Base: {saBase} | Potential/EX: +{potVal + exVal} | Grid: +{gBonus}{(themeBonus > 0 ? $" | Theme: +{themeBonus}" : "")} | Form: x{formMult:0.#}{(inBattleMult != 1.0 ? $" | Battle: x{inBattleMult:0.##}" : "")} => Total: {total}";
 
                             <div class="col" style="padding: 0 2px;">
                                 <div class="py-1 px-1 rounded bg-black bg-opacity-30 border border-secondary text-center" title="@tooltip" style="cursor: pointer;" @onclick="() => ShowDetailedStats = !ShowDetailedStats">
@@ -278,9 +283,20 @@
                                             if (GridState.ActiveCells.Contains(cell.CellId) && cell.StatBonus.TryGetValue(s, out int sb))
                                                 gBonus += sb;
                                         }
-                                        <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
+                                         <td class="@(gBonus > 0 ? "text-info" : "text-muted")">@(gBonus > 0 ? $"+{gBonus}" : "-")</td>
                                     }
                                 </tr>
+                                @if (Ally.ThemeSkillsActive)
+                                {
+                                    <tr>
+                                        <td class="text-start text-muted">Theme Skills</td>
+                                        @foreach (var s in statsKeys)
+                                        {
+                                            int tBonus = CalcService.GetThemeSkillBonus(s, Ally, team: null, moveType: Pair.Type);
+                                            <td class="@(tBonus > 0 ? "text-success" : "text-muted")">@(tBonus > 0 ? $"+{tBonus}" : "-")</td>
+                                        }
+                                    </tr>
+                                }
                                 <tr class="table-active fw-bold">
                                     <td class="text-start text-warning">Total Stat</td>
                                     @foreach (var s in statsKeys)
@@ -301,6 +317,10 @@
                                             ? CalcService.GetInBattleStatMultiplier(s, Ally, Field, GridState.ActiveCells)
                                             : 1.0;
 
+                                        int tBonus = Ally.ThemeSkillsActive
+                                            ? CalcService.GetThemeSkillBonus(s, Ally, team: null, moveType: Pair.Type)
+                                            : 0;
+
                                         int total = CalcService.CalcTotalStat(
                                             s,
                                             rawBase,
@@ -312,7 +332,8 @@
                                             hasSa: Pair.HasSuperAwakening,
                                             saLevel: Ally.SuperAwakeningLevel,
                                             role: Pair.Role,
-                                            gridStat: gBonus
+                                            gridStat: gBonus,
+                                            themeBonus: tBonus
                                         );
 
                                         <td class="text-warning">@total</td>

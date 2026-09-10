@@ -325,3 +325,15 @@ public class TeamMoveDamageResult
         _ => RightDamage
     };
 }
+
+public class ActiveThemeSkillInfo
+{
+    public string Name { get; set; } = string.Empty;
+    public string Category { get; set; } = string.Empty;
+    public int Count { get; set; }
+    public int AtkBonus { get; set; }
+    public int SpABonus { get; set; }
+    public int HpBonus { get; set; }
+    public int SpeedBonus { get; set; }
+    public string Description { get; set; } = string.Empty;
+}

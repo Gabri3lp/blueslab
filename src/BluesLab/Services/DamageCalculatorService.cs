@@ -212,7 +212,7 @@ public class DamageCalculatorService
                 baseVal += fb;
         }
 
-        int rawBase = baseVal + potential + exBonus + themeBonus;
+        int rawBase = baseVal + potential + exBonus;
         int afterMult;
         if (Math.Abs(formMult - 1.0) < 0.0001)
         {
@@ -224,7 +224,7 @@ public class DamageCalculatorService
             afterMult = (int)Math.Floor(scaledVal) + gear;
         }
 
-        int beforeStage = afterMult + gridStat;
+        int beforeStage = afterMult + gridStat + themeBonus;
 
         // When critical defense, defender ignores positive defense buffs
         if (critDefense && stage > 0)
@@ -256,59 +256,240 @@ public class DamageCalculatorService
         return Math.Max(1, calculated);
     }
 
-    public int GetThemeSkillBonus(
-        string stat,
-        CombatantState ally,
-        TeamBattleState? team,
-        List<MultiplierPill>? pills = null)
+    public List<ActiveThemeSkillInfo> GetActiveThemeSkills(CombatantState ally, TeamBattleState? team)
     {
-        if (ally.Pair == null) return 0;
-        string s = stat.ToLowerInvariant().Trim();
-        if (s != "atk" && s != "spa" && s != "hp") return 0;
-
-        bool isAtkOrSpA = s == "atk" || s == "spa";
-        bool isHp = s == "hp";
-        string role = ally.Pair.Role ?? string.Empty;
-        bool isStrike = role.StartsWith("Strike", StringComparison.OrdinalIgnoreCase);
-        bool isSupport = role.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
-
-        int bonus = 0;
-        bool typeActive = false;
-        bool regionActive = false;
+        var result = new List<ActiveThemeSkillInfo>();
+        if (ally.Pair == null || !ally.ThemeSkillsActive) return result;
 
         if (team != null)
         {
-            int matchingType = team.Allies.Count(a => a.Pair != null && string.Equals(a.Pair.Type, ally.Pair.Type, StringComparison.OrdinalIgnoreCase));
-            typeActive = matchingType >= 2;
+            // 1. Type Theme Skill
+            if (!string.IsNullOrEmpty(ally.Pair.Type))
+            {
+                var matchingAllies = team.Allies
+                    .Where(a => a.Pair != null && string.Equals(a.Pair.Type, ally.Pair.Type, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
 
+                if (matchingAllies.Count >= 2)
+                {
+                    int atk = 0, spa = 0, hp = 0, spe = 0;
+                    foreach (var m in matchingAllies)
+                    {
+                        string r = m.Pair!.Role ?? string.Empty;
+                        if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase))
+                        {
+                            atk += 30;
+                            spa += 30;
+                        }
+                        else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
+                                 r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
+                                 r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+                        {
+                            atk += 24;
+                            spa += 24;
+                            hp += 24;
+                            if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 24;
+                        }
+                        else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                        {
+                            hp += 60;
+                        }
+                        else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase))
+                        {
+                            hp += 24;
+                            spe += 24;
+                        }
+                    }
+
+                    var descParts = new List<string>();
+                    if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
+                    if (hp > 0) descParts.Add($"+{hp} HP");
+                    if (spe > 0) descParts.Add($"+{spe} Spe");
+
+                    result.Add(new ActiveThemeSkillInfo
+                    {
+                        Name = $"{ally.Pair.Type} Type",
+                        Category = "Type",
+                        Count = matchingAllies.Count,
+                        AtkBonus = atk,
+                        SpABonus = spa,
+                        HpBonus = hp,
+                        SpeedBonus = spe,
+                        Description = $"{ally.Pair.Type} Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
+                    });
+                }
+            }
+
+            // 2. Region Theme Skill
             string? myRegion = TeamBattleState.GetPairRegion(ally.Pair);
             if (!string.IsNullOrEmpty(myRegion))
             {
-                int matchingRegion = team.Allies.Count(a => a.Pair != null && string.Equals(TeamBattleState.GetPairRegion(a.Pair), myRegion, StringComparison.OrdinalIgnoreCase));
-                regionActive = matchingRegion >= 2;
+                var matchingAllies = team.Allies
+                    .Where(a => a.Pair != null && string.Equals(TeamBattleState.GetPairRegion(a.Pair), myRegion, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+
+                if (matchingAllies.Count >= 2)
+                {
+                    int atk = 0, spa = 0, hp = 0, spe = 0;
+                    foreach (var m in matchingAllies)
+                    {
+                        string r = m.Pair!.Role ?? string.Empty;
+                        if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase))
+                        {
+                            atk += 8;
+                            spa += 8;
+                        }
+                        else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
+                                 r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
+                                 r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+                        {
+                            atk += 4;
+                            spa += 4;
+                            hp += 7;
+                            if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 7;
+                        }
+                        else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+                        {
+                            hp += 13;
+                        }
+                        else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase))
+                        {
+                            hp += 7;
+                            spe += 7;
+                        }
+                    }
+
+                    var descParts = new List<string>();
+                    if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
+                    if (hp > 0) descParts.Add($"+{hp} HP");
+                    if (spe > 0) descParts.Add($"+{spe} Spe");
+
+                    result.Add(new ActiveThemeSkillInfo
+                    {
+                        Name = $"{myRegion} Region",
+                        Category = "Region",
+                        Count = matchingAllies.Count,
+                        AtkBonus = atk,
+                        SpABonus = spa,
+                        HpBonus = hp,
+                        SpeedBonus = spe,
+                        Description = $"{myRegion} Region Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
+                    });
+                }
             }
         }
         else
         {
-            if (ally.ThemeSkillsActive)
+            // Standalone single-pair mode: simulate 1 matching partner of the same role
+            string r = ally.Pair.Role ?? string.Empty;
+            int typeAtk = 0, typeSpa = 0, typeHp = 0, typeSpe = 0;
+            int regAtk = 0, regSpa = 0, regHp = 0, regSpe = 0;
+
+            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase))
             {
-                typeActive = true;
-                regionActive = true;
+                typeAtk = 60; // 30 + 30
+                typeSpa = 60;
+                regAtk = 16;  // 8 + 8
+                regSpa = 16;
+            }
+            else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
+                     r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
+                     r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+            {
+                typeAtk = 48; // 24 + 24
+                typeSpa = 48;
+                typeHp = 48;
+                regAtk = 8;   // 4 + 4
+                regSpa = 8;
+                regHp = 14;   // 7 + 7
+                if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase))
+                {
+                    typeSpe = 48;
+                    regSpe = 14;
+                }
+            }
+            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase))
+            {
+                typeHp = 120; // 60 + 60
+                regHp = 26;   // 13 + 13
+            }
+            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase))
+            {
+                typeHp = 48;
+                typeSpe = 48;
+                regHp = 14;
+                regSpe = 14;
+            }
+
+            if (!string.IsNullOrEmpty(ally.Pair.Type))
+            {
+                result.Add(new ActiveThemeSkillInfo
+                {
+                    Name = $"{ally.Pair.Type} Type",
+                    Category = "Type",
+                    Count = 2,
+                    AtkBonus = typeAtk,
+                    SpABonus = typeSpa,
+                    HpBonus = typeHp,
+                    SpeedBonus = typeSpe,
+                    Description = $"{ally.Pair.Type} Theme (2 pairs simulated): +{typeAtk} Atk/SpA, +{typeHp} HP"
+                });
+            }
+
+            string? myRegion = TeamBattleState.GetPairRegion(ally.Pair);
+            if (!string.IsNullOrEmpty(myRegion))
+            {
+                result.Add(new ActiveThemeSkillInfo
+                {
+                    Name = $"{myRegion} Region",
+                    Category = "Region",
+                    Count = 2,
+                    AtkBonus = regAtk,
+                    SpABonus = regSpa,
+                    HpBonus = regHp,
+                    SpeedBonus = regSpe,
+                    Description = $"{myRegion} Region Theme (2 pairs simulated): +{regAtk} Atk/SpA, +{regHp} HP"
+                });
             }
         }
 
-        if (typeActive)
+        return result;
+    }
+
+    public int GetThemeSkillBonus(
+        string stat,
+        CombatantState ally,
+        TeamBattleState? team,
+        string? moveType = null,
+        List<MultiplierPill>? pills = null)
+    {
+        if (ally.Pair == null || !ally.ThemeSkillsActive) return 0;
+        string s = stat.ToLowerInvariant().Trim();
+        if (s != "atk" && s != "spa" && s != "hp" && s != "spe") return 0;
+
+        var activeSkills = GetActiveThemeSkills(ally, team);
+        int bonus = 0;
+        foreach (var skill in activeSkills)
         {
-            if (isAtkOrSpA) bonus += isStrike ? 60 : 30;
-            if (isHp) bonus += isSupport ? 60 : 30;
-        }
-        if (regionActive)
-        {
-            if (isAtkOrSpA) bonus += isStrike ? 16 : 12;
-            if (isHp) bonus += isSupport ? 32 : 24;
+            if (skill.Category == "Type")
+            {
+                bool typeMatches = string.IsNullOrEmpty(moveType) ||
+                                   string.Equals(moveType, ally.Pair.Type, StringComparison.OrdinalIgnoreCase);
+                if (s == "atk" && typeMatches) bonus += skill.AtkBonus;
+                else if (s == "spa" && typeMatches) bonus += skill.SpABonus;
+                else if (s == "hp") bonus += skill.HpBonus;
+                else if (s == "spe") bonus += skill.SpeedBonus;
+            }
+            else
+            {
+                if (s == "atk") bonus += skill.AtkBonus;
+                else if (s == "spa") bonus += skill.SpABonus;
+                else if (s == "hp") bonus += skill.HpBonus;
+                else if (s == "spe") bonus += skill.SpeedBonus;
+            }
         }
 
-        if (bonus > 0 && pills != null && isAtkOrSpA)
+        if (bonus > 0 && pills != null && (s == "atk" || s == "spa"))
         {
             pills.Add(new MultiplierPill { Label = "Theme Skills", Value = $"+{bonus} {stat.ToUpper()}", Color = "#16a085" });
         }
@@ -988,7 +1169,7 @@ public class DamageCalculatorService
 
         double inBattleAtkMult = GetInBattleStatMultiplier(atkStatKey, ally, field, activeGridCells, pills);
 
-        int themeBonus = GetThemeSkillBonus(atkStatKey, ally, team, pills);
+        int themeBonus = GetThemeSkillBonus(atkStatKey, ally, team, move.Type, pills);
 
         int attackerStat = CalcTotalStat(
             atkStatKey,
