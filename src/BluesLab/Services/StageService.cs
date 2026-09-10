@@ -87,6 +87,7 @@ public class StageService
         state.EnemySpecialDamageReduction = false;
         state.EnemyDamageField = string.Empty;
         state.ActiveFight = fight;
+        state.ActiveTargetIndex = 1;
         for (int i = 0; i < 3 && i < fight.Opponents.Count; i++)
         {
             var opp = fight.Opponents[i];

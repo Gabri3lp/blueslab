@@ -89,6 +89,29 @@ jobs:
               except Exception:
                   pass
 
+          # Also scan stages JSON files for enemy pokemon icons
+          import re
+          for stage_file in ["src/BluesLab/wwwroot/data/tower_stages.json", "src/BluesLab/wwwroot/data/gym_stages.json", "src/BluesLab/wwwroot/data/stages_manifest.json"]:
+              if os.path.exists(stage_file):
+                  try:
+                      text = open(stage_file, encoding="utf-8").read()
+                      for icon_match in re.findall(r'img/pokemon/(\d{6}_128\.png)', text):
+                          if icon_match not in seen_p:
+                              seen_p.add(icon_match)
+                              dest_p = os.path.join(pokemon_dir, icon_match)
+                              if not os.path.exists(dest_p):
+                                  try:
+                                      url = f"https://pomatools.github.io/assets/img/pokemon/{icon_match}"
+                                      req = urllib.request.Request(url, headers=headers)
+                                      with urllib.request.urlopen(req, timeout=10) as r:
+                                          open(dest_p, "wb").write(r.read())
+                                      ok_p += 1
+                                  except Exception:
+                                      pass
+                                  time.sleep(0.01)
+                  except Exception:
+                      pass
+
           print(f"Downloaded images: {ok_t} trainers, {ok_p} pokemon icons")
           EOF
 
