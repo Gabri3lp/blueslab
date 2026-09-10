@@ -524,10 +524,22 @@
                                                 <div class="d-flex flex-wrap gap-1 mb-1">
                                                     @foreach (var ts in activeThemeSkills)
                                                     {
-                                                        <span class="badge @(ts.Category == "Type" ? $"type-badge type-{ally.Pair.Type.ToLowerInvariant()}" : "bg-dark border border-info text-info") d-inline-flex align-items-center gap-1 py-0 px-1"
+                                                        string badgeClass = ts.Category switch
+                                                        {
+                                                            "Type" => $"type-badge type-{ally.Pair.Type.ToLowerInvariant()}",
+                                                            "Region" => "bg-dark border border-info text-info",
+                                                            _ => "bg-dark border border-warning text-warning"
+                                                        };
+                                                        string iconClass = ts.Category switch
+                                                        {
+                                                            "Type" => "bi-award-fill",
+                                                            "Region" => "bi-geo-alt-fill",
+                                                            _ => "bi-tag-fill"
+                                                        };
+                                                        <span class="badge @badgeClass d-inline-flex align-items-center gap-1 py-0 px-1"
                                                               style="font-size: 0.65rem; max-width: 100%;"
                                                               title="@ts.Description">
-                                                            <i class="bi @(ts.Category == "Type" ? "bi-award-fill" : "bi-geo-alt-fill") flex-shrink-0"></i>
+                                                            <i class="bi @iconClass flex-shrink-0"></i>
                                                             <span class="text-truncate">@ts.Name</span>
                                                             @if (ts.AtkBonus > 0)
                                                             {

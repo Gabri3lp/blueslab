@@ -256,6 +256,97 @@ public class DamageCalculatorService
         return Math.Max(1, calculated);
     }
 
+    public static readonly Dictionary<long, (string Name, string NameEs, string Group)> ThemeDefinitionsMap = new()
+    {
+        [20010001L] = ("Normal", "Normal", "Type"),
+        [20010002L] = ("Fire", "Fuego", "Type"),
+        [20010003L] = ("Water", "Agua", "Type"),
+        [20010004L] = ("Electric", "Eléctrico", "Type"),
+        [20010005L] = ("Grass", "Planta", "Type"),
+        [20010006L] = ("Ice", "Hielo", "Type"),
+        [20010007L] = ("Fighting", "Lucha", "Type"),
+        [20010008L] = ("Poison", "Veneno", "Type"),
+        [20010009L] = ("Ground", "Tierra", "Type"),
+        [20010010L] = ("Flying", "Volador", "Type"),
+        [20010011L] = ("Psychic", "Psíquico", "Type"),
+        [20010012L] = ("Bug", "Bicho", "Type"),
+        [20010013L] = ("Rock", "Roca", "Type"),
+        [20010014L] = ("Ghost", "Fantasma", "Type"),
+        [20010015L] = ("Dragon", "Dragón", "Type"),
+        [20010016L] = ("Dark", "Siniestro", "Type"),
+        [20010017L] = ("Steel", "Acero", "Type"),
+        [20010018L] = ("Fairy", "Hada", "Type"),
+        [20020001L] = ("Kanto", "Kanto", "Region"),
+        [20020002L] = ("Johto", "Johto", "Region"),
+        [20020003L] = ("Hoenn", "Hoenn", "Region"),
+        [20020004L] = ("Sinnoh", "Sinnoh", "Region"),
+        [20020005L] = ("Unova", "Teselia", "Region"),
+        [20020006L] = ("Kalos", "Kalos", "Region"),
+        [20020007L] = ("Alola", "Alola", "Region"),
+        [20020008L] = ("Galar", "Galar", "Region"),
+        [20020009L] = ("Paldea", "Paldea", "Region"),
+        [20020020L] = ("Pasio", "Passio", "Region"),
+        [20030001L] = ("Main Character", "Protagonista", "Tag"),
+        [20030003L] = ("Elite Four", "Alto Mando", "Tag"),
+        [20030004L] = ("Gym Leader", "Líderes de Gimnasio", "Tag"),
+        [20030006L] = ("Rival", "Rivales", "Tag"),
+        [20030010L] = ("Champion", "Campeones", "Tag"),
+        [20030011L] = ("Villain", "Equipo villano", "Tag"),
+        [20030015L] = ("Trial Giver", "Capitanes y Kahuna", "Tag"),
+        [20030016L] = ("Battle Facility Foe", "Custodios de Batalla", "Tag"),
+        [20030017L] = ("Team Star", "Team Star", "Tag"),
+        [20040001L] = ("Sygna Suit", "Traje Summum", "Tag"),
+        [20040002L] = ("Sunglasses", "Gafas de sol", "Tag"),
+        [20040003L] = ("Glasses", "Gafas", "Tag"),
+        [20040004L] = ("Masked", "Máscara", "Tag"),
+        [20040006L] = ("Cape", "Capa", "Tag"),
+        [20040007L] = ("Scarf", "Bufanda", "Tag"),
+        [20040011L] = ("Seasonal Outfit", "Traje de temporada", "Tag"),
+        [20040012L] = ("Pigtails", "Dos coletas", "Tag"),
+        [20040013L] = ("Special Costume", "Traje especial", "Tag"),
+        [20040014L] = ("Arc Suit", "Architraje", "Tag"),
+        [29990005L] = ("Grown Woman", "Chicas hechas y derechas", "Tag"),
+        [29990010L] = ("Body Builder", "Musculitos", "Tag"),
+        [29990015L] = ("Rock Lover", "Amor por las rocas", "Tag"),
+        [29990016L] = ("Undella Town", "Pueblo Arenisca", "Tag"),
+        [29990018L] = ("Pallet Town", "Pueblo Paleta", "Tag"),
+        [29990019L] = ("Veteran Trainer", "Veteranos", "Tag"),
+        [29990020L] = ("Battle Partner", "Camaradas de combate", "Tag"),
+        [29990023L] = ("Dragon Cousin", "Primos Domadragones", "Tag"),
+        [29990026L] = ("Knowledgeable", "Grandes eruditos", "Tag"),
+        [29990031L] = ("Ninja Family", "Linaje ninja", "Tag"),
+        [29990032L] = ("Fancy Lady", "Señoritas", "Tag"),
+        [29990034L] = ("Cook", "Cocinillas", "Tag"),
+        [29990035L] = ("Complicated Family", "Lazos inexorables", "Tag"),
+        [29990037L] = ("Contest Lover", "Concursantes", "Tag"),
+        [29990043L] = ("Observatory Cousin", "Primos de Alola", "Tag"),
+        [29990044L] = ("Old-Timer", "Viejos conocidos", "Tag"),
+        [29990051L] = ("Researcher", "Investigadores", "Tag"),
+        [29990052L] = ("Pokéathlete", "Pokéatletas", "Tag"),
+        [29990053L] = ("Kalos Neighbors", "Vecinos de Kalos", "Tag"),
+        [29990054L] = ("Unova Adventurer", "Aventureros de Teselia", "Tag"),
+        [29990055L] = ("Sinnoh Bros", "Rivales y amigos", "Tag"),
+        [29990056L] = ("Nature Lover", "Amor por la naturaleza", "Tag"),
+        [29990057L] = ("Hoenn Family", "Familia de Hoenn", "Tag"),
+        [29990058L] = ("Artistic", "Expresivos", "Tag"),
+        [29990059L] = ("Battleground Foe", "Café Revancha", "Tag"),
+        [29990060L] = ("Supernatural", "Poderes ocultos", "Tag"),
+        [29990061L] = ("Gadgeteer", "Amor por las máquinas", "Tag"),
+        [29990062L] = ("Sweet Tooth", "Dulceros", "Tag"),
+        [29990063L] = ("Melemele Family", "Familia de Melemele", "Tag"),
+        [29990064L] = ("Passionate Spirit", "Apasionados", "Tag"),
+        [29990065L] = ("Space Cadet", "Centro Espacial", "Tag"),
+        [29990066L] = ("Unova Gym Besties", "Amigas de Teselia", "Tag"),
+        [29990067L] = ("Team Rocket Forever", "¿Buscáis problemas?", "Tag"),
+        [29990068L] = ("Free Spirit", "A su manera", "Tag"),
+        [29990069L] = ("Old Colleagues", "Viejos amigos", "Tag"),
+        [29990070L] = ("Alola Adventurer", "Aventureros de Alola", "Tag"),
+        [29990071L] = ("Galar Adventurer", "Aventureros de Galar", "Tag"),
+        [29990072L] = ("Egg", "Huevo", "Tag"),
+        [29990073L] = ("Hisui Adventurer", "Aventureros de Hisui", "Tag"),
+        [29990074L] = ("Pasio Academy", "Academia de Passio", "Tag")
+    };
+
     public List<ActiveThemeSkillInfo> GetActiveThemeSkills(CombatantState ally, TeamBattleState? team)
     {
         var result = new List<ActiveThemeSkillInfo>();
@@ -263,11 +354,89 @@ public class DamageCalculatorService
 
         if (team != null)
         {
-            // 1. Type Theme Skill
-            if (!string.IsNullOrEmpty(ally.Pair.Type))
+            var pairThemes = ally.Pair.Themes ?? new List<long>();
+            var processedThemeIds = new HashSet<long>();
+
+            // Process theme IDs if present
+            if (pairThemes.Count > 0)
+            {
+                foreach (var thId in pairThemes)
+                {
+                    if (processedThemeIds.Contains(thId)) continue;
+
+                    var matchingAllies = team.Allies
+                        .Where(a => a.Pair != null && a.ThemeSkillsActive && (a.Pair.Themes?.Contains(thId) == true))
+                        .ToList();
+
+                    if (matchingAllies.Count >= 2)
+                    {
+                        processedThemeIds.Add(thId);
+                        string thStr = thId.ToString();
+                        bool isType = thStr.StartsWith("2001");
+                        bool isRegion = thStr.StartsWith("2002");
+
+                        int atk = 0, spa = 0, hp = 0, spe = 0;
+                        foreach (var m in matchingAllies)
+                        {
+                            string r = m.Pair!.Role ?? string.Empty;
+                            bool isStrike = r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase);
+                            bool isTech = r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase);
+                            bool isSprint = r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase);
+                            bool isMulti = r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase);
+                            bool isSupport = r.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
+                            bool isField = r.StartsWith("Field", StringComparison.OrdinalIgnoreCase);
+
+                            if (isType)
+                            {
+                                if (isStrike) { atk += 30; spa += 30; }
+                                else if (isTech || isSprint || isMulti) { atk += 24; spa += 24; hp += 24; if (isSprint) spe += 24; }
+                                else if (isSupport) { hp += 60; }
+                                else if (isField) { hp += 24; spe += 24; }
+                            }
+                            else if (isRegion)
+                            {
+                                if (isStrike) { atk += 8; spa += 8; }
+                                else if (isTech || isSprint || isMulti) { atk += 4; spa += 4; hp += 7; if (isSprint) spe += 7; }
+                                else if (isSupport) { hp += 13; }
+                                else if (isField) { hp += 7; spe += 7; }
+                            }
+                            else // Tag / Description (SPEC & DESC groups)
+                            {
+                                if (isStrike) { atk += 9; spa += 9; }
+                                else if (isTech || isSprint || isMulti) { atk += 5; spa += 5; hp += 8; if (isSprint) spe += 8; }
+                                else if (isSupport) { hp += 15; }
+                                else if (isField) { hp += 8; spe += 8; }
+                            }
+                        }
+
+                        string themeName = ThemeDefinitionsMap.TryGetValue(thId, out var def) ? def.Name : $"Theme #{thId}";
+                        string category = isType ? "Type" : (isRegion ? "Region" : "Tag");
+
+                        var descParts = new List<string>();
+                        if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
+                        if (hp > 0) descParts.Add($"+{hp} HP");
+                        if (spe > 0) descParts.Add($"+{spe} Spe");
+
+                        result.Add(new ActiveThemeSkillInfo
+                        {
+                            Name = themeName,
+                            Category = category,
+                            Count = matchingAllies.Count,
+                            AtkBonus = atk,
+                            SpABonus = spa,
+                            HpBonus = hp,
+                            SpeedBonus = spe,
+                            Description = $"{themeName} ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
+                        });
+                    }
+                }
+            }
+
+            // Fallback: If Type theme wasn't captured via ID, evaluate by pair.Type
+            if (!result.Any(r => r.Category == "Type") && !string.IsNullOrEmpty(ally.Pair.Type))
             {
                 var matchingAllies = team.Allies
-                    .Where(a => a.Pair != null && string.Equals(a.Pair.Type, ally.Pair.Type, StringComparison.OrdinalIgnoreCase))
+                    .Where(a => a.Pair != null && a.ThemeSkillsActive && string.Equals(a.Pair.Type, ally.Pair.Type, StringComparison.OrdinalIgnoreCase))
                     .ToList();
 
                 if (matchingAllies.Count >= 2)
@@ -276,29 +445,16 @@ public class DamageCalculatorService
                     foreach (var m in matchingAllies)
                     {
                         string r = m.Pair!.Role ?? string.Empty;
-                        if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase))
-                        {
-                            atk += 30;
-                            spa += 30;
-                        }
+                        if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 30; spa += 30; }
                         else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
                                  r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
                                  r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
                         {
-                            atk += 24;
-                            spa += 24;
-                            hp += 24;
+                            atk += 24; spa += 24; hp += 24;
                             if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 24;
                         }
-                        else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase))
-                        {
-                            hp += 60;
-                        }
-                        else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase))
-                        {
-                            hp += 24;
-                            spe += 24;
-                        }
+                        else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 60; }
+                        else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 24; spe += 24; }
                     }
 
                     var descParts = new List<string>();
@@ -320,61 +476,51 @@ public class DamageCalculatorService
                 }
             }
 
-            // 2. Region Theme Skill
-            string? myRegion = TeamBattleState.GetPairRegion(ally.Pair);
-            if (!string.IsNullOrEmpty(myRegion))
+            // Fallback: If Region theme wasn't captured via ID, evaluate by GetPairRegion
+            if (!result.Any(r => r.Category == "Region"))
             {
-                var matchingAllies = team.Allies
-                    .Where(a => a.Pair != null && string.Equals(TeamBattleState.GetPairRegion(a.Pair), myRegion, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
-
-                if (matchingAllies.Count >= 2)
+                string? myRegion = TeamBattleState.GetPairRegion(ally.Pair);
+                if (!string.IsNullOrEmpty(myRegion))
                 {
-                    int atk = 0, spa = 0, hp = 0, spe = 0;
-                    foreach (var m in matchingAllies)
+                    var matchingAllies = team.Allies
+                        .Where(a => a.Pair != null && a.ThemeSkillsActive && string.Equals(TeamBattleState.GetPairRegion(a.Pair), myRegion, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+
+                    if (matchingAllies.Count >= 2)
                     {
-                        string r = m.Pair!.Role ?? string.Empty;
-                        if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase))
+                        int atk = 0, spa = 0, hp = 0, spe = 0;
+                        foreach (var m in matchingAllies)
                         {
-                            atk += 8;
-                            spa += 8;
+                            string r = m.Pair!.Role ?? string.Empty;
+                            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 8; spa += 8; }
+                            else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
+                                     r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
+                                     r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+                            {
+                                atk += 4; spa += 4; hp += 7;
+                                if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 7;
+                            }
+                            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 13; }
+                            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 7; spe += 7; }
                         }
-                        else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
-                                 r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
-                                 r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+
+                        var descParts = new List<string>();
+                        if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
+                        if (hp > 0) descParts.Add($"+{hp} HP");
+                        if (spe > 0) descParts.Add($"+{spe} Spe");
+
+                        result.Add(new ActiveThemeSkillInfo
                         {
-                            atk += 4;
-                            spa += 4;
-                            hp += 7;
-                            if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 7;
-                        }
-                        else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase))
-                        {
-                            hp += 13;
-                        }
-                        else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase))
-                        {
-                            hp += 7;
-                            spe += 7;
-                        }
+                            Name = $"{myRegion} Region",
+                            Category = "Region",
+                            Count = matchingAllies.Count,
+                            AtkBonus = atk,
+                            SpABonus = spa,
+                            HpBonus = hp,
+                            SpeedBonus = spe,
+                            Description = $"{myRegion} Region Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
+                        });
                     }
-
-                    var descParts = new List<string>();
-                    if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
-                    if (hp > 0) descParts.Add($"+{hp} HP");
-                    if (spe > 0) descParts.Add($"+{spe} Spe");
-
-                    result.Add(new ActiveThemeSkillInfo
-                    {
-                        Name = $"{myRegion} Region",
-                        Category = "Region",
-                        Count = matchingAllies.Count,
-                        AtkBonus = atk,
-                        SpABonus = spa,
-                        HpBonus = hp,
-                        SpeedBonus = spe,
-                        Description = $"{myRegion} Region Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
-                    });
                 }
             }
         }

@@ -75,6 +75,36 @@ public class PairManifestItem
 
     [JsonPropertyName("releaseTimestamp")]
     public long ReleaseTimestamp { get; set; }
+
+    [JsonPropertyName("themes")]
+    public List<long> Themes { get; set; } = new();
+}
+
+public class ThemeDefinition
+{
+    [JsonPropertyName("id")]
+    public long Id { get; set; }
+
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = string.Empty;
+
+    [JsonPropertyName("nameEs")]
+    public string NameEs { get; set; } = string.Empty;
+
+    [JsonPropertyName("group")]
+    public string Group { get; set; } = string.Empty;
+
+    [JsonPropertyName("code")]
+    public string Code { get; set; } = string.Empty;
+}
+
+public class ThemesDatabaseDocument
+{
+    [JsonPropertyName("definitions")]
+    public List<ThemeDefinition> Definitions { get; set; } = new();
+
+    [JsonPropertyName("pairThemes")]
+    public Dictionary<string, List<long>> PairThemes { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }
 
 public class SyncPairDetail
@@ -162,6 +192,9 @@ public class SyncPairDetail
 
     [JsonPropertyName("grid")]
     public List<GridCellItem> Grid { get; set; } = new();
+
+    [JsonPropertyName("themes")]
+    public List<long> Themes { get; set; } = new();
 }
 
 public class PairStats
