@@ -246,11 +246,11 @@ public class DamageCalculatorService
 
         int calculated = (int)Math.Floor(beforeStage * variation * inBattleStatMult);
 
-        // When critical offense, attacker ignores negative stat stages
+        // When critical offense, attacker ignores negative stat stages (ignoring variations and Theme Skills)
         if (critOffense)
         {
-            int basePlusGrid = (int)Math.Floor(beforeStage * inBattleStatMult);
-            return Math.Max(calculated, basePlusGrid);
+            int withoutThemeOrVariation = (int)Math.Floor((afterMult + gridStat) * inBattleStatMult);
+            return Math.Max(calculated, withoutThemeOrVariation);
         }
 
         return Math.Max(1, calculated);
@@ -352,7 +352,9 @@ public class DamageCalculatorService
         var result = new List<ActiveThemeSkillInfo>();
         if (ally.Pair == null || !ally.ThemeSkillsActive) return result;
 
-        if (team != null)
+        bool hasMultiplePairsInTeam = team != null && team.Allies.Count(a => a.Pair != null) > 1;
+
+        if (hasMultiplePairsInTeam && team != null)
         {
             var processedThemeIds = new HashSet<long>();
             var allTeamThemeIds = team.Allies
@@ -2163,19 +2165,28 @@ public class DamageCalculatorService
             if (enemy.StatusCondition != "burned") return 0;
         }
 
+        if (string.Equals(dp.Stat, "hp", StringComparison.OrdinalIgnoreCase) || dp.Mechanism == "hp_scaling")
+        {
+            bool isTarget = dp.StatTarget == "target" || dp.Name.StartsWith("Bulk Buster", StringComparison.OrdinalIgnoreCase);
+            bool isLessHp = dp.Name.StartsWith("HP Trade-Off", StringComparison.OrdinalIgnoreCase) ||
+                            dp.Mechanism == "target_stat_lowered" ||
+                            (dp.Conditions != null && dp.Conditions.Any(g => g.Any(c => c.Contains("low") || c.Contains("less") || c.Contains("reduced"))));
+            int hpPct = isTarget ? enemy.HpPercent : ally.HpPercent;
+            return CalcHpScaling(hpPct, dp.Value, isTarget: isTarget, isLessHp: isLessHp);
+        }
+
         return dp.Mechanism switch
         {
             "user_stat_raised" => CalcStatScaling(dp.Stat, ally.Stages, true, move.IsSync),
             "target_stat_lowered" => CalcStatScaling(dp.Stat, enemy.Stages, false, move.IsSync),
             "stat_is_raised" => (ally.Stages.GetValueOrDefault(dp.Stat, 0) > 0 ? dp.Value * 0.1 : 0),
             "stat_is_lowered" => (enemy.Stages.GetValueOrDefault(dp.Stat, 0) < 0 ? dp.Value * 0.1 : 0),
+            "stat_not_raised" => (enemy.Stages.Values.All(v => v <= 0) ? dp.Value * 0.1 : 0),
             "stat_raised_30pct" => Math.Min(0.30, CalcStatScaling("all_stats", ally.Stages, true, false)),
-            "hp_scaling" => CalcHpScaling(
-                dp.StatTarget == "target" ? enemy.HpPercent : ally.HpPercent,
-                dp.Value,
-                isTarget: dp.StatTarget == "target",
-                isLessHp: dp.Conditions.Count == 0 || dp.Conditions.Any(g => g.Any(c => c.Contains("low") || c.Contains("less") || c.Contains("reduced")))
-            ),
+            "gauge_cost_boost" => move.IsSync ? 1.00 : (dp.Value * 6 * 0.01),
+            "mode_swing" => ((ally.FormIndex == 0 && string.Equals(move.Type, "Electric", StringComparison.OrdinalIgnoreCase)) ||
+                             (ally.FormIndex == 1 && string.Equals(move.Type, "Dark", StringComparison.OrdinalIgnoreCase))) ? (dp.Value * 0.1) : 0,
+            "ice_plow" => (ally.FormIndex == 0 && (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(enemy.Weakness, move.Type, StringComparison.OrdinalIgnoreCase) || ally.SuperEffectiveNext)) ? 0.30 : 0,
             "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move) ? dp.Value * 0.1 : 0),
             _ => 0
         };
@@ -2183,13 +2194,13 @@ public class DamageCalculatorService
 
     public static double CalcHpScaling(int hpPercent, int passiveValue, bool isTarget, bool isLessHp = true)
     {
-        // PoMaTools 4-tier HP scaling:
+        // PoMaTools / Damage Formula Guide 4-tier HP scaling:
         // HP = 100% -> 0, 51-99% -> 1, 34-50% -> 2, <= 33% -> 3
         int tier = hpPercent >= 100 ? 0 : (hpPercent >= 51 ? 1 : (hpPercent >= 34 ? 2 : 3));
         double[] thresholds = isLessHp ? [0.0, 0.25, 0.50, 1.00] : [1.00, 0.50, 0.25, 0.0];
         double factor = isTarget ? 0.10 : 0.05;
-        double rawBonus = (passiveValue * 10.0) * factor * thresholds[tier];
-        return Math.Ceiling(rawBonus * 100.0) / 100.0 / 100.0;
+        double rawVal = passiveValue * factor * thresholds[tier];
+        return Math.Ceiling(rawVal * 100.0) / 100.0;
     }
 
     private double CalcStatScaling(string statKey, Dictionary<string, int> stages, bool isRaised, bool isSync)
@@ -2422,6 +2433,32 @@ public class DamageCalculatorService
                     {
                         descMult *= 2.0;
                         pills.Add(new MultiplierPill { Label = "Move Scaling (Target HP ≤50%)", Value = "×2.0", Color = "#fd79a8" });
+                    }
+                }
+
+                // Counterattack Modifier (Table 13: Mirror Coat, Metal Burst, Counter)
+                if (normMoveName.Contains("mirror coat", StringComparison.OrdinalIgnoreCase) ||
+                    normMoveName.Contains("metal burst", StringComparison.OrdinalIgnoreCase) ||
+                    normMoveName.Equals("counter", StringComparison.OrdinalIgnoreCase))
+                {
+                    int hpLost = Math.Clamp(100 - ally.HpPercent, 0, 100);
+                    double m = hpLost >= 84 ? 3.370 : (hpLost >= 51 ? 2.230 : (hpLost >= 34 ? 1.500 : 1.000));
+                    if (m > 1.0)
+                    {
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "Counterattack Mod", Value = $"×{m:0.###}", Color = "#fd79a8" });
+                    }
+                }
+
+                // HP Reduction Modifier (Table 14: Eruption, Water Spout)
+                if (normMoveName.Contains("eruption", StringComparison.OrdinalIgnoreCase) ||
+                    normMoveName.Contains("water spout", StringComparison.OrdinalIgnoreCase))
+                {
+                    double m = ally.HpPercent >= 100 ? 1.000 : (ally.HpPercent >= 50 ? 0.800 : (ally.HpPercent >= 33 ? 0.650 : 0.550));
+                    if (m < 1.0)
+                    {
+                        descMult *= m;
+                        pills.Add(new MultiplierPill { Label = "HP Reduction Mod", Value = $"×{m:0.###}", Color = "#fd79a8" });
                     }
                 }
 

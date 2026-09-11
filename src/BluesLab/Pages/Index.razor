@@ -28,13 +28,13 @@ else
                         <i class="bi bi-hexagon-half me-1"></i> Blues Lab
                     </span>
                     <div class="nav nav-pills gap-2" role="tablist">
-                        <button class="nav-link text-light border border-secondary" @onclick="() => ActiveTab = 0">
+                        <button class="nav-link text-light border border-secondary" @onclick="() => SwitchTab(0)">
                             <i class="bi bi-info-circle"></i> @(Loc.T("grid_overview", "Overview"))
                         </button>
-                        <button class="nav-link text-light border border-secondary" @onclick="() => ActiveTab = 1">
+                        <button class="nav-link text-light border border-secondary" @onclick="() => SwitchTab(1)">
                             <i class="bi bi-calculator"></i> @(Loc.T("damage_calc", "Damage"))
                         </button>
-                        <button class="nav-link active bg-warning text-dark fw-bold" @onclick="() => ActiveTab = 2">
+                        <button class="nav-link active bg-warning text-dark fw-bold" @onclick="() => SwitchTab(2)">
                             <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
                         </button>
                     </div>
@@ -89,15 +89,15 @@ else
                 <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom border-secondary bg-dark shadow-sm">
                     <div class="nav nav-pills gap-2" role="tablist">
                         <button class="nav-link @(ActiveTab == 0 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                                @onclick="() => ActiveTab = 0">
+                                @onclick="() => SwitchTab(0)">
                             <i class="bi bi-info-circle"></i> @(Loc.T("grid_overview", "Overview"))
                         </button>
                         <button class="nav-link @(ActiveTab == 1 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                                @onclick="() => ActiveTab = 1">
+                                @onclick="() => SwitchTab(1)">
                             <i class="bi bi-calculator"></i> @(Loc.T("damage_calc", "Damage"))
                         </button>
                         <button class="nav-link @(ActiveTab == 2 ? "active bg-warning text-dark fw-bold" : "text-light border border-secondary")"
-                                @onclick="() => { SyncSoloToTeam(); ActiveTab = 2; }">
+                                @onclick="() => SwitchTab(2)">
                             <i class="bi bi-people-fill"></i> @(Loc.T("team", "3v3 Team Battle"))
                         </button>
                     </div>
@@ -256,6 +256,19 @@ else
         StateHasChanged();
     }
 
+    private void SwitchTab(int tab)
+    {
+        if (tab == 2 && ActiveTab != 2)
+        {
+            SyncSoloToTeam();
+        }
+        else if (tab != 2 && ActiveTab == 2)
+        {
+            SyncTeamToSolo();
+        }
+        ActiveTab = tab;
+    }
+
     private void SyncSoloToTeam()
     {
         if (TeamState.Allies.Count > 0)
@@ -277,7 +290,81 @@ else
             TeamState.AllyActiveGrids[0] = GridState.ActiveCells;
         }
         TeamState.Field = BattleField;
+        TeamState.AllySyncBuffs = AllyState.SyncBoosts;
+        TeamState.Cheer = AllyState.Cheer;
+        TeamState.AlliedMoveGaugeAccel = AllyState.MoveGaugeAccel;
+        TeamState.AlliedPhysicalDamageReduction = AllyState.PhysicalDamageReduction;
+        TeamState.AlliedSpecialDamageReduction = AllyState.SpecialDamageReduction;
+
+        if (TeamState.Enemies.Count > 1)
+        {
+            CopyCombatantState(EnemyState, TeamState.Enemies[1]);
+        }
+        TeamState.EnemySyncBuffs = EnemyState.SyncBoosts;
+        TeamState.EnemyDamageField = EnemyState.DamageField;
+        TeamState.EnemyPhysicalDamageReduction = EnemyState.PhysicalDamageReduction;
+        TeamState.EnemySpecialDamageReduction = EnemyState.SpecialDamageReduction;
+
         TeamState.UpdateCircleAllyCounts();
+    }
+
+    private void SyncTeamToSolo()
+    {
+        if (TeamState.Allies.Count > 0 && TeamState.Allies[0] != null)
+        {
+            AllyState = TeamState.Allies[0];
+            if (AllyState.Pair != null)
+            {
+                ActivePair = AllyState.Pair;
+            }
+            MoveLevel = AllyState.MoveLevel + AllyState.SuperAwakeningLevel;
+        }
+        if (TeamState.AllyActiveGrids.Count > 0)
+        {
+            GridState.ActiveCells.Clear();
+            GridState.ActiveCells.UnionWith(TeamState.AllyActiveGrids[0]);
+            GridState.NotifyChanged();
+        }
+        BattleField = TeamState.Field;
+        AllyState.SyncBoosts = TeamState.AllySyncBuffs;
+        AllyState.Cheer = TeamState.Cheer;
+        AllyState.MoveGaugeAccel = TeamState.AlliedMoveGaugeAccel;
+        AllyState.PhysicalDamageReduction = TeamState.AlliedPhysicalDamageReduction;
+        AllyState.SpecialDamageReduction = TeamState.AlliedSpecialDamageReduction;
+
+        if (TeamState.Enemies.Count > 1 && TeamState.Enemies[1] != null)
+        {
+            CopyCombatantState(TeamState.Enemies[1], EnemyState);
+        }
+        EnemyState.SyncBoosts = TeamState.EnemySyncBuffs;
+        EnemyState.DamageField = TeamState.EnemyDamageField;
+        EnemyState.PhysicalDamageReduction = TeamState.EnemyPhysicalDamageReduction;
+        EnemyState.SpecialDamageReduction = TeamState.EnemySpecialDamageReduction;
+    }
+
+    private static void CopyCombatantState(CombatantState src, CombatantState dest)
+    {
+        dest.HpPercent = src.HpPercent;
+        dest.StatusCondition = src.StatusCondition;
+        dest.Weakness = src.Weakness;
+        dest.DamageField = src.DamageField;
+        dest.SyncBoosts = src.SyncBoosts;
+        dest.PhysicalDamageReduction = src.PhysicalDamageReduction;
+        dest.SpecialDamageReduction = src.SpecialDamageReduction;
+        dest.StellarRebuff = src.StellarRebuff;
+
+        foreach (var (k, v) in src.Stages)
+            dest.Stages[k] = v;
+        foreach (var (k, v) in src.VolatileStatus)
+            dest.VolatileStatus[k] = v;
+        foreach (var (k, v) in src.UserTypeRebuffs)
+            dest.UserTypeRebuffs[k] = v;
+        foreach (var (k, v) in src.EnemyTypeRebuffs)
+            dest.EnemyTypeRebuffs[k] = v;
+        foreach (var (k, v) in src.Mitigations)
+            dest.Mitigations[k] = v;
+        foreach (var (k, v) in src.ManualStats)
+            dest.ManualStats[k] = v;
     }
 
     public void Dispose()
