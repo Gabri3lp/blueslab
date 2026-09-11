@@ -364,6 +364,7 @@ public class LocalizationService
     {
         if (string.IsNullOrWhiteSpace(text)) return text ?? "";
         var res = text.Replace("\r", "").Replace("\n", " ").Trim();
+        res = Regex.Replace(res, @"([a-z\p{Ll}])([A-Z\p{Lu}])", "$1 $2");
         while (res.Contains("  ")) res = res.Replace("  ", " ");
         return res;
     }
