@@ -354,13 +354,17 @@ public class DamageCalculatorService
 
         if (team != null)
         {
-            var pairThemes = ally.Pair.Themes ?? new List<long>();
             var processedThemeIds = new HashSet<long>();
+            var allTeamThemeIds = team.Allies
+                .Where(a => a.Pair != null && a.ThemeSkillsActive && a.Pair.Themes != null)
+                .SelectMany(a => a.Pair!.Themes)
+                .Distinct()
+                .ToList();
 
-            // Process theme IDs if present
-            if (pairThemes.Count > 0)
+            // Process theme IDs across the team
+            if (allTeamThemeIds.Count > 0)
             {
-                foreach (var thId in pairThemes)
+                foreach (var thId in allTeamThemeIds)
                 {
                     if (processedThemeIds.Contains(thId)) continue;
 
@@ -432,60 +436,65 @@ public class DamageCalculatorService
                 }
             }
 
-            // Fallback: If Type theme wasn't captured via ID, evaluate by pair.Type
-            if (!result.Any(r => r.Category == "Type") && !string.IsNullOrEmpty(ally.Pair.Type))
+            // Fallback: If Type theme wasn't captured via ID, evaluate by pair.Type across team
+            if (!result.Any(r => r.Category == "Type"))
             {
-                var matchingAllies = team.Allies
-                    .Where(a => a.Pair != null && a.ThemeSkillsActive && string.Equals(a.Pair.Type, ally.Pair.Type, StringComparison.OrdinalIgnoreCase))
-                    .ToList();
+                var typeGroups = team.Allies
+                    .Where(a => a.Pair != null && a.ThemeSkillsActive && !string.IsNullOrEmpty(a.Pair.Type))
+                    .GroupBy(a => a.Pair!.Type, StringComparer.OrdinalIgnoreCase);
 
-                if (matchingAllies.Count >= 2)
+                foreach (var group in typeGroups)
                 {
-                    int atk = 0, spa = 0, hp = 0, spe = 0;
-                    foreach (var m in matchingAllies)
+                    var matchingAllies = group.ToList();
+                    if (matchingAllies.Count >= 2)
                     {
-                        string r = m.Pair!.Role ?? string.Empty;
-                        if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 30; spa += 30; }
-                        else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
-                                 r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
-                                 r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+                        int atk = 0, spa = 0, hp = 0, spe = 0;
+                        foreach (var m in matchingAllies)
                         {
-                            atk += 24; spa += 24; hp += 24;
-                            if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 24;
+                            string r = m.Pair!.Role ?? string.Empty;
+                            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 30; spa += 30; }
+                            else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
+                                     r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
+                                     r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
+                            {
+                                atk += 24; spa += 24; hp += 24;
+                                if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 24;
+                            }
+                            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 60; }
+                            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 24; spe += 24; }
                         }
-                        else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 60; }
-                        else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 24; spe += 24; }
+
+                        var descParts = new List<string>();
+                        if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
+                        if (hp > 0) descParts.Add($"+{hp} HP");
+                        if (spe > 0) descParts.Add($"+{spe} Spe");
+
+                        result.Add(new ActiveThemeSkillInfo
+                        {
+                            Name = $"{group.Key}",
+                            Category = "Type",
+                            Count = matchingAllies.Count,
+                            AtkBonus = atk,
+                            SpABonus = spa,
+                            HpBonus = hp,
+                            SpeedBonus = spe,
+                            Description = $"{group.Key} Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
+                        });
                     }
-
-                    var descParts = new List<string>();
-                    if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
-                    if (hp > 0) descParts.Add($"+{hp} HP");
-                    if (spe > 0) descParts.Add($"+{spe} Spe");
-
-                    result.Add(new ActiveThemeSkillInfo
-                    {
-                        Name = $"{ally.Pair.Type} Type",
-                        Category = "Type",
-                        Count = matchingAllies.Count,
-                        AtkBonus = atk,
-                        SpABonus = spa,
-                        HpBonus = hp,
-                        SpeedBonus = spe,
-                        Description = $"{ally.Pair.Type} Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
-                    });
                 }
             }
 
-            // Fallback: If Region theme wasn't captured via ID, evaluate by GetPairRegion
+            // Fallback: If Region theme wasn't captured via ID, evaluate by GetPairRegion across team
             if (!result.Any(r => r.Category == "Region"))
             {
-                string? myRegion = TeamBattleState.GetPairRegion(ally.Pair);
-                if (!string.IsNullOrEmpty(myRegion))
-                {
-                    var matchingAllies = team.Allies
-                        .Where(a => a.Pair != null && a.ThemeSkillsActive && string.Equals(TeamBattleState.GetPairRegion(a.Pair), myRegion, StringComparison.OrdinalIgnoreCase))
-                        .ToList();
+                var regionGroups = team.Allies
+                    .Where(a => a.Pair != null && a.ThemeSkillsActive)
+                    .GroupBy(a => TeamBattleState.GetPairRegion(a.Pair), StringComparer.OrdinalIgnoreCase)
+                    .Where(g => !string.IsNullOrEmpty(g.Key));
 
+                foreach (var group in regionGroups)
+                {
+                    var matchingAllies = group.ToList();
                     if (matchingAllies.Count >= 2)
                     {
                         int atk = 0, spa = 0, hp = 0, spe = 0;
@@ -511,14 +520,14 @@ public class DamageCalculatorService
 
                         result.Add(new ActiveThemeSkillInfo
                         {
-                            Name = $"{myRegion} Region",
+                            Name = $"{group.Key}",
                             Category = "Region",
                             Count = matchingAllies.Count,
                             AtkBonus = atk,
                             SpABonus = spa,
                             HpBonus = hp,
                             SpeedBonus = spe,
-                            Description = $"{myRegion} Region Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
+                            Description = $"{group.Key} Region Theme ({matchingAllies.Count} pairs): {string.Join(", ", descParts)}"
                         });
                     }
                 }
@@ -571,7 +580,7 @@ public class DamageCalculatorService
             {
                 result.Add(new ActiveThemeSkillInfo
                 {
-                    Name = $"{ally.Pair.Type} Type",
+                    Name = $"{ally.Pair.Type}",
                     Category = "Type",
                     Count = 2,
                     AtkBonus = typeAtk,
@@ -587,7 +596,7 @@ public class DamageCalculatorService
             {
                 result.Add(new ActiveThemeSkillInfo
                 {
-                    Name = $"{myRegion} Region",
+                    Name = $"{myRegion}",
                     Category = "Region",
                     Count = 2,
                     AtkBonus = regAtk,
@@ -619,8 +628,11 @@ public class DamageCalculatorService
         {
             if (skill.Category == "Type")
             {
-                bool typeMatches = string.IsNullOrEmpty(moveType) ||
-                                   string.Equals(moveType, ally.Pair.Type, StringComparison.OrdinalIgnoreCase);
+                string typeName = skill.Name.Replace(" Type", "").Trim();
+                bool typeMatches = string.IsNullOrEmpty(moveType)
+                    ? string.Equals(typeName, ally.Pair.Type, StringComparison.OrdinalIgnoreCase)
+                    : string.Equals(typeName, moveType, StringComparison.OrdinalIgnoreCase);
+
                 if (s == "atk" && typeMatches) bonus += skill.AtkBonus;
                 else if (s == "spa" && typeMatches) bonus += skill.SpABonus;
                 else if (s == "hp") bonus += skill.HpBonus;
