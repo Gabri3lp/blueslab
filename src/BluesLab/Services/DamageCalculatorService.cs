@@ -344,7 +344,8 @@ public class DamageCalculatorService
         [29990071L] = ("Galar Adventurer", "Aventureros de Galar", "Tag"),
         [29990072L] = ("Egg", "Huevo", "Tag"),
         [29990073L] = ("Hisui Adventurer", "Aventureros de Hisui", "Tag"),
-        [29990074L] = ("Pasio Academy", "Academia de Passio", "Tag")
+        [29990074L] = ("Pasio Academy", "Academia de Passio", "Tag"),
+        [29990075L] = ("Blueberry Academy", "Academia Arándano", "Tag")
     };
 
     public List<ActiveThemeSkillInfo> GetActiveThemeSkills(CombatantState ally, TeamBattleState? team)
