@@ -22,6 +22,12 @@ public class TeamConfigDto
     public bool AlliedSpecialDamageReduction { get; set; }
     public Dictionary<string, List<string>> ActiveCircles { get; set; } = new();
 
+    // Team Gear
+    public string TeamGearPreset { get; set; } = "4star";
+    public Dictionary<string, int> TeamGear { get; set; } = new();
+    public int TeamGearMoveBoost { get; set; }
+    public int TeamGearSyncBoost { get; set; }
+
     // Allies (3 slots)
     public List<AllySlotDto> Allies { get; set; } = new();
 
@@ -53,6 +59,11 @@ public class AllySlotDto
     public int SyncMoveBoostNext { get; set; }
     public bool IsCriticalMove { get; set; } = true;
     public bool SuperEffectiveNext { get; set; }
+    public bool ThemeSkillsActive { get; set; } = true;
+    public string GearPreset { get; set; } = "4star";
+    public Dictionary<string, int> Gear { get; set; } = new();
+    public int GearMoveBoost { get; set; }
+    public int GearSyncBoost { get; set; }
     public List<long> ActiveGridCells { get; set; } = new();
 }
 

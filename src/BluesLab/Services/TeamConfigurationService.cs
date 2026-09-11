@@ -66,6 +66,12 @@ public class TeamConfigurationService
             }
         }
 
+        // Team Gear
+        dto.TeamGearPreset = state.TeamGearPreset;
+        dto.TeamGear = new Dictionary<string, int>(state.TeamGear);
+        dto.TeamGearMoveBoost = state.TeamGearMoveBoost;
+        dto.TeamGearSyncBoost = state.TeamGearSyncBoost;
+
         // Allies (3 slots)
         for (int i = 0; i < 3 && i < state.Allies.Count; i++)
         {
@@ -85,6 +91,11 @@ public class TeamConfigurationService
                 SyncMoveBoostNext = ally.SyncMoveBoostNext,
                 IsCriticalMove = ally.IsCriticalMove,
                 SuperEffectiveNext = ally.SuperEffectiveNext,
+                ThemeSkillsActive = ally.ThemeSkillsActive,
+                GearPreset = ally.GearPreset,
+                Gear = new Dictionary<string, int>(ally.Gear),
+                GearMoveBoost = ally.GearMoveBoost,
+                GearSyncBoost = ally.GearSyncBoost,
                 Stages = new Dictionary<string, int>(ally.Stages),
                 ActiveGridCells = i < state.AllyActiveGrids.Count ? state.AllyActiveGrids[i].ToList() : new List<long>()
             };
@@ -229,6 +240,23 @@ public class TeamConfigurationService
             }
         }
 
+        // 4.5. Team Gear
+        targetState.TeamGearPreset = string.IsNullOrEmpty(dto.TeamGearPreset) ? "4star" : dto.TeamGearPreset;
+        if (dto.TeamGear != null && dto.TeamGear.Count > 0)
+        {
+            foreach (var s in CombatantState.StatLabels)
+            {
+                targetState.TeamGear[s] = dto.TeamGear.GetValueOrDefault(s, 0);
+            }
+        }
+        else
+        {
+            targetState.ApplyTeamGearPreset(targetState.TeamGearPreset);
+        }
+        targetState.TeamGearMoveBoost = dto.TeamGearMoveBoost;
+        targetState.TeamGearSyncBoost = dto.TeamGearSyncBoost;
+        targetState.SyncTeamGearToAllies();
+
         // 5. Allies
         if (dto.Allies != null)
         {
@@ -254,6 +282,29 @@ public class TeamConfigurationService
                         ally.SyncMoveBoostNext = aDto.SyncMoveBoostNext;
                         ally.IsCriticalMove = aDto.IsCriticalMove;
                         ally.SuperEffectiveNext = aDto.SuperEffectiveNext;
+                        ally.ThemeSkillsActive = aDto.ThemeSkillsActive;
+
+                        // Ally Gear
+                        if (!string.IsNullOrEmpty(aDto.GearPreset))
+                        {
+                            ally.GearPreset = aDto.GearPreset;
+                        }
+                        if (aDto.Gear != null && aDto.Gear.Count > 0)
+                        {
+                            foreach (var s in CombatantState.StatLabels)
+                            {
+                                ally.Gear[s] = aDto.Gear.GetValueOrDefault(s, 0);
+                            }
+                        }
+                        else
+                        {
+                            foreach (var s in CombatantState.StatLabels)
+                            {
+                                ally.Gear[s] = targetState.TeamGear.GetValueOrDefault(s, 0);
+                            }
+                        }
+                        ally.GearMoveBoost = aDto.GearMoveBoost;
+                        ally.GearSyncBoost = aDto.GearSyncBoost;
 
                         if (aDto.Stages != null && aDto.Stages.Count > 0)
                         {
