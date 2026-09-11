@@ -79,7 +79,6 @@
         {
             GridState.ActivateFreeCenterCells(Pair, MoveLevel, ActiveCells);
             GridState.PruneDisconnected(Pair.Grid, ActiveCells);
-            GridState.NotifyChanged();
         }
         await OnGridChanged.InvokeAsync();
     }

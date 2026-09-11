@@ -35,7 +35,10 @@ public class GridStateService
         {
             ActivateFreeCenterCells(pair, moveLevel, target);
         }
-        NotifyChanged();
+        if (activeCells == null || activeCells == ActiveCells)
+        {
+            NotifyChanged();
+        }
     }
 
     public int GetRemainingEnergy(SyncPairDetail? pair, HashSet<long>? activeCells = null)
@@ -185,7 +188,10 @@ public class GridStateService
             }
         }
 
-        NotifyChanged();
+        if (activeCells == null || activeCells == ActiveCells)
+        {
+            NotifyChanged();
+        }
     }
 
     public List<MoveItem> GetLearnedMoves(SyncPairDetail? pair)

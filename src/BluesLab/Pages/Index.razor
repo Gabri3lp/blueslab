@@ -209,7 +209,6 @@ else
 
     private void OnGridChangedHandler()
     {
-        SyncSoloToTeam();
         InvokeAsync(StateHasChanged);
     }
 
@@ -228,7 +227,10 @@ else
             AllyState.MoveLevel = Math.Min(MoveLevel, 5);
             AllyState.SuperAwakeningLevel = MoveLevel > 5 ? (MoveLevel - 5) : 0;
             GridState.ResetGrid(pair, MoveLevel);
-            SyncSoloToTeam();
+            if (ActiveTab != 2)
+            {
+                SyncSoloToTeam();
+            }
             StateHasChanged();
         }
     }
@@ -252,7 +254,10 @@ else
             GridState.PruneDisconnected(ActivePair.Grid);
         }
         GridState.NotifyChanged();
-        SyncSoloToTeam();
+        if (ActiveTab != 2)
+        {
+            SyncSoloToTeam();
+        }
         StateHasChanged();
     }
 
@@ -287,7 +292,7 @@ else
         }
         if (TeamState.AllyActiveGrids.Count > 0)
         {
-            TeamState.AllyActiveGrids[0] = GridState.ActiveCells;
+            TeamState.AllyActiveGrids[0] = new HashSet<long>(GridState.ActiveCells);
         }
         TeamState.Field = BattleField;
         TeamState.AllySyncBuffs = AllyState.SyncBoosts;
@@ -295,15 +300,6 @@ else
         TeamState.AlliedMoveGaugeAccel = AllyState.MoveGaugeAccel;
         TeamState.AlliedPhysicalDamageReduction = AllyState.PhysicalDamageReduction;
         TeamState.AlliedSpecialDamageReduction = AllyState.SpecialDamageReduction;
-
-        if (TeamState.Enemies.Count > 1)
-        {
-            CopyCombatantState(EnemyState, TeamState.Enemies[1]);
-        }
-        TeamState.EnemySyncBuffs = EnemyState.SyncBoosts;
-        TeamState.EnemyDamageField = EnemyState.DamageField;
-        TeamState.EnemyPhysicalDamageReduction = EnemyState.PhysicalDamageReduction;
-        TeamState.EnemySpecialDamageReduction = EnemyState.SpecialDamageReduction;
 
         TeamState.UpdateCircleAllyCounts();
     }
