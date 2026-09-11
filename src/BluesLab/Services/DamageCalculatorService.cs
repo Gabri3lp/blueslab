@@ -2209,10 +2209,11 @@ public class DamageCalculatorService
         if (statKey == "all_stats")
         {
             int count = 0;
-            foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
+            foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva", "crit" })
             {
                 int s = stages.GetValueOrDefault(k, 0);
-                count += isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
+                int maxStage = k == "crit" ? 3 : 6;
+                count += isRaised ? Math.Clamp(s, 0, maxStage) : Math.Clamp(-s, 0, maxStage);
             }
             if (isSync)
             {
@@ -2230,7 +2231,8 @@ public class DamageCalculatorService
         else
         {
             int s = stages.GetValueOrDefault(statKey, 0);
-            int count = isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
+            int maxStage = statKey == "crit" ? 3 : 6;
+            int count = isRaised ? Math.Clamp(s, 0, maxStage) : Math.Clamp(-s, 0, maxStage);
             if (isSync)
             {
                 // PoMaTools: Math.round(Math.max(stages, 0) * 167 / 10) -> gives 17, 33, 50, 67, 84, 100%
@@ -2771,15 +2773,17 @@ public class DamageCalculatorService
                     desc.Contains("more the user's stats are raised", StringComparison.OrdinalIgnoreCase))
                 {
                     int sumRaised = 0;
-                    foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
+                    foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva", "crit" })
                     {
                         int s = ally.Stages.GetValueOrDefault(k, 0);
-                        if (s > 0) sumRaised += Math.Clamp(s, 0, 6);
+                        int maxK = k == "crit" ? 3 : 6;
+                        if (s > 0) sumRaised += Math.Clamp(s, 0, maxK);
                     }
                     if (sumRaised > 0)
                     {
                         int descStep = move.IsSync ? 67 : 26;
-                        int bonus1000 = Math.Min(sumRaised * descStep, 1200);
+                        int cap = move.IsSync ? 1200 : 1100;
+                        int bonus1000 = Math.Min(sumRaised * descStep, cap);
                         double m = (1000 + bonus1000) / 1000.0;
                         descMult *= m;
                         pills.Add(new MultiplierPill { Label = "Scaling (Stats+)", Value = $"×{m:0.###}", Color = "#fd79a8" });
@@ -2791,15 +2795,17 @@ public class DamageCalculatorService
                     desc.Contains("more the target's stats are lowered", StringComparison.OrdinalIgnoreCase))
                 {
                     int sumLowered = 0;
-                    foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
+                    foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva", "crit" })
                     {
                         int s = enemy.Stages.GetValueOrDefault(k, 0);
-                        if (s < 0) sumLowered += Math.Clamp(-s, 0, 6);
+                        int maxK = k == "crit" ? 3 : 6;
+                        if (s < 0) sumLowered += Math.Clamp(-s, 0, maxK);
                     }
                     if (sumLowered > 0)
                     {
                         int descStep = move.IsSync ? 67 : 26;
-                        int bonus1000 = Math.Min(sumLowered * descStep, 1200);
+                        int cap = move.IsSync ? 1200 : 1100;
+                        int bonus1000 = Math.Min(sumLowered * descStep, cap);
                         double m = (1000 + bonus1000) / 1000.0;
                         descMult *= m;
                         pills.Add(new MultiplierPill { Label = "Scaling (Stats-)", Value = $"×{m:0.###}", Color = "#fd79a8" });
@@ -2993,10 +2999,11 @@ public class DamageCalculatorService
 
         if (rule.Stat == "all_stats")
         {
-            foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva" })
+            foreach (var k in new[] { "atk", "def", "spa", "spd", "spe", "acc", "eva", "crit" })
             {
                 int s = stages.GetValueOrDefault(k, 0);
-                count += isRaised ? Math.Clamp(s, 0, 6) : Math.Clamp(-s, 0, 6);
+                int maxK = k == "crit" ? 3 : 6;
+                count += isRaised ? Math.Clamp(s, 0, maxK) : Math.Clamp(-s, 0, maxK);
             }
         }
         else if (rule.Stat == "def_spd")
@@ -3081,7 +3088,7 @@ public class DamageCalculatorService
             rule.Stat == "boost_rank_syun" ? 500 :
             rule.Stat == "hp" ? 10 :
             rule.Stat.StartsWith("cond:") ? 1000 :
-            (move.IsSync ? (rule.Stat == "all_stats" ? 67 : 167) : 50)
+            (move.IsSync ? (rule.Stat == "all_stats" ? 67 : 167) : (rule.Stat == "all_stats" ? 26 : 50))
         );
         int bonus = count * step;
         if (rule.CapPer1000 > 0)
@@ -3091,6 +3098,10 @@ public class DamageCalculatorService
         else if (move.IsSync)
         {
             bonus = Math.Min(bonus, rule.Stat == "all_stats" ? 1200 : 1000);
+        }
+        else if (rule.Stat == "all_stats")
+        {
+            bonus = Math.Min(bonus, 1100);
         }
 
         double mult = (1000 + bonus) / 1000.0;
