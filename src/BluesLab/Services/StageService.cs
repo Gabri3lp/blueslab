@@ -115,11 +115,33 @@ public class StageService
             {
                 enemy.EnemyTypeRebuffs[k] = 0;
             }
-            enemy.Mitigations["def"] = 5;
-            enemy.Mitigations["spd"] = 5;
-            enemy.Mitigations["atk"] = 5;
-            enemy.Mitigations["spa"] = 5;
-            enemy.Mitigations["spe"] = 5;
+
+            // Stat Mitigations
+            if (opp.Mitigations != null && opp.Mitigations.Count > 0)
+            {
+                foreach (var (k, v) in opp.Mitigations)
+                {
+                    enemy.Mitigations[k] = v;
+                }
+            }
+            else
+            {
+                enemy.Mitigations["def"] = 5;
+                enemy.Mitigations["spd"] = 5;
+                enemy.Mitigations["atk"] = 5;
+                enemy.Mitigations["spa"] = 5;
+                enemy.Mitigations["spe"] = 5;
+            }
+
+            // Status Mitigations & Passives
+            enemy.StatusMitigations = opp.StatusMitigations != null 
+                ? new Dictionary<string, int>(opp.StatusMitigations) 
+                : new Dictionary<string, int>();
+
+            enemy.StagePassives = opp.Passives != null 
+                ? new List<StagePassive>(opp.Passives) 
+                : new List<StagePassive>();
+
             enemy.StatusCondition = string.Empty;
             enemy.VolatileStatus["confused"] = false;
             enemy.VolatileStatus["trapped"] = false;

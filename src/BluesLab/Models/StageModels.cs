@@ -75,6 +75,33 @@ public class StageOpponent
 
     [JsonPropertyName("spe")]
     public int Spe { get; set; } = 300;
+
+    [JsonPropertyName("mitigations")]
+    public Dictionary<string, int> Mitigations { get; set; } = new();
+
+    [JsonPropertyName("statusMitigations")]
+    public Dictionary<string, int> StatusMitigations { get; set; } = new();
+
+    [JsonPropertyName("passives")]
+    public List<StagePassive> Passives { get; set; } = new();
+}
+
+public class StagePassive
+{
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = string.Empty;
+
+    [JsonPropertyName("description")]
+    public string Description { get; set; } = string.Empty;
+
+    [JsonPropertyName("mechanism")]
+    public string Mechanism { get; set; } = string.Empty; // "stat_multiplier", "damage_mitigation", "crit_immunity", "field_mitigation"
+
+    [JsonPropertyName("condition")]
+    public string Condition { get; set; } = string.Empty; // "no_negative_stat", "no_field_effect", "speed_up", "spdef_up", "fluid_fortification", "rain", "sun", "no_status_condition"
+
+    [JsonPropertyName("multiplier")]
+    public double Multiplier { get; set; } = 1.0;
 }
 
 public class TowerStageType

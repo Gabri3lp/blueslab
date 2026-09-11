@@ -1357,12 +1357,45 @@ public class DamageCalculatorService
         string defStatKey = isPhysical ? "def" : "spd";
         int jsonDefStat = enemy.ManualStats.GetValueOrDefault(defStatKey, 95);
         double inBattleDefMult = GetInBattleStatMultiplier(defStatKey, enemy, field);
+
+        // Evaluate Stat-Modifying Stage Passives (Piercing Blows CANNOT bypass stat multipliers)
+        double stageStatMult = 1.0;
+        if (enemy.StagePassives != null && enemy.StagePassives.Count > 0)
+        {
+            foreach (var sp in enemy.StagePassives)
+            {
+                if (sp.Mechanism == "stat_multiplier")
+                {
+                    if (sp.Condition == "no_negative_stat" && !enemy.HasNegativeStatChange())
+                    {
+                        stageStatMult *= sp.Multiplier;
+                        pills.Add(new MultiplierPill { Label = "No Debuffs", Value = $"Def/SpD ×{sp.Multiplier:0.#}", Color = "#e74c3c" });
+                    }
+                    else if (sp.Condition == "no_field_effect" && string.IsNullOrEmpty(field.Weather) && string.IsNullOrEmpty(field.Terrain) && string.IsNullOrEmpty(field.Zone) && string.IsNullOrEmpty(enemy.DamageField))
+                    {
+                        stageStatMult *= sp.Multiplier;
+                        pills.Add(new MultiplierPill { Label = "No WTZ/Field", Value = $"Def/SpD ×{sp.Multiplier:0.#}", Color = "#e74c3c" });
+                    }
+                    else if (sp.Condition == "speed_up" && enemy.Stages.GetValueOrDefault("spe", 0) > 0)
+                    {
+                        stageStatMult *= sp.Multiplier;
+                        pills.Add(new MultiplierPill { Label = "Speed Buff", Value = $"Def/SpD ×{sp.Multiplier:0.#}", Color = "#e74c3c" });
+                    }
+                    else if (sp.Condition == "spdef_up" && enemy.Stages.GetValueOrDefault("spd", 0) > 0)
+                    {
+                        stageStatMult *= sp.Multiplier;
+                        pills.Add(new MultiplierPill { Label = "Sp.Def Buff", Value = $"Def/SpD ×{sp.Multiplier:0.#}", Color = "#e74c3c" });
+                    }
+                }
+            }
+        }
+
         int defenderStat = CalcTotalStat(
             defStatKey,
             jsonDefStat,
             enemy.Stages.GetValueOrDefault(defStatKey, 0),
             mitigation: enemy.Mitigations.GetValueOrDefault(defStatKey, 5),
-            inBattleStatMult: inBattleDefMult,
+            inBattleStatMult: inBattleDefMult * stageStatMult,
             critDefense: ally.IsCriticalMove
         );
 
@@ -1663,12 +1696,103 @@ public class DamageCalculatorService
             }
         }
 
+        // Stage Passives (Damage Mitigations & Piercing Blows)
+        bool hasPiercing = HasPiercingBlows(ally, move, activeGridCells);
+        bool effectiveCrit = ally.IsCriticalMove;
+
+        if (enemy.StagePassives != null && enemy.StagePassives.Count > 0)
+        {
+            foreach (var sp in enemy.StagePassives)
+            {
+                if (sp.Mechanism == "damage_mitigation")
+                {
+                    if (sp.Condition == "fluid_fortification")
+                    {
+                        if (hasPiercing)
+                        {
+                            pills.Add(new MultiplierPill { Label = "Piercing Blows", Value = "Bypassed Fluid Fortification", Color = "#00cec9" });
+                        }
+                        else
+                        {
+                            int sum = enemy.GetNetStatSum();
+                            if (sum >= 10)
+                            {
+                                ne = 0;
+                                pills.Add(new MultiplierPill { Label = "Fluid Fortification", Value = "Invulnerable (-100%)", Color = "#e74c3c" });
+                            }
+                            else if (sum >= 1)
+                            {
+                                double reduction = 0.50 + 0.05 * sum;
+                                double factor = 1.0 - reduction;
+                                ne *= Math.Round(factor * 100);
+                                he *= 100.0;
+                                pills.Add(new MultiplierPill { Label = "Fluid Fortification", Value = $"Reinforced (-{reduction * 100:0.#}%)", Color = "#e74c3c" });
+                            }
+                            else if (sum >= -9)
+                            {
+                                double reduction = 0.50 - 0.05 * Math.Abs(sum);
+                                double factor = 1.0 - reduction;
+                                ne *= Math.Round(factor * 100);
+                                he *= 100.0;
+                                pills.Add(new MultiplierPill { Label = "Fluid Fortification", Value = $"Weakened (-{reduction * 100:0.#}%)", Color = "#f39c12" });
+                            }
+                            else
+                            {
+                                pills.Add(new MultiplierPill { Label = "Fluid Fortification", Value = "Vulnerable (0% Mitig)", Color = "#2ecc71" });
+                            }
+                        }
+                    }
+                    else if (sp.Condition == "rain" && field.Weather.Equals("Rainy", StringComparison.OrdinalIgnoreCase) && !move.IsSync && !move.IsMax)
+                    {
+                        if (hasPiercing)
+                        {
+                            pills.Add(new MultiplierPill { Label = "Piercing Blows", Value = "Bypassed Rain Gear", Color = "#00cec9" });
+                        }
+                        else
+                        {
+                            ne *= 1.0;
+                            he *= 2.0;
+                            pills.Add(new MultiplierPill { Label = sp.Name, Value = "×0.5 (-50%)", Color = "#e74c3c" });
+                        }
+                    }
+                    else if (sp.Condition == "sun" && field.Weather.Equals("Sunny", StringComparison.OrdinalIgnoreCase) && !move.IsSync && !move.IsMax)
+                    {
+                        if (hasPiercing)
+                        {
+                            pills.Add(new MultiplierPill { Label = "Piercing Blows", Value = "Bypassed Sunscreen", Color = "#00cec9" });
+                        }
+                        else
+                        {
+                            ne *= 1.0;
+                            he *= 2.0;
+                            pills.Add(new MultiplierPill { Label = sp.Name, Value = "×0.5 (-50%)", Color = "#e74c3c" });
+                        }
+                    }
+                }
+                else if (sp.Mechanism == "crit_immunity")
+                {
+                    if (sp.Condition == "no_status_condition" && string.IsNullOrEmpty(enemy.StatusCondition))
+                    {
+                        if (hasPiercing)
+                        {
+                            pills.Add(new MultiplierPill { Label = "Piercing Blows", Value = "Bypassed Robust Physique", Color = "#00cec9" });
+                        }
+                        else if (effectiveCrit)
+                        {
+                            effectiveCrit = false;
+                            pills.Add(new MultiplierPill { Label = "Robust Physique", Value = "Crit Blocked", Color = "#e74c3c" });
+                        }
+                    }
+                }
+            }
+        }
+
         // 5. Final Roll Computation (Math.fround matching PMEX engine)
         ne *= attackerStat;
         he *= defenderStat * 2.0;
 
         float baseFactor = (float)((double)battlePower * ne / he);
-        int rollIndex = ally.IsCriticalMove ? 1 : 0;
+        int rollIndex = effectiveCrit ? 1 : 0;
         var rolls = new List<int>();
 
         for (int l = 0; l < 10; l++)
@@ -1681,7 +1805,7 @@ public class DamageCalculatorService
         double lastRollVal = DamageRolls[rollIndex][10] * (double)battlePower * ne / he;
         rolls.Add((int)Math.Floor(lastRollVal));
 
-        if (ally.IsCriticalMove)
+        if (effectiveCrit)
         {
             pills.Add(new MultiplierPill { Label = "Crit", Value = "×1.5", Color = "#f1c40f" });
         }
@@ -1695,7 +1819,7 @@ public class DamageCalculatorService
             DefenderStat = defenderStat,
             StatRatio = (double)attackerStat / (defenderStat * 2.0),
             BattleMultiplier = (ne / attackerStat) / (he / (defenderStat * 2.0)),
-            IsCritical = ally.IsCriticalMove,
+            IsCritical = effectiveCrit,
             Rolls = rolls,
             Breakdown = pills,
             TargetMaxHp = enemy.ManualStats.GetValueOrDefault("hp", 0)
@@ -3143,6 +3267,102 @@ public class DamageCalculatorService
         bool isSupportBase = ally.Pair.Role.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
         bool isSupportExRole = ally.HasExRole && !string.IsNullOrEmpty(ally.Pair.ExRole) && ally.Pair.ExRole.StartsWith("Support", StringComparison.OrdinalIgnoreCase);
         return (isEx && (isSupportBase || isSupportExRole)) ? 2 : 1;
+    }
+
+    public static bool HasPiercingBlows(CombatantState ally, MoveItem move, HashSet<long>? activeGridCells = null)
+    {
+        if (ally.BypassDamageReductionPassives) return true;
+
+        // Move level checks
+        if (!string.IsNullOrEmpty(move.Name))
+        {
+            string mName = move.Name.ToLowerInvariant();
+            if (mName.Contains("piercing") || mName.Contains("perforante")) return true;
+        }
+
+        if (!string.IsNullOrEmpty(move.Description))
+        {
+            string mDesc = move.Description.ToLowerInvariant();
+            if (mDesc.Contains("ignores passive skills that would reduce the damage") ||
+                mDesc.Contains("ignores the target's passive skills that would reduce") ||
+                mDesc.Contains("ignores the target's passive skills that reduce") ||
+                mDesc.Contains("ignores passive skills that would protect the target against critical hits") ||
+                mDesc.Contains("ignora las habilidades pasivas del objetivo que reduzcan el daño") ||
+                mDesc.Contains("ignora las habilidades pasivas que reduzcan el daño"))
+            {
+                return true;
+            }
+        }
+
+        // Pair passives
+        var pair = ally.Pair;
+        if (pair != null)
+        {
+            int formIdx = ally.FormIndex;
+            var passives = (formIdx > 0 && pair.Variations != null && formIdx <= pair.Variations.Count && pair.Variations[formIdx - 1].Passives.Count > 0)
+                ? pair.Variations[formIdx - 1].Passives
+                : pair.Passives;
+
+            if (passives != null)
+            {
+                foreach (var p in passives)
+                {
+                    if (p.Id == 99010501 || // Piercing Blows ID
+                        p.Name.Equals("Piercing Blows", StringComparison.OrdinalIgnoreCase) ||
+                        p.Name.Equals("Golpe Perforante", StringComparison.OrdinalIgnoreCase) ||
+                        p.Name.Equals("Turboblaze", StringComparison.OrdinalIgnoreCase) ||
+                        p.Name.Equals("Teravolt", StringComparison.OrdinalIgnoreCase) ||
+                        p.Name.Contains("Piercing", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+
+                    if (!string.IsNullOrEmpty(p.Description))
+                    {
+                        string pDesc = p.Description.ToLowerInvariant();
+                        if (pDesc.Contains("ignores the target's passive skills that would reduce the damage") ||
+                            pDesc.Contains("ignores passive skills that would reduce the damage") ||
+                            pDesc.Contains("ignora las habilidades pasivas del objetivo que reduzcan el daño"))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // Super Awakening Passive
+            if (ally.SuperAwakeningLevel >= 5 && pair.SuperAwakeningPassive != null)
+            {
+                var sap = pair.SuperAwakeningPassive;
+                if (sap.Name.Contains("Piercing", StringComparison.OrdinalIgnoreCase) ||
+                    sap.Name.Contains("Turboblaze", StringComparison.OrdinalIgnoreCase) ||
+                    sap.Name.Contains("Teravolt", StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            // Grid tiles
+            if (activeGridCells != null && pair.Grid != null)
+            {
+                foreach (var cellId in activeGridCells)
+                {
+                    var cell = pair.Grid.FirstOrDefault(c => c.CellId == cellId);
+                    if (cell != null && !string.IsNullOrEmpty(cell.Title))
+                    {
+                        if (cell.Title.Contains("Piercing Blows", StringComparison.OrdinalIgnoreCase) ||
+                            cell.Title.Contains("Golpe Perforante", StringComparison.OrdinalIgnoreCase) ||
+                            cell.Title.Contains("Turboblaze", StringComparison.OrdinalIgnoreCase) ||
+                            cell.Title.Contains("Teravolt", StringComparison.OrdinalIgnoreCase))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
     }
 
     public static bool IsSyncTransformationForm(SyncPairDetail? pair, int formIndex)

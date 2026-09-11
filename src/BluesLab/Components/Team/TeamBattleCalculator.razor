@@ -186,6 +186,68 @@
                             }
                         </div>
                     }
+
+                    <!-- Live Stage Passives Status Badges for Active Target Enemy -->
+                    @if (State.ActiveTarget.StagePassives != null && State.ActiveTarget.StagePassives.Count > 0)
+                    {
+                        <div class="d-flex flex-wrap align-items-center gap-1 mt-2 pt-2 border-top border-secondary border-opacity-50">
+                            <span class="text-muted fw-bold small me-1"><i class="bi bi-cpu text-info me-1"></i>Stage Mechanics:</span>
+                            @foreach (var sp in State.ActiveTarget.StagePassives)
+                            {
+                                @if (sp.Condition == "fluid_fortification")
+                                {
+                                    int netSum = State.ActiveTarget.GetNetStatSum();
+                                    string ffText = netSum >= 10 ? "Invulnerable (-100%)" : (netSum >= 1 ? $"Reinforced (-{50 + 5 * netSum}%)" : (netSum >= -9 ? $"Weakened (-{50 - 5 * Math.Abs(netSum)}%)" : "Vulnerable (0% Mitig)"));
+                                    string ffClass = netSum >= 10 ? "bg-danger text-light fw-bold" : (netSum >= 1 ? "bg-danger text-light" : (netSum >= -9 ? "bg-warning text-dark" : "bg-success text-light fw-bold"));
+                                    <span class="badge @ffClass" title="Fluid Fortification: Net Stat Ranks determine damage reduction. Bypassed by Piercing Blows.">
+                                        <i class="bi bi-shield-shaded me-1"></i>Fluid Fortification (Net: @(netSum > 0 ? $"+{netSum}" : netSum.ToString())): @ffText
+                                    </span>
+                                }
+                                else if (sp.Condition == "no_negative_stat")
+                                {
+                                    bool hasDebuff = State.ActiveTarget.HasNegativeStatChange();
+                                    <span class="badge @(hasDebuff ? "bg-success text-light" : "bg-danger text-light fw-bold")" title="No Negative Stat Change: Defense & Sp. Def are 3x until any negative stat rank (<0) is inflicted.">
+                                        <i class="bi bi-graph-down-arrow me-1"></i>No Negative Stat (3× Def/SpD): @(hasDebuff ? "DISABLED (Debuffed)" : "ACTIVE (3× Stats)")
+                                    </span>
+                                }
+                                else if (sp.Condition == "no_field_effect")
+                                {
+                                    bool hasField = !string.IsNullOrEmpty(State.Field.Weather) || !string.IsNullOrEmpty(State.Field.Terrain) || !string.IsNullOrEmpty(State.Field.Zone) || !string.IsNullOrEmpty(State.ActiveTarget.DamageField);
+                                    <span class="badge @(hasField ? "bg-success text-light" : "bg-danger text-light fw-bold")" title="Unaffected by Field Effect: Defense & Sp. Def are 3x unless a Weather, Terrain, Zone, or Damage Field is active.">
+                                        <i class="bi bi-cloud-sun me-1"></i>No Field Effect (3× Def/SpD): @(hasField ? "DISABLED (Field Set)" : "ACTIVE (3× Stats)")
+                                    </span>
+                                }
+                                else if (sp.Condition == "speed_up")
+                                {
+                                    bool isSpeedUp = State.ActiveTarget.Stages.GetValueOrDefault("spe", 0) > 0;
+                                    <span class="badge @(isSpeedUp ? "bg-danger text-light fw-bold" : "bg-success text-light")" title="Speed ↑: Defense & Sp. Def are 3x when Speed is raised.">
+                                        <i class="bi bi-speedometer2 me-1"></i>Speed ↑ (3× Def/SpD): @(isSpeedUp ? $"ACTIVE (+{State.ActiveTarget.Stages["spe"]})" : "DISABLED")
+                                    </span>
+                                }
+                                else if (sp.Condition == "spdef_up")
+                                {
+                                    bool isSpdUp = State.ActiveTarget.Stages.GetValueOrDefault("spd", 0) > 0;
+                                    <span class="badge @(isSpdUp ? "bg-danger text-light fw-bold" : "bg-success text-light")" title="Sp. Def ↑: Defense & Sp. Def are 3x when Sp. Def is raised.">
+                                        <i class="bi bi-shield-plus me-1"></i>Sp. Def ↑ (3× Def/SpD): @(isSpdUp ? $"ACTIVE (+{State.ActiveTarget.Stages["spd"]})" : "DISABLED")
+                                    </span>
+                                }
+                                else if (sp.Condition == "no_status_condition")
+                                {
+                                    bool hasStatus = !string.IsNullOrEmpty(State.ActiveTarget.StatusCondition);
+                                    <span class="badge @(hasStatus ? "bg-success text-light" : "bg-danger text-light fw-bold")" title="Robust Physique: Immune to critical hits unless affected by a status condition.">
+                                        <i class="bi bi-shield-x me-1"></i>Robust Physique (Crit Block): @(hasStatus ? "DISABLED (Status On)" : "ACTIVE (Crit Immune)")
+                                    </span>
+                                }
+                                else if (sp.Condition == "rain")
+                                {
+                                    bool isRain = State.Field.Weather.Equals("Rainy", StringComparison.OrdinalIgnoreCase);
+                                    <span class="badge @(isRain ? "bg-danger text-light" : "bg-secondary text-light")" title="Rain Gear 5: Reduces move damage by 50% under rain.">
+                                        <i class="bi bi-cloud-rain me-1"></i>Rain Gear 5: @(isRain ? "ACTIVE (-50% dmg)" : "INACTIVE")
+                                    </span>
+                                }
+                            }
+                        </div>
+                    }
                 </div>
             }
 
@@ -695,6 +757,12 @@
                                                 </div>
                                                 <button class="btn btn-sm py-0 px-1 @(ally.IsCriticalMove ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.68rem; height: 22px;" @onclick="() => ally.IsCriticalMove = !ally.IsCriticalMove">@Loc.T("crit", "Crit")</button>
                                                 <button class="btn btn-sm py-0 px-1 @(ally.SuperEffectiveNext ? "btn-danger text-white fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.68rem; height: 22px;" @onclick="() => ally.SuperEffectiveNext = !ally.SuperEffectiveNext">@Loc.T("se_next", "SE Next")</button>
+                                                <button class="btn btn-sm py-0 px-1 @(ally.BypassDamageReductionPassives ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                                        style="font-size: 0.68rem; height: 22px;"
+                                                        title="Piercing Blows (Golpe Perforante): Ignores enemy damage reduction passives (Fluid Fortification, Sunscreen, Rain Gear) and crit immunity."
+                                                        @onclick="() => ally.BypassDamageReductionPassives = !ally.BypassDamageReductionPassives">
+                                                    <i class="bi bi-lightning-fill me-1"></i>Piercing
+                                                </button>
                                             </div>
                                         </div>
 

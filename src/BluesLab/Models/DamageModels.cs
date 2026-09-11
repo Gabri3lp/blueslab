@@ -137,9 +137,31 @@ public class CombatantState
     public Dictionary<string, int> EnemyTypeRebuffs { get; set; } = new();
     public int StellarRebuff { get; set; }
     public Dictionary<string, int> Mitigations { get; set; } = new();
+    public Dictionary<string, int> StatusMitigations { get; set; } = new();
+    public List<StagePassive> StagePassives { get; set; } = new();
+    public bool BypassDamageReductionPassives { get; set; }
     public Dictionary<string, int> ManualStats { get; set; } = new();
     public string Weakness { get; set; } = string.Empty;
     public string DamageField { get; set; } = string.Empty;
+
+    public int GetNetStatSum()
+    {
+        int sum = 0;
+        foreach (var s in StageLabels)
+        {
+            if (s != "hp") sum += Stages.GetValueOrDefault(s, 0);
+        }
+        return sum;
+    }
+
+    public bool HasNegativeStatChange()
+    {
+        foreach (var s in StageLabels)
+        {
+            if (s != "hp" && Stages.GetValueOrDefault(s, 0) < 0) return true;
+        }
+        return false;
+    }
 
     public static CombatantState CreateAlly(SyncPairDetail? pair = null)
     {
