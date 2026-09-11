@@ -378,9 +378,18 @@ public class DamageCalculatorService
                     if (matchingAllies.Count >= 2)
                     {
                         processedThemeIds.Add(thId);
-                        string thStr = thId.ToString();
-                        bool isType = thStr.StartsWith("2001");
-                        bool isRegion = thStr.StartsWith("2002");
+                        long group = thId / 10000;
+                        bool isType = group == 2001;
+                        bool isSpec = group < 2004; // Region (2002) and Trainer Groups (2003: Rival, Champion, Main Character, Gym Leader, Elite Four, Villain, etc.)
+
+                        string themeName = ThemeDefinitionsMap.TryGetValue(thId, out var def) ? def.Name : $"Theme #{thId}";
+                        string category = isType ? "Type" : (group == 2002 ? "Region" : "Tag");
+
+                        // A Type theme skill only applies to sync pairs of that type
+                        if (isType && !string.Equals(themeName, ally.Pair.Type, StringComparison.OrdinalIgnoreCase))
+                        {
+                            continue;
+                        }
 
                         int atk = 0, spa = 0, hp = 0, spe = 0;
                         foreach (var m in matchingAllies)
@@ -395,29 +404,29 @@ public class DamageCalculatorService
 
                             if (isType)
                             {
-                                if (isStrike) { atk += 25; spa += 25; }
-                                else if (isTech || isSprint || isMulti) { atk += 20; spa += 20; hp += 20; if (isSprint) spe += 20; }
-                                else if (isSupport) { hp += 50; }
-                                else if (isField) { hp += 20; spe += 20; }
+                                if (isStrike) { atk += 30; spa += 30; }
+                                else if (isTech || isMulti) { atk += 24; spa += 24; hp += 24; }
+                                else if (isSprint) { atk += 24; spa += 24; spe += 24; }
+                                else if (isSupport) { hp += 60; }
+                                else if (isField) { hp += 24; spe += 24; }
                             }
-                            else if (isRegion)
+                            else if (isSpec) // Region (2002) & Trainer Groups (2003: Rival, Champion, etc.)
                             {
-                                if (isStrike) { atk += 6; spa += 6; }
-                                else if (isTech || isSprint || isMulti) { atk += 3; spa += 3; hp += 5; if (isSprint) spe += 5; }
-                                else if (isSupport) { hp += 10; }
-                                else if (isField) { hp += 5; spe += 5; }
+                                if (isStrike) { atk += 8; spa += 8; }
+                                else if (isTech || isMulti) { atk += 4; spa += 4; hp += 7; }
+                                else if (isSprint) { atk += 4; spa += 4; spe += 7; }
+                                else if (isSupport) { hp += 13; }
+                                else if (isField) { hp += 7; spe += 7; }
                             }
-                            else // Tag / Description (SPEC & DESC groups)
+                            else // DESC (group >= 2004: Fashion, Arc Suit, Other tags like Pallet Town)
                             {
-                                if (isStrike) { atk += 7; spa += 7; }
-                                else if (isTech || isSprint || isMulti) { atk += 4; spa += 4; hp += 6; if (isSprint) spe += 6; }
-                                else if (isSupport) { hp += 12; }
-                                else if (isField) { hp += 6; spe += 6; }
+                                if (isStrike) { atk += 9; spa += 9; }
+                                else if (isTech || isMulti) { atk += 5; spa += 5; hp += 8; }
+                                else if (isSprint) { atk += 5; spa += 5; spe += 8; }
+                                else if (isSupport) { hp += 15; }
+                                else if (isField) { hp += 8; spe += 8; }
                             }
                         }
-
-                        string themeName = ThemeDefinitionsMap.TryGetValue(thId, out var def) ? def.Name : $"Theme #{thId}";
-                        string category = isType ? "Type" : (isRegion ? "Region" : "Tag");
 
                         var descParts = new List<string>();
                         if (atk > 0) descParts.Add($"+{atk} Atk/SpA");
@@ -448,6 +457,9 @@ public class DamageCalculatorService
 
                 foreach (var group in typeGroups)
                 {
+                    if (!string.Equals(group.Key, ally.Pair.Type, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
                     var matchingAllies = group.ToList();
                     if (matchingAllies.Count >= 2)
                     {
@@ -455,16 +467,18 @@ public class DamageCalculatorService
                         foreach (var m in matchingAllies)
                         {
                             string r = m.Pair!.Role ?? string.Empty;
-                            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 25; spa += 25; }
+                            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 30; spa += 30; }
                             else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
-                                     r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
                                      r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
                             {
-                                atk += 20; spa += 20; hp += 20;
-                                if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 20;
+                                atk += 24; spa += 24; hp += 24;
                             }
-                            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 50; }
-                            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 20; spe += 20; }
+                            else if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase))
+                            {
+                                atk += 24; spa += 24; spe += 24;
+                            }
+                            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 60; }
+                            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 24; spe += 24; }
                         }
 
                         var descParts = new List<string>();
@@ -504,16 +518,18 @@ public class DamageCalculatorService
                         foreach (var m in matchingAllies)
                         {
                             string r = m.Pair!.Role ?? string.Empty;
-                            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 6; spa += 6; }
+                            if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase)) { atk += 8; spa += 8; }
                             else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
-                                     r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
                                      r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
                             {
-                                atk += 3; spa += 3; hp += 5;
-                                if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase)) spe += 5;
+                                atk += 4; spa += 4; hp += 7;
                             }
-                            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 10; }
-                            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 5; spe += 5; }
+                            else if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase))
+                            {
+                                atk += 4; spa += 4; spe += 7;
+                            }
+                            else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase)) { hp += 13; }
+                            else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase)) { hp += 7; spe += 7; }
                         }
 
                         var descParts = new List<string>();
@@ -545,38 +561,41 @@ public class DamageCalculatorService
 
             if (r.StartsWith("Strike", StringComparison.OrdinalIgnoreCase))
             {
-                typeAtk = 50; // 25 + 25
-                typeSpa = 50;
-                regAtk = 12;  // 6 + 6
-                regSpa = 12;
+                typeAtk = 60; // 30 + 30
+                typeSpa = 60;
+                regAtk = 16;  // 8 + 8
+                regSpa = 16;
             }
             else if (r.StartsWith("Tech", StringComparison.OrdinalIgnoreCase) ||
-                     r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase) ||
                      r.StartsWith("Multi", StringComparison.OrdinalIgnoreCase))
             {
-                typeAtk = 40; // 20 + 20
-                typeSpa = 40;
-                typeHp = 40;
-                regAtk = 6;   // 3 + 3
-                regSpa = 6;
-                regHp = 10;   // 5 + 5
-                if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase))
-                {
-                    typeSpe = 40;
-                    regSpe = 10;
-                }
+                typeAtk = 48; // 24 + 24
+                typeSpa = 48;
+                typeHp = 48;  // 24 + 24
+                regAtk = 8;   // 4 + 4
+                regSpa = 8;
+                regHp = 14;   // 7 + 7
+            }
+            else if (r.StartsWith("Sprint", StringComparison.OrdinalIgnoreCase))
+            {
+                typeAtk = 48; // 24 + 24
+                typeSpa = 48;
+                typeSpe = 48; // 24 + 24
+                regAtk = 8;   // 4 + 4
+                regSpa = 8;
+                regSpe = 14;  // 7 + 7
             }
             else if (r.StartsWith("Support", StringComparison.OrdinalIgnoreCase))
             {
-                typeHp = 100; // 50 + 50
-                regHp = 20;   // 10 + 10
+                typeHp = 120; // 60 + 60
+                regHp = 26;   // 13 + 13
             }
             else if (r.StartsWith("Field", StringComparison.OrdinalIgnoreCase))
             {
-                typeHp = 40;
-                typeSpe = 40;
-                regHp = 10;
-                regSpe = 10;
+                typeHp = 48;  // 24 + 24
+                typeSpe = 48; // 24 + 24
+                regHp = 14;   // 7 + 7
+                regSpe = 14;  // 7 + 7
             }
 
             if (!string.IsNullOrEmpty(ally.Pair.Type))
