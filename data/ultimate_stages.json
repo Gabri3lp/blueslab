@@ -1,1 +1,1848 @@
-[]
+[
+  {
+    "fightId": "ultimate_anabelff",
+    "title": "Anabel's Flickering Flames (Anabel)",
+    "leader": "Anabel",
+    "stageType": "Fire",
+    "theme": "Anabel's Flickering Flames",
+    "rules": [
+      "Fluid Fortification: The net sum of enemy stat ranks dictates damage mitigation. Piercing Blows bypasses this."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Arcanine",
+        "pokemonId": "005900",
+        "iconUrl": "img/pokemon/005900_128.png",
+        "weakness": "Water",
+        "hp": 173250,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 10,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Anabel",
+        "pokemonName": "Entei",
+        "pokemonId": "024400",
+        "iconUrl": "img/pokemon/024400_128.png",
+        "weakness": "Water",
+        "hp": 924000,
+        "atk": 4608,
+        "def": 83,
+        "spa": 4608,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 9,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "Fluid Fortification",
+            "description": "The net sum of stat ranks that the user has determines how much damage it will take from attack moves and sync moves (up to 100% reduction at >= +10, 0% at <= -10).",
+            "mechanism": "damage_mitigation",
+            "condition": "fluid_fortification",
+            "multiplier": 1.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Ninetales",
+        "pokemonId": "003800",
+        "iconUrl": "img/pokemon/003800_128.png",
+        "weakness": "Water",
+        "hp": 173250,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_thortonff",
+    "title": "Thorton's Freezing Frost (Thorton)",
+    "leader": "Thorton",
+    "stageType": "Ice",
+    "theme": "Thorton's Freezing Frost",
+    "rules": [
+      "No Negative Stat Change: Enemy Defense & Sp. Def are multiplied by 3 unless debuffed. Piercing Blows does NOT bypass stat multipliers."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Avalugg",
+        "pokemonId": "000000",
+        "iconUrl": "img/pokemon/NONE.png",
+        "weakness": "Fire",
+        "hp": 88550,
+        "atk": 3648,
+        "def": 83,
+        "spa": 3648,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Thorton",
+        "pokemonName": "Articuno",
+        "pokemonId": "014400",
+        "iconUrl": "img/pokemon/014400_128.png",
+        "weakness": "Fire",
+        "hp": 654500,
+        "atk": 3840,
+        "def": 83,
+        "spa": 3840,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 8,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 9,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "No Negative Status Change: Defense ×3 & Sp. Def ×3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when it is not affected by a negative status change.",
+            "mechanism": "stat_multiplier",
+            "condition": "no_negative_stat",
+            "multiplier": 3.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Steelix",
+        "pokemonId": "000000",
+        "iconUrl": "img/pokemon/NONE.png",
+        "weakness": "Fire",
+        "hp": 88550,
+        "atk": 3648,
+        "def": 83,
+        "spa": 3648,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_darachdw",
+    "title": "Darach's Daring Wings (Darach)",
+    "leader": "Darach",
+    "stageType": "Flying",
+    "theme": "Darach's Daring Wings",
+    "rules": [
+      "Unaffected by Field Effect: Enemy Defense & Sp. Def are multiplied by 3 unless a field effect (WTZ/Damage Field) is active."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Talonflame",
+        "pokemonId": "000000",
+        "iconUrl": "img/pokemon/NONE.png",
+        "weakness": "Rock",
+        "hp": 57750,
+        "atk": 1920,
+        "def": 83,
+        "spa": 1920,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 10,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Darach",
+        "pokemonName": "Staraptor",
+        "pokemonId": "039800",
+        "iconUrl": "img/pokemon/039800_128.png",
+        "weakness": "Rock",
+        "hp": 589050,
+        "atk": 2304,
+        "def": 83,
+        "spa": 2304,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 10,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "Unaffected by Field Effect: Defense ×3 & Sp. Def ×3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when it is not affected by a field effect (Weather/Terrain/Zone/Damage Field).",
+            "mechanism": "stat_multiplier",
+            "condition": "no_field_effect",
+            "multiplier": 3.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Aerodactyl",
+        "pokemonId": "000000",
+        "iconUrl": "img/pokemon/NONE.png",
+        "weakness": "Rock",
+        "hp": 57750,
+        "atk": 1920,
+        "def": 83,
+        "spa": 1920,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_argentagc",
+    "title": "Argenta's Glistening Crystals (Argenta)",
+    "leader": "Argenta",
+    "stageType": "Steel",
+    "theme": "Argenta's Glistening Crystals",
+    "rules": [
+      "Rain Gear 5: Reduces attack move damage by 50% under Rain. Piercing Blows bypasses this."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Slowbro",
+        "pokemonId": "008000",
+        "iconUrl": "img/pokemon/008000_128.png",
+        "weakness": "Grass",
+        "hp": 92400,
+        "atk": 2112,
+        "def": 83,
+        "spa": 2112,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Argenta",
+        "pokemonName": "Skarmory",
+        "pokemonId": "022700",
+        "iconUrl": "img/pokemon/022700_128.png",
+        "weakness": "Grass",
+        "hp": 716100,
+        "atk": 2380,
+        "def": 83,
+        "spa": 2380,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 8,
+          "confusion": 8,
+          "trap": 10
+        },
+        "passives": [
+          {
+            "name": "Rain Gear 5",
+            "description": "Reduces damage by 50% when the user is hit by an attack move while the weather is rainy.",
+            "mechanism": "damage_mitigation",
+            "condition": "rain",
+            "multiplier": 0.5
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Starmie",
+        "pokemonId": "000000",
+        "iconUrl": "img/pokemon/NONE.png",
+        "weakness": "Grass",
+        "hp": 92400,
+        "atk": 2112,
+        "def": 83,
+        "spa": 2112,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_palmerrm",
+    "title": "Palmer's Rumbling Might (Palmer)",
+    "leader": "Palmer",
+    "stageType": "Normal",
+    "theme": "Palmer's Rumbling Might",
+    "rules": [
+      "Palmer's Rumbling Might: Max Moves target all allies, massive defensive profile."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Snorlax",
+        "pokemonId": "014300",
+        "iconUrl": "img/pokemon/014300_128.png",
+        "weakness": "Fighting",
+        "hp": 148995,
+        "atk": 2880,
+        "def": 83,
+        "spa": 2880,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Palmer",
+        "pokemonName": "Regigigas",
+        "pokemonId": "048600",
+        "iconUrl": "img/pokemon/048600_128.png",
+        "weakness": "Fighting",
+        "hp": 549780,
+        "atk": 2304,
+        "def": 83,
+        "spa": 2496,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "paralysis": 8,
+          "confusion": 8,
+          "trap": 9
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Empoleon",
+        "pokemonId": "039500",
+        "iconUrl": "img/pokemon/039500_128.png",
+        "weakness": "Fighting",
+        "hp": 148995,
+        "atk": 2880,
+        "def": 83,
+        "spa": 2880,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_lucyev",
+    "title": "Lucy's Entangling Vipers (Lucy)",
+    "leader": "Lucy",
+    "stageType": "Poison",
+    "theme": "Lucy's Entangling Vipers",
+    "rules": [
+      "Lucy's Entangling Vipers: Severe poison mechanics, cleanses debuffs at 40% HP."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Nidoking",
+        "pokemonId": "003400",
+        "iconUrl": "img/pokemon/003400_128.png",
+        "weakness": "Ground",
+        "hp": 200200,
+        "atk": 2304,
+        "def": 83,
+        "spa": 2304,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Lucy",
+        "pokemonName": "Seviper",
+        "pokemonId": "033600",
+        "iconUrl": "img/pokemon/033600_128.png",
+        "weakness": "Ground",
+        "hp": 327250,
+        "atk": 1728,
+        "def": 83,
+        "spa": 1728,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "paralysis": 8,
+          "confusion": 8,
+          "trap": 9
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Nidoqueen",
+        "pokemonId": "003100",
+        "iconUrl": "img/pokemon/003100_128.png",
+        "weakness": "Ground",
+        "hp": 200200,
+        "atk": 2304,
+        "def": 83,
+        "spa": 2304,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_leonub",
+    "title": "Leon's Unbeatable Bonds (Leon)",
+    "leader": "Leon",
+    "stageType": "Fire",
+    "theme": "Leon's Unbeatable Bonds",
+    "rules": [
+      "Leon's Unbeatable Bonds: Moves/sync moves power x3 when unaffected by status."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Butterfree",
+        "pokemonId": "001200",
+        "iconUrl": "img/pokemon/001200_128.png",
+        "weakness": "Electric",
+        "hp": 327250,
+        "atk": 3264,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Leon",
+        "pokemonName": "Charizard",
+        "pokemonId": "000600",
+        "iconUrl": "img/pokemon/000600_128.png",
+        "weakness": "Electric",
+        "hp": 608300,
+        "atk": 3936,
+        "def": 83,
+        "spa": 3936,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 7,
+          "confusion": 8,
+          "trap": 10
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Lapras",
+        "pokemonId": "013100",
+        "iconUrl": "img/pokemon/013100_128.png",
+        "weakness": "Electric",
+        "hp": 327250,
+        "atk": 3264,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_nitabl",
+    "title": "Nita's Breezy Land (Nita)",
+    "leader": "Nita",
+    "stageType": "Ground",
+    "theme": "Nita's Breezy Land",
+    "rules": [
+      "Speed ↑: Enemy Defense & Sp. Def are multiplied by 3 when its Speed is raised."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Hippowdon",
+        "pokemonId": "045000",
+        "iconUrl": "img/pokemon/045000_128.png",
+        "weakness": "Ice",
+        "hp": 361900,
+        "atk": 3552,
+        "def": 83,
+        "spa": 3552,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Nita",
+        "pokemonName": "Landorus",
+        "pokemonId": "064500",
+        "iconUrl": "img/pokemon/064500_128.png",
+        "weakness": "Ice",
+        "hp": 569800,
+        "atk": 3648,
+        "def": 83,
+        "spa": 3648,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 9,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "Speed ↑: Defense & Sp. Def x3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when its Speed is raised.",
+            "mechanism": "stat_multiplier",
+            "condition": "speed_up",
+            "multiplier": 3.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Garchomp",
+        "pokemonId": "044500",
+        "iconUrl": "img/pokemon/044500_128.png",
+        "weakness": "Ice",
+        "hp": 361900,
+        "atk": 3552,
+        "def": 83,
+        "spa": 3552,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_nolandpp",
+    "title": "Noland's Piercing Pins (Noland)",
+    "leader": "Noland",
+    "stageType": "Bug",
+    "theme": "Noland's Piercing Pins",
+    "rules": [
+      "Noland's Piercing Pins: Good Form scaling based on raised stats."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Poliwrath (Left)",
+        "pokemonId": "006200",
+        "iconUrl": "img/pokemon/006200_128.png",
+        "weakness": "Flying",
+        "hp": 69300,
+        "atk": 3072,
+        "def": 83,
+        "spa": 3072,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Noland",
+        "pokemonName": "Pinsir",
+        "pokemonId": "012700",
+        "iconUrl": "img/pokemon/012700_128.png",
+        "weakness": "Flying",
+        "hp": 246400,
+        "atk": 3264,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "trap": 9
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Poliwrath (Right)",
+        "pokemonId": "006200",
+        "iconUrl": "img/pokemon/006200_128.png",
+        "weakness": "Flying",
+        "hp": 69300,
+        "atk": 3072,
+        "def": 83,
+        "spa": 3072,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_giovannidp",
+    "title": "Giovanni's Destructive Power (Giovanni)",
+    "leader": "Giovanni",
+    "stageType": "Psychic",
+    "theme": "Giovanni's Destructive Power",
+    "rules": [
+      "Unaffected by Field Effect: Enemy Defense & Sp. Def are multiplied by 3 unless a field effect (WTZ/Damage Field) is active."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Hypno (Left)",
+        "pokemonId": "009700",
+        "iconUrl": "img/pokemon/009700_128.png",
+        "weakness": "Dark",
+        "hp": 103950,
+        "atk": 2304,
+        "def": 83,
+        "spa": 2304,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Giovanni",
+        "pokemonName": "Mewtwo",
+        "pokemonId": "015000",
+        "iconUrl": "img/pokemon/015000_128.png",
+        "weakness": "Dark",
+        "hp": 789250,
+        "atk": 2496,
+        "def": 83,
+        "spa": 2496,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 10,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "Unaffected by Field Effect: Defense ×3 & Sp. Def ×3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when it is not affected by a field effect (Weather/Terrain/Zone/Damage Field).",
+            "mechanism": "stat_multiplier",
+            "condition": "no_field_effect",
+            "multiplier": 3.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Hypno (Right)",
+        "pokemonId": "009700",
+        "iconUrl": "img/pokemon/009700_128.png",
+        "weakness": "Dark",
+        "hp": 103950,
+        "atk": 2304,
+        "def": 83,
+        "spa": 2304,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_evelynhs",
+    "title": "Evelyn's Heated Spirit (Evelyn)",
+    "leader": "Evelyn",
+    "stageType": "Fire",
+    "theme": "Evelyn's Heated Spirit",
+    "rules": [
+      "Fluid Fortification: The net sum of enemy stat ranks dictates damage mitigation. Piercing Blows bypasses this."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Hydreigon",
+        "pokemonId": "063500",
+        "iconUrl": "img/pokemon/063500_128.png",
+        "weakness": "Fairy",
+        "hp": 323400,
+        "atk": 4032,
+        "def": 83,
+        "spa": 4032,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Evelyn",
+        "pokemonName": "Entei",
+        "pokemonId": "024400",
+        "iconUrl": "img/pokemon/024400_128.png",
+        "weakness": "Fairy",
+        "hp": 679525,
+        "atk": 4224,
+        "def": 83,
+        "spa": 4224,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 9,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "Fluid Fortification",
+            "description": "The net sum of stat ranks that the user has determines how much damage it will take from attack moves and sync moves (up to 100% reduction at >= +10, 0% at <= -10).",
+            "mechanism": "damage_mitigation",
+            "condition": "fluid_fortification",
+            "multiplier": 1.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Dragapult",
+        "pokemonId": "088700",
+        "iconUrl": "img/pokemon/088700_128.png",
+        "weakness": "Fairy",
+        "hp": 323400,
+        "atk": 4032,
+        "def": 83,
+        "spa": 4032,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_maskedroyalec",
+    "title": "Masked Royal's Entertaining Clash (The Masked Royal)",
+    "leader": "The Masked Royal",
+    "stageType": "Fire",
+    "theme": "Masked Royal's Entertaining Clash",
+    "rules": [
+      "Robust Physique: Immune to critical hits unless affected by a status condition. Piercing Blows bypasses this."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Primarina",
+        "pokemonId": "073000",
+        "iconUrl": "img/pokemon/073000_128.png",
+        "weakness": "Poison",
+        "hp": 261800,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 3,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "The Masked Royal",
+        "pokemonName": "Incineroar",
+        "pokemonId": "072700",
+        "iconUrl": "img/pokemon/072700_128.png",
+        "weakness": "Poison",
+        "hp": 585200,
+        "atk": 4032,
+        "def": 83,
+        "spa": 4032,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 3,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 9,
+          "burn": 10,
+          "paralysis": 8,
+          "confusion": 8,
+          "trap": 10
+        },
+        "passives": [
+          {
+            "name": "Robust Physique",
+            "description": "Protects the user against critical hits when it is not affected by a status condition.",
+            "mechanism": "crit_immunity",
+            "condition": "no_status_condition",
+            "multiplier": 0.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Meganium",
+        "pokemonId": "015400",
+        "iconUrl": "img/pokemon/015400_128.png",
+        "weakness": "Poison",
+        "hp": 261800,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 3,
+          "spd": 5,
+          "spe": 3,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_nemonals",
+    "title": "Nemona's Lightning Spirit (Nemona)",
+    "leader": "Nemona",
+    "stageType": "Electric",
+    "theme": "Nemona's Lightning Spirit",
+    "rules": [
+      "No Negative Stat Change: Enemy Defense & Sp. Def are multiplied by 3 unless debuffed. Piercing Blows does NOT bypass stat multipliers."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Toxtricity (Low Key)",
+        "pokemonId": "084900",
+        "iconUrl": "img/pokemon/084900_128.png",
+        "weakness": "Psychic",
+        "hp": 469700,
+        "atk": 3168,
+        "def": 83,
+        "spa": 3168,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Nemona",
+        "pokemonName": "Pawmot",
+        "pokemonId": "092300",
+        "iconUrl": "img/pokemon/092300_128.png",
+        "weakness": "Psychic",
+        "hp": 558250,
+        "atk": 3264,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 8,
+          "confusion": 5,
+          "trap": 10
+        },
+        "passives": [
+          {
+            "name": "No Negative Status Change: Defense ×3 & Sp. Def ×3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when it is not affected by a negative status change.",
+            "mechanism": "stat_multiplier",
+            "condition": "no_negative_stat",
+            "multiplier": 3.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Toxtricity (Amped)",
+        "pokemonId": "084900",
+        "iconUrl": "img/pokemon/084900_128.png",
+        "weakness": "Psychic",
+        "hp": 469700,
+        "atk": 3168,
+        "def": 83,
+        "spa": 3168,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_morgantl",
+    "title": "Morgan's Tranquil Lake (Morgan)",
+    "leader": "Morgan",
+    "stageType": "Steel",
+    "theme": "Morgan's Tranquil Lake",
+    "rules": [
+      "Morgan's Tranquil Lake: Opponent stats reduction powers up enemy moves."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Garchomp",
+        "pokemonId": "044500",
+        "iconUrl": "img/pokemon/044500_128.png",
+        "weakness": "Dragon",
+        "hp": 250250,
+        "atk": 3264,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Morgan",
+        "pokemonName": "Cobalion",
+        "pokemonId": "063800",
+        "iconUrl": "img/pokemon/063800_128.png",
+        "weakness": "Dragon",
+        "hp": 539000,
+        "atk": 3648,
+        "def": 83,
+        "spa": 3648,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 8,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 10,
+          "flinch": 8
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Haxorus",
+        "pokemonId": "061200",
+        "iconUrl": "img/pokemon/061200_128.png",
+        "weakness": "Dragon",
+        "hp": 250250,
+        "atk": 3264,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 3,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_danaip",
+    "title": "Dana's Icy Peaks (Dana)",
+    "leader": "Dana",
+    "stageType": "Ice",
+    "theme": "Dana's Icy Peaks",
+    "rules": [
+      "Dana's Icy Peaks: Moves and sync moves powered up heavily under Ice Zone / Hail."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Aurorus",
+        "pokemonId": "069900",
+        "iconUrl": "img/pokemon/069900_128.png",
+        "weakness": "Steel",
+        "hp": 281050,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Dana",
+        "pokemonName": "Regice",
+        "pokemonId": "037800",
+        "iconUrl": "img/pokemon/037800_128.png",
+        "weakness": "Steel",
+        "hp": 943250,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 9,
+          "paralysis": 8,
+          "freeze": 9,
+          "sleep": 9,
+          "confusion": 8,
+          "trap": 9,
+          "flinch": 9
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Abomasnow",
+        "pokemonId": "046000",
+        "iconUrl": "img/pokemon/046000_128.png",
+        "weakness": "Steel",
+        "hp": 481250,
+        "atk": 3456,
+        "def": 83,
+        "spa": 3456,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_wallyss",
+    "title": "Wally's Spirited Strike (Wally)",
+    "leader": "Wally",
+    "stageType": "Fighting",
+    "theme": "Wally's Spirited Strike",
+    "rules": [
+      "Unaffected by Field Effect: Def/SpD x3 without WTZ. Also Sp. Def ↑: Def/SpD x3 if Sp. Def buffed."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Gardevoir",
+        "pokemonId": "028200",
+        "iconUrl": "img/pokemon/028200_128.png",
+        "weakness": "Ghost",
+        "hp": 207900,
+        "atk": 4224,
+        "def": 83,
+        "spa": 4224,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Wally",
+        "pokemonName": "Gallade",
+        "pokemonId": "047500",
+        "iconUrl": "img/pokemon/047500_128.png",
+        "weakness": "Ghost",
+        "hp": 404250,
+        "atk": 4608,
+        "def": 83,
+        "spa": 4608,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 8,
+          "freeze": 8,
+          "sleep": 8,
+          "confusion": 8,
+          "trap": 10,
+          "flinch": 8
+        },
+        "passives": [
+          {
+            "name": "Unaffected by Field Effect: Defense ×3 & Sp. Def ×3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when it is not affected by a field effect.",
+            "mechanism": "stat_multiplier",
+            "condition": "no_field_effect",
+            "multiplier": 3.0
+          },
+          {
+            "name": "Sp. Def ↑: Defense x3 & Sp. Def x3",
+            "description": "The user's Defense and Sp. Def are multiplied by 3 when its Sp. Def is raised.",
+            "mechanism": "stat_multiplier",
+            "condition": "spdef_up",
+            "multiplier": 3.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Slowbro",
+        "pokemonId": "008000",
+        "iconUrl": "img/pokemon/008000_128.png",
+        "weakness": "Ghost",
+        "hp": 346500,
+        "atk": 4224,
+        "def": 83,
+        "spa": 4224,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 3,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_dahliald",
+    "title": "Dahlia's Lively Dance (Dahlia)",
+    "leader": "Dahlia",
+    "stageType": "Water",
+    "theme": "Dahlia's Lively Dance",
+    "rules": [
+      "Fluid Fortification: The net sum of enemy stat ranks dictates damage mitigation. Piercing Blows bypasses this."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Weavile",
+        "pokemonId": "046100",
+        "iconUrl": "img/pokemon/046100_128.png",
+        "weakness": "Bug",
+        "hp": 192500,
+        "atk": 2688,
+        "def": 83,
+        "spa": 2688,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 3,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Dahlia",
+        "pokemonName": "Ludicolo",
+        "pokemonId": "027200",
+        "iconUrl": "img/pokemon/027200_128.png",
+        "weakness": "Bug",
+        "hp": 346500,
+        "atk": 2688,
+        "def": 83,
+        "spa": 3264,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 3,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "paralysis": 8,
+          "confusion": 8,
+          "trap": 9
+        },
+        "passives": [
+          {
+            "name": "Fluid Fortification",
+            "description": "The net sum of stat ranks that the user has determines how much damage it will take from attack moves and sync moves (up to 100% reduction at >= +10, 0% at <= -10).",
+            "mechanism": "damage_mitigation",
+            "condition": "fluid_fortification",
+            "multiplier": 1.0
+          }
+        ]
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Tsareena",
+        "pokemonId": "076300",
+        "iconUrl": "img/pokemon/076300_128.png",
+        "weakness": "Bug",
+        "hp": 192500,
+        "atk": 2688,
+        "def": 83,
+        "spa": 2688,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 3,
+          "def": 5,
+          "spa": 3,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  },
+  {
+    "fightId": "ultimate_arceusdg",
+    "title": "Arceus' Divine Gauntlet (Arceus)",
+    "leader": "Arceus",
+    "stageType": "Normal",
+    "theme": "Arceus' Divine Gauntlet",
+    "rules": [
+      "Arceus' Divine Gauntlet: Maximum stats boss with multi-phase Judgement attacks."
+    ],
+    "opponents": [
+      {
+        "slotIndex": 0,
+        "trainerName": "Teammate",
+        "pokemonName": "Dialga",
+        "pokemonId": "048300",
+        "iconUrl": "img/pokemon/048300_128.png",
+        "weakness": "Fighting",
+        "hp": 481250,
+        "atk": 4224,
+        "def": 83,
+        "spa": 4224,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      },
+      {
+        "slotIndex": 1,
+        "trainerName": "Arceus",
+        "pokemonName": "Arceus",
+        "pokemonId": "049300",
+        "iconUrl": "img/pokemon/049300_128.png",
+        "weakness": "Fighting",
+        "hp": 943250,
+        "atk": 4992,
+        "def": 83,
+        "spa": 4992,
+        "spd": 83,
+        "spe": 67,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {
+          "(bad) poison": 10,
+          "burn": 10,
+          "trap": 10
+        },
+        "passives": []
+      },
+      {
+        "slotIndex": 2,
+        "trainerName": "Teammate",
+        "pokemonName": "Palkia",
+        "pokemonId": "048400",
+        "iconUrl": "img/pokemon/048400_128.png",
+        "weakness": "Fighting",
+        "hp": 481250,
+        "atk": 4224,
+        "def": 83,
+        "spa": 4224,
+        "spd": 83,
+        "spe": 204,
+        "mitigations": {
+          "atk": 5,
+          "def": 5,
+          "spa": 5,
+          "spd": 5,
+          "spe": 5,
+          "acc": 5,
+          "eva": 5,
+          "crit": 0
+        },
+        "statusMitigations": {},
+        "passives": []
+      }
+    ]
+  }
+]
