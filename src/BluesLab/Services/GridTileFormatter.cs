@@ -32,15 +32,33 @@ public static class GridTileFormatter
     private static readonly Regex EsStatRegex = new(@"^(PS|Ataque|Defensa|At\.\s*Esp\.|Def\.\s*Esp\.|Velocidad)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex EnStatRegex = new(@"^(HP|Attack|Defense|Sp\.\s*Atk|Sp\.\s*Def|Speed)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex NumberOnlyRegex = new(@"\+\s*(\d+)", RegexOptions.Compiled);
-    private static readonly Regex MovePowerRegex = new(@"^(.*?):\s*(?:Power|Potencia)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex MoveMgrRegex = new(@"^(.*?):\s*(?:Move Gauge Refresh|Movimiento Llenabarras|Llenabarras|MGR)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex MoveMprRegex = new(@"^(.*?):\s*(?:MP Refresh|Recupera PM|Movimiento Recupera PM|MPR)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex MoveAccRegex = new(@"^(.*?):\s*(?:Accuracy|Precisión)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex MoveHealerRegex = new(@"^(.*?):\s*(?:Master Healer|Efecto Curativo)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex LearnMoveRegex = new(@"^(?:Learn Move|Aprender mov\.)(?::\s*|\s+)(.*)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-    private static readonly (string Pattern, string Replacement)[] EsReplacements =
+    private static readonly (string Pattern, string Replacement)[] GlobalReplacements =
     [
+        (@"Move Gauge Refresh\s*\+?(\d+)", "MGR$1"),
+        (@"Movimiento Llenabarras\s*\+?(\d+)", "MGR$1"),
+        (@"Llenabarras\s*\+?(\d+)", "MGR$1"),
+        (@"MP Refresh\s*\+?(\d+)", "MPR$1"),
+        (@"Recupera PM\s*\+?(\d+)", "MPR$1"),
+        (@"Movimiento Recupera PM\s*\+?(\d+)", "MPR$1"),
+        (@"Restore B-Move MP\s*(\d+)", "Rest. B-MP$1"),
+        (@"Restore MP\s*(\d+)", "Rest. MP$1"),
+        (@"Free Move Next\s*(\d+)", "FMN $1"),
+        (@"Free Move Next", "FMN"),
+        (@"Physical & Special Boost", "Phys & Spec"),
+        (@"Physical Boost", "Phys Boost"),
+        (@"Special Boost", "Spec Boost"),
+        (@"Move on Ally:", "Ally:"),
+        (@"Movimiento Aliado:", "Aliado:"),
+        (@"HP Recovery \(M\)\s*(\d+)", "HP Recov $1"),
+        (@"HP Recovery\s*(\d+)", "HP Recov $1"),
+        (@"Curación Media\s*\+?(\d+)", "Curac. $1"),
+        (@"Accuracy\s*\+\s*(\d+)", "Acc +$1"),
+        (@"Precisión\s*\+\s*(\d+)", "Prec +$1"),
+        (@"Power\s*\+\s*(\d+)", "Power +$1"),
+        (@"Potencia\s*\+\s*(\d+)", "Potencia +$1"),
+        (@"Sync CD ↓\s*(\d+)", "Sync CD ↓$1"),
+        (@"Attack Move DR\s*(\d+)", "Atk Move DR$1"),
         (@"Inmunidad Golpes Críticos", "Vigilancia"),
         (@"Inmunidad Reducción Defensa", "Inm. Def ↓"),
         (@"Inmunidad Reducción Ataque", "Inm. Atq ↓"),
@@ -50,27 +68,12 @@ public static class GridTileFormatter
         (@"Inmunidad Retroceso", "Inm. Retro."),
         (@"Curación Problemas Estado", "Cura Estado"),
         (@"Inmunidad Problemas Estado", "Inm. Estado"),
-        (@"Primeros Auxilios (\d+)", "1.os Aux $1"),
-        (@"Regeneración Saludable", "Regen. Salud."),
-        (@"Entrada Furor (\d+)", "Ent. Furor $1"),
-        (@"Protección Arena", "Prot. Arena"),
-        (@"Movimiento Aliado Curación.*", "Curac. Aliado"),
-        (@"Aceleración Mov\. Compi", "Acel. Compi"),
-        (@"Llenabarras en 1\.er Apuro (\d+)", "Apuro MGR $1"),
-        (@"Daño Llenabarras (\d+)", "Daño MGR $1"),
-        (@"Acierto Llenabarras (\d+)", "Acierto MGR $1")
-    ];
-
-    private static readonly (string Pattern, string Replacement)[] EnReplacements =
-    [
-        (@"Critical Strike (\d+)", "Crit Strike $1"),
-        (@"Hostile Environment (\d+)", "Hostile Env $1"),
-        (@"Bob and Weave", "Bob & Weave"),
-        (@"Healthy Healing", "Healthy Heal"),
+        (@"Primeros Auxilios\s*(\d+)", "1.os Aux $1"),
         (@"Natural Remedy", "Nat. Remedy"),
         (@"Quick Cure", "Quick Cure"),
         (@"Sand Shelter", "Sand Shelter"),
-        (@"First Aid (\d+)", "First Aid $1")
+        (@"Healthy Healing", "Healthy Heal"),
+        (@"Bob and Weave", "Bob & Weave")
     ];
 
     public static FormattedTileLabel FormatTile(string? rawTitle, long abilityId, string language)
@@ -80,13 +83,19 @@ public static class GridTileFormatter
             return new FormattedTileLabel(new List<FormattedTileLine>(), 8.0);
         }
 
-        var t = rawTitle.Replace("\r", "").Replace("\n", " ").Trim();
+        // Clean formatting tags and split camelCase words (e.g. StormIce -> Storm Ice, AllIncomplete -> All Incomplete)
+        var t = Regex.Replace(rawTitle, @"([a-z\u00e0-\u00ff])([A-Z\u00c0-\u00df])", "$1 $2");
+        t = t.Replace("\r", "").Replace("\n", " ").Trim();
         t = Regex.Replace(t, @"\[[^\]]+\]", "").Trim();
         while (t.Contains("  ")) t = t.Replace("  ", " ");
 
-        var isEs = string.Equals(language, "es", StringComparison.OrdinalIgnoreCase);
+        // Apply global abbreviations
+        foreach (var (pat, repl) in GlobalReplacements)
+        {
+            t = Regex.Replace(t, pat, repl, RegexOptions.IgnoreCase);
+        }
 
-        // 1. Stats (Matching clean names like Sp. Atk, Defense, Speed, HP)
+        // 1. Stats (Keep clean, recognizable names on 1 single centered line)
         var mEs = EsStatRegex.Match(t);
         if (mEs.Success)
         {
@@ -123,7 +132,7 @@ public static class GridTileFormatter
             return BuildLabel([$"{cleanStat} +{val}"]);
         }
 
-        // 2. Sync Moves
+        // 2. Sync Moves / Dynamax Moves
         if (t.Contains("Sync Move", StringComparison.OrdinalIgnoreCase) ||
             t.Contains("Movimiento Compi", StringComparison.OrdinalIgnoreCase) ||
             t.Contains("Impact: Power", StringComparison.OrdinalIgnoreCase) ||
@@ -132,180 +141,156 @@ public static class GridTileFormatter
         {
             var mNum = NumberOnlyRegex.Match(t);
             var val = mNum.Success ? mNum.Groups[1].Value : "";
+            var isEs = string.Equals(language, "es", StringComparison.OrdinalIgnoreCase);
             var syncHeader = isEs ? "Mov. Compi:" : "Sync Move:";
             var pwrText = !string.IsNullOrEmpty(val) ? (isEs ? $"Potencia +{val}" : $"Power +{val}") : (isEs ? "Potencia" : "Power");
             return BuildLabel([syncHeader, pwrText]);
         }
 
-        // 3. Max / Dynamax Moves
         if (t.Contains("Max Move", StringComparison.OrdinalIgnoreCase) ||
             t.Contains("Movimiento Dynamax", StringComparison.OrdinalIgnoreCase))
         {
             var mNum = NumberOnlyRegex.Match(t);
             var val = mNum.Success ? mNum.Groups[1].Value : "";
+            var isEs = string.Equals(language, "es", StringComparison.OrdinalIgnoreCase);
             var maxHeader = isEs ? "Mov. Dyna:" : "Max Move:";
             var pwrText = !string.IsNullOrEmpty(val) ? (isEs ? $"Potencia +{val}" : $"Power +{val}") : (isEs ? "Potencia" : "Power");
             return BuildLabel([maxHeader, pwrText]);
         }
 
-        // 4. Move Power Ups
-        var mPwr = MovePowerRegex.Match(t);
-        if (mPwr.Success)
+        // 3. Colon splitting
+        if (t.Contains(": "))
         {
-            var move = mPwr.Groups[1].Value.Trim();
-            var pwrText = isEs ? $"Potencia +{mPwr.Groups[2].Value}" : $"Power +{mPwr.Groups[2].Value}";
-            return WrapMoveTitle(move, pwrText);
-        }
+            var parts = t.Split(new[] { ": " }, 2, StringSplitOptions.RemoveEmptyEntries);
+            var prefix = parts[0].Trim();
+            var body = parts[1].Trim();
 
-        // 5. Move Gauge Refresh
-        var mMgr = MoveMgrRegex.Match(t);
-        if (mMgr.Success)
-        {
-            var move = mMgr.Groups[1].Value.Trim();
-            return WrapMoveTitle(move, $"MGR{mMgr.Groups[2].Value}");
-        }
-
-        // 6. MP Refresh
-        var mMpr = MoveMprRegex.Match(t);
-        if (mMpr.Success)
-        {
-            var move = mMpr.Groups[1].Value.Trim();
-            return WrapMoveTitle(move, $"MPR{mMpr.Groups[2].Value}");
-        }
-
-        // 7. Accuracy
-        var mAcc = MoveAccRegex.Match(t);
-        if (mAcc.Success)
-        {
-            var move = mAcc.Groups[1].Value.Trim();
-            var prefix = isEs ? "Prec" : "Acc";
-            return WrapMoveTitle(move, $"{prefix} +{mAcc.Groups[2].Value}");
-        }
-
-        // 8. Master Healer
-        var mHeal = MoveHealerRegex.Match(t);
-        if (mHeal.Success)
-        {
-            var move = mHeal.Groups[1].Value.Trim();
-            var healText = isEs ? $"Curativo {mHeal.Groups[2].Value}" : $"Healer {mHeal.Groups[2].Value}";
-            return WrapMoveTitle(move, healText);
-        }
-
-        // 9. Learn move
-        var mLrn = LearnMoveRegex.Match(t);
-        if (mLrn.Success)
-        {
-            var learnText = isEs ? "Aprender:" : "Learn:";
-            var move = mLrn.Groups[1].Value.Trim();
-            return WrapMoveTitle(learnText, move);
-        }
-
-        // 10. Language specific replacements
-        if (isEs)
-        {
-            foreach (var (pattern, replacement) in EsReplacements)
+            // Case A: Prefix fits in Line 1 (<= 12 chars) e.g. "1st S-Move", "Ice Zone", "Ice Wish", "Normal-Z"
+            if (prefix.Length + 1 <= 12)
             {
-                if (Regex.IsMatch(t, pattern, RegexOptions.IgnoreCase))
+                var l1 = prefix.EndsWith(":") ? prefix : prefix + ":";
+                if (body.Length <= 12)
                 {
-                    t = Regex.Replace(t, pattern, replacement, RegexOptions.IgnoreCase);
-                    break;
+                    return BuildLabel([l1, body]);
+                }
+
+                var bodyWords = body.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (bodyWords.Length == 2)
+                {
+                    return BuildLabel([l1, Trunc(bodyWords[0], 11), Trunc(bodyWords[1], 11)]);
+                }
+                if (bodyWords.Length >= 3)
+                {
+                    if (bodyWords[0].Length + bodyWords[1].Length + 1 <= 12)
+                    {
+                        var l2 = bodyWords[0] + " " + bodyWords[1];
+                        var l3 = string.Join(" ", bodyWords.Skip(2));
+                        return BuildLabel([l1, Trunc(l2, 11), Trunc(l3, 11)]);
+                    }
+                    else
+                    {
+                        var l2 = bodyWords[0];
+                        var l3 = string.Join(" ", bodyWords.Skip(1));
+                        return BuildLabel([l1, Trunc(l2, 11), Trunc(l3, 11)]);
+                    }
+                }
+                return BuildLabel([l1, Trunc(body.Substring(0, Math.Min(11, body.Length)), 11), Trunc(body.Substring(Math.Min(11, body.Length)), 11)]);
+            }
+            else
+            {
+                // Case B: Prefix is longer (e.g. "Frigid Storm Ice Punch", "We're All Incomplete", "Tera Starstorm")
+                var pWords = prefix.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (pWords.Length == 2)
+                {
+                    var l1 = pWords[0];
+                    var l2 = pWords[1].EndsWith(":") ? pWords[1] : pWords[1] + ":";
+                    return BuildLabel([Trunc(l1, 11), Trunc(l2, 11), Trunc(body, 11)]);
+                }
+                else if (pWords.Length >= 3)
+                {
+                    string l1, l2;
+                    if (pWords[0].Length + pWords[1].Length + 1 <= 12)
+                    {
+                        l1 = pWords[0] + " " + pWords[1];
+                        l2 = string.Join(" ", pWords.Skip(2));
+                    }
+                    else
+                    {
+                        l1 = pWords[0];
+                        l2 = string.Join(" ", pWords.Skip(1));
+                    }
+                    if (!l2.EndsWith(":")) l2 += ":";
+
+                    if (body.Length <= 11)
+                    {
+                        return BuildLabel([Trunc(l1, 11), Trunc(l2, 11), body]);
+                    }
+                    else
+                    {
+                        var bWords = body.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        if (bWords.Length >= 2)
+                        {
+                            var b1 = bWords[0];
+                            var b2 = string.Join(" ", bWords.Skip(1));
+                            return BuildLabel([Trunc(l1, 11), Trunc(b1, 11), Trunc(b2, 11)]);
+                        }
+                        return BuildLabel([Trunc(l1, 11), Trunc(l2, 11), Trunc(body, 11)]);
+                    }
                 }
             }
         }
-        else
-        {
-            foreach (var (pattern, replacement) in EnReplacements)
-            {
-                if (Regex.IsMatch(t, pattern, RegexOptions.IgnoreCase))
-                {
-                    t = Regex.Replace(t, pattern, replacement, RegexOptions.IgnoreCase);
-                    break;
-                }
-            }
-        }
 
-        // Fits nicely on 1 line
+        // 4. Plain text without colon
         if (t.Length <= 11)
         {
             return BuildLabel([t]);
         }
 
-        // Colon-based splitting
-        if (t.Contains(": "))
-        {
-            var colonParts = t.Split(new[] { ": " }, 2, StringSplitOptions.RemoveEmptyEntries);
-            if (colonParts.Length == 2)
-            {
-                return WrapMoveTitle(colonParts[0], colonParts[1].Trim());
-            }
-        }
-
-        // Multi-word wrapping into 2 or 3 lines
         var words = t.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (words.Length == 2)
         {
-            return BuildLabel([words[0], words[1]]);
+            return BuildLabel([Trunc(words[0], 11), Trunc(words[1], 11)]);
         }
 
         if (words.Length == 3)
         {
-            if (words[0].Length + words[1].Length + 1 <= 12)
+            if (words[0].Length + words[1].Length + 1 <= 11)
             {
-                return BuildLabel([words[0] + " " + words[1], words[2]]);
+                return BuildLabel([words[0] + " " + words[1], Trunc(words[2], 11)]);
             }
-            if (words[1].Length + words[2].Length + 1 <= 12)
+            if (words[1].Length + words[2].Length + 1 <= 11)
             {
-                return BuildLabel([words[0], words[1] + " " + words[2]]);
+                return BuildLabel([Trunc(words[0], 11), words[1] + " " + words[2]]);
             }
-            return BuildLabel([words[0], words[1], words[2]]);
+            return BuildLabel([Trunc(words[0], 11), Trunc(words[1], 11), Trunc(words[2], 11)]);
         }
 
         if (words.Length >= 4)
         {
-            var l1 = words[0] + " " + words[1];
-            var l2 = words[2];
-            var l3 = string.Join(" ", words.Skip(3));
-            if (l3.Length > 12) l3 = l3.Substring(0, 11) + ".";
-            return BuildLabel([l1, l2, l3]);
+            var l1 = words[0].Length + words[1].Length + 1 <= 11 ? words[0] + " " + words[1] : words[0];
+            var rem = l1.Contains(" ") ? words.Skip(2).ToArray() : words.Skip(1).ToArray();
+            if (rem.Length >= 2 && rem[0].Length + rem[1].Length + 1 <= 11)
+            {
+                var l2 = rem[0] + " " + rem[1];
+                var l3 = string.Join(" ", rem.Skip(2));
+                return BuildLabel([Trunc(l1, 11), Trunc(l2, 11), Trunc(l3, 11)]);
+            }
+            else
+            {
+                var l2 = rem.Length > 0 ? rem[0] : "";
+                var l3 = rem.Length > 1 ? string.Join(" ", rem.Skip(1)) : "";
+                return BuildLabel([Trunc(l1, 11), Trunc(l2, 11), Trunc(l3, 11)]);
+            }
         }
 
-        // Single long word
-        return BuildLabel([t.Substring(0, Math.Min(11, t.Length)) + "."]);
+        return BuildLabel([Trunc(t, 11)]);
     }
 
-    private static FormattedTileLabel WrapMoveTitle(string moveName, string bottomLine)
+    private static string Trunc(string s, int maxLen)
     {
-        moveName = moveName.Trim();
-        var words = moveName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-        if (words.Length == 1)
-        {
-            var line1 = moveName.EndsWith(":") ? moveName : moveName + ":";
-            return BuildLabel([line1, bottomLine]);
-        }
-
-        if (words.Length == 2)
-        {
-            var line1 = words[0];
-            var line2 = words[1].EndsWith(":") ? words[1] : words[1] + ":";
-            return BuildLabel([line1, line2, bottomLine]);
-        }
-
-        // 3+ words (e.g. "Rainbow Jewel TB" or "K Tera Starstorm")
-        if (words[0].Length <= 3) // e.g. "K", "B"
-        {
-            var line1 = words[0] + " " + words[1];
-            var line2 = string.Join(" ", words.Skip(2));
-            if (!line2.EndsWith(":")) line2 += ":";
-            return BuildLabel([line1, line2, bottomLine]);
-        }
-        else
-        {
-            var line1 = words[0];
-            var line2 = string.Join(" ", words.Skip(1));
-            if (!line2.EndsWith(":")) line2 += ":";
-            return BuildLabel([line1, line2, bottomLine]);
-        }
+        s = s.Trim();
+        if (s.Length <= maxLen) return s;
+        return s.Substring(0, maxLen - 1) + ".";
     }
 
     private static FormattedTileLabel BuildLabel(IReadOnlyList<string> rawLines)
@@ -321,10 +306,10 @@ public static class GridTileFormatter
             var len = validLines[0].Length;
             var fontSize = len switch
             {
-                <= 6 => 8.5,
-                <= 9 => 8.0,
-                <= 11 => 7.4,
-                _ => 6.8
+                <= 6 => 8.4,
+                <= 9 => 7.8,
+                <= 11 => 7.2,
+                _ => 6.6
             };
             return new FormattedTileLabel(
             [
@@ -337,24 +322,24 @@ public static class GridTileFormatter
             var maxLen = Math.Max(validLines[0].Length, validLines[1].Length);
             var fontSize = maxLen switch
             {
-                <= 7 => 7.8,
-                <= 10 => 7.3,
-                _ => 6.7
+                <= 7 => 7.5,
+                <= 10 => 7.0,
+                _ => 6.5
             };
             return new FormattedTileLabel(
             [
-                new FormattedTileLine(validLines[0], -5.5),
-                new FormattedTileLine(validLines[1], 5.8)
+                new FormattedTileLine(validLines[0], -5.2),
+                new FormattedTileLine(validLines[1], 5.5)
             ], fontSize);
         }
 
         // 3 lines
         return new FormattedTileLabel(
         [
-            new FormattedTileLine(validLines[0], -10.0),
+            new FormattedTileLine(validLines[0], -9.5),
             new FormattedTileLine(validLines[1], 0.0),
-            new FormattedTileLine(validLines[2], 10.0)
-        ], 6.4);
+            new FormattedTileLine(validLines[2], 9.5)
+        ], 6.0);
     }
 
     public static string GetTileLabelSvg(string? rawTitle, long abilityId, string language, double cx, double cy, bool isLocked, bool isActive)
