@@ -76,7 +76,25 @@ public static class GridTileFormatter
         (@"Bob and Weave", "Bob & Weave")
     ];
 
+    private static readonly Dictionary<(long AbilityId, string Lang), FormattedTileLabel> LabelCache = new();
+
     public static FormattedTileLabel FormatTile(string? rawTitle, long abilityId, string language)
+    {
+        language ??= "en";
+        if (abilityId > 0 && LabelCache.TryGetValue((abilityId, language), out var cached))
+        {
+            return cached;
+        }
+
+        var label = FormatTileInternal(rawTitle, language);
+        if (abilityId > 0)
+        {
+            LabelCache[(abilityId, language)] = label;
+        }
+        return label;
+    }
+
+    private static FormattedTileLabel FormatTileInternal(string? rawTitle, string language)
     {
         if (string.IsNullOrWhiteSpace(rawTitle))
         {

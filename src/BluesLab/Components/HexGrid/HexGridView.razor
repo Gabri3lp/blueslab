@@ -427,6 +427,19 @@
         GridState.OnGridChanged += OnStateChanged;
     }
 
+    protected override void OnParametersSet()
+    {
+        if (Pair != null && Pair.Grid.Count > 0 && GridState.ShowTileNames)
+        {
+            var lang = Loc.CurrentLanguage;
+            foreach (var cell in Pair.Grid)
+            {
+                var title = Loc.GetTileTitle(cell.AbilityId, cell.Title);
+                GridTileFormatter.FormatTile(title, cell.AbilityId, lang);
+            }
+        }
+    }
+
     private void OnStateChanged()
     {
         InvokeAsync(StateHasChanged);
