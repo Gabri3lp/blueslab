@@ -1937,13 +1937,31 @@ public class DamageCalculatorService
             if (teammate.SuperAwakeningLevel >= 5 && teammate.Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(teammate.Pair.SuperAwakeningPassive.Name))
             {
                 var saRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, teammate.Pair.SuperAwakeningPassive.Name, StringComparison.OrdinalIgnoreCase));
-                if (saRule != null && IsTeamWidePassive(saRule))
+                if (saRule != null)
                 {
-                    double v = EvalSingleDamagePassive(saRule, move, activeAttacker, enemy, field);
-                    if (v > 0)
+                    if (saRule.SubPassives != null && saRule.SubPassives.Count > 0)
                     {
-                        total += v;
-                        pills.Add(new MultiplierPill { Label = $"Ally SA: {saRule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                        foreach (var sp in saRule.SubPassives)
+                        {
+                            if (IsTeamWidePassive(sp))
+                            {
+                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field);
+                                if (v > 0)
+                                {
+                                    total += v;
+                                    pills.Add(new MultiplierPill { Label = $"Ally SA: {sp.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                                }
+                            }
+                        }
+                    }
+                    else if (IsTeamWidePassive(saRule))
+                    {
+                        double v = EvalSingleDamagePassive(saRule, move, activeAttacker, enemy, field);
+                        if (v > 0)
+                        {
+                            total += v;
+                            pills.Add(new MultiplierPill { Label = $"Ally SA: {saRule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                        }
                     }
                 }
             }
@@ -1957,13 +1975,52 @@ public class DamageCalculatorService
             foreach (var p in passivesList)
             {
                 var rule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, p.Name, StringComparison.OrdinalIgnoreCase));
-                if (rule != null && IsTeamWidePassive(rule))
+                if (rule != null)
                 {
-                    double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field);
-                    if (v > 0)
+                    if (rule.SubPassives != null && rule.SubPassives.Count > 0)
                     {
-                        total += v;
-                        pills.Add(new MultiplierPill { Label = $"Ally: {rule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                        foreach (var sp in rule.SubPassives)
+                        {
+                            if (IsTeamWidePassive(sp))
+                            {
+                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field);
+                                if (v > 0)
+                                {
+                                    total += v;
+                                    pills.Add(new MultiplierPill { Label = $"Ally: {sp.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                                }
+                            }
+                        }
+                    }
+                    else if (IsTeamWidePassive(rule))
+                    {
+                        double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field);
+                        if (v > 0)
+                        {
+                            total += v;
+                            pills.Add(new MultiplierPill { Label = $"Ally: {rule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                        }
+                    }
+                }
+
+                // Also check childPassives from pair datamine if not already included in sub_passives
+                if (p.ChildPassives != null && p.ChildPassives.Count > 0)
+                {
+                    foreach (var cp in p.ChildPassives)
+                    {
+                        if (rule?.SubPassives != null && rule.SubPassives.Any(sp => string.Equals(sp.Name, cp.Name, StringComparison.OrdinalIgnoreCase)))
+                            continue;
+
+                        var cpRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cp.Name, StringComparison.OrdinalIgnoreCase));
+                        if (cpRule != null && IsTeamWidePassive(cpRule))
+                        {
+                            double v = EvalSingleDamagePassive(cpRule, move, activeAttacker, enemy, field);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = $"Ally: {cpRule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                            }
+                        }
                     }
                 }
             }
@@ -1982,13 +2039,31 @@ public class DamageCalculatorService
                         string.Equals(dp.Name, cell.Title.Trim(), StringComparison.OrdinalIgnoreCase) ||
                         string.Equals(dp.Name, cleanTitle, StringComparison.OrdinalIgnoreCase));
 
-                    if (rule != null && IsTeamWidePassive(rule))
+                    if (rule != null)
                     {
-                        double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field);
-                        if (v > 0)
+                        if (rule.SubPassives != null && rule.SubPassives.Count > 0)
                         {
-                            total += v;
-                            pills.Add(new MultiplierPill { Label = $"Ally Grid: {rule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                            foreach (var sp in rule.SubPassives)
+                            {
+                                if (IsTeamWidePassive(sp))
+                                {
+                                    double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field);
+                                    if (v > 0)
+                                    {
+                                        total += v;
+                                        pills.Add(new MultiplierPill { Label = $"Ally Grid: {sp.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                                    }
+                                }
+                            }
+                        }
+                        else if (IsTeamWidePassive(rule))
+                        {
+                            double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = $"Ally Grid: {rule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                            }
                         }
                     }
                 }
@@ -2003,6 +2078,7 @@ public class DamageCalculatorService
         if (string.Equals(rule.Affects, "team", StringComparison.OrdinalIgnoreCase)) return true;
         if (rule.Name.Contains("Team ", StringComparison.OrdinalIgnoreCase)) return true;
         if (rule.Name.Contains(": Team", StringComparison.OrdinalIgnoreCase)) return true;
+        if (rule.SubPassives != null && rule.SubPassives.Any(IsTeamWidePassive)) return true;
         return false;
     }
 
@@ -2069,6 +2145,42 @@ public class DamageCalculatorService
                     {
                         total += v;
                         pills.Add(new MultiplierPill { Label = rule.Name, Value = $"+{v * 100:0.#}%", Color = "#16a085" });
+                    }
+                }
+                else if (p.ChildPassives != null && p.ChildPassives.Count > 0)
+                {
+                    foreach (var cp in p.ChildPassives)
+                    {
+                        var cpRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cp.Name, StringComparison.OrdinalIgnoreCase));
+                        if (cpRule != null)
+                        {
+                            double v = EvalSingleDamagePassive(cpRule, move, ally, enemy, field);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = cpRule.Name, Value = $"+{v * 100:0.#}%", Color = "#16a085" });
+                            }
+                        }
+                    }
+                }
+
+                if (rule != null && p.ChildPassives != null && p.ChildPassives.Count > 0)
+                {
+                    foreach (var cp in p.ChildPassives)
+                    {
+                        if (rule.SubPassives != null && rule.SubPassives.Any(sp => string.Equals(sp.Name, cp.Name, StringComparison.OrdinalIgnoreCase)))
+                            continue;
+
+                        var cpRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cp.Name, StringComparison.OrdinalIgnoreCase));
+                        if (cpRule != null)
+                        {
+                            double v = EvalSingleDamagePassive(cpRule, move, ally, enemy, field);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = cpRule.Name, Value = $"+{v * 100:0.#}%", Color = "#16a085" });
+                            }
+                        }
                     }
                 }
             }
@@ -2444,7 +2556,7 @@ public class DamageCalculatorService
                     "hp_full" => ally.HpPercent >= 100,
                     "hp_low" => ally.HpPercent <= 33 || ally.HpPercent <= 20,
                     "hp_reduced" => ally.HpPercent < 100,
-                    "hp_half_more" or "hp_above_half" => ally.HpPercent >= 50,
+                    "hp_half_more" or "hp_above_half" or "hp_half_or_more" => ally.HpPercent >= 50,
                     "hp_half_less" => ally.HpPercent <= 50,
                     "target_hp_low" => enemy.HpPercent <= 33 || enemy.HpPercent <= 20,
                     "target_hp_half_less" => enemy.HpPercent <= 50,
@@ -2477,12 +2589,13 @@ public class DamageCalculatorService
                     "physical_break" or "phys_break" => enemy.PhysicalBreak || ally.PhysicalBreak,
                     "special_break" or "spec_break" => enemy.SpecialBreak || ally.SpecialBreak,
                     "has_break" or "any_break" => enemy.PhysicalBreak || enemy.SpecialBreak || ally.PhysicalBreak || ally.SpecialBreak,
-                    "only_one_alive" or "berry" or "first_sync" => true,
+                    "only_one_alive" or "berry" or "berry_active" or "first_sync" => true,
                     "all_stats_not_high" => ally.Stages.Values.All(v => v <= 0),
                     "any_stat_in_low" => ally.Stages.Values.Any(v => v < 0),
                     "target_all_stats_not_high" => enemy.Stages.Values.All(v => v <= 0),
                     "target_any_stat_in_low" => enemy.Stages.Values.Any(v => v < 0),
-                    _ => (cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))) ||
+                    _ => (cond.StartsWith("type_") && string.Equals(move.Type, cond.Substring(5), StringComparison.OrdinalIgnoreCase)) ||
+                         (cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))) ||
                          (cond.Contains("damage_field") && ((!string.IsNullOrEmpty(ally.DamageField) && ally.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))) || (!string.IsNullOrEmpty(enemy.DamageField) && enemy.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))))) ||
                          (cond.Contains("circle") && ally.CircleActive.Any(kv => kv.Key.ToLowerInvariant().Contains(cond.Replace("_circle", "")) && kv.Value.Values.Any(v => v)))
                 };
