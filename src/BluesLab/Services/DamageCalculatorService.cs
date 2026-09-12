@@ -2509,7 +2509,7 @@ public class DamageCalculatorService
     private bool EvalConditions(List<List<string>> conditionGroups, FieldState field, CombatantState ally, CombatantState enemy, MoveItem move, string? originalMoveType = null)
     {
         if (conditionGroups.Count == 0) return true;
-        string checkType = !string.IsNullOrEmpty(originalMoveType) ? originalMoveType : move.Type;
+        string checkType = !string.IsNullOrEmpty(move.Type) ? move.Type : (originalMoveType ?? "");
         foreach (var andGroup in conditionGroups)
         {
             bool allMatch = true;
