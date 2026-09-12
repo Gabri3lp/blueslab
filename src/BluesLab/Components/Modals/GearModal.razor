@@ -17,6 +17,33 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body p-3">
+                    <!-- Preset Selector Buttons -->
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small fw-bold mb-1">@Loc.T("preset", "Gear Preset"):</label>
+                        <div class="btn-group btn-group-sm w-100" role="group">
+                            <button type="button"
+                                    class="btn @(string.Equals(CurrentPreset, "none", StringComparison.OrdinalIgnoreCase) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("none")'>
+                                @Loc.T("gear_preset_none", "None")
+                            </button>
+                            <button type="button"
+                                    class="btn @(string.Equals(CurrentPreset, "3star", StringComparison.OrdinalIgnoreCase) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("3star")'>
+                                @Loc.T("gear_preset_3star", "3★ Lv 15")
+                            </button>
+                            <button type="button"
+                                    class="btn @(string.Equals(CurrentPreset, "4star", StringComparison.OrdinalIgnoreCase) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("4star")'>
+                                @Loc.T("gear_preset_4star", "4★ Lv 15")
+                            </button>
+                            <button type="button"
+                                    class="btn @(string.Equals(CurrentPreset, "skill", StringComparison.OrdinalIgnoreCase) ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
+                                    @onclick='() => SelectPreset("skill")'>
+                                @Loc.T("gear_preset_skill", "Skill / Custom")
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Flat Stats Grid -->
                     <div class="mb-3">
                         <label class="form-label text-secondary small fw-bold mb-1">@Loc.T("stats", "Flat Stats Bonus"):</label>
@@ -123,23 +150,66 @@
 
     private async Task ResetAllToZero()
     {
-        if (GearStats != null)
-        {
-            foreach (var stat in CombatantState.StatLabels)
-            {
-                GearStats[stat] = 0;
-            }
-        }
-        MoveBoost = 0;
-        SyncBoost = 0;
-        await MoveBoostChanged.InvokeAsync(0);
-        await SyncBoostChanged.InvokeAsync(0);
-        await OnChanged.InvokeAsync();
+        await SelectPreset("none");
     }
 
     private async Task SelectPreset(string preset)
     {
         CurrentPreset = preset;
+        switch (preset.ToLowerInvariant())
+        {
+            case "none":
+                if (GearStats != null)
+                {
+                    foreach (var s in CombatantState.StatLabels) GearStats[s] = 0;
+                }
+                MoveBoost = 0;
+                SyncBoost = 0;
+                await MoveBoostChanged.InvokeAsync(0);
+                await SyncBoostChanged.InvokeAsync(0);
+                break;
+            case "3star":
+                if (GearStats != null)
+                {
+                    GearStats["hp"] = 70;
+                    GearStats["atk"] = 50;
+                    GearStats["def"] = 20;
+                    GearStats["spa"] = 50;
+                    GearStats["spd"] = 20;
+                    GearStats["spe"] = 20;
+                }
+                MoveBoost = 0;
+                SyncBoost = 0;
+                await MoveBoostChanged.InvokeAsync(0);
+                await SyncBoostChanged.InvokeAsync(0);
+                break;
+            case "4star":
+                if (GearStats != null)
+                {
+                    GearStats["hp"] = 100;
+                    GearStats["atk"] = 80;
+                    GearStats["def"] = 40;
+                    GearStats["spa"] = 80;
+                    GearStats["spd"] = 40;
+                    GearStats["spe"] = 40;
+                }
+                MoveBoost = 0;
+                SyncBoost = 0;
+                await MoveBoostChanged.InvokeAsync(0);
+                await SyncBoostChanged.InvokeAsync(0);
+                break;
+            case "skill":
+                if (GearStats != null && GearStats.Values.All(v => v == 0))
+                {
+                    GearStats["hp"] = 100;
+                    GearStats["atk"] = 80;
+                    GearStats["def"] = 40;
+                    GearStats["spa"] = 80;
+                    GearStats["spd"] = 40;
+                    GearStats["spe"] = 40;
+                }
+                break;
+        }
         await CurrentPresetChanged.InvokeAsync(preset);
         await OnChanged.InvokeAsync();
     }
@@ -149,6 +219,8 @@
         if (GearStats != null && int.TryParse(e.Value?.ToString(), out int val))
         {
             GearStats[stat] = Math.Clamp(val, 0, 999);
+            CurrentPreset = "skill";
+            await CurrentPresetChanged.InvokeAsync("skill");
             await OnChanged.InvokeAsync();
         }
     }
@@ -158,6 +230,8 @@
         if (int.TryParse(e.Value?.ToString(), out int val))
         {
             MoveBoost = Math.Clamp(val, 0, 100);
+            CurrentPreset = "skill";
+            await CurrentPresetChanged.InvokeAsync("skill");
             await MoveBoostChanged.InvokeAsync(MoveBoost);
             await OnChanged.InvokeAsync();
         }
@@ -168,6 +242,8 @@
         if (int.TryParse(e.Value?.ToString(), out int val))
         {
             SyncBoost = Math.Clamp(val, 0, 100);
+            CurrentPreset = "skill";
+            await CurrentPresetChanged.InvokeAsync("skill");
             await SyncBoostChanged.InvokeAsync(SyncBoost);
             await OnChanged.InvokeAsync();
         }

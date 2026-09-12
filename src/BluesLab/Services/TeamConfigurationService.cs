@@ -242,7 +242,14 @@ public class TeamConfigurationService
 
         // 4.5. Team Gear
         targetState.TeamGearPreset = string.IsNullOrEmpty(dto.TeamGearPreset) ? "4star" : dto.TeamGearPreset;
-        if (dto.TeamGear != null && dto.TeamGear.Count > 0)
+        bool isPresetValid = targetState.TeamGearPreset != "none" && targetState.TeamGearPreset != "custom";
+        bool teamGearAllZero = dto.TeamGear == null || dto.TeamGear.Count == 0 || dto.TeamGear.Values.All(v => v == 0);
+
+        if (isPresetValid && teamGearAllZero)
+        {
+            targetState.ApplyTeamGearPreset(targetState.TeamGearPreset);
+        }
+        else if (dto.TeamGear != null && dto.TeamGear.Count > 0)
         {
             foreach (var s in CombatantState.StatLabels)
             {
@@ -289,7 +296,17 @@ public class TeamConfigurationService
                         {
                             ally.GearPreset = aDto.GearPreset;
                         }
-                        if (aDto.Gear != null && aDto.Gear.Count > 0)
+                        bool isAllyPresetValid = ally.GearPreset != "none" && ally.GearPreset != "custom";
+                        bool allyGearAllZero = aDto.Gear == null || aDto.Gear.Count == 0 || aDto.Gear.Values.All(v => v == 0);
+
+                        if (isAllyPresetValid && allyGearAllZero)
+                        {
+                            foreach (var s in CombatantState.StatLabels)
+                            {
+                                ally.Gear[s] = targetState.TeamGear.GetValueOrDefault(s, 0);
+                            }
+                        }
+                        else if (aDto.Gear != null && aDto.Gear.Count > 0)
                         {
                             foreach (var s in CombatantState.StatLabels)
                             {

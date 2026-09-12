@@ -1156,6 +1156,7 @@ public class DamageCalculatorService
         if (pair == null) return new DamageResult { MoveName = move.Name };
 
         // Resolve effective move type (applies Shift passives and Stellar form)
+        string originalMoveType = move.Type;
         string effectiveMoveType = GetEffectiveMoveType(pair, move, ally.FormIndex);
         if (!string.Equals(move.Type, effectiveMoveType, StringComparison.OrdinalIgnoreCase))
         {
@@ -1242,7 +1243,7 @@ public class DamageCalculatorService
 
         // Passive skill power ups + Master Skills + PMUN/SMUN/SYUN stacks
         double passiveTotal = EvalPassivePowerUps(move, ally, enemy, field, rules, activeGridCells, pills);
-        double teammatePassivesTotal = team != null ? EvalTeammatePassives(move, ally, enemy, field, rules, team, pills) : 0.0;
+        double teammatePassivesTotal = team != null ? EvalTeammatePassives(move, ally, enemy, field, rules, team, pills, originalMoveType) : 0.0;
         int passivePercentage = (int)Math.Round((passiveTotal + teammatePassivesTotal) * 100);
 
         int masterPercentage = 0;
@@ -1919,7 +1920,8 @@ public class DamageCalculatorService
         FieldState field,
         DamageRulesDocument rules,
         TeamBattleState team,
-        List<MultiplierPill> pills)
+        List<MultiplierPill> pills,
+        string? originalMoveType = null)
     {
         double total = 0.0;
         int attackerIndex = team.Allies.IndexOf(activeAttacker);
@@ -1945,7 +1947,7 @@ public class DamageCalculatorService
                         {
                             if (IsTeamWidePassive(sp))
                             {
-                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field);
+                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field, originalMoveType);
                                 if (v > 0)
                                 {
                                     total += v;
@@ -1956,7 +1958,7 @@ public class DamageCalculatorService
                     }
                     else if (IsTeamWidePassive(saRule))
                     {
-                        double v = EvalSingleDamagePassive(saRule, move, activeAttacker, enemy, field);
+                        double v = EvalSingleDamagePassive(saRule, move, activeAttacker, enemy, field, originalMoveType);
                         if (v > 0)
                         {
                             total += v;
@@ -1983,7 +1985,7 @@ public class DamageCalculatorService
                         {
                             if (IsTeamWidePassive(sp))
                             {
-                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field);
+                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field, originalMoveType);
                                 if (v > 0)
                                 {
                                     total += v;
@@ -1994,7 +1996,7 @@ public class DamageCalculatorService
                     }
                     else if (IsTeamWidePassive(rule))
                     {
-                        double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field);
+                        double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field, originalMoveType);
                         if (v > 0)
                         {
                             total += v;
@@ -2014,7 +2016,7 @@ public class DamageCalculatorService
                         var cpRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cp.Name, StringComparison.OrdinalIgnoreCase));
                         if (cpRule != null && IsTeamWidePassive(cpRule))
                         {
-                            double v = EvalSingleDamagePassive(cpRule, move, activeAttacker, enemy, field);
+                            double v = EvalSingleDamagePassive(cpRule, move, activeAttacker, enemy, field, originalMoveType);
                             if (v > 0)
                             {
                                 total += v;
@@ -2047,7 +2049,7 @@ public class DamageCalculatorService
                             {
                                 if (IsTeamWidePassive(sp))
                                 {
-                                    double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field);
+                                    double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field, originalMoveType);
                                     if (v > 0)
                                     {
                                         total += v;
@@ -2058,7 +2060,7 @@ public class DamageCalculatorService
                         }
                         else if (IsTeamWidePassive(rule))
                         {
-                            double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field);
+                            double v = EvalSingleDamagePassive(rule, move, activeAttacker, enemy, field, originalMoveType);
                             if (v > 0)
                             {
                                 total += v;
@@ -2386,14 +2388,15 @@ public class DamageCalculatorService
         MoveItem move,
         CombatantState ally,
         CombatantState enemy,
-        FieldState field)
+        FieldState field,
+        string? originalMoveType = null)
     {
         if (dp.SubPassives != null && dp.SubPassives.Count > 0)
         {
             double subTotal = 0;
             foreach (var sp in dp.SubPassives)
             {
-                subTotal += EvalSingleDamagePassive(sp, move, ally, enemy, field);
+                subTotal += EvalSingleDamagePassive(sp, move, ally, enemy, field, originalMoveType);
             }
             return subTotal;
         }
@@ -2443,7 +2446,7 @@ public class DamageCalculatorService
             "mode_swing" => ((ally.FormIndex == 0 && string.Equals(move.Type, "Electric", StringComparison.OrdinalIgnoreCase)) ||
                              (ally.FormIndex == 1 && string.Equals(move.Type, "Dark", StringComparison.OrdinalIgnoreCase))) ? (dp.Value * 0.1) : 0,
             "ice_plow" => (ally.FormIndex == 0 && (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(enemy.Weakness, move.Type, StringComparison.OrdinalIgnoreCase) || ally.SuperEffectiveNext)) ? 0.30 : 0,
-            "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move) ? dp.Value * 0.1 : 0),
+            "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move, originalMoveType) ? dp.Value * 0.1 : 0),
             _ => 0
         };
     }
@@ -2503,9 +2506,10 @@ public class DamageCalculatorService
         }
     }
 
-    private bool EvalConditions(List<List<string>> conditionGroups, FieldState field, CombatantState ally, CombatantState enemy, MoveItem move)
+    private bool EvalConditions(List<List<string>> conditionGroups, FieldState field, CombatantState ally, CombatantState enemy, MoveItem move, string? originalMoveType = null)
     {
         if (conditionGroups.Count == 0) return true;
+        string checkType = !string.IsNullOrEmpty(originalMoveType) ? originalMoveType : move.Type;
         foreach (var andGroup in conditionGroups)
         {
             bool allMatch = true;
@@ -2594,7 +2598,7 @@ public class DamageCalculatorService
                     "any_stat_in_low" => ally.Stages.Values.Any(v => v < 0),
                     "target_all_stats_not_high" => enemy.Stages.Values.All(v => v <= 0),
                     "target_any_stat_in_low" => enemy.Stages.Values.Any(v => v < 0),
-                    _ => (cond.StartsWith("type_") && string.Equals(move.Type, cond.Substring(5), StringComparison.OrdinalIgnoreCase)) ||
+                    _ => (cond.StartsWith("type_") && string.Equals(checkType, cond.Substring(5), StringComparison.OrdinalIgnoreCase)) ||
                          (cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))) ||
                          (cond.Contains("damage_field") && ((!string.IsNullOrEmpty(ally.DamageField) && ally.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))) || (!string.IsNullOrEmpty(enemy.DamageField) && enemy.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))))) ||
                          (cond.Contains("circle") && ally.CircleActive.Any(kv => kv.Key.ToLowerInvariant().Contains(cond.Replace("_circle", "")) && kv.Value.Values.Any(v => v)))
