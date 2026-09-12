@@ -92,8 +92,7 @@
             </div>
         </div>
 
-        <div class="grid-viewport w-100 flex-grow-1 position-relative overflow-hidden"
-             @onmousemove="OnViewportMouseMove">
+        <div class="grid-viewport w-100 flex-grow-1 position-relative overflow-hidden">
             <svg class="hex-svg w-100 h-100" viewBox="@ViewBoxString" preserveAspectRatio="xMidYMid meet">
                 <defs>
                     <filter id="tile-glow" x="-30%" y="-30%" width="160%" height="160%">
@@ -124,7 +123,7 @@
                        style="cursor: pointer;"
                        @onclick="() => OnTileClicked(cell)"
                        @onmouseover="() => HoveredCell = cell"
-                       @onmouseout="OnTileMouseOut">
+                       @onmouseout="() => { if (HoveredCell == cell) HoveredCell = null; }">
 
                         <!-- Layer 1: Background Hex Tile Image -->
                         <image href="@bgHref"
@@ -202,14 +201,13 @@
                 </div>
             }
 
-            <!-- Floating Hover Tooltip (Follows mouse cursor) -->
+            <!-- Floating Hover Tooltip -->
             @if (HoveredCell != null)
             {
                 string tTitle = Loc.GetTileTitle(HoveredCell.AbilityId, HoveredCell.Title);
                 string tDesc = Loc.GetTileDescription(HoveredCell.AbilityId, HoveredCell.Description);
 
-                <div class="hover-tooltip shadow-lg bg-dark border border-secondary text-light p-2 rounded position-absolute"
-                     style="max-width: 290px; z-index: 1050; pointer-events: none; left: @(TooltipX.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture))px; top: @(TooltipY.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture))px; transform: @TooltipTransform; transition: transform 0.05s ease-out;">
+                <div class="hover-tooltip shadow-lg bg-dark border border-secondary text-light p-2 rounded position-absolute" style="max-width: 290px; z-index: 1050;">
                     <div class="fw-bold text-warning small">@tTitle</div>
                     @if (!string.IsNullOrEmpty(tDesc))
                     {
@@ -253,31 +251,6 @@
     private HashSet<long> CurrentActiveCells => ActiveCells ?? GridState.ActiveCells;
 
     private GridCellItem? HoveredCell;
-    private double TooltipX;
-    private double TooltipY;
-    private string TooltipTransform = "translate(-50%, -100%) translateY(-14px)";
-
-    private void OnViewportMouseMove(MouseEventArgs e)
-    {
-        TooltipX = e.OffsetX;
-        TooltipY = e.OffsetY;
-
-        // Position tooltip directly above the cursor.
-        // If too close to the top of the viewport (< 140px), show it below the cursor.
-        if (TooltipY < 140)
-        {
-            TooltipTransform = "translate(-50%, 0%) translateY(18px)";
-        }
-        else
-        {
-            TooltipTransform = "translate(-50%, -100%) translateY(-14px)";
-        }
-    }
-
-    private void OnTileMouseOut()
-    {
-        HoveredCell = null;
-    }
 
     private async Task OnMoveLevelClick(int lvl)
     {
