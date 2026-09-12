@@ -1,4 +1,5 @@
 @inject GridStateService GridState
+@implements IDisposable
 
 <div class="hex-grid-container position-relative w-100 h-100 d-flex flex-column">
     @if (Pair == null || Pair.Grid.Count == 0)
@@ -60,8 +61,13 @@
                 </div>
             </div>
 
-            <!-- Right: Hard Cap switch & Special Orbs badges -->
-            <div style="min-width: 130px;" class="d-flex justify-content-end align-items-center gap-2">
+            <!-- Right: Names & Hard Cap switches & Special Orbs badges -->
+            <div style="min-width: 170px;" class="d-flex justify-content-end align-items-center gap-2">
+                <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="@Loc.T("toggle_tile_names", "Toggle Tile Names")">
+                    <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="hexViewShowNamesSwitch"
+                           checked="@GridState.ShowTileNames" @onchange="OnToggleTileNames" />
+                    <label class="form-check-label text-secondary small select-none cursor-pointer d-none d-sm-inline" for="hexViewShowNamesSwitch" style="font-size: 0.72rem;">@Loc.T("names", "Names")</label>
+                </div>
                 <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="Toggle Hard Cap (enforces tile adjacency)">
                     <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="hexViewHardCapSwitch"
                            checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
@@ -133,7 +139,7 @@
                                y="@imgY"
                                width="69"
                                height="60"
-                               class="icon-layer" />
+                               class="icon-layer @(GridState.ShowTileNames ? "icon-dimmed" : "")" />
 
                         <!-- Layer 3: Selected Glow Overlay -->
                         @if (isActive)
@@ -144,6 +150,13 @@
                                    width="69"
                                    height="60"
                                    class="overlay-layer" />
+                        }
+
+                        <!-- Layer 3.5: Tile Text Label -->
+                        @if (GridState.ShowTileNames)
+                        {
+                            string rawTitle = Loc.GetTileTitle(cell.AbilityId, cell.Title);
+                            @((MarkupString)GridTileFormatter.GetTileLabelSvg(rawTitle, cell.AbilityId, Loc.CurrentLanguage, cx, cy, isLocked, isActive))
                         }
 
                         <!-- Layer 4: Interactive Polygon Mask -->
@@ -408,6 +421,29 @@
         await OnCenterClick.InvokeAsync();
     }
 
+    protected override void OnInitialized()
+    {
+        Loc.OnLanguageChanged += OnStateChanged;
+        GridState.OnGridChanged += OnStateChanged;
+    }
+
+    private void OnStateChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        Loc.OnLanguageChanged -= OnStateChanged;
+        GridState.OnGridChanged -= OnStateChanged;
+    }
+
+    private void OnToggleTileNames(ChangeEventArgs e)
+    {
+        GridState.ShowTileNames = (bool)(e.Value ?? true);
+        GridState.NotifyChanged();
+    }
+
     private static string GetSpecialOrbName(int index) => index switch
     {
         0 => "Fiery Orb (Red)",
@@ -418,3 +454,35 @@
         _ => $"Special Orb {index}"
     };
 }
+
+<style>
+    .hex-tile .icon-dimmed {
+        opacity: 0.28;
+        transition: opacity 0.15s ease-in-out;
+    }
+
+    .hex-tile:hover .icon-dimmed {
+        opacity: 0.45;
+    }
+
+    .hex-tile-label {
+        fill: #ffffff;
+        stroke: rgba(0, 0, 0, 0.95);
+        stroke-width: 2.2px;
+        paint-order: stroke fill;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+    }
+
+    .hex-tile.active .hex-tile-label {
+        fill: #ffffff;
+        stroke: rgba(10, 25, 50, 0.95);
+        stroke-width: 2.4px;
+    }
+
+    .hex-tile.locked .hex-tile-label {
+        fill: #cbd5e1;
+        stroke: rgba(0, 0, 0, 0.9);
+        opacity: 0.85;
+    }
+</style>

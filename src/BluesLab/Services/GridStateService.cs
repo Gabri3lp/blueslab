@@ -17,6 +17,7 @@ public class GridStateService
     public HashSet<long> ActiveCells { get; } = new();
     public List<long> ActiveLearnMoveOrder { get; } = new();
     public bool HardCap { get; set; } = true;
+    public bool ShowTileNames { get; set; } = true;
     public int MaxEnergy { get; set; } = 60;
 
     public event Action? OnGridChanged;
