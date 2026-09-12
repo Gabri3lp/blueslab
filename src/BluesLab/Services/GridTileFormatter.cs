@@ -33,51 +33,11 @@ public static class GridTileFormatter
     private static readonly Regex EnStatRegex = new(@"^(HP|Attack|Defense|Sp\.\s*Atk|Sp\.\s*Def|Speed)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex NumberOnlyRegex = new(@"\+\s*(\d+)", RegexOptions.Compiled);
     private static readonly Regex MovePowerRegex = new(@"^(.*?):\s*(?:Power|Potencia)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex MoveMgrRegex = new(@"^(.*?):\s*(?:Move Gauge Refresh|Movimiento Llenabarras|Llenabarras)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex MoveMprRegex = new(@"^(.*?):\s*(?:MP Refresh|Recupera PM|Movimiento Recupera PM)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex MoveMgrRegex = new(@"^(.*?):\s*(?:Move Gauge Refresh|Movimiento Llenabarras|Llenabarras|MGR)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex MoveMprRegex = new(@"^(.*?):\s*(?:MP Refresh|Recupera PM|Movimiento Recupera PM|MPR)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex MoveAccRegex = new(@"^(.*?):\s*(?:Accuracy|Precisión)\s*\+\s*(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex MoveHealerRegex = new(@"^(.*?):\s*(?:Master Healer|Efecto Curativo)\s*\+?(\d+)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex LearnMoveRegex = new(@"^(?:Learn Move|Aprender mov\.)(?::\s*|\s+)(.*)$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-
-    private static readonly Dictionary<string, string> MoveShortcuts = new(StringComparer.OrdinalIgnoreCase)
-    {
-        ["Thunderbolt"] = "T-Bolt",
-        ["Hydro Pump"] = "H-Pump",
-        ["Hidrobomba"] = "H-Bomba",
-        ["Earthquake"] = "EQ",
-        ["Terremoto"] = "Terrem.",
-        ["Hyper Beam"] = "H-Beam",
-        ["Hiperrayo"] = "H-Rayo",
-        ["Solar Beam"] = "SolarBeam",
-        ["Rayo Solar"] = "R.Solar",
-        ["Fire Blast"] = "FireBlast",
-        ["Llamarada"] = "Llamar.",
-        ["Potion"] = "Potion",
-        ["Poción"] = "Poción",
-        ["Swords Dance"] = "SwordsDance",
-        ["Danza Espada"] = "D.Espada",
-        ["Shadow Ball"] = "Shd Ball",
-        ["Bola Sombra"] = "B.Sombra",
-        ["Focus Blast"] = "FocusBlast",
-        ["Onda Certera"] = "O.Certera",
-        ["Flamethrower"] = "Flamethr.",
-        ["Lanzallamas"] = "Lanzall.",
-        ["B Volt Tackle"] = "B V.Tackle",
-        ["Volt Tackle"] = "V.Tackle",
-        ["Placaje Eléc."] = "Plac.Eléc.",
-        ["Ice Beam"] = "Ice Beam",
-        ["Rayo Hielo"] = "R.Hielo",
-        ["Psychic"] = "Psychic",
-        ["Psíquico"] = "Psíquico",
-        ["Energy Ball"] = "EnergyBall",
-        ["Energibola"] = "Energibola",
-        ["Stone Edge"] = "Stone Edge",
-        ["Roca Afilada"] = "R.Afilada",
-        ["Drain Punch"] = "DrainPunch",
-        ["Puño Drenaje"] = "P.Drenaje",
-        ["Giga Drain"] = "Giga Drain",
-        ["Gigadrenado"] = "Gigadren."
-    };
 
     private static readonly (string Pattern, string Replacement)[] EsReplacements =
     [
@@ -126,23 +86,23 @@ public static class GridTileFormatter
 
         var isEs = string.Equals(language, "es", StringComparison.OrdinalIgnoreCase);
 
-        // 1. Stats
+        // 1. Stats (Matching clean names like Sp. Atk, Defense, Speed, HP)
         var mEs = EsStatRegex.Match(t);
         if (mEs.Success)
         {
             var stat = mEs.Groups[1].Value;
             var val = mEs.Groups[2].Value;
-            var shortStat = stat.ToLowerInvariant() switch
+            var cleanStat = stat.ToLowerInvariant() switch
             {
                 "ps" => "PS",
-                "ataque" => "Atq",
-                "defensa" => "Def",
-                "at. esp." => "At.Esp",
-                "def. esp." => "Def.Esp",
-                "velocidad" => "Vel",
+                "ataque" => "Ataque",
+                "defensa" => "Defensa",
+                "at. esp." or "at.esp." => "At. Esp.",
+                "def. esp." or "def.esp." => "Def. Esp.",
+                "velocidad" => "Velocidad",
                 _ => stat
             };
-            return BuildLabel([$"{shortStat} +{val}"]);
+            return BuildLabel([$"{cleanStat} +{val}"]);
         }
 
         var mEn = EnStatRegex.Match(t);
@@ -150,17 +110,17 @@ public static class GridTileFormatter
         {
             var stat = mEn.Groups[1].Value;
             var val = mEn.Groups[2].Value;
-            var shortStat = stat.ToLowerInvariant() switch
+            var cleanStat = stat.ToLowerInvariant() switch
             {
                 "hp" => "HP",
-                "attack" => "Atk",
-                "defense" => "Def",
-                "sp. atk" => "SpA",
-                "sp. def" => "SpD",
-                "speed" => "Spe",
+                "attack" => "Attack",
+                "defense" => "Defense",
+                "sp. atk" or "sp.atk" => "Sp. Atk",
+                "sp. def" or "sp.def" => "Sp. Def",
+                "speed" => "Speed",
                 _ => stat
             };
-            return BuildLabel([$"{shortStat} +{val}"]);
+            return BuildLabel([$"{cleanStat} +{val}"]);
         }
 
         // 2. Sync Moves
@@ -172,9 +132,9 @@ public static class GridTileFormatter
         {
             var mNum = NumberOnlyRegex.Match(t);
             var val = mNum.Success ? mNum.Groups[1].Value : "";
-            var syncText = isEs ? "Compi" : "Sync";
-            var pwrText = !string.IsNullOrEmpty(val) ? $"+{val}" : "+Power";
-            return BuildLabel([syncText, pwrText]);
+            var syncHeader = isEs ? "Mov. Compi:" : "Sync Move:";
+            var pwrText = !string.IsNullOrEmpty(val) ? (isEs ? $"Potencia +{val}" : $"Power +{val}") : (isEs ? "Potencia" : "Power");
+            return BuildLabel([syncHeader, pwrText]);
         }
 
         // 3. Max / Dynamax Moves
@@ -183,63 +143,64 @@ public static class GridTileFormatter
         {
             var mNum = NumberOnlyRegex.Match(t);
             var val = mNum.Success ? mNum.Groups[1].Value : "";
-            var maxText = isEs ? "Dyna" : "Max";
-            var pwrText = !string.IsNullOrEmpty(val) ? $"+{val}" : "+Power";
-            return BuildLabel([maxText, pwrText]);
+            var maxHeader = isEs ? "Mov. Dyna:" : "Max Move:";
+            var pwrText = !string.IsNullOrEmpty(val) ? (isEs ? $"Potencia +{val}" : $"Power +{val}") : (isEs ? "Potencia" : "Power");
+            return BuildLabel([maxHeader, pwrText]);
         }
 
         // 4. Move Power Ups
         var mPwr = MovePowerRegex.Match(t);
         if (mPwr.Success)
         {
-            var move = ShortenMove(mPwr.Groups[1].Value);
-            return BuildLabel([move, $"+{mPwr.Groups[2].Value}"]);
+            var move = mPwr.Groups[1].Value.Trim();
+            var pwrText = isEs ? $"Potencia +{mPwr.Groups[2].Value}" : $"Power +{mPwr.Groups[2].Value}";
+            return WrapMoveTitle(move, pwrText);
         }
 
         // 5. Move Gauge Refresh
         var mMgr = MoveMgrRegex.Match(t);
         if (mMgr.Success)
         {
-            var move = ShortenMove(mMgr.Groups[1].Value);
-            return BuildLabel([move, $"MGR {mMgr.Groups[2].Value}"]);
+            var move = mMgr.Groups[1].Value.Trim();
+            return WrapMoveTitle(move, $"MGR{mMgr.Groups[2].Value}");
         }
 
         // 6. MP Refresh
         var mMpr = MoveMprRegex.Match(t);
         if (mMpr.Success)
         {
-            var move = ShortenMove(mMpr.Groups[1].Value);
-            return BuildLabel([move, $"MPR {mMpr.Groups[2].Value}"]);
+            var move = mMpr.Groups[1].Value.Trim();
+            return WrapMoveTitle(move, $"MPR{mMpr.Groups[2].Value}");
         }
 
         // 7. Accuracy
         var mAcc = MoveAccRegex.Match(t);
         if (mAcc.Success)
         {
-            var move = ShortenMove(mAcc.Groups[1].Value);
+            var move = mAcc.Groups[1].Value.Trim();
             var prefix = isEs ? "Prec" : "Acc";
-            return BuildLabel([move, $"{prefix} +{mAcc.Groups[2].Value}"]);
+            return WrapMoveTitle(move, $"{prefix} +{mAcc.Groups[2].Value}");
         }
 
         // 8. Master Healer
         var mHeal = MoveHealerRegex.Match(t);
         if (mHeal.Success)
         {
-            var move = ShortenMove(mHeal.Groups[1].Value);
+            var move = mHeal.Groups[1].Value.Trim();
             var healText = isEs ? $"Curativo {mHeal.Groups[2].Value}" : $"Healer {mHeal.Groups[2].Value}";
-            return BuildLabel([move, healText]);
+            return WrapMoveTitle(move, healText);
         }
 
         // 9. Learn move
         var mLrn = LearnMoveRegex.Match(t);
         if (mLrn.Success)
         {
-            var learnText = isEs ? "Aprender" : "Learn";
-            var move = ShortenMove(mLrn.Groups[1].Value);
-            return BuildLabel([learnText, move]);
+            var learnText = isEs ? "Aprender:" : "Learn:";
+            var move = mLrn.Groups[1].Value.Trim();
+            return WrapMoveTitle(learnText, move);
         }
 
-        // 10. Specific Language Passive Replacements
+        // 10. Language specific replacements
         if (isEs)
         {
             foreach (var (pattern, replacement) in EsReplacements)
@@ -264,7 +225,7 @@ public static class GridTileFormatter
         }
 
         // Fits nicely on 1 line
-        if (t.Length <= 10)
+        if (t.Length <= 11)
         {
             return BuildLabel([t]);
         }
@@ -275,69 +236,76 @@ public static class GridTileFormatter
             var colonParts = t.Split(new[] { ": " }, 2, StringSplitOptions.RemoveEmptyEntries);
             if (colonParts.Length == 2)
             {
-                var p1 = ShortenMove(colonParts[0]);
-                var p2 = colonParts[1].Trim();
-                if (p2.Length > 11)
-                {
-                    var p2Words = p2.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    if (p2Words.Length == 2 && p2Words[0].Length <= 8)
-                    {
-                        return BuildLabel([p1, p2Words[0], p2Words[1]]);
-                    }
-                    p2 = p2.Substring(0, 10) + ".";
-                }
-                return BuildLabel([p1, p2]);
+                return WrapMoveTitle(colonParts[0], colonParts[1].Trim());
             }
         }
 
-        // Multi-word wrapping into 2 lines
+        // Multi-word wrapping into 2 or 3 lines
         var words = t.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (words.Length == 2)
         {
-            var w1 = words[0].Length > 11 ? words[0].Substring(0, 10) + "." : words[0];
-            var w2 = words[1].Length > 11 ? words[1].Substring(0, 10) + "." : words[1];
-            return BuildLabel([w1, w2]);
+            return BuildLabel([words[0], words[1]]);
         }
 
-        if (words.Length >= 3)
+        if (words.Length == 3)
         {
-            if (words[0].Length + words[1].Length + 1 <= 11)
+            if (words[0].Length + words[1].Length + 1 <= 12)
             {
-                var l1 = words[0] + " " + words[1];
-                var rest = string.Join(" ", words.Skip(2));
-                if (rest.Length > 11) rest = rest.Substring(0, 10) + ".";
-                return BuildLabel([l1, rest]);
+                return BuildLabel([words[0] + " " + words[1], words[2]]);
             }
-            if (words.Length == 3 && words[1].Length + words[2].Length + 1 <= 11)
+            if (words[1].Length + words[2].Length + 1 <= 12)
             {
-                var w1 = words[0].Length > 11 ? words[0].Substring(0, 10) + "." : words[0];
-                return BuildLabel([w1, words[1] + " " + words[2]]);
+                return BuildLabel([words[0], words[1] + " " + words[2]]);
             }
-            {
-                var w1 = words[0].Length > 11 ? words[0].Substring(0, 10) + "." : words[0];
-                var w2 = words[1].Length > 11 ? words[1].Substring(0, 10) + "." : words[1];
-                return BuildLabel([w1, w2]);
-            }
+            return BuildLabel([words[0], words[1], words[2]]);
+        }
+
+        if (words.Length >= 4)
+        {
+            var l1 = words[0] + " " + words[1];
+            var l2 = words[2];
+            var l3 = string.Join(" ", words.Skip(3));
+            if (l3.Length > 12) l3 = l3.Substring(0, 11) + ".";
+            return BuildLabel([l1, l2, l3]);
         }
 
         // Single long word
-        return BuildLabel([t.Substring(0, Math.Min(10, t.Length)) + "."]);
+        return BuildLabel([t.Substring(0, Math.Min(11, t.Length)) + "."]);
     }
 
-    private static string ShortenMove(string name)
+    private static FormattedTileLabel WrapMoveTitle(string moveName, string bottomLine)
     {
-        name = name.Trim();
-        if (MoveShortcuts.TryGetValue(name, out var shortcut))
+        moveName = moveName.Trim();
+        var words = moveName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (words.Length == 1)
         {
-            return shortcut;
+            var line1 = moveName.EndsWith(":") ? moveName : moveName + ":";
+            return BuildLabel([line1, bottomLine]);
         }
 
-        if (name.Length > 10)
+        if (words.Length == 2)
         {
-            return name.Substring(0, 9) + ".";
+            var line1 = words[0];
+            var line2 = words[1].EndsWith(":") ? words[1] : words[1] + ":";
+            return BuildLabel([line1, line2, bottomLine]);
         }
 
-        return name;
+        // 3+ words (e.g. "Rainbow Jewel TB" or "K Tera Starstorm")
+        if (words[0].Length <= 3) // e.g. "K", "B"
+        {
+            var line1 = words[0] + " " + words[1];
+            var line2 = string.Join(" ", words.Skip(2));
+            if (!line2.EndsWith(":")) line2 += ":";
+            return BuildLabel([line1, line2, bottomLine]);
+        }
+        else
+        {
+            var line1 = words[0];
+            var line2 = string.Join(" ", words.Skip(1));
+            if (!line2.EndsWith(":")) line2 += ":";
+            return BuildLabel([line1, line2, bottomLine]);
+        }
     }
 
     private static FormattedTileLabel BuildLabel(IReadOnlyList<string> rawLines)
@@ -353,9 +321,10 @@ public static class GridTileFormatter
             var len = validLines[0].Length;
             var fontSize = len switch
             {
-                <= 6 => 8.8,
-                <= 9 => 8.2,
-                _ => 7.5
+                <= 6 => 8.5,
+                <= 9 => 8.0,
+                <= 11 => 7.4,
+                _ => 6.8
             };
             return new FormattedTileLabel(
             [
@@ -368,13 +337,13 @@ public static class GridTileFormatter
             var maxLen = Math.Max(validLines[0].Length, validLines[1].Length);
             var fontSize = maxLen switch
             {
-                <= 6 => 8.2,
-                <= 9 => 7.7,
-                _ => 7.0
+                <= 7 => 7.8,
+                <= 10 => 7.3,
+                _ => 6.7
             };
             return new FormattedTileLabel(
             [
-                new FormattedTileLine(validLines[0], -5.2),
+                new FormattedTileLine(validLines[0], -5.5),
                 new FormattedTileLine(validLines[1], 5.8)
             ], fontSize);
         }
@@ -382,10 +351,10 @@ public static class GridTileFormatter
         // 3 lines
         return new FormattedTileLabel(
         [
-            new FormattedTileLine(validLines[0], -9.5),
+            new FormattedTileLine(validLines[0], -10.0),
             new FormattedTileLine(validLines[1], 0.0),
-            new FormattedTileLine(validLines[2], 9.5)
-        ], 6.5);
+            new FormattedTileLine(validLines[2], 10.0)
+        ], 6.4);
     }
 
     public static string GetTileLabelSvg(string? rawTitle, long abilityId, string language, double cx, double cy, bool isLocked, bool isActive)
