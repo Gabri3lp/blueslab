@@ -122,8 +122,8 @@
                     <g class="hex-tile @(isActive ? "active" : "") @(isLocked ? "locked" : "")"
                        style="cursor: pointer;"
                        @onclick="() => OnTileClicked(cell)"
-                       @onmouseover="() => HoveredCell = cell"
-                       @onmouseout="() => { if (HoveredCell == cell) HoveredCell = null; }">
+                       @onmouseenter="e => OnTileEnter(cell, e)"
+                       @onmouseleave="() => { if (HoveredCell == cell) HoveredCell = null; }">
 
                         <!-- Layer 1: Background Hex Tile Image -->
                         <image href="@bgHref"
@@ -201,13 +201,21 @@
                 </div>
             }
 
-            <!-- Floating Hover Tooltip -->
+            <!-- Floating Hover Tooltip (Positioned over mouse cursor via gridTooltip.js & initial coordinates) -->
             @if (HoveredCell != null)
             {
                 string tTitle = Loc.GetTileTitle(HoveredCell.AbilityId, HoveredCell.Title);
                 string tDesc = Loc.GetTileDescription(HoveredCell.AbilityId, HoveredCell.Description);
 
-                <div class="hover-tooltip shadow-lg bg-dark border border-secondary text-light p-2 rounded position-absolute" style="max-width: 290px; z-index: 1050;">
+                double initLeft = LastClientX > 0 ? Math.Max(12, LastClientX - 145) : 12;
+                double initTop = LastClientY > 0 ? (LastClientY < 180 ? LastClientY + 20 : LastClientY - 140) : 12;
+                string posStyle = LastClientX > 0
+                    ? $"left: {initLeft.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture)}px; top: {initTop.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture)}px;"
+                    : "";
+
+                <div id="grid-tile-tooltip"
+                     class="hover-tooltip shadow-lg bg-dark border border-secondary text-light p-2 rounded"
+                     style="position: fixed; max-width: 290px; z-index: 2000; pointer-events: none; @posStyle transition: opacity 0.08s ease-in-out;">
                     <div class="fw-bold text-warning small">@tTitle</div>
                     @if (!string.IsNullOrEmpty(tDesc))
                     {
@@ -251,6 +259,15 @@
     private HashSet<long> CurrentActiveCells => ActiveCells ?? GridState.ActiveCells;
 
     private GridCellItem? HoveredCell;
+    private double LastClientX = -9999;
+    private double LastClientY = -9999;
+
+    private void OnTileEnter(GridCellItem cell, MouseEventArgs e)
+    {
+        HoveredCell = cell;
+        LastClientX = e.ClientX;
+        LastClientY = e.ClientY;
+    }
 
     private async Task OnMoveLevelClick(int lvl)
     {
