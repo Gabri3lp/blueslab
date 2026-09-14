@@ -115,6 +115,8 @@ public static class MoveScopeRules
             return move.IsMax;
         if (target == "moves_and_sync")
             return !move.IsMax;
+        if (target is "sync_and_max" or "max_and_sync")
+            return move.IsSync || move.IsMax;
 
         return true;
     }

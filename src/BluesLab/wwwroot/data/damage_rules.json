@@ -2789,13 +2789,8 @@
           "value": 5,
           "stat": "",
           "stat_target": "",
-          "conditions": [
-            [
-              "move_slot_MOVE_16",
-              "63"
-            ]
-          ],
-          "move_name": "",
+          "conditions": [],
+          "move_name": "Hyper Beam",
           "sub_passives": []
         }
       ]
@@ -2836,12 +2831,10 @@
           "stat_target": "",
           "conditions": [
             [
-              "move_slot_MOVE_16",
-              "506",
               "any_status"
             ]
           ],
-          "move_name": "",
+          "move_name": "Hex",
           "sub_passives": []
         }
       ]
@@ -4518,7 +4511,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "grass_zone"
+          "dark_zone"
         ]
       ],
       "move_name": "",
@@ -4535,7 +4528,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "flying_zone"
+          "dark_zone"
         ]
       ],
       "move_name": "",
@@ -4626,7 +4619,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "sunny"
+          "rainy"
         ]
       ],
       "move_name": "",
@@ -4643,7 +4636,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "sunny"
+          "rainy"
         ]
       ],
       "move_name": "Brine",
@@ -4660,7 +4653,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "sunny"
+          "rainy"
         ]
       ],
       "move_name": "Bounce",
@@ -5293,7 +5286,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "flying_zone"
+          "fighting_zone"
         ]
       ],
       "move_name": "",
@@ -5375,7 +5368,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "rock_zone"
+          "flying_zone"
         ]
       ],
       "move_name": "",
@@ -5755,7 +5748,7 @@
           "stat_target": "",
           "conditions": [
             [
-              "fighting_zone"
+              "ice_zone"
             ]
           ],
           "move_name": "",
@@ -6166,7 +6159,7 @@
       "type": "powerup",
       "applies_to": "max_move",
       "affects": "self",
-      "mechanism": "",
+      "mechanism": "flat_boost",
       "value": 5,
       "stat": "",
       "stat_target": "",
@@ -6703,7 +6696,7 @@
           "stat_target": "",
           "conditions": [
             [
-              "ghost_zone"
+              "bug_zone"
             ]
           ],
           "move_name": "",
@@ -6780,13 +6773,8 @@
           "value": 5,
           "stat": "",
           "stat_target": "",
-          "conditions": [
-            [
-              "move_slot_MOVE_16",
-              "370"
-            ]
-          ],
-          "move_name": "",
+          "conditions": [],
+          "move_name": "Close Combat",
           "sub_passives": []
         }
       ]
@@ -7107,12 +7095,10 @@
           "stat_target": "",
           "conditions": [
             [
-              "move_slot_MOVE_16",
-              "629",
               "sunny"
             ]
           ],
-          "move_name": "",
+          "move_name": "High Horsepower",
           "sub_passives": []
         }
       ]
@@ -7460,7 +7446,7 @@
           "stat_target": "",
           "conditions": [
             [
-              "flying_zone"
+              "fighting_zone"
             ]
           ],
           "move_name": "",
@@ -9387,7 +9373,7 @@
       "stat_target": "self",
       "conditions": [
         [
-          "sunny"
+          "rainy"
         ]
       ],
       "move_name": "",
@@ -9404,7 +9390,7 @@
       "stat_target": "self",
       "conditions": [
         [
-          "sunny"
+          "rainy"
         ]
       ],
       "move_name": "",
@@ -9421,7 +9407,7 @@
       "stat_target": "self",
       "conditions": [
         [
-          "sunny"
+          "rainy"
         ]
       ],
       "move_name": "",
@@ -9831,7 +9817,7 @@
       "stat_target": "",
       "conditions": [
         [
-          "steel_zone"
+          "rock_zone"
         ]
       ],
       "move_name": "",
@@ -11251,7 +11237,7 @@
       "stat_target": "self",
       "conditions": [
         [
-          "rain"
+          "sunny"
         ]
       ],
       "move_name": "",
@@ -11268,7 +11254,7 @@
       "stat_target": "self",
       "conditions": [
         [
-          "rain"
+          "sunny"
         ]
       ],
       "move_name": "",
@@ -13138,13 +13124,8 @@
           "value": 10,
           "stat": "",
           "stat_target": "",
-          "conditions": [
-            [
-              "move_slot_MOVE_16",
-              "58"
-            ]
-          ],
-          "move_name": "",
+          "conditions": [],
+          "move_name": "Ice Beam",
           "sub_passives": []
         }
       ]
@@ -13376,13 +13357,8 @@
           "value": 9,
           "stat": "",
           "stat_target": "",
-          "conditions": [
-            [
-              "move_slot_MOVE_16",
-              "89"
-            ]
-          ],
-          "move_name": "",
+          "conditions": [],
+          "move_name": "Earthquake",
           "sub_passives": []
         }
       ]
@@ -14539,6 +14515,495 @@
       "conditions": [
         [
           "electric_terrain"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Normal Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Normal"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Fire Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Fire"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Water Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Water"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Electric Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Electric"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Grass Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Grass"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Ice Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Ice"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Fighting Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Fighting"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Poison Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Poison"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Ground Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Ground"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Flying Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Flying"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Psychic Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Psychic"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Bug Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Bug"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Rock Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Rock"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Ghost Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Ghost"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Dragon Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Dragon"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Dark Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Dark"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Steel Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Steel"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Team Fairy Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "type_Fairy"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Electric Terrain: Team S-Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "electric_terrain"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Sunny: Team Ground P-Moves ↑ & S-Moves ↑ 2",
+      "type": "powerup",
+      "applies_to": "moves_and_sync",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "sunny"
+        ],
+        [
+          "type_Ground"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Opp Poisoned: Team S-Moves ↑ 3",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 3,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "poisoned"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Rampaging Storm",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "rainy"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "HP ≧ Half: S-Moves ↑ 9",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "self",
+      "mechanism": "flat_boost",
+      "value": 9,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "hp_half_or_more"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Metallic Power 5",
+      "type": "powerup",
+      "applies_to": "moves",
+      "affects": "self",
+      "mechanism": "flat_boost",
+      "value": 5,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "steel_zone"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Rainy: Max Moves ↑ 9",
+      "type": "powerup",
+      "applies_to": "max_move",
+      "affects": "self",
+      "mechanism": "flat_boost",
+      "value": 9,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "rainy"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Sunny: S-Moves & Max Moves ↑ 9",
+      "type": "powerup",
+      "applies_to": "sync_and_max",
+      "affects": "self",
+      "mechanism": "flat_boost",
+      "value": 9,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "sunny"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "source": "datamine",
+      "name": "Terrain: S-Moves ↑ 9",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "self",
+      "mechanism": "flat_boost",
+      "value": 9,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "any_terrain"
         ]
       ],
       "move_name": "",

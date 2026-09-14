@@ -143,7 +143,7 @@ public class MasterPassiveRule
 
     private static readonly string[] MasterRegions = new[]
     {
-        "Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Paldea", "Pasio"
+        "Kanto", "Johto", "Hoenn", "Sinnoh", "Unova", "Kalos", "Alola", "Galar", "Paldea", "Hisui", "Pasio"
     };
 
     private static readonly string[] MasterTypes = new[]
@@ -172,7 +172,25 @@ public class MasterPassiveRule
             }
         }
 
-        foreach (var p in pair.Passives)
+        var candidatePassives = new List<PassiveItem>(pair.Passives ?? Enumerable.Empty<PassiveItem>());
+        if (pair.Variations != null)
+        {
+            foreach (var v in pair.Variations)
+            {
+                if (v.Passives != null)
+                {
+                    foreach (var vp in v.Passives)
+                    {
+                        if (!candidatePassives.Any(cp => string.Equals(cp.Name, vp.Name, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            candidatePassives.Add(vp);
+                        }
+                    }
+                }
+            }
+        }
+
+        foreach (var p in candidatePassives)
         {
             string name = p.Name?.Trim() ?? string.Empty;
             if (string.IsNullOrEmpty(name)) continue;

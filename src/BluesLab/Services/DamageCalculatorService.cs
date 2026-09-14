@@ -2068,6 +2068,23 @@ public class DamageCalculatorService
                             }
                         }
                     }
+                    else
+                    {
+                        string desc = cell.Description ?? string.Empty;
+                        bool isTeamSkill = cleanTitle.Contains("Team", StringComparison.OrdinalIgnoreCase) ||
+                                           desc.Contains("all allied", StringComparison.OrdinalIgnoreCase) ||
+                                           desc.Contains("allies", StringComparison.OrdinalIgnoreCase);
+
+                        if (isTeamSkill)
+                        {
+                            double v = EvalDynamicGridPassive(cell, move, activeAttacker, enemy, field, out string? pillLabel);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = $"Ally Grid: {pillLabel ?? cleanTitle} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -2078,6 +2095,8 @@ public class DamageCalculatorService
     private static bool IsTeamWidePassive(DamagePassiveRule rule)
     {
         if (string.Equals(rule.Affects, "team", StringComparison.OrdinalIgnoreCase)) return true;
+        if (string.Equals(rule.Affects, "targ_34", StringComparison.OrdinalIgnoreCase)) return true;
+        if (!string.IsNullOrEmpty(rule.Affects) && rule.Affects.Contains("team", StringComparison.OrdinalIgnoreCase)) return true;
         if (rule.Name.Contains("Team ", StringComparison.OrdinalIgnoreCase)) return true;
         if (rule.Name.Contains(": Team", StringComparison.OrdinalIgnoreCase)) return true;
         if (rule.SubPassives != null && rule.SubPassives.Any(IsTeamWidePassive)) return true;
@@ -2380,6 +2399,87 @@ public class DamageCalculatorService
             }
         }
 
+        // 7. Stat-based boosts: e.g. "Moves ↑ 5" when Speed is raised
+        if (desc.Contains("Speed is raised", StringComparison.OrdinalIgnoreCase) && ally.Stages.GetValueOrDefault("spe", 0) > 0)
+        {
+            int val = 3;
+            var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+            if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+            if (desc.Contains("sync move", StringComparison.OrdinalIgnoreCase) || title.Contains("S-Moves", StringComparison.OrdinalIgnoreCase))
+            {
+                if (move.IsSync) return val * 0.10;
+            }
+            else
+            {
+                if (!move.IsSync) return val * 0.10;
+            }
+        }
+
+        // 8. Damage Field Boosts: e.g. "Rock Damage Field: Team S-Moves ↑ 3" or "Steel Damage Field: Sync Power ↑ 5"
+        if (desc.Contains("Damage Field applies", StringComparison.OrdinalIgnoreCase))
+        {
+            bool dfActive = !string.IsNullOrEmpty(enemy.DamageField) || !string.IsNullOrEmpty(ally.DamageField);
+            if (dfActive)
+            {
+                int val = 3;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+                if (desc.Contains("sync move", StringComparison.OrdinalIgnoreCase) || title.Contains("Sync", StringComparison.OrdinalIgnoreCase) || title.Contains("S-Moves", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
+        // 9. Type Specific Moves ↑: e.g. "Team Water Moves ↑ 2" or "Water Moves ↑ 2"
+        var typeMovesMatch = System.Text.RegularExpressions.Regex.Match(title, @"([A-Za-z]+)\s+Moves\s*↑\s*(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        if (typeMovesMatch.Success)
+        {
+            string tName = typeMovesMatch.Groups[1].Value;
+            int val = int.TryParse(typeMovesMatch.Groups[2].Value, out int pv) ? pv : 0;
+            if (string.Equals(move.Type, tName, StringComparison.OrdinalIgnoreCase) && !move.IsSync && val > 0)
+            {
+                return val * 0.10;
+            }
+        }
+
+        // 10. Not Super Effective Moves ↑: e.g. "Moves ↑ 2" when move is not super effective
+        if (title.Contains("Not Super Effective", StringComparison.OrdinalIgnoreCase) || desc.Contains("not super effective", StringComparison.OrdinalIgnoreCase))
+        {
+            bool isSuperEffective = (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(enemy.Weakness, move.Type, StringComparison.OrdinalIgnoreCase)) || ally.SuperEffectiveNext;
+            if (!isSuperEffective)
+            {
+                int val = 2;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+                if (!move.IsSync) return val * 0.10;
+            }
+        }
+
+        // 11. Target Rebuff Lowered Boosts: e.g. "Team Moves ↑ 3" when target has lowered type rebuff
+        if (desc.Contains("lowered Type Rebuff", StringComparison.OrdinalIgnoreCase))
+        {
+            bool hasRebuff = enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0);
+            if (hasRebuff)
+            {
+                int val = 3;
+                var numMatch = System.Text.RegularExpressions.Regex.Match(title, @"\b(\d+)\b");
+                if (numMatch.Success && int.TryParse(numMatch.Groups[1].Value, out int nVal)) val = nVal;
+                if (desc.Contains("sync move", StringComparison.OrdinalIgnoreCase) || title.Contains("S-Moves", StringComparison.OrdinalIgnoreCase))
+                {
+                    if (move.IsSync) return val * 0.10;
+                }
+                else
+                {
+                    if (!move.IsSync) return val * 0.10;
+                }
+            }
+        }
+
         return 0;
     }
 
@@ -2506,6 +2606,13 @@ public class DamageCalculatorService
         }
     }
 
+    private static readonly Dictionary<int, string> RegionThemeIndexMap = new()
+    {
+        { 1, "Kanto" }, { 2, "Johto" }, { 3, "Hoenn" }, { 4, "Sinnoh" },
+        { 5, "Unova" }, { 6, "Kalos" }, { 7, "Alola" }, { 8, "Galar" },
+        { 9, "Paldea" }, { 10, "Hisui" }, { 20, "Pasio" }
+    };
+
     private bool EvalConditions(List<List<string>> conditionGroups, FieldState field, CombatantState ally, CombatantState enemy, MoveItem move, string? originalMoveType = null)
     {
         if (conditionGroups.Count == 0) return true;
@@ -2541,6 +2648,11 @@ public class DamageCalculatorService
                     "electric_zone" => field.Zone == "Electric Zone",
                     "poison_zone" => field.Zone == "Poison Zone",
                     "normal_zone" => field.Zone == "Normal Zone",
+                    "ice_zone" => field.Zone == "Ice Zone",
+                    "bug_zone" => field.Zone == "Bug Zone",
+                    "water_zone" => field.Zone == "Water Zone",
+                    "fighting_zone" => field.Zone == "Fighting Zone",
+                    "psychic_zone" => field.Zone == "Psychic Zone",
                     "any_weather_terrain_zone" => !string.IsNullOrEmpty(field.Weather) || !string.IsNullOrEmpty(field.Terrain) || !string.IsNullOrEmpty(field.Zone),
                     "burned" => enemy.StatusCondition == "burned",
                     "paralyzed" => enemy.StatusCondition == "paralyzed",
@@ -2554,6 +2666,7 @@ public class DamageCalculatorService
                     "flinch_confuse_trap" => enemy.VolatileStatus.GetValueOrDefault("confused", false) || enemy.VolatileStatus.GetValueOrDefault("trapped", false) || enemy.VolatileStatus.GetValueOrDefault("flinching", false),
                     "critical" => ally.IsCriticalMove,
                     "super_effective" or "super_efective" => (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase)),
+                    "not_super_effective" or "move_slot_move_032" => string.IsNullOrEmpty(enemy.Weakness) || !string.Equals(move.Type, enemy.Weakness, StringComparison.OrdinalIgnoreCase),
                     "has_rebuff" or "rebuff_lowered" or "target_rebuff" => enemy.EnemyTypeRebuffs.GetValueOrDefault(move.Type, 0) < 0 || enemy.EnemyTypeRebuffs.Values.Any(v => v < 0),
                     "user_rebuff" or "user_rebuff_raised" => ally.UserTypeRebuffs.Values.Any(v => v > 0),
                     "user_rebuff_lowered" => ally.UserTypeRebuffs.Values.Any(v => v < 0),
@@ -2569,17 +2682,6 @@ public class DamageCalculatorService
                     "user_damage_field" => !string.IsNullOrEmpty(ally.DamageField),
                     "field_fild_001" or "move_gauge_accel" => ally.MoveGaugeAccel,
                     "theme_thm" => ally.CircleActive.Values.Any(d => d.Values.Any(v => v)),
-                    "theme_thmd_2" => ally.CircleActive.TryGetValue("Johto", out var c2) && c2.GetValueOrDefault("defensive"),
-                    "theme_thmp_2" => ally.CircleActive.TryGetValue("Johto", out var c2p) && c2p.GetValueOrDefault("physical"),
-                    "theme_thms_2" => ally.CircleActive.TryGetValue("Johto", out var c2s) && c2s.GetValueOrDefault("special"),
-                    "theme_thms_4" => ally.CircleActive.TryGetValue("Sinnoh", out var c4s) && c4s.GetValueOrDefault("special"),
-                    "theme_thmd_5" => ally.CircleActive.TryGetValue("Unova", out var c5d) && c5d.GetValueOrDefault("defensive"),
-                    "theme_thmp_5" => ally.CircleActive.TryGetValue("Unova", out var c5p) && c5p.GetValueOrDefault("physical"),
-                    "theme_thms_5" => ally.CircleActive.TryGetValue("Unova", out var c5s) && c5s.GetValueOrDefault("special"),
-                    "theme_thms_7" => ally.CircleActive.TryGetValue("Alola", out var c7s) && c7s.GetValueOrDefault("special"),
-                    "theme_thmd_9" => ally.CircleActive.TryGetValue("Paldea", out var c9d) && c9d.GetValueOrDefault("defensive"),
-                    "theme_thmp_9" => ally.CircleActive.TryGetValue("Paldea", out var c9p) && c9p.GetValueOrDefault("physical"),
-                    "theme_thmd_20" => ally.CircleActive.TryGetValue("Pasio", out var c20d) && c20d.GetValueOrDefault("defensive"),
                     "damage_field_dmfd_8" => string.Equals(enemy.DamageField, "Poison", StringComparison.OrdinalIgnoreCase) || string.Equals(ally.DamageField, "Poison", StringComparison.OrdinalIgnoreCase),
                     "damage_field_dmfd_13" => string.Equals(enemy.DamageField, "Rock", StringComparison.OrdinalIgnoreCase) || string.Equals(ally.DamageField, "Rock", StringComparison.OrdinalIgnoreCase),
                     "damage_field_dmfd_16" => string.Equals(enemy.DamageField, "Dark", StringComparison.OrdinalIgnoreCase) || string.Equals(ally.DamageField, "Dark", StringComparison.OrdinalIgnoreCase),
@@ -2594,19 +2696,50 @@ public class DamageCalculatorService
                     "special_break" or "spec_break" => enemy.SpecialBreak || ally.SpecialBreak,
                     "has_break" or "any_break" => enemy.PhysicalBreak || enemy.SpecialBreak || ally.PhysicalBreak || ally.SpecialBreak,
                     "only_one_alive" or "berry" or "berry_active" or "first_sync" => true,
+                    "speed_raised" or "spe_raised" => ally.Stages.GetValueOrDefault("spe", 0) > 0,
+                    "atk_raised" => ally.Stages.GetValueOrDefault("atk", 0) > 0,
+                    "spa_raised" => ally.Stages.GetValueOrDefault("spa", 0) > 0,
+                    "def_raised" => ally.Stages.GetValueOrDefault("def", 0) > 0,
+                    "spd_raised" => ally.Stages.GetValueOrDefault("spd", 0) > 0,
+                    "crit_raised" => ally.Stages.GetValueOrDefault("crit", 0) > 0,
+                    "tags_recoil" => !string.IsNullOrEmpty(move.Description) && move.Description.Contains("recoil", StringComparison.OrdinalIgnoreCase),
+                    "move_slot_move_004" => true,
                     "all_stats_not_high" => ally.Stages.Values.All(v => v <= 0),
                     "any_stat_in_low" => ally.Stages.Values.Any(v => v < 0),
                     "target_all_stats_not_high" => enemy.Stages.Values.All(v => v <= 0),
                     "target_any_stat_in_low" => enemy.Stages.Values.Any(v => v < 0),
-                    _ => (cond.StartsWith("type_") && string.Equals(checkType, cond.Substring(5), StringComparison.OrdinalIgnoreCase)) ||
-                         (cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", ""))) ||
-                         (cond.Contains("damage_field") && ((!string.IsNullOrEmpty(ally.DamageField) && ally.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))) || (!string.IsNullOrEmpty(enemy.DamageField) && enemy.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))))) ||
-                         (cond.Contains("circle") && ally.CircleActive.Any(kv => kv.Key.ToLowerInvariant().Contains(cond.Replace("_circle", "")) && kv.Value.Values.Any(v => v)))
+                    _ => CheckDynamicCondition(cond, checkType, field, ally, enemy)
                 };
                 if (!match) { allMatch = false; break; }
             }
             if (allMatch) return true;
         }
+        return false;
+    }
+
+    private static bool CheckDynamicCondition(string cond, string checkType, FieldState field, CombatantState ally, CombatantState enemy)
+    {
+        if (cond.StartsWith("type_") && string.Equals(checkType, cond.Substring(5), StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        if (cond.StartsWith("theme_thmp_") && int.TryParse(cond.Substring("theme_thmp_".Length), out int pIdx) && RegionThemeIndexMap.TryGetValue(pIdx, out var pReg))
+            return ally.CircleActive.TryGetValue(pReg, out var pDict) && pDict.GetValueOrDefault("physical");
+
+        if (cond.StartsWith("theme_thms_") && int.TryParse(cond.Substring("theme_thms_".Length), out int sIdx) && RegionThemeIndexMap.TryGetValue(sIdx, out var sReg))
+            return ally.CircleActive.TryGetValue(sReg, out var sDict) && sDict.GetValueOrDefault("special");
+
+        if (cond.StartsWith("theme_thmd_") && int.TryParse(cond.Substring("theme_thmd_".Length), out int dIdx) && RegionThemeIndexMap.TryGetValue(dIdx, out var dReg))
+            return ally.CircleActive.TryGetValue(dReg, out var dDict) && dDict.GetValueOrDefault("defensive");
+
+        if (cond.Contains("zone") && !string.IsNullOrEmpty(field.Zone) && field.Zone.ToLowerInvariant().Contains(cond.Replace("_zone", "")))
+            return true;
+
+        if (cond.Contains("damage_field") && ((!string.IsNullOrEmpty(ally.DamageField) && ally.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", ""))) || (!string.IsNullOrEmpty(enemy.DamageField) && enemy.DamageField.ToLowerInvariant().Contains(cond.Replace("_damage_field", "")))))
+            return true;
+
+        if (cond.Contains("circle") && ally.CircleActive.Any(kv => kv.Key.ToLowerInvariant().Contains(cond.Replace("_circle", "")) && kv.Value.Values.Any(v => v)))
+            return true;
+
         return false;
     }
 
