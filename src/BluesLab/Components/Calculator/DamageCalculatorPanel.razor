@@ -655,9 +655,10 @@
                             @onclick="() => { Ally.MoveGaugeAccel = !Ally.MoveGaugeAccel; StateHasChanged(); }">
                         <img src="img/battle/icon_acceleration.png" alt="MGA" style="height: 18px; width: 18px; object-fit: contain;" />
                     </button>
-                    <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center gap-1 @(Ally.ThemeSkillsActive ? "btn-success fw-bold" : "btn-outline-secondary text-light")" style="font-size: 0.75rem;"
-                            @onclick="() => { Ally.ThemeSkillsActive = !Ally.ThemeSkillsActive; StateHasChanged(); }">
-                        <i class="bi bi-award-fill"></i> @Loc.T("theme_skills", "Theme Skills")
+                    <button class="btn btn-sm py-1 px-2 d-inline-flex align-items-center gap-1 btn-outline-secondary text-secondary opacity-50" style="font-size: 0.75rem; cursor: not-allowed;"
+                            disabled
+                            title="@Loc.T("theme_skills_solo_disabled", "Theme skills cannot be activated in solo mode (requires 2 or more sync pairs on the team)")">
+                        <i class="bi bi-award"></i> @Loc.T("theme_skills", "Theme Skills")
                     </button>
 
                     <!-- User Breaks (Icons Only) -->

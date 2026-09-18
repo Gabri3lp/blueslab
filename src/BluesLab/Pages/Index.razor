@@ -224,6 +224,7 @@ else
         {
             ActivePair = pair;
             AllyState = CombatantState.CreateAlly(pair);
+            AllyState.ThemeSkillsActive = false;
             AllyState.MoveLevel = Math.Min(MoveLevel, 5);
             AllyState.SuperAwakeningLevel = MoveLevel > 5 ? (MoveLevel - 5) : 0;
             GridState.ResetGrid(pair, MoveLevel);
@@ -279,6 +280,7 @@ else
         if (TeamState.Allies.Count > 0)
         {
             TeamState.Allies[0] = AllyState;
+            TeamState.Allies[0].ThemeSkillsActive = true;
             // Sync any active circles configured on solo ally
             foreach (var (r, circles) in AllyState.CircleActive)
             {
@@ -309,6 +311,7 @@ else
         if (TeamState.Allies.Count > 0 && TeamState.Allies[0] != null)
         {
             AllyState = TeamState.Allies[0];
+            AllyState.ThemeSkillsActive = false;
             if (AllyState.Pair != null)
             {
                 ActivePair = AllyState.Pair;
