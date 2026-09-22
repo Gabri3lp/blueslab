@@ -209,6 +209,14 @@ else
         catch { }
 
         await LoadPairAsync(targetPairId);
+        if (ActivePair == null && manifest.Count > 0 && targetPairId != manifest[0].TrainerId)
+        {
+            await LoadPairAsync(manifest[0].TrainerId);
+        }
+        if (ActivePair == null && targetPairId != "10126100000")
+        {
+            await LoadPairAsync("10126100000");
+        }
 
         if (query.TryGetValue("build", out var qBuild) && !string.IsNullOrEmpty(qBuild) && ActivePair != null)
         {
@@ -267,6 +275,10 @@ else
             }
             catch { }
             StateHasChanged();
+        }
+        else
+        {
+            Console.WriteLine($"[Index.razor] Failed to load pair detail for trainerId: {trainerId}");
         }
     }
 

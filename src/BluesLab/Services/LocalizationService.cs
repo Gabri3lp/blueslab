@@ -59,10 +59,20 @@ public class LocalizationService
     {
         try
         {
-            var json = await _js.InvokeAsync<string>("bluesLabCache.fetchJson", url);
+            var json = await _js.InvokeAsync<string?>("bluesLabCache.fetchJson", url);
             if (!string.IsNullOrEmpty(json))
             {
-                return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+                try
+                {
+                    var parsed = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+                    if (parsed != null)
+                        return parsed;
+                }
+                catch (System.Text.Json.JsonException jex)
+                {
+                    Console.WriteLine($"[LocalizationService] Deserialization error for {url}: {jex.Message}. Evicting from cache.");
+                    try { await _js.InvokeVoidAsync("bluesLabCache.delete", url); } catch { }
+                }
             }
         }
         catch (Exception ex)

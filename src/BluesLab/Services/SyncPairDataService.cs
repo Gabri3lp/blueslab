@@ -31,10 +31,20 @@ public class SyncPairDataService
     {
         try
         {
-            var json = await _js.InvokeAsync<string>("bluesLabCache.fetchJson", url);
+            var json = await _js.InvokeAsync<string?>("bluesLabCache.fetchJson", url);
             if (!string.IsNullOrEmpty(json))
             {
-                return JsonSerializer.Deserialize<T>(json, _jsonOptions);
+                try
+                {
+                    var parsed = JsonSerializer.Deserialize<T>(json, _jsonOptions);
+                    if (parsed != null)
+                        return parsed;
+                }
+                catch (JsonException jex)
+                {
+                    Console.WriteLine($"[SyncPairDataService] Deserialization error for {url}: {jex.Message}. Evicting from cache.");
+                    try { await _js.InvokeVoidAsync("bluesLabCache.delete", url); } catch { }
+                }
             }
         }
         catch (Exception ex)
