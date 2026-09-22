@@ -380,7 +380,7 @@
                     <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("passives")'>
-                        <i class="bi bi-shield-check me-1"></i> @Loc.T("passives", "Passives") (@(GetEffectivePassives().Count))
+                        <i class="bi bi-shield-check me-1"></i> @Loc.T("passives", "Passives") (@(GetEffectivePassives().Count + (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name) ? 1 : 0)))
                     </button>
                     <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
@@ -511,6 +511,37 @@
             @if (ActiveSection == "passives")
             {
                 <div class="d-flex flex-column gap-1.5">
+                    <!-- Super Awakening Passive -->
+                    @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
+                    {
+                        string saName = Loc.GetPassiveName(Pair.SuperAwakeningPassive.Id, Pair.SuperAwakeningPassive.Name);
+                        string saDesc = Loc.GetPassiveDescription(Pair.SuperAwakeningPassive.Id, Pair.SuperAwakeningPassive.Description);
+
+                        <div class="card bg-dark bg-opacity-75 border-secondary px-3 py-2 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="fw-bold text-white d-flex align-items-center gap-1.5" style="font-size: 0.95rem; letter-spacing: 0.2px;">
+                                    <img src="img/transcendance.png" alt="Super Awakening" style="width: 20px; height: 20px; object-fit: contain;" class="me-1" />
+                                    <span>@saName</span>
+                                </div>
+                            </div>
+                            <div style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@saDesc</div>
+                            @if (Pair.SuperAwakeningPassive.ChildPassives.Count > 0)
+                            {
+                                <div class="mt-2 pt-1.5 border-top border-secondary border-opacity-50">
+                                    <span class="fw-bold text-uppercase" style="font-size: 0.74rem; letter-spacing: 0.5px; color: rgba(255, 255, 255, 0.6);">@Loc.T("combined_skills", "Combined Skills"):</span>
+                                    @foreach (var child in Pair.SuperAwakeningPassive.ChildPassives)
+                                    {
+                                        string cName = Loc.GetPassiveName(child.Id, child.Name);
+                                        string cDesc = Loc.GetPassiveDescription(child.Id, child.Description);
+                                        <div class="ms-2 mt-1" style="font-size: 0.82rem; line-height: 1.35;">
+                                            <span class="text-info fw-semibold">• @cName:</span> <span style="color: rgba(255, 255, 255, 0.85);">@cDesc</span>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+
                     @{
                         var activePassives = GetEffectivePassives();
                     }
@@ -545,26 +576,6 @@
                                     }
                                 </div>
                             }
-                        </div>
-                    }
-
-                    <!-- Super Awakening Passive (Unlocked at SA 5) -->
-                    @if (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name))
-                    {
-                        bool isSa5Active = Ally.SuperAwakeningLevel >= 5;
-                        string saName = Loc.GetPassiveName(Pair.SuperAwakeningPassive.Id, Pair.SuperAwakeningPassive.Name);
-                        string saDesc = Loc.GetPassiveDescription(Pair.SuperAwakeningPassive.Id, Pair.SuperAwakeningPassive.Description);
-
-                        <div class="card @(isSa5Active ? "border-danger bg-danger bg-opacity-15" : "border-secondary bg-dark bg-opacity-75 opacity-75") px-3 py-2 shadow-sm">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="fw-bold @(isSa5Active ? "text-danger" : "text-white")" style="font-size: 0.95rem;">
-                                    <i class="bi bi-star-fill text-warning me-1"></i> @saName
-                                </div>
-                                <span class="badge @(isSa5Active ? "bg-danger text-white" : "border border-secondary text-light") py-0.5 px-1.5" style="font-size: 0.72rem;">
-                                    @(isSa5Active ? "SA 5 Active" : "SA 5 Required")
-                                </span>
-                            </div>
-                            <div style="font-size: 0.85rem; line-height: 1.45; color: rgba(255, 255, 255, 0.88);">@saDesc</div>
                         </div>
                     }
                 </div>
