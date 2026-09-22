@@ -17,8 +17,9 @@
             }
             else
             {
-                <button class="btn btn-warning btn-sm fw-bold" @onclick="OnOpenPairPicker">
-                    <i class="bi bi-person-plus"></i> @Loc.T("select_sync_pair", "Select Character")
+                <button class="btn btn-outline-secondary d-flex align-items-center gap-2 text-secondary py-1 px-2 border-secondary" style="height: 34px; opacity: 0.85;" disabled>
+                    <div class="spinner-border spinner-border-sm text-warning" role="status"></div>
+                    <span class="small">@(Loc.T("loading", "Loading..."))</span>
                 </button>
             }
         </div>

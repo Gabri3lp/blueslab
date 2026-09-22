@@ -7,7 +7,10 @@
 <div class="sync-pair-overview">
     @if (Pair == null)
     {
-        <div class="text-center py-5 text-muted">Please select a Sync Pair to view overview.</div>
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 text-muted py-5">
+            <div class="spinner-border text-warning mb-2" role="status" style="width: 2rem; height: 2rem;"></div>
+            <div class="small fw-semibold text-secondary">@(Loc.T("loading_overview", "Loading Details..."))</div>
+        </div>
     }
     else
     {

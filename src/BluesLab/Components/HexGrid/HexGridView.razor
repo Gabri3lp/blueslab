@@ -2,7 +2,14 @@
 @implements IDisposable
 
 <div class="hex-grid-container position-relative w-100 h-100 d-flex flex-column">
-    @if (Pair == null || Pair.Grid.Count == 0)
+    @if (Pair == null)
+    {
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 text-muted m-auto py-5">
+            <div class="spinner-border text-warning mb-2" role="status" style="width: 2rem; height: 2rem;"></div>
+            <div class="small fw-semibold text-secondary">@(Loc.T("loading_grid", "Loading Sync Grid..."))</div>
+        </div>
+    }
+    else if (Pair.Grid.Count == 0)
     {
         <div class="text-center py-5 text-muted m-auto">
             <i class="bi bi-grid-3x3-gap fs-1 d-block mb-2"></i>

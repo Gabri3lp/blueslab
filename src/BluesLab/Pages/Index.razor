@@ -8,17 +8,7 @@
 
 <PageTitle>Blues Lab - Sync Grid & Damage Calculator</PageTitle>
 
-@if (IsLoading)
-{
-    <div class="d-flex flex-column align-items-center justify-content-center vh-100 bg-dark text-light">
-        <div class="spinner-border text-warning mb-3" style="width: 3rem; height: 3rem;" role="status"></div>
-        <div class="fs-5 fw-bold">@(Loc.T("loading_blueslab", "Loading Blues Lab..."))</div>
-        <div class="text-secondary small mt-1">@(Loc.T("init_pmex_db", "Initializing PMEX Database"))</div>
-    </div>
-}
-else
-{
-    @if (ActiveTab == 2)
+@if (ActiveTab == 2)
     {
         <!-- Fullscreen 3v3 Team Battle Mode -->
         <div class="d-flex flex-column vh-100 overflow-hidden bg-dark text-light">
@@ -139,10 +129,8 @@ else
 
     <ShareBuildModal @bind-IsOpen="ShowShareModal"
                      Pair="ActivePair" />
-}
 
 @code {
-    private bool IsLoading = true;
     private SyncPairDetail? ActivePair;
     private CombatantState AllyState = new();
     private CombatantState EnemyState = CombatantState.CreateEnemy();
@@ -250,7 +238,7 @@ else
             }
         }
 
-        IsLoading = false;
+        StateHasChanged();
 
         _ = WarmupBackgroundDataAsync();
     }
