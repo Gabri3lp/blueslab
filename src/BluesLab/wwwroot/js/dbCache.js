@@ -7,30 +7,46 @@ window.bluesLabCache = {
         return typeof window !== 'undefined' && 'caches' in window;
     },
 
+    // Resolves url to absolute URL based on document.baseURI
+    resolveUrl: function (url) {
+        try {
+            return new URL(url, document.baseURI).href;
+        } catch (e) {
+            return url;
+        }
+    },
+
     // Fetches JSON content with Cache-First + Stale-While-Revalidate strategy
     fetchJson: async function (url) {
+        const fullUrl = this.resolveUrl(url);
+
         if (!this.isSupported()) {
-            const fallback = await fetch(url);
+            const fallback = await fetch(fullUrl);
             return await fallback.text();
         }
 
         try {
             const cache = await caches.open(this.CACHE_NAME);
-            const cachedResponse = await cache.match(url);
+            const cachedResponse = await cache.match(fullUrl);
 
             if (cachedResponse) {
                 // Background revalidation: fetch latest in background and update cache silently
-                this.revalidate(cache, url);
+                this.revalidate(cache, fullUrl);
                 return await cachedResponse.text();
             }
 
             // Not in cache, fetch from network and store
-            const networkResponse = await fetch(url);
+            const networkResponse = await fetch(fullUrl);
             if (networkResponse && networkResponse.ok) {
                 const text = await networkResponse.text();
+                // Ensure it's valid JSON and not an HTML 404 fallback
+                if (text.trim().startsWith('<')) {
+                    throw new Error('Server returned HTML instead of JSON for ' + fullUrl);
+                }
+
                 // Store clone in cache
                 try {
-                    await cache.put(url, new Response(text, {
+                    await cache.put(fullUrl, new Response(text, {
                         status: 200,
                         headers: { 'Content-Type': 'application/json' }
                     }));
@@ -42,28 +58,30 @@ window.bluesLabCache = {
                 throw new Error('Network response not ok: ' + (networkResponse ? networkResponse.status : 'unknown'));
             }
         } catch (err) {
-            console.warn('[BluesLab Cache] Cache fetch failed for', url, err);
-            const fallback = await fetch(url);
+            console.warn('[BluesLab Cache] Cache fetch failed for', fullUrl, err);
+            const fallback = await fetch(fullUrl);
             return await fallback.text();
         }
     },
 
     // Silent background revalidation
-    revalidate: function (cache, url) {
+    revalidate: function (cache, fullUrl) {
         setTimeout(async () => {
             try {
-                const res = await fetch(url, { cache: 'no-cache' });
+                const res = await fetch(fullUrl, { cache: 'no-cache' });
                 if (res && res.ok) {
                     const text = await res.text();
-                    await cache.put(url, new Response(text, {
-                        status: 200,
-                        headers: { 'Content-Type': 'application/json' }
-                    }));
+                    if (!text.trim().startsWith('<')) {
+                        await cache.put(fullUrl, new Response(text, {
+                            status: 200,
+                            headers: { 'Content-Type': 'application/json' }
+                        }));
+                    }
                 }
             } catch (e) {
-                // Silent fail for background revalidation (e.g. offline)
+                // Silent fail for background revalidation
             }
-        }, 100);
+        }, 200);
     },
 
     // Clears the cache if needed

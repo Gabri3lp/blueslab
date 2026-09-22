@@ -368,9 +368,11 @@ public class VariationItem
 public class GridCellItem
 {
     [JsonPropertyName("cellId")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)]
     public long CellId { get; set; }
 
     [JsonPropertyName("abilityId")]
+    [JsonNumberHandling(JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString)]
     public long AbilityId { get; set; }
 
     [JsonPropertyName("q")]

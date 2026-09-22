@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using BluesLab.Models;
 using Microsoft.JSInterop;
 
@@ -14,9 +15,10 @@ public class SyncPairDataService
     private ThemesDatabaseDocument? _themesDbCache;
     private readonly Dictionary<string, SyncPairDetail> _pairDetailsCache = new();
 
-    private static readonly JsonSerializerOptions _jsonOptions = new()
+    private static readonly JsonSerializerOptions _jsonOptions = new(JsonSerializerDefaults.Web)
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
     };
 
     public SyncPairDataService(HttpClient http, IJSRuntime js)

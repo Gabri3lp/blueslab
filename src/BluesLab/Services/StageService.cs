@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using BluesLab.Models;
 using Microsoft.JSInterop;
 
@@ -11,9 +12,10 @@ public class StageService
     private readonly IJSRuntime _js;
     private List<StageLeague>? _leagues;
 
-    private static readonly JsonSerializerOptions _jsonOptions = new()
+    private static readonly JsonSerializerOptions _jsonOptions = new(JsonSerializerDefaults.Web)
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
     };
 
     public StageService(HttpClient http, IJSRuntime js)
