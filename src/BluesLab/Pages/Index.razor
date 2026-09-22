@@ -3,6 +3,7 @@
 @inject GridStateService GridState
 @inject NavigationManager Navigation
 @inject TeamConfigurationService TeamConfigSvc
+@inject IJSRuntime JS
 @implements IDisposable
 
 <PageTitle>Blues Lab - Sync Grid & Damage Calculator</PageTitle>
@@ -174,10 +175,38 @@ else
         {
             targetPairId = qPair.ToString();
         }
-        else if (manifest.Count > 0)
+        else
         {
-            targetPairId = manifest[0].TrainerId;
+            try
+            {
+                var savedPairId = await JS.InvokeAsync<string?>("localStorage.getItem", "blueslab_last_pair_id");
+                if (!string.IsNullOrEmpty(savedPairId) && manifest.Any(m => m.TrainerId == savedPairId))
+                {
+                    targetPairId = savedPairId;
+                }
+                else if (manifest.Count > 0)
+                {
+                    targetPairId = manifest[0].TrainerId;
+                }
+            }
+            catch
+            {
+                if (manifest.Count > 0)
+                {
+                    targetPairId = manifest[0].TrainerId;
+                }
+            }
         }
+
+        try
+        {
+            var savedMoveLevel = await JS.InvokeAsync<string?>("localStorage.getItem", "blueslab_last_move_level");
+            if (int.TryParse(savedMoveLevel, out var lvl) && lvl >= 1 && lvl <= 10)
+            {
+                MoveLevel = lvl;
+            }
+        }
+        catch { }
 
         await LoadPairAsync(targetPairId);
 
@@ -232,6 +261,11 @@ else
             {
                 SyncSoloToTeam();
             }
+            try
+            {
+                await JS.InvokeVoidAsync("localStorage.setItem", "blueslab_last_pair_id", trainerId);
+            }
+            catch { }
             StateHasChanged();
         }
     }
@@ -259,6 +293,11 @@ else
         {
             SyncSoloToTeam();
         }
+        try
+        {
+            _ = JS.InvokeVoidAsync("localStorage.setItem", "blueslab_last_move_level", newLevel.ToString());
+        }
+        catch { }
         StateHasChanged();
     }
 

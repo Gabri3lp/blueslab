@@ -55,6 +55,24 @@ public class LocalizationService
         _js = js;
     }
 
+    private async Task<Dictionary<string, string>?> FetchJsonWithCacheAsync(string url)
+    {
+        try
+        {
+            var json = await _js.InvokeAsync<string>("bluesLabCache.fetchJson", url);
+            if (!string.IsNullOrEmpty(json))
+            {
+                return System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[LocalizationService] Cache fetch fallback for {url}: {ex.Message}");
+        }
+
+        return await _http.GetFromJsonAsync<Dictionary<string, string>>(url);
+    }
+
     public async Task InitializeAsync()
     {
         if (IsLoaded) return;
@@ -101,7 +119,7 @@ public class LocalizationService
 
             try
             {
-                var common = await _http.GetFromJsonAsync<Dictionary<string, string>>($"locales/common_{lang}.json");
+                var common = await FetchJsonWithCacheAsync($"locales/common_{lang}.json");
                 if (common != null)
                 {
                     foreach (var (k, v) in common)
@@ -117,7 +135,7 @@ public class LocalizationService
 
             try
             {
-                var data = await _http.GetFromJsonAsync<Dictionary<string, string>>($"locales/{lang}.json");
+                var data = await FetchJsonWithCacheAsync($"locales/{lang}.json");
                 if (data != null)
                 {
                     foreach (var (k, v) in data)
@@ -310,26 +328,30 @@ public class LocalizationService
 
     public string GetPassiveName(int passiveId, string fallback = "")
     {
-        if (passiveId <= 0) return fallback;
-        return T($"passive_name_{passiveId}", fallback);
+        if (passiveId <= 0) return CleanTitle(fallback);
+        var res = T($"passive_name_{passiveId}", fallback);
+        return res == $"passive_name_{passiveId}" ? CleanTitle(fallback) : res;
     }
 
     public string GetPassiveDescription(int passiveId, string fallback = "")
     {
         if (passiveId <= 0) return fallback;
-        return T($"passive_desc_{passiveId}", fallback);
+        var res = T($"passive_desc_{passiveId}", fallback);
+        return res == $"passive_desc_{passiveId}" ? fallback : res;
     }
 
     public string GetTileTitle(long abilityId, string fallback = "")
     {
         if (abilityId <= 0) return fallback;
-        return T($"tile_name_{abilityId}", fallback);
+        var res = T($"tile_name_{abilityId}", fallback);
+        return res == $"tile_name_{abilityId}" ? fallback : res;
     }
 
     public string GetTileDescription(long abilityId, string fallback = "")
     {
         if (abilityId <= 0) return fallback;
-        return T($"tile_desc_{abilityId}", fallback);
+        var res = T($"tile_desc_{abilityId}", fallback);
+        return res == $"tile_desc_{abilityId}" ? fallback : res;
     }
 
     public string GetTypeName(string englishType)

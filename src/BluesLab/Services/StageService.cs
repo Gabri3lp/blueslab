@@ -1,16 +1,43 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using BluesLab.Models;
+using Microsoft.JSInterop;
 
 namespace BluesLab.Services;
 
 public class StageService
 {
     private readonly HttpClient _http;
+    private readonly IJSRuntime _js;
     private List<StageLeague>? _leagues;
 
-    public StageService(HttpClient http)
+    private static readonly JsonSerializerOptions _jsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
+    public StageService(HttpClient http, IJSRuntime js)
     {
         _http = http;
+        _js = js;
+    }
+
+    private async Task<T?> FetchJsonWithCacheAsync<T>(string url)
+    {
+        try
+        {
+            var json = await _js.InvokeAsync<string>("bluesLabCache.fetchJson", url);
+            if (!string.IsNullOrEmpty(json))
+            {
+                return JsonSerializer.Deserialize<T>(json, _jsonOptions);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[StageService] Cache fetch fallback for {url}: {ex.Message}");
+        }
+
+        return await _http.GetFromJsonAsync<T>(url, _jsonOptions);
     }
 
     private List<TowerStageType>? _towerStages;
@@ -22,14 +49,14 @@ public class StageService
         {
             try
             {
-                _leagues = await _http.GetFromJsonAsync<List<StageLeague>>($"data/gym_stages.json?v={DateTime.UtcNow.Ticks}") ?? new();
+                _leagues = await FetchJsonWithCacheAsync<List<StageLeague>>("data/gym_stages.json") ?? new();
             }
             catch
             {
                 // Fallback to stages_manifest.json if gym_stages.json not found
                 try
                 {
-                    _leagues = await _http.GetFromJsonAsync<List<StageLeague>>($"data/stages_manifest.json?v={DateTime.UtcNow.Ticks}") ?? new();
+                    _leagues = await FetchJsonWithCacheAsync<List<StageLeague>>("data/stages_manifest.json") ?? new();
                 }
                 catch
                 {
@@ -46,7 +73,7 @@ public class StageService
         {
             try
             {
-                _towerStages = await _http.GetFromJsonAsync<List<TowerStageType>>($"data/tower_stages.json?v={DateTime.UtcNow.Ticks}") ?? new();
+                _towerStages = await FetchJsonWithCacheAsync<List<TowerStageType>>("data/tower_stages.json") ?? new();
             }
             catch
             {
@@ -62,7 +89,7 @@ public class StageService
         {
             try
             {
-                _ultimateStages = await _http.GetFromJsonAsync<List<StageFight>>($"data/ultimate_stages.json?v={DateTime.UtcNow.Ticks}") ?? new();
+                _ultimateStages = await FetchJsonWithCacheAsync<List<StageFight>>("data/ultimate_stages.json") ?? new();
             }
             catch
             {

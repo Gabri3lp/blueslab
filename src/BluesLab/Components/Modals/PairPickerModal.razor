@@ -76,7 +76,7 @@
 
                     <!-- Pairs Grid -->
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
-                        @foreach (var pair in FilteredPairs)
+                        @foreach (var pair in FilteredPairs.Take(_displayCount))
                         {
                             var dName = Loc.GetDisplayName(pair);
                             <div class="col">
@@ -109,6 +109,15 @@
                             </div>
                         }
                     </div>
+
+                    @if (_displayCount < FilteredPairs.Count)
+                    {
+                        <div class="text-center my-3">
+                            <button class="btn btn-outline-warning btn-sm px-4 py-1.5 fw-semibold shadow-sm" @onclick="LoadMore">
+                                <i class="bi bi-chevron-down me-1"></i> @Loc.T("load_more", "Load more sync pairs...") (@Math.Min(_displayCount, FilteredPairs.Count) / @FilteredPairs.Count)
+                            </button>
+                        </div>
+                    }
 
                     @if (FilteredPairs.Count == 0)
                     {
@@ -144,6 +153,7 @@
     private bool FilterEx;
 
     private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterDMax || FilterSA || FilterEx || SelectedSort != "release_desc";
+    private int _displayCount = 48;
 
     protected override async Task OnInitializedAsync()
     {
@@ -155,8 +165,14 @@
         if (IsOpen && !_wasOpen)
         {
             _shouldFocusSearch = true;
+            _displayCount = 48;
         }
         _wasOpen = IsOpen;
+    }
+
+    private void LoadMore()
+    {
+        _displayCount += 48;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -239,6 +255,7 @@
         FilterDMax = false;
         FilterSA = false;
         FilterEx = false;
+        _displayCount = 48;
     }
 
     private async Task OnSelectPair(string trainerId)

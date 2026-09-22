@@ -1,19 +1,46 @@
 using System.Net.Http.Json;
+using System.Text.Json;
 using BluesLab.Models;
+using Microsoft.JSInterop;
 
 namespace BluesLab.Services;
 
 public class SyncPairDataService
 {
     private readonly HttpClient _http;
+    private readonly IJSRuntime _js;
     private List<PairManifestItem>? _manifestCache;
     private DamageRulesDocument? _rulesCache;
     private ThemesDatabaseDocument? _themesDbCache;
     private readonly Dictionary<string, SyncPairDetail> _pairDetailsCache = new();
 
-    public SyncPairDataService(HttpClient http)
+    private static readonly JsonSerializerOptions _jsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
+
+    public SyncPairDataService(HttpClient http, IJSRuntime js)
     {
         _http = http;
+        _js = js;
+    }
+
+    private async Task<T?> FetchJsonWithCacheAsync<T>(string url)
+    {
+        try
+        {
+            var json = await _js.InvokeAsync<string>("bluesLabCache.fetchJson", url);
+            if (!string.IsNullOrEmpty(json))
+            {
+                return JsonSerializer.Deserialize<T>(json, _jsonOptions);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[SyncPairDataService] Cache fetch fallback for {url}: {ex.Message}");
+        }
+
+        return await _http.GetFromJsonAsync<T>(url, _jsonOptions);
     }
 
     public async Task<ThemesDatabaseDocument> GetThemesDatabaseAsync()
@@ -23,7 +50,7 @@ public class SyncPairDataService
 
         try
         {
-            _themesDbCache = await _http.GetFromJsonAsync<ThemesDatabaseDocument>("data/themes_database.json") ?? new();
+            _themesDbCache = await FetchJsonWithCacheAsync<ThemesDatabaseDocument>("data/themes_database.json") ?? new();
         }
         catch (Exception ex)
         {
@@ -41,7 +68,7 @@ public class SyncPairDataService
 
         try
         {
-            _manifestCache = await _http.GetFromJsonAsync<List<PairManifestItem>>("data/pairs_manifest.json") ?? new();
+            _manifestCache = await FetchJsonWithCacheAsync<List<PairManifestItem>>("data/pairs_manifest.json") ?? new();
             var themesDb = await GetThemesDatabaseAsync();
             if (themesDb.PairThemes.Count > 0)
             {
@@ -70,7 +97,7 @@ public class SyncPairDataService
 
         try
         {
-            var detail = await _http.GetFromJsonAsync<SyncPairDetail>($"data/pairs/{trainerId}.json");
+            var detail = await FetchJsonWithCacheAsync<SyncPairDetail>($"data/pairs/{trainerId}.json");
             if (detail != null)
             {
                 var themesDb = await GetThemesDatabaseAsync();
@@ -97,7 +124,7 @@ public class SyncPairDataService
 
         try
         {
-            _rulesCache = await _http.GetFromJsonAsync<DamageRulesDocument>("data/damage_rules.json") ?? new();
+            _rulesCache = await FetchJsonWithCacheAsync<DamageRulesDocument>("data/damage_rules.json") ?? new();
         }
         catch (Exception ex)
         {
