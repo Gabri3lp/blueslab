@@ -122,20 +122,20 @@ public class LocalizationService
         {
             _strings = cached;
             IsLoaded = true;
+            OnLanguageChanged?.Invoke();
         }
         else
         {
-            var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-
+            // Stage 1: Load lightweight common UI strings first (~24 KB, <10ms)
+            Dictionary<string, string>? common = null;
             try
             {
-                var common = await FetchJsonWithCacheAsync($"locales/common_{lang}.json");
+                common = await FetchJsonWithCacheAsync($"locales/common_{lang}.json");
                 if (common != null)
                 {
-                    foreach (var (k, v) in common)
-                    {
-                        dict[k] = v;
-                    }
+                    _strings = common;
+                    IsLoaded = true;
+                    OnLanguageChanged?.Invoke();
                 }
             }
             catch (Exception ex)
@@ -143,25 +143,8 @@ public class LocalizationService
                 Console.WriteLine($"Error loading common_{lang}.json: {ex.Message}");
             }
 
-            try
-            {
-                var data = await FetchJsonWithCacheAsync($"locales/{lang}.json");
-                if (data != null)
-                {
-                    foreach (var (k, v) in data)
-                    {
-                        dict[k] = v;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading {lang}.json: {ex.Message}");
-            }
-
-            _strings = dict;
-            _cache[lang] = dict;
-            IsLoaded = true;
+            // Stage 2: Load large game dictionary (~5.4 MB) in background without blocking UI
+            _ = LoadGameStringsAsync(lang, common);
         }
 
         if (persist)
@@ -177,6 +160,34 @@ public class LocalizationService
         }
 
         OnLanguageChanged?.Invoke();
+    }
+
+    private async Task LoadGameStringsAsync(string lang, Dictionary<string, string>? common)
+    {
+        // Defer heavy 5.4MB dictionary parsing so it never blocks startup UI rendering
+        await Task.Delay(1000);
+        try
+        {
+            var data = await FetchJsonWithCacheAsync($"locales/{lang}.json");
+            if (data != null)
+            {
+                if (common != null)
+                {
+                    foreach (var (k, v) in common)
+                    {
+                        data[k] = v;
+                    }
+                }
+                _strings = data;
+                _cache[lang] = data;
+                IsLoaded = true;
+                OnLanguageChanged?.Invoke();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading {lang}.json in background: {ex.Message}");
+        }
     }
 
     public string T(string key, string fallback = "")

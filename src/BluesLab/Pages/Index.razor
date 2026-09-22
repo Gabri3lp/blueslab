@@ -162,11 +162,10 @@ else
         GridState.OnGridChanged += OnGridChangedHandler;
         Loc.OnLanguageChanged += OnLanguageChangedHandler;
 
-        await Loc.InitializeAsync();
-        RulesDoc = await DataService.GetDamageRulesAsync();
-        var manifest = await DataService.GetManifestAsync();
+        // 1. Kick off localization initialization (fast common strings)
+        var locTask = Loc.InitializeAsync();
 
-        // Parse query params (e.g. ?pair=10126100000&monsterId=20126100000&baseId=20025751&formId=0&build=...)
+        // Parse query params (e.g. ?pair=10126100000...)
         var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
         var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
 
@@ -180,22 +179,12 @@ else
             try
             {
                 var savedPairId = await JS.InvokeAsync<string?>("localStorage.getItem", "blueslab_last_pair_id");
-                if (!string.IsNullOrEmpty(savedPairId) && manifest.Any(m => m.TrainerId == savedPairId))
+                if (!string.IsNullOrEmpty(savedPairId))
                 {
                     targetPairId = savedPairId;
                 }
-                else if (manifest.Count > 0)
-                {
-                    targetPairId = manifest[0].TrainerId;
-                }
             }
-            catch
-            {
-                if (manifest.Count > 0)
-                {
-                    targetPairId = manifest[0].TrainerId;
-                }
-            }
+            catch { }
         }
 
         try
@@ -208,14 +197,43 @@ else
         }
         catch { }
 
-        await LoadPairAsync(targetPairId);
-        if (ActivePair == null && manifest.Count > 0 && targetPairId != manifest[0].TrainerId)
+        // 2. Kick off active pair detail fetch
+        var pairTask = DataService.GetPairDetailAsync(targetPairId);
+
+        // CRITICAL PATH: Only wait for UI localization and the active pair detail
+        await Task.WhenAll(locTask, pairTask);
+        var pair = await pairTask;
+
+        if (pair != null)
         {
-            await LoadPairAsync(manifest[0].TrainerId);
+            ActivePair = pair;
+            AllyState = CombatantState.CreateAlly(pair);
+            AllyState.ThemeSkillsActive = false;
+            AllyState.MoveLevel = Math.Min(MoveLevel, 5);
+            AllyState.SuperAwakeningLevel = MoveLevel > 5 ? (MoveLevel - 5) : 0;
+            GridState.ResetGrid(pair, MoveLevel);
+            if (ActiveTab != 2)
+            {
+                SyncSoloToTeam();
+            }
+            try
+            {
+                await JS.InvokeVoidAsync("localStorage.setItem", "blueslab_last_pair_id", targetPairId);
+            }
+            catch { }
         }
-        if (ActivePair == null && targetPairId != "10126100000")
+        else
         {
-            await LoadPairAsync("10126100000");
+            // Fallback if targetPairId failed
+            var manifest = await DataService.GetManifestAsync();
+            if (manifest.Count > 0 && targetPairId != manifest[0].TrainerId)
+            {
+                await LoadPairAsync(manifest[0].TrainerId);
+            }
+            if (ActivePair == null && targetPairId != "10126100000")
+            {
+                await LoadPairAsync("10126100000");
+            }
         }
 
         if (query.TryGetValue("build", out var qBuild) && !string.IsNullOrEmpty(qBuild) && ActivePair != null)
@@ -234,6 +252,19 @@ else
         }
 
         IsLoading = false;
+
+        _ = WarmupBackgroundDataAsync();
+    }
+
+    private async Task WarmupBackgroundDataAsync()
+    {
+        await Task.Delay(500);
+        try
+        {
+            RulesDoc = await DataService.GetDamageRulesAsync();
+            await DataService.GetManifestAsync();
+        }
+        catch { }
     }
 
     private async Task OnLanguageSelected(ChangeEventArgs e)

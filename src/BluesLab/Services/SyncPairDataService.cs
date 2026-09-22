@@ -80,8 +80,13 @@ public class SyncPairDataService
 
         try
         {
-            _manifestCache = await FetchJsonWithCacheAsync<List<PairManifestItem>>("data/pairs_manifest.json") ?? new();
-            var themesDb = await GetThemesDatabaseAsync();
+            var manifestTask = FetchJsonWithCacheAsync<List<PairManifestItem>>("data/pairs_manifest.json");
+            var themesTask = GetThemesDatabaseAsync();
+
+            await Task.WhenAll(manifestTask, themesTask);
+
+            _manifestCache = await manifestTask ?? new();
+            var themesDb = await themesTask;
             if (themesDb.PairThemes.Count > 0)
             {
                 foreach (var item in _manifestCache)
