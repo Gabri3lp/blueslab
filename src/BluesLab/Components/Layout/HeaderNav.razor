@@ -1,10 +1,8 @@
-@inject GridStateService GridState
-
-<header class="navbar navbar-dark bg-dark border-bottom border-secondary px-3 py-2 shadow-sm">
-    <div class="container-fluid p-0 d-flex flex-wrap align-items-center justify-content-between gap-2">
-        <!-- Left: Brand, Pair Selector & Settings -->
+<header class="navbar navbar-dark bg-dark border-bottom border-secondary px-3 py-1.5 shadow-sm">
+    <div class="container-fluid p-0 d-flex align-items-center justify-content-between gap-2">
+        <!-- Left: Brand & Pair Selector -->
         <div class="d-flex align-items-center gap-2 gap-md-3">
-            <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-5">
+            <span class="navbar-brand fw-bolder text-warning d-flex align-items-center gap-2 mb-0 fs-6">
                 <i class="bi bi-cpu-fill"></i> BLUES LAB
             </span>
 
@@ -23,38 +21,20 @@
                     <i class="bi bi-person-plus"></i> @Loc.T("select_sync_pair", "Select Character")
                 </button>
             }
-
-            <div class="d-flex align-items-center gap-1 border-start border-secondary ps-2">
-                <i class="bi bi-globe2 text-warning small" title="@Loc.T("language", "Language")"></i>
-                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2 cursor-pointer shadow-none"
-                        style="font-size: 0.8rem; width: auto; height: 28px;"
-                        value="@Loc.CurrentLanguage"
-                        @onchange="OnLanguageSelected">
-                    @foreach (var (langCode, name) in LocalizationService.SupportedLanguages)
-                    {
-                        <option value="@langCode">@name</option>
-                    }
-                </select>
-            </div>
         </div>
 
-        <!-- Right: Hard Cap Toggle, Reset Grid & Share Build -->
-        <div class="d-flex align-items-center gap-2">
-            @if (CurrentPair != null)
-            {
-                <div class="form-check form-switch d-flex align-items-center gap-1 mb-0 me-1">
-                    <input class="form-check-input cursor-pointer" type="checkbox" id="headerHardCapSwitch" checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
-                    <label class="form-check-label text-secondary small select-none" for="headerHardCapSwitch" style="font-size: 0.8rem;">Hard Cap</label>
-                </div>
-
-                <button class="btn btn-outline-danger btn-sm p-1 px-2" title="@Loc.T("reset_grid", "Reset Grid")" @onclick="OnResetGrid">
-                    <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
-
-                <button class="btn btn-outline-warning btn-sm p-1 px-2" title="@Loc.T("share_sync", "Share Build")" @onclick="OnShareClick">
-                    <i class="bi bi-share"></i>
-                </button>
-            }
+        <!-- Right: Language Selector -->
+        <div class="d-flex align-items-center gap-1">
+            <i class="bi bi-globe2 text-warning small" title="@Loc.T("language", "Language")"></i>
+            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2 cursor-pointer shadow-none"
+                    style="font-size: 0.8rem; width: auto; height: 28px;"
+                    value="@Loc.CurrentLanguage"
+                    @onchange="OnLanguageSelected">
+                @foreach (var (langCode, name) in LocalizationService.SupportedLanguages)
+                {
+                    <option value="@langCode">@name</option>
+                }
+            </select>
         </div>
     </div>
 </header>
@@ -63,31 +43,6 @@
     [Parameter] public SyncPairDetail? CurrentPair { get; set; }
     [Parameter] public int MoveLevel { get; set; } = 5;
     [Parameter] public EventCallback OnOpenPairPicker { get; set; }
-    [Parameter] public EventCallback OnOpenShareModal { get; set; }
-
-    private void OnHardCapToggle(ChangeEventArgs e)
-    {
-        GridState.HardCap = (bool)(e.Value ?? true);
-        if (CurrentPair != null && GridState.HardCap)
-        {
-            GridState.ActivateFreeCenterCells(CurrentPair, MoveLevel);
-            GridState.PruneDisconnected(CurrentPair.Grid);
-            GridState.NotifyChanged();
-        }
-    }
-
-    private void OnResetGrid()
-    {
-        if (CurrentPair != null)
-        {
-            GridState.ResetGrid(CurrentPair, MoveLevel);
-        }
-    }
-
-    private async Task OnShareClick()
-    {
-        await OnOpenShareModal.InvokeAsync();
-    }
 
     private async Task OnLanguageSelected(ChangeEventArgs e)
     {
