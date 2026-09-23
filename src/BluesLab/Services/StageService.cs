@@ -132,23 +132,11 @@ public class StageService
         var fight = new StageFight
         {
             FightId = $"dc_{type.ToLowerInvariant()}_vs{count}",
-            Title = $"Damage Challenge ({type} • vs {count})",
-            Leader = $"{type} Weakness",
+            Title = $"{type} (vs {count})",
+            Leader = type,
             StageType = "damage_challenge",
-            Theme = "Damage Challenge",
-            Rules = new List<string>
-            {
-                "Non-super effective moves deal 0 damage.",
-                "Enemies have 83 Def/Sp.Def, infinite HP, and 0 mitigations."
-            }
-        };
-
-        var passive = new StagePassive
-        {
-            Name = "Damage Challenge Rule",
-            Description = "Attacks that are not super effective deal 0 damage.",
-            Mechanism = "damage_mitigation",
-            Condition = "damage_challenge_non_se_zero"
+            Theme = string.Empty,
+            Rules = new List<string>()
         };
 
         var zeroMitigations = new Dictionary<string, int>
@@ -165,8 +153,8 @@ public class StageService
             fight.Opponents.Add(new StageOpponent
             {
                 SlotIndex = 1,
-                TrainerName = $"Damage Challenge ({type})",
-                PokemonName = $"{type}-Weak Boss",
+                TrainerName = type,
+                PokemonName = $"{type} Boss",
                 IconUrl = CombatantState.GetTypeIcon(type),
                 Weakness = type,
                 Hp = 99999999,
@@ -176,7 +164,7 @@ public class StageService
                 SpD = 83,
                 Spe = 100,
                 Mitigations = new Dictionary<string, int>(zeroMitigations),
-                Passives = new List<StagePassive> { passive }
+                Passives = new List<StagePassive>()
             });
         }
         else
@@ -184,8 +172,8 @@ public class StageService
             fight.Opponents.Add(new StageOpponent
             {
                 SlotIndex = 0,
-                TrainerName = "Side Target (Left)",
-                PokemonName = $"{type}-Weak Minion",
+                TrainerName = type,
+                PokemonName = $"{type} Minion",
                 IconUrl = CombatantState.GetTypeIcon(type),
                 Weakness = type,
                 Hp = 99999999,
@@ -195,14 +183,14 @@ public class StageService
                 SpD = 83,
                 Spe = 100,
                 Mitigations = new Dictionary<string, int>(zeroMitigations),
-                Passives = new List<StagePassive> { passive }
+                Passives = new List<StagePassive>()
             });
 
             fight.Opponents.Add(new StageOpponent
             {
                 SlotIndex = 1,
-                TrainerName = $"Damage Challenge ({type})",
-                PokemonName = $"{type}-Weak Boss",
+                TrainerName = type,
+                PokemonName = $"{type} Boss",
                 IconUrl = CombatantState.GetTypeIcon(type),
                 Weakness = type,
                 Hp = 99999999,
@@ -212,14 +200,14 @@ public class StageService
                 SpD = 83,
                 Spe = 100,
                 Mitigations = new Dictionary<string, int>(zeroMitigations),
-                Passives = new List<StagePassive> { passive }
+                Passives = new List<StagePassive>()
             });
 
             fight.Opponents.Add(new StageOpponent
             {
                 SlotIndex = 2,
-                TrainerName = "Side Target (Right)",
-                PokemonName = $"{type}-Weak Minion",
+                TrainerName = type,
+                PokemonName = $"{type} Minion",
                 IconUrl = CombatantState.GetTypeIcon(type),
                 Weakness = type,
                 Hp = 99999999,
@@ -229,7 +217,7 @@ public class StageService
                 SpD = 83,
                 Spe = 100,
                 Mitigations = new Dictionary<string, int>(zeroMitigations),
-                Passives = new List<StagePassive> { passive }
+                Passives = new List<StagePassive>()
             });
         }
 

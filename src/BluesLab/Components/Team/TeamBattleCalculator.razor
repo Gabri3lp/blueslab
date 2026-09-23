@@ -187,30 +187,19 @@
                         <div class="btn-group btn-group-sm w-100" role="group">
                             <button type="button" class="btn @(_challengeTargetCount == 1 ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
                                     @onclick="() => SetChallengeTargetCount(1)">
-                                <i class="bi bi-person-fill me-1"></i>@Loc.T("vs_1_target", "vs 1 (Single Target)")
+                                <i class="bi bi-person-fill me-1"></i>vs 1
                             </button>
                             <button type="button" class="btn @(_challengeTargetCount == 3 ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
                                     @onclick="() => SetChallengeTargetCount(3)">
-                                <i class="bi bi-people-fill me-1"></i>@Loc.T("vs_3_targets", "vs 3 (Trio / AoE)")
+                                <i class="bi bi-people-fill me-1"></i>vs 3
                             </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="alert alert-warning py-1 px-2 mb-2 d-flex align-items-center justify-content-between gap-2" style="font-size: 0.75rem; background-color: rgba(241, 196, 15, 0.1); border-color: rgba(241, 196, 15, 0.3);">
-                    <div class="d-flex align-items-center gap-2">
-                        <i class="bi bi-info-circle-fill text-warning flex-shrink-0"></i>
-                        <span>
-                            <strong>@Loc.T("damage_challenge_rules", "Damage Challenge Rules"):</strong>
-                            @Loc.T("damage_challenge_rules_desc", "All enemies have 83 Def/Sp.Def, infinite HP, and 0 mitigations. Non-super effective moves deal 0 damage.")
-                        </span>
-                    </div>
-                    <span class="badge bg-danger text-light flex-shrink-0">@Loc.T("non_se_zero_badge", "Non-SE = 0 Dmg")</span>
-                </div>
             }
 
             <!-- Active Stage Rules & Themes Card -->
-            @if (State.ActiveFight != null)
+            @if (State.ActiveFight != null && _stageCategory != "challenge")
             {
                 <div class="p-2 mb-2 rounded bg-black bg-opacity-30 border border-secondary border-opacity-75 small">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-1">
@@ -1188,7 +1177,8 @@
                                                     }
                                                     @if (teamResult.IsAoE)
                                                     {
-                                                        <span class="badge bg-info text-dark"><i class="bi bi-broadcast me-1"></i>@Loc.T("aoe_all_targets", "AoE (All Targets)")</span>
+                                                        bool isExt = CalcService.IsMoveExtendedRange(move, State.ActiveAttacker);
+                                                        <span class="badge bg-info text-dark"><i class="bi bi-broadcast me-1"></i>@(isExt ? "AoE (Extended Range)" : "AoE")</span>
                                                     }
                                                     else
                                                     {
@@ -1215,7 +1205,7 @@
                                                     @if (_stageCategory == "challenge")
                                                     {
                                                         <span class="badge bg-warning bg-opacity-25 text-warning border border-warning border-opacity-50 py-0.5 px-1.5" style="font-size: 0.65rem;">
-                                                            <i class="bi bi-trophy-fill me-0.5"></i>@(State.TargetEnemyCount == 1 ? "vs 1" : (teamResult.IsAoE ? "AoE × 3" : "Single Target"))
+                                                            <i class="bi bi-trophy-fill me-0.5"></i>@(State.TargetEnemyCount == 1 ? "vs 1" : "vs 3")
                                                         </span>
                                                     }
                                                 </div>
@@ -1297,7 +1287,7 @@
                                                         <div class="progress mt-1" style="height: 7px; background-color: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
                                                             @if (_stageCategory == "challenge")
                                                             {
-                                                                <div class="progress-bar bg-warning bg-opacity-75" role="progressbar" style="width: 100%;" title="@Loc.T("infinite_hp", "Infinite HP")"></div>
+                                                                <div class="progress-bar bg-warning bg-opacity-75" role="progressbar" style="width: 100%;"></div>
                                                             }
                                                             else
                                                             {
@@ -1315,15 +1305,7 @@
                                                             }
                                                         </div>
 
-                                                        @if (_stageCategory == "challenge")
-                                                        {
-                                                            <div class="mt-1">
-                                                                <span class="badge bg-purple text-light py-0" style="font-size: 0.68rem;">
-                                                                    <i class="bi bi-infinity me-1"></i>@Loc.T("infinite_hp", "Infinite HP")
-                                                                </span>
-                                                            </div>
-                                                        }
-                                                        else if (display.IsOHKO || display.RemHpPercent <= 0)
+                                                        @if (_stageCategory != "challenge" && (display.IsOHKO || display.RemHpPercent <= 0))
                                                         {
                                                             <div class="mt-1">
                                                                 <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
@@ -1406,7 +1388,8 @@
                                                         <span class="badge bg-secondary">@Loc.T(move.Category.ToLowerInvariant(), move.Category)</span>
                                                         @if (teamResult.IsAoE)
                                                         {
-                                                            <span class="badge bg-info text-dark">@Loc.T("aoe_all_targets", "AoE / All Targets")</span>
+                                                            bool isExt = CalcService.IsMoveExtendedRange(move, State.ActiveAttacker);
+                                                            <span class="badge bg-info text-dark"><i class="bi bi-broadcast me-1"></i>@(isExt ? "AoE (Extended Range)" : "AoE")</span>
                                                         }
                                                         else
                                                         {
@@ -1430,7 +1413,7 @@
                                                         @if (_stageCategory == "challenge")
                                                         {
                                                             <span class="badge bg-warning bg-opacity-25 text-warning border border-warning border-opacity-50 py-0.5 px-1.5" style="font-size: 0.65rem;">
-                                                                <i class="bi bi-trophy-fill me-0.5"></i>@(State.TargetEnemyCount == 1 ? "vs 1" : (teamResult.IsAoE ? "AoE × 3" : "Single Target"))
+                                                                <i class="bi bi-trophy-fill me-0.5"></i>@(State.TargetEnemyCount == 1 ? "vs 1" : "vs 3")
                                                             </span>
                                                         }
                                                     </div>
@@ -1512,7 +1495,7 @@
                                                             <div class="progress mt-1" style="height: 7px; background-color: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
                                                                 @if (_stageCategory == "challenge")
                                                                 {
-                                                                    <div class="progress-bar bg-warning bg-opacity-75" role="progressbar" style="width: 100%;" title="@Loc.T("infinite_hp", "Infinite HP")"></div>
+                                                                    <div class="progress-bar bg-warning bg-opacity-75" role="progressbar" style="width: 100%;"></div>
                                                                 }
                                                                 else
                                                                 {
@@ -1530,15 +1513,7 @@
                                                                 }
                                                             </div>
 
-                                                            @if (_stageCategory == "challenge")
-                                                            {
-                                                                <div class="mt-1">
-                                                                    <span class="badge bg-purple text-light py-0" style="font-size: 0.68rem;">
-                                                                        <i class="bi bi-infinity me-1"></i>@Loc.T("infinite_hp", "Infinite HP")
-                                                                    </span>
-                                                                </div>
-                                                            }
-                                                            else if (display.IsOHKO || display.RemHpPercent <= 0)
+                                                            @if (_stageCategory != "challenge" && (display.IsOHKO || display.RemHpPercent <= 0))
                                                             {
                                                                 <div class="mt-1">
                                                                     <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">

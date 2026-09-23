@@ -977,6 +977,51 @@ public class DamageCalculatorService
         return false;
     }
 
+    public bool IsMoveExtendedRange(MoveItem move, CombatantState attacker)
+    {
+        if (move == null || attacker == null || move.IsSync || move.IsMax) return false;
+        if (move.Target?.Contains("all opponent", StringComparison.OrdinalIgnoreCase) == true) return false;
+
+        if (move.Target?.Contains("opponent", StringComparison.OrdinalIgnoreCase) == true)
+        {
+            var pair = attacker.Pair;
+            if (pair != null)
+            {
+                var passives = pair.Passives ?? new List<PassiveItem>();
+                if (attacker.FormIndex > 0 && pair.Variations != null && attacker.FormIndex <= pair.Variations.Count && pair.Variations[attacker.FormIndex - 1].Passives != null)
+                {
+                    passives = pair.Variations[attacker.FormIndex - 1].Passives;
+                }
+
+                foreach (var ps in passives)
+                {
+                    string pDesc = ps.Description ?? string.Empty;
+                    string pName = ps.Name ?? string.Empty;
+                    if (pName.Contains("Extend Range", StringComparison.OrdinalIgnoreCase) ||
+                        pName.Contains("Expand Reach", StringComparison.OrdinalIgnoreCase) ||
+                        pDesc.Contains("targets all opponents instead", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+
+                if (attacker.SuperAwakeningLevel >= 5 && pair.SuperAwakeningPassive != null)
+                {
+                    string sapName = pair.SuperAwakeningPassive.Name ?? string.Empty;
+                    string sapDesc = pair.SuperAwakeningPassive.Description ?? string.Empty;
+                    if (sapName.Contains("Extend Range", StringComparison.OrdinalIgnoreCase) ||
+                        sapName.Contains("Expand Reach", StringComparison.OrdinalIgnoreCase) ||
+                        sapDesc.Contains("targets all opponents instead", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
     public string GetEffectiveMoveType(SyncPairDetail? pair, MoveItem move, int formIndex = 0)
     {
         if (move == null) return "Normal";
