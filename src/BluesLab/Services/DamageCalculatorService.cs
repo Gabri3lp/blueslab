@@ -2011,7 +2011,40 @@ public class DamageCalculatorService
                 }
             }
 
-            // 3. Teammate Grid Passives
+            // 3. Teammate Lucky Skill
+            if (!string.IsNullOrEmpty(teammate.LuckySkillName))
+            {
+                var luckyRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name.Replace("’", "'"), teammate.LuckySkillName.Replace("’", "'"), StringComparison.OrdinalIgnoreCase));
+                if (luckyRule != null)
+                {
+                    if (luckyRule.SubPassives != null && luckyRule.SubPassives.Count > 0)
+                    {
+                        foreach (var sp in luckyRule.SubPassives)
+                        {
+                            if (IsTeamWidePassive(sp))
+                            {
+                                double v = EvalSingleDamagePassive(sp, move, activeAttacker, enemy, field, originalMoveType);
+                                if (v > 0)
+                                {
+                                    total += v;
+                                    pills.Add(new MultiplierPill { Label = $"Ally Lucky: {sp.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                                }
+                            }
+                        }
+                    }
+                    else if (IsTeamWidePassive(luckyRule))
+                    {
+                        double v = EvalSingleDamagePassive(luckyRule, move, activeAttacker, enemy, field, originalMoveType);
+                        if (v > 0)
+                        {
+                            total += v;
+                            pills.Add(new MultiplierPill { Label = $"Ally Lucky: {luckyRule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                        }
+                    }
+                }
+            }
+
+            // 4. Teammate Grid Passives
             var teammateGrid = (i < team.AllyActiveGrids.Count) ? team.AllyActiveGrids[i] : null;
             if (teammateGrid != null && teammate.Pair.Grid != null)
             {
@@ -2101,7 +2134,7 @@ public class DamageCalculatorService
         // Lucky Skill
         if (!string.IsNullOrEmpty(ally.LuckySkillName))
         {
-            var lucky = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, ally.LuckySkillName, StringComparison.OrdinalIgnoreCase));
+            var lucky = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name.Replace("’", "'"), ally.LuckySkillName.Replace("’", "'"), StringComparison.OrdinalIgnoreCase));
             if (lucky != null)
             {
                 double v = EvalSingleDamagePassive(lucky, move, ally, enemy, field);
@@ -2530,6 +2563,7 @@ public class DamageCalculatorService
             "mode_swing" => ((ally.FormIndex == 0 && string.Equals(move.Type, "Electric", StringComparison.OrdinalIgnoreCase)) ||
                              (ally.FormIndex == 1 && string.Equals(move.Type, "Dark", StringComparison.OrdinalIgnoreCase))) ? (dp.Value * 0.1) : 0,
             "ice_plow" => (ally.FormIndex == 0 && (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(enemy.Weakness, move.Type, StringComparison.OrdinalIgnoreCase) || ally.SuperEffectiveNext)) ? 0.30 : 0,
+            "sync_buff_scaling" => Math.Min(0.50, ally.SyncBoosts * (dp.Value > 0 ? dp.Value * 0.1 : 0.10)),
             "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move, originalMoveType) ? dp.Value * 0.1 : 0),
             _ => 0
         };

@@ -361,7 +361,8 @@ public class LuckySkillRule
     {
         if (RestrictedToPairs != null && RestrictedToPairs.Count > 0)
         {
-            return RestrictedToPairs.Any(p => string.Equals(p, pairName, StringComparison.OrdinalIgnoreCase));
+            string normPair = pairName.Replace("’", "'").Trim();
+            return RestrictedToPairs.Any(p => string.Equals(p.Replace("’", "'").Trim(), normPair, StringComparison.OrdinalIgnoreCase));
         }
         if (RestrictedToRoles != null && RestrictedToRoles.Count > 0)
         {
