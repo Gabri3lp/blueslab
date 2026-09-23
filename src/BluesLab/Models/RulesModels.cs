@@ -361,13 +361,26 @@ public class LuckySkillRule
     {
         if (RestrictedToPairs != null && RestrictedToPairs.Count > 0)
         {
-            string normPair = pairName.Replace("’", "'").Trim();
-            return RestrictedToPairs.Any(p => string.Equals(p.Replace("’", "'").Trim(), normPair, StringComparison.OrdinalIgnoreCase));
+            if (string.IsNullOrWhiteSpace(pairName)) return false;
+            string normPair = NormalizePairName(pairName);
+            return RestrictedToPairs.Any(p => NormalizePairName(p) == normPair);
         }
         if (RestrictedToRoles != null && RestrictedToRoles.Count > 0)
         {
             return RestrictedToRoles.Any(r => string.Equals(r, role, StringComparison.OrdinalIgnoreCase));
         }
         return true;
+    }
+
+    private static string NormalizePairName(string s)
+    {
+        if (string.IsNullOrWhiteSpace(s)) return string.Empty;
+        return s.Replace("â€™", "'")
+                .Replace("’", "'")
+                .Replace("`", "'")
+                .Replace("★", "")
+                .Replace("  ", " ")
+                .Trim()
+                .ToLowerInvariant();
     }
 }

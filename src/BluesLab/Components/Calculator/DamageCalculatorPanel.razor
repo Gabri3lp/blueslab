@@ -687,12 +687,35 @@
                     </div>
 
                     <div class="d-flex align-items-center gap-2">
-                        <span class="small text-secondary fw-bold text-uppercase" style="font-size: 0.75rem;">Lucky Skill:</span>
-                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 180px; font-size: 0.75rem;" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
-                            <option value="">(None)</option>
-                            @foreach (var ls in Rules.LuckySkills.Where(s => s.IsAvailableFor(Ally.Pair.Role, Ally.Pair.DisplayName)))
+                        <span class="small text-secondary fw-bold text-uppercase d-inline-flex align-items-center gap-1" style="font-size: 0.75rem;">
+                            <i class="bi bi-star-fill text-warning"></i> @Loc.T("lucky_skill", "Lucky Skill:")
+                        </span>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" style="width: 220px; font-size: 0.75rem;" @bind="Ally.LuckySkillName" @bind:after="StateHasChanged">
+                            <option value="">-- @Loc.T("lucky_skill_none", "(None)") --</option>
+                            @{
+                                var availableSoloSkills = Rules.LuckySkills
+                                    .Where(s => s.IsAvailableFor(Ally.Pair.Role, Ally.Pair.DisplayName))
+                                    .ToList();
+                                var exclusiveSoloSkills = availableSoloSkills.Where(s => s.RestrictedToPairs != null && s.RestrictedToPairs.Count > 0).ToList();
+                                var generalSoloSkills = availableSoloSkills.Where(s => s.RestrictedToPairs == null || s.RestrictedToPairs.Count == 0).ToList();
+                            }
+                            @if (exclusiveSoloSkills.Count > 0)
                             {
-                                <option value="@ls.Name">@ls.Name</option>
+                                <optgroup label="★ @Loc.T("exclusive_lucky_skills", "Exclusive Lucky Skills")">
+                                    @foreach (var ls in exclusiveSoloSkills)
+                                    {
+                                        <option value="@ls.Name">★ @ls.Name (@Loc.T("exclusive", "Exclusive"))</option>
+                                    }
+                                </optgroup>
+                            }
+                            @if (generalSoloSkills.Count > 0)
+                            {
+                                <optgroup label="@Loc.T("general_lucky_skills", "General Lucky Skills")">
+                                    @foreach (var ls in generalSoloSkills)
+                                    {
+                                        <option value="@ls.Name">@ls.Name</option>
+                                    }
+                                </optgroup>
                             }
                         </select>
                     </div>

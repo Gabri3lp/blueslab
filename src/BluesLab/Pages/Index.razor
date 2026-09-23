@@ -250,6 +250,7 @@
         {
             RulesDoc = await DataService.GetDamageRulesAsync();
             await DataService.GetManifestAsync();
+            await InvokeAsync(StateHasChanged);
         }
         catch { }
     }

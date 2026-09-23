@@ -728,11 +728,49 @@
 
                                         <!-- Lucky Skill -->
                                         <div class="mb-1">
-                                            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.LuckySkillName">
-                                                <option value="">@Loc.T("lucky_skill", "Lucky Skill: (None)")</option>
-                                                @foreach (var ls in _rules.LuckySkills.Where(s => s.IsAvailableFor(ally.Pair.Role, ally.Pair.DisplayName)))
+                                            <div class="d-flex align-items-center justify-content-between mb-0">
+                                                <label class="text-warning mb-0 d-inline-flex align-items-center gap-1" style="font-size: 0.68rem; font-weight: 600;">
+                                                    <i class="bi bi-star-fill text-warning" style="font-size: 0.65rem;"></i>
+                                                    @Loc.T("lucky_skill", "Lucky Skill:")
+                                                </label>
+                                                @if (!string.IsNullOrEmpty(ally.LuckySkillName))
                                                 {
-                                                    <option value="@ls.Name">@ls.Name</option>
+                                                    var curLs = _rules.LuckySkills.FirstOrDefault(s => s.Name == ally.LuckySkillName);
+                                                    bool isCurEx = curLs?.RestrictedToPairs != null && curLs.RestrictedToPairs.Count > 0;
+                                                    <span class="badge @(isCurEx ? "bg-warning text-dark fw-bold" : "bg-secondary text-light") py-0 px-1" style="font-size: 0.62rem;">
+                                                        @(isCurEx ? "★ " + Loc.T("exclusive", "Exclusive") : Loc.T("active", "Active"))
+                                                    </span>
+                                                }
+                                            </div>
+                                            <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1"
+                                                    style="font-size: 0.72rem; height: 24px;"
+                                                    @bind="ally.LuckySkillName"
+                                                    @bind:after="StateHasChanged">
+                                                <option value="">-- @Loc.T("lucky_skill_none", "(None)") --</option>
+                                                @{
+                                                    var availableSkills = _rules.LuckySkills
+                                                        .Where(s => s.IsAvailableFor(ally.Pair.Role, ally.Pair.DisplayName))
+                                                        .ToList();
+                                                    var exclusiveSkills = availableSkills.Where(s => s.RestrictedToPairs != null && s.RestrictedToPairs.Count > 0).ToList();
+                                                    var generalSkills = availableSkills.Where(s => s.RestrictedToPairs == null || s.RestrictedToPairs.Count == 0).ToList();
+                                                }
+                                                @if (exclusiveSkills.Count > 0)
+                                                {
+                                                    <optgroup label="★ @Loc.T("exclusive_lucky_skills", "Exclusive Lucky Skills")">
+                                                        @foreach (var ls in exclusiveSkills)
+                                                        {
+                                                            <option value="@ls.Name">★ @ls.Name (@Loc.T("exclusive", "Exclusive"))</option>
+                                                        }
+                                                    </optgroup>
+                                                }
+                                                @if (generalSkills.Count > 0)
+                                                {
+                                                    <optgroup label="@Loc.T("general_lucky_skills", "General Lucky Skills")">
+                                                        @foreach (var ls in generalSkills)
+                                                        {
+                                                            <option value="@ls.Name">@ls.Name</option>
+                                                        }
+                                                    </optgroup>
                                                 }
                                             </select>
                                         </div>
@@ -1120,11 +1158,19 @@
                 <div>
                     <div class="card bg-dark border-secondary shadow-sm mb-3">
                         <div class="card-header bg-secondary bg-opacity-25 border-secondary d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
-                            <div class="d-flex align-items-center gap-2">
+                            <div class="d-flex align-items-center gap-2 flex-wrap">
                                 <i class="bi bi-graph-up text-warning fs-5"></i>
                                 <span class="fw-bold text-light fs-6">
                                     @Loc.T("damage_calculations", "Damage Outputs"): @Loc.GetDisplayName(State.ActiveAttacker.Pair)
                                 </span>
+                                @if (!string.IsNullOrEmpty(State.ActiveAttacker.LuckySkillName))
+                                {
+                                    var attLs = _rules.LuckySkills.FirstOrDefault(s => s.Name == State.ActiveAttacker.LuckySkillName);
+                                    bool isAttLsEx = attLs?.RestrictedToPairs != null && attLs.RestrictedToPairs.Count > 0;
+                                    <span class="badge @(isAttLsEx ? "bg-warning text-dark fw-bold" : "bg-dark border border-secondary text-light")" style="font-size: 0.7rem;" title="@Loc.T("lucky_skill", "Lucky Skill:") @State.ActiveAttacker.LuckySkillName">
+                                        <i class="bi bi-star-fill text-warning me-1"></i>@State.ActiveAttacker.LuckySkillName
+                                    </span>
+                                }
                             </div>
 
                             <!-- 3 Buttons: Min, Avg, Max -->
