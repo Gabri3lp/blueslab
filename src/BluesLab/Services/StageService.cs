@@ -118,6 +118,124 @@ public class StageService
         return league?.Fights.FirstOrDefault(f => f.FightId == fightId);
     }
 
+    public static readonly string[] DamageChallengeTypes =
+    [
+        "Fire", "Water", "Grass", "Electric", "Ice",
+        "Fighting", "Poison", "Ground", "Flying", "Psychic",
+        "Bug", "Rock", "Ghost", "Dragon", "Dark",
+        "Steel", "Fairy"
+    ];
+
+    public StageFight CreateDamageChallengeFight(string type, int targetCount = 3)
+    {
+        int count = targetCount == 1 ? 1 : 3;
+        var fight = new StageFight
+        {
+            FightId = $"dc_{type.ToLowerInvariant()}_vs{count}",
+            Title = $"Damage Challenge ({type} • vs {count})",
+            Leader = $"{type} Weakness",
+            StageType = "damage_challenge",
+            Theme = "Damage Challenge",
+            Rules = new List<string>
+            {
+                "Non-super effective moves deal 0 damage.",
+                "Enemies have 83 Def/Sp.Def, infinite HP, and 0 mitigations."
+            }
+        };
+
+        var passive = new StagePassive
+        {
+            Name = "Damage Challenge Rule",
+            Description = "Attacks that are not super effective deal 0 damage.",
+            Mechanism = "damage_mitigation",
+            Condition = "damage_challenge_non_se_zero"
+        };
+
+        var zeroMitigations = new Dictionary<string, int>
+        {
+            ["def"] = 0,
+            ["spd"] = 0,
+            ["atk"] = 0,
+            ["spa"] = 0,
+            ["spe"] = 0
+        };
+
+        if (count == 1)
+        {
+            fight.Opponents.Add(new StageOpponent
+            {
+                SlotIndex = 1,
+                TrainerName = $"Damage Challenge ({type})",
+                PokemonName = $"{type}-Weak Boss",
+                IconUrl = CombatantState.GetTypeIcon(type),
+                Weakness = type,
+                Hp = 99999999,
+                Atk = 100,
+                Def = 83,
+                SpA = 100,
+                SpD = 83,
+                Spe = 100,
+                Mitigations = new Dictionary<string, int>(zeroMitigations),
+                Passives = new List<StagePassive> { passive }
+            });
+        }
+        else
+        {
+            fight.Opponents.Add(new StageOpponent
+            {
+                SlotIndex = 0,
+                TrainerName = "Side Target (Left)",
+                PokemonName = $"{type}-Weak Minion",
+                IconUrl = CombatantState.GetTypeIcon(type),
+                Weakness = type,
+                Hp = 99999999,
+                Atk = 100,
+                Def = 83,
+                SpA = 100,
+                SpD = 83,
+                Spe = 100,
+                Mitigations = new Dictionary<string, int>(zeroMitigations),
+                Passives = new List<StagePassive> { passive }
+            });
+
+            fight.Opponents.Add(new StageOpponent
+            {
+                SlotIndex = 1,
+                TrainerName = $"Damage Challenge ({type})",
+                PokemonName = $"{type}-Weak Boss",
+                IconUrl = CombatantState.GetTypeIcon(type),
+                Weakness = type,
+                Hp = 99999999,
+                Atk = 100,
+                Def = 83,
+                SpA = 100,
+                SpD = 83,
+                Spe = 100,
+                Mitigations = new Dictionary<string, int>(zeroMitigations),
+                Passives = new List<StagePassive> { passive }
+            });
+
+            fight.Opponents.Add(new StageOpponent
+            {
+                SlotIndex = 2,
+                TrainerName = "Side Target (Right)",
+                PokemonName = $"{type}-Weak Minion",
+                IconUrl = CombatantState.GetTypeIcon(type),
+                Weakness = type,
+                Hp = 99999999,
+                Atk = 100,
+                Def = 83,
+                SpA = 100,
+                SpD = 83,
+                Spe = 100,
+                Mitigations = new Dictionary<string, int>(zeroMitigations),
+                Passives = new List<StagePassive> { passive }
+            });
+        }
+
+        return fight;
+    }
+
     public void ApplyFightToEnemies(TeamBattleState state, StageFight fight)
     {
         state.SelectedFightId = fight.FightId;
@@ -126,7 +244,22 @@ public class StageService
         state.EnemySpecialDamageReduction = false;
         state.EnemyDamageField = string.Empty;
         state.ActiveFight = fight;
+        state.TargetEnemyCount = fight.Opponents.Count;
         state.ActiveTargetIndex = 1;
+
+        if (fight.Opponents.Count == 1)
+        {
+            state.Enemies[0].CustomTrainerName = string.Empty;
+            state.Enemies[0].CustomPokemonName = string.Empty;
+            state.Enemies[0].CustomIconUrl = string.Empty;
+            state.Enemies[0].ManualStats["hp"] = 0;
+
+            state.Enemies[2].CustomTrainerName = string.Empty;
+            state.Enemies[2].CustomPokemonName = string.Empty;
+            state.Enemies[2].CustomIconUrl = string.Empty;
+            state.Enemies[2].ManualStats["hp"] = 0;
+        }
+
         for (int i = 0; i < 3 && i < fight.Opponents.Count; i++)
         {
             var opp = fight.Opponents[i];

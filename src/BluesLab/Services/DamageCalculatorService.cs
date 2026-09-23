@@ -885,8 +885,9 @@ public class DamageCalculatorService
             }
         }
 
+        int targetEnemyCount = team.TargetEnemyCount > 0 ? team.TargetEnemyCount : 3;
         bool ignoresAoEPenalty = !MoveScopeRules.AllowsAoEPenalty(move) || isMoveNoDecay || hasAoENoDecayPassive;
-        int autoTargetCount = (isAoE && !ignoresAoEPenalty) ? 3 : 1;
+        int autoTargetCount = (isAoE && !ignoresAoEPenalty && targetEnemyCount > 1) ? targetEnemyCount : 1;
 
         var teamField = new FieldState
         {
@@ -899,9 +900,13 @@ public class DamageCalculatorService
             TargetCount = autoTargetCount
         };
 
-        var leftRes = CalculateDamage(move, attacker, team.Enemies[0], teamField, rules, activeGrid, team: team);
+        var leftRes = team.IsEnemySlotActive(0)
+            ? CalculateDamage(move, attacker, team.Enemies[0], teamField, rules, activeGrid, team: team)
+            : new DamageResult { MoveName = move.Name };
         var centerRes = CalculateDamage(move, attacker, team.Enemies[1], teamField, rules, activeGrid, team: team);
-        var rightRes = CalculateDamage(move, attacker, team.Enemies[2], teamField, rules, activeGrid, team: team);
+        var rightRes = team.IsEnemySlotActive(2)
+            ? CalculateDamage(move, attacker, team.Enemies[2], teamField, rules, activeGrid, team: team)
+            : new DamageResult { MoveName = move.Name };
 
         return new TeamMoveDamageResult
         {
@@ -910,7 +915,8 @@ public class DamageCalculatorService
             LeftDamage = leftRes,
             CenterDamage = centerRes,
             RightDamage = rightRes,
-            ActiveTargetIndex = team.ActiveTargetIndex
+            ActiveTargetIndex = team.ActiveTargetIndex,
+            TargetEnemyCount = targetEnemyCount
         };
     }
 
@@ -1419,6 +1425,10 @@ public class DamageCalculatorService
             string.Equals(effectiveMoveType, enemy.Weakness, StringComparison.OrdinalIgnoreCase)) ||
             (isStellarForm && !string.IsNullOrEmpty(enemy.Weakness));
 
+        bool isDamageChallenge = (team?.IsDamageChallenge == true) ||
+            string.Equals(team?.ActiveFight?.StageType, "damage_challenge", StringComparison.OrdinalIgnoreCase) ||
+            (enemy.StagePassives?.Any(sp => sp.Condition == "damage_challenge_non_se_zero") == true);
+
         if (isSuperEffective)
         {
             if (ally.SuperEffectiveNext)
@@ -1431,6 +1441,11 @@ public class DamageCalculatorService
                 ne *= 2.0;
                 pills.Add(new MultiplierPill { Label = "Super Effective", Value = "×2.0", Color = "#e74c3c" });
             }
+        }
+        else if (isDamageChallenge)
+        {
+            ne = 0.0;
+            pills.Add(new MultiplierPill { Label = "Damage Challenge", Value = "Non-SE (0 Dmg)", Color = "#e74c3c" });
         }
 
         // Sync Buffs: (2 + syncBoosts) / 2

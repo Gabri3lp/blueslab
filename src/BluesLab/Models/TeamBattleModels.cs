@@ -12,6 +12,9 @@ public class TeamBattleState
     public List<CombatantState> Enemies { get; set; } = new();
     public int ActiveTargetIndex { get; set; } = 1; // Default to Center (Boss)
     public int EnemySyncBuffs { get; set; } = 0;
+    public int TargetEnemyCount { get; set; } = 3;
+    public bool IsEnemySlotActive(int slot) => TargetEnemyCount != 1 || slot == 1;
+    public bool IsDamageChallenge => string.Equals(ActiveFight?.StageType, "damage_challenge", StringComparison.OrdinalIgnoreCase);
 
     // Allied Team Side Effects
     public bool AlliedPhysicalDamageReduction { get; set; }

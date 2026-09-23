@@ -332,6 +332,13 @@ public class MultiplierPill
     public string Color { get; set; } = string.Empty;
 }
 
+public enum DamageDisplayMode
+{
+    Min,
+    Avg,
+    Max
+}
+
 public class TeamMoveDamageResult
 {
     public MoveItem Move { get; set; } = new();
@@ -340,12 +347,44 @@ public class TeamMoveDamageResult
     public DamageResult CenterDamage { get; set; } = new();
     public DamageResult RightDamage { get; set; } = new();
     public int ActiveTargetIndex { get; set; } = 1;
+    public int TargetEnemyCount { get; set; } = 3;
+
     public DamageResult ActiveTargetDamage => ActiveTargetIndex switch
     {
         0 => LeftDamage,
         1 => CenterDamage,
         _ => RightDamage
     };
+
+    public int GetTotalDamage(DamageDisplayMode mode)
+    {
+        if (TargetEnemyCount == 1)
+        {
+            return mode switch
+            {
+                DamageDisplayMode.Min => CenterDamage.MinDamage,
+                DamageDisplayMode.Max => CenterDamage.MaxDamage,
+                _ => CenterDamage.AvgDamage
+            };
+        }
+
+        if (IsAoE)
+        {
+            return mode switch
+            {
+                DamageDisplayMode.Min => LeftDamage.MinDamage + CenterDamage.MinDamage + RightDamage.MinDamage,
+                DamageDisplayMode.Max => LeftDamage.MaxDamage + CenterDamage.MaxDamage + RightDamage.MaxDamage,
+                _ => LeftDamage.AvgDamage + CenterDamage.AvgDamage + RightDamage.AvgDamage
+            };
+        }
+
+        return mode switch
+        {
+            DamageDisplayMode.Min => ActiveTargetDamage.MinDamage,
+            DamageDisplayMode.Max => ActiveTargetDamage.MaxDamage,
+            _ => ActiveTargetDamage.AvgDamage
+        };
+    }
 }
 
 public class ActiveThemeSkillInfo

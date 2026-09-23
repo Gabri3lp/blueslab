@@ -194,9 +194,34 @@ public class TeamConfigurationService
             targetState.SelectedFightId = dto.SelectedFightId;
         }
 
-        var leagues = await stageService.GetLeaguesAsync();
-        var league = leagues.FirstOrDefault(l => l.LeagueId == targetState.SelectedLeagueId);
-        var fight = league?.Fights.FirstOrDefault(f => f.FightId == targetState.SelectedFightId);
+        StageFight? fight = null;
+        if (targetState.SelectedFightId.StartsWith("dc_", StringComparison.OrdinalIgnoreCase))
+        {
+            // Format: dc_{type}_vs{count}
+            var parts = targetState.SelectedFightId.Split('_');
+            string dcType = parts.Length > 1 ? parts[1] : "Fire";
+            // Capitalize type properly
+            var matchingType = StageService.DamageChallengeTypes.FirstOrDefault(t => t.Equals(dcType, StringComparison.OrdinalIgnoreCase)) ?? "Fire";
+            int count = targetState.SelectedFightId.EndsWith("vs1", StringComparison.OrdinalIgnoreCase) ? 1 : 3;
+            fight = stageService.CreateDamageChallengeFight(matchingType, count);
+        }
+        else if (targetState.SelectedFightId.StartsWith("tower_", StringComparison.OrdinalIgnoreCase))
+        {
+            var towerStages = await stageService.GetTowerStagesAsync();
+            fight = towerStages.SelectMany(t => t.Floors).FirstOrDefault(fl => fl.Fight.FightId == targetState.SelectedFightId)?.Fight;
+        }
+        else
+        {
+            var leagues = await stageService.GetLeaguesAsync();
+            var league = leagues.FirstOrDefault(l => l.LeagueId == targetState.SelectedLeagueId);
+            fight = league?.Fights.FirstOrDefault(f => f.FightId == targetState.SelectedFightId);
+            if (fight == null)
+            {
+                var ultStages = await stageService.GetUltimateStagesAsync();
+                fight = ultStages.FirstOrDefault(f => f.FightId == targetState.SelectedFightId);
+            }
+        }
+
         if (fight != null)
         {
             stageService.ApplyFightToEnemies(targetState, fight);

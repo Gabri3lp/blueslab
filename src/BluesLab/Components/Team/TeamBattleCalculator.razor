@@ -63,7 +63,7 @@
 
         <div class="card-body p-3">
             <!-- Stage Category Tabs & Selection -->
-            <div class="d-flex align-items-center gap-2 mb-2 pb-2 border-bottom border-secondary border-opacity-50">
+            <div class="d-flex align-items-center gap-2 mb-2 pb-2 border-bottom border-secondary border-opacity-50 flex-wrap">
                 <button type="button" class="btn btn-sm @(_stageCategory == "gym" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
                         @onclick='() => SetStageCategory("gym")'>
                     <i class="bi bi-shield-shaded me-1"></i>Pasio Gym
@@ -75,6 +75,10 @@
                 <button type="button" class="btn btn-sm @(_stageCategory == "ultimate" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
                         @onclick='() => SetStageCategory("ultimate")'>
                     <i class="bi bi-lightning-charge-fill me-1"></i>Ultimate Battles
+                </button>
+                <button type="button" class="btn btn-sm @(_stageCategory == "challenge" ? "btn-warning text-dark fw-bold" : "btn-outline-secondary text-light")"
+                        @onclick='() => SetStageCategory("challenge")'>
+                    <i class="bi bi-trophy-fill me-1"></i>@Loc.T("damage_challenge", "Damage Challenge")
                 </button>
             </div>
 
@@ -159,6 +163,49 @@
                             </div>
                         }
                     </div>
+                </div>
+            }
+            else if (_stageCategory == "challenge")
+            {
+                <div class="row g-2 align-items-center mb-2">
+                    <div class="col-md-6">
+                        <label class="form-label small text-muted mb-1">
+                            <i class="bi bi-bullseye text-warning me-1"></i> @Loc.T("challenge_weakness", "Challenge Weakness / Type:")
+                        </label>
+                        <select class="form-select form-select-sm bg-dark text-light border-secondary" value="@_selectedChallengeType" @onchange="OnChallengeTypeChanged">
+                            @foreach (var t in StageService.DamageChallengeTypes)
+                            {
+                                <option value="@t">@Loc.GetTypeName(t)</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label small text-muted mb-1">
+                            <i class="bi bi-people text-info me-1"></i> @Loc.T("challenge_targets", "Battle Format:")
+                        </label>
+                        <div class="btn-group btn-group-sm w-100" role="group">
+                            <button type="button" class="btn @(_challengeTargetCount == 1 ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                    @onclick="() => SetChallengeTargetCount(1)">
+                                <i class="bi bi-person-fill me-1"></i>@Loc.T("vs_1_target", "vs 1 (Single Target)")
+                            </button>
+                            <button type="button" class="btn @(_challengeTargetCount == 3 ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light")"
+                                    @onclick="() => SetChallengeTargetCount(3)">
+                                <i class="bi bi-people-fill me-1"></i>@Loc.T("vs_3_targets", "vs 3 (Trio / AoE)")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning py-1 px-2 mb-2 d-flex align-items-center justify-content-between gap-2" style="font-size: 0.75rem; background-color: rgba(241, 196, 15, 0.1); border-color: rgba(241, 196, 15, 0.3);">
+                    <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-info-circle-fill text-warning flex-shrink-0"></i>
+                        <span>
+                            <strong>@Loc.T("damage_challenge_rules", "Damage Challenge Rules"):</strong>
+                            @Loc.T("damage_challenge_rules_desc", "All enemies have 83 Def/Sp.Def, infinite HP, and 0 mitigations. Non-super effective moves deal 0 damage.")
+                        </span>
+                    </div>
+                    <span class="badge bg-danger text-light flex-shrink-0">@Loc.T("non_se_zero_badge", "Non-SE = 0 Dmg")</span>
                 </div>
             }
 
@@ -862,13 +909,14 @@
                         @for (int i = 0; i < 3; i++)
                         {
                             int targetIndex = i;
+                            if (!State.IsEnemySlotActive(targetIndex)) continue;
                             var enemy = State.Enemies[targetIndex];
                             bool isTarget = State.ActiveTargetIndex == targetIndex;
                             string slotLabel = targetIndex switch { 0 => Loc.T("enemy_left", "Left Enemy"), 1 => Loc.T("enemy_center", "Center (Boss)"), _ => Loc.T("enemy_right", "Right Enemy") };
                             string displayTrainer = string.IsNullOrEmpty(enemy.CustomTrainerName) ? slotLabel : enemy.CustomTrainerName;
                             string displayPokemon = string.IsNullOrEmpty(enemy.CustomPokemonName) ? "" : enemy.CustomPokemonName;
 
-                            <div class="col-12 col-md-4">
+                            <div class="@(State.TargetEnemyCount == 1 ? "col-12 col-md-6 mx-auto" : "col-12 col-md-4")">
                                 <div class="card h-100 @(isTarget ? "border-danger bg-danger bg-opacity-10 shadow-sm" : "border-secondary bg-dark") p-2">
                                     <!-- Enemy Header -->
                                     <div class="d-flex justify-content-between align-items-center mb-1">
@@ -1128,7 +1176,7 @@
                                     string effMoveType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
                                     <div class="card move-card move-card-@effMoveType.ToLowerInvariant() p-3">
-                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <div class="d-flex justify-content-between align-items-start mb-2 flex-wrap gap-2">
                                             <div>
                                                 <div class="fw-bold text-light fs-6">@cleanMoveName</div>
                                                 <div class="d-flex gap-1 align-items-center mt-1 flex-wrap">
@@ -1154,6 +1202,24 @@
                                                     }
                                                 </div>
                                             </div>
+
+                                            <!-- Total Move Damage Display -->
+                                            <div class="text-end ms-auto">
+                                                <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.68rem;">
+                                                    @Loc.T("total_move_damage", "Total Move Damage")
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-end gap-1">
+                                                    <span class="fs-5 fw-bold text-warning">
+                                                        @teamResult.GetTotalDamage(_damageDisplayMode).ToString("N0")
+                                                    </span>
+                                                    @if (_stageCategory == "challenge")
+                                                    {
+                                                        <span class="badge bg-warning bg-opacity-25 text-warning border border-warning border-opacity-50 py-0.5 px-1.5" style="font-size: 0.65rem;">
+                                                            <i class="bi bi-trophy-fill me-0.5"></i>@(State.TargetEnemyCount == 1 ? "vs 1" : (teamResult.IsAoE ? "AoE × 3" : "Single Target"))
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <!-- Triple Enemy Breakdown with Dealt % and Health Bar -->
@@ -1161,6 +1227,7 @@
                                             @for (int eIdx = 0; eIdx < 3; eIdx++)
                                              {
                                                 int slot = eIdx;
+                                                if (!State.IsEnemySlotActive(slot)) continue;
                                                 var dmg = slot switch
                                                 {
                                                     0 => teamResult.LeftDamage,
@@ -1174,7 +1241,7 @@
                                                 string slotTitle = slot switch { 0 => Loc.T("enemy_left", "Left Enemy"), 1 => Loc.T("enemy_center", "Center (Boss)"), _ => Loc.T("enemy_right", "Right Enemy") };
                                                 string oppName = string.IsNullOrEmpty(opp.CustomTrainerName) ? slotTitle : $"{opp.CustomTrainerName}";
 
-                                                <div class="col-md-4">
+                                                <div class="@(State.TargetEnemyCount == 1 ? "col-12 col-md-6 mx-auto" : "col-md-4")">
                                                     <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : (teamResult.IsAoE ? "border-secondary bg-black bg-opacity-25" : "border-secondary bg-black bg-opacity-10 opacity-50")) text-center">
                                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                                             <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
@@ -1228,22 +1295,35 @@
 
                                                         <!-- Health Bar: Blue for remaining HP, Red for damage dealt -->
                                                         <div class="progress mt-1" style="height: 7px; background-color: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
-                                                            @{
+                                                            @if (_stageCategory == "challenge")
+                                                            {
+                                                                <div class="progress-bar bg-warning bg-opacity-75" role="progressbar" style="width: 100%;" title="@Loc.T("infinite_hp", "Infinite HP")"></div>
+                                                            }
+                                                            else
+                                                            {
                                                                 double remHp = Math.Clamp(display.RemHpPercent, 0.0, 100.0);
                                                                 double dealtHp = Math.Clamp(100.0 - remHp, 0.0, 100.0);
                                                                 string barOpacity = (!teamResult.IsAoE && !isTargetedEnemy) ? "opacity-40" : "";
+                                                                <div class="progress-bar bg-primary @barOpacity"
+                                                                     role="progressbar"
+                                                                     style="width: @(remHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                     title="Remaining HP: @remHp.ToString("0.0")%"></div>
+                                                                <div class="progress-bar bg-danger @barOpacity"
+                                                                     role="progressbar"
+                                                                     style="width: @(dealtHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                     title="Damage Dealt: @display.HpPercent.ToString("0.0")%"></div>
                                                             }
-                                                            <div class="progress-bar bg-primary @barOpacity"
-                                                                 role="progressbar"
-                                                                 style="width: @(remHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
-                                                                 title="Remaining HP: @remHp.ToString("0.0")%"></div>
-                                                            <div class="progress-bar bg-danger @barOpacity"
-                                                                 role="progressbar"
-                                                                 style="width: @(dealtHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
-                                                                 title="Damage Dealt: @display.HpPercent.ToString("0.0")%"></div>
                                                         </div>
 
-                                                        @if (display.IsOHKO || display.RemHpPercent <= 0)
+                                                        @if (_stageCategory == "challenge")
+                                                        {
+                                                            <div class="mt-1">
+                                                                <span class="badge bg-purple text-light py-0" style="font-size: 0.68rem;">
+                                                                    <i class="bi bi-infinity me-1"></i>@Loc.T("infinite_hp", "Infinite HP")
+                                                                </span>
+                                                            </div>
+                                                        }
+                                                        else if (display.IsOHKO || display.RemHpPercent <= 0)
                                                         {
                                                             <div class="mt-1">
                                                                 <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
@@ -1315,7 +1395,7 @@
                                         string effMaxType = CalcService.GetEffectiveMoveType(State.ActiveAttacker.Pair, move, State.ActiveAttacker.FormIndex);
 
                                         <div class="card move-card move-card-@effMaxType.ToLowerInvariant() p-3 border-pink">
-                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <div class="d-flex justify-content-between align-items-start mb-2 flex-wrap gap-2">
                                                 <div>
                                                     <div class="d-flex align-items-center gap-2 flex-wrap">
                                                         <span class="fw-bold text-light fs-6">@cleanMaxName</span>
@@ -1337,6 +1417,24 @@
                                                         </span>
                                                     </div>
                                                 </div>
+
+                                                <!-- Total Move Damage Display -->
+                                                <div class="text-end ms-auto">
+                                                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.68rem;">
+                                                        @Loc.T("total_move_damage", "Total Move Damage")
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-end gap-1">
+                                                        <span class="fs-5 fw-bold text-warning">
+                                                            @teamResult.GetTotalDamage(_damageDisplayMode).ToString("N0")
+                                                        </span>
+                                                        @if (_stageCategory == "challenge")
+                                                        {
+                                                            <span class="badge bg-warning bg-opacity-25 text-warning border border-warning border-opacity-50 py-0.5 px-1.5" style="font-size: 0.65rem;">
+                                                                <i class="bi bi-trophy-fill me-0.5"></i>@(State.TargetEnemyCount == 1 ? "vs 1" : (teamResult.IsAoE ? "AoE × 3" : "Single Target"))
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <!-- Triple Enemy Breakdown for Max Move -->
@@ -1344,6 +1442,7 @@
                                                 @for (int eIdx = 0; eIdx < 3; eIdx++)
                                                 {
                                                     int slot = eIdx;
+                                                    if (!State.IsEnemySlotActive(slot)) continue;
                                                     var dmg = slot switch
                                                     {
                                                         0 => teamResult.LeftDamage,
@@ -1357,7 +1456,7 @@
                                                     string slotTitle = slot switch { 0 => Loc.T("enemy_left", "Left Enemy"), 1 => Loc.T("enemy_center", "Center (Boss)"), _ => Loc.T("enemy_right", "Right Enemy") };
                                                     string oppName = string.IsNullOrEmpty(opp.CustomTrainerName) ? slotTitle : $"{opp.CustomTrainerName}";
 
-                                                    <div class="col-md-4">
+                                                    <div class="@(State.TargetEnemyCount == 1 ? "col-12 col-md-6 mx-auto" : "col-md-4")">
                                                         <div class="p-2 rounded border @(isTargetedEnemy ? "border-warning bg-warning bg-opacity-10 shadow-sm" : (teamResult.IsAoE ? "border-secondary bg-black bg-opacity-25" : "border-secondary bg-black bg-opacity-10 opacity-50")) text-center">
                                                             <div class="d-flex justify-content-between align-items-center mb-1">
                                                                 <span class="small text-light fw-bold text-truncate" style="font-size: 0.78rem;">@oppName</span>
@@ -1411,22 +1510,35 @@
 
                                                             <!-- Health Bar: Blue for remaining HP, Red for damage dealt -->
                                                             <div class="progress mt-1" style="height: 7px; background-color: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
-                                                                @{
+                                                                @if (_stageCategory == "challenge")
+                                                                {
+                                                                    <div class="progress-bar bg-warning bg-opacity-75" role="progressbar" style="width: 100%;" title="@Loc.T("infinite_hp", "Infinite HP")"></div>
+                                                                }
+                                                                else
+                                                                {
                                                                     double remHp = Math.Clamp(display.RemHpPercent, 0.0, 100.0);
                                                                     double dealtHp = Math.Clamp(100.0 - remHp, 0.0, 100.0);
                                                                     string barOpacity = (!teamResult.IsAoE && !isTargetedEnemy) ? "opacity-40" : "";
+                                                                    <div class="progress-bar bg-primary @barOpacity"
+                                                                         role="progressbar"
+                                                                         style="width: @(remHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                         title="Remaining HP: @remHp.ToString("0.0")%"></div>
+                                                                    <div class="progress-bar bg-danger @barOpacity"
+                                                                         role="progressbar"
+                                                                         style="width: @(dealtHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
+                                                                         title="Damage Dealt: @display.HpPercent.ToString("0.0")%"></div>
                                                                 }
-                                                                <div class="progress-bar bg-primary @barOpacity"
-                                                                     role="progressbar"
-                                                                     style="width: @(remHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
-                                                                     title="Remaining HP: @remHp.ToString("0.0")%"></div>
-                                                                <div class="progress-bar bg-danger @barOpacity"
-                                                                     role="progressbar"
-                                                                     style="width: @(dealtHp.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))%;"
-                                                                     title="Damage Dealt: @display.HpPercent.ToString("0.0")%"></div>
                                                             </div>
 
-                                                            @if (display.IsOHKO || display.RemHpPercent <= 0)
+                                                            @if (_stageCategory == "challenge")
+                                                            {
+                                                                <div class="mt-1">
+                                                                    <span class="badge bg-purple text-light py-0" style="font-size: 0.68rem;">
+                                                                        <i class="bi bi-infinity me-1"></i>@Loc.T("infinite_hp", "Infinite HP")
+                                                                    </span>
+                                                                </div>
+                                                            }
+                                                            else if (display.IsOHKO || display.RemHpPercent <= 0)
                                                             {
                                                                 <div class="mt-1">
                                                                     <span class="badge bg-danger text-white py-0" style="font-size: 0.68rem;">
@@ -1571,9 +1683,11 @@
     private List<PairManifestItem> _allManifest = new();
     private DamageRulesDocument _rules = new();
 
-    private string _stageCategory = "gym"; // "gym", "tower", "ultimate"
+    private string _stageCategory = "gym"; // "gym", "tower", "ultimate", "challenge"
     private string _selectedTowerType = "Normal";
     private int _selectedTowerFloor = 32;
+    private string _selectedChallengeType = "Fire";
+    private int _challengeTargetCount = 3;
 
     private bool _showPairPicker = false;
     private int _pickingSlot = 0;
@@ -1746,7 +1860,31 @@
                 StageSvc.ApplyFightToEnemies(State, fight);
             }
         }
+        else if (category == "challenge")
+        {
+            ApplyCurrentChallengeStage();
+        }
         StateHasChanged();
+    }
+
+    private void OnChallengeTypeChanged(ChangeEventArgs e)
+    {
+        _selectedChallengeType = e.Value?.ToString() ?? "Fire";
+        ApplyCurrentChallengeStage();
+    }
+
+    private void SetChallengeTargetCount(int count)
+    {
+        _challengeTargetCount = count == 1 ? 1 : 3;
+        ApplyCurrentChallengeStage();
+    }
+
+    private void ApplyCurrentChallengeStage()
+    {
+        var fight = StageSvc.CreateDamageChallengeFight(_selectedChallengeType, _challengeTargetCount);
+        State.SelectedFightId = fight.FightId;
+        State.TargetEnemyCount = _challengeTargetCount;
+        StageSvc.ApplyFightToEnemies(State, fight);
     }
 
     private void OnTowerTypeChanged(ChangeEventArgs e)
@@ -1818,6 +1956,16 @@
 
     private void LoadSelectedStage()
     {
+        if (_stageCategory == "challenge")
+        {
+            ApplyCurrentChallengeStage();
+            return;
+        }
+        if (_stageCategory == "tower")
+        {
+            ApplyCurrentTowerStage();
+            return;
+        }
         var currentLeague = _leagues.FirstOrDefault(l => l.LeagueId == State.SelectedLeagueId);
         var fight = currentLeague?.Fights.FirstOrDefault(f => f.FightId == State.SelectedFightId);
         if (fight != null)
@@ -1989,6 +2137,21 @@
     private async Task OnConfigImportedHandler(TeamConfigDto config)
     {
         await TeamConfigSvc.ApplyConfigAsync(State, config);
+        if (State.SelectedFightId.StartsWith("dc_", StringComparison.OrdinalIgnoreCase))
+        {
+            _stageCategory = "challenge";
+            var parts = State.SelectedFightId.Split('_');
+            if (parts.Length > 1)
+            {
+                var matching = StageService.DamageChallengeTypes.FirstOrDefault(t => t.Equals(parts[1], StringComparison.OrdinalIgnoreCase));
+                if (matching != null) _selectedChallengeType = matching;
+            }
+            _challengeTargetCount = State.SelectedFightId.EndsWith("vs1", StringComparison.OrdinalIgnoreCase) ? 1 : 3;
+        }
+        else if (State.SelectedFightId.StartsWith("tower_", StringComparison.OrdinalIgnoreCase))
+        {
+            _stageCategory = "tower";
+        }
         await RefreshSavedTeamsCount();
         StateHasChanged();
     }
@@ -2036,7 +2199,6 @@
         StateHasChanged();
     }
 
-    private enum DamageDisplayMode { Min, Avg, Max }
     private DamageDisplayMode _damageDisplayMode = DamageDisplayMode.Avg;
 
     private (int Damage, double HpPercent, double RemHpPercent, bool IsOHKO) GetDisplayDamage(DamageResult dmg, int targetHp)
