@@ -74,32 +74,21 @@
                         }
                     </div>
 
-                    <!-- Pairs Grid -->
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
+                    <!-- Pairs Grid (PoMaTools style) -->
+                    <div class="pair-icon-grid p-1">
                         @foreach (var pair in FilteredPairs.Take(_displayCount))
                         {
                             var dName = Loc.GetDisplayName(pair);
-                            <div class="col">
-                                <div class="card h-100 bg-secondary bg-opacity-25 border-secondary pair-card p-2" @onclick="() => OnSelectPair(pair.TrainerId)">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <img src="@pair.IconUrl" alt="@dName" class="rounded-circle border border-warning" width="48" height="48" onerror="this.src='img/trainers/unknown.png';" />
-                                        <div class="flex-grow-1 overflow-hidden">
-                                            <div class="fw-bold text-truncate text-light small" title="@dName">@dName</div>
-                                            <div class="d-flex align-items-center gap-1.5 mt-1 flex-wrap">
-                                                <span class="badge type-badge type-@pair.Type.ToLowerInvariant()">@Loc.GetTypeName(pair.Type)</span>
-                                                <img src="@LocalizationService.GetRoleIcon(pair.Role)" alt="@Loc.GetRoleName(pair.Role)" title="@Loc.GetRoleName(pair.Role)" width="20" height="20" style="object-fit: contain;" />
-                                                @if (pair.HasSuperAwakening)
-                                                {
-                                                    <span class="badge bg-danger" title="Super Awakening">SA</span>
-                                                }
-                                                @if (pair.HasMega)
-                                                {
-                                                    <span class="badge bg-warning text-dark" title="Mega Evolution">M</span>
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="pair-icon-item"
+                                 title="@dName"
+                                 @onclick="() => OnSelectPair(pair.TrainerId)">
+                                <img src="@pair.IconUrl"
+                                     alt="@dName"
+                                     width="82"
+                                     height="82"
+                                     class="pair-avatar-card"
+                                     loading="lazy"
+                                     onerror="this.src='img/trainers/unknown.png';" />
                             </div>
                         }
                     </div>
@@ -147,7 +136,7 @@
     private bool FilterEx;
 
     private bool HasActiveFilters => !string.IsNullOrEmpty(SearchQuery) || !string.IsNullOrEmpty(SelectedType) || !string.IsNullOrEmpty(SelectedRole) || FilterMega || FilterTera || FilterDMax || FilterSA || FilterEx || SelectedSort != "release_desc";
-    private int _displayCount = 48;
+    private int _displayCount = 72;
 
     protected override async Task OnInitializedAsync()
     {
@@ -159,14 +148,14 @@
         if (IsOpen && !_wasOpen)
         {
             _shouldFocusSearch = true;
-            _displayCount = 48;
+            _displayCount = 72;
         }
         _wasOpen = IsOpen;
     }
 
     private void LoadMore()
     {
-        _displayCount += 48;
+        _displayCount += 72;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

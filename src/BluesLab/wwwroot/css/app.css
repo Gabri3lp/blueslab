@@ -107,7 +107,35 @@ input.form-control:focus {
 .cursor-pointer { cursor: pointer; }
 .select-none { user-select: none; }
 
-/* Pair Picker Cards */
+/* Pair Picker Cards (PoMaTools style icon grid) */
+.pair-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+}
+.pair-icon-item {
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 2px;
+    background: transparent;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+.pair-icon-item:hover {
+    transform: translateY(-3px) scale(1.06);
+    filter: drop-shadow(0 4px 10px rgba(241, 196, 15, 0.55)) brightness(1.1);
+    z-index: 5;
+}
+.pair-avatar-card {
+    display: block;
+    width: 82px;
+    height: 82px;
+    object-fit: contain;
+    border-radius: 8px;
+    user-select: none;
+    -webkit-user-drag: none;
+}
 .pair-card {
     cursor: pointer;
     transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
