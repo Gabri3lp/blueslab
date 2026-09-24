@@ -19,11 +19,12 @@
     else
     {
         <!-- Seamless Grid Controls Toolbar (No white bottom line / border-0) -->
-        <div class="grid-controls-bar w-100 d-flex align-items-center justify-content-between px-3 pt-2 pb-1 border-0">
+        <div class="grid-controls-bar w-100 d-flex flex-wrap align-items-center justify-content-between px-2 px-sm-3 pt-2 pb-1 border-0 gap-2">
             <!-- Left: Energy & Orbs (Clean text with clear icons) -->
-            <div class="d-flex align-items-center gap-2 gap-md-3" style="min-width: 130px;">
+            <div class="d-flex align-items-center gap-2 flex-shrink-0">
                 @{
                     int remainingEnergy = GridState.GetRemainingEnergy(Pair, CurrentActiveCells);
+                    int gemSize = Pair.HasSuperAwakening ? 21 : 26;
                 }
                 <span class="fw-bold @(remainingEnergy < 0 ? "text-danger" : "text-warning") d-flex align-items-center gap-1 fs-6">
                     ⚡ <b>@remainingEnergy</b>/60
@@ -35,15 +36,15 @@
             </div>
 
             <!-- Center: Move Level Gems (Centered and adjusting if SA is present) -->
-            <div class="d-flex justify-content-center align-items-center flex-grow-1">
-                <div class="d-flex align-items-center gap-1">
+            <div class="d-flex justify-content-center align-items-center flex-grow-1 mx-1">
+                <div class="d-flex align-items-center @(Pair.HasSuperAwakening ? "gap-0.5" : "gap-1")">
                     @for (int i = 1; i <= 5; i++)
                     {
                         int lvl = i;
                         <img src="@(MoveLevel >= lvl ? "img/sync_level_on.png" : "img/sync_level_off.png")"
                              alt="Lv.@lvl"
-                             width="26"
-                             height="26"
+                             width="@gemSize"
+                             height="@gemSize"
                              class="cursor-pointer @(MoveLevel >= lvl ? "" : "opacity-50")"
                              title="Move Level @lvl/5"
                              @onclick="() => OnMoveLevelClick(lvl)" />
@@ -58,8 +59,8 @@
                             int lvl = i;
                             <img src="img/transcendance.png"
                                  alt="SA.@(lvl-5)"
-                                 width="26"
-                                 height="26"
+                                 width="@gemSize"
+                                 height="@gemSize"
                                  class="cursor-pointer @(MoveLevel >= lvl ? "" : "opacity-25")"
                                  title="Super Awakening @(lvl-5)/5"
                                  @onclick="() => OnMoveLevelClick(MoveLevel == lvl ? lvl - 1 : lvl)" />
@@ -69,7 +70,7 @@
             </div>
 
             <!-- Right: Names & Hard Cap switches & Special Orbs badges -->
-            <div style="min-width: 170px;" class="d-flex justify-content-end align-items-center gap-2">
+            <div class="d-flex justify-content-end align-items-center gap-2 flex-shrink-0">
                 <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="@Loc.T("toggle_tile_names", "Toggle Tile Names")">
                     <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="hexViewShowNamesSwitch"
                            checked="@GridState.ShowTileNames" @onchange="OnToggleTileNames" />

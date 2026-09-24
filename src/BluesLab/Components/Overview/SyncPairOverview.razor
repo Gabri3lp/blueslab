@@ -373,22 +373,22 @@
                             @onclick='() => SetSection("moves")'>
                         @if (isDynamaxActive)
                         {
-                            <i class="bi bi-clouds-fill me-1"></i> @Loc.T("turn_max_move", "Max Moves") <text>(@displayMoves.Count)</text>
+                            @Loc.T("turn_max_move", "Max Moves")
                         }
                         else
                         {
-                            <i class="bi bi-lightning-fill me-1"></i> @Loc.T("moves", "Moves") <text>(@displayMoves.Count)</text>
+                            @Loc.T("moves", "Moves")
                         }
                     </button>
                     <button class="btn btn-sm @(ActiveSection == "passives" ? "btn-success text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("passives")'>
-                        <i class="bi bi-shield-check me-1"></i> @Loc.T("passives", "Passives") (@(GetEffectivePassives().Count + (Pair.HasSuperAwakening && Pair.SuperAwakeningPassive != null && !string.IsNullOrEmpty(Pair.SuperAwakeningPassive.Name) ? 1 : 0)))
+                        @Loc.T("passives", "Passives")
                     </button>
                     <button class="btn btn-sm @(ActiveSection == "grid" ? "btn-info text-dark fw-bold" : "btn-outline-secondary text-light") py-1 px-2.5"
                             style="font-size: 0.8rem;"
                             @onclick='() => SetSection("grid")'>
-                        <i class="bi bi-grid-fill me-1"></i> @Loc.T("grid_date", "Grid Skills") (@activeGridPassives.Count)
+                        @Loc.T("grid", "Grid")
                     </button>
                 </div>
 

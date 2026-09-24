@@ -403,6 +403,21 @@ public class LocalizationService
         return englishRole;
     }
 
+    public static string GetRoleIcon(string? englishRole)
+    {
+        if (string.IsNullOrWhiteSpace(englishRole)) return "img/battle/NONE.png";
+        var r = englishRole.Trim();
+        if (r.Contains("Strike (Physical)", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_001P.png";
+        if (r.Contains("Strike (Special)", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_001S.png";
+        if (r.Equals("Strike", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_001P.png";
+        if (r.Contains("Support", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_002.png";
+        if (r.Contains("Tech", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_004.png";
+        if (r.Contains("Sprint", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_008.png";
+        if (r.Contains("Field", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_016.png";
+        if (r.Contains("Multi", StringComparison.OrdinalIgnoreCase)) return "img/battle/ROLE_032.png";
+        return "img/battle/NONE.png";
+    }
+
     public static string CleanTitle(string text)
     {
         if (string.IsNullOrWhiteSpace(text)) return text ?? "";

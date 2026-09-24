@@ -412,7 +412,7 @@
 
                     <div class="card-body p-0 position-relative overflow-hidden" style="height: 520px; background-color: #0b0f19;">
                         <HexGridView Pair="State.ActiveAttacker.Pair"
-                                     MoveLevel="State.ActiveAttacker.MoveLevel"
+                                     MoveLevel="@(State.ActiveAttacker.MoveLevel + State.ActiveAttacker.SuperAwakeningLevel)"
                                      MoveLevelChanged="(newLevel) => { State.ActiveAttacker.MoveLevel = Math.Min(newLevel, 5); State.ActiveAttacker.SuperAwakeningLevel = newLevel > 5 ? newLevel - 5 : 0; StateHasChanged(); }"
                                      ActiveCells="State.AllyActiveGrids[State.ActiveAttackerIndex]"
                                      OnGridChanged="StateHasChanged" />
@@ -672,7 +672,7 @@
                                         <div class="row g-1 mb-1 small">
                                             <div class="col-4">
                                                 <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("level", "Move Lv:")</label>
-                                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.MoveLevel">
+                                                <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1" style="font-size: 0.7rem; height: 22px;" value="@ally.MoveLevel" @onchange="(e) => OnAllyMoveLevelChanged(ally, e)">
                                                     @for (int m = 1; m <= 5; m++)
                                                     {
                                                         <option value="@m">@m/5</option>
@@ -707,7 +707,7 @@
                                             {
                                                 <div class="col-6">
                                                     <label class="text-danger mb-0" style="font-size: 0.68rem;">@Loc.T("super_awakening", "Super Awakening:")</label>
-                                                    <select class="form-select form-select-sm bg-dark text-light border-danger py-0 px-1" style="font-size: 0.7rem; height: 22px;" @bind="ally.SuperAwakeningLevel">
+                                                    <select class="form-select form-select-sm bg-dark text-light border-danger py-0 px-1" style="font-size: 0.7rem; height: 22px;" value="@ally.SuperAwakeningLevel" @onchange="(e) => OnAllySaChanged(ally, e)">
                                                         @for (int sa = 0; sa <= 5; sa++)
                                                         {
                                                             <option value="@sa">@(sa == 0 ? "SA: None" : $"SA Lv. {sa}")</option>
@@ -1631,7 +1631,7 @@
         <TeamGridModal @bind-IsOpen="_showGridModal"
                        Pair="State.Allies[_gridModalSlot].Pair"
                        ActiveCells="State.AllyActiveGrids[_gridModalSlot]"
-                       MoveLevel="State.Allies[_gridModalSlot].MoveLevel"
+                       MoveLevel="@(State.Allies[_gridModalSlot].MoveLevel + State.Allies[_gridModalSlot].SuperAwakeningLevel)"
                        MoveLevelChanged="(newLevel) => { State.Allies[_gridModalSlot].MoveLevel = Math.Min(newLevel, 5); State.Allies[_gridModalSlot].SuperAwakeningLevel = newLevel > 5 ? newLevel - 5 : 0; StateHasChanged(); }"
                        OnGridChanged="StateHasChanged" />
     }
@@ -2059,6 +2059,32 @@
 
             State.UpdateCircleAllyCounts();
 
+            StateHasChanged();
+        }
+    }
+
+    private void OnAllyMoveLevelChanged(CombatantState ally, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            ally.MoveLevel = Math.Clamp(val, 1, 5);
+            if (ally.MoveLevel < 5)
+            {
+                ally.SuperAwakeningLevel = 0;
+            }
+            StateHasChanged();
+        }
+    }
+
+    private void OnAllySaChanged(CombatantState ally, ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out int val))
+        {
+            ally.SuperAwakeningLevel = Math.Clamp(val, 0, 5);
+            if (ally.SuperAwakeningLevel > 0 && ally.MoveLevel < 5)
+            {
+                ally.MoveLevel = 5;
+            }
             StateHasChanged();
         }
     }

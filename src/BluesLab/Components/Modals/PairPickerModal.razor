@@ -85,9 +85,9 @@
                                         <img src="@pair.IconUrl" alt="@dName" class="rounded-circle border border-warning" width="48" height="48" onerror="this.src='img/trainers/unknown.png';" />
                                         <div class="flex-grow-1 overflow-hidden">
                                             <div class="fw-bold text-truncate text-light small" title="@dName">@dName</div>
-                                            <div class="d-flex align-items-center gap-1 mt-1 flex-wrap">
+                                            <div class="d-flex align-items-center gap-1.5 mt-1 flex-wrap">
                                                 <span class="badge type-badge type-@pair.Type.ToLowerInvariant()">@Loc.GetTypeName(pair.Type)</span>
-                                                <span class="badge bg-dark border border-secondary text-secondary small">@Loc.GetRoleName(pair.Role)</span>
+                                                <img src="@LocalizationService.GetRoleIcon(pair.Role)" alt="@Loc.GetRoleName(pair.Role)" title="@Loc.GetRoleName(pair.Role)" width="20" height="20" style="object-fit: contain;" />
                                                 @if (pair.HasSuperAwakening)
                                                 {
                                                     <span class="badge bg-danger" title="Super Awakening">SA</span>
@@ -95,12 +95,6 @@
                                                 @if (pair.HasMega)
                                                 {
                                                     <span class="badge bg-warning text-dark" title="Mega Evolution">M</span>
-                                                }
-                                                @if (!string.IsNullOrEmpty(pair.ReleaseDate))
-                                                {
-                                                    <span class="badge bg-dark border border-secondary text-muted ms-auto small" style="font-size: 0.68rem;" title="@Loc.T("release_date", "Release Date"): @pair.ReleaseDate">
-                                                        <i class="bi bi-calendar3 me-1"></i>@pair.ReleaseDate
-                                                    </span>
                                                 }
                                             </div>
                                         </div>
