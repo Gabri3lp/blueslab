@@ -1,6 +1,6 @@
 // Persistent CacheStorage & In-Memory Preloader for Blues Lab database and locales
 window.bluesLabCache = {
-    CACHE_NAME: 'blueslab-data-v273b',
+    CACHE_NAME: 'blueslab-data-v273c',
     _inMemoryCache: new Map(),
 
     // Checks if CacheStorage API is available
@@ -59,9 +59,9 @@ window.bluesLabCache = {
                 } catch (e) {}
             }
 
-            // 2. Fallback to network fetch
+            // 2. Fallback to network fetch (bypassing stale HTTP disk cache)
             try {
-                const response = await fetch(fullUrl);
+                const response = await fetch(fullUrl, { cache: 'no-cache' });
                 if (response && response.ok) {
                     const text = await response.text();
                     const trimmed = (text || '').trim();
@@ -102,7 +102,7 @@ window.bluesLabCache = {
 
         if (!this.isSupported()) {
             try {
-                const fallback = await fetch(fullUrl);
+                const fallback = await fetch(fullUrl, { cache: 'no-cache' });
                 if (fallback && fallback.ok) {
                     const text = await fallback.text();
                     const trimmed = text.trim();
@@ -135,7 +135,7 @@ window.bluesLabCache = {
             }
 
             // Not in cache (or evicted), fetch from network and store
-            const networkResponse = await fetch(fullUrl);
+            const networkResponse = await fetch(fullUrl, { cache: 'no-cache' });
             if (networkResponse && networkResponse.ok) {
                 const text = await networkResponse.text();
                 const trimmed = text.trim();
@@ -161,7 +161,7 @@ window.bluesLabCache = {
         } catch (err) {
             console.warn('[BluesLab Cache] Cache fetch failed for', fullUrl, err);
             try {
-                const fallback = await fetch(fullUrl);
+                const fallback = await fetch(fullUrl, { cache: 'no-cache' });
                 if (fallback && fallback.ok) {
                     const fbText = await fallback.text();
                     const trimmedFb = fbText.trim();

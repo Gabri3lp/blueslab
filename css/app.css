@@ -193,6 +193,8 @@ input.form-control:focus {
 .move-card {
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     border-radius: 8px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(20, 24, 30, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.5);
 }
 .move-card:hover {
     box-shadow: 0 4px 14px rgba(0,0,0,0.4);
@@ -216,8 +218,8 @@ input.form-control:focus {
 .move-card-steel { background: linear-gradient(135deg, rgba(184, 184, 208, 0.22) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(184, 184, 208, 0.45) !important; }
 .move-card-fairy { background: linear-gradient(135deg, rgba(238, 153, 172, 0.22) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(238, 153, 172, 0.45) !important; }
 .move-card-stellar { background: linear-gradient(135deg, rgba(64, 196, 255, 0.25) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(64, 196, 255, 0.5) !important; }
-.move-card-trainer { background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(56, 189, 248, 0.5) !important; }
-.move-card-trainer:hover { border-color: rgba(56, 189, 248, 0.8) !important; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25); }
+.move-card-trainer, .move-card-none { background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(20, 24, 30, 0.95) 100%) !important; border: 1px solid rgba(56, 189, 248, 0.5) !important; }
+.move-card-trainer:hover, .move-card-none:hover { border-color: rgba(56, 189, 248, 0.8) !important; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25); }
 
 /* Compact Sync Buff Input in Side Headers */
 .sync-buff-input {
