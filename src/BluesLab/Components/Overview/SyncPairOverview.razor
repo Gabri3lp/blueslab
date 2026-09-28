@@ -700,22 +700,7 @@
             return move.Type;
         }
 
-        if (Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count)
-        {
-            var form = Pair.Variations[Ally.FormIndex - 1];
-            if (form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) || string.Equals(form.Type, "Stellar", StringComparison.OrdinalIgnoreCase))
-            {
-                if (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase) || move.IsSync)
-                {
-                    return "Stellar";
-                }
-            }
-            else if (!string.IsNullOrEmpty(form.Type))
-            {
-                return form.Type;
-            }
-        }
-        return move.Type;
+        return CalcService.GetEffectiveMoveType(Pair, move, Ally.FormIndex);
     }
 
     private (int ScaledPower, int MultPct) GetEffectiveMovePower(MoveItem move, int effectiveLvl)
@@ -723,16 +708,40 @@
         int rawPwr = int.TryParse(move.Power, out int rp) ? rp : 0;
         if (rawPwr <= 0) return (0, 100);
 
-        bool isStellarForm = Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count &&
-            (Pair.Variations[Ally.FormIndex - 1].FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) ||
-             string.Equals(Pair.Variations[Ally.FormIndex - 1].Type, "Stellar", StringComparison.OrdinalIgnoreCase));
+        bool isTeraForm = false;
+        bool isStellarForm = false;
+        if (Ally.FormIndex > 0 && Pair?.Variations != null && Ally.FormIndex <= Pair.Variations.Count)
+        {
+            var form = Pair.Variations[Ally.FormIndex - 1];
+            isStellarForm = form.FormName.Contains("Stellar", StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(form.Type, "Stellar", StringComparison.OrdinalIgnoreCase);
+            isTeraForm = isStellarForm ||
+                         form.FormId == 7 ||
+                         form.TerastalMoveId > 0 ||
+                         string.Equals(form.FormName, "Tera", StringComparison.OrdinalIgnoreCase) ||
+                         form.FormName.Contains("S-Tera", StringComparison.OrdinalIgnoreCase);
+        }
 
         if (isStellarForm && !move.IsSync && (move.Name.Contains("Tera Starstorm", StringComparison.OrdinalIgnoreCase) || move.Name.Contains("Kaleidoscopic", StringComparison.OrdinalIgnoreCase)))
         {
             rawPwr *= 2;
         }
 
-        int scaledPwr = CalcService.CalcPower(rawPwr, effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync, isMax: move.IsMax);
+        double teraIncrement = 1.0;
+        if (isTeraForm && MoveScopeRules.AllowsTeraBoost(move))
+        {
+            string moveType = GetEffectiveMoveType(move);
+            if (isStellarForm && string.Equals(moveType, "Stellar", StringComparison.OrdinalIgnoreCase))
+            {
+                teraIncrement = 2.0;
+            }
+            else if (string.Equals(moveType, EffectivePairType, StringComparison.OrdinalIgnoreCase))
+            {
+                teraIncrement = 1.5;
+            }
+        }
+
+        int scaledPwr = CalcService.CalcPower(rawPwr, effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync, increment: teraIncrement, isMax: move.IsMax);
         int multPct = CalcService.GetMoveMultiplier(effectiveLvl, Pair?.Role ?? string.Empty, move.IsSync, isMax: move.IsMax);
         return (scaledPwr, multPct);
     }

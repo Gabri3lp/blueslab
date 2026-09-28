@@ -1445,9 +1445,11 @@ public class DamageCalculatorService
 
         // Tera Boost (does not apply to Sync Moves)
         bool isTeraForm = ally.FormIndex > 0 && ally.FormIndex <= pair.Variations.Count &&
-            (pair.Variations[ally.FormIndex - 1].FormName?.Contains("Tera", StringComparison.OrdinalIgnoreCase) == true ||
-             pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true ||
-             pair.Variations[ally.FormIndex - 1].TerastalMoveId > 0);
+            (pair.Variations[ally.FormIndex - 1].FormId == 7 ||
+             pair.Variations[ally.FormIndex - 1].TerastalMoveId > 0 ||
+             string.Equals(pair.Variations[ally.FormIndex - 1].FormName, "Tera", StringComparison.OrdinalIgnoreCase) ||
+             pair.Variations[ally.FormIndex - 1].FormName?.Contains("S-Tera", StringComparison.OrdinalIgnoreCase) == true ||
+             pair.Variations[ally.FormIndex - 1].FormName?.Contains("Stellar", StringComparison.OrdinalIgnoreCase) == true);
 
         if (isTeraForm && MoveScopeRules.AllowsTeraBoost(move))
         {
