@@ -36,9 +36,15 @@ max_custom_move_id = 927300
 max_custom_passive_id = 92730000
 max_custom_ability_id = 9273000000
 
+NEW_273_FILES = {
+    "10196110000.json", "10195100000.json", "10192400000.json",
+    "10193400000.json", "10221000000.json", "10224000000.json",
+    "10223000000.json", "10012000002.json", "10002410001.json"
+}
+
 pairs_dir = os.path.join(ROOT, "data", "pairs")
 for fn in os.listdir(pairs_dir):
-    if not fn.endswith(".json"):
+    if not fn.endswith(".json") or fn in NEW_273_FILES:
         continue
     with open(os.path.join(pairs_dir, fn), "r", encoding="utf-8") as f:
         pdata = json.load(f)
@@ -58,10 +64,13 @@ for fn in os.listdir(pairs_dir):
 def get_or_create_move_id(name, desc, is_trainer=False, is_sync=False):
     global max_custom_move_id
     name_clean = name.replace("\n", " ").strip()
-    if not is_trainer and not is_sync and name_clean in move_name_to_id:
+    if not is_sync and name_clean in move_name_to_id:
         mid, ex_desc = move_name_to_id[name_clean]
-        # Standard Pokemon moves like Fire Spin, Sunny Day, Protect, Potion, Surf, Rain Dance, etc.
-        if ex_desc.replace("\n", " ").strip() == desc.replace("\n", " ").strip() or mid < 1000:
+        # Standard Pokemon moves or shared Trainer item moves (Potion, X Evasion, X Attack, Hoenn Solidarity/Analysis)
+        if (
+            not is_trainer
+            and (ex_desc.replace("\n", " ").strip() == desc.replace("\n", " ").strip() or mid < 1000)
+        ) or name_clean in ("Potion", "X Attack", "X Evasion", "Hoenn Solidarity", "Hoenn Analysis"):
             return mid
     max_custom_move_id += 1
     mid = max_custom_move_id
@@ -446,11 +455,7 @@ def parse_single_move(m_block, slot_num, is_sync=False):
                 elif p.startswith("Max uses:"):
                     uv = p.split("Max uses:", 1)[1].strip()
                     max_uses = 0 if uv == "--" else int(uv)
-    is_trainer = (user == "Trainer")
-    if is_trainer and m_type == "Trainer":
-        pass
-    elif not is_trainer and m_type == "Trainer":
-        m_type = "None"
+    is_trainer = (user == "Trainer") or (m_type == "Trainer")
     mid = get_or_create_move_id(name, desc, is_trainer=is_trainer, is_sync=is_sync)
     return {
         "id": mid,
