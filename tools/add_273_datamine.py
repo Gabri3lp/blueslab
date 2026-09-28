@@ -625,7 +625,7 @@ for tsec in trainer_sections:
         variations_list.append({
             "formId": 7,
             "formName": "Tera",
-            "type": pkmn_type,
+            "type": "",
             "actorId": meta["pokemonActorId"],
             "statMultiplier": {
                 "atk": 1.0,
@@ -642,7 +642,7 @@ for tsec in trainer_sections:
         variations_list.append({
             "formId": 1,
             "formName": "Mega",
-            "type": pkmn_type,
+            "type": "",
             "actorId": meta["pokemonActorId"],
             "statMultiplier": {
                 "atk": 1.0,
