@@ -207,6 +207,7 @@ for line in lines:
             if m:
                 w, hp, atk, df, spa, spd, spe = m.groups()
                 info = LEADERS_INFO.get(current_fight["leader"], {})
+                current_fight["title"] = f"vs. {current_fight['leader']} & {info.get('pokemon', 'Boss')} ({w})"
                 current_fight["opponents"].append({
                     "slotIndex": 1, # Center
                     "trainerName": current_fight["leader"],

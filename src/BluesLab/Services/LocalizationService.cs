@@ -131,9 +131,9 @@ public class LocalizationService
             try
             {
                 common = await FetchJsonWithCacheAsync($"locales/common_{lang}.json");
-                if (common != null)
+                if (common != null && CurrentLanguage == lang)
                 {
-                    _strings = common;
+                    _strings = new Dictionary<string, string>(common, StringComparer.OrdinalIgnoreCase);
                     IsLoaded = true;
                     OnLanguageChanged?.Invoke();
                 }
@@ -144,7 +144,7 @@ public class LocalizationService
             }
 
             // Stage 2: Load large game dictionary (~5.4 MB) in background without blocking UI
-            _ = LoadGameStringsAsync(lang, common);
+            _ = LoadGameStringsAsync(lang, common, deferDelay: !persist);
         }
 
         if (persist)
@@ -162,26 +162,40 @@ public class LocalizationService
         OnLanguageChanged?.Invoke();
     }
 
-    private async Task LoadGameStringsAsync(string lang, Dictionary<string, string>? common)
+    private async Task LoadGameStringsAsync(string lang, Dictionary<string, string>? common, bool deferDelay = false)
     {
-        // Defer heavy 5.4MB dictionary parsing so it never blocks startup UI rendering
-        await Task.Delay(1000);
+        if (deferDelay)
+        {
+            // Defer heavy 5.4MB dictionary parsing slightly on startup so it never blocks first UI paint
+            await Task.Delay(150);
+        }
+        else
+        {
+            await Task.Yield();
+        }
+
+        if (CurrentLanguage != lang) return;
+
         try
         {
             var data = await FetchJsonWithCacheAsync($"locales/{lang}.json");
             if (data != null)
             {
+                var merged = new Dictionary<string, string>(data, StringComparer.OrdinalIgnoreCase);
                 if (common != null)
                 {
                     foreach (var (k, v) in common)
                     {
-                        data[k] = v;
+                        merged[k] = v;
                     }
                 }
-                _strings = data;
-                _cache[lang] = data;
-                IsLoaded = true;
-                OnLanguageChanged?.Invoke();
+                _cache[lang] = merged;
+                if (CurrentLanguage == lang)
+                {
+                    _strings = merged;
+                    IsLoaded = true;
+                    OnLanguageChanged?.Invoke();
+                }
             }
         }
         catch (Exception ex)

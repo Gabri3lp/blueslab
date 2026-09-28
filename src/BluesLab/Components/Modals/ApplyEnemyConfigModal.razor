@@ -70,12 +70,12 @@
                             <div class="form-check mb-0">
                                 <input class="form-check-input" type="checkbox" id="chkApplyDebuffs" @bind="_applyDebuffs" />
                                 <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyDebuffs" style="font-size: 0.78rem;">
-                                    <i class="bi bi-graph-down-arrow text-danger me-1"></i>Stat Debuffs / Stages (-6 to +6)
+                                    <i class="bi bi-graph-down-arrow text-danger me-1"></i>@Loc.T("debuffs", "Debuffs") (-6 ~ +6)
                                 </label>
                             </div>
                             <div class="btn-group btn-group-sm" style="display: @(_applyDebuffs ? "inline-flex" : "none");">
-                                <button class="btn btn-outline-danger py-0 px-1" style="font-size: 0.65rem;" @onclick="() => SetAllDebuffs(-6)">All -6</button>
-                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => SetAllDebuffs(0)">Reset 0</button>
+                                <button class="btn btn-outline-danger py-0 px-1" style="font-size: 0.65rem;" @onclick="() => SetAllDebuffs(-6)">@Loc.T("set_all_debuffs_6", "All -6")</button>
+                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => SetAllDebuffs(0)">@Loc.T("reset_to_zero", "Reset 0")</button>
                             </div>
                         </div>
                         <div class="card-body p-2" style="opacity: @(_applyDebuffs ? "1" : "0.4"); pointer-events: @(_applyDebuffs ? "auto" : "none");">
@@ -109,19 +109,19 @@
                             <div class="form-check mb-0">
                                 <input class="form-check-input" type="checkbox" id="chkApplyMitigations" @bind="_applyMitigations" />
                                 <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyMitigations" style="font-size: 0.78rem;">
-                                    <i class="bi bi-shield-shaded text-secondary me-1"></i>Debuff Mitigations (0-9)
+                                    <i class="bi bi-shield-shaded text-secondary me-1"></i>@Loc.T("def_mit", "Def Mit:") / @Loc.T("spd_mit", "SpD Mit:") (0-9)
                                 </label>
                             </div>
                             <div class="btn-group btn-group-sm" style="display: @(_applyMitigations ? "inline-flex" : "none");">
-                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => { _mitDef = 5; _mitSpd = 5; }">Default 5</button>
-                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => { _mitDef = 0; _mitSpd = 0; }">None 0</button>
+                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => { _mitDef = 5; _mitSpd = 5; }">5</button>
+                                <button class="btn btn-outline-secondary py-0 px-1" style="font-size: 0.65rem;" @onclick="() => { _mitDef = 0; _mitSpd = 0; }">0</button>
                             </div>
                         </div>
                         <div class="card-body p-2" style="opacity: @(_applyMitigations ? "1" : "0.4"); pointer-events: @(_applyMitigations ? "auto" : "none");">
                             <div class="row g-2">
                                 <div class="col-6">
                                     <div class="d-flex align-items-center justify-content-between p-1 rounded bg-black bg-opacity-25 border border-secondary px-2">
-                                        <span class="text-secondary fw-bold" style="font-size: 0.75rem;">Def Mitigation:</span>
+                                        <span class="text-secondary fw-bold" style="font-size: 0.75rem;">@Loc.T("def_mit", "Def Mit:")</span>
                                         <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace"
                                                 style="width: 50px; font-size: 0.75rem; height: 24px;"
                                                 value="@_mitDef"
@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="d-flex align-items-center justify-content-between p-1 rounded bg-black bg-opacity-25 border border-secondary px-2">
-                                        <span class="text-secondary fw-bold" style="font-size: 0.75rem;">SpD Mitigation:</span>
+                                        <span class="text-secondary fw-bold" style="font-size: 0.75rem;">@Loc.T("spd_mit", "SpD Mit:")</span>
                                         <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-1 text-center font-monospace"
                                                 style="width: 50px; font-size: 0.75rem; height: 24px;"
                                                 value="@_mitSpd"
@@ -157,49 +157,49 @@
                             <div class="form-check mb-0">
                                 <input class="form-check-input" type="checkbox" id="chkApplyStatus" @bind="_applyStatus" />
                                 <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyStatus" style="font-size: 0.78rem;">
-                                    <i class="bi bi-activity text-warning me-1"></i>Status Condition & Interference
+                                    <i class="bi bi-activity text-warning me-1"></i>@Loc.T("status", "Status")
                                 </label>
                             </div>
                             <button class="btn btn-outline-secondary btn-sm py-0 px-1" style="font-size: 0.65rem; display: @(_applyStatus ? "inline-block" : "none");" @onclick="ClearStatusAndInterference">
-                                Clear All
+                                @Loc.T("clear_all", "Clear All")
                             </button>
                         </div>
                         <div class="card-body p-2" style="opacity: @(_applyStatus ? "1" : "0.4"); pointer-events: @(_applyStatus ? "auto" : "none");">
                             <div class="row g-2 align-items-center">
                                 <div class="col-12 col-md-5">
-                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">Primary Status:</label>
+                                    <label class="text-muted mb-0" style="font-size: 0.68rem;">@Loc.T("status_label", "Status:")</label>
                                     <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2" style="font-size: 0.75rem; height: 26px;" @bind="_statusCondition">
-                                        <option value="">None</option>
-                                        <option value="burned">Burned 🔥</option>
-                                        <option value="paralyzed">Paralyzed ⚡</option>
-                                        <option value="poisoned">Poisoned ☠️</option>
-                                        <option value="badly poisoned">Badly Poisoned 🟣</option>
-                                        <option value="asleep">Asleep 💤</option>
-                                        <option value="frozen">Frozen ❄️</option>
+                                        <option value="">@Loc.T("none", "None")</option>
+                                        <option value="burned">@Loc.T("abnormal_3", "Burned") 🔥</option>
+                                        <option value="paralyzed">@Loc.T("abnormal_4", "Paralyzed") ⚡</option>
+                                        <option value="poisoned">@Loc.T("abnormal_1", "Poisoned") ☠️</option>
+                                        <option value="badly poisoned">@Loc.T("abnormal_2", "Badly Poisoned") 🟣</option>
+                                        <option value="asleep">@Loc.T("abnormal_6", "Asleep") 💤</option>
+                                        <option value="frozen">@Loc.T("abnormal_5", "Frozen") ❄️</option>
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-7">
-                                    <label class="text-muted mb-0 d-block" style="font-size: 0.68rem;">Interference & Breaks:</label>
+                                    <label class="text-muted mb-0 d-block" style="font-size: 0.68rem;">@Loc.T("status", "Status"):</label>
                                     <div class="d-flex flex-wrap gap-1">
                                         <button class="btn btn-sm py-0 px-2 @(_confused ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                                 style="font-size: 0.7rem; height: 24px;" @onclick="() => _confused = !_confused">
-                                            <img src="img/battle/SCTP_001.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Confused
+                                            <img src="img/battle/SCTP_001.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />@Loc.T("confused", "Confused")
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(_trapped ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                                 style="font-size: 0.7rem; height: 24px;" @onclick="() => _trapped = !_trapped">
-                                            <img src="img/battle/SCTP_004.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Trapped
+                                            <img src="img/battle/SCTP_004.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />@Loc.T("trapped", "Trapped")
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(_flinching ? "btn-warning fw-bold text-dark" : "btn-outline-secondary text-light")"
                                                 style="font-size: 0.7rem; height: 24px;" @onclick="() => _flinching = !_flinching">
-                                            <img src="img/battle/SCTP_002.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Flinch
+                                            <img src="img/battle/SCTP_002.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />@Loc.T("flinching", "Flinch")
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(_physicalBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")"
                                                 style="font-size: 0.7rem; height: 24px;" @onclick="() => _physicalBreak = !_physicalBreak">
-                                            <img src="img/battle/break_phys.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Phys Break
+                                            <img src="img/battle/break_phys.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />@Loc.T("phys_break", "Phys Break")
                                         </button>
                                         <button class="btn btn-sm py-0 px-2 @(_specialBreak ? "btn-pink fw-bold" : "btn-outline-secondary text-light")"
                                                 style="font-size: 0.7rem; height: 24px;" @onclick="() => _specialBreak = !_specialBreak">
-                                            <img src="img/battle/break_spec.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />Spec Break
+                                            <img src="img/battle/break_spec.png" alt="" style="height: 14px; width: 14px; object-fit: contain;" class="me-1" />@Loc.T("spec_break", "Spec Break")
                                         </button>
                                     </div>
                                 </div>
@@ -213,11 +213,11 @@
                             <div class="form-check mb-0">
                                 <input class="form-check-input" type="checkbox" id="chkApplyRebuffs" @bind="_applyRebuffs" />
                                 <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyRebuffs" style="font-size: 0.78rem;">
-                                    <i class="bi bi-shield-slash text-danger me-1"></i>Type Rebuffs (-3 to +3)
+                                    <i class="bi bi-shield-slash text-danger me-1"></i>@Loc.T("rebuff", "Type Rebuffs") (-3 ~ +3)
                                 </label>
                             </div>
                             <button class="btn btn-outline-secondary btn-sm py-0 px-1" style="font-size: 0.65rem; display: @(_applyRebuffs ? "inline-block" : "none");" @onclick="ClearAllRebuffs">
-                                Clear Rebuffs
+                                @Loc.T("clear_all", "Clear Rebuffs")
                             </button>
                         </div>
                         <div class="card-body p-2" style="opacity: @(_applyRebuffs ? "1" : "0.4"); pointer-events: @(_applyRebuffs ? "auto" : "none");">
@@ -225,7 +225,7 @@
                                 <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2" style="width: 140px; font-size: 0.75rem; height: 26px;" @bind="_selectedRebuffType">
                                     @foreach (var t in CombatantState.AllTypes)
                                     {
-                                        <option value="@t">@t</option>
+                                        <option value="@t">@Loc.GetTypeName(t)</option>
                                     }
                                 </select>
                                 <div class="btn-group btn-group-sm">
@@ -249,23 +249,23 @@
                             @if (_rebuffs.Any(kv => kv.Value != 0))
                             {
                                 <div class="d-flex flex-wrap gap-1 align-items-center pt-1 border-top border-secondary border-opacity-50">
-                                    <span class="text-muted small me-1" style="font-size: 0.7rem;">Active:</span>
+                                    <span class="text-muted small me-1" style="font-size: 0.7rem;">@Loc.T("selected", "Active"):</span>
                                     @foreach (var (t, val) in _rebuffs.Where(kv => kv.Value != 0))
                                     {
                                         string tName = t;
                                         int rVal = val;
                                         <span class="badge type-badge type-@tName.ToLowerInvariant() d-inline-flex align-items-center gap-1 shadow-sm py-0 px-1" style="font-size: 0.7rem;">
                                             <img src="@CombatantState.GetTypeIcon(tName)" alt="" width="12" height="12" />
-                                            <span>@tName</span>
+                                            <span>@Loc.GetTypeName(tName)</span>
                                             <b class="text-warning">@(rVal > 0 ? $"+{rVal}" : rVal.ToString())</b>
-                                            <i class="bi bi-x ms-1 cursor-pointer" title="Remove" @onclick="() => _rebuffs[tName] = 0"></i>
+                                            <i class="bi bi-x ms-1 cursor-pointer" title="@Loc.T("remove_pair", "Remove")" @onclick="() => _rebuffs[tName] = 0"></i>
                                         </span>
                                     }
                                 </div>
                             }
                             else
                             {
-                                <div class="text-muted" style="font-size: 0.7rem;">No active type rebuffs (all 0)</div>
+                                <div class="text-muted" style="font-size: 0.7rem;">@Loc.T("none", "None") (0)</div>
                             }
                         </div>
                     </div>
@@ -276,21 +276,21 @@
                             <div class="form-check mb-0">
                                 <input class="form-check-input" type="checkbox" id="chkApplyWeakness" @bind="_applyWeakness" />
                                 <label class="form-check-label fw-bold text-light cursor-pointer" for="chkApplyWeakness" style="font-size: 0.78rem;">
-                                    <i class="bi bi-bullseye text-danger me-1"></i>Weakness Type
+                                    <i class="bi bi-bullseye text-danger me-1"></i>@Loc.T("weakness", "Weakness")
                                 </label>
                             </div>
                         </div>
                         <div class="card-body p-2" style="opacity: @(_applyWeakness ? "1" : "0.4"); pointer-events: @(_applyWeakness ? "auto" : "none");">
                             <div class="d-flex align-items-center gap-2">
-                                <label class="text-muted mb-0" style="font-size: 0.75rem;">Set Weakness:</label>
+                                <label class="text-muted mb-0" style="font-size: 0.75rem;">@Loc.T("weakness_label", "Weakness:")</label>
                                 <select class="form-select form-select-sm bg-dark text-light border-secondary py-0 px-2" style="width: 160px; font-size: 0.75rem; height: 26px;" @bind="_weakness">
                                     @foreach (var t in CombatantState.AllTypes)
                                     {
-                                        <option value="@t">@t</option>
+                                        <option value="@t">@Loc.GetTypeName(t)</option>
                                     }
                                 </select>
                                 <span class="badge type-badge type-@_weakness.ToLowerInvariant() py-1 px-2" style="font-size: 0.75rem;">
-                                    <img src="@CombatantState.GetTypeIcon(_weakness)" alt="" width="14" height="14" class="me-1" />@_weakness
+                                    <img src="@CombatantState.GetTypeIcon(_weakness)" alt="" width="14" height="14" class="me-1" />@Loc.GetTypeName(_weakness)
                                 </span>
                             </div>
                         </div>

@@ -56,7 +56,7 @@
                     {
                         <div class="text-center py-5">
                             <div class="spinner-border text-info mb-2" role="status"></div>
-                            <div class="small text-muted">Calculating damage difference...</div>
+                            <div class="small text-muted">@Loc.T("calculating_diff", "Calculating damage difference...")</div>
                         </div>
                     }
                     else if (_savedTeams.Count == 0)
@@ -81,7 +81,7 @@
                                 <thead class="table-secondary text-light">
                                     <tr>
                                         <th class="text-start" style="width: 25%;">@Loc.T("moves", "Move")</th>
-                                        <th style="width: 25%;" class="text-warning">Config A (Current)</th>
+                                        <th style="width: 25%;" class="text-warning">@Loc.T("current_team", "Config A (Current)")</th>
                                         <th style="width: 25%;" class="text-info">Config B (@_summary.ConfigBName)</th>
                                         <th style="width: 25%;">@Loc.T("diff", "Difference (B vs A)")</th>
                                     </tr>
@@ -99,10 +99,10 @@
                                         <tr>
                                             <td class="text-start">
                                                 <div class="d-flex align-items-center gap-1">
-                                                    <span class="badge type-badge type-@m.MoveType.ToLowerInvariant() py-0" style="font-size: 0.68rem;">@m.MoveType</span>
+                                                    <span class="badge type-badge type-@m.MoveType.ToLowerInvariant() py-0" style="font-size: 0.68rem;">@Loc.GetTypeName(m.MoveType)</span>
                                                     @if (isSync)
                                                     {
-                                                        <span class="badge bg-purple py-0" style="font-size: 0.68rem;">Sync</span>
+                                                        <span class="badge bg-purple py-0" style="font-size: 0.68rem;">@Loc.T("sync", "Sync")</span>
                                                     }
                                                     else if (isMax)
                                                     {

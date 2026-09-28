@@ -118,7 +118,7 @@
                     @if (Pair.HasEx && !string.IsNullOrEmpty(Pair.ExRole))
                     {
                         <button class="btn btn-sm @(Ally.HasExRole ? "btn-indigo" : "btn-outline-secondary") py-0 px-2" style="height: 28px; font-size: 0.8rem;" @onclick="() => { Ally.HasExRole = !Ally.HasExRole; StateHasChanged(); }">
-                            EX Role
+                            @Loc.T("ex_role", "EX Role")
                         </button>
                     }
                 </div>
@@ -200,15 +200,11 @@
                         }
                     </div>
 
-                    <!-- Right Side: SA Badge & Detailed Breakdown Button -->
+                    <!-- Right Side: Detailed Breakdown Button -->
                     <div class="d-flex align-items-center gap-1.5 ms-auto">
-                        @if (isSaActive)
-                        {
-                            <span class="badge bg-danger text-light py-1 px-1.5" style="font-size: 0.68rem; white-space: nowrap;">SA +10% Active</span>
-                        }
                         <button class="btn btn-sm btn-outline-secondary d-flex align-items-center justify-content-center text-light"
                                 style="height: 38px; width: 38px; min-width: 38px;"
-                                title="@(ShowDetailedStats ? "Hide Breakdown" : "Detailed Breakdown")"
+                                title="@(ShowDetailedStats ? Loc.T("hide_breakdown", "Hide Breakdown") : Loc.T("detailed_breakdown", "Detailed Breakdown"))"
                                 @onclick="() => ShowDetailedStats = !ShowDetailedStats">
                             <i class="bi @(ShowDetailedStats ? "bi-chevron-up" : "bi-chevron-down")" style="font-size: 0.95rem;"></i>
                         </button>
@@ -222,19 +218,19 @@
                         <table class="table table-dark table-sm table-bordered text-center align-middle mb-0" style="font-size: 0.78rem;">
                             <thead>
                                 <tr class="text-secondary small">
-                                    <th class="text-start">Category</th>
-                                    <th style="width: 15%;">HP</th>
-                                    <th style="width: 15%;">Attack</th>
-                                    <th style="width: 15%;">Defense</th>
-                                    <th style="width: 15%;">Sp. Atk</th>
-                                    <th style="width: 15%;">Sp. Def</th>
-                                    <th style="width: 15%;">Speed</th>
+                                    <th class="text-start">@Loc.T("category", "Category")</th>
+                                    <th style="width: 15%;">@Loc.T("stat_1", "HP")</th>
+                                    <th style="width: 15%;">@Loc.T("stat_2", "Attack")</th>
+                                    <th style="width: 15%;">@Loc.T("stat_3", "Defense")</th>
+                                    <th style="width: 15%;">@Loc.T("stat_4", "Sp. Atk")</th>
+                                    <th style="width: 15%;">@Loc.T("stat_5", "Sp. Def")</th>
+                                    <th style="width: 15%;">@Loc.T("stat_6", "Speed")</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="text-start text-muted">
-                                        Base Stat (Lv. @Ally.CharLevel)
+                                        @Loc.T("base_stat", "Base Stat") (Lv. @Ally.CharLevel)
                                         @if (isSaActive)
                                         {
                                             <span class="badge bg-danger text-light ms-1 py-0 px-1" style="font-size: 0.6rem;">+10% SA</span>
@@ -258,7 +254,7 @@
                                     }
                                 </tr>
                                 <tr>
-                                    <td class="text-start text-muted">Potential + EX Role</td>
+                                    <td class="text-start text-muted">@Loc.T("potential_ex_role", "Potential + EX Role")</td>
                                     @foreach (var s in statsKeys)
                                     {
                                         int bonus = pot.GetValueOrDefault(s, 0) + ex.GetValueOrDefault(s, 0);
@@ -268,7 +264,7 @@
                                 @if (currentVariation != null)
                                 {
                                     <tr>
-                                        <td class="text-start text-muted">Form Multiplier (@currentVariation.FormName)</td>
+                                        <td class="text-start text-muted">@Loc.T("form_multiplier", "Form Multiplier") (@currentVariation.FormName)</td>
                                         @foreach (var s in statsKeys)
                                         {
                                             double mult = currentVariation.StatMultiplier.GetValueOrDefault(s, 1.0);
@@ -277,7 +273,7 @@
                                     </tr>
                                 }
                                 <tr>
-                                    <td class="text-start text-muted">Sync Grid Bonus</td>
+                                    <td class="text-start text-muted">@Loc.T("sync_grid_bonus", "Sync Grid Bonus")</td>
                                     @foreach (var s in statsKeys)
                                     {
                                         int gBonus = 0;
@@ -292,7 +288,7 @@
                                 @if (Ally.ThemeSkillsActive)
                                 {
                                     <tr>
-                                        <td class="text-start text-muted">Theme Skills</td>
+                                        <td class="text-start text-muted">@Loc.T("theme_skills", "Theme Skills")</td>
                                         @foreach (var s in statsKeys)
                                         {
                                             int tBonus = CalcService.GetThemeSkillBonus(s, Ally, team: null, moveType: Pair.Type);
@@ -301,7 +297,7 @@
                                     </tr>
                                 }
                                 <tr class="table-active fw-bold">
-                                    <td class="text-start text-warning">Total Stat</td>
+                                    <td class="text-start text-warning">@Loc.T("total_stat", "Total Stat")</td>
                                     @foreach (var s in statsKeys)
                                     {
                                         int rawBase = Pair.Stats.GetStatAtLevel(s, lvl);
@@ -436,26 +432,26 @@
                                         }
                                         else if (move.IsTerastalMove)
                                         {
-                                            <span class="badge bg-info text-dark py-0 px-1" style="font-size: 0.7rem;">Terastal Move</span>
+                                            <span class="badge bg-info text-dark py-0 px-1" style="font-size: 0.7rem;">@Loc.T("terastal_move", "Terastal Move")</span>
                                             @if (currentVar == null || currentVar.TerastalMoveId != move.Id)
                                             {
-                                                <span class="badge bg-secondary text-light py-0 px-1" style="font-size: 0.65rem;" title="Requires Sync Terastallization to use">Locked</span>
+                                                <span class="badge bg-secondary text-light py-0 px-1" style="font-size: 0.65rem;" title="Requires Sync Terastallization to use">@Loc.T("locked", "Locked")</span>
                                             }
                                         }
                                     </div>
                                     <div class="d-flex gap-1 align-items-center mt-0.5 flex-wrap">
                                         @if (move.IsTrainerMove)
                                         {
-                                            <span class="badge py-0 px-1" style="background-color: #38bdf8; color: #021427; font-size: 0.7rem; font-weight: 700;">Trainer Move</span>
+                                            <span class="badge py-0 px-1" style="background-color: #38bdf8; color: #021427; font-size: 0.7rem; font-weight: 700;">@Loc.T("trainer_move", "Trainer Move")</span>
                                         }
                                         else
                                         {
                                             <span class="badge type-badge type-@moveType.ToLowerInvariant() py-0 px-1" style="font-size: 0.7rem;">@Loc.GetTypeName(moveType)</span>
-                                            <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@move.Category</span>
+                                            <span class="badge bg-secondary py-0 px-1" style="font-size: 0.7rem;">@Loc.T(move.Category.ToLowerInvariant(), move.Category)</span>
                                         }
                                         @if (!string.IsNullOrEmpty(moveTarget))
                                         {
-                                            <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@moveTarget</span>
+                                            <span class="badge bg-dark border border-secondary text-light opacity-75 py-0 px-1" style="font-size: 0.7rem;">@LocalizeMoveTarget(moveTarget)</span>
                                         }
                                     </div>
                                 </div>
@@ -480,11 +476,11 @@
                                         <div style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.75);">
                                             @if (move.IsMax)
                                             {
-                                                <span>Acc: <b class="text-light">-</b> | Gauge: <b class="text-light">-</b> | @Loc.T("damage_move_uses", "Uses"): <b style="color: #ff79b0;">1</b></span>
+                                                <span>@Loc.T("accuracy", "Acc"): <b class="text-light">-</b> | @Loc.T("gauge", "Gauge"): <b class="text-light">-</b> | @Loc.T("damage_move_uses", "Uses"): <b style="color: #ff79b0;">1</b></span>
                                             }
                                             else
                                             {
-                                                <span>Acc: <b class="text-light">@(string.IsNullOrEmpty(move.Accuracy) || move.Accuracy == "0" ? "-" : move.Accuracy)</b> | Gauge: <b class="text-light">@(string.IsNullOrEmpty(move.Gauge) || move.Gauge == "0" ? "-" : move.Gauge)</b></span>
+                                                <span>@Loc.T("accuracy", "Acc"): <b class="text-light">@(string.IsNullOrEmpty(move.Accuracy) || move.Accuracy == "0" ? "-" : move.Accuracy)</b> | @Loc.T("gauge", "Gauge"): <b class="text-light">@(string.IsNullOrEmpty(move.Gauge) || move.Gauge == "0" ? "-" : move.Gauge)</b></span>
                                                 @if (move.MaxUses > 0)
                                                 {
                                                     <span class="ms-1">| @Loc.T("damage_move_uses", "Uses"): <b style="color: #38bdf8;">@move.MaxUses</b></span>
@@ -591,7 +587,7 @@
                     @if (activeGridPassives.Count == 0)
                     {
                         <div class="text-center py-4 small" style="color: rgba(255, 255, 255, 0.65);">
-                            No passive skills or special effects activated on the Sync Grid yet.
+                            @Loc.T("no_grid_passives", "No passive skills or special effects activated on the Sync Grid yet.")
                         </div>
                     }
                     else
@@ -630,6 +626,7 @@
     protected override void OnInitialized()
     {
         GridState.OnGridChanged += OnGridUpdated;
+        Loc.OnLanguageChanged += OnGridUpdated;
     }
 
     protected override void OnParametersSet()
@@ -644,6 +641,20 @@
     private void OnGridUpdated()
     {
         InvokeAsync(StateHasChanged);
+    }
+
+    private string LocalizeMoveTarget(string target)
+    {
+        if (string.IsNullOrWhiteSpace(target)) return "";
+        return target.Trim().ToLowerInvariant() switch
+        {
+            "all opponents" => Loc.T("target_all_opponents", "All Opponents"),
+            "an opponent" => Loc.T("target_an_opponent", "An Opponent"),
+            "all allies" => Loc.T("target_all_allies", "All Allies"),
+            "an ally" => Loc.T("target_an_ally", "An Ally"),
+            "self" => Loc.T("target_self", "Self"),
+            _ => target
+        };
     }
 
     private bool AllExpanded => Pair?.Moves.All(m => !CollapsedMoveIds.Contains(m.Id)) ?? true;
@@ -812,5 +823,6 @@
     public void Dispose()
     {
         GridState.OnGridChanged -= OnGridUpdated;
+        Loc.OnLanguageChanged -= OnGridUpdated;
     }
 }

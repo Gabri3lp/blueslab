@@ -13,7 +13,7 @@
     {
         <div class="text-center py-5 text-muted m-auto">
             <i class="bi bi-grid-3x3-gap fs-1 d-block mb-2"></i>
-            No sync grid available for this character.
+            @Loc.T("no_sync_grid", "No sync grid available for this character.")
         </div>
     }
     else
@@ -76,10 +76,10 @@
                            checked="@GridState.ShowTileNames" @onchange="OnToggleTileNames" />
                     <label class="form-check-label text-secondary small select-none cursor-pointer d-none d-sm-inline" for="hexViewShowNamesSwitch" style="font-size: 0.72rem;">@Loc.T("names", "Names")</label>
                 </div>
-                <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="Toggle Hard Cap (enforces tile adjacency)">
+                <div class="form-check form-switch mb-0 d-flex align-items-center gap-1" title="@Loc.T("hard_cap", "Hard Cap")">
                     <input class="form-check-input cursor-pointer" type="checkbox" role="switch" id="hexViewHardCapSwitch"
                            checked="@GridState.HardCap" @onchange="OnHardCapToggle" />
-                    <label class="form-check-label text-secondary small select-none cursor-pointer d-none d-sm-inline" for="hexViewHardCapSwitch" style="font-size: 0.72rem;">Hard Cap</label>
+                    <label class="form-check-label text-secondary small select-none cursor-pointer d-none d-sm-inline" for="hexViewHardCapSwitch" style="font-size: 0.72rem;">@Loc.T("hard_cap", "Hard Cap")</label>
                 </div>
                 @if (GridState.HasSpecialOrbs(Pair))
                 {
@@ -209,7 +209,7 @@
                 <div class="custom-counter position-absolute top-0 end-0 m-2 p-2 rounded-3 shadow border border-secondary"
                      style="z-index: 1040; background: rgba(24, 28, 38, 0.92); backdrop-filter: blur(4px); min-width: 95px; pointer-events: none;">
                     <div class="small fw-bold text-secondary text-uppercase border-bottom border-secondary pb-1 mb-1 text-center" style="font-size: 0.68rem; letter-spacing: 0.5px;">
-                        Special Orbs
+                        @Loc.T("special_orbs", "Special Orbs")
                     </div>
                     <div class="d-flex flex-column gap-1">
                         @for (int i = 0; i < 5; i++)
