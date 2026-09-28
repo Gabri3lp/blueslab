@@ -3,73 +3,126 @@ import json
 import re
 import os
 import sys
+from PIL import Image
+import io
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-url = "https://raw.githubusercontent.com/absolutelypm/pokemas-datamine/main/2.71/%F0%9F%A5%8A%20Pasio%20Gym%20Battle%20No.%203.txt"
+url = "https://raw.githubusercontent.com/absolutelypm/pokemas-datamine/main/2.73/%F0%9F%A5%8A%20Pasio%20Gym%20Battle%20No.%204.txt"
 headers = {"User-Agent": "Mozilla/5.0"}
 print(f"Downloading gym datamine from: {url}")
 req = urllib.request.Request(url, headers=headers)
 raw_text = urllib.request.urlopen(req).read().decode('utf-8')
 lines = raw_text.splitlines()
 
-# Map of leader info
+# Ensure all needed Pokemon icons exist in src/BluesLab/wwwroot/img/pokemon
+pokemon_dir = "src/BluesLab/wwwroot/img/pokemon"
+MISSING_ICONS = [
+    ("004500_128.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/45.png"),
+    ("088200_128.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/882.png"),
+    ("042900_128.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/429.png"),
+    ("041100_128.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/411.png"),
+    ("003861_128.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/10104.png")
+]
+
+for fname, icon_url in MISSING_ICONS:
+    fpath = os.path.join(pokemon_dir, fname)
+    if not os.path.exists(fpath):
+        r = urllib.request.Request(icon_url, headers=headers)
+        data = urllib.request.urlopen(r).read()
+        img = Image.open(io.BytesIO(data)).resize((128, 128), Image.Resampling.LANCZOS)
+        img.save(fpath)
+        print(f"Downloaded and resized {fname}")
+
+# Map of Sinnoh Gym Battle No. 4 leader & side minion info (from Quest.txt)
 LEADERS_INFO = {
-    "Falkner": {
-        "pokemon": "Swellow",
-        "icon": "img/pokemon/027700_128.png",
-        "pokemonId": "027700",
-        "sideIcon": "img/pokemon/001800_128.png",
-        "sideMon": "Pidgeot"
+    "Roark": {
+        "pokemon": "Cranidos",
+        "icon": "img/pokemon/040800_128.png",
+        "pokemonId": "040800",
+        "leftTrainer": "Camper",
+        "leftMon": "Rhyperior",
+        "leftIcon": "img/pokemon/046400_128.png",
+        "rightTrainer": "Youngster",
+        "rightMon": "Onix",
+        "rightIcon": "img/pokemon/009500_128.png"
     },
-    "Bugsy": {
-        "pokemon": "Beedrill",
-        "icon": "img/pokemon/001500_128.png",
-        "pokemonId": "001500",
-        "sideIcon": "img/pokemon/012300_128.png",
-        "sideMon": "Scyther"
+    "Gardenia": {
+        "pokemon": "Roserade",
+        "icon": "img/pokemon/040700_128.png",
+        "pokemonId": "040700",
+        "leftTrainer": "Lass",
+        "leftMon": "Breloom",
+        "leftIcon": "img/pokemon/028600_128.png",
+        "rightTrainer": "Beauty",
+        "rightMon": "Vileplume",
+        "rightIcon": "img/pokemon/004500_128.png"
     },
-    "Whitney": {
-        "pokemon": "Miltank",
-        "icon": "img/pokemon/024101_128.png",
-        "pokemonId": "024101",
-        "sideIcon": "img/pokemon/024101_128.png",
-        "sideMon": "Clefairy"
+    "Maylene": {
+        "pokemon": "Medicham",
+        "icon": "img/pokemon/030800_128.png",
+        "pokemonId": "030800",
+        "leftTrainer": "Street Thug",
+        "leftMon": "Annihilape",
+        "leftIcon": "img/pokemon/097900_128.png",
+        "rightTrainer": "Black Belt",
+        "rightMon": "Gallade",
+        "rightIcon": "img/pokemon/047500_128.png"
     },
-    "Morty": {
-        "pokemon": "Drifblim",
-        "icon": "img/pokemon/042600_128.png",
-        "pokemonId": "042600",
-        "sideIcon": "img/pokemon/009400_128.png",
-        "sideMon": "Gengar"
-    },
-    "Chuck": {
-        "pokemon": "Poliwrath",
-        "icon": "img/pokemon/006200_128.png",
-        "pokemonId": "006200",
-        "sideIcon": "img/pokemon/006200_128.png",
-        "sideMon": "Machamp"
-    },
-    "Jasmine": {
-        "pokemon": "Steelix",
-        "icon": "img/pokemon/020801_128.png",
-        "pokemonId": "020801",
-        "sideIcon": "img/pokemon/008100_128.png",
-        "sideMon": "Magnemite"
-    },
-    "Pryce": {
-        "pokemon": "Seel",
-        "icon": "img/pokemon/093600_128.png",
-        "pokemonId": "093600",
-        "sideIcon": "img/pokemon/093600_128.png",
-        "sideMon": "Dewgong"
-    },
-    "Clair": {
+    "Crasher Wake": {
         "pokemon": "Kingdra",
-        "icon": "img/pokemon/023001_128.png",
-        "pokemonId": "023001",
-        "sideIcon": "img/pokemon/014800_128.png",
-        "sideMon": "Dragonair"
+        "icon": "img/pokemon/023000_128.png",
+        "pokemonId": "023000",
+        "leftTrainer": "Swimmer",
+        "leftMon": "Dracovish",
+        "leftIcon": "img/pokemon/088200_128.png",
+        "rightTrainer": "Swimmer",
+        "rightMon": "Dracovish",
+        "rightIcon": "img/pokemon/088200_128.png"
+    },
+    "Fantina": {
+        "pokemon": "Mismagius",
+        "icon": "img/pokemon/042900_128.png",
+        "pokemonId": "042900",
+        "leftTrainer": "Pokémon Ranger",
+        "leftMon": "Drifblim",
+        "leftIcon": "img/pokemon/042600_128.png",
+        "rightTrainer": "Rising Star",
+        "rightMon": "Gengar",
+        "rightIcon": "img/pokemon/009400_128.png"
+    },
+    "Byron": {
+        "pokemon": "Bastiodon",
+        "icon": "img/pokemon/041100_128.png",
+        "pokemonId": "041100",
+        "leftTrainer": "Collector",
+        "leftMon": "Probopass",
+        "leftIcon": "img/pokemon/047600_128.png",
+        "rightTrainer": "Hiker",
+        "rightMon": "Steelix",
+        "rightIcon": "img/pokemon/020801_128.png"
+    },
+    "Candice": {
+        "pokemon": "Abomasnow",
+        "icon": "img/pokemon/046000_128.png",
+        "pokemonId": "046000",
+        "leftTrainer": "Poké Fan",
+        "leftMon": "Ninetales (Alola)",
+        "leftIcon": "img/pokemon/003861_128.png",
+        "rightTrainer": "Ace Trainer",
+        "rightMon": "Ninetales (Alola)",
+        "rightIcon": "img/pokemon/003861_128.png"
+    },
+    "Volkner": {
+        "pokemon": "Luxray",
+        "icon": "img/pokemon/040500_128.png",
+        "pokemonId": "040500",
+        "leftTrainer": "Ace Trainer",
+        "leftMon": "Raichu",
+        "leftIcon": "img/pokemon/002600_128.png",
+        "rightTrainer": "Scientist",
+        "rightMon": "Electivire",
+        "rightIcon": "img/pokemon/046600_128.png"
     }
 }
 
@@ -125,12 +178,11 @@ for line in lines:
         info = LEADERS_INFO.get(leader_name, {
             "pokemon": f"{leader_name}'s Pokémon",
             "icon": "img/trainers/unknown.png",
-            "pokemonId": "000000",
-            "sideIcon": "img/trainers/unknown.png",
-            "sideMon": "Minion"
+            "pokemonId": "000000"
         })
 
-        fight_id = f"{current_league['leagueId']}_{leader_name.lower()}"
+        leader_slug = leader_name.lower().replace(" ", "_")
+        fight_id = f"{current_league['leagueId']}_{leader_slug}"
         current_fight = {
             "fightId": fight_id,
             "title": f"vs. {leader_name} & {info['pokemon']} ({stage_type})",
@@ -174,24 +226,38 @@ for line in lines:
             if m:
                 w, hp, atk, df, spa, spd, spe = m.groups()
                 info = LEADERS_INFO.get(current_fight["leader"], {})
-                for slot in [0, 2]:
-                    current_fight["opponents"].append({
-                        "slotIndex": slot,
-                        "trainerName": "Gym Minion",
-                        "pokemonName": info.get("sideMon", "Minion"),
-                        "pokemonId": "000000",
-                        "iconUrl": info.get("sideIcon", info.get("icon", "img/trainers/unknown.png")),
-                        "weakness": w,
-                        "hp": int(hp.replace(",", "")),
-                        "atk": int(atk.replace(",", "")),
-                        "def": int(df.replace(",", "")),
-                        "spa": int(spa.replace(",", "")),
-                        "spd": int(spd.replace(",", "")),
-                        "spe": int(spe.replace(",", ""))
-                    })
+                # Slot 0: Left
+                current_fight["opponents"].append({
+                    "slotIndex": 0,
+                    "trainerName": info.get("leftTrainer", "Gym Minion"),
+                    "pokemonName": info.get("leftMon", "Minion"),
+                    "pokemonId": "000000",
+                    "iconUrl": info.get("leftIcon", info.get("icon", "img/trainers/unknown.png")),
+                    "weakness": w,
+                    "hp": int(hp.replace(",", "")),
+                    "atk": int(atk.replace(",", "")),
+                    "def": int(df.replace(",", "")),
+                    "spa": int(spa.replace(",", "")),
+                    "spd": int(spd.replace(",", "")),
+                    "spe": int(spe.replace(",", ""))
+                })
+                # Slot 2: Right
+                current_fight["opponents"].append({
+                    "slotIndex": 2,
+                    "trainerName": info.get("rightTrainer", "Gym Minion"),
+                    "pokemonName": info.get("rightMon", "Minion"),
+                    "pokemonId": "000000",
+                    "iconUrl": info.get("rightIcon", info.get("icon", "img/trainers/unknown.png")),
+                    "weakness": w,
+                    "hp": int(hp.replace(",", "")),
+                    "atk": int(atk.replace(",", "")),
+                    "def": int(df.replace(",", "")),
+                    "spa": int(spa.replace(",", "")),
+                    "spd": int(spd.replace(",", "")),
+                    "spe": int(spe.replace(",", ""))
+                })
 
-dest = "src/BluesLab/wwwroot/data/stages_manifest.json"
-with open(dest, "w", encoding="utf-8") as f:
-    json.dump(leagues_output, f, indent=2, ensure_ascii=False)
-
-print(f"Generated {dest} with {len(leagues_output)} circuits and {sum(len(l['fights']) for l in leagues_output)} fights!")
+for dest in ["src/BluesLab/wwwroot/data/gym_stages.json", "src/BluesLab/wwwroot/data/stages_manifest.json"]:
+    with open(dest, "w", encoding="utf-8") as f:
+        json.dump(leagues_output, f, indent=2, ensure_ascii=False)
+    print(f"Generated {dest} with {len(leagues_output)} circuits and {sum(len(l['fights']) for l in leagues_output)} fights!")
