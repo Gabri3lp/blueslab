@@ -2564,6 +2564,9 @@ public class DamageCalculatorService
                              (ally.FormIndex == 1 && string.Equals(move.Type, "Dark", StringComparison.OrdinalIgnoreCase))) ? (dp.Value * 0.1) : 0,
             "ice_plow" => (ally.FormIndex == 0 && (!string.IsNullOrEmpty(enemy.Weakness) && string.Equals(enemy.Weakness, move.Type, StringComparison.OrdinalIgnoreCase) || ally.SuperEffectiveNext)) ? 0.30 : 0,
             "sync_buff_scaling" => Math.Min(0.50, ally.SyncBoosts * (dp.Value > 0 ? dp.Value * 0.1 : 0.10)),
+            "PMUN" => ally.PhysicalBoostNext * (dp.Value > 0 ? dp.Value * 0.1 : 0.10),
+            "SMUN" => ally.SpecialBoostNext * (dp.Value > 0 ? dp.Value * 0.1 : 0.10),
+            "SYUN" => ally.SyncMoveBoostNext * (dp.Value > 0 ? dp.Value * 0.1 : 0.10),
             "flat_boost" => (EvalConditions(dp.Conditions, field, ally, enemy, move, originalMoveType) ? dp.Value * 0.1 : 0),
             _ => 0
         };
@@ -2643,6 +2646,8 @@ public class DamageCalculatorService
                 string cond = c.ToLowerInvariant().Trim();
                 bool match = cond switch
                 {
+                    "physical" => string.Equals(move.Category, "Physical", StringComparison.OrdinalIgnoreCase),
+                    "special" => string.Equals(move.Category, "Special", StringComparison.OrdinalIgnoreCase),
                     "sunny" => field.Weather == "Sunny",
                     "rain" or "rainy" => field.Weather == "Rainy",
                     "sandstorm" => field.Weather == "Sandstorm",

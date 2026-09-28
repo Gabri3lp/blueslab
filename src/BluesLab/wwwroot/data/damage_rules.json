@@ -2555,6 +2555,24 @@
       "direction": "lowered",
       "stepPer1000": 500,
       "capPer1000": 1500
+    },
+    {
+      "syncPair": "Shelly & Sharpedo",
+      "moveName": "Brains of Team Aqua Water Impact",
+      "stat": "cond:rainy",
+      "who": "user",
+      "direction": "lowered",
+      "stepPer1000": 1000,
+      "capPer1000": 2000
+    },
+    {
+      "syncPair": "Korrina & Machoke",
+      "moveName": "Always in the Zone Fighting Impact",
+      "stat": "cond:paralyzed",
+      "who": "target",
+      "direction": "lowered",
+      "stepPer1000": 1000,
+      "capPer1000": 2000
     }
   ],
   "damagePassives": [
@@ -16059,6 +16077,350 @@
       "conditions": [],
       "move_name": "",
       "sub_passives": []
+    },
+    {
+      "name": "Burning Flames of Conviction",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "self",
+      "mechanism": "SYUN",
+      "value": 1,
+      "stat": "",
+      "stat_target": "self",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "name": "Curved Beads of Fiery Envy",
+      "type": "powerup",
+      "applies_to": "all",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "special"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "name": "Sword Clad in Hatred and Snow",
+      "type": "powerup",
+      "applies_to": "all",
+      "affects": "team",
+      "mechanism": "flat_boost",
+      "value": 2,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "physical"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "name": "Trap and Buff 3",
+      "type": "powerup",
+      "applies_to": "pokemon_moves",
+      "affects": "self",
+      "mechanism": "flat_boost",
+      "value": 3,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [
+        [
+          "trapped"
+        ]
+      ],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "name": "Evasive Sync-Up 9",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "self",
+      "mechanism": "stat_is_raised",
+      "value": 9,
+      "stat": "eva",
+      "stat_target": "self",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "name": "Opp Defense ↓: S-Moves ↑ 4",
+      "type": "powerup",
+      "applies_to": "sync_move",
+      "affects": "self",
+      "mechanism": "stat_is_lowered",
+      "value": 4,
+      "stat": "def",
+      "stat_target": "target",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": []
+    },
+    {
+      "name": "Ace of Sparks",
+      "type": "composite",
+      "applies_to": "",
+      "affects": "",
+      "mechanism": "",
+      "value": 0,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": [
+        {
+          "name": "Moves ↑ as Sync Buff ↑",
+          "type": "powerup",
+          "applies_to": "moves",
+          "affects": "self",
+          "mechanism": "sync_buff_scaling",
+          "value": 1,
+          "stat": "sync_buff",
+          "stat_target": "self",
+          "conditions": [],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Critical Strike 2",
+          "type": "powerup",
+          "applies_to": "all",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 2,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "critical"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        }
+      ]
+    },
+    {
+      "name": "Power of Space to Change the World",
+      "type": "composite",
+      "applies_to": "",
+      "affects": "",
+      "mechanism": "",
+      "value": 0,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": [
+        {
+          "name": "Superduper Effective 5",
+          "type": "powerup",
+          "applies_to": "pokemon_moves",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 5,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "super_effective"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Moves ↑ as Sync Buff ↑",
+          "type": "powerup",
+          "applies_to": "moves",
+          "affects": "self",
+          "mechanism": "sync_buff_scaling",
+          "value": 1,
+          "stat": "sync_buff",
+          "stat_target": "self",
+          "conditions": [],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Critical Strike 2",
+          "type": "powerup",
+          "applies_to": "all",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 2,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "critical"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        }
+      ]
+    },
+    {
+      "name": "Infinite Bond of Resonant Spirits",
+      "type": "composite",
+      "applies_to": "",
+      "affects": "",
+      "mechanism": "",
+      "value": 0,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": [
+        {
+          "name": "Moves ↑ as Sync Buff ↑",
+          "type": "powerup",
+          "applies_to": "moves",
+          "affects": "self",
+          "mechanism": "sync_buff_scaling",
+          "value": 1,
+          "stat": "sync_buff",
+          "stat_target": "self",
+          "conditions": [],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Critical Strike 2",
+          "type": "powerup",
+          "applies_to": "all",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 2,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "critical"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        }
+      ]
+    },
+    {
+      "name": "Soul-Purifying Flames",
+      "type": "composite",
+      "applies_to": "",
+      "affects": "",
+      "mechanism": "",
+      "value": 0,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": [
+        {
+          "name": "Moves ↑ as Sync Buff ↑",
+          "type": "powerup",
+          "applies_to": "moves",
+          "affects": "self",
+          "mechanism": "sync_buff_scaling",
+          "value": 1,
+          "stat": "sync_buff",
+          "stat_target": "self",
+          "conditions": [],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Critical Strike 2",
+          "type": "powerup",
+          "applies_to": "all",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 2,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "critical"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        }
+      ]
+    },
+    {
+      "name": "Sandstorm-Slicing Sickles",
+      "type": "composite",
+      "applies_to": "",
+      "affects": "",
+      "mechanism": "",
+      "value": 0,
+      "stat": "",
+      "stat_target": "",
+      "conditions": [],
+      "move_name": "",
+      "sub_passives": [
+        {
+          "name": "Surging Sand 5",
+          "type": "powerup",
+          "applies_to": "sync_move",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 5,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "sandstorm"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Moves ↑ as Sync Buff ↑",
+          "type": "powerup",
+          "applies_to": "moves",
+          "affects": "self",
+          "mechanism": "sync_buff_scaling",
+          "value": 1,
+          "stat": "sync_buff",
+          "stat_target": "self",
+          "conditions": [],
+          "move_name": "",
+          "sub_passives": []
+        },
+        {
+          "name": "Critical Strike 2",
+          "type": "powerup",
+          "applies_to": "all",
+          "affects": "self",
+          "mechanism": "flat_boost",
+          "value": 2,
+          "stat": "",
+          "stat_target": "",
+          "conditions": [
+            [
+              "critical"
+            ]
+          ],
+          "move_name": "",
+          "sub_passives": []
+        }
+      ]
     }
   ],
   "masterPassives": [
@@ -17121,6 +17483,16 @@
       "basePowerUpPct": 20,
       "perAdditionalAllyPct": 15,
       "maxPowerUpPct": 50
+    },
+    {
+      "syncPair": "Lyra (Special Costume) & Marill",
+      "passiveName": "Water Teamwork",
+      "theme": "Water",
+      "category": "any",
+      "appliesToSync": false,
+      "basePowerUpPct": 10,
+      "perAdditionalAllyPct": 5,
+      "maxPowerUpPct": 20
     }
   ],
   "luckySkills": [
@@ -17408,7 +17780,8 @@
       "restricted_to_roles": null,
       "restricted_to_pairs": [
         "May (Champion) & Kyogre",
-        "Clavell & Quaquaval"
+        "Clavell & Quaquaval",
+        "Archie & Kyogre"
       ]
     },
     {
@@ -17424,7 +17797,8 @@
       "restricted_to_pairs": [
         "Brendan (Champion) & Groudon",
         "Adaman & Leafeon",
-        "Sygna Suit Nemona & Scream Tail"
+        "Sygna Suit Nemona & Scream Tail",
+        "Maxie & Groudon"
       ]
     },
     {
@@ -17470,7 +17844,8 @@
       "restricted_to_roles": null,
       "restricted_to_pairs": [
         "Arc Suit Brock & Onix",
-        "Arezu & Lilligant"
+        "Arezu & Lilligant",
+        "Nemona & Pawmot"
       ]
     },
     {
@@ -17492,7 +17867,8 @@
       "name": "Trap and Sync 4",
       "restricted_to_roles": null,
       "restricted_to_pairs": [
-        "Irida (Special Costume) & Zoroark"
+        "Irida (Special Costume) & Zoroark",
+        "Sygna Suit Lysandre (Alt.) & Chi-Yu"
       ]
     },
     {
@@ -17524,6 +17900,48 @@
       "restricted_to_pairs": [
         "Lance & Dragonite",
         "Arc Suit Lance & Dragonite"
+      ]
+    },
+    {
+      "name": "Opp Defense ↓: S-Moves ↑ 4",
+      "restricted_to_roles": null,
+      "restricted_to_pairs": [
+        "Sygna Suit Ghetsis & Chien-Pao"
+      ]
+    },
+    {
+      "name": "Ace of Sparks",
+      "restricted_to_roles": null,
+      "restricted_to_pairs": [
+        "Volkner & Luxray"
+      ]
+    },
+    {
+      "name": "Power of Space to Change the World",
+      "restricted_to_roles": null,
+      "restricted_to_pairs": [
+        "Cyrus & Palkia"
+      ]
+    },
+    {
+      "name": "Infinite Bond of Resonant Spirits",
+      "restricted_to_roles": null,
+      "restricted_to_pairs": [
+        "Palmer & Regigigas"
+      ]
+    },
+    {
+      "name": "Soul-Purifying Flames",
+      "restricted_to_roles": null,
+      "restricted_to_pairs": [
+        "Irida (Anniversary 2025) & Typhlosion"
+      ]
+    },
+    {
+      "name": "Sandstorm-Slicing Sickles",
+      "restricted_to_roles": null,
+      "restricted_to_pairs": [
+        "Arc Suit Cynthia & Garchomp"
       ]
     }
   ]
