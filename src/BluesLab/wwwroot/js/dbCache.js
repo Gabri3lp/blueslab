@@ -1,6 +1,6 @@
 // Persistent CacheStorage & In-Memory Preloader for Blues Lab database and locales
 window.bluesLabCache = {
-    CACHE_NAME: 'blueslab-data-v273c',
+    CACHE_NAME: 'blueslab-data-v273d',
     _inMemoryCache: new Map(),
 
     // Checks if CacheStorage API is available

@@ -322,11 +322,11 @@ for sec in grid_sections:
             if not bl.startswith("Requirements:")
             and not bl.startswith("Color Grid:")
             and not bl.startswith("Grid Expand Unlock:")
-            and not bl.startswith("Move:")
         ]
         color_kind = "passive"
         title = non_req[0] if non_req else ""
-        desc = "\n".join(non_req[1:]) if len(non_req) > 1 else title
+        desc_lines = [dl for dl in non_req[1:] if not dl.startswith("Move: ")]
+        desc = "\n".join(desc_lines) if desc_lines else title
         stat_bonus = {}
         power_bonus = {}
         ability_id = ""
