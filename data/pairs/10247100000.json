@@ -1089,8 +1089,27 @@
   ],
   "pokemonIconUrl": "img/pokemon/089000_128.png",
   "superAwakeningPassive": {
+    "id": 32016501,
     "name": "Eternal Champion",
-    "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Increases the user’s Special Moves ↑ Next effect by 3 ranks after using its max move. Increases the user’s Sync Move ↑ Next effect by 5 ranks after using its max move."
+    "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets. Increases the user’s Special Moves ↑ Next effect by three  after using its max move. Increases the user’s Sync Move ↑ Next effect by five  after using its max move.",
+    "slot": 0,
+    "childPassives": [
+      {
+        "id": 23011401,
+        "name": "Targets Maxed",
+        "description": "When the user’s max move attacks an opponent, the target becomes all opposing sync pairs. The power of max moves affected by this passive skill is not lowered even if there are multiple targets."
+      },
+      {
+        "id": 17070703,
+        "name": "Max Move: Special Boost 3",
+        "description": "Increases the user’s Special Moves ↑ Next effect by three  after using its max move."
+      },
+      {
+        "id": 17077005,
+        "name": "Max Move: Sync Move Boost 5",
+        "description": "Increases the user’s Sync Move ↑ Next effect by five  after using its max move."
+      }
+    ]
   },
   "releaseTimestamp": 1628748000,
   "releaseDate": "2021-08-12"

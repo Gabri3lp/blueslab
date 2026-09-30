@@ -1049,8 +1049,27 @@
   "pokemonName": "Togepi",
   "pokemonIconUrl": "img/pokemon/017501_128.png",
   "superAwakeningPassive": {
+    "id": 32011301,
     "name": "Hisui’s Business Smile",
-    "description": "Reduces the user’s sync move countdown by 2 the first time its sync move is used each battle. Restores 1 MP for the user’s Trainer the first time its sync move is used each battle. Restores the HP of all allied sync pairs by approximately 20% of their maximum HP after using the user’s sync move."
+    "description": "Reduces the user’s sync move countdown by two the first time its sync move is used each battle. Restores one MP for the user’s Trainer the first time its sync move is used each battle. Restores the HP of all allied sync pairs by approximately 20% of their maximum HP after using the user’s sync move.",
+    "slot": 0,
+    "childPassives": [
+      {
+        "id": 15010302,
+        "name": "Adrenaline 2",
+        "description": "Reduces the sync move countdown by two the first time the user’s sync move is used each battle."
+      },
+      {
+        "id": 16020601,
+        "name": "Trainer Sync Redemption 1",
+        "description": "Restores one MP for the user’s Trainer the first time its sync move is used each battle."
+      },
+      {
+        "id": 11010701,
+        "name": "S-Move: Team HP Recovery (M) 1",
+        "description": "Restores the HP of all allied sync pairs by approximately 20% of their maximum HP after using the user’s sync move."
+      }
+    ]
   },
   "releaseTimestamp": 1711692000,
   "releaseDate": "2024-03-29"

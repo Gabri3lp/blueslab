@@ -1042,8 +1042,27 @@
   ],
   "pokemonIconUrl": "img/pokemon/002500_128.png",
   "superAwakeningPassive": {
+    "id": 32013701,
     "name": "Let’s Go, Pikachu!",
-    "description": "Stats cannot be lowered for all allied sync pairs when a circle applies to the allied field of play. Applies the Enduring effect to all allied sync pairs the first time the user enters a battle each battle. Increases the Sync Move ↑ Next effect of all allied sync pairs by 1 rank when the user’s Trainer uses a move."
+    "description": "Stats cannot be lowered for all allied sync pairs when a circle applies to the allied field of play. Applies the Enduring effect to all allied sync pairs the first time the user enters a battle each battle. Increases the Sync Move ↑ Next effect of all allied sync pairs by one  when the user’s Trainer uses a move.",
+    "slot": 0,
+    "childPassives": [
+      {
+        "id": 18022101,
+        "name": "Circle: Team All Stats ↓ Immunity",
+        "description": "Stats cannot be lowered for all allied sync pairs when a circle applies to the allied field of play."
+      },
+      {
+        "id": 17061101,
+        "name": "Team Safe Start",
+        "description": "Applies the Enduring effect to all allied sync pairs the first time the user enters a battle each battle."
+      },
+      {
+        "id": 17074809,
+        "name": "T-Move: Team Sync Move Boost ↑1 9",
+        "description": "Increases the Sync Move ↑ Next effect of all allied sync pairs by one  when the user’s Trainer uses a move."
+      }
+    ]
   },
   "releaseTimestamp": 1706680800,
   "releaseDate": "2024-01-31"
