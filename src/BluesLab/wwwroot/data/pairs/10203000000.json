@@ -1086,8 +1086,27 @@
   "pokemonName": "Skarmory",
   "pokemonIconUrl": "img/pokemon/022700_128.png",
   "superAwakeningPassive": {
+    "id": 32017901,
     "name": "The Hall Matron’s Trial",
-    "description": "Applies the Move Gauge Acceleration effect to the allied field of play after using the user’s sync move. Restores the HP of all allied sync pairs by approximately 40% of their maximum HP after using the user’s max move. Raises the user’s Defense and Sp. Def by 1 stat rank when its Pokémon uses a status move."
+    "description": "Applies the Move Gauge Acceleration effect to the allied field of play after using the user’s sync move. Restores the HP of all allied sync pairs by approximately 40% of their maximum HP after using the user’s max move. Raises the user’s Defense and Sp. Def by one stat  when its Pokémon uses a status move.",
+    "slot": 0,
+    "childPassives": [
+      {
+        "id": 19023901,
+        "name": "Catalytic Acceleration",
+        "description": "Applies the Move Gauge Acceleration effect to the allied field of play after using the user’s sync move."
+      },
+      {
+        "id": 11015204,
+        "name": "Max Move: Team HP Recovery 4",
+        "description": "Restores the HP of all allied sync pairs by approximately 40% of their maximum HP after using the user’s max move."
+      },
+      {
+        "id": 18118909,
+        "name": "Use Status P-Move: Defense ↑ & Sp. Def ↑ 9",
+        "description": "Raises the user’s Defense and Sp. Def by one stat  when its Pokémon uses a status move."
+      }
+    ]
   },
   "releaseTimestamp": 1695016800,
   "releaseDate": "2023-09-18"

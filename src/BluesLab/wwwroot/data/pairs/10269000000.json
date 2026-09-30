@@ -1053,8 +1053,27 @@
   "pokemonName": "Eevee",
   "pokemonIconUrl": "img/pokemon/013301_128.png",
   "superAwakeningPassive": {
+    "id": 32011101,
     "name": "Let’s Go, Eevee!",
-    "description": "Reduces the user’s sync move countdown by 1 the first time it enters a battle each battle. Powers up the moves of all allied sync pairs when attacking a target that is flinching, confused, or trapped. Increases the Sync Move ↑ Next effect of all allied sync pairs by 1 rank when the user’s Trainer uses a move."
+    "description": "Reduces the user’s sync move countdown by one the first time it enters a battle each battle. Powers up the moves of all allied sync pairs when attacking a target that is flinching, confused, or trapped. Increases the Sync Move ↑ Next effect of all allied sync pairs by one  when the user’s Trainer uses a move.",
+    "slot": 0,
+    "childPassives": [
+      {
+        "id": 15010101,
+        "name": "Head Start 1",
+        "description": "Reduces the user’s sync move countdown by one the first time it enters a battle each battle."
+      },
+      {
+        "id": 13081502,
+        "name": "Opp Interference: Team Moves ↑ 2",
+        "description": "Powers up the moves of all allied sync pairs when attacking a target that is flinching, confused, or trapped."
+      },
+      {
+        "id": 17074809,
+        "name": "T-Move: Team Sync Move Boost ↑1 9",
+        "description": "Increases the Sync Move ↑ Next effect of all allied sync pairs by one  when the user’s Trainer uses a move."
+      }
+    ]
   },
   "releaseTimestamp": 1700200800,
   "releaseDate": "2023-11-17"

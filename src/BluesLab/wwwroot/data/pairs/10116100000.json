@@ -1048,8 +1048,27 @@
   ],
   "pokemonIconUrl": "img/pokemon/048800_128.png",
   "superAwakeningPassive": {
+    "id": 32016701,
     "name": "Protection of the Crescent Moon",
-    "description": "Applies the Damage Guard Next effect to the user the first time it enters a battle each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 1 rank when the user’s Trainer uses a move. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by 2 ranks the first time the user’s HP drops to half or below each battle."
+    "description": "Applies the Damage Guard Next effect to the user the first time it enters a battle each battle. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by one  when the user’s Trainer uses a move. Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by two  the first time the user’s HP drops to half or below each battle.",
+    "slot": 0,
+    "childPassives": [
+      {
+        "id": 17077101,
+        "name": "Debut: Damage Guard Next",
+        "description": "Applies the Damage Guard Next effect to the user the first time it enters a battle each battle."
+      },
+      {
+        "id": 17077209,
+        "name": "T-Move: Team Phys & Spec Boost ↑1 9",
+        "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by one  when the user’s Trainer uses a move."
+      },
+      {
+        "id": 17077309,
+        "name": "Half HP: Team Phys & Spec Boost ↑2 Once 9",
+        "description": "Increases the Physical Moves ↑ Next effect and Special Moves ↑ Next effect of all allied sync pairs by two  when the user’s HP drops to half or below. This effect can activate only once per battle."
+      }
+    ]
   },
   "releaseTimestamp": 1644818400,
   "releaseDate": "2022-02-14"

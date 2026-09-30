@@ -2017,6 +2017,26 @@ public class DamageCalculatorService
                         }
                     }
                 }
+
+                if (teammate.Pair.SuperAwakeningPassive.ChildPassives != null && teammate.Pair.SuperAwakeningPassive.ChildPassives.Count > 0)
+                {
+                    foreach (var cp in teammate.Pair.SuperAwakeningPassive.ChildPassives)
+                    {
+                        if (saRule?.SubPassives != null && saRule.SubPassives.Any(sp => string.Equals(sp.Name, cp.Name, StringComparison.OrdinalIgnoreCase)))
+                            continue;
+
+                        var cpRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cp.Name, StringComparison.OrdinalIgnoreCase));
+                        if (cpRule != null && IsTeamWidePassive(cpRule))
+                        {
+                            double v = EvalSingleDamagePassive(cpRule, move, activeAttacker, enemy, field, originalMoveType);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = $"Ally SA: {cpRule.Name} ({trainerName})", Value = $"+{v * 100:0.#}%", Color = "#8e44ad" });
+                            }
+                        }
+                    }
+                }
             }
 
             // 2. Teammate Base & Variation Passives
@@ -2227,6 +2247,26 @@ public class DamageCalculatorService
                     {
                         total += v;
                         pills.Add(new MultiplierPill { Label = $"SA: {saRule.Name}", Value = $"+{v * 100:0.#}%", Color = "#e74c3c" });
+                    }
+                }
+
+                if (ally.Pair.SuperAwakeningPassive.ChildPassives != null && ally.Pair.SuperAwakeningPassive.ChildPassives.Count > 0)
+                {
+                    foreach (var cp in ally.Pair.SuperAwakeningPassive.ChildPassives)
+                    {
+                        if (saRule?.SubPassives != null && saRule.SubPassives.Any(sp => string.Equals(sp.Name, cp.Name, StringComparison.OrdinalIgnoreCase)))
+                            continue;
+
+                        var cpRule = rules.DamagePassives.FirstOrDefault(dp => string.Equals(dp.Name, cp.Name, StringComparison.OrdinalIgnoreCase));
+                        if (cpRule != null)
+                        {
+                            double v = EvalSingleDamagePassive(cpRule, move, ally, enemy, field);
+                            if (v > 0)
+                            {
+                                total += v;
+                                pills.Add(new MultiplierPill { Label = $"SA: {cpRule.Name}", Value = $"+{v * 100:0.#}%", Color = "#e74c3c" });
+                            }
+                        }
                     }
                 }
             }
