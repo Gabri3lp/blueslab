@@ -1409,6 +1409,71 @@ public class DamageCalculatorService
             }
         }
 
+        // Treasures of Ruin / Opponent Damage Taken Multiplicative Passives (×1.20):
+        // - Sword Clad in Hatred and Snow (92730009, SS Ghetsis & Chien-Pao): +20% physical move/sync/max damage taken by opponent
+        // - Curved Beads of Fiery Envy (92730004, SS Lysandre (Alt.) & Chi-Yu): +20% special move/sync/max damage taken by opponent
+        var alliedCombatants = new List<CombatantState> { ally };
+        if (team != null)
+        {
+            foreach (var tm in team.Allies)
+            {
+                if (tm != null && tm.Pair != null && !alliedCombatants.Contains(tm))
+                {
+                    alliedCombatants.Add(tm);
+                }
+            }
+        }
+
+        var appliedOpponentDmgMultiPassives = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var combatant in alliedCombatants)
+        {
+            if (combatant.Pair == null) continue;
+            var cPassives = new List<PassiveItem>();
+            if (combatant.FormIndex > 0 && combatant.Pair.Variations != null && combatant.FormIndex <= combatant.Pair.Variations.Count && combatant.Pair.Variations[combatant.FormIndex - 1].Passives != null)
+            {
+                cPassives.AddRange(combatant.Pair.Variations[combatant.FormIndex - 1].Passives);
+            }
+            else if (combatant.Pair.Passives != null)
+            {
+                cPassives.AddRange(combatant.Pair.Passives);
+                bool hasDebutSTera = combatant.Pair.Passives.Any(p =>
+                    p.Name != null &&
+                    p.Name.StartsWith("Debut:", StringComparison.OrdinalIgnoreCase) &&
+                    p.Name.Contains("S-Tera", StringComparison.OrdinalIgnoreCase));
+                if (hasDebutSTera && combatant.Pair.Variations != null && combatant.Pair.Variations.Count > 0 && combatant.Pair.Variations[0].Passives != null)
+                {
+                    cPassives.AddRange(combatant.Pair.Variations[0].Passives);
+                }
+            }
+
+            foreach (var cp in cPassives)
+            {
+                string cpName = cp.Name ?? string.Empty;
+                string cpDesc = cp.Description ?? string.Empty;
+                if (string.IsNullOrEmpty(cpName) || appliedOpponentDmgMultiPassives.Contains(cpName))
+                    continue;
+
+                bool isPhysVuln = cp.Id == 92730009 ||
+                    cpName.Contains("Sword Clad in Hatred and Snow", StringComparison.OrdinalIgnoreCase) ||
+                    cpDesc.Contains("Increases the amount of damage an opponent takes from physical attack moves, physical sync moves, and physical max moves", StringComparison.OrdinalIgnoreCase);
+
+                bool isSpecVuln = cp.Id == 92730004 ||
+                    cpName.Contains("Curved Beads of Fiery Envy", StringComparison.OrdinalIgnoreCase) ||
+                    cpDesc.Contains("Increases the amount of damage an opponent takes from special attack moves, special sync moves, and special max moves", StringComparison.OrdinalIgnoreCase);
+
+                if ((isPhysVuln && isPhysical) || (isSpecVuln && isSpecial))
+                {
+                    appliedOpponentDmgMultiPassives.Add(cpName);
+                    ne *= 6.0;
+                    he *= 5.0;
+                    string trainerLabel = combatant.Pair.TrainerName ?? combatant.Pair.DisplayName;
+                    string pillLabel = ReferenceEquals(combatant, ally) ? cpName : $"Ally: {cpName} ({trainerLabel})";
+                    string pillColor = ReferenceEquals(combatant, ally) ? "#00cec9" : "#8e44ad";
+                    pills.Add(new MultiplierPill { Label = pillLabel, Value = "×1.2", Color = pillColor });
+                }
+            }
+        }
+
         // Weather, Terrain, Zone
         bool isFire = string.Equals(effectiveMoveType, "Fire", StringComparison.OrdinalIgnoreCase);
         bool isWater = string.Equals(effectiveMoveType, "Water", StringComparison.OrdinalIgnoreCase);
